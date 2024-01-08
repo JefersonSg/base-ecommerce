@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './SocialMedia.module.css';
+import Link from 'next/link';
 
 export function SocialMedia({ img }: { img: string[] }) {
   return (
@@ -8,12 +9,23 @@ export function SocialMedia({ img }: { img: string[] }) {
         ? img.map((image) => {
             return (
               <>
-                <Image
-                  alt={image}
-                  src={`footer/RedesSociais/${image}.svg`}
-                  width={24}
-                  height={24}
-                />
+                <Link
+                  href={`${
+                    (image === 'Facebook' &&
+                      'https://www.facebook.com/profile.php?id=61550563994853') ||
+                    (image === 'Instagram' &&
+                      'https://www.instagram.com/abayomimakebeauty/') ||
+                    (image === 'Tiktok' &&
+                      'https://www.tiktok.com/@abayomimakebeauty')
+                  }`}
+                >
+                  <Image
+                    alt={image}
+                    src={`footer/RedesSociais/${image}.svg`}
+                    width={24}
+                    height={24}
+                  />
+                </Link>
               </>
             );
           })
