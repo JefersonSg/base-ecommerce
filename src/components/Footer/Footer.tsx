@@ -13,9 +13,9 @@ export function Footer() {
     <>
       <footer className={styles.footer}>
         <Botoes />
-        <Informacao titulo="Informações úteis" />
-        <Informacao titulo="Sobre a loja" />
-        <Informacao titulo="Nossas redes sociais" img={images} />
+        <Informacao titulo="Informações úteis" seta={true} />
+        <Informacao titulo="Sobre a loja" seta={true} />
+        <Informacao titulo="Nossas redes sociais" img={images} seta={false} />
         <div className={styles.textos}>
           <Texto
             texto="Empresa de responsabilidade limitada 

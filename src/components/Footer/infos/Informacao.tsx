@@ -8,10 +8,12 @@ import Link from 'next/link';
 
 export function Informacao({
   titulo,
-  img
+  img,
+  seta
 }: {
   titulo: string;
   img?: string[];
+  seta: boolean;
 }) {
   const [ativo, setAtivo] = React.useState<null | boolean>(null);
 
@@ -27,11 +29,11 @@ export function Informacao({
     <>
       <div className={styles.sessao} onClick={AtivarSessao}>
         <div>
-          <TituloSessao titulo={titulo} ativo={ativo} />
+          <TituloSessao titulo={titulo} ativo={ativo} seta={seta} />
         </div>
         {img != null && <SocialMedia img={img} />}
 
-        {ativo != null && <Link href={'/aqui'}>Aqui</Link>}
+        {ativo != null && seta && <Link href={'/aqui'}>Aqui</Link>}
       </div>
     </>
   );
