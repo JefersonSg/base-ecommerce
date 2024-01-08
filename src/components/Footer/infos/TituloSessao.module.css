@@ -1,0 +1,15 @@
+.tituloSessao {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.seta {
+  width: 9px;
+  height: 9px;
+  transition: 0.2s ease-in;
+}
+.seta.ativo {
+  rotate: 180deg;
+}

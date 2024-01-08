@@ -1,0 +1,6 @@
+.socialMedia {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 200px;
+  margin-top: 16px;
+}
