@@ -10,7 +10,7 @@ export function SocialMedia({ img }: { img: string[] }) {
               <>
                 <Image
                   alt={image}
-                  src={`/footer/redesSociais/${image}.svg`}
+                  src={`footer/redesSociais/${image}.svg`}
                   width={24}
                   height={24}
                 />
