@@ -8,6 +8,10 @@ span {
   padding: 0px;
   color: black;
 }
+body.scroll-lock {
+  overflow: hidden;
+}
+
 li,
 ul {
   list-style: none;

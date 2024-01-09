@@ -11,6 +11,20 @@ import Link from 'next/link';
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
 
+  React.useEffect(() => {
+    // Adiciona ou remove a classe 'scroll-lock' no corpo da página
+    if (estaAtivo) {
+      document.body.classList.add('scroll-lock');
+    } else {
+      document.body.classList.remove('scroll-lock');
+    }
+
+    // Cleanup da useEffect para remover a classe quando o componente for desmontado
+    return () => {
+      document.body.classList.remove('scroll-lock');
+    };
+  }, [estaAtivo]);
+
   return (
     <>
       <InfosDestaques />
