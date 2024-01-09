@@ -1,0 +1,55 @@
+.menuMobile {
+  display: block;
+  height: 100vh;
+  width: 70%;
+  min-width: 275px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  animation: openMenu ease-in forwards 0.3s;
+}
+
+@keyframes openMenu {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.fechar {
+  font-size: 36px;
+  position: absolute;
+  top: 32px;
+  right: -50px;
+  cursor: pointer;
+  color: white;
+  z-index: 1000;
+}
+.background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  backdrop-filter: blur(1px);
+  filter: blur(1px);
+}
+
+.subtitulo {
+  color: #393939;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 16px;
+  padding-left: 16px;
+}

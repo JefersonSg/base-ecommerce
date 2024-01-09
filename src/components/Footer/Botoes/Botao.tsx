@@ -12,28 +12,21 @@ export function Botao({
   type?: string;
 }) {
   return (
-    <>
-      <div className={styles.corpo}>
-        <Link
-          href={`${
-            type !== undefined
-              ? type === 'email'
-                ? 'mailto:abayomi.make@gmail.com?subject=Suporte'
-                : 'tel:+5521969871826'
-              : img
-          }`}
-        >
-          <button className={styles.buttonImg}>
-            <Image
-              alt={img}
-              src={`/footer/${img}.png`}
-              width={24}
-              height={24}
-            />
-          </button>
-          <p>{text}</p>
-        </Link>
-      </div>
-    </>
+    <li className={styles.corpo}>
+      <Link
+        href={`${
+          type !== undefined
+            ? type === 'email'
+              ? 'mailto:abayomi.make@gmail.com?subject=Suporte'
+              : 'tel:+5521969871826'
+            : img
+        }`}
+      >
+        <button className={styles.buttonImg}>
+          <Image alt={img} src={`/footer/${img}.png`} width={24} height={24} />
+        </button>
+        <p>{text}</p>
+      </Link>
+    </li>
   );
 }

@@ -6,14 +6,13 @@ export function MetodoPagamentos({ img }: { img: string[] }) {
     <div className={styles.divMetodosPagamentos}>
       {img.map((image) => {
         return (
-          <>
-            <Image
-              alt={image}
-              src={`footer/MetodosPagamentos/${image}.svg`}
-              width={66}
-              height={21}
-            />
-          </>
+          <Image
+            key={image}
+            alt={image}
+            src={`footer/MetodosPagamentos/${image}.svg`}
+            width={66}
+            height={21}
+          />
         );
       })}
     </div>

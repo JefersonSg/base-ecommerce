@@ -6,6 +6,7 @@ p,
 span {
   margin: 0px;
   padding: 0px;
+  color: black;
 }
 li,
 ul {
@@ -24,4 +25,8 @@ img {
 .container {
   max-width: 1100px;
   margin: 0 auto;
+}
+
+:root {
+  --fonte-primaria: 'Montserrat', 'sans-serif';
 }

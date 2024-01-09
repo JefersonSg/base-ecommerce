@@ -4,6 +4,9 @@
   width: 100%;
   justify-content: space-between;
 }
+.tituloSessao h1 {
+  color: white;
+}
 
 .seta {
   width: 9px;

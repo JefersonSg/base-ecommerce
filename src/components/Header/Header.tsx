@@ -1,16 +1,22 @@
+'use client';
+
+import React from 'react';
 import styles from './Header.module.css';
 import { ButtonMenu } from './ButtonMenu/ButtonMenu';
 import { InfosDestaques } from './InfosDestaques';
 import Image from 'next/image';
+import MenuMobile from './ButtonMenu/MenuMobile/MenuMobile';
+import Link from 'next/link';
 
 export function Header() {
+  const [estaAtivo, setAtivo] = React.useState<boolean>(false);
+
   return (
     <>
       <InfosDestaques />
       <header className={styles.header}>
         <div className={styles.container1}>
-          <ButtonMenu />
-
+          <ButtonMenu setAtivo={setAtivo} />
           <Image
             alt="Lupa"
             src={'header/icons/lupa.svg'}
@@ -18,9 +24,9 @@ export function Header() {
             height={24}
           />
         </div>
-        <div className={styles.logo}>
+        <Link href={'/'} className={styles.logo}>
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
-        </div>
+        </Link>
         <div className={styles.container2}>
           <Image
             alt="Imagem de coração"
@@ -35,6 +41,7 @@ export function Header() {
             height={24}
           />
         </div>
+        {estaAtivo && <MenuMobile setAtivo={setAtivo} />}
       </header>
     </>
   );

@@ -4,11 +4,11 @@ import Link from 'next/link';
 
 export function SocialMedia({ img }: { img: string[] }) {
   return (
-    <div className={styles.socialMedia}>
+    <ul className={styles.socialMedia}>
       {img !== undefined
-        ? img.map((image) => {
+        ? img.map((image, index) => {
             return (
-              <>
+              <li key={index}>
                 <Link
                   href={`${
                     (image === 'Facebook' &&
@@ -26,10 +26,10 @@ export function SocialMedia({ img }: { img: string[] }) {
                     height={24}
                   />
                 </Link>
-              </>
+              </li>
             );
           })
         : null}
-    </div>
+    </ul>
   );
 }

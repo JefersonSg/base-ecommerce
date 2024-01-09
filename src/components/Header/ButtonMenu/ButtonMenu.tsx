@@ -1,9 +1,18 @@
 import styles from './ButtonMenu.module.css';
 
-export function ButtonMenu() {
+export function ButtonMenu({
+  setAtivo
+}: {
+  setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <>
-      <button className={styles.mobileButton}></button>
+      <button
+        className={styles.mobileButton}
+        onClick={() => {
+          setAtivo(true);
+        }}
+      ></button>
     </>
   );
 }

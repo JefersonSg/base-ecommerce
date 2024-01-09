@@ -17,7 +17,7 @@ export function Informacao({
 }) {
   const [ativo, setAtivo] = React.useState<null | boolean>(null);
 
-  function AtivarSessao() {
+  function AtivarSection() {
     if (ativo != null) {
       setAtivo(null);
     } else {
@@ -26,15 +26,11 @@ export function Informacao({
   }
 
   return (
-    <>
-      <div className={styles.sessao} onClick={AtivarSessao}>
-        <div>
-          <TituloSessao titulo={titulo} ativo={ativo} seta={seta} />
-        </div>
-        {img != null && <SocialMedia img={img} />}
+    <nav className={styles.sessao} onClick={AtivarSection}>
+      <TituloSessao titulo={titulo} ativo={ativo} seta={seta} />
+      {img != null && <SocialMedia img={img} />}
 
-        {ativo != null && seta && <Link href={'/aqui'}>Aqui</Link>}
-      </div>
-    </>
+      {ativo != null && seta && <Link href={'/aqui'}>Aqui</Link>}
+    </nav>
   );
 }
