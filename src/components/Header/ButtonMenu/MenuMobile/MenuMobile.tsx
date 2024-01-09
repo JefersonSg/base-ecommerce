@@ -20,9 +20,10 @@ function MenuMobile({
         <nav>
           <Usuario />
           <UlLinksUteis />
-          <h3 className={styles.subtitulo}>Navegue por categorias</h3>
-
-          <LinksCategorias />
+          <div className={styles.categorias}>
+            <h3 className={styles.subtitulo}>Navegue por categorias</h3>
+            <LinksCategorias />
+          </div>
         </nav>
         <span
           className={styles.fechar}

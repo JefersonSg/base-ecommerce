@@ -9,6 +9,7 @@
   left: 0;
   z-index: 1000;
   animation: openMenu ease-in forwards 0.3s;
+  overflow-y: scroll;
 }
 
 @keyframes openMenu {
@@ -52,4 +53,8 @@
   line-height: normal;
   margin-bottom: 16px;
   padding-left: 16px;
+}
+.categorias {
+  height: max-content;
+  padding-bottom: 80px;
 }

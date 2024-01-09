@@ -12,14 +12,12 @@ export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    // Adiciona ou remove a classe 'scroll-lock' no corpo da página
     if (estaAtivo) {
       document.body.classList.add('scroll-lock');
     } else {
       document.body.classList.remove('scroll-lock');
     }
 
-    // Cleanup da useEffect para remover a classe quando o componente for desmontado
     return () => {
       document.body.classList.remove('scroll-lock');
     };
@@ -42,18 +40,22 @@ export function Header() {
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
         </Link>
         <div className={styles.container2}>
-          <Image
-            alt="Imagem de coração"
-            src={'header/icons/coracao.svg'}
-            width={24}
-            height={24}
-          />
-          <Image
-            alt="Imagem de carrinho"
-            src={'header/icons/carrinho.svg'}
-            width={24}
-            height={24}
-          />
+          <Link href={'/favoritos'}>
+            <Image
+              alt="Imagem de coração"
+              src={'header/icons/coracao.svg'}
+              width={24}
+              height={24}
+            />
+          </Link>
+          <Link href={'/carrinho'}>
+            <Image
+              alt="Imagem de carrinho"
+              src={'header/icons/carrinho.svg'}
+              width={24}
+              height={24}
+            />
+          </Link>
         </div>
         {estaAtivo && <MenuMobile setAtivo={setAtivo} />}
       </header>
