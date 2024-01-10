@@ -32,7 +32,7 @@ function Slide() {
           <div className={styles.imagem}>
             <Image
               alt="imagem banner"
-              src={'/banner/image2.png'}
+              src={'/banner/imagedois.png'}
               width={750}
               height={878}
             />
@@ -54,7 +54,7 @@ function Slide() {
           <div className={styles.imagem}>
             <Image
               alt="imagem banner"
-              src={'/banner/image3.png'}
+              src={'/banner/imagetres.png'}
               width={750}
               height={878}
             />
