@@ -29,10 +29,11 @@ function Slide() {
         modules={[Autoplay, Pagination, Navigation]}
       >
         <SwiperSlide>
+          {' '}
           <div className={styles.imagem}>
             <Image
               alt="imagem banner"
-              src={'/banner/imagedois.png'}
+              src={'/banner/imagem.png'}
               width={750}
               height={878}
             />
@@ -43,7 +44,7 @@ function Slide() {
           <div className={styles.imagem}>
             <Image
               alt="imagem banner"
-              src={'/banner/image.png'}
+              src={'/banner/imagemdois.png'}
               width={750}
               height={878}
             />
@@ -54,7 +55,7 @@ function Slide() {
           <div className={styles.imagem}>
             <Image
               alt="imagem banner"
-              src={'/banner/imagetres.png'}
+              src={'/banner/imagemtres.png'}
               width={750}
               height={878}
             />
