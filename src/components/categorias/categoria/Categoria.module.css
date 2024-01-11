@@ -1,10 +1,9 @@
 .categoria {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
     justify-content: center;
     gap: 16px;
-    width: max-content;
     cursor: pointer;
+    flex-direction: column;
 }
 .categoria span {
     color: #000;
@@ -20,4 +19,6 @@
     background:  lightgray 50% / cover no-repeat;
     height: 104px;
     width: 104px;
+    min-height: 104px;
+    min-width: 104px;
 }
