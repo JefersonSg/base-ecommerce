@@ -2,6 +2,8 @@ import React from 'react';
 import Slide from '../components/slideBanner/Slides';
 import styles from './page.module.css';
 import SlideVantagens from '../components/slideVantagens/SlideVantagens';
+import Categorias from '../components/categorias/Categorias';
+import Section from '../components/sections/Section';
 
 export default function Home() {
   return (
@@ -9,6 +11,8 @@ export default function Home() {
       <main className={styles.main}>
         <Slide />
         <SlideVantagens />
+        <Categorias />
+        <Section nomeSessao="Mais vendidos" />
       </main>
     </>
   );

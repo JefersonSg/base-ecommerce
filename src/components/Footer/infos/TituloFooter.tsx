@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { TituloArea } from '../../textos/TituloArea';
-import styles from './TituloSessao.module.css';
+import styles from './TituloFooter.module.css';
 
-export function TituloSessao({
+export function TituloFooter({
   titulo,
   ativo,
   seta
@@ -12,7 +12,7 @@ export function TituloSessao({
   seta: boolean;
 }) {
   return (
-    <div className={styles.tituloSessao}>
+    <div className={styles.tituloFooter}>
       <TituloArea titulo={titulo} />
       {seta ? (
         <Image

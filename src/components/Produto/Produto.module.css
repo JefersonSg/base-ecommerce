@@ -1,0 +1,47 @@
+.produto {
+    width: 100%;
+    max-width: 275px;
+    position: relative;
+}
+
+.produto {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.imagemDiv {
+    height: 206px;
+    background-color: #e7e7e7;
+    margin-bottom: 16px;
+    border-radius: 12px;
+
+}
+.imagem {
+    object-fit: fill;
+    width: 100%;
+    border-radius: 12px;
+}
+.infos {
+    margin-left: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.nomeProduto {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110.697%; /* 17.712px */
+}
+.preco {
+    color: #471703;
+
+/* Bold / 16 */
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 24px */
+}

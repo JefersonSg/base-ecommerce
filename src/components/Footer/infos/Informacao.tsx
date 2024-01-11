@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './Informacao.module.css';
 import { SocialMedia } from './SocialMedia';
-import { TituloSessao } from './TituloSessao';
+import { TituloFooter } from './TituloFooter';
 import Link from 'next/link';
 
 export function Informacao({
@@ -27,7 +27,7 @@ export function Informacao({
 
   return (
     <nav className={styles.sessao} onClick={AtivarSection}>
-      <TituloSessao titulo={titulo} ativo={ativo} seta={seta} />
+      <TituloFooter titulo={titulo} ativo={ativo} seta={seta} />
       {img != null && <SocialMedia img={img} />}
 
       {ativo != null && seta && <Link href={'/aqui'}>Aqui</Link>}

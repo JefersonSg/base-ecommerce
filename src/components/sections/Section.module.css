@@ -1,0 +1,11 @@
+.section {
+    padding: 64px 24px;
+}
+.section h2{
+    margin-bottom: 32px;
+}
+.produtos { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(144px, 1fr));
+    gap: 32px 8px ;
+}
