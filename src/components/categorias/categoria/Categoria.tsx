@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styles from './Categoria.module.css';
-import Swiper from 'swiper';
 
 function Categoria({ nome, img }: { nome: string; img: string }) {
   return (
