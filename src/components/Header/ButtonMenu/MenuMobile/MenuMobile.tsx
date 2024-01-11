@@ -10,14 +10,23 @@ function MenuMobile({
 }) {
   return (
     <>
+      <span
+        className={styles.fechar}
+        onClick={() => {
+          setAtivo(false);
+        }}
+      >
+        X
+      </span>
       <div
         className={styles.background}
         onClick={() => {
           setAtivo(false);
         }}
       ></div>
+
       <div className={styles.menuMobile}>
-        <nav>
+        <nav className={styles.container}>
           <Usuario />
           <UlLinksUteis />
           <div className={styles.categorias}>
@@ -25,14 +34,6 @@ function MenuMobile({
             <LinksCategorias />
           </div>
         </nav>
-        <span
-          className={styles.fechar}
-          onClick={() => {
-            setAtivo(false);
-          }}
-        >
-          X
-        </span>
       </div>
     </>
   );
