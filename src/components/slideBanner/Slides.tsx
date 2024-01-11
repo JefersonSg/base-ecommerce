@@ -40,22 +40,20 @@ function Slide() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          {' '}
           <div className={styles.imagem}>
             <Image
               alt="imagem banner"
-              src={'/banner/imagemdois.png'}
+              src={'/banner/sunny.png'}
               width={750}
               height={878}
             />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          {' '}
           <div className={styles.imagem}>
             <Image
               alt="imagem banner"
-              src={'/banner/imagemtres.png'}
+              src={'/banner/ginger.png'}
               width={750}
               height={878}
             />
