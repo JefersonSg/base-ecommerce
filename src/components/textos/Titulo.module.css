@@ -1,9 +1,17 @@
+.divTitulo{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 24px;
+}
+
 .titulo {
-  color: #000;
+  color: #471703;
   font-family: Montserrat;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: 120%; /* 28.8px */
   font-variant: small-caps;
+
 }

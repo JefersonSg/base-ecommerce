@@ -1,0 +1,17 @@
+.mySwiper {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e6e6e6;
+  --swiper-navigation-size: 22px;
+  --swiper-navigation-top-offset: 50%;
+  --swiper-navigation-sides-offset: 10px;
+  --swiper-navigation-color: black;
+}
+.imagem img {
+  width: 88px;
+  object-fit: contain;
+  height: auto;
+}
+.imagem {
+  width: 100%;
+  height: auto;
+}

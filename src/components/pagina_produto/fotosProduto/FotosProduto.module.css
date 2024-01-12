@@ -1,0 +1,11 @@
+.fotosProduto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    flex-direction: column;
+}
+.fotosProduto img {
+    border-radius: 12px;
+
+}

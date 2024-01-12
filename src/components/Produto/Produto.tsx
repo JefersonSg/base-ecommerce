@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './Produto.module.css';
 import Favotiro from './itens/Favotiro';
+import Link from 'next/link';
 
 interface produto {
   img?: string[];
@@ -11,7 +12,7 @@ interface produto {
 
 function Produto({ img, nome, preco, promocao }: produto) {
   return (
-    <div className={styles.produto}>
+    <Link href={'/produto'} className={styles.produto}>
       <Favotiro />
       <div className={styles.imagemDiv}>
         {img && (
@@ -28,7 +29,7 @@ function Produto({ img, nome, preco, promocao }: produto) {
         <p className={styles.nomeProduto}>{nome}</p>
         <span className={styles.preco}>R$ {preco}</span>
       </div>
-    </div>
+    </Link>
   );
 }
 
