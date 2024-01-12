@@ -1,0 +1,23 @@
+.botao {
+    border-radius: 48px;
+border: 1px solid #3A292F;
+display: flex;
+width: 311px;
+height: 51px;
+padding: 12px 0;
+justify-content: center;
+align-items: center;
+gap: 10px;
+background: transparent;
+margin-top: 32px;
+cursor: pointer;
+}
+
+.botao {
+    color: #3A292F;
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 150%; /* 24px */
+}

@@ -17,6 +17,11 @@ export default function Home() {
           IdSessao="teste"
           quantidadeItens={4}
         />
+        <Section
+          nomeSessao="Novos itens"
+          IdSessao="teste"
+          quantidadeItens={4}
+        />
       </main>
     </>
   );

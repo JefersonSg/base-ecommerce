@@ -1,4 +1,5 @@
 import Produto from '../Produto/Produto';
+import BotaoSessao from '../botoes/BotaoSessao';
 import { TituloSessao } from '../textos/TituloSessao';
 import styles from './Section.module.css';
 
@@ -41,6 +42,7 @@ function Section({
           img={['produto1']}
         />
       </div>
+      <BotaoSessao texto="Todos os produtos" />
     </div>
   );
 }
