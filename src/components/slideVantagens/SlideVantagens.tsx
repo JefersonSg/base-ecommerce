@@ -21,7 +21,7 @@ function SlideVantagens() {
         pagination={false}
         loop={true}
         autoplay={{
-          delay: 2000,
+          delay: 2500,
           disableOnInteraction: false
         }}
         modules={[Autoplay, Navigation]}

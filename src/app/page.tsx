@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import SlideVantagens from '../components/slideVantagens/SlideVantagens';
 import Categorias from '../components/categorias/Categorias';
 import Section from '../components/sections/Section';
+import SectionColecoes from '../components/sections/SectionColecoes';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
           IdSessao="teste"
           quantidadeItens={4}
         />
+        <SectionColecoes />
         <Section
           nomeSessao="Novos itens"
           IdSessao="teste"
