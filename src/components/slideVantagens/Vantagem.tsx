@@ -13,6 +13,7 @@ function Vantagem({
   return (
     <div className={styles.vantagem}>
       <Image
+        className={styles.imagem}
         alt={`imagem de ${image}`}
         src={`/banner/vantagens/${image}.svg`}
         width={65}

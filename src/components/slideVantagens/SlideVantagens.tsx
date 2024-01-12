@@ -19,7 +19,12 @@ function SlideVantagens() {
         centeredSlides={true}
         navigation={true}
         pagination={false}
-        modules={[Autoplay, Pagination, Navigation]}
+        loop={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false
+        }}
+        modules={[Autoplay, Navigation]}
       >
         <SwiperSlide>
           <Vantagem
@@ -30,16 +35,23 @@ function SlideVantagens() {
         </SwiperSlide>
         <SwiperSlide>
           <Vantagem
-            titulo="Frete Grátis"
-            texto="Confira as Regras!"
-            image="Caminhao"
+            titulo="Envio"
+            texto="Rápido e 100% seguro!"
+            image="escudo"
           />
         </SwiperSlide>
         <SwiperSlide>
           <Vantagem
-            titulo="Frete Grátis"
-            texto="Confira as Regras!"
-            image="Caminhao"
+            titulo="5% de desconto"
+            texto="nos pagamentos a vista!"
+            image="pix"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Vantagem
+            titulo="Proteção SSL"
+            texto="Site protegido e criptografado!"
+            image="ssl"
           />
         </SwiperSlide>
       </Swiper>

@@ -4,6 +4,7 @@
     gap: 16px;
     cursor: pointer;
     flex-direction: column;
+    padding: 3px 0 0 5px;
 }
 .categoria span {
     color: #000;
@@ -16,9 +17,9 @@
 }
 .imagemCategoria {
     border-radius: 104px;
-    background:  lightgray 50% / cover no-repeat;
     height: 104px;
     width: 104px;
     min-height: 104px;
     min-width: 104px;
+    box-shadow:  2px 2px 10px rgba(50, 50,50, 0.15);
 }
