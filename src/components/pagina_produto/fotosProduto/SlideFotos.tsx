@@ -11,7 +11,19 @@ import './styles.css';
 import styles from './SlidesFotosProduto.module.css';
 import Image from 'next/image';
 
-function SlideFotos() {
+function SlideFotos({
+  setImagem
+}: {
+  setImagem: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const imagens = [
+    'produto1.png',
+    'produto2.png',
+    'produto1.png',
+    'produto1.png',
+    'produto2.png'
+  ];
+
   return (
     <div className={styles.produto_thumbs}>
       <Swiper
@@ -21,59 +33,21 @@ function SlideFotos() {
         spaceBetween={16}
         slidesPerView={3}
       >
-        <SwiperSlide>
-          <Image
-            alt="Foto do produto"
-            src={'/produto/produto1.png'}
-            width={88}
-            height={88}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          {' '}
-          <Image
-            alt="Foto do produto"
-            src={'/produto/produto1.png'}
-            width={88}
-            height={88}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          {' '}
-          <Image
-            alt="Foto do produto"
-            src={'/produto/produto1.png'}
-            width={88}
-            height={88}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          {' '}
-          <Image
-            alt="Foto do produto"
-            src={'/produto/produto1.png'}
-            width={88}
-            height={88}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          {' '}
-          <Image
-            alt="Foto do produto"
-            src={'/produto/produto1.png'}
-            width={88}
-            height={88}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          {' '}
-          <Image
-            alt="Foto do produto"
-            src={'/produto/produto1.png'}
-            width={88}
-            height={88}
-          />
-        </SwiperSlide>
+        {imagens.map((imagem: string, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <Image
+                onClick={() => {
+                  setImagem(imagem);
+                }}
+                alt="Foto do produto"
+                src={`/produto/${imagem}`}
+                width={88}
+                height={88}
+              />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
