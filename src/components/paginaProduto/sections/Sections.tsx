@@ -1,9 +1,15 @@
-import TituloSections from './TituloSections';
+import Caracteristicas from './Caracteristicas';
+import Composicao from './Composicao';
+import Descricao from './Descricao';
+import Entrega from './Entrega';
 
 function Sections() {
   return (
     <div>
-      <TituloSections texto="Entrega" />
+      <Entrega />
+      <Descricao />
+      <Composicao />
+      <Caracteristicas />
     </div>
   );
 }
