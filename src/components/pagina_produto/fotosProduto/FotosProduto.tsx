@@ -9,6 +9,18 @@ function FotosProduto({ img }: { img?: string[] }) {
   const [imagemPrincipal, setImagemPrincipal] = React.useState('produto1.png');
   const [fotoInteira, setFotoInteira] = React.useState(false);
 
+  React.useEffect(() => {
+    if (fotoInteira) {
+      document.body.classList.add('scroll-lock');
+    } else {
+      document.body.classList.remove('scroll-lock');
+    }
+
+    return () => {
+      document.body.classList.remove('scroll-lock');
+    };
+  }, [fotoInteira]);
+
   return (
     <div className={styles.fotosProduto}>
       <div
