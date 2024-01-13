@@ -24,7 +24,7 @@ function Entrega() {
             <div>
               <Image
                 alt="Caminhão"
-                src={'/produto/caminhaoEntrega.svg'}
+                src={'produto/caminhao.svg'}
                 width={22}
                 height={14}
               />
@@ -36,7 +36,7 @@ function Entrega() {
             <div>
               <Image
                 alt="Caminhão"
-                src={'/produto/pacote.svg'}
+                src={'produto/pacote.svg'}
                 width={22}
                 height={14}
               />
