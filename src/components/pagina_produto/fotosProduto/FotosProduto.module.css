@@ -1,11 +1,16 @@
 .fotosProduto {
     width: 100%;
     display: flex;
-    justify-content: center;
     border-radius: 12px;
     flex-direction: column;
+    gap: 16px;
+    margin: 0 auto;
+    margin-top: 16px;
+    align-items: center;
+    box-sizing: border-box;
 }
-.fotosProduto img {
-    border-radius: 12px;
-
+.fotoPrincipal {
+    width: 100%;
+    max-width: 326px;
+    height: auto;
 }

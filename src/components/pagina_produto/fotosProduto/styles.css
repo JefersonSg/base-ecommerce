@@ -1,13 +1,30 @@
-.slide-vantagens .swiper-button-next,
-.slide-vantagens .swiper-button-prev {
-  width: 20px;
-  height: 42px;
-  border-radius: 6px;
-  background-color: #f7f7f7;
+.slide-produto .swiper-button-next,
+.slide-produto .swiper-button-prev {
+  padding: 11px 3px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 2px 4.3px 0.45px rgba(205,205,205,0.16) !important;
   margin-top: calc(-10px - (var(--swiper-navigation-size) / 2));
+  left: auto;
   color: #a9a9a9;
 }
-.slide-produto .swiper-slide{
-  width: 88px !important;
+/* .slide-produto .swiper-slide{
+  width: max-content !important ;
+} */
+.slide-produto img {
+  width: 100%;
+  height: auto;
+  border-radius:  8px;
+  cursor: pointer;
+  border: 3px solid transparent;
 
+}
+.slide-produto  {
+  padding: 0 10px;
+}
+
+.slide-produto .swiper-slide {
+  width: 88px;
+  height: auto;
 }
