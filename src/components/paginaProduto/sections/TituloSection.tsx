@@ -1,12 +1,20 @@
+'use client';
 import styles from './TituloSection.module.css';
 import { TituloSessao } from '../../textos/TituloSessao';
 import Image from 'next/image';
 
-function TituloSection({ texto }: { texto: string }) {
+function TituloSection({ texto, ativo }: { texto: string; ativo?: boolean }) {
   return (
     <div className={styles.tituloSection}>
       <TituloSessao titulo={texto} />
-      <Image alt="Seta" src={'/setaBaixo.svg'} width={14} height={6} />
+      <Image
+        className={`${styles.seta} ${ativo ? styles.ativo : ''}`}
+        alt="Seta"
+        src={'/setaBaixo.svg'}
+        width={14}
+        height={6}
+      />
+      {ativo}
     </div>
   );
 }

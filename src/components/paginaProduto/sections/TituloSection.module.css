@@ -6,3 +6,10 @@
     margin: 0 auto;
     cursor: pointer;
 }
+
+.seta {
+    transition: 0.2s ease-in;
+  }
+  .seta.ativo {
+    rotate: 180deg;
+  }

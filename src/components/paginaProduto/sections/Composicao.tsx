@@ -6,7 +6,7 @@ import { Texto } from '../../textos/Texto';
 import React from 'react';
 
 function Composicao() {
-  const [ativo, setAtivo] = React.useState(true);
+  const [ativo, setAtivo] = React.useState(false);
 
   return (
     <div className={styles.composicao}>
@@ -15,7 +15,7 @@ function Composicao() {
           setAtivo(!ativo);
         }}
       >
-        <TituloSection texto="Composicao" />
+        <TituloSection texto="Composicao" ativo={ativo} />
       </div>
       {ativo && (
         <div className={styles.texto}>

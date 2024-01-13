@@ -16,7 +16,7 @@ function Entrega() {
           setAtivo(!ativo);
         }}
       >
-        <TituloSection texto="Entrega" />
+        <TituloSection texto="Entrega" ativo={ativo} />
       </div>
       {ativo && (
         <>

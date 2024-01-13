@@ -6,7 +6,7 @@ import { Texto } from '../../textos/Texto';
 import React from 'react';
 
 function Caracteristicas() {
-  const [ativo, setAtivo] = React.useState(true);
+  const [ativo, setAtivo] = React.useState(false);
 
   return (
     <div className={styles.caracteristicas}>
@@ -15,7 +15,7 @@ function Caracteristicas() {
           setAtivo(!ativo);
         }}
       >
-        <TituloSection texto="Caracteristicas" />
+        <TituloSection texto="Caracteristicas" ativo={ativo} />
       </div>
       {ativo && (
         <div className={styles.texto}>

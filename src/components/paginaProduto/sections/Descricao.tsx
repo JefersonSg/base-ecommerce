@@ -15,7 +15,7 @@ function Descricao() {
           setAtivo(!ativo);
         }}
       >
-        <TituloSection texto="Descrição" />
+        <TituloSection texto="Descrição" ativo={ativo} />
       </div>
       {ativo && (
         <div className={styles.texto}>
