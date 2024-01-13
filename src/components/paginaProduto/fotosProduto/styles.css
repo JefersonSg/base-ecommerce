@@ -13,6 +13,7 @@
   width: max-content !important ;
 } */
 .slide-produto img {
+  width: auto;
   height: auto;
   border-radius:  8px;
   cursor: pointer;

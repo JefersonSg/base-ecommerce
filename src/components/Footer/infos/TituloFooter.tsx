@@ -18,7 +18,7 @@ export function TituloFooter({
         <Image
           className={`${styles.seta} ${ativo === true && styles.ativo}`}
           alt="Seta"
-          src={'/footer/setaBaixo.svg'}
+          src={'/setaBaixoWhite.svg'}
           width={8}
           height={4}
         />

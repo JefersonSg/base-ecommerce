@@ -1,0 +1,24 @@
+.botaoCarrinho {
+    display: flex;
+width: 311px;
+height: 51px;
+min-width: 310px;
+min-height: 48px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+flex-shrink: 0;
+
+border-radius: 48px;
+background: #3A292F;
+border: none;
+color: #FFF;
+font-family: 'Montserrat';
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 150%;
+
+cursor: pointer;
+margin-top: 32px;
+}

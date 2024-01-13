@@ -9,8 +9,9 @@
 }
 .produto_thumbs {
   width: 100%;
-  background-color: #f7f7f7;
   padding: 0px 20px;
   padding-top: 10px;
   box-sizing: border-box;
+  margin-bottom: 16px;
+
 }
