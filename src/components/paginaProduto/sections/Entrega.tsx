@@ -1,5 +1,4 @@
 'use client';
-
 import Image from 'next/image';
 import { Texto } from '../../textos/Texto';
 import styles from './Entrega.module.css';
