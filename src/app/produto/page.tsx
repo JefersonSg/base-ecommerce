@@ -4,6 +4,7 @@ import Breadcrumb from '@/src/components/breadcrumb/Breadcrumb';
 import FotosProduto from '@/src/components/paginaProduto/fotosProduto/FotosProduto';
 import Interacoes from '@/src/components/paginaProduto/interacoesUser/Interacoes';
 import Detalhes from '@/src/components/paginaProduto/produtoDetalhes/Detalhes';
+import Sections from '@/src/components/paginaProduto/sections/Sections';
 
 function produto() {
   return (
@@ -13,6 +14,7 @@ function produto() {
       <Interacoes />
       <FotosProduto />
       <Detalhes />
+      <Sections />
     </div>
   );
 }

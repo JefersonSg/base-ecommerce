@@ -3,7 +3,7 @@ import TituloSections from './TituloSections';
 function Sections() {
   return (
     <div>
-      <TituloSections />
+      <TituloSections texto="Entrega" />
     </div>
   );
 }
