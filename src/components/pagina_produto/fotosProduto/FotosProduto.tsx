@@ -5,7 +5,7 @@ import styles from './FotosProduto.module.css';
 import Slide from './SlideFotos';
 import React from 'react';
 
-function FotosProduto({ img }: { img: string[] }) {
+function FotosProduto({ img }: { img?: string[] }) {
   const [imagemPrincipal, setImagemPrincipal] = React.useState('produto1.png');
   const [fotoInteira, setFotoInteira] = React.useState(false);
 
