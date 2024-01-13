@@ -7,6 +7,7 @@ import React from 'react';
 
 function FotosProduto({ img }: { img?: string[] }) {
   const [imagemPrincipal, setImagemPrincipal] = React.useState('produto1.png');
+  const [imagemId, setImagemId] = React.useState('0');
   const [fotoInteira, setFotoInteira] = React.useState(false);
 
   React.useEffect(() => {
@@ -32,6 +33,7 @@ function FotosProduto({ img }: { img?: string[] }) {
         <Image
           className={styles.fotoPrincipal}
           alt="Foto do produto"
+          id={imagemId}
           src={`/produto/${imagemPrincipal || 'produto1.png'}`}
           width={350}
           height={350}
@@ -60,7 +62,11 @@ function FotosProduto({ img }: { img?: string[] }) {
           </>
         </div>
       )}
-      <Slide setImagem={setImagemPrincipal} />
+      <Slide
+        setImagem={setImagemPrincipal}
+        setImagemId={setImagemId}
+        imagemId={imagemId}
+      />
     </div>
   );
 }

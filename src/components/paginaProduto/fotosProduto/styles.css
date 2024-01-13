@@ -13,7 +13,6 @@
   width: max-content !important ;
 } */
 .slide-produto img {
-  width: 100%;
   height: auto;
   border-radius:  8px;
   cursor: pointer;
@@ -25,6 +24,10 @@
 }
 
 .slide-produto .swiper-slide {
-  width: 88px;
+  width: 94px;
   height: auto;
+}
+
+.slide-produto .swiper-slide .ativo {
+  border: 3px solid #6B4020;
 }

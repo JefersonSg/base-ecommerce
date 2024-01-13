@@ -12,9 +12,13 @@ import styles from './SlidesFotosProduto.module.css';
 import Image from 'next/image';
 
 function SlideFotos({
-  setImagem
+  setImagem,
+  imagemId,
+  setImagemId
 }: {
   setImagem: React.Dispatch<React.SetStateAction<string>>;
+  imagemId: string;
+  setImagemId: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const imagens = [
     'produto1.png',
@@ -39,11 +43,14 @@ function SlideFotos({
               <Image
                 onClick={() => {
                   setImagem(imagem);
+                  setImagemId(index.toString());
                 }}
+                className={`${index.toString() === imagemId ? 'ativo' : ''}`}
                 alt="Foto do produto"
                 src={`/produto/${imagem}`}
-                width={88}
-                height={88}
+                id={`${index}`}
+                width={94}
+                height={94}
               />
             </SwiperSlide>
           );
