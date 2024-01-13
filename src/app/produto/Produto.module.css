@@ -1,4 +1,5 @@
 .section_produtos {
     min-height: 500px;
-    padding-top: 32px;
+    padding: 32px 16px 0 16px;
+
 }

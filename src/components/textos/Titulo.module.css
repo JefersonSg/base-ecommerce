@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  padding-left: 24px;
+  width: 100%;
+  max-width: 326px;
+  margin: 0 auto;
 }
 
 .titulo {
