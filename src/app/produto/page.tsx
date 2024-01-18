@@ -5,6 +5,7 @@ import FotosProduto from '@/src/components/paginaProduto/fotosProduto/FotosProdu
 import Interacoes from '@/src/components/paginaProduto/interacoesUser/Interacoes';
 import Detalhes from '@/src/components/paginaProduto/produtoDetalhes/Detalhes';
 import Sections from '@/src/components/paginaProduto/sections/Sections';
+import Avaliacoes from '@/src/components/paginaProduto/avaliacoes/Avaliacoes';
 
 function produto() {
   return (
@@ -15,6 +16,7 @@ function produto() {
       <FotosProduto />
       <Detalhes />
       <Sections />
+      <Avaliacoes />
     </div>
   );
 }

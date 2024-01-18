@@ -1,0 +1,5 @@
+.estrelas {
+    display: flex;
+    gap: 4px;
+    margin-top: 16px;
+}

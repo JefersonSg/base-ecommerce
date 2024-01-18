@@ -1,0 +1,20 @@
+.numeroMedio {
+    color: #471703;
+    font-family: 'Montserrat';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    text-transform: capitalize;
+}
+
+.textoMedia {
+    color: #471703;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    max-width: 88px;
+    margin-top: 16px;
+}

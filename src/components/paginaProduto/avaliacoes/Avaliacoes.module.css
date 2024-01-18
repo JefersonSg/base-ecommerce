@@ -1,0 +1,15 @@
+.comentariosContainer {
+    width: 327px;
+    margin: 0 auto;
+    margin-top: 64px;
+    box-sizing: border-box;
+}
+.titulo {
+    color: #000;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; 
+    font-variant: small-caps;
+}
