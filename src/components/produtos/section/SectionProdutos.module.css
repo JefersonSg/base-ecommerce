@@ -1,0 +1,25 @@
+.section_produtos {
+    padding-bottom: 64px;
+}
+
+.informacoes {
+    display: flex;
+    align-items: center;
+    width: 327px;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.select_view {
+    display: flex;
+    gap: 8px;
+}
+.select_view img {
+    padding: 4px;
+    cursor: pointer;
+}
+
+.botao {
+    margin-top: 32px;
+}
