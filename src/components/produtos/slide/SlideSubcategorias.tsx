@@ -14,8 +14,8 @@ function SlideSubcategorias() {
     <>
       <Swiper
         className={`slide-subcategorias`}
-        slidesPerView={'auto'}
-        spaceBetween={16}
+        slidesPerView={3.2}
+        spaceBetween={32}
       >
         <SwiperSlide>
           <Categoria nome="Batom" img="batom" />
