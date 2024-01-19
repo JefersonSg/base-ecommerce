@@ -10,7 +10,7 @@ import Avaliacoes from '@/src/components/paginaProduto/avaliacoes/Avaliacoes';
 function produto() {
   return (
     <div className={styles.section_produtos}>
-      <Breadcrumb />
+      <Breadcrumb texto="Home / Mulher / Cremes / Creme Hydra" />
       <Titulo titulo="Creme Hydra" />
       <Interacoes />
       <FotosProduto />

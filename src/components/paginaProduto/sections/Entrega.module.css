@@ -15,6 +15,10 @@
     border: 1px solid var(--Light-Blue, #DBE5F1);
     color: #999;
     margin-top: 16px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: black;
 }
 .entrega input::placeholder {
     color: #999;
@@ -23,7 +27,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: 150%; 
-    padding-left: 16px;
 }
 .textos div{
     display: flex;
