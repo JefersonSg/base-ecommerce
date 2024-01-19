@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './Vantagem.module.css';
+import Link from 'next/link';
 
 function Vantagem({
   titulo,
@@ -11,7 +12,7 @@ function Vantagem({
   image: string;
 }) {
   return (
-    <div className={styles.vantagem}>
+    <Link href={`/${titulo.replaceAll(' ', '')}`} className={styles.vantagem}>
       <Image
         className={styles.imagem}
         alt={`imagem de ${image}`}
@@ -23,7 +24,7 @@ function Vantagem({
         <h2>{titulo}</h2>
         <p>{texto}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
