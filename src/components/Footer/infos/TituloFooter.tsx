@@ -12,7 +12,7 @@ export function TituloFooter({
   seta: boolean;
 }) {
   return (
-    <div className={styles.tituloFooter}>
+    <div className={styles.titulo_footer}>
       <TituloArea titulo={titulo} />
       {seta ? (
         <Image

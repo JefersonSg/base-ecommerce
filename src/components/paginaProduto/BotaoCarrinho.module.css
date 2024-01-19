@@ -1,11 +1,14 @@
 .botaoCarrinho {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 width: 311px;
 height: 51px;
 min-width: 310px;
 min-height: 48px;
-justify-content: center;
-align-items: center;
 gap: 8px;
 flex-shrink: 0;
 

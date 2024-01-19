@@ -13,12 +13,12 @@
     background-color: white;
 }
 
-.selectColor {
+.select_color {
     display: flex;
     align-items: center;
     gap: 16px;
 }
-.corSelecionada {
+.cor_selecionada {
     width: 24px;
     height: 24px;
     border: 1px solid #DBE5F1;

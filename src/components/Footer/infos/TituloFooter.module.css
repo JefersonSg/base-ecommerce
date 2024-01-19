@@ -1,10 +1,10 @@
-.tituloFooter {
+.titulo_footer {
   display: flex;
   align-items: center;
   width: 100%;
   justify-content: space-between;
 }
-.tituloFooter h1 {
+.titulo_footer h1 {
   color: white;
 }
 

@@ -1,12 +1,14 @@
-import Estrelas from './Estrelas';
+import Estrelas from '../../Estrelas';
 import styles from './Informacoes.module.css';
 
 function Informacoes() {
   return (
     <div className={styles.informacoes}>
-      <h2 className={styles.numeroMedio}>4.5</h2>
-      <p className={styles.textoMedia}>baseado em 2 comentários</p>
-      <Estrelas />
+      <h2 className={styles.numero_media}>4.5</h2>
+      <p className={styles.texto_media}>baseado em 2 comentários</p>
+      <div className={styles.estrelas}>
+        <Estrelas />
+      </div>
     </div>
   );
 }

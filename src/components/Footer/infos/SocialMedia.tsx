@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export function SocialMedia({ img }: { img: string[] }) {
   return (
-    <ul className={styles.socialMedia}>
+    <ul className={styles.social_media}>
       {img !== undefined
         ? img.map((image, index) => {
             return (

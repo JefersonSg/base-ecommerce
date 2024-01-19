@@ -4,7 +4,7 @@ import Estatisticas from './estatisticas/Estatisticas';
 
 function MediaAvaliacoes() {
   return (
-    <div className={styles.mediaAvaliacoes}>
+    <div className={styles.media_avaliacoes}>
       <Informacoes />
       <Estatisticas />
     </div>

@@ -9,14 +9,14 @@ function Porcentagens({
 }) {
   return (
     <div className={styles.porcentagem}>
-      <span className={styles.numeroEstrela}>{estrelas}</span>
-      <div className={styles.porcentagemBarraContent}>
+      <span className={styles.numero_estrelas}>{estrelas}</span>
+      <div className={styles.porcentagem_barra_content}>
         <span
-          className={styles.porcentagemBarra}
+          className={styles.porcentagem_barra}
           style={{ width: `${porcentagem ?? 0}%` }}
         ></span>
       </div>
-      <span className={styles.porcentagemNumero}>{porcentagem ?? 0}%</span>
+      <span className={styles.porcentagem_numero}>{porcentagem ?? 0}%</span>
     </div>
   );
 }

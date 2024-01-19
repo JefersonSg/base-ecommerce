@@ -16,8 +16,8 @@ function Cores() {
       }}
     >
       <Texto texto="Cor" />
-      <div className={styles.selectColor}>
-        <div className={styles.corSelecionada}></div>
+      <div className={styles.select_color}>
+        <div className={styles.cor_selecionada}></div>
         <Image
           className={`${ativo ? styles.ativo : ''} ${styles.seta}`}
           alt="Seta"

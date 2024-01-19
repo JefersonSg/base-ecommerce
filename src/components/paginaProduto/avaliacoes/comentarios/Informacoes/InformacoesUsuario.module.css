@@ -1,0 +1,26 @@
+.informacoes_usuario {
+    display: flex;
+    justify-content: space-between;
+}
+.estrelas {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.nome {
+    color: #471703;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}
+.data {
+    color: #A0A0A0;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+}

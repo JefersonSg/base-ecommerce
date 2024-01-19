@@ -1,4 +1,4 @@
-import BotaoCarrinho from '../BotaoCarrinho';
+import BotaoColorido from '../../botoes/BotaoColorido';
 import Cores from './Cores';
 import styles from './Detalhes.module.css';
 import Preco from './Preco';
@@ -12,7 +12,13 @@ function Detalhes() {
         <Tamanhos />
       </div>
       <Preco texto="R$ 79,99" />
-      <BotaoCarrinho />
+      <div className={styles.botao_carrinho}>
+        <BotaoColorido
+          texto="Adicionar ao carrinho"
+          img="carrinho.svg"
+          alt="Imagem do carrinho"
+        />
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 function TituloSection({ texto, ativo }: { texto: string; ativo?: boolean }) {
   return (
-    <div className={styles.tituloSection}>
+    <div className={styles.titulo_section}>
       <TituloSessao titulo={texto} />
       <Image
         className={`${styles.seta} ${ativo ? styles.ativo : ''}`}

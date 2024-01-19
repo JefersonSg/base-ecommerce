@@ -1,4 +1,4 @@
-.mobileButton {
+.mobile_button {
   width: 25px;
   height: 20px;
   background-color: transparent;
@@ -13,14 +13,14 @@
   cursor: pointer;
 }
 
-.mobileButton::after {
+.mobile_button::after {
   width: 25px;
   background: #6b4020;
   box-shadow:
     0 6px #6b4020,
     0 -6px #6b4020;
 }
-.mobileButton::after {
+.mobile_button::after {
   content: '';
   display: block;
   width: 26px;

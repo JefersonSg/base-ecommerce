@@ -9,7 +9,7 @@ export function ButtonMenu({
   return (
     <>
       <button
-        className={styles.mobileButton}
+        className={styles.mobile_button}
         onClick={() => {
           setAtivo(true);
         }}

@@ -9,7 +9,7 @@
     flex-direction: column;
     cursor: pointer;
 }
-.imagemDiv {
+.imagem_div {
     height: auto;
     background-color: #e7e7e7;
     margin-bottom: 16px;
@@ -27,7 +27,7 @@
     flex-direction: column;
     gap: 8px;
 }
-.nomeProduto {
+.nome_produto {
     color: #000;
     font-family: Montserrat;
     font-size: 16px;

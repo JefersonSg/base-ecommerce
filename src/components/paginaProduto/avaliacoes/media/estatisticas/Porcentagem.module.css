@@ -2,11 +2,11 @@
     display: flex;
     align-items: center;
 }
-.numeroEstrela {
+.numero_estrelas {
     width: 10px;
     text-align: center;
 }
-.porcentagemBarraContent {
+.porcentagem_barra_content {
     width: 111px;
     max-width: 111px;
     height: 3px;
@@ -15,7 +15,7 @@
     background: #D9D9D9;
     margin-left: 8px;
 }
-.porcentagemBarra {
+.porcentagem_barra {
     width: 100%;
     display: block;
     background-color: #471703;
@@ -24,9 +24,8 @@
     transition: all .3s;
 }
 
-.porcentagemNumero {
+.porcentagem_numero {
     margin-left: 16px;
-
     color: #878787;
     font-family: 'Montserrat';
     font-size: 12px;

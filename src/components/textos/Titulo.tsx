@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export function Titulo({ titulo }: { titulo: string }) {
   return (
-    <div className={styles.divTitulo}>
+    <div className={styles.div_titulo}>
       <Link href={'/'}>
         {' '}
         <Image

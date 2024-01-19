@@ -1,4 +1,4 @@
-.numeroMedio {
+.numero_media {
     color: #471703;
     font-family: 'Montserrat';
     font-size: 40px;
@@ -8,7 +8,7 @@
     text-transform: capitalize;
 }
 
-.textoMedia {
+.texto_media {
     color: #471703;
     font-family: 'Montserrat';
     font-size: 12px;
@@ -16,5 +16,8 @@
     font-weight: 400;
     line-height: 140%;
     max-width: 88px;
+    margin-top: 16px;
+}
+.estrelas {
     margin-top: 16px;
 }

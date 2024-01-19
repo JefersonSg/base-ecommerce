@@ -14,7 +14,7 @@ function Produto({ img, nome, preco, promocao }: produto) {
   return (
     <Link href={'/produto'} className={styles.produto}>
       <Favotiro />
-      <div className={styles.imagemDiv}>
+      <div className={styles.imagem_div}>
         {img && (
           <Image
             className={styles.imagem}
@@ -26,7 +26,7 @@ function Produto({ img, nome, preco, promocao }: produto) {
         )}
       </div>
       <div className={styles.infos}>
-        <p className={styles.nomeProduto}>{nome}</p>
+        <p className={styles.nome_produto}>{nome}</p>
         <span className={styles.preco}>R$ {preco}</span>
       </div>
     </Link>

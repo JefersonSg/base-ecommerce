@@ -22,7 +22,7 @@ export function Botao({
             : img
         }`}
       >
-        <button className={styles.buttonImg}>
+        <button className={styles.button_img}>
           <Image alt={img} src={`/footer/${img}.png`} width={24} height={24} />
         </button>
         <p>{text}</p>

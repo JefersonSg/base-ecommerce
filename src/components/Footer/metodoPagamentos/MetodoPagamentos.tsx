@@ -3,7 +3,7 @@ import styles from './MetodoPagametos.module.css';
 
 export function MetodoPagamentos({ img }: { img: string[] }) {
   return (
-    <div className={styles.divMetodosPagamentos}>
+    <div className={styles.div_metodos_pagamentos}>
       {img.map((image) => {
         return (
           <Image

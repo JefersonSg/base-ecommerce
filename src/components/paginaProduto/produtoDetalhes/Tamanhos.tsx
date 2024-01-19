@@ -17,7 +17,7 @@ function Tamanhos() {
       }}
     >
       <Texto texto="300ml" />
-      <div className={styles.selectSize}>
+      <div className={styles.select_size}>
         <Image
           className={`${ativo ? styles.ativo : ''} ${styles.seta}`}
           alt="Seta"
