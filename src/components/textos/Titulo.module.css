@@ -8,8 +8,8 @@
 }
 
 .titulo {
-  color: #471703;
-  font-family: Montserrat;
+  color: var(--cor-primaria);
+  font-family: 'Montserrat';
   font-size: 24px;
   font-style: normal;
   font-weight: 700;

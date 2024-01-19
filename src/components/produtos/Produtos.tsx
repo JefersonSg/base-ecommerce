@@ -1,5 +1,11 @@
+import { Titulo } from '../textos/Titulo';
+
 function Produtos() {
-  return <div>Enter</div>;
+  return (
+    <div>
+      <Titulo titulo="Todos os produtos" />
+    </div>
+  );
 }
 
 export default Produtos;

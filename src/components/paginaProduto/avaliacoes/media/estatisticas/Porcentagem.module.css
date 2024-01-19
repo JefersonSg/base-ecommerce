@@ -15,6 +15,14 @@
     background: #D9D9D9;
     margin-left: 8px;
 }
+.numero_estrelas {
+    color: #471703;
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
 .porcentagem_barra {
     width: 100%;
     display: block;

@@ -35,4 +35,8 @@ img {
 
 :root {
   --fonte-primaria: 'Montserrat', 'sans-serif';
+
+  --cor-primaria: #471703;
+  --cor-secundaria: #996557;
+  --cor-terciaria: #3A292F;
 }

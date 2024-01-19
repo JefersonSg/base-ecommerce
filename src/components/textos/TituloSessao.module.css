@@ -1,5 +1,5 @@
 .titulo_sessao {
-  color: #471703;
+  color: var(--cor-primaria);
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   font-style: normal;
