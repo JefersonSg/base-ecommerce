@@ -2,12 +2,11 @@ import React from 'react';
 import Colecao from './Colecao';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import styles from './SlideColecoes.module.css';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 import './styles.css';
 
@@ -15,12 +14,11 @@ const SlideColecoes = () => {
   return (
     <Swiper
       className={`${'slide-colecoes'} ${styles.slide_colecoes}`}
-      centeredSlides={true}
-      width={300}
+      centeredSlides={false}
       spaceBetween={32}
+      slidesPerView={'auto'}
       navigation={true}
-      pagination={false}
-      modules={[Autoplay, Pagination, Navigation]}
+      modules={[Navigation]}
     >
       <SwiperSlide>
         <Colecao nome="Acessórios" img="acessorios" />
