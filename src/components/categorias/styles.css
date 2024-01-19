@@ -1,7 +1,9 @@
 
+.slide-categoria {
+    width: 100%;
+}
 .slide-categoria .swiper-slide {
     width: 104px ;
-
 }
 .slide-categoria .swiper-slide img {
     display: block;
@@ -10,8 +12,6 @@
     object-fit: cover;
 }
 .slide-categoria .swiper-slide {
-
-  
     display: flex;
     justify-content: center;
     align-items: start;

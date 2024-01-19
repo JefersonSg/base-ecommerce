@@ -1,0 +1,9 @@
+.produtos_container {
+    margin-top: 16px;
+}
+
+.subcategorias {
+    width: 100%;
+    border-bottom: 1px solid #E6E6E6;
+    padding-bottom: 32px;
+}

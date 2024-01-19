@@ -2,7 +2,7 @@ import React from 'react';
 import Colecao from './Colecao';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import styles from './SlideColecoes.module.css';
 
 import 'swiper/css';
