@@ -1,0 +1,61 @@
+.pesquisa {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    background: #996557 ;
+    animation: entrada .1s ease-in forwards;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lupa {
+    cursor: pointer;
+}
+
+.input_pesquisa {
+    border: none;
+    height: 21px;
+    padding: 0;
+    border-radius: 8px 0 0 8px;
+    width: 250px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(200, 200, 200, 0.3);
+}
+.input_pesquisa:focus {
+    outline: none;
+}
+
+.button_pesquisa {
+    width: 40px;
+    height: 21px;
+    background-color: white;
+    border-radius:  0 8px 8px 0;
+    cursor: pointer;
+    padding-right: 4px;
+    text-align: center;
+}
+
+.fundo {
+    left: 0;
+    top: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+}
+
+@keyframes entrada {
+    from {
+        opacity: 0;
+        bottom: -20px;
+    }
+    to {
+        opacity: 1;
+        bottom: -40px;
+    }
+}
