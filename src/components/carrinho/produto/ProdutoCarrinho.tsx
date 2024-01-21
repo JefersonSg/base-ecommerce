@@ -9,9 +9,11 @@ interface produto {
   nome: string;
   cor: string;
   tamanho: string;
+  valor: number;
+  img?: string;
 }
 
-const ProdutoCarrinho = () => {
+const ProdutoCarrinho = ({ nome, cor, tamanho, valor, img }: produto) => {
   const [contador, setContador] = React.useState(1);
 
   return (
@@ -19,17 +21,17 @@ const ProdutoCarrinho = () => {
       <div className={styles.informacoes_produto}>
         <Image
           alt="Imagem do produto"
-          src={'/produto/produto1.png'}
+          src={`${img ? '/produto/' + img : '/produto/produto1.png'}`}
           width={104}
           height={135}
         />
         <div className={styles.informacoes}>
-          <span className={styles.titulo}>Agua micelar</span>
+          <span className={styles.titulo}>{nome}</span>
           <p>
-            <span>Cor: </span> Branco
+            <span>Cor: </span> {cor}
           </p>
           <p>
-            <span>Tamanho: </span> 300ml
+            <span>Tamanho: </span> {tamanho}
           </p>
           <p>
             <span>Quantidade: </span> {contador}
@@ -45,7 +47,7 @@ const ProdutoCarrinho = () => {
       </div>
       <div className={styles.quantidade}>
         <BotaoQuantidade contador={contador} setContador={setContador} />
-        <p className={styles.valor}>R$ {(100 * contador).toFixed(2)}</p>
+        <p className={styles.valor}>R$ {(valor * contador).toFixed(2)}</p>
       </div>
     </div>
   );

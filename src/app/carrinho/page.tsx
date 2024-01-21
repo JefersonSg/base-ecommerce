@@ -17,7 +17,20 @@ const page = () => {
         </p>
       </div>
       <div className={styles.produtos}>
-        <ProdutoCarrinho />
+        <ProdutoCarrinho
+          nome="Agua micelar"
+          cor="branco"
+          tamanho="300ml"
+          valor={83.59}
+          img="produto1.png"
+        />
+        <ProdutoCarrinho
+          nome="Creme Hydra"
+          cor="branco"
+          tamanho="300ml"
+          valor={73.99}
+          img="produto2.png"
+        />
       </div>
     </div>
   );
