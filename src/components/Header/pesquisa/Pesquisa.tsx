@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Pesquisa.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Pesquisa = () => {
   const [ativo, setAtivo] = React.useState(false);
@@ -25,7 +26,15 @@ const Pesquisa = () => {
               type="text"
               placeholder="Creme hidratante"
             />
-            <span className={styles.button_pesquisa}>IR</span>
+            <Link
+              onClick={() => {
+                setAtivo(!ativo);
+              }}
+              href={'/produtos'}
+              className={styles.button_pesquisa}
+            >
+              IR
+            </Link>
           </div>
           <div
             className={styles.fundo}

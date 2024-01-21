@@ -1,0 +1,14 @@
+.area_textos {
+    width: 327px;
+    margin:  0 auto;
+    height: max-content;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.texto_indicativo {
+    margin-top: 8px;
+}
+
+.produtos {
+    margin-top: 16px;
+}
