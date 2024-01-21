@@ -1,0 +1,21 @@
+.botao_redondo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 152px;
+    height: 48px;
+    border-radius: 48px;
+    border: 1px solid var(--Black, #212429);
+    background: #F8F8F8;
+
+    color: var(--Black, #212429);
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    cursor: pointer;
+    margin-top: 32px;
+    margin-bottom: 8px;
+}

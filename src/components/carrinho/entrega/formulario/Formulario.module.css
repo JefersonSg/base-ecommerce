@@ -1,0 +1,40 @@
+.formulario_enderecos {
+    width: 327px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formulario_enderecos input{
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid var(--Light-Blue, #DBE5F1);
+    padding: 0px 16px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.formulario_enderecos input:active {
+    border: 1px solid #131313;
+}
+
+.formulario_enderecos input:focus {
+    border: 1px solid #131313;
+}
+
+.input_casa {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.input_casa input {
+    width: 150px;
+}
+
+.formulario_enderecos span {
+    align-self: flex-end;
+    text-decoration: underline;
+    cursor: pointer;
+}
