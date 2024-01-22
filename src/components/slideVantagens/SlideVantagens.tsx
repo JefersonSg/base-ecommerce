@@ -47,7 +47,7 @@ function SlideVantagens() {
             titulo="5% de desconto"
             texto="nos pagamentos a vista!"
             image="pix"
-            link="desconto"
+            link="formas-de-pagamento"
           />
         </SwiperSlide>
         <SwiperSlide>

@@ -1,10 +1,11 @@
 import { Texto } from '@/src/components/textos/Texto';
 import { Titulo } from '@/src/components/textos/Titulo';
 import React from 'react';
+import styles from './styles.module.css';
 
 const page = () => {
   return (
-    <div>
+    <div className={styles.pagina_informacoes}>
       <Titulo titulo="REGRAS FRETE GRÁTIS" />
 
       <Texto
@@ -28,6 +29,25 @@ const page = () => {
         texto="- Caso o cliente opte pelo frete mais rápido, 
       o valor do envio será cobrado integralmente. "
       />
+      <ul>
+        <li>
+          <span>Estado de Rio de Janeiro:</span> Frete Grátis a partir de
+          <span> R$160,00</span> em compras;
+        </li>
+        <li>
+          <span>CENTRO-OESTE / SUDESTE / SUL:</span> Frete Grátis a partir de
+          <span> R$299,00</span> em compras ;
+        </li>
+        <li>
+          <span>NORDESTE:</span> Frete Grátis a partir de<span> R$599,00</span>{' '}
+          em compras ;
+        </li>
+        <li>
+          <span>NORTE:</span> Frete Grátis a partir de<span> R$799,00</span> em
+          compras ;
+        </li>
+      </ul>
+      <p>A Abayomi make Beauty agradece a visita e Boas Compras !</p>
     </div>
   );
 };

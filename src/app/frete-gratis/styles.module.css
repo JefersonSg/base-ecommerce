@@ -1,0 +1,28 @@
+.pagina_informacoes {
+    width: 327px;
+    margin: 0 auto;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 64px;
+}
+.pagina_informacoes div:nth-child(1) {
+    margin-bottom: 16px;
+}
+.pagina_informacoes p {
+    font-size: 14px;
+    font-weight: 400;
+}
+.pagina_informacoes ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pagina_informacoes ul li {
+    font-size: 14px;
+}
+.pagina_informacoes ul li span{
+    font-weight: 700;
+}
