@@ -31,6 +31,7 @@ function SlideVantagens() {
             titulo="Frete Grátis"
             texto="Confira as Regras!"
             image="Caminhao"
+            link="frete-gratis"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -38,6 +39,7 @@ function SlideVantagens() {
             titulo="Envio"
             texto="Rápido e 100% seguro!"
             image="escudo"
+            link="envio"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -45,6 +47,7 @@ function SlideVantagens() {
             titulo="5% de desconto"
             texto="nos pagamentos a vista!"
             image="pix"
+            link="desconto"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -52,6 +55,7 @@ function SlideVantagens() {
             titulo="Proteção SSL"
             texto="Site protegido e criptografado!"
             image="ssl"
+            link="protecao-ssl"
           />
         </SwiperSlide>
       </Swiper>

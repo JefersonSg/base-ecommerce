@@ -5,14 +5,16 @@ import Link from 'next/link';
 function Vantagem({
   titulo,
   texto,
-  image
+  image,
+  link
 }: {
   titulo: string;
   texto: string;
   image: string;
+  link: string;
 }) {
   return (
-    <Link href={`/${titulo.replaceAll(' ', '')}`} className={styles.vantagem}>
+    <Link href={`/${link}`} className={styles.vantagem}>
       <Image
         className={styles.imagem}
         alt={`imagem de ${image}`}
