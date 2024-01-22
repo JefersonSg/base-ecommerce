@@ -24,9 +24,16 @@
 }
 
 .pagina_informacoes ul li {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     font-size: 14px;
 }
-
+.pagina_informacoes ul li img {
+    width: auto;
+    max-width: 400px;
+    height: auto;
+}
 .pagina_informacoes ul li h1 {
     margin-bottom: 16px;
 }
@@ -38,4 +45,8 @@
     color: red;
     font-family: 'montserrat';
     font-weight: 700 !important;
+}
+
+.agradecimento {
+    margin-top: 64px;
 }

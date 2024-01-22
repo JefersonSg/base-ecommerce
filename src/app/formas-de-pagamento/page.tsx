@@ -3,6 +3,7 @@ import { Titulo } from '@/src/components/textos/Titulo';
 import React from 'react';
 import styles from './styles.module.css';
 import { TituloArea } from '@/src/components/textos/TituloArea';
+import Image from 'next/image';
 
 const page = () => {
   return (
@@ -27,6 +28,14 @@ const page = () => {
             Pago, respeitando o valor mínimo da parcela de <span>R$ 50,00</span>
             .
           </p>
+          <p>• Cartões aceitos:</p>
+
+          <Image
+            alt="Meios de pagamentos"
+            src={'/pagina_vantagens/MeiosPagamentos.webp'}
+            width={320}
+            height={40}
+          />
         </li>
         <li>
           <TituloArea titulo="Boleto Bancário" />
@@ -75,7 +84,9 @@ const page = () => {
         ***** O Site é limitado ao uso de apenas 1 cupom de desconto por compra
         (Os descontos não são acumulativos).
       </p> */}
-      <p>A Abayomi make Beauty agradece a visita e Boas Compras !</p>
+      <p className={styles.agradecimento}>
+        A Abayomi make Beauty agradece a visita e Boas Compras !
+      </p>
     </div>
   );
 };

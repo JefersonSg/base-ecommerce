@@ -39,7 +39,6 @@ function SlideVantagens() {
             titulo="Envio"
             texto="Rápido e 100% seguro!"
             image="escudo"
-            link="envio"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -55,7 +54,6 @@ function SlideVantagens() {
             titulo="Proteção SSL"
             texto="Site protegido e criptografado!"
             image="ssl"
-            link="protecao-ssl"
           />
         </SwiperSlide>
       </Swiper>

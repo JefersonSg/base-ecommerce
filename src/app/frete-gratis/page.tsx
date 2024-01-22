@@ -47,7 +47,9 @@ const page = () => {
           em compras ;
         </li>
       </ul>
-      <p>A Abayomi make Beauty agradece a visita e Boas Compras !</p>
+      <p className={styles.agradecimento}>
+        A Abayomi make Beauty agradece a visita e Boas Compras !
+      </p>
     </div>
   );
 };

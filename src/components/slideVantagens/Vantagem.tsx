@@ -11,10 +11,10 @@ function Vantagem({
   titulo: string;
   texto: string;
   image: string;
-  link: string;
+  link?: string;
 }) {
   return (
-    <Link href={`/${link}`} className={styles.vantagem}>
+    <Link href={`/${link ?? ''}`} className={styles.vantagem}>
       <Image
         className={styles.imagem}
         alt={`imagem de ${image}`}
