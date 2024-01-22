@@ -7,7 +7,7 @@ const Finalizar = () => {
     <div className={styles.finalizar_pedido}>
       <p>
         Custo dos produtos
-        <span>R$ 159,98</span>
+        <span>R$ 157,58</span>
       </p>
       <p>
         Entrega
@@ -19,7 +19,7 @@ const Finalizar = () => {
       </p>
       <p className={styles.valor_final}>
         o valor total do pedido
-        <span>R$ 169,98</span>
+        <span>R$ 167,58</span>
       </p>
       <div className={styles.botao}>
         <BotaoColorido texto="FINALIZAR PEDIDO" />

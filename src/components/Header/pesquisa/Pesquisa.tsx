@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { type ChangeEvent } from 'react';
 import styles from './Pesquisa.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Pesquisa = () => {
   const [ativo, setAtivo] = React.useState(false);
+  const [pesquisa, setPesquisa] = React.useState('');
+
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    setPesquisa(event.target?.value);
+  }
 
   return (
     <>
@@ -25,12 +30,14 @@ const Pesquisa = () => {
               className={styles.input_pesquisa}
               type="text"
               placeholder="Creme hidratante"
+              value={pesquisa}
+              onChange={handleChange}
             />
             <Link
               onClick={() => {
                 setAtivo(!ativo);
               }}
-              href={'/produtos'}
+              href={`/produtos/${pesquisa}`}
               className={styles.button_pesquisa}
             >
               IR

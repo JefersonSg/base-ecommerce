@@ -5,11 +5,13 @@ import Image from 'next/image';
 export function Botao({
   img,
   text,
-  type
+  type,
+  link
 }: {
   img: string;
   text: string;
   type?: string;
+  link?: string;
 }) {
   return (
     <li className={styles.corpo}>
@@ -19,7 +21,7 @@ export function Botao({
             ? type === 'email'
               ? 'mailto:abayomi.make@gmail.com?subject=Suporte'
               : 'tel:+5521969871826'
-            : img
+            : link
         }`}
       >
         <button className={styles.button_img}>

@@ -14,12 +14,12 @@ function Vantagem({
   link?: string;
 }) {
   return (
-    <Link href={`/${link ?? ''}`} className={styles.vantagem}>
+    <Link href={`${link ? `/pagina/${link}` : ''}`} className={styles.vantagem}>
       <Image
         className={styles.imagem}
         alt={`imagem de ${image}`}
         src={`/banner/vantagens/${image}.svg`}
-        width={65}
+        width={35}
         height={35}
       />
       <div>

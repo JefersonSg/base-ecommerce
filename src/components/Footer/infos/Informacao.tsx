@@ -30,7 +30,11 @@ export function Informacao({
       <TituloFooter titulo={titulo} ativo={ativo} seta={seta} />
       {img != null && <SocialMedia img={img} />}
 
-      {ativo != null && seta && <Link href={'/aqui'}>Aqui</Link>}
+      {ativo != null && seta && (
+        <div>
+          Horário de atendimento seg a sex das 9h às 18h sab das 9:30h às 13h
+        </div>
+      )}
     </nav>
   );
 }
