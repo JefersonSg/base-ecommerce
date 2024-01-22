@@ -20,12 +20,22 @@
 .pagina_informacoes ul {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 32px;
 }
 
 .pagina_informacoes ul li {
     font-size: 14px;
 }
+
+.pagina_informacoes ul li h1 {
+    margin-bottom: 16px;
+}
 .pagina_informacoes ul li span{
     font-weight: 700;
+}
+
+.aviso {
+    color: red;
+    font-family: 'montserrat';
+    font-weight: 700 !important;
 }
