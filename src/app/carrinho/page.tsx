@@ -6,6 +6,7 @@ import React from 'react';
 import styles from './Carrinho.module.css';
 import ProdutoCarrinho from '../../components/carrinho/produto/ProdutoCarrinho';
 import EntregaCarrinho from '@/src/components/carrinho/entrega/EntregaCarrinho';
+import Finalizar from '@/src/components/carrinho/finalizar/Finalizar';
 
 const page = () => {
   return (
@@ -37,6 +38,9 @@ const page = () => {
       </div>
       <div className={styles.entregas}>
         <EntregaCarrinho />
+      </div>
+      <div className={styles.finalizar_container}>
+        <Finalizar />
       </div>
     </div>
   );
