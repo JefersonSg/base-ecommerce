@@ -5,10 +5,8 @@ import Produtos from '@/src/components/produtos/Produtos';
 function page({ params }: { params: { pesquisaId: string } }) {
   return (
     <div className={styles.produtos_container}>
-      <Breadcrumb
-        texto={`Home / Produtos / ${params.pesquisaId.replaceAll('%20', ' ')}`}
-      />
-      <Produtos title={params.pesquisaId.replaceAll('%20', ' ')} />
+      <Breadcrumb texto={`Home / Produtos / pesquisa`} />
+      <Produtos pesquisa={params.pesquisaId.replaceAll('%20', ' ')} />
     </div>
   );
 }

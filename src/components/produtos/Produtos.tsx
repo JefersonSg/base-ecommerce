@@ -3,14 +3,16 @@ import styles from './Produtos.module.css';
 import SectionProdutos from './section/SectionProdutos';
 import SlideSubcategorias from './slide/SlideSubcategorias';
 
-function Produtos({ title }: { title: string }) {
+function Produtos({ pesquisa }: { pesquisa?: string }) {
   return (
     <div className={styles.produtos_container}>
-      <Titulo titulo={title} />
-      <div className={styles.subcategorias}>
-        <SlideSubcategorias />
-      </div>
-      <SectionProdutos />
+      <Titulo titulo={pesquisa ?? ''} />
+      {!pesquisa && (
+        <div className={styles.subcategorias}>
+          <SlideSubcategorias />
+        </div>
+      )}
+      <SectionProdutos pesquisa={pesquisa} />
     </div>
   );
 }

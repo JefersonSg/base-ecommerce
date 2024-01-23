@@ -4,7 +4,6 @@ import React from 'react';
 import styles from './Informacao.module.css';
 import { SocialMedia } from './SocialMedia';
 import { TituloFooter } from './TituloFooter';
-import Link from 'next/link';
 
 export function Informacao({
   titulo,

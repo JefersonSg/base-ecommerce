@@ -5,11 +5,13 @@ import Image from 'next/image';
 import Produtos from './Produtos';
 import BotaoColorido from '../../botoes/BotaoColorido';
 
-const SectionProdutos = () => {
+const SectionProdutos = ({ pesquisa }: { pesquisa?: string }) => {
   return (
     <div className={styles.section_produtos}>
       <div className={styles.informacoes}>
-        <Texto texto="Todos os produtos" />
+        <Texto
+          texto={pesquisa ? `Resultado de ${pesquisa}` : 'Todos os produtos'}
+        />
         <div className={styles.select_view}>
           <Image
             alt="imagem de quadrados para mudar a vizualização dos produtos"
