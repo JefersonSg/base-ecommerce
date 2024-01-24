@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { TituloArea } from '../../textos/TituloArea';
 import styles from './TituloFooter.module.css';
 
 export function TituloFooter({
@@ -13,7 +12,7 @@ export function TituloFooter({
 }) {
   return (
     <div className={styles.titulo_footer}>
-      <TituloArea titulo={titulo} />
+      <h3 className="titulo_area">{titulo}</h3>
       {seta ? (
         <Image
           className={`${styles.seta} ${ativo === true && styles.ativo}`}

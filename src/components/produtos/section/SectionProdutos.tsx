@@ -1,5 +1,4 @@
 import React from 'react';
-import { Texto } from '../../textos/Texto';
 import styles from './SectionProdutos.module.css';
 import Image from 'next/image';
 import Produtos from './Produtos';
@@ -9,9 +8,10 @@ const SectionProdutos = ({ pesquisa }: { pesquisa?: string }) => {
   return (
     <div className={styles.section_produtos}>
       <div className={styles.informacoes}>
-        <Texto
-          texto={pesquisa ? `Resultado de ${pesquisa}` : 'Todos os produtos'}
-        />
+        <p className="texto">
+          {pesquisa ? `Resultado de ${pesquisa}` : 'Todos os produtos'}
+        </p>
+
         <div className={styles.select_view}>
           <Image
             alt="imagem de quadrados para mudar a vizualização dos produtos"

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Texto } from '../../textos/Texto';
 import styles from './Cores.module.css';
 import Image from 'next/image';
 
@@ -15,7 +14,7 @@ function Cores() {
         setAtivo(!ativo);
       }}
     >
-      <Texto texto="Cor" />
+      <p className="texto">Cor</p>
       <div className={styles.select_color}>
         <div className={styles.cor_selecionada}></div>
         <Image

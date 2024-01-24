@@ -1,14 +1,13 @@
 'use client';
 
 import styles from './SectionColecoes.module.css';
-import { TituloSessao } from '../textos/TituloSessao';
 
 import SlideColecoes from './SlideColecoes';
 
 function SectionColecoes() {
   return (
     <div className={styles.container}>
-      <TituloSessao titulo="Novas coleções" />
+      <h2 className={'titulo_sessao'}>Novas coleções</h2>
       <div className={styles.colecoes}>
         <SlideColecoes />
       </div>

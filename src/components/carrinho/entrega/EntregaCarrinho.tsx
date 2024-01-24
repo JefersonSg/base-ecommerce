@@ -1,7 +1,4 @@
 import React from 'react';
-import { TituloSessao } from '../../textos/TituloSessao';
-import { Texto } from '../../textos/Texto';
-import { TituloArea } from '../../textos/TituloArea';
 import styles from './Entrega.module.css';
 import BotaoRedondo from '../../botoes/BotaoRedondo';
 import Enderecos from './Enderecos';
@@ -9,15 +6,17 @@ import Enderecos from './Enderecos';
 const EntregaCarrinho = () => {
   return (
     <div className={styles.entrega_container}>
-      <TituloSessao titulo="Entrega" />
+      <h2 className={'titulo_sessao'}>Entrega</h2>
       <BotaoRedondo texto="Por correio" img="/carrinho/shipping.svg" />
       <div className={styles.texto1}>
-        <Texto texto="Experimente antes de comprar.  Prazo de entrega 2-7 dias " />
+        <p className="texto">
+          Experimente antes de comprar. Prazo de entrega 2-7 dias{' '}
+        </p>
       </div>
       <div className={styles.tituloArea}>
-        <TituloArea titulo="Onde o pedido deve ser entregue?" />
+        <h3 className="titulo_area">Onde o pedido deve ser entregue?</h3>
       </div>
-      <Texto texto="Digite o endereço no mapa ou insira os dados" />
+      <p className="texto">Digite o endereço no mapa ou insira os dados</p>
       <Enderecos />
     </div>
   );

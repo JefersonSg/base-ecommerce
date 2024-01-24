@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styles from './Usuario.module.css';
-import { TituloArea } from '@/src/components/textos/TituloArea';
 import Link from 'next/link';
 
 function Usuario() {
@@ -15,7 +14,7 @@ function Usuario() {
         />
       </div>
       <div className={styles.boasVindas}>
-        <TituloArea titulo="Olá, visitante" />
+        <h3 className="titulo_area">Olá, visitante</h3>
         <p>
           <Link href={'/login'}>Entre</Link> ou{' '}
           <Link href={'/registrar'}>Cadastre-se</Link>

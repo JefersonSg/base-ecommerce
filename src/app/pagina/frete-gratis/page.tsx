@@ -1,4 +1,3 @@
-import { Texto } from '@/src/components/textos/Texto';
 import { Titulo } from '@/src/components/textos/Titulo';
 import React from 'react';
 import styles from './styles.module.css';
@@ -8,27 +7,26 @@ const page = () => {
     <div className={styles.pagina_informacoes}>
       <Titulo titulo="REGRAS FRETE GRÁTIS" />
 
-      <Texto
-        texto="- O envio por Frete Grátis é uma cortesia da loja,
-                e contém algumas regras para que tenha efeito,
-                seu envio é realizado por escolha da LOJA, independentemente da
-                opção escolhida pelo cliente durante o momento da compra no site."
-      />
+      <p className="texto">
+        O envio por Frete Grátis é uma cortesia da loja, e contém algumas regras
+        para que tenha efeito, seu envio é realizado por escolha da LOJA,
+        independentemente da opção escolhida pelo cliente durante o momento da
+        compra no site.
+      </p>
 
-      <Texto
-        texto="- O envio pode ser realizado através dos Correios 
-                        via PAC ou Sedex ou IS Entregas (Transportadora). "
-      />
+      <p className="texto">
+        - O envio pode ser realizado através dos Correios via PAC ou Sedex ou IS
+        Entregas (Transportadora).
+      </p>
+      <p className="texto">
+        - Para a região de Campinas - SP e algumas regiões metropolitanas, o
+        envio pode ser realizado via motoboy.
+      </p>
+      <p className="texto">
+        - Caso o cliente opte pelo frete mais rápido, o valor do envio será
+        cobrado integralmente.
+      </p>
 
-      <Texto
-        texto="- Para a região de Campinas - 
-                    SP e algumas regiões metropolitanas,
-                     o envio pode ser realizado via motoboy. "
-      />
-      <Texto
-        texto="- Caso o cliente opte pelo frete mais rápido, 
-      o valor do envio será cobrado integralmente. "
-      />
       <ul>
         <li>
           <span>• Estado de Rio de Janeiro:</span> Frete Grátis a partir de

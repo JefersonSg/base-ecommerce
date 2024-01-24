@@ -1,5 +1,4 @@
 import Breadcrumb from '@/src/components/breadcrumb/Breadcrumb';
-import { TextoIndicativo } from '@/src/components/textos/TextoIndicativo';
 import { Titulo } from '@/src/components/textos/Titulo';
 import React from 'react';
 
@@ -16,7 +15,7 @@ const page = () => {
           <Breadcrumb texto="Home / Carrinho" />
           <Titulo titulo="Carrinho" />
           <p className={styles.texto_indicativo}>
-            <TextoIndicativo texto="Você tem 2 itens no seu carrinho" />
+            <p className="texto_indicativo">Você tem 2 itens no seu carrinho</p>
           </p>
         </div>
       </div>

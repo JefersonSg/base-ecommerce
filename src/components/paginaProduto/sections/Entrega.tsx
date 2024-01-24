@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import { Texto } from '../../textos/Texto';
 import styles from './Entrega.module.css';
 import TituloSection from './TituloSection';
 import React from 'react';
@@ -28,10 +27,10 @@ function Entrega() {
                 width={22}
                 height={14}
               />
-              <Texto
-                texto="Por correio - a partir de R$20,00
-                 ou de graça a partir de R$250,00"
-              />
+              <p className="texto">
+                Por correio - a partir de R$20,00 ou de graça a partir de
+                R$250,00
+              </p>
             </div>
             <div>
               <Image
@@ -40,11 +39,10 @@ function Entrega() {
                 width={22}
                 height={14}
               />
-              <Texto
-                texto="Transportadora - a partir de R$25,00
-                 de graça
-                 ou de graça a partir de R$250,00"
-              />
+              <p className="texto">
+                Transportadora - a partir de R$25,00 de graça ou de graça a
+                partir de R$250,00
+              </p>
             </div>
           </div>
         </>

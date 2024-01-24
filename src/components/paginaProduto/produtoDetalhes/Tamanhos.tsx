@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Texto } from '../../textos/Texto';
 import styles from './Tamanhos.module.css';
 import Image from 'next/image';
-import { TextoIndicativo } from '../../textos/TextoIndicativo';
 
 function Tamanhos() {
   const [ativo, setAtivo] = React.useState(false);
@@ -16,7 +14,7 @@ function Tamanhos() {
         setAtivo(!ativo);
       }}
     >
-      <Texto texto="300ml" />
+      <p className="texto">300ml</p>
       <div className={styles.select_size}>
         <Image
           className={`${ativo ? styles.ativo : ''} ${styles.seta}`}
@@ -26,7 +24,7 @@ function Tamanhos() {
           height={9}
         />
       </div>
-      <TextoIndicativo texto="Escolha o tamanho" />
+      <p className="texto_indicativo">Escolha o tamanho</p>
     </div>
   );
 }

@@ -1,8 +1,6 @@
-import { Texto } from '@/src/components/textos/Texto';
 import { Titulo } from '@/src/components/textos/Titulo';
 import React from 'react';
 import styles from './styles.module.css';
-import { TituloArea } from '@/src/components/textos/TituloArea';
 import Image from 'next/image';
 
 const page = () => {
@@ -10,19 +8,19 @@ const page = () => {
     <div className={styles.pagina_informacoes}>
       <Titulo titulo="FORMAS DE PAGAMENTO" />
 
-      <Texto
-        texto="Para sua maior comodidade e segurança a loja oferece 
-        alguns meios para que seja realizado o pagamento de sua compra."
-      />
+      <p className={'texto'}>
+        Para sua maior comodidade e segurança a loja oferece alguns meios para
+        que seja realizado o pagamento de sua compra.
+      </p>
 
-      <Texto
-        texto="- Assim que o pagamento for confirmado, o site é
-         automaticamente atualizado e você receberá por email a confirmação. "
-      />
+      <p className="texto">
+        - Assim que o pagamento for confirmado, o site é automaticamente
+        atualizado e você receberá por email a confirmação.{' '}
+      </p>
 
       <ul>
         <li>
-          <TituloArea titulo="Cartão de Crédito" />
+          <h3 className="titulo_area">Cartão de Crédito</h3>
           <p>
             • Cartão de Crédito parcelado em até 10 vezes sem juros via Mercado
             Pago, respeitando o valor mínimo da parcela de <span>R$ 50,00</span>
@@ -38,7 +36,7 @@ const page = () => {
           />
         </li>
         <li>
-          <TituloArea titulo="Boleto Bancário" />
+          <h3 className="titulo_area">Boleto Bancário</h3>
           <p>
             • Para os pagamentos realizados por Boleto Bancário, pode levar até{' '}
             <span>2 dias úteis</span> para confirmação do pagamento.
@@ -49,7 +47,7 @@ const page = () => {
           </p>
         </li>
         <li>
-          <TituloArea titulo="PIX" />
+          <h3 className="titulo_area">PIX</h3>
           <p>
             • O pagamento via PIX concede <span>5% de desconto</span> no valor
             dos produtos (excluído o frete);
@@ -64,7 +62,7 @@ const page = () => {
           </p>
         </li>
         <li>
-          <TituloArea titulo="Carteira Mercado Pago" />
+          <h3 className="titulo_area">Carteira Mercado Pago</h3>
           <p>
             • Também é possível realizar o pagamento através de sua conta do
             Mercado Pago, utilizando seu saldo disponível em conta.

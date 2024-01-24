@@ -1,6 +1,5 @@
 import Produto from '../Produto/Produto';
 import BotaoSessao from '../botoes/BotaoSessao';
-import { TituloSessao } from '../textos/TituloSessao';
 import styles from './Section.module.css';
 
 function Section({
@@ -14,7 +13,7 @@ function Section({
 }) {
   return (
     <div className={styles.section}>
-      <TituloSessao titulo={nomeSessao} />
+      <h2 className="titulo_sessao">{nomeSessao}</h2>
 
       <div className={styles.produtos}>
         <Produto

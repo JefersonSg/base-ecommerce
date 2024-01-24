@@ -17,7 +17,7 @@ export function BtnZap() {
       >
         <Image
           alt="Imagem whatsapp"
-          src={'whatsapp.svg'}
+          src={'/whatsapp.svg'}
           width={44}
           height={44}
         />

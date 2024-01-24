@@ -1,4 +1,3 @@
-import { Texto } from '@/src/components/textos/Texto';
 import styles from './InformacoesProduto.module.css';
 import Image from 'next/image';
 
@@ -13,14 +12,14 @@ function InformacoesProduto({ cor, tamanho, comentario }: infosProduto) {
     <div className={styles.review}>
       <div className={styles.informacoes_produto}>
         <span>
-          <Texto texto={`Cor: ${cor}`} />
+          <p className={'texto'}>{`Cor: ${cor}`}</p>
         </span>
         <span>
-          <Texto texto={`Tamanho: ${tamanho}`} />
+          <p className={'texto'}>{`Tamanho: ${tamanho}`}</p>
         </span>
       </div>
       <div className={styles.comentario}>
-        <Texto texto={comentario} />
+        <p className={'texto'}>{comentario}</p>
       </div>
       <Image
         className={styles.image_review}
