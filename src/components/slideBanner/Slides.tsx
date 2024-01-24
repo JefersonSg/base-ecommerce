@@ -11,6 +11,7 @@ import styles from './Slides.module.css';
 import Image from 'next/image';
 
 import './styles.css';
+import Link from 'next/link';
 
 function Slide() {
   return (
@@ -31,12 +32,14 @@ function Slide() {
         <SwiperSlide>
           {' '}
           <div className={styles.imagem}>
-            <Image
-              alt="imagem banner"
-              src={'/banner/imagem.png'}
-              width={750}
-              height={878}
-            />
+            <Link href={'/produtos'}>
+              <Image
+                alt="imagem banner"
+                src={'/banner/imagem.png'}
+                width={750}
+                height={878}
+              />
+            </Link>
           </div>
         </SwiperSlide>
         <SwiperSlide>

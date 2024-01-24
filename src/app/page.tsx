@@ -12,17 +12,13 @@ export default function Home() {
         <Slide />
         <SlideVantagens />
         <Categorias />
+        <Section nomeSessao="Novidades" IdSessao="teste" quantidadeItens={4} />
         <Section
           nomeSessao="Mais vendidos"
           IdSessao="teste"
           quantidadeItens={4}
         />
         <SectionColecoes />
-        <Section
-          nomeSessao="Novos itens"
-          IdSessao="teste"
-          quantidadeItens={4}
-        />
       </main>
     </>
   );
