@@ -39,7 +39,7 @@ export function Header() {
           <Link href={'/favoritos'}>
             <Image
               alt="Imagem de coração"
-              src={'header/icons/coracao.svg'}
+              src={'/header/icons/coracao.svg'}
               width={24}
               height={24}
             />
@@ -47,7 +47,7 @@ export function Header() {
           <Link href={'/carrinho'}>
             <Image
               alt="Imagem de carrinho"
-              src={'header/icons/carrinho.svg'}
+              src={'/header/icons/carrinho.svg'}
               width={24}
               height={24}
             />

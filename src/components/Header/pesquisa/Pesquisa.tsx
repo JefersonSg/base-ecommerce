@@ -19,7 +19,7 @@ const Pesquisa = () => {
         }}
         alt="Lupa"
         className={styles.lupa}
-        src={'header/icons/lupa.svg'}
+        src={'/header/icons/lupa.svg'}
         width={24}
         height={24}
       />

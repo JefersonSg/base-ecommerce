@@ -7,7 +7,7 @@ const BotaoRedondo = ({ texto, img }: { texto: string; img?: string }) => {
     <button className={styles.botao_redondo}>
       {img && (
         <Image
-          alt="Imagem de caminhão para entrega"
+          alt="Imagem Ilustrativa para o botão"
           src={img}
           width={24}
           height={24}
