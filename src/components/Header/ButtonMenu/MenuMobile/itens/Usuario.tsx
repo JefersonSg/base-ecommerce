@@ -9,7 +9,7 @@ function Usuario() {
       <div className={styles.fotoUsuario}>
         <Image
           alt="Foto do usuario"
-          src={'header/Menu/usuario.svg'}
+          src={'/header/Menu/usuario.svg'}
           width={40}
           height={40}
         />
