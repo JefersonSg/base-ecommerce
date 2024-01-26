@@ -6,6 +6,7 @@ import Input from '@/src/components/forms/Input';
 import useForm from '@/src/shared/hooks/useForm';
 
 import styles from './Login.module.css';
+import BotaoRedondo from '../../botoes/BotaoRedondo';
 
 const Login = () => {
   const username = useForm('name');
@@ -74,7 +75,7 @@ const Login = () => {
         <Input label="Nome" name="name" type="text" {...username} />
         <Input label="Email" name="email" type="email" {...email} />
         <Input label="Senha" name="password" type="password" {...password} />
-        <button>Enviar</button>
+        <BotaoRedondo texto="Entrar" />
       </form>
       {error && <span className={styles.error_span}>{error}</span>}
     </div>
