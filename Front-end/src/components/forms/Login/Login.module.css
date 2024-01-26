@@ -1,0 +1,35 @@
+.error_span {
+    display: flex;
+    width: max-content;
+    max-width: 150px;
+    padding: 8px 16px;
+
+    position: absolute;
+    top: 100px;
+    right: 0;
+    background: black;
+
+    color: white;
+    font-size: 12px;
+
+    border-radius: 8px;
+
+    animation: entrada ease-out 4s forwards;
+}
+
+
+@keyframes entrada {
+    0% {
+        right: -150px;
+    }
+    20% {
+        right: 16px;
+    }
+    80% {
+        right: 16px;
+    }
+
+    100% {
+       right: -300px;
+    }
+}

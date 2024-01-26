@@ -1,0 +1,40 @@
+.divInput {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .input {
+  border: 1px solid #eee;
+  display: block;
+  width: 90%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: .4rem;
+  background-color: #eee;
+  transition: .2s;
+  }
+
+  .input::placeholder{
+    color: #ccd;
+  }
+  .input:focus,
+  .input:hover {
+    outline: none;
+    border-color: var(--cor-primaria);
+    background-color: white;
+    box-shadow: 0 0 0 3px #996557;
+  }
+  
+  .label {
+    display: block;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  
+  .error {
+    color: #f31;
+    font-size: 0.875rem;
+    margin-top: .25rem;
+  }

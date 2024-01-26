@@ -1,0 +1,22 @@
+.infos {
+  height: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--cor-secundaria);
+}
+
+.infos a {
+  display: flex;
+  gap: 4px;
+}
+.texto {
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+}
+.texto span {
+  font-weight: 500;
+  color: white;
+}

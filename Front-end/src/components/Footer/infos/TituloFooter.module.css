@@ -1,0 +1,18 @@
+.titulo_footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.titulo_footer h3 {
+  color: white;
+}
+
+.seta {
+  width: 9px;
+  height: 9px;
+  transition: 0.2s ease-in;
+}
+.seta.ativo {
+  rotate: 180deg;
+}
