@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import * as yup from 'yup';
 
 const useForm = (type: string | boolean) => {
   const [value, setValue] = React.useState<string>(''); // Especificando o tipo do estado

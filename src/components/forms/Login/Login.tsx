@@ -1,5 +1,5 @@
 import React, { type FormEvent } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 import * as yup from 'yup';
 import Input from '@/src/components/forms/Input';
@@ -7,10 +7,6 @@ import useForm from '@/src/shared/hooks/useForm';
 
 import styles from './Login.module.css';
 import BotaoRedondo from '../../botoes/BotaoRedondo';
-
-interface ValidationErrors {
-  errors: string;
-}
 
 const Login = () => {
   const username = useForm('name');
