@@ -12,7 +12,6 @@ interface input {
 
   error?: string;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  multiple: string;
   placeholder?: string;
 }
 
@@ -39,7 +38,6 @@ const Input = ({
           onChange={onChange}
           type={type}
           placeholder={placeholder}
-          multiple={props.multiple}
         />
         {error && <p className={styles.error}>{error}</p>}
       </div>
