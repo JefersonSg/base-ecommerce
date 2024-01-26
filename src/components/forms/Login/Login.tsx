@@ -28,15 +28,15 @@ const Login = () => {
   async function validate() {
     const validationPost = yup.object().shape({
       name: yup
-        .string('erro, necerrario preencher o campo de nome')
+        .string()
         .required('erro, necerrario preencher o campo de nome')
         .min(3, 'erro, o nome deve ter no minimo 3 caracteres'),
       password: yup
-        .string('erro, necerrario preencher o campo de senha')
+        .string()
         .required('erro, necerrario preencher o campo de senha')
         .min(8, 'erro, A senha deve ter  no minimo 8 caracteres'),
       email: yup
-        .string('erro, necerrario preencher o campo de nome')
+        .string()
         .email('erro, é necessario preencher um email valido')
         .required('erro, necerrario preencher o campo de nome')
     });
