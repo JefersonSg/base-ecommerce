@@ -8,6 +8,10 @@ import useForm from '@/src/shared/hooks/useForm';
 import styles from './Login.module.css';
 import BotaoRedondo from '../../botoes/BotaoRedondo';
 
+interface ValidationErrors {
+  errors: string;
+}
+
 const Login = () => {
   const username = useForm('name');
   const email = useForm('email');
@@ -51,8 +55,7 @@ const Login = () => {
       setError('');
       return true;
     } catch (error) {
-      console.log(error?.errors);
-      setError(error?.errors);
+      setError((error as any)?.errors || 'Erro desconhecido');
       return false;
     }
   }
