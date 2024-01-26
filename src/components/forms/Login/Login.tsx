@@ -27,6 +27,8 @@ const Login = () => {
   }, [error]);
 
   async function validate() {
+    setError(false);
+
     const validationPost = yup.object().shape({
       name: yup
         .string()
@@ -49,7 +51,7 @@ const Login = () => {
         password: password.value
       });
 
-      setError('');
+      setError(false);
       return true;
     } catch (error) {
       setError((error as any)?.errors || 'Erro desconhecido');
@@ -59,7 +61,11 @@ const Login = () => {
   async function handleSubmit(e?: FormEvent) {
     e?.preventDefault();
 
-    if (!(await validate())) return true;
+    setError(false);
+
+    setTimeout(() => {
+      if (!validate()) return true;
+    }, 100);
   }
 
   return (
