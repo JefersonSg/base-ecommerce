@@ -9,7 +9,6 @@ interface input {
   name: string;
   value?: string | number;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-
   error?: string;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   placeholder?: string;
@@ -20,8 +19,8 @@ const Input = ({
   type,
   name,
   value,
-  onChange,
   error,
+  onChange,
   placeholder,
   ...props
 }: input) => {
@@ -34,8 +33,7 @@ const Input = ({
           id={name}
           name={name}
           className={styles.input}
-          value={value}
-          onChange={onChange}
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           type={type}
           placeholder={placeholder}
         />
