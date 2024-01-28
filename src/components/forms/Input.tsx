@@ -33,7 +33,6 @@ const Input = ({
           id={name}
           name={name}
           className={styles.input}
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           type={type}
           placeholder={placeholder}
         />

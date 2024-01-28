@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import styles from './Login.module.css';
 import BotaoRedondo from '../../botoes/BotaoRedondo';
 import Link from 'next/link';
+// import { useQuery } from '@tanstack/react-query';
 
 interface Inputs {
   email: string;
@@ -35,32 +36,66 @@ const Login: React.FC = () => {
     resolver: yupResolver(schema)
   });
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
+  const [errorMessage, setErrorMessage] = React.useState<string | boolean>(
+    false
+  );
 
-    return true;
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const dataUser = {
+      email: data.email,
+      password: data.password
+    };
+
+    await axios
+      .post('http://localhost:3050/user/login', dataUser)
+      .then((response) => {
+        // Manipule a resposta bem-sucedida aqui
+        console.log('Resposta:', response.data);
+      })
+      .catch((error) => {
+        // Manipule erros aqui
+        console.error(
+          error?.response?.data?.errorsResult?.body || error?.response?.data
+        );
+        setErrorMessage(false);
+        setTimeout(() => {
+          setErrorMessage(
+            error?.response?.data?.errorsResult?.body[0] ||
+              error?.response?.data?.message
+          );
+        }, 100);
+      });
   };
 
-  const [error, setError] = React.useState<string | boolean>(false);
-
   React.useEffect(() => {
-    setError(false);
+    setErrorMessage(false);
     setTimeout(() => {
       if (errors?.password?.message) {
-        setError(errors?.password?.message);
+        setErrorMessage(errors?.password?.message);
       }
       if (errors?.email?.message) {
-        setError(errors?.email?.message);
+        setErrorMessage(errors?.email?.message);
       }
     }, 100);
     const temporizador = setTimeout(function closeError() {
-      setError(false);
+      setErrorMessage(false);
     }, 5000);
 
     return () => {
       clearTimeout(temporizador);
     };
   }, [errors]);
+
+  // const getTodos = async () => {
+  //   const response = await axios.post('http://localhost:3050/user/create');
+
+  //   return response.data;
+  // };
+
+  // const { data, isLoading, error } = useQuery({
+  //   queryKey: ['todos'],
+  //   queryFn: getTodos
+  // });
 
   return (
     <div>
@@ -69,6 +104,7 @@ const Login: React.FC = () => {
         action=""
         onSubmit={handleSubmit(onSubmit)}
       >
+        <h1 className="titulo_sessao">Entre em sua conta</h1>
         <div className={styles.divInput}>
           <label htmlFor="email">Email</label>
           <input className={styles.input} type="text" {...register('email')} />
@@ -88,8 +124,10 @@ const Login: React.FC = () => {
         </p>
         <BotaoRedondo texto="Entrar" />
       </form>
-      <span className={`${styles.error_span} ${error ? styles.ativo : ''}`}>
-        {error}
+      <span
+        className={`${styles.error_span} ${errorMessage ? styles.ativo : ''}`}
+      >
+        {errorMessage}
       </span>
     </div>
   );

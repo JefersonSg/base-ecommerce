@@ -65,6 +65,8 @@ const RegistrarForm = () => {
         action=""
         onSubmit={handleSubmit(onSubmit)}
       >
+        <h1 className="titulo_sessao">Entre em sua conta</h1>
+
         <div className={styles.divInput}>
           <label htmlFor="email">Email</label>
           <input className={styles.input} type="text" {...register('email')} />
