@@ -8,28 +8,14 @@ import Image from 'next/image';
 import MenuMobile from './ButtonMenu/MenuMobile/MenuMobile';
 import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery
-} from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getUser } from '@/src/shared/api/api';
-
-const queryClient = new QueryClient();
-
-interface User {
-  _id: string;
-  name: string;
-  surname: string;
-  username: string;
-  email: string;
-}
 
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
   // const [userData, setUserData] = React.useState<User | null>(null);
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['todos'],
     queryFn: getUser
   });
@@ -45,18 +31,6 @@ export function Header() {
       document.body.classList.remove('scroll-lock');
     };
   }, [estaAtivo]);
-
-  // React.useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = await getUser();
-  //       setUserData(data.currentUser);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   void fetchData();
-  // }, []);
 
   return (
     <>
