@@ -11,21 +11,28 @@ interface dataUser {
 
 // setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
 const useAuth = () => {
-  const [token, setToken] = React.useState(
-    window.localStorage.getItem('token') ?? false
-  );
+  const [token, setToken] = React.useState<string | boolean>(false);
   const [authenticated, setAuthenticated] = React.useState(true);
   const router = useRouter();
   const location = usePathname();
 
   async function authUser(data: { token: string }) {
     setAuthenticated(true);
-
-    window.localStorage.setItem('token', data.token);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('token', data.token);
+    }
     setToken(data.token);
 
     router.push('/');
   }
+
+  React.useEffect(() => {
+    // Verificar se estamos no ambiente do navegador antes de acessar localStorage
+    if (typeof window !== 'undefined') {
+      const storedToken = window.localStorage.getItem('token');
+      setToken(storedToken ?? false);
+    }
+  }, []);
 
   React.useEffect(() => {
     if (token) {
