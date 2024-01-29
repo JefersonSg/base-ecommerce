@@ -29,11 +29,11 @@ const schema = yup.object({
 });
 
 const LoginPage = () => {
+  const { login } = React.useContext(UserContext);
   const [errorMessage, setErrorMessage] = React.useState<string | boolean>(
     false
   );
   const [loading, setLoading] = React.useState<boolean>(false);
-  const { login } = React.useContext(UserContext);
 
   const {
     register,
@@ -68,7 +68,9 @@ const LoginPage = () => {
       email: data.email,
       password: data.password
     };
+    setLoading(true);
     await login(dataUser, setErrorMessage, setLoading);
+    setLoading(false);
   };
 
   return (

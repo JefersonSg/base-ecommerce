@@ -60,15 +60,12 @@ const useAuth = () => {
 
   async function login(
     dataUser: dataUser,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
   ) {
     try {
-      setLoading(true);
       const data = await axios
         .post('http://localhost:3050/user/login', dataUser)
         .then((response) => {
-          setLoading(false);
           return response.data;
         });
       await authUser(data);
@@ -77,7 +74,6 @@ const useAuth = () => {
         window.location.reload();
       }, 500);
     } catch (err: any) {
-      setLoading(false);
       setErrorMessage(false);
       setTimeout(() => {
         setErrorMessage(
