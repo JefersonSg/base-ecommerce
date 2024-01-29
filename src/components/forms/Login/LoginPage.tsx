@@ -2,14 +2,14 @@
 
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
-import { Context } from '../../../shared/context/';
+import { Context } from '@/src/shared/context/';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import styles from './Login.module.css';
-import BotaoRedondo from '../../botoes/BotaoRedondo';
+import BotaoRedondo from '@/src/components/botoes/BotaoRedondo';
 import Link from 'next/link';
 
 interface Inputs {
