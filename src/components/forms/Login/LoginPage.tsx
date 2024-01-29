@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
-import { Context } from '@/src/shared/context/index';
+import { Context } from '../../../shared/context/';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -31,7 +31,6 @@ const schema = yup.object({
 const LoginPage = () => {
   const { login } = React.useContext(Context);
 
-  // const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -77,7 +76,7 @@ const LoginPage = () => {
     <div>
       <form
         className={styles.form_container}
-        action=""
+        action="POST"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="titulo_sessao">Entre em sua conta</h1>

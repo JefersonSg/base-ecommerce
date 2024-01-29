@@ -46,11 +46,13 @@ const useAuth = () => {
 
   function logout() {
     setAuthenticated(false);
-    window.localStorage.removeItem('token');
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem('token');
+    }
+
     axios.defaults.headers.Authorization = '';
 
     router.push('/login');
-    window.location.reload();
   }
 
   async function login(
@@ -66,8 +68,6 @@ const useAuth = () => {
         });
       await authUser(data);
     } catch (err: any) {
-      console.log('erro');
-      console.log(dataUser);
       console.log(err);
       setErrorMessage(false);
       setTimeout(() => {
