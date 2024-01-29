@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
 // import axios from 'axios';
-import { useRouter } from 'next/navigation';
-import { Context, useUserContext } from '@/src/shared/context/index';
+import { Context } from '@/src/shared/context/index';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,7 +10,6 @@ import * as yup from 'yup';
 import styles from './Login.module.css';
 import BotaoRedondo from '../../botoes/BotaoRedondo';
 import Link from 'next/link';
-import axios from 'axios';
 // import { useQuery } from '@tanstack/react-query';
 
 interface Inputs {
