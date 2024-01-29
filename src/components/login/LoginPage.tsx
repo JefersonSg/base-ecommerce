@@ -32,6 +32,7 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = React.useState<string | boolean>(
     false
   );
+  const [loading, setLoading] = React.useState<boolean>(false);
   const { login } = React.useContext(Context);
 
   const {
@@ -67,9 +68,7 @@ const LoginPage = () => {
       email: data.email,
       password: data.password
     };
-    await login(dataUser, setErrorMessage);
-
-    console.log(dataUser);
+    await login(dataUser, setErrorMessage, setLoading);
   };
 
   return (
@@ -103,7 +102,7 @@ const LoginPage = () => {
         <p className={'texto_indicativo'}>
           Não possui uma conta? <Link href={'/registrar'}>Cadastre-se</Link>
         </p>
-        <BotaoRedondo texto="Entrar" />
+        <BotaoRedondo texto="Entrar" disabled={loading} />
       </form>
       <span
         className={`${styles.error_span} ${errorMessage ? styles.ativo : ''}`}

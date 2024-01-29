@@ -19,3 +19,11 @@
     margin-top: 32px;
     margin-bottom: 8px;
 }
+
+.botao_redondo.disabled {
+    cursor: progress;
+    border-color: #e2e2e2;
+}
+.botao_redondo.disabled p {
+    color: #e2e2e2;
+}
