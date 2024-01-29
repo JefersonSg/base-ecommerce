@@ -44,7 +44,7 @@ const useAuth = () => {
     setAuthenticated(false);
   }, [location, token]);
 
-  async function logout() {
+  function logout() {
     setAuthenticated(false);
     if (typeof window !== 'undefined') {
       window.localStorage.removeItem('token');
