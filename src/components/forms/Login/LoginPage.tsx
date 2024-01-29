@@ -16,27 +16,27 @@ import Link from 'next/link';
 //   password: string;
 // }
 
-const schema = yup.object({
-  email: yup
-    .string()
-    .email('É necessário preencher um email válido')
-    .required('É necessário preencher o campo de Email'),
-  password: yup
-    .string()
-    .required('É necessário preencher o campo de senha')
-    .min(8, 'A senha deve ter no mínimo 8 caracteres')
-});
+// const schema = yup.object({
+//   email: yup
+//     .string()
+//     .email('É necessário preencher um email válido')
+//     .required('É necessário preencher o campo de Email'),
+//   password: yup
+//     .string()
+//     .required('É necessário preencher o campo de senha')
+//     .min(8, 'A senha deve ter no mínimo 8 caracteres')
+// });
 
 const LoginPage = () => {
   // const { login } = React.useContext(Context);
 
-  const {
-    register,
-    // handleSubmit,
-    formState: { errors }
-  } = useForm({
-    resolver: yupResolver(schema)
-  });
+  // const {
+  //   register,
+  //   // handleSubmit,
+  //   formState: { errors }
+  // } = useForm({
+  //   resolver: yupResolver(schema)
+  // });
 
   const [errorMessage, setErrorMessage] = React.useState<string | boolean>(
     false
@@ -55,24 +55,24 @@ const LoginPage = () => {
 
   // handleSubmit(onSubmit)
 
-  React.useEffect(() => {
-    setErrorMessage(false);
-    setTimeout(() => {
-      if (errors?.password?.message) {
-        setErrorMessage(errors?.password?.message);
-      }
-      if (errors?.email?.message) {
-        setErrorMessage(errors?.email?.message);
-      }
-    }, 100);
-    const temporizador = setTimeout(function closeError() {
-      setErrorMessage(false);
-    }, 5000);
+  // React.useEffect(() => {
+  //   setErrorMessage(false);
+  //   setTimeout(() => {
+  //     if (errors?.password?.message) {
+  //       setErrorMessage(errors?.password?.message);
+  //     }
+  //     if (errors?.email?.message) {
+  //       setErrorMessage(errors?.email?.message);
+  //     }
+  //   }, 100);
+  //   const temporizador = setTimeout(function closeError() {
+  //     setErrorMessage(false);
+  //   }, 5000);
 
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [errors]);
+  //   return () => {
+  //     clearTimeout(temporizador);
+  //   };
+  // }, [errors]);
 
   return (
     <div>
@@ -90,9 +90,10 @@ const LoginPage = () => {
             className={styles.input}
             type="text"
             id="email"
-            {...register('email')}
+            name="email"
+            // {...register('email')}
           />
-          <span className={styles.error}>{errors?.email?.message}</span>
+          {/* <span className={styles.error}>{errors?.email?.message}</span> */}
         </div>
         <div className={styles.divInput}>
           <label htmlFor="password">Senha</label>
@@ -100,9 +101,11 @@ const LoginPage = () => {
             id="password"
             className={styles.input}
             type="password"
-            {...register('password')}
+            name="password"
+
+            // {...register('password')}
           />
-          <span className={styles.error}>{errors?.password?.message}</span>
+          {/* <span className={styles.error}>{errors?.password?.message}</span> */}
         </div>
         <p className={'texto_indicativo'}>
           Não possui uma conta? <Link href={'/registrar'}>Cadastre-se</Link>
