@@ -3,7 +3,7 @@
 
 import React from 'react';
 
-import { Context } from '@/src/shared/context/';
+import { UserContext } from '@/src/shared/context/';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -33,7 +33,7 @@ const LoginPage = () => {
     false
   );
   const [loading, setLoading] = React.useState<boolean>(false);
-  const { login } = React.useContext(Context);
+  const { login } = React.useContext(UserContext);
 
   const {
     register,

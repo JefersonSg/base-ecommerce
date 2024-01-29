@@ -15,7 +15,7 @@ interface UserContextType {
   ) => Promise<void>;
 }
 
-const Context = React.createContext<UserContextType>({
+const UserContext = React.createContext<UserContextType>({
   authenticated: false,
   logout: () => {},
   login: async () => {}
@@ -24,10 +24,12 @@ const Context = React.createContext<UserContextType>({
 function UserProvider({ children }: { children: React.ReactNode }) {
   const { authenticated, logout, login } = useAuth();
   return (
-    <Context.Provider value={{ authenticated, logout, login }}>
+    <UserContext.Provider value={{ authenticated, logout, login }}>
       {children}
-    </Context.Provider>
+    </UserContext.Provider>
   );
 }
 
-export { Context, UserProvider };
+export const useUserContext = () => React.useContext(UserContext);
+
+export { UserContext, UserProvider };

@@ -44,7 +44,7 @@ const useAuth = () => {
     setAuthenticated(false);
   }, [location, token]);
 
-  function logout() {
+  async function logout() {
     setAuthenticated(false);
     if (typeof window !== 'undefined') {
       window.localStorage.removeItem('token');
@@ -53,6 +53,9 @@ const useAuth = () => {
     axios.defaults.headers.Authorization = '';
 
     router.push('/login');
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   async function login(
@@ -69,6 +72,10 @@ const useAuth = () => {
           return response.data;
         });
       await authUser(data);
+      router.push('/');
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     } catch (err: any) {
       setLoading(false);
       setErrorMessage(false);

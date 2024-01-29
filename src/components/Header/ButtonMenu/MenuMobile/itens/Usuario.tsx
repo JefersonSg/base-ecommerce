@@ -3,12 +3,22 @@ import Image from 'next/image';
 import styles from './Usuario.module.css';
 import Link from 'next/link';
 
+interface User {
+  _id: string;
+  name: string;
+  surname: string;
+  username: string;
+  email: string;
+}
+
 function Usuario({
   ativo,
-  setAtivo
+  setAtivo,
+  userData
 }: {
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  userData: User | null;
 }) {
   return (
     <div className={styles.usuario}>
@@ -21,26 +31,44 @@ function Usuario({
         />
       </div>
       <div className={styles.boasVindas}>
-        <h3 className="titulo_area">Olá, visitante</h3>
-        <p>
-          <Link
-            onClick={() => {
-              setAtivo(!ativo);
-            }}
-            href={'/login'}
-          >
-            Entre
-          </Link>{' '}
-          ou{' '}
-          <Link
-            onClick={() => {
-              setAtivo(!ativo);
-            }}
-            href={'/registrar'}
-          >
-            Cadastre-se
-          </Link>
-        </p>
+        <h3 className="titulo_area">
+          Olá,{' '}
+          {userData
+            ? `${userData?.name + ' ' + userData?.surname?.split(' ')[0]}`
+            : 'Visitante'}
+        </h3>
+        {!userData ? (
+          <p>
+            <Link
+              onClick={() => {
+                setAtivo(!ativo);
+              }}
+              href={'/login'}
+            >
+              Entre
+            </Link>{' '}
+            ou{' '}
+            <Link
+              onClick={() => {
+                setAtivo(!ativo);
+              }}
+              href={'/registrar'}
+            >
+              Cadastre-se
+            </Link>
+          </p>
+        ) : (
+          <p>
+            <Link
+              onClick={() => {
+                setAtivo(!ativo);
+              }}
+              href={'/minhaconta'}
+            >
+              Ver meu perfil
+            </Link>{' '}
+          </p>
+        )}
       </div>
     </div>
   );
