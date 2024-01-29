@@ -11,6 +11,7 @@ import * as yup from 'yup';
 import styles from './Login.module.css';
 import BotaoRedondo from '@/src/components/botoes/BotaoRedondo';
 import Link from 'next/link';
+import InputFormulario from '../formulario/InputForm';
 
 interface Inputs {
   email: string;
@@ -68,6 +69,7 @@ const LoginPage = () => {
       email: data.email,
       password: data.password
     };
+
     setLoading(true);
     await login(dataUser, setErrorMessage, setLoading);
     setLoading(false);
@@ -81,26 +83,24 @@ const LoginPage = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="titulo_sessao">Entre em sua conta</h1>
-        <div className={styles.divInput}>
-          <label htmlFor="email">Email</label>
-          <input
-            className={styles.input}
-            type="text"
-            id="email"
-            {...register('email')}
-          />
-          <span className={styles.error}>{errors?.email?.message}</span>
-        </div>
-        <div className={styles.divInput}>
-          <label htmlFor="password">Senha</label>
-          <input
-            id="password"
-            className={styles.input}
-            type="password"
-            {...register('password')}
-          />
-          <span className={styles.error}>{errors?.password?.message}</span>
-        </div>
+
+        <InputFormulario
+          label="Email"
+          register={register}
+          name={'email'}
+          placeholder={'seuemail@gmail.com'}
+          type="email"
+          error={errors?.email?.message}
+        />
+        <InputFormulario
+          label="Senha"
+          name="password"
+          placeholder=""
+          type="password"
+          register={register}
+          error={errors?.password?.message}
+        />
+
         <p className={'texto_indicativo'}>
           Não possui uma conta? <Link href={'/registrar'}>Cadastre-se</Link>
         </p>
