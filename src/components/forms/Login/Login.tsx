@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
-// import axios from 'axios';
 import { Context } from '@/src/shared/context/index';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
@@ -10,7 +9,6 @@ import * as yup from 'yup';
 import styles from './Login.module.css';
 import BotaoRedondo from '../../botoes/BotaoRedondo';
 import Link from 'next/link';
-// import { useQuery } from '@tanstack/react-query';
 
 interface Inputs {
   email: string;
@@ -51,24 +49,6 @@ const Login = () => {
     };
 
     await login(dataUser, setErrorMessage);
-
-    // try {
-    //   const data = await axios
-    //     .post('http://localhost:3050/user/login', dataUser)
-    //     .then((response) => {
-    //       console.log('chegou no try');
-    //       return response.data;
-    //     });
-    // } catch (error) {
-    //   console.log(dataUser);
-    //   setErrorMessage(false);
-    //   setTimeout(() => {
-    //     setErrorMessage(
-    //       error?.response?.data?.errorsResult?.body[0] ||
-    //         error?.response?.data?.message
-    //     );
-    //   }, 100);
-    // }
   };
 
   // Função de resetar e setar o span de erros
@@ -90,17 +70,6 @@ const Login = () => {
       clearTimeout(temporizador);
     };
   }, [errors]);
-
-  // const getTodos = async () => {
-  //   const response = await axios.post('http://localhost:3050/user/create');
-
-  //   return response.data;
-  // };
-
-  // const { data, isLoading, error } = useQuery({
-  //   queryKey: ['todos'],
-  //   queryFn: getTodos
-  // });
 
   return (
     <div>

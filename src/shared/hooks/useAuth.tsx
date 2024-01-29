@@ -22,6 +22,7 @@ const useAuth = () => {
     setAuthenticated(true);
 
     window.localStorage.setItem('token', data.token);
+    setToken(data.token);
 
     router.push('/');
   }

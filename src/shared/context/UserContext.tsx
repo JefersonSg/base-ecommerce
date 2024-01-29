@@ -14,7 +14,11 @@ interface UserContextType {
   ) => Promise<void>;
 }
 
-const Context = React.createContext<UserContextType | undefined>(undefined);
+const Context = React.createContext<UserContextType>({
+  authenticated: false,
+  logout: () => {},
+  login: async () => {}
+});
 
 function UserProvider({ children }: { children: React.ReactNode }) {
   const { authenticated, logout, login } = useAuth();
