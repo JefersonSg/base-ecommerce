@@ -2,7 +2,7 @@
 
 import { QueryClientProvider } from '@tanstack/react-query';
 import styles from './styles.module.css';
-import Login from '@/src/components/forms/login/Login';
+import Login from '../../components/forms/login/Login';
 import { queryClient } from '@/src/shared/services/queryClient';
 
 const page = () => {
