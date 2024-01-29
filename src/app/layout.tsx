@@ -6,6 +6,8 @@ import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import { BtnZap } from '../components/botoes/btnZap/BtnZap';
 
+import Providers from '../shared/providers/providers';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -22,9 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        {children}
-        <BtnZap />
-        <Footer />
+        <Providers>
+          {children}
+          <BtnZap />
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

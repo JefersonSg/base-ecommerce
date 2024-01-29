@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { Context, useUserContext } from '@/src/shared/context/index';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,6 +11,7 @@ import * as yup from 'yup';
 import styles from './Login.module.css';
 import BotaoRedondo from '../../botoes/BotaoRedondo';
 import Link from 'next/link';
+import axios from 'axios';
 // import { useQuery } from '@tanstack/react-query';
 
 interface Inputs {
@@ -27,7 +30,10 @@ const schema = yup.object({
     .min(8, ' A senha deve ter  no minimo 8 caracteres')
 });
 
-const Login: React.FC = () => {
+const Login = () => {
+  const { login } = React.useContext(Context);
+
+  // const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -46,27 +52,28 @@ const Login: React.FC = () => {
       password: data.password
     };
 
-    await axios
-      .post('http://localhost:3050/user/login', dataUser)
-      .then((response) => {
-        // Manipule a resposta bem-sucedida aqui
-        console.log('Resposta:', response.data);
-      })
-      .catch((error) => {
-        // Manipule erros aqui
-        console.error(
-          error?.response?.data?.errorsResult?.body || error?.response?.data
-        );
-        setErrorMessage(false);
-        setTimeout(() => {
-          setErrorMessage(
-            error?.response?.data?.errorsResult?.body[0] ||
-              error?.response?.data?.message
-          );
-        }, 100);
-      });
+    await login(dataUser, setErrorMessage);
+
+    // try {
+    //   const data = await axios
+    //     .post('http://localhost:3050/user/login', dataUser)
+    //     .then((response) => {
+    //       console.log('chegou no try');
+    //       return response.data;
+    //     });
+    // } catch (error) {
+    //   console.log(dataUser);
+    //   setErrorMessage(false);
+    //   setTimeout(() => {
+    //     setErrorMessage(
+    //       error?.response?.data?.errorsResult?.body[0] ||
+    //         error?.response?.data?.message
+    //     );
+    //   }, 100);
+    // }
   };
 
+  // Função de resetar e setar o span de erros
   React.useEffect(() => {
     setErrorMessage(false);
     setTimeout(() => {
@@ -107,12 +114,18 @@ const Login: React.FC = () => {
         <h1 className="titulo_sessao">Entre em sua conta</h1>
         <div className={styles.divInput}>
           <label htmlFor="email">Email</label>
-          <input className={styles.input} type="text" {...register('email')} />
+          <input
+            className={styles.input}
+            type="text"
+            id="email"
+            {...register('email')}
+          />
           <span className={styles.error}>{errors?.email?.message}</span>
         </div>
         <div className={styles.divInput}>
           <label htmlFor="password">Senha</label>
           <input
+            id="password"
             className={styles.input}
             type="text"
             {...register('password')}

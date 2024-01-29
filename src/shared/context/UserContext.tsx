@@ -1,0 +1,28 @@
+import React from 'react';
+import useAuth from '../hooks/useAuth';
+
+interface dataUser {
+  email: string;
+  password: string;
+}
+interface UserContextType {
+  authenticated: boolean;
+  logout: () => void;
+  login: (
+    dataUser: dataUser,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
+  ) => Promise<void>;
+}
+
+const Context = React.createContext<UserContextType | undefined>(undefined);
+
+function UserProvider({ children }: { children: React.ReactNode }) {
+  const { authenticated, logout, login } = useAuth();
+  return (
+    <Context.Provider value={{ authenticated, logout, login }}>
+      {children}
+    </Context.Provider>
+  );
+}
+
+export { Context, UserProvider };
