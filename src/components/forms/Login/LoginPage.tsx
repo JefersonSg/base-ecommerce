@@ -28,7 +28,7 @@ const schema = yup.object({
     .min(8, ' A senha deve ter  no minimo 8 caracteres')
 });
 
-const Login = () => {
+const LoginPage = () => {
   const { login } = React.useContext(Context);
 
   // const router = useRouter();
@@ -115,4 +115,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
