@@ -1,9 +1,8 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
 import { Context } from '@/src/shared/context/';
-
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -20,12 +19,12 @@ interface Inputs {
 const schema = yup.object({
   email: yup
     .string()
-    .email(' É necessario preencher um email valido')
-    .required('É necerrario preencher o campo de Email'),
+    .email('É necessário preencher um email válido')
+    .required('É necessário preencher o campo de Email'),
   password: yup
     .string()
-    .required('É necerrario preencher o campo de senha')
-    .min(8, ' A senha deve ter  no minimo 8 caracteres')
+    .required('É necessário preencher o campo de senha')
+    .min(8, 'A senha deve ter no mínimo 8 caracteres')
 });
 
 const LoginPage = () => {
@@ -95,7 +94,7 @@ const LoginPage = () => {
           <input
             id="password"
             className={styles.input}
-            type="text"
+            type="password"
             {...register('password')}
           />
           <span className={styles.error}>{errors?.password?.message}</span>
