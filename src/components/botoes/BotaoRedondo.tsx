@@ -9,7 +9,7 @@ const BotaoRedondo = ({
 }: {
   texto: string;
   img?: string;
-  disabled: boolean;
+  disabled?: boolean;
 }) => {
   return (
     <button

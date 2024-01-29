@@ -10,7 +10,8 @@ interface UserContextType {
   logout: () => void;
   login: (
     dataUser: dataUser,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
+    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ) => Promise<void>;
 }
 
