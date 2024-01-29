@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
 import { Context } from '@/src/shared/context/index';
