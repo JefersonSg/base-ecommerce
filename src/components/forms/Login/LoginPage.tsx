@@ -2,8 +2,8 @@
 'use client';
 
 import React from 'react';
-import { Context } from '@/src/shared/context/';
-import { useForm, type SubmitHandler } from 'react-hook-form';
+// import { Context } from '@/src/shared/context/';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -11,10 +11,10 @@ import styles from './Login.module.css';
 import BotaoRedondo from '@/src/components/botoes/BotaoRedondo';
 import Link from 'next/link';
 
-interface Inputs {
-  email: string;
-  password: string;
-}
+// interface Inputs {
+//   email: string;
+//   password: string;
+// }
 
 const schema = yup.object({
   email: yup
@@ -28,11 +28,11 @@ const schema = yup.object({
 });
 
 const LoginPage = () => {
-  const { login } = React.useContext(Context);
+  // const { login } = React.useContext(Context);
 
   const {
     register,
-    handleSubmit,
+    // handleSubmit,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
@@ -42,16 +42,19 @@ const LoginPage = () => {
     false
   );
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const dataUser = {
-      email: data.email,
-      password: data.password
-    };
+  // const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  //   const dataUser = {
+  //     email: data.email,
+  //     password: data.password
+  //   };
 
-    await login(dataUser, setErrorMessage);
-  };
+  //   await login(dataUser, setErrorMessage);
+  // };
 
   // Função de resetar e setar o span de erros
+
+  // handleSubmit(onSubmit)
+
   React.useEffect(() => {
     setErrorMessage(false);
     setTimeout(() => {
@@ -76,7 +79,9 @@ const LoginPage = () => {
       <form
         className={styles.form_container}
         action="POST"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
       >
         <h1 className="titulo_sessao">Entre em sua conta</h1>
         <div className={styles.divInput}>
