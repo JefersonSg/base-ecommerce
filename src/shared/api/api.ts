@@ -14,9 +14,16 @@ export const getUser = async () => {
   if (!token) {
     return;
   }
-  const response = await axios.get(`${API}user/get`, config);
+  try {
+    const response = await axios.get(`${API}user/get`, config);
 
-  console.log(response.data);
+    console.log(response.data);
 
-  return response.data;
+    return response.data;
+  } catch (error) {
+    console.log(error);
+
+    Cookies.remove('auth_token');
+    window.location.reload();
+  }
 };
