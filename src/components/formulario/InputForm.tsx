@@ -7,7 +7,7 @@ const InputFormulario = ({
   type,
   register,
   placeholder,
-  error,
+  error
 }: {
   label: string;
   name: string;

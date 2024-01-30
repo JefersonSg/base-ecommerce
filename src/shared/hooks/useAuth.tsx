@@ -66,7 +66,7 @@ const useAuth = () => {
 
   async function login(
     dataUser: dataUserLogin,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
   ) {
     try {
       const data = await axios
@@ -85,7 +85,7 @@ const useAuth = () => {
       setTimeout(() => {
         setErrorMessage(
           error?.response?.data?.errorsResult?.body[0] ||
-            error?.response?.data?.message,
+            error?.response?.data?.message
         );
       }, 100);
     }
@@ -93,7 +93,7 @@ const useAuth = () => {
 
   async function registerUser(
     dataUser: dataUserRegister,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
   ) {
     try {
       const data = await axios
@@ -111,7 +111,7 @@ const useAuth = () => {
       setTimeout(() => {
         setErrorMessage(
           err?.response?.data?.errorsResult?.body[0] ||
-            err?.response?.data?.message,
+            err?.response?.data?.message
         );
       }, 100);
     }

@@ -4,7 +4,7 @@ import styles from './TituloFooter.module.css';
 export function TituloFooter({
   titulo,
   ativo,
-  seta,
+  seta
 }: {
   titulo: string;
   ativo: null | boolean;

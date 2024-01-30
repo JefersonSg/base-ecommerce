@@ -17,7 +17,7 @@ export function Header() {
 
   const { data } = useQuery({
     queryKey: ['todos'],
-    queryFn: getUser,
+    queryFn: getUser
   });
 
   React.useEffect(() => {

@@ -6,7 +6,7 @@ setLocale({
     notType: 'Formato digitado é invalido',
     defined: 'Este campo precisa ter um valor definido',
     oneOf: 'Deve ser um dos seguintes valores: ${values}',
-    notOneOf: 'Não pode ser um dos seguintes valores: ${values}',
+    notOneOf: 'Não pode ser um dos seguintes valores: ${values}'
   },
   string: {
     lowercase: 'Deve estar em maiúsculo',
@@ -18,7 +18,7 @@ setLocale({
     length: 'Deve ter exatamente ${length} caracteres',
     uuid: 'Valor digitado não confere a um UUID valido',
     trim: 'Não deve conter espaços no início ou no fim.',
-    matches: 'O valor deve corresponder ao padrão: ${regex}',
+    matches: 'O valor deve corresponder ao padrão: ${regex}'
   },
   number: {
     min: 'Deve ser no mínimo ${min}',
@@ -27,18 +27,18 @@ setLocale({
     lessThan: 'Deve ser menor que ${less}',
     moreThan: 'Deve ser maior que ${more}',
     positive: 'Deve ser um número positivo',
-    negative: 'Deve ser um número negativo',
+    negative: 'Deve ser um número negativo'
   },
   date: {
     min: 'Deve ser maior que a data ${min}',
-    max: 'Deve ser menor que a data ${max}',
+    max: 'Deve ser menor que a data ${max}'
   },
   array: {
     min: 'Deve ter no mínimo ${min} itens',
     max: 'Deve ter no máximo ${max} itens',
-    length: 'Deve conter exatamente ${length} itens',
+    length: 'Deve conter exatamente ${length} itens'
   },
   object: {
-    noUnknown: 'Deve ser passado um valor definido',
-  },
+    noUnknown: 'Deve ser passado um valor definido'
+  }
 });

@@ -17,7 +17,7 @@ function Comentario({
   estrelas,
   cor,
   tamanho,
-  comentario,
+  comentario
 }: comentario) {
   return (
     <div className={styles.comentario_div}>

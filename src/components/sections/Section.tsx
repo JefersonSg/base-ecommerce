@@ -5,7 +5,7 @@ import styles from './Section.module.css';
 function Section({
   nomeSessao,
   quantidadeItens,
-  IdSessao,
+  IdSessao
 }: {
   nomeSessao: string;
   quantidadeItens: number;

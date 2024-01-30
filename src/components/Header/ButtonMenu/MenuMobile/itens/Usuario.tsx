@@ -14,7 +14,7 @@ interface User {
 function Usuario({
   ativo,
   setAtivo,
-  userData,
+  userData
 }: {
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;

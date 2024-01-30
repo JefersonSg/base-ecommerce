@@ -6,7 +6,7 @@ export function Botao({
   img,
   text,
   type,
-  link,
+  link
 }: {
   img: string;
   text: string;

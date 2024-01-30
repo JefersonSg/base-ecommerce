@@ -14,7 +14,7 @@ import Image from 'next/image';
 function SlideFotos({
   setImagem,
   imagemId,
-  setImagemId,
+  setImagemId
 }: {
   setImagem: React.Dispatch<React.SetStateAction<string>>;
   imagemId: string;
@@ -25,7 +25,7 @@ function SlideFotos({
     'produto2.png',
     'produto1.png',
     'produto1.png',
-    'produto2.png',
+    'produto2.png'
   ];
 
   return (

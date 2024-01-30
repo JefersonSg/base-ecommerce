@@ -8,7 +8,7 @@ import { TituloFooter } from './TituloFooter';
 export function Informacao({
   titulo,
   img,
-  seta,
+  seta
 }: {
   titulo: string;
   img?: string[];

@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const BotaoQuantidade = ({
   contador,
-  setContador,
+  setContador
 }: {
   contador: number;
   setContador: React.Dispatch<React.SetStateAction<number>>;
