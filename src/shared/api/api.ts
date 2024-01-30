@@ -1,7 +1,8 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export const getUser = async () => {
-  const token = localStorage.getItem('token') ?? false;
+  const token = Cookies.get('auth_token') ?? false;
   const API = process.env.NEXT_PUBLIC_API_URL;
 
   const config = {
@@ -14,6 +15,8 @@ export const getUser = async () => {
     return;
   }
   const response = await axios.get(`${API}user/get`, config);
+
+  console.log(response.data);
 
   return response.data;
 };

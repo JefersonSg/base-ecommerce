@@ -1,4 +1,5 @@
 'use client';
+import Cookie from 'js-cookie';
 
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -26,9 +27,8 @@ const useAuth = () => {
 
   async function authUser(data: { token: string }) {
     setAuthenticated(true);
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('token', data.token);
-    }
+
+    Cookie.set('auth_token', data.token);
     setToken(data.token);
 
     router.push('/');
@@ -36,10 +36,8 @@ const useAuth = () => {
 
   React.useEffect(() => {
     // Verificar se estamos no ambiente do navegador antes de acessar localStorage
-    if (typeof window !== 'undefined') {
-      const storedToken = window.localStorage.getItem('token');
-      setToken(storedToken ?? false);
-    }
+    const authToken = Cookie.get('auth_token');
+    setToken(authToken ?? false);
   }, []);
 
   React.useEffect(() => {
@@ -54,9 +52,7 @@ const useAuth = () => {
 
   function logout() {
     setAuthenticated(false);
-    if (typeof window !== 'undefined') {
-      window.localStorage.removeItem('token');
-    }
+    Cookie.remove('auth_token');
 
     router.push('/login');
     setTimeout(() => {

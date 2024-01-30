@@ -63,7 +63,7 @@ function Usuario({
               onClick={() => {
                 setAtivo(!ativo);
               }}
-              href={'/minhaconta'}
+              href={'/minha-conta'}
             >
               Ver meu perfil
             </Link>{' '}
