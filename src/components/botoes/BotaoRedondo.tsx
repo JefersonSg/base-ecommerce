@@ -5,7 +5,7 @@ import Image from 'next/image';
 const BotaoRedondo = ({
   texto,
   img,
-  disabled
+  disabled,
 }: {
   texto: string;
   img?: string;

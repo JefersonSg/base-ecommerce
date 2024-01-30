@@ -3,7 +3,7 @@ import styles from './BotaoFiltro.module.css';
 
 const BotaoFiltro = ({
   ativo,
-  setAtivo
+  setAtivo,
 }: {
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;

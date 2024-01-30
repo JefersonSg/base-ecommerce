@@ -1,26 +1,26 @@
 .categoria {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    cursor: pointer;
-    flex-direction: column;
-    padding: 3px 0 0 5px;
-    width: 104px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  cursor: pointer;
+  flex-direction: column;
+  padding: 3px 0 0 5px;
+  width: 104px;
 }
 .categoria span {
-    color: #000;
-    text-align: center;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
+  color: #000;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
 }
 .imagemCategoria {
-    border-radius: 104px;
-    height: 104px;
-    width: 104px;
-    min-height: 104px;
-    min-width: 104px;
-    box-shadow:  2px 2px 10px rgba(50, 50,50, 0.15);
+  border-radius: 104px;
+  height: 104px;
+  width: 104px;
+  min-height: 104px;
+  min-width: 104px;
+  box-shadow: 2px 2px 10px rgba(50, 50, 50, 0.15);
 }

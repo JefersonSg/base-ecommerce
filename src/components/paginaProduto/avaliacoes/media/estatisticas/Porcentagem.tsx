@@ -2,7 +2,7 @@ import styles from './Porcentagem.module.css';
 
 function Porcentagens({
   estrelas,
-  porcentagem
+  porcentagem,
 }: {
   estrelas: number;
   porcentagem?: number;

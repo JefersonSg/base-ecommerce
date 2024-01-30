@@ -1,13 +1,12 @@
 .enderecos_cadastrados {
-    display: flex;
-    align-items: center;
-    margin-top: 16px;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  gap: 8px;
 
-    color: #000;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 500;
-    text-decoration-line: underline;
+  color: #000;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration-line: underline;
 }
-

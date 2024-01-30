@@ -22,7 +22,7 @@ function SlideVantagens() {
         loop={true}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false
+          disableOnInteraction: false,
         }}
         modules={[Autoplay, Navigation]}
       >

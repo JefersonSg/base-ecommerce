@@ -1,12 +1,11 @@
 .composicao {
-    border-top: 1px solid #E6E6E6;
-    margin-top: 32px;
-    padding-top: 8px;
+  border-top: 1px solid #e6e6e6;
+  margin-top: 32px;
+  padding-top: 8px;
 }
 
 .texto {
-    width: 327px;
-    margin: 0 auto;
-    margin-top: 16px;
-    
+  width: 327px;
+  margin: 0 auto;
+  margin-top: 16px;
 }

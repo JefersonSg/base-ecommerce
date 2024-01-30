@@ -6,7 +6,7 @@ function Vantagem({
   titulo,
   texto,
   image,
-  link
+  link,
 }: {
   titulo: string;
   texto: string;

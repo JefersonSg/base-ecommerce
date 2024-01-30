@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ButtonMenu.module.css';
 
 export function ButtonMenu({
-  setAtivo
+  setAtivo,
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) {

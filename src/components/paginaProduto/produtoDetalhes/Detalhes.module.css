@@ -1,19 +1,18 @@
 .detalhes {
-    width: 100%;
-    background-color: #F7F7F7;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 16px;
-    align-items: center;
-    padding-bottom: 32px;
+  width: 100%;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 16px;
+  align-items: center;
+  padding-bottom: 32px;
 }
 .informacoes {
-    width: 327px;
-    display: flex;
-    justify-content: space-between;
-
+  width: 327px;
+  display: flex;
+  justify-content: space-between;
 }
 .botao_carrinho {
-    margin-top: 32px;
+  margin-top: 32px;
 }

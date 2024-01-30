@@ -1,18 +1,16 @@
 .entrega_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    width: 327px;
-    padding-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 327px;
+  padding-bottom: 32px;
 }
-
 
 .texto1 {
-    margin-bottom: 32px;
-    width: 270px;
+  margin-bottom: 32px;
+  width: 270px;
 }
 .tituloArea {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
-

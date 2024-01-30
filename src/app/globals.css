@@ -38,7 +38,7 @@ img {
 
   --cor-primaria: #471703;
   --cor-secundaria: #996557;
-  --cor-terciaria: #3A292F;
+  --cor-terciaria: #3a292f;
 }
 
 .titulo_sessao {
@@ -70,7 +70,6 @@ img {
   font-variant: small-caps;
 }
 
-
 /* textos normais */
 .texto {
   color: #000;
@@ -88,5 +87,3 @@ img {
   font-weight: 400;
   line-height: 170%;
 }
-
-

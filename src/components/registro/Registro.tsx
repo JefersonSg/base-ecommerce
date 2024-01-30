@@ -43,14 +43,14 @@ const schema = yup.object({
     .string()
     .oneOf([yup.ref('password')], 'As senhas digitadas devem ser iguals')
     .required('É necessário preencher o campo de confirmação de senha')
-    .min(8, 'A senha deve ter no mínimo 8 caracteres')
+    .min(8, 'A senha deve ter no mínimo 8 caracteres'),
 });
 
 const Registro = () => {
   const { registerUser } = useUserContext();
 
   const [errorMessage, setErrorMessage] = React.useState<string | boolean>(
-    false
+    false,
   );
   const [loading, setLoading] = React.useState<boolean>(false);
 
@@ -65,9 +65,9 @@ const Registro = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
   // Função de resetar e setar o span de erros
@@ -105,7 +105,7 @@ const Registro = () => {
       surname: data.surname,
       email: data.email,
       password: data.password,
-      confirmpassword: data.confirmpassword
+      confirmpassword: data.confirmpassword,
     };
 
     setLoading(true);

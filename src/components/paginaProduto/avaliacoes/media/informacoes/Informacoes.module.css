@@ -1,23 +1,23 @@
 .numero_media {
-    color: #471703;
-    font-family: 'Montserrat';
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 90%;
-    text-transform: capitalize;
+  color: #471703;
+  font-family: 'Montserrat';
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 90%;
+  text-transform: capitalize;
 }
 
 .texto_media {
-    color: #471703;
-    font-family: 'Montserrat';
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-    max-width: 88px;
-    margin-top: 16px;
+  color: #471703;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  max-width: 88px;
+  margin-top: 16px;
 }
 .estrelas {
-    margin-top: 16px;
+  margin-top: 16px;
 }

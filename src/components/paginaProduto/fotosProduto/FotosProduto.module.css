@@ -1,49 +1,49 @@
 .fotosProduto {
-    width: 100%;
-    display: flex;
-    border-radius: 12px;
-    flex-direction: column;
-    gap: 16px;
-    margin: 0 auto;
-    margin-top: 16px;
-    align-items: center;
-    box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  border-radius: 12px;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+  margin-top: 16px;
+  align-items: center;
+  box-sizing: border-box;
 }
 .fotoPrincipal {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    object-fit: cover;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  cursor: pointer;
 }
 .container_image {
-    width: 100%;
-    max-width: 326px;
-    height: 312px;
+  width: 100%;
+  max-width: 326px;
+  height: 312px;
 }
 
 .fotoInteira {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(2px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .fotoInteira img {
-    width: 100%;
-    height: auto;
-    pointer-events: none;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
 }
 .fechar {
-    font-size: 48px;
-    position: absolute;
-    top: 40px;
-    right: 24px;
-    cursor: pointer;
-    color: white;
+  font-size: 48px;
+  position: absolute;
+  top: 40px;
+  right: 24px;
+  cursor: pointer;
+  color: white;
 }

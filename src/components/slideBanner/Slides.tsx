@@ -21,11 +21,11 @@ function Slide() {
         centeredSlides={true}
         autoplay={{
           delay: 5000,
-          disableOnInteraction: false
+          disableOnInteraction: false,
         }}
         navigation={true}
         pagination={{
-          clickable: true
+          clickable: true,
         }}
         modules={[Autoplay, Pagination, Navigation]}
       >

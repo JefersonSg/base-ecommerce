@@ -1,27 +1,27 @@
 .area_textos_container {
-    padding-bottom: 32px;
-    border-bottom: 1px solid #F2F2F2;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #f2f2f2;
 }
 
 .area_textos {
-    width: 327px;
-    margin:  0 auto;
-    height: max-content;
+  width: 327px;
+  margin: 0 auto;
+  height: max-content;
 
-    margin-top: 32px;
+  margin-top: 32px;
 }
 .texto_indicativo {
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .produtos {
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding-bottom: 32px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 32px;
 }
 
 .finalizar_container {
-    padding-bottom: 64px;
+  padding-bottom: 64px;
 }

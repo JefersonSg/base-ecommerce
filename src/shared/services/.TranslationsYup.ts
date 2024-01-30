@@ -40,5 +40,5 @@ setLocale({
   },
   object: {
     noUnknown: 'Deve ser passado um valor definido',
-  }
+  },
 });

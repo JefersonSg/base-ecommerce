@@ -1,35 +1,35 @@
 .pagina_informacoes {
-    padding: 0 24px;
-    margin: 0 auto;
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-bottom: 64px;
+  padding: 0 24px;
+  margin: 0 auto;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 64px;
 }
 .pagina_informacoes div:nth-child(1) {
-    width: 100%;
-    max-width: none;
-    margin-bottom: 16px;
+  width: 100%;
+  max-width: none;
+  margin-bottom: 16px;
 }
 .pagina_informacoes p {
-    font-size: 14px;
-    font-weight: 400;
-    max-width: 650px;
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 650px;
 }
 .pagina_informacoes ul {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .pagina_informacoes ul li {
-    font-size: 14px;
+  font-size: 14px;
 }
-.pagina_informacoes ul li span{
-    font-weight: 700;
+.pagina_informacoes ul li span {
+  font-weight: 700;
 }
 
 .agradecimento {
-    margin-top: 64px;
+  margin-top: 64px;
 }

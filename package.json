@@ -1,6 +1,10 @@
 {
   "name": "base",
   "version": "0.1.0",
+  "prettier": {
+    "endOfLine": "crlf",
+    "singleQuote": true
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -1,4 +1,4 @@
-.div_titulo{
+.div_titulo {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -15,5 +15,4 @@
   font-weight: 700;
   line-height: 120%; /* 28.8px */
   font-variant: small-caps;
-
 }

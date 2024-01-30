@@ -1,67 +1,69 @@
-.menu_filtro{
-    display: block;
-    width: 20px;
-    height: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
+.menu_filtro {
+  display: block;
+  width: 20px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
-.linha1,.linha2,.linha3 {
-    display: block;
-    height: 1px;
-    width: 100%;
-    background:var(--cor-primaria) ;
-    position: relative;
+.linha1,
+.linha2,
+.linha3 {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: var(--cor-primaria);
+  position: relative;
 }
 
 .linha1::after {
-    content: '';
-    display: block;
-    width: 5px;
-    height: 5px;
-    border: 1px solid;
-    background-color: white;
-    border-radius: 8px ;
-    position: absolute;
-    top: -2.5px;
-    left: 6px;
-    transition: .2s all;
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border: 1px solid;
+  background-color: white;
+  border-radius: 8px;
+  position: absolute;
+  top: -2.5px;
+  left: 6px;
+  transition: 0.2s all;
 }
 .linha2::after {
-    content: '';
-    display: block;
-    width: 5px;
-    height: 5px;
-    border: 1px solid;
-    background-color: white;
-    border-radius: 8px ;
-    position: absolute;
-    top: -3px;
-    right: -2px;
-    transition: .2s all;
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border: 1px solid;
+  background-color: white;
+  border-radius: 8px;
+  position: absolute;
+  top: -3px;
+  right: -2px;
+  transition: 0.2s all;
 }
 .linha3::after {
-    content: '';
-    display: block;
-    width: 5px;
-    height: 5px;
-    border: 1px solid;
-    background-color: white;
-    border-radius: 8px ;
-    position: absolute;
-    top: -2.5px;
-    left: 0;
-    transition: 0.2s all;
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border: 1px solid;
+  background-color: white;
+  border-radius: 8px;
+  position: absolute;
+  top: -2.5px;
+  left: 0;
+  transition: 0.2s all;
 }
 
 .menu_filtro.ativo .linha1::after {
-left: 12px;
+  left: 12px;
 }
 .menu_filtro.ativo .linha2::after {
-right: 14px;
+  right: 14px;
 }
 .menu_filtro.ativo .linha3::after {
-left: 12px;
+  left: 12px;
 }

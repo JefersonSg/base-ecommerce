@@ -1,13 +1,13 @@
 .interatividades {
-    height: 24px;
-    width: 100%;
-    max-width: 326px;
-    margin: 0 auto;
-    margin-top: 16px;
-    display: flex;
-    justify-content: space-between;
+  height: 24px;
+  width: 100%;
+  max-width: 326px;
+  margin: 0 auto;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
 }
 .interacao {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }

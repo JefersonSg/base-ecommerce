@@ -1,68 +1,68 @@
-.produto_Carrinho{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0 auto;
-    gap: 32px;
-    border-bottom: 1px solid #F2F2F2;
-    padding-bottom: 16px;
+.produto_Carrinho {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  gap: 32px;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 16px;
 }
 
 .informacoes_produto {
-    display: flex;
-    margin: 0 auto;
-    width: max-content;
-    gap: 16px;
-    align-items: flex-start;
+  display: flex;
+  margin: 0 auto;
+  width: max-content;
+  gap: 16px;
+  align-items: flex-start;
 }
 
 .informacoes_produto img {
-    border-radius: 8px;
-    object-fit: cover;
+  border-radius: 8px;
+  object-fit: cover;
 }
 .titulo {
-    display: block;
-    margin-bottom: 32px;
+  display: block;
+  margin-bottom: 32px;
 }
 
 .informacoes p {
-    color: var(--Black, #212429);
-font-family: 'Montserrat';
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 120%;
-text-transform: capitalize;
+  color: var(--Black, #212429);
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  text-transform: capitalize;
 
-margin-left: 16px;
+  margin-left: 16px;
 }
 .informacoes_produto span {
-    color: #471703;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%;
+  color: #471703;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
 }
 
 .lixeira {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .quantidade {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 308px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 308px;
 }
 
 .valor {
-    color: #000;
-    text-align: right;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
+  color: #000;
+  text-align: right;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
 }

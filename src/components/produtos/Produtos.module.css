@@ -1,17 +1,17 @@
 .produtos_container {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 .subcategorias {
-    width: 100%;
-    border-bottom: 1px solid #E6E6E6;
-    padding-bottom: 32px;
+  width: 100%;
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 32px;
 }
 
 .div_titulo {
-    display: flex;
-    width: 100%;
-    max-width: 327px;
-    margin: 0 auto;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  max-width: 327px;
+  margin: 0 auto;
+  align-items: center;
 }

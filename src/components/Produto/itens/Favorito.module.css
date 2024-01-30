@@ -1,13 +1,13 @@
 .favorito {
-    width: 30px;
-    height: 30px;
-    background: white;
-    border-radius: 33px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 8px;
-    top: 8px;
-    z-index: 1;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 33px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 8px;
+  top: 8px;
+  z-index: 1;
 }

@@ -1,11 +1,11 @@
 .section {
-    padding: 32px 24px;
+  padding: 32px 24px;
 }
-.section h2{
-    margin-bottom: 32px;
+.section h2 {
+  margin-bottom: 32px;
 }
-.produtos { 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 32px 8px ;
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 32px 8px;
 }
