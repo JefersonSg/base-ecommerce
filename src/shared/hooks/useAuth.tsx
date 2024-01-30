@@ -4,10 +4,19 @@ import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import axios from 'axios';
 
-interface dataUser {
+interface dataUserLogin {
   email: string;
   password: string;
 }
+interface dataUserRegister {
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
+  confirmpassword: string;
+}
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
 const useAuth = () => {
@@ -59,12 +68,39 @@ const useAuth = () => {
   }
 
   async function login(
-    dataUser: dataUser,
+    dataUser: dataUserLogin,
     setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
   ) {
     try {
       const data = await axios
-        .post('http://localhost:3050/user/login', dataUser)
+        .post(`${API_URL}user/login`, dataUser)
+        .then((response) => {
+          return response.data;
+        });
+      await authUser(data);
+      router.push('/');
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    } catch (error: any) {
+      setErrorMessage(false);
+      console.log(error);
+      setTimeout(() => {
+        setErrorMessage(
+          error?.response?.data?.errorsResult?.body[0] ||
+            error?.response?.data?.message
+        );
+      }, 100);
+    }
+  }
+
+  async function registerUser(
+    dataUser: dataUserRegister,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
+  ) {
+    try {
+      const data = await axios
+        .post(`${API_URL}user/create`, dataUser)
         .then((response) => {
           return response.data;
         });
@@ -83,6 +119,6 @@ const useAuth = () => {
       }, 100);
     }
   }
-  return { authenticated, logout, login };
+  return { authenticated, logout, login, registerUser };
 };
 export default useAuth;
