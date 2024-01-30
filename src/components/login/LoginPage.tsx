@@ -12,6 +12,8 @@ import styles from './Login.module.css';
 import BotaoRedondo from '@/src/components/botoes/BotaoRedondo';
 import Link from 'next/link';
 import InputFormulario from '../formulario/InputForm';
+import { useUserContext } from '@/src/shared/context';
+import { redirect } from 'next/navigation';
 
 interface Inputs {
   email: string;
@@ -35,6 +37,14 @@ const LoginPage = () => {
     false
   );
   const [loading, setLoading] = React.useState<boolean>(false);
+
+  const { authenticated } = useUserContext();
+
+  React.useLayoutEffect(() => {
+    if (authenticated) {
+      redirect('/');
+    }
+  }, [authenticated]);
 
   const {
     register,
@@ -77,40 +87,48 @@ const LoginPage = () => {
 
   return (
     <div>
-      <form
-        className={styles.form_container}
-        action="POST"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <h1 className="titulo_sessao">Entre em sua conta</h1>
+      {!authenticated ? (
+        <>
+          <form
+            className={styles.form_container}
+            action="POST"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <h1 className="titulo_sessao">Entre em sua conta</h1>
 
-        <InputFormulario
-          label="Email"
-          register={register}
-          name={'email'}
-          placeholder={'seuemail@gmail.com'}
-          type="email"
-          error={errors?.email?.message}
-        />
-        <InputFormulario
-          label="Senha"
-          name="password"
-          placeholder=""
-          type="password"
-          register={register}
-          error={errors?.password?.message}
-        />
+            <InputFormulario
+              label="Email"
+              register={register}
+              name={'email'}
+              placeholder={'seuemail@gmail.com'}
+              type="email"
+              error={errors?.email?.message}
+            />
+            <InputFormulario
+              label="Senha"
+              name="password"
+              placeholder=""
+              type="password"
+              register={register}
+              error={errors?.password?.message}
+            />
 
-        <p className={'texto_indicativo'}>
-          Não possui uma conta? <Link href={'/registrar'}>Cadastre-se</Link>
-        </p>
-        <BotaoRedondo texto="Entrar" disabled={loading} />
-      </form>
-      <span
-        className={`${styles.error_span} ${errorMessage ? styles.ativo : ''}`}
-      >
-        {errorMessage}
-      </span>
+            <p className={'texto_indicativo'}>
+              Não possui uma conta? <Link href={'/registrar'}>Cadastre-se</Link>
+            </p>
+            <BotaoRedondo texto="Entrar" disabled={loading} />
+          </form>
+          <span
+            className={`${styles.error_span} ${
+              errorMessage ? styles.ativo : ''
+            }`}
+          >
+            {errorMessage}
+          </span>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

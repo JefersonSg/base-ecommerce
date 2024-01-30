@@ -18,10 +18,9 @@ interface dataUserRegister {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-// setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
 const useAuth = () => {
   const [token, setToken] = React.useState<string | boolean>(false);
-  const [authenticated, setAuthenticated] = React.useState(true);
+  const [authenticated, setAuthenticated] = React.useState(false);
   const router = useRouter();
   const location = usePathname();
 
@@ -58,8 +57,6 @@ const useAuth = () => {
     if (typeof window !== 'undefined') {
       window.localStorage.removeItem('token');
     }
-
-    axios.defaults.headers.Authorization = '';
 
     router.push('/login');
     setTimeout(() => {
