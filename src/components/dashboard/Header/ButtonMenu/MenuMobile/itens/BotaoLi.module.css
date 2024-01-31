@@ -9,3 +9,6 @@
   font-weight: 400;
   line-height: normal;
 }
+.lista:hover .lista img {
+  fill: red;
+}

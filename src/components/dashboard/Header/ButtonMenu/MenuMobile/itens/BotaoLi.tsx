@@ -12,8 +12,8 @@ function BotaoLi({ texto, image }: { texto: string; image?: string }) {
           <Image
             alt={`imagem de ${image}`}
             src={`/header/Menu/${image}.svg`}
-            width={24}
-            height={24}
+            width={20}
+            height={20}
           />
         )}
         {texto}
