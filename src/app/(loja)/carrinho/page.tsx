@@ -3,7 +3,7 @@ import { Titulo } from '@/src/components/textos/Titulo';
 import React from 'react';
 
 import styles from './Carrinho.module.css';
-import ProdutoCarrinho from '../../components/carrinho/produto/ProdutoCarrinho';
+import ProdutoCarrinho from '@/src/components/carrinho/produto/ProdutoCarrinho';
 import EntregaCarrinho from '@/src/components/carrinho/entrega/EntregaCarrinho';
 import Finalizar from '@/src/components/carrinho/finalizar/Finalizar';
 
@@ -14,8 +14,8 @@ const page = () => {
         <div className={styles.area_textos}>
           <Breadcrumb texto="Home / Carrinho" />
           <Titulo titulo="Carrinho" />
-          <p className={styles.texto_indicativo}>
-            <p className="texto_indicativo">Você tem 2 itens no seu carrinho</p>
+          <p className={`${styles.texto_indicativo} texto_indicativo`}>
+            Você tem 2 itens no seu carrinho
           </p>
         </div>
       </div>

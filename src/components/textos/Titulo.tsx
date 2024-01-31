@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import styles from './Titulo.module.css';
 import Image from 'next/image';
