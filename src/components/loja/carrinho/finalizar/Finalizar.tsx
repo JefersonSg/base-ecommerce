@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Finalizar.module.css';
-import BotaoColorido from '../../botoes/BotaoColorido';
+import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 
 const Finalizar = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import Produto from '../../Produto/Produto';
+import Produto from '../../paginaProduto/Produto/Produto';
 import styles from './Produtos.module.css';
 
 const Produtos = () => {

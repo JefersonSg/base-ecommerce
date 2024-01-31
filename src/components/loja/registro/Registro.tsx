@@ -9,9 +9,9 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import BotaoRedondo from '@/src/components/botoes/BotaoRedondo';
+import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import Link from 'next/link';
-import InputFormulario from '../formulario/InputForm';
+import InputFormulario from '@/src/components/compartilhado/formulario/InputForm';
 import { redirect } from 'next/navigation';
 
 interface InputsRegister {

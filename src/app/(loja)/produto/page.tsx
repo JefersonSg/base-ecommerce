@@ -1,11 +1,11 @@
-import { Titulo } from '@/src/components/textos/Titulo';
+import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 import styles from './Produto.module.css';
-import Breadcrumb from '@/src/components/breadcrumb/Breadcrumb';
-import FotosProduto from '@/src/components/paginaProduto/fotosProduto/FotosProduto';
-import Interacoes from '@/src/components/paginaProduto/interacoesUser/Interacoes';
-import Detalhes from '@/src/components/paginaProduto/produtoDetalhes/Detalhes';
-import Sections from '@/src/components/paginaProduto/sections/Sections';
-import Avaliacoes from '@/src/components/paginaProduto/avaliacoes/Avaliacoes';
+import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
+import FotosProduto from '@/src/components/loja/paginaProduto/fotosProduto/FotosProduto';
+import Interacoes from '@/src/components/loja/paginaProduto/interacoesUser/Interacoes';
+import Detalhes from '@/src/components/loja/paginaProduto/produtoDetalhes/Detalhes';
+import Sections from '@/src/components/loja/paginaProduto/sections/Sections';
+import Avaliacoes from '@/src/components/loja/paginaProduto/avaliacoes/Avaliacoes';
 
 function produto() {
   return (

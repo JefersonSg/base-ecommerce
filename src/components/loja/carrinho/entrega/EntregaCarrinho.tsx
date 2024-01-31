@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Entrega.module.css';
-import BotaoRedondo from '../../botoes/BotaoRedondo';
+import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import Enderecos from './Enderecos';
 
 const EntregaCarrinho = () => {

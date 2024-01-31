@@ -1,6 +1,6 @@
-import Breadcrumb from '@/src/components/breadcrumb/Breadcrumb';
+import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
 import styles from './page.module.css';
-import Produtos from '@/src/components/produtos/Produtos';
+import Produtos from '@/src/components/loja/produtos/Produtos';
 
 function page() {
   return (

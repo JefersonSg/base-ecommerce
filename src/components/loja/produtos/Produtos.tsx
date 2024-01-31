@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Titulo } from '../textos/Titulo';
+import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 import styles from './Produtos.module.css';
 import SectionProdutos from './section/SectionProdutos';
 import SlideSubcategorias from './slide/SlideSubcategorias';
-import BotaoFiltro from '../botoes/BotaoFiltro';
+import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
 
 function Produtos({ pesquisa }: { pesquisa?: string }) {
   const [ativo, setAtivo] = React.useState(false);

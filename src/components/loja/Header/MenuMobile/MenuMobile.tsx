@@ -43,7 +43,7 @@ function MenuMobile({
           <Usuario ativo={ativo} setAtivo={setAtivo} userData={userData} />
           <UlLinksUteis />
           <div className={styles.categorias}>
-            <h3 className={styles.subtitulo}>Navegue por categorias</h3>
+            <h2 className={styles.subtitulo}>Navegue por categorias</h2>
             <LinksCategorias />
           </div>
         </nav>

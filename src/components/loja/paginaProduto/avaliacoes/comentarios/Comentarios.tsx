@@ -1,4 +1,4 @@
-import BotaoColorido from '@/src/components/botoes/BotaoColorido';
+import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 import Comentario from './Comentario';
 import styles from './Comentarios.module.css';
 

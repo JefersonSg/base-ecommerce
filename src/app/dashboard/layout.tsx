@@ -1,6 +1,6 @@
 import React from 'react';
-import { Footer } from '@/src/components/Footer/Footer';
-import { BtnZap } from '@/src/components/botoes/btnZap/BtnZap';
+import { Footer } from '@/src/components/loja/Footer/Footer';
+import { BtnZap } from '@/src/components/compartilhado/botoes/btnZap/BtnZap';
 
 import HeaderContainer from '@/src/components/dashboard/Header/HeaderContainer';
 

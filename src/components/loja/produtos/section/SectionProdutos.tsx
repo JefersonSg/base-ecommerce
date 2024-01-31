@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SectionProdutos.module.css';
 import Image from 'next/image';
 import Produtos from './Produtos';
-import BotaoColorido from '../../botoes/BotaoColorido';
+import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 
 const SectionProdutos = ({ pesquisa }: { pesquisa?: string }) => {
   return (

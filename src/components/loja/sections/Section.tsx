@@ -1,5 +1,5 @@
-import Produto from '../Produto/Produto';
-import BotaoSessao from '../botoes/BotaoSessao';
+import Produto from '../paginaProduto/Produto/Produto';
+import BotaoSessao from '@/src/components/compartilhado/botoes/BotaoSessao';
 import styles from './Section.module.css';
 
 function Section({

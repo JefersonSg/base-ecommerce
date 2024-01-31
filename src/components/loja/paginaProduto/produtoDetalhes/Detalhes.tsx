@@ -1,4 +1,4 @@
-import BotaoColorido from '../../botoes/BotaoColorido';
+import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 import Cores from './Cores';
 import styles from './Detalhes.module.css';
 import Preco from './Preco';

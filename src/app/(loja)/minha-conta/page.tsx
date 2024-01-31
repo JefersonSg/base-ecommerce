@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css';
-import BotaoSair from '@/src/components/botoes/BotaoSair';
+import BotaoSair from '@/src/components/compartilhado/botoes/BotaoSair';
 
 const page: React.FC = () => {
   return (

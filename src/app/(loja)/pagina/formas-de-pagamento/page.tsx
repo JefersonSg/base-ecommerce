@@ -1,4 +1,4 @@
-import { Titulo } from '@/src/components/textos/Titulo';
+import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 import React from 'react';
 import styles from './styles.module.css';
 import Image from 'next/image';

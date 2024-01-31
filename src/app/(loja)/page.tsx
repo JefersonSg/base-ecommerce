@@ -1,10 +1,10 @@
 import { type Metadata } from 'next';
-import Slide from '@/src/components/slideBanner/Slides';
+import Slide from '@/src/components/loja/slideBanner/Slides';
 import styles from './page.module.css';
-import SlideVantagens from '@/src/components/slideVantagens/SlideVantagens';
-import Categorias from '@/src/components/categorias/Categorias';
-import Section from '@/src/components/sections/Section';
-import SectionColecoes from '@/src/components/sections/SectionColecoes';
+import SlideVantagens from '@/src/components/loja/slideVantagens/SlideVantagens';
+import Categorias from '@/src/components/loja/categorias/Categorias';
+import Section from '@/src/components/loja/sections/Section';
+import SectionColecoes from '@/src/components/loja/sections/SectionColecoes';
 
 export const metadata: Metadata = {
   title: 'Abayomi Make Beauty',

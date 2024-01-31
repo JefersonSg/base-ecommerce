@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import styles from './Login.module.css';
-import BotaoRedondo from '@/src/components/botoes/BotaoRedondo';
+import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import Link from 'next/link';
 import InputFormulario from '../formulario/InputForm';
 import { useUserContext } from '@/src/shared/context';

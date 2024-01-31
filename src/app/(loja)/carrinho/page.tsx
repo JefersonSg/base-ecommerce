@@ -1,11 +1,11 @@
-import Breadcrumb from '@/src/components/breadcrumb/Breadcrumb';
-import { Titulo } from '@/src/components/textos/Titulo';
+import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
+import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 import React from 'react';
 
 import styles from './Carrinho.module.css';
-import ProdutoCarrinho from '@/src/components/carrinho/produto/ProdutoCarrinho';
-import EntregaCarrinho from '@/src/components/carrinho/entrega/EntregaCarrinho';
-import Finalizar from '@/src/components/carrinho/finalizar/Finalizar';
+import ProdutoCarrinho from '@/src/components/loja/carrinho/produto/ProdutoCarrinho';
+import EntregaCarrinho from '@/src/components/loja/carrinho/entrega/EntregaCarrinho';
+import Finalizar from '@/src/components/loja/carrinho/finalizar/Finalizar';
 
 const page = () => {
   return (
