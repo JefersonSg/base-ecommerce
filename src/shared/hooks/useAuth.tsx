@@ -53,6 +53,7 @@ const useAuth = () => {
   function logout() {
     setAuthenticated(false);
     Cookie.remove('auth_token');
+    Cookie.remove('isAdmin');
 
     router.push('/login');
     setTimeout(() => {
