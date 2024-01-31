@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './MenuMobile.module.css';
-import Usuario from './itens/Usuario';
 import UlLinksUteis from './itens/UlLinksUteis';
 import LinksCategorias from './itens/LinksCategorias';
 
@@ -23,14 +22,6 @@ function MenuMobile({
 }) {
   return (
     <>
-      <span
-        className={styles.fechar}
-        onClick={() => {
-          setAtivo(false);
-        }}
-      >
-        X
-      </span>
       <div
         className={styles.background}
         onClick={() => {
@@ -40,7 +31,6 @@ function MenuMobile({
 
       <div className={styles.menuMobile}>
         <nav className={styles.container}>
-          <Usuario ativo={ativo} setAtivo={setAtivo} userData={userData} />
           <UlLinksUteis />
           <div className={styles.categorias}>
             <h3 className={styles.subtitulo}>Navegue por categorias</h3>

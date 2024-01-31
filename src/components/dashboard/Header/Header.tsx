@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './Header.module.css';
 import { ButtonMenu } from './ButtonMenu/ButtonMenu';
 import Image from 'next/image';
-import MenuMobile from './ButtonMenu/MenuMobile/MenuMobile';
+import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { getUser } from '@/src/shared/api/api';
@@ -34,7 +34,7 @@ export function Header() {
     <>
       <header className={styles.header}>
         <div className={styles.container1}>
-          <ButtonMenu setAtivo={setAtivo} />
+          <ButtonMenu setAtivo={setAtivo} ativo={estaAtivo} />
         </div>
         <Link href={'/'} className={styles.logo}>
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
@@ -49,14 +49,14 @@ export function Header() {
             />
           </Link>
         </div>
-        {estaAtivo && (
-          <MenuMobile
-            userData={data?.currentUser}
-            ativo={estaAtivo}
-            setAtivo={setAtivo}
-          />
-        )}
       </header>
+      {estaAtivo && (
+        <MenuMobile
+          userData={data?.currentUser}
+          ativo={estaAtivo}
+          setAtivo={setAtivo}
+        />
+      )}
     </>
   );
 }

@@ -13,18 +13,23 @@
   cursor: pointer;
 }
 
+.mobile_button::before,
 .mobile_button::after {
-  width: 25px;
-  /* background: #6b4020; */
-  box-shadow:
-    0 6px #6b4020,
-    0 -6px #6b4020;
-}
-.mobile_button::after {
+  background: #6b4020;
   content: '';
   display: block;
+  position: relative;
   width: 26px;
   height: 2px;
   border-radius: 2px;
   transition: 0.2s;
+}
+
+.mobile_button.ativo::after {
+  transform: rotate(45deg);
+  top: -3px;
+}
+.mobile_button.ativo::before {
+  transform: rotate(-45deg);
+  top: 5px;
 }

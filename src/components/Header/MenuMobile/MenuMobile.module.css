@@ -1,13 +1,16 @@
 .menuMobile {
   display: block;
   height: 100vh;
-  width: 290px;
+  width: 70%;
+  min-width: 290px;
+  max-width: 290px;
   background-color: white;
   position: absolute;
   top: -23px;
   left: 0;
   z-index: 1000;
   animation: openMenu ease-in forwards 0.3s;
+  overflow-y: auto;
   overflow-x: hidden;
   object-fit: cover;
 }
@@ -24,8 +27,8 @@
 .fechar {
   display: block;
   font-size: 36px;
-  position: relative;
-  top: 0px;
+  position: fixed;
+  top: 40px;
   right: 50px;
   cursor: pointer;
   color: white;

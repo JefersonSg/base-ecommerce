@@ -19,7 +19,7 @@ function UlLinksUteis() {
       <BtnPedidos texto="Pedidos" link={'/dashboard/pedidos'} />
       <BtnProdutos texto="Produtos" link="/dashboard/produtos" />
       <BtnCategoria texto="Categorias" link="/dashboard/categorias" />
-      <BtnSubcategoria texto="Subcategorias" link="dashboard/subcategorias" />
+      <BtnSubcategoria texto="Subcategorias" link="/dashboard/subcategorias" />
       <BtnEstatistica texto="Estatísticas" link="/dashboard/estatisticas" />
     </ul>
   );

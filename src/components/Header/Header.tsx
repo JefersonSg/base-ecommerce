@@ -5,7 +5,7 @@ import styles from './Header.module.css';
 import { ButtonMenu } from './ButtonMenu/ButtonMenu';
 import { InfosDestaques } from './InfosDestaques';
 import Image from 'next/image';
-import MenuMobile from './ButtonMenu/MenuMobile/MenuMobile';
+import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
 import { useQuery } from '@tanstack/react-query';
@@ -61,14 +61,14 @@ export function Header() {
             />
           </Link>
         </div>
-        {estaAtivo && (
-          <MenuMobile
-            userData={data?.currentUser}
-            ativo={estaAtivo}
-            setAtivo={setAtivo}
-          />
-        )}
       </header>
+      {estaAtivo && (
+        <MenuMobile
+          userData={data?.currentUser}
+          ativo={estaAtivo}
+          setAtivo={setAtivo}
+        />
+      )}
     </>
   );
 }
