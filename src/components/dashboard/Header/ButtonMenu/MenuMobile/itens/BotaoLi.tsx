@@ -1,13 +1,34 @@
 import Image from 'next/image';
 import styles from './BotaoLi.module.css';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React from 'react';
 
-function BotaoLi({ texto, image }: { texto: string; image?: string }) {
-  const link = texto.replace(/\s+/g, '').toLowerCase();
+// interface SvgComponents extends React.SVGProps<SVGSVGElement> {
+//   fill?: string;
+//   stroke?: string;
+// }
+function BotaoLi({
+  texto,
+  image,
+  link
+}: {
+  texto: string;
+  image?: string;
+  link?: string;
+}) {
+  const linkClean = link ?? texto?.replace(/\s+/g, '')?.toLowerCase();
+  const pathname = usePathname();
+
+  const linkActiveClean = pathname?.replaceAll('/', '')?.replaceAll(' ', '');
+  const linkInsertClean = linkClean?.replaceAll('/', '')?.replaceAll(' ', '');
 
   return (
     <li className={styles.lista}>
-      <Link href={`/${link}`}>
+      <Link
+        href={`/${linkClean}`}
+        className={`${linkActiveClean === linkInsertClean ? styles.ativo : ''}`}
+      >
         {image && (
           <Image
             alt={`imagem de ${image}`}
@@ -16,6 +37,7 @@ function BotaoLi({ texto, image }: { texto: string; image?: string }) {
             height={20}
           />
         )}
+
         {texto}
       </Link>
     </li>

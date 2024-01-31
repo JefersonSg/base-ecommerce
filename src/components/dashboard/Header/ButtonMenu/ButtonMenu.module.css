@@ -15,7 +15,7 @@
 
 .mobile_button::after {
   width: 25px;
-  background: #6b4020;
+  /* background: #6b4020; */
   box-shadow:
     0 6px #6b4020,
     0 -6px #6b4020;

@@ -14,10 +14,14 @@
   font-weight: 400;
 }
 .lista .ativo {
-  color: #4a4a69;
+  color: #4a4a69!important;
     font-weight: 600;
 }
 
+.lista svg {
+  width: 20px;
+  height: 20px;
+}
 .lista:hover  a{
   color: #4a4a69;
   font-weight: 600;
@@ -25,3 +29,5 @@
 .lista:hover img{
   background: red;
 }
+
+

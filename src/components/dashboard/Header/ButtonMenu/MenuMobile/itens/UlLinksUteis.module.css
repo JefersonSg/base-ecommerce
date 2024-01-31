@@ -3,8 +3,29 @@
   flex-direction: column;
   color: #000;
   padding-left: 16px;
-  margin-top: 32px;
+  margin-top: 16px;
   gap: 16px;
   padding-bottom: 32px;
   border-bottom: 1px solid #e6e6e6;
 }
+
+.titulo_sideBar{
+  color: #7b8191;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .5px;
+    height: 15px;
+    opacity: .6;
+    white-space: nowrap;
+}
+
+.linksUteis li:hover svg path{
+  fill: #4a4a69;
+}
+
+.linksUteis li:nth-child(2):hover svg path,
+.linksUteis li:nth-child(4):hover svg path {
+  fill: none;
+  stroke: #4a4a69;
+ }

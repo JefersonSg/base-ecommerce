@@ -40,14 +40,6 @@ export function Header() {
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
         </Link>
         <div className={styles.container2}>
-          <Link href={'/favoritos'}>
-            <Image
-              alt="Imagem de coração"
-              src={'/header/icons/coracao.svg'}
-              width={24}
-              height={24}
-            />
-          </Link>
           <Link href={'/carrinho'}>
             <Image
               alt="Imagem de carrinho"
