@@ -1,0 +1,33 @@
+.input_searsh {
+    max-width: 210px;
+    min-width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #d9dee3 ;
+    box-sizing: border-box;
+    padding: 8px 16px;
+}
+
+.input_searsh:focus {
+    outline: 1px solid black;
+}
+
+.select_qnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    width: 70px;
+    height: 40px;
+    border: 1px solid #d9dee3;
+}
+.top_table {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 1px solid #d9dee3;
+}
+.itens {
+    display: flex;
+    gap: 16px;
+}

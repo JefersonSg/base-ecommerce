@@ -1,7 +1,9 @@
 import BotaoLi from './BotaoLi';
 import styles from './LinksCategorias.module.css';
+import { useUserContext } from '@/src/shared/context';
 
 function LinksCategorias() {
+  const { logout } = useUserContext();
   return (
     <div className={styles.sidebar_nav}>
       <h2 className="titulo_sideBar">Estilização</h2>
@@ -9,6 +11,9 @@ function LinksCategorias() {
       <ul className={styles.links}>
         <BotaoLi texto="Banner" />
         <BotaoLi texto="Colecoes" />
+        <button className={styles.button_sair_dashboard} onClick={logout}>
+          Sair
+        </button>
       </ul>
     </div>
   );

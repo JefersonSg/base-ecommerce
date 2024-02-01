@@ -1,7 +1,13 @@
 import React from 'react';
+import styles from './styles.module.css';
+import DataTable from '@/src/components/dashboard/categorias/DataTable';
 
 const page = () => {
-  return <div>produtos</div>;
+  return (
+    <div className={styles.categoria_container}>
+      <DataTable />
+    </div>
+  );
 };
 
 export default page;
