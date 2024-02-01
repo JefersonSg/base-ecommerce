@@ -12,7 +12,6 @@ import * as yup from 'yup';
 import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import Link from 'next/link';
 import InputFormulario from '@/src/components/compartilhado/formulario/InputForm';
-import { redirect } from 'next/navigation';
 
 interface InputsRegister {
   name: string;
@@ -53,14 +52,6 @@ const Registro = () => {
     false
   );
   const [loading, setLoading] = React.useState<boolean>(false);
-
-  const { authenticated } = useUserContext();
-
-  React.useLayoutEffect(() => {
-    if (authenticated) {
-      redirect('/');
-    }
-  }, [authenticated]);
 
   const {
     register,
@@ -114,71 +105,67 @@ const Registro = () => {
   };
   return (
     <>
-      {!authenticated && (
-        <div>
-          <form
-            action=""
-            className={styles.form_container}
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <h1 className="titulo_sessao">Crie a sua conta</h1>
+      <div>
+        <form
+          action=""
+          className={styles.form_container}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <h1 className="titulo_sessao">Crie a sua conta</h1>
 
-            <InputFormulario
-              name="name"
-              label="Nome"
-              type="text"
-              placeholder="Digite seu nome"
-              register={register}
-              error={errors?.name?.message}
-            />
-            <InputFormulario
-              name="surname"
-              label="Sobrenome"
-              type="text"
-              placeholder="Digite seu sobrenome"
-              register={register}
-              error={errors?.surname?.message}
-            />
-            <InputFormulario
-              name="email"
-              label="Email"
-              type="email"
-              placeholder={'seuemail@gmail.com'}
-              register={register}
-              error={errors?.email?.message}
-            />
-            <InputFormulario
-              name="password"
-              label="Senha"
-              type="password"
-              placeholder={''}
-              register={register}
-              error={errors?.password?.message}
-            />
-            <InputFormulario
-              name="confirmpassword"
-              label="Confirme sua senha"
-              type="password"
-              placeholder={''}
-              register={register}
-              error={errors?.confirmpassword?.message}
-            />
+          <InputFormulario
+            name="name"
+            label="Nome"
+            type="text"
+            placeholder="Digite seu nome"
+            register={register}
+            error={errors?.name?.message}
+          />
+          <InputFormulario
+            name="surname"
+            label="Sobrenome"
+            type="text"
+            placeholder="Digite seu sobrenome"
+            register={register}
+            error={errors?.surname?.message}
+          />
+          <InputFormulario
+            name="email"
+            label="Email"
+            type="email"
+            placeholder={'seuemail@gmail.com'}
+            register={register}
+            error={errors?.email?.message}
+          />
+          <InputFormulario
+            name="password"
+            label="Senha"
+            type="password"
+            placeholder={''}
+            register={register}
+            error={errors?.password?.message}
+          />
+          <InputFormulario
+            name="confirmpassword"
+            label="Confirme sua senha"
+            type="password"
+            placeholder={''}
+            register={register}
+            error={errors?.confirmpassword?.message}
+          />
 
-            <p className={'texto_indicativo'}>
-              Já possui uma conta? <Link href={'/login'}>Faça login</Link>
-            </p>
+          <p className={'texto_indicativo'}>
+            Já possui uma conta? <Link href={'/login'}>Faça login</Link>
+          </p>
 
-            <BotaoRedondo texto="Entrar" disabled={loading} />
-          </form>
-          <span
-            className={`${styles.error_span} ${
-              errorMessage ? styles.ativo : ''
-            }`}
-          >
-            {errorMessage}
-          </span>
-        </div>
-      )}
+          <BotaoRedondo texto="Entrar" disabled={loading} />
+        </form>
+        <span
+          className={`${styles.error_span} ${errorMessage ? styles.ativo : ''}`}
+        >
+          {errorMessage}
+        </span>
+      </div>
     </>
   );
 };

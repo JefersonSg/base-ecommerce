@@ -39,6 +39,8 @@ img {
   --cor-primaria: #471703;
   --cor-secundaria: #996557;
   --cor-terciaria: #3a292f;
+
+  --color-border: #d9dee3;
 }
 
 .titulo_sessao {

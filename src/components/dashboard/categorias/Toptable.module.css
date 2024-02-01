@@ -19,7 +19,7 @@
     border-radius: 8px;
     width: 70px;
     height: 40px;
-    border: 1px solid #d9dee3;
+    border: 1px solid var(--color-border);
 }
 .top_table {
     display: flex;
