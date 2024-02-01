@@ -60,6 +60,17 @@ img {
   line-height: 115%;
 }
 
+.titulo_sideBar{
+  color: #7b8191;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .5px;
+    height: 15px;
+    opacity: .6;
+    white-space: nowrap;
+}
+
 .subtitulo {
   color: #000;
   font-family: Montserrat;

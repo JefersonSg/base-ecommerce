@@ -13,7 +13,7 @@ import BtnEstatistica from './Botoes/BtnEstatistica';
 function UlLinksUteis() {
   return (
     <ul className={styles.linksUteis}>
-      <h2 className={styles.titulo_sideBar}>Main</h2>
+      <h2 className={'titulo_sideBar'}>Main</h2>
       <BtnDashboard texto="Home dashboard" link="/dashboard" />
       <BtnHome texto="Retornar a loja" link="/" />
       <BtnPedidos texto="Pedidos" link={'/dashboard/pedidos'} />
