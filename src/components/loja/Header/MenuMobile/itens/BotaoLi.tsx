@@ -2,9 +2,15 @@ import Image from 'next/image';
 import styles from './BotaoLi.module.css';
 import Link from 'next/link';
 
-function BotaoLi({ texto, image }: { texto: string; image?: string }) {
-  const link = texto.replace(/\s+/g, '').toLowerCase();
-
+function BotaoLi({
+  texto,
+  image,
+  link
+}: {
+  texto: string;
+  image?: string;
+  link: string;
+}) {
   return (
     <li className={styles.lista}>
       <Link href={`/${link}`}>

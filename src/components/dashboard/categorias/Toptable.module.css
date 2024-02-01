@@ -1,3 +1,12 @@
+.top_table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 1px solid #d9dee3;
+    gap: 16px;
+}
+
 .input_searsh {
     max-width: 210px;
     min-width: 100px;
@@ -11,7 +20,10 @@
 .input_searsh:focus {
     outline: 1px solid black;
 }
-
+.itens {
+    display: flex;
+    gap: 16px;
+}
 .select_qnt {
     display: flex;
     justify-content: center;
@@ -21,13 +33,4 @@
     height: 40px;
     border: 1px solid var(--color-border);
 }
-.top_table {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 32px;
-    border-bottom: 1px solid #d9dee3;
-}
-.itens {
-    display: flex;
-    gap: 16px;
-}
+

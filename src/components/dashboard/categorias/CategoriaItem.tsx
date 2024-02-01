@@ -14,8 +14,10 @@ const CategoriaItem = () => {
         />
       </div>
       <div className={styles.infos}>
-        <h3 className={styles.name}>Batom</h3>
-        <p className={styles.description}>Encontre os melhores batons </p>
+        <h3 className={`name ${styles.name}`}>Batom</h3>
+        <p className={`description ${styles.description}`}>
+          Encontre os melhores batons{' '}
+        </p>
       </div>
       <div className={styles.total_products_register}>
         <h3 className={styles.products_register}>75</h3>

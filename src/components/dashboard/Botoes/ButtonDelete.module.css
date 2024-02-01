@@ -1,19 +1,20 @@
-.btn_add {
+.btn_rmv{
     max-width: 160px;
     min-width: 100px;
     height: 40px;
-    background-color: #696cff;
+    background-color: #ffe0db;
     border: #696cff;
     border-radius: 8px;
-    box-shadow: 0 0.125rem 0.25rem 0 rgba(105,108,255,.4);
-    color: white;
+    box-shadow: 0 0.125rem 0.25rem 0 #ffe0db;
+    color: #ff3e1d !important;
     cursor: pointer;
     font-family: 'Public Sans', sans-serif;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
-.btn_add:hover {
-    outline: 2px solid rgba(105,108,255,.7);
+.btn_rmv:hover {
+    outline: 2px solid #ff3e1d;
+    font-weight: 700;
 }
 
 @media (max-width:440px) {

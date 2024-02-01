@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@200;300;400;600;700&display=swap');
+
+
+.name {
+    font-family: 'Public Sans', sans-serif;
+    font-style:'normal';
+    font-size: 15px ;
+    font-weight: 500;
+    line-height: 23px;
+    color: #697a8d;
+}
+.description {
+    display: none;
+    color: #a1acb8;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+}

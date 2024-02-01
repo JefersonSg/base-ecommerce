@@ -17,3 +17,16 @@
   display: flex;
   gap: 16px;
 }
+
+.iconSetting {
+  animation: 10s rotate  forwards infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

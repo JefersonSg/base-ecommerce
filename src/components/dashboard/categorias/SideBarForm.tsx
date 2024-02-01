@@ -9,6 +9,7 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import ButtonAdd from '../Botoes/ButtonAdd';
+import ButtonDelete from '../Botoes/ButtonDelete';
 
 interface Inputs {
   title: string;
@@ -23,17 +24,20 @@ const schema = yup.object({
     .required('É necessário preencher o campo de slogan'),
   image: yup
     .mixed()
-    .required('Por favor, selecione a imagem')
+    .test('length', 'Por favor, selecione a imagem', (value: any) => {
+      return !!value[0];
+    })
     .test('fileSize', 'o arquivo é muito grande', (value: any) => {
-      return value && value[0]?.size <= 1024 * 1024;
+      console.log(value[0]);
+      return value[0] ? value[0]?.size <= 1024 * 1024 : true;
     })
     .test(
       'fileType',
       'o arquivo não é suportado, use uma foto PNG ou JPG',
       (value: any) => {
         return (
-          (value && value[0]?.type === 'image/png') ||
-          (value && value[0]?.type === 'image/jpg')
+          (value[0] ? value[0]?.type === 'image/png' : true) ||
+          (value[0] ? value[0]?.type === 'image/jpg' : true)
         );
       }
     )
@@ -93,7 +97,7 @@ const SideBarForm = ({
 
         <div className={styles.botoes}>
           <ButtonAdd text="Add" />
-          <ButtonAdd text="Apagar" />
+          <ButtonDelete text="Apagar" />
         </div>
       </form>
       <span

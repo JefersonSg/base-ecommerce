@@ -11,11 +11,17 @@ function UlLinksUteis() {
   }, []);
   return (
     <ul className={styles.linksUteis}>
-      {isAdmin && <BotaoLi texto="Dashboard" image="dashboard" />}
-      <BotaoLi texto="Atendimento" image="chat" />
-      <BotaoLi texto="Rastrear pedido" image="caminhao" />
-      <BotaoLi texto="Meus Pedidos" image="caixa" />
-      <BotaoLi texto="Minha conta" image="usuario" />
+      {isAdmin && (
+        <BotaoLi texto="Dashboard" image="dashboard" link="dashboard" />
+      )}
+      <BotaoLi texto="Atendimento" image="chat" link="atendimento" />
+      <BotaoLi
+        texto="Rastrear pedido"
+        image="caminhao"
+        link="rastrear-pedido"
+      />
+      <BotaoLi texto="Meus Pedidos" image="caixa" link="meus-pedidos" />
+      <BotaoLi texto="Minha conta" image="usuario" link="minha-conta" />
     </ul>
   );
 }

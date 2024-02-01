@@ -40,12 +40,13 @@ export function Header() {
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
         </Link>
         <div className={styles.container2}>
-          <Link href={'/carrinho'}>
+          <Link href={'/dashboard/settings'}>
             <Image
+              className={styles.iconSetting}
               alt="Imagem de carrinho"
-              src={'/header/icons/carrinho.svg'}
-              width={24}
-              height={24}
+              src={'/header/icons/config.svg'}
+              width={20}
+              height={20}
             />
           </Link>
         </div>
