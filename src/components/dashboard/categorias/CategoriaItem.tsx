@@ -20,7 +20,24 @@ const CategoriaItem = () => {
         </p>
       </div>
       <div className={styles.total_products_register}>
-        <h3 className={styles.products_register}>75</h3>
+        <h3>75</h3>
+      </div>
+      <div className={styles.total_products_value}>
+        <h3>R$2479,23</h3>
+      </div>
+      <div className={styles.actions}>
+        <Image
+          alt="Lixeira para deletar a categoria"
+          src={'/dashboard/lixeira.svg'}
+          width={16}
+          height={18}
+        />
+        <Image
+          alt="Lixeira para deletar a categoria"
+          src={'/dashboard/edit.svg'}
+          width={16}
+          height={18}
+        />
       </div>
     </div>
   );

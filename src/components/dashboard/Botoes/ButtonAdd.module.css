@@ -15,9 +15,3 @@
 .btn_add:hover {
     outline: 2px solid rgba(105,108,255,.7);
 }
-
-@media (max-width:440px) {
-    .btn_add {
-        font-size: 10px;
-    }
-}

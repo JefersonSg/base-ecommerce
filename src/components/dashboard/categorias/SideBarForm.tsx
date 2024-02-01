@@ -24,12 +24,9 @@ const schema = yup.object({
     .required('É necessário preencher o campo de slogan'),
   image: yup
     .mixed()
+    .required()
     .test('length', 'Por favor, selecione a imagem', (value: any) => {
       return !!value[0];
-    })
-    .test('fileSize', 'o arquivo é muito grande', (value: any) => {
-      console.log(value[0]);
-      return value[0] ? value[0]?.size <= 1024 * 1024 : true;
     })
     .test(
       'fileType',
@@ -41,6 +38,10 @@ const schema = yup.object({
         );
       }
     )
+    .test('fileSize', 'o arquivo é muito grande', (value: any) => {
+      console.log(value[0]);
+      return value[0] ? value[0]?.size <= 1024 * 1024 : true;
+    })
 });
 
 const SideBarForm = ({
@@ -97,7 +98,7 @@ const SideBarForm = ({
 
         <div className={styles.botoes}>
           <ButtonAdd text="Add" />
-          <ButtonDelete text="Apagar" />
+          <ButtonDelete text="Apagar" setAtivo={setAtivo} />
         </div>
       </form>
       <span
