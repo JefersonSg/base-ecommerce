@@ -19,12 +19,46 @@
 .input::placeholder {
   color: #ccd;
 }
-.input:focus,
-.input:hover {
+
+.input[type=file]  {
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+  width: 342px;
+}
+.input[type=file]::-webkit-file-upload-button {
+  height: 42px;
+  border: none;
+  border-right: 1px solid var(--color-border);
+  cursor: pointer;
+}
+
+.textArea {
+  height: 100px;
+  width: 236px;
+  resize: none;
+  padding: 8px ;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.input[type=text]:focus,
+.input[type=text]:hover {
   outline: none;
   border-color: var(--cor-primaria);
   background-color: white;
   box-shadow: 0 0 0 3px #996557;
+}
+.input[type=file] {
+  outline: none !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 0 3px transparent !important;
+  background-color: #e3e3e3!important;
+}
+.input[type=file]::-webkit-file-upload-button:hover,
+.typeFile:hover > .input[type=file]::-webkit-file-upload-button{
+  background-color: #e3e3e3 !important;
+
 }
 
 .label {

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Toptable.module.css';
 import ButtonAdd from '../Botoes/ButtonAdd';
+import CategoriaItem from './CategoriaItem';
 
 const TopTable = ({
   setAtivo
@@ -23,6 +24,7 @@ const TopTable = ({
           }}
         >
           <ButtonAdd text="+ Adicionar Categoria" />
+          <CategoriaItem />
         </div>
       </div>
     </div>

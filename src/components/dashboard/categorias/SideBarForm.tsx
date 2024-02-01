@@ -12,18 +12,31 @@ import ButtonAdd from '../Botoes/ButtonAdd';
 
 interface Inputs {
   title: string;
-  slogan: string;
+  description: string;
+  image: any;
 }
 
 const schema = yup.object({
-  title: yup
+  title: yup.string().required('É necessário preencher o campo de Titulo'),
+  description: yup
     .string()
-    .min(3, 'É necessário preencher um email válido')
-    .required('É necessário preencher o campo de Email'),
-  slogan: yup
-    .string()
-    .required('É necessário preencher o campo de senha')
-    .min(8, 'A senha deve ter no mínimo 8 caracteres')
+    .required('É necessário preencher o campo de slogan'),
+  image: yup
+    .mixed()
+    .required('Por favor, selecione a imagem')
+    .test('fileSize', 'o arquivo é muito grande', (value: any) => {
+      return value && value[0]?.size <= 1024 * 1024;
+    })
+    .test(
+      'fileType',
+      'o arquivo não é suportado, use uma foto PNG ou JPG',
+      (value: any) => {
+        return (
+          (value && value[0]?.type === 'image/png') ||
+          (value && value[0]?.type === 'image/jpg')
+        );
+      }
+    )
 });
 
 const SideBarForm = ({
@@ -35,17 +48,18 @@ const SideBarForm = ({
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm({
+  } = useForm<Inputs>({
     resolver: yupResolver(schema)
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const dataUser = {
+    const dataCategory = {
       title: data.title,
-      slogan: data.slogan
+      image: data.image,
+      description: data.description
     };
 
-    console.log(dataUser);
+    console.log(dataCategory);
   };
 
   return (
@@ -61,14 +75,26 @@ const SideBarForm = ({
           error={errors?.title?.message}
         />
         <InputFormulario
-          name="slogan"
-          label="Slogan"
+          name="description"
+          label="Descrição"
           placeholder="Digite um texto descritivo"
           register={register}
           type="text"
-          error={errors?.slogan?.message}
+          error={errors?.description?.message}
         />
-        <ButtonAdd text="Add" />
+        <InputFormulario
+          name="image"
+          label="Imagem"
+          placeholder=""
+          register={register}
+          type="file"
+          error={errors?.image?.message}
+        />
+
+        <div className={styles.botoes}>
+          <ButtonAdd text="Add" />
+          <ButtonAdd text="Apagar" />
+        </div>
       </form>
       <span
         className={styles.fechar}

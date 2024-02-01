@@ -14,19 +14,25 @@ const InputFormulario = ({
   type: string;
   register: any;
   placeholder: string;
-  error: string | undefined;
+  error?: string | any;
 }) => {
   return (
-    <div className={styles.divInput}>
+    <div className={`${styles.divInput}`}>
       <label htmlFor={name}>{label}</label>
-      <input
-        className={styles.input}
-        type={type}
-        id={name}
-        placeholder={placeholder}
-        {...register(name)}
-      />
-      <span className={styles.error}>{error}</span>
+      {type ? (
+        <input
+          className={styles.input}
+          type={type}
+          id={name}
+          placeholder={placeholder}
+          {...register(name)}
+        />
+      ) : (
+        <textarea className={styles.textArea}></textarea>
+      )}
+      <span className={styles.error}>
+        {error && typeof error === 'string' && error}
+      </span>
     </div>
   );
 };
