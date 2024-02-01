@@ -1,0 +1,16 @@
+.textInfos_container {
+    padding:   8px 16px;
+    box-sizing: border-box;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 8px minmax(100px,1fr) 200px;
+    border-bottom: 1px solid var(--color-border);
+    gap: 8px;
+    box-sizing: border-box;
+
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #566a7f;
+    cursor: pointer;
+}
