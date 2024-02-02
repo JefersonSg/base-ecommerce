@@ -1,8 +1,7 @@
-'use client';
 import Cookie from 'js-cookie';
 
 import React from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 interface dataUserLogin {
@@ -23,42 +22,32 @@ const useAuth = () => {
   const [token, setToken] = React.useState<string | boolean>(false);
   const [authenticated, setAuthenticated] = React.useState(false);
   const router = useRouter();
-  const location = usePathname();
 
   async function authUser(data: { token: string }) {
     setAuthenticated(true);
 
     Cookie.set('auth_token', data.token);
     setToken(data.token);
-
     router.push('/');
+
+    window.location.reload();
   }
 
   React.useEffect(() => {
-    // Verificar se estamos no ambiente do navegador antes de acessar localStorage
-    const authToken = Cookie.get('auth_token');
-    setToken(authToken ?? false);
-  }, []);
-
-  React.useEffect(() => {
-    if (token) {
-      axios.defaults.headers.Authorization = `Bearer ${token}`;
+    if (!token) {
+      const authToken = Cookie.get('auth_token') ?? false;
       setAuthenticated(true);
-      return;
+      setToken(authToken);
     }
-
-    setAuthenticated(false);
-  }, [location, token]);
+  }, [token]);
 
   function logout() {
     setAuthenticated(false);
     Cookie.remove('auth_token');
     Cookie.remove('isAdmin');
 
-    router.push('/login');
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    router.push('/');
+    window.location.reload();
   }
 
   async function login(
@@ -66,16 +55,9 @@ const useAuth = () => {
     setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
   ) {
     try {
-      const data = await axios
-        .post(`${API_URL}user/login`, dataUser)
-        .then((response) => {
-          return response.data;
-        });
-      await authUser(data);
-      router.push('/');
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
+      const data = await axios.post(`${API_URL}user/login`, dataUser);
+
+      await authUser(data.data);
     } catch (error: any) {
       setErrorMessage(false);
       console.log(error);
@@ -93,16 +75,10 @@ const useAuth = () => {
     setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
   ) {
     try {
-      const data = await axios
-        .post(`${API_URL}user/create`, dataUser)
-        .then((response) => {
-          return response.data;
-        });
-      await authUser(data);
+      const data = await axios.post(`${API_URL}user/create`, dataUser);
+
+      await authUser(data.data);
       router.push('/');
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
     } catch (err: any) {
       setErrorMessage(false);
       setTimeout(() => {

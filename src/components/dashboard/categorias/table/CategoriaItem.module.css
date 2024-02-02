@@ -15,7 +15,11 @@
   cursor: pointer;
   height: max-content;
   border-radius: 8px;
+  background-color: #ebeef0;
+  width: 40px;
+  height: 40px;
 }
+
 
 .infos {
   display: flex;

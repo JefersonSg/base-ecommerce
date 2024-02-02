@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-function isAdmin(response: any) {
+async function isAdmin(response: any) {
   const IdAdmin = process.env.NEXT_PUBLIC_ADMIN_ID;
   if (IdAdmin === response?.currentUser?._id) {
     return Cookies.set('isAdmin', 'true');
@@ -25,7 +25,7 @@ export const getUser = async () => {
   try {
     const response = await axios.get(`${API}user/get`, config);
 
-    isAdmin(response.data);
+    await isAdmin(response.data);
     return response.data;
   } catch (error) {
     console.log(error);

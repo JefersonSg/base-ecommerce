@@ -9,7 +9,7 @@ export function MetodoPagamentos({ img }: { img: string[] }) {
           <Image
             key={image}
             alt={image}
-            src={`footer/MetodosPagamentos/${image}.svg`}
+            src={`/footer/MetodosPagamentos/${image}.svg`}
             width={66}
             height={21}
           />

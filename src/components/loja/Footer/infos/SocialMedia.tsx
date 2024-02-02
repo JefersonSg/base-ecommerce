@@ -21,7 +21,7 @@ export function SocialMedia({ img }: { img: string[] }) {
                 >
                   <Image
                     alt={image}
-                    src={`footer/RedesSociais/${image}.svg`}
+                    src={`/footer/RedesSociais/${image}.svg`}
                     width={24}
                     height={24}
                   />
