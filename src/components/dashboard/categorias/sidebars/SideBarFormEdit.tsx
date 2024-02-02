@@ -45,8 +45,14 @@ const schema = yup.object({
 });
 
 const SideBarFormEdit = ({
+  title,
+  description,
+  image,
   setAtivo
 }: {
+  title: string;
+  description: string;
+  image: string[];
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const {
@@ -76,6 +82,7 @@ const SideBarFormEdit = ({
           label="Titulo"
           placeholder="Digite o titulo da categoria"
           register={register}
+          defaultValue={title}
           type="text"
           error={errors?.title?.message}
         />
@@ -84,6 +91,7 @@ const SideBarFormEdit = ({
           label="Descrição"
           placeholder="Digite um texto descritivo"
           register={register}
+          defaultValue={description}
           type="text"
           error={errors?.description?.message}
         />
@@ -97,8 +105,8 @@ const SideBarFormEdit = ({
         />
 
         <div className={styles.botoes}>
-          <ButtonAdd text="Add" />
-          <ButtonDelete text="Apagar" setAtivo={setAtivo} />
+          <ButtonAdd text="Salvar" />
+          <ButtonDelete text="Apagar Edições" setAtivo={setAtivo} />
         </div>
       </form>
       <span

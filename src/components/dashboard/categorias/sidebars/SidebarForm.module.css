@@ -11,6 +11,7 @@
     top: 0px;
     background: white;
     z-index: 1000;
+    animation: entrada ease-in .3s forwards;
 }
 
 .sidebar_form h2 {
@@ -53,4 +54,13 @@
 .botoes {
     display: flex;
     gap: 32px;
+}
+
+@keyframes entrada {
+    from {
+        transform: translate3d(+400px,0,0);
+    }
+    to {
+        transform: translate3d(0px,0,0);
+    }
 }

@@ -2,7 +2,11 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './CategoriaItem.module.css';
 
-const CategoriaItem = () => {
+const CategoriaItem = ({
+  setAtivoEdit
+}: {
+  setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
     <div className={styles.categoria_item}>
       <div className={styles.div_img}>
@@ -37,6 +41,9 @@ const CategoriaItem = () => {
           src={'/dashboard/edit.svg'}
           width={16}
           height={18}
+          onClick={() => {
+            setAtivoEdit(true);
+          }}
         />
       </div>
     </div>

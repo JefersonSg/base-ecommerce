@@ -7,12 +7,14 @@ const InputFormulario = ({
   type,
   register,
   placeholder,
+  defaultValue,
   error
 }: {
   label: string;
   name: string;
   type: string;
   register: any;
+  defaultValue?: any;
   placeholder: string;
   error?: string | any;
 }) => {
@@ -25,6 +27,7 @@ const InputFormulario = ({
           type={type}
           id={name}
           placeholder={placeholder}
+          defaultValue={defaultValue || ''}
           {...register(name)}
         />
       ) : (
