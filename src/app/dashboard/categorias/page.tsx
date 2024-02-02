@@ -5,7 +5,7 @@ import BreadcrumbDashboard from '@/src/components/dashboard/breadcrumb/Breadcrum
 
 const page = () => {
   return (
-    <div className={styles.categoria_container}>
+    <div className={`container_dashboard ${styles.categoria_container}`}>
       <BreadcrumbDashboard />
       <DataTable />
     </div>

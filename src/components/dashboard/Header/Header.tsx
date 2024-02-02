@@ -8,15 +8,18 @@ import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { getUser } from '@/src/shared/api/api';
+import useMedia from '@/src/shared/hooks/useMedia';
+import MenuSideBar from './MenuMobile/MenuSideBar';
 
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
-  // const [userData, setUserData] = React.useState<User | null>(null);
 
   const { data } = useQuery({
     queryKey: ['todos'],
     queryFn: getUser
   });
+
+  const mobile = useMedia('(max-width: 64rem)');
 
   React.useEffect(() => {
     if (estaAtivo) {
@@ -33,12 +36,22 @@ export function Header() {
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.container1}>
-          <ButtonMenu setAtivo={setAtivo} ativo={estaAtivo} />
-        </div>
-        <Link href={'/'} className={styles.logo}>
-          <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
-        </Link>
+        {mobile && (
+          <>
+            <div className={styles.container1}>
+              <ButtonMenu setAtivo={setAtivo} ativo={estaAtivo} />
+            </div>
+
+            <Link href={'/'} className={styles.logo}>
+              <Image
+                alt="Logo"
+                src={'/header/Logo.svg'}
+                width={60}
+                height={42}
+              />
+            </Link>
+          </>
+        )}
         <div className={styles.container2}>
           <Link href={'/dashboard/settings'}>
             <Image
@@ -58,6 +71,7 @@ export function Header() {
           setAtivo={setAtivo}
         />
       )}
+      {!mobile && <MenuSideBar />}
     </>
   );
 }

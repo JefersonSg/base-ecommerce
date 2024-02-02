@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './MenuMobile.module.css';
 import UlLinksUteis from './itens/UlLinksUteis';
 import LinksCategorias from './itens/LinksCategorias';
+import useMedia from '@/src/shared/hooks/useMedia';
 
 interface User {
   _id: string;
@@ -20,14 +21,18 @@ function MenuMobile({
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   userData: User | null;
 }) {
+  const mobile = useMedia('(max-width: 64rem)');
+
   return (
     <>
-      <div
-        className={styles.background}
-        onClick={() => {
-          setAtivo(false);
-        }}
-      ></div>
+      {mobile && (
+        <div
+          className={styles.background}
+          onClick={() => {
+            setAtivo(false);
+          }}
+        ></div>
+      )}
 
       <div className={styles.menuMobile}>
         <nav className={styles.container}>
