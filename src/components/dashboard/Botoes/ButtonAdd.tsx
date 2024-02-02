@@ -8,16 +8,7 @@ const ButtonAdd = ({
   text: string;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  return (
-    <button
-      className={styles.btn_add}
-      onClick={() => {
-        setAtivo(false);
-      }}
-    >
-      {text}
-    </button>
-  );
+  return <button className={styles.btn_add}>{text}</button>;
 };
 
 export default ButtonAdd;
