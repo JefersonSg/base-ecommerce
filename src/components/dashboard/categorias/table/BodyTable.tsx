@@ -4,20 +4,43 @@ import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 
 const BodyTable = ({
-  setAtivoEdit
+  setAtivoEdit,
+  setAtivoDelete
 }: {
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <div className={styles.BodyTable}>
       <TextInfos />
-      <CategoriaItem setAtivoEdit={setAtivoEdit} />
-      <CategoriaItem setAtivoEdit={setAtivoEdit} />
-      <CategoriaItem setAtivoEdit={setAtivoEdit} />
-      <CategoriaItem setAtivoEdit={setAtivoEdit} />
-      <CategoriaItem setAtivoEdit={setAtivoEdit} />
-      <CategoriaItem setAtivoEdit={setAtivoEdit} />
-      <CategoriaItem setAtivoEdit={setAtivoEdit} />
+      <CategoriaItem
+        setAtivoEdit={setAtivoEdit}
+        setAtivoDelete={setAtivoDelete}
+      />
+      <CategoriaItem
+        setAtivoEdit={setAtivoEdit}
+        setAtivoDelete={setAtivoDelete}
+      />
+      <CategoriaItem
+        setAtivoEdit={setAtivoEdit}
+        setAtivoDelete={setAtivoDelete}
+      />
+      <CategoriaItem
+        setAtivoEdit={setAtivoEdit}
+        setAtivoDelete={setAtivoDelete}
+      />
+      <CategoriaItem
+        setAtivoEdit={setAtivoEdit}
+        setAtivoDelete={setAtivoDelete}
+      />
+      <CategoriaItem
+        setAtivoEdit={setAtivoEdit}
+        setAtivoDelete={setAtivoDelete}
+      />
+      <CategoriaItem
+        setAtivoEdit={setAtivoEdit}
+        setAtivoDelete={setAtivoDelete}
+      />
     </div>
   );
 };

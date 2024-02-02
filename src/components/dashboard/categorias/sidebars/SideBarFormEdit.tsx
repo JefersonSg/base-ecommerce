@@ -105,7 +105,7 @@ const SideBarFormEdit = ({
         />
 
         <div className={styles.botoes}>
-          <ButtonAdd text="Salvar" />
+          <ButtonAdd text="Salvar" setAtivo={setAtivo} />
           <ButtonDelete text="Apagar Edições" setAtivo={setAtivo} />
         </div>
       </form>

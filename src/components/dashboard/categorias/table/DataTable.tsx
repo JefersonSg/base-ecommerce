@@ -7,10 +7,14 @@ import SideBarFormCreate from '../sidebars/SideBarFormCreate';
 import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
+import ButtonDelete from '../../Botoes/ButtonDelete';
+import ButtonAdd from '../../Botoes/ButtonAdd';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
+  const [ativoDelete, setAtivoDelete] = React.useState(false);
+
   return (
     <>
       {ativoCreate && <SideBarFormCreate setAtivo={setAtivoCreate} />}
@@ -24,19 +28,33 @@ const DataTable = () => {
       )}
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
-        <BodyTable setAtivoEdit={setAtivoEdit} />
+        <BodyTable
+          setAtivoEdit={setAtivoEdit}
+          setAtivoDelete={setAtivoDelete}
+        />
         <RodapeTable />
       </div>
       {ativoCreate ||
-        (ativoEdit && (
+        ativoEdit ||
+        (ativoDelete && (
           <div
             className={styles.background}
             onClick={() => {
               setAtivoCreate(false);
               setAtivoEdit(false);
+              setAtivoDelete(false);
             }}
           ></div>
         ))}
+      {ativoDelete && (
+        <div className={styles.delete_categoria}>
+          <h2>Deseja mesmo deletar essa categoria?</h2>
+          <div className={styles.botoes}>
+            <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
+            <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
+          </div>
+        </div>
+      )}
     </>
   );
 };

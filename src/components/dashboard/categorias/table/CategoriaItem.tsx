@@ -3,9 +3,11 @@ import React from 'react';
 import styles from './CategoriaItem.module.css';
 
 const CategoriaItem = ({
-  setAtivoEdit
+  setAtivoEdit,
+  setAtivoDelete
 }: {
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <div className={styles.categoria_item}>
@@ -35,6 +37,9 @@ const CategoriaItem = ({
           src={'/dashboard/lixeira.svg'}
           width={16}
           height={18}
+          onClick={() => {
+            setAtivoDelete(true);
+          }}
         />
         <Image
           alt="Lixeira para deletar a categoria"

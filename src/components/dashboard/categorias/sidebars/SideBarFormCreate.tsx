@@ -97,7 +97,7 @@ const SideBarFormCreate = ({
         />
 
         <div className={styles.botoes}>
-          <ButtonAdd text="Add" />
+          <ButtonAdd text="Add" setAtivo={setAtivo} />
           <ButtonDelete text="Apagar" setAtivo={setAtivo} />
         </div>
       </form>
