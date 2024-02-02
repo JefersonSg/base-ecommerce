@@ -9,9 +9,7 @@
   border-bottom: 1px solid #e6e6e6;
 }
 
-
-
-.linksUteis li:hover svg path{
+.linksUteis li:hover svg path {
   fill: #4a4a69;
 }
 
@@ -19,4 +17,4 @@
 .linksUteis li:nth-child(4):hover svg path {
   fill: none;
   stroke: #4a4a69;
- }
+}

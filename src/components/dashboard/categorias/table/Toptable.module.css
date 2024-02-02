@@ -1,43 +1,42 @@
 .top_table {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 16px 32px;
-    border-bottom: 1px solid #d9dee3;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid #d9dee3;
+  gap: 16px;
 }
 
 .input_searsh {
-    max-width: 210px;
-    min-width: 100px;
-    height: 40px;
-    border-radius: 6px;
-    border: 1px solid #d9dee3 ;
-    box-sizing: border-box;
-    padding: 8px 16px;
+  max-width: 210px;
+  min-width: 100px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid #d9dee3;
+  box-sizing: border-box;
+  padding: 8px 16px;
 }
 
 .input_searsh:focus {
-    outline: 1px solid black;
+  outline: 1px solid black;
 }
 .itens {
-    display: flex;
-    gap: 16px;
-    position: relative;
+  display: flex;
+  gap: 16px;
+  position: relative;
 }
 .quantidade_views {
-    width: 70px;
-    padding: 0 0 0 20px;
-    font-size: 14px;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    cursor: pointer;
-    color: #697a8c;
+  width: 70px;
+  padding: 0 0 0 20px;
+  font-size: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  color: #697a8c;
 }
 
-
-@media (min-width:576px) {
-    .top_table {
-        flex-direction: row;
-    }
+@media (min-width: 576px) {
+  .top_table {
+    flex-direction: row;
+  }
 }

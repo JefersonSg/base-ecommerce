@@ -1,17 +1,17 @@
 .btn_add {
-    max-width: 160px;
-    min-width: 100px;
-    height: 40px;
-    background-color: #696cff;
-    border: #696cff;
-    border-radius: 8px;
-    box-shadow: 0 0.125rem 0.25rem 0 rgba(105,108,255,.4);
-    color: white;
-    cursor: pointer;
-    font-family: 'Public Sans', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+  max-width: 160px;
+  min-width: 100px;
+  height: 40px;
+  background-color: #696cff;
+  border: #696cff;
+  border-radius: 8px;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
+  color: white;
+  cursor: pointer;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 .btn_add:hover {
-    outline: 2px solid rgba(105,108,255,.7);
+  outline: 2px solid rgba(105, 108, 255, 0.7);
 }

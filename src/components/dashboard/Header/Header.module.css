@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding: 0 24px;
   box-sizing: border-box;
-  box-shadow: 0 7px 26px rgba(154,154,204,.1);
+  box-shadow: 0 7px 26px rgba(154, 154, 204, 0.1);
   position: relative;
   z-index: 999;
 }
@@ -19,7 +19,7 @@
 }
 
 .iconSetting {
-  animation: 7s rotate linear forwards infinite ;
+  animation: 7s rotate linear forwards infinite;
 }
 
 @keyframes rotate {

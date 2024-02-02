@@ -1,77 +1,76 @@
 .categoria_item {
-    display: grid;
-    grid-template-columns: 40px minmax(100px,1fr) max-content;
-    height: 66px;
-    width: 100%;
-    padding: 0 32px;
-    border-bottom: 1px solid var(--color-border);
-    align-items: center;
-    box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 40px minmax(100px, 1fr) max-content;
+  height: 66px;
+  width: 100%;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .div_img {
-    width: max-content;
-    border: 1px solid var(--color-border);
-    cursor: pointer;
-    height: max-content;
-    border-radius: 8px;
+  width: max-content;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  height: max-content;
+  border-radius: 8px;
 }
 
 .infos {
-    display: flex;
-    flex-direction: column;
-    min-width: 100px;
-    padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  padding-left: 8px;
 }
 .total_products_register {
-    display: none;
+  display: none;
 }
 .total_products_value h3,
 .total_products_register h3 {
-    font-size: 15px;
-    font-weight: 400;
-    color: #697a8d;
-    line-height: 23px;
-    text-align: end;
+  font-size: 15px;
+  font-weight: 400;
+  color: #697a8d;
+  line-height: 23px;
+  text-align: end;
 }
 .total_products_value {
-    display: none;
+  display: none;
 }
 .description {
-    display: none;
+  display: none;
 }
 
 .actions {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-end;
 }
 .actions img {
-    padding: 4px;
-    cursor: pointer;
+  padding: 4px;
+  cursor: pointer;
 }
 
-@media (min-width:576px) {
-    .description {
-        display: block;
-    }
+@media (min-width: 576px) {
+  .description {
+    display: block;
+  }
 }
-@media (min-width:768px) {
-    .total_products_register {
-        display: block;
-    }
-    .categoria_item {
-    grid-template-columns: 40px minmax(100px,400px) 128px 94px;
-
-    }
+@media (min-width: 768px) {
+  .total_products_register {
+    display: block;
+  }
+  .categoria_item {
+    grid-template-columns: 40px minmax(100px, 400px) 128px 94px;
+  }
 }
 
 @media (min-width: 1024px) {
-    .categoria_item {
-        grid-template-columns: 40px minmax(100px,400px) 128px 160px 94px;
-        }
-        .total_products_value {
-            display: block;
-        }
+  .categoria_item {
+    grid-template-columns: 40px minmax(100px, 400px) 128px 160px 94px;
+  }
+  .total_products_value {
+    display: block;
+  }
 }
