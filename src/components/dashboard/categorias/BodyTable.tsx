@@ -8,6 +8,12 @@ const BodyTable = () => {
     <div className={styles.BodyTable}>
       <TextInfos />
       <CategoriaItem />
+      <CategoriaItem />
+      <CategoriaItem />
+      <CategoriaItem />
+      <CategoriaItem />
+      <CategoriaItem />
+      <CategoriaItem />
     </div>
   );
 };

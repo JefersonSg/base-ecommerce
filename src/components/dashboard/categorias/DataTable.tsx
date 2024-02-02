@@ -5,6 +5,7 @@ import styles from './DataTable.module.css';
 import TopTable from './TopTable';
 import SideBarForm from './SideBarForm';
 import BodyTable from './BodyTable';
+import RodapeTable from './RodapeTable';
 
 const DataTable = () => {
   const [ativo, setAtivo] = React.useState(false);
@@ -14,6 +15,7 @@ const DataTable = () => {
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivo} />
         <BodyTable />
+        <RodapeTable />
       </div>
       {ativo && (
         <div
