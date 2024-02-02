@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css';
-import DataTable from '@/src/components/dashboard/categorias/DataTable';
+import DataTable from '@/src/components/dashboard/categorias/table/DataTable';
 
 const page = () => {
   return (

@@ -3,13 +3,13 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
 import styles from './SidebarForm.module.css';
-import InputFormulario from '../../compartilhado/formulario/InputForm';
+import InputFormulario from '../../../compartilhado/formulario/InputForm';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import ButtonAdd from '../Botoes/ButtonAdd';
-import ButtonDelete from '../Botoes/ButtonDelete';
+import ButtonAdd from '../../Botoes/ButtonAdd';
+import ButtonDelete from '../../Botoes/ButtonDelete';
 
 interface Inputs {
   title: string;
@@ -44,7 +44,7 @@ const schema = yup.object({
     })
 });
 
-const SideBarForm = ({
+const SideBarFormEdit = ({
   setAtivo
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
@@ -113,4 +113,4 @@ const SideBarForm = ({
   );
 };
 
-export default SideBarForm;
+export default SideBarFormEdit;

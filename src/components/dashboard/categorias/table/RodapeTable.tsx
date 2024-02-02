@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './RodapeTable.module.css';
-import ButtonPrevNext from '../Botoes/ButtonPrevNext';
+import ButtonPrevNext from '../../Botoes/ButtonPrevNext';
 
 const RodapeTable = () => {
   return (

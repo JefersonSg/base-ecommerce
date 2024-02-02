@@ -1,6 +1,6 @@
 import React, { type FormEvent } from 'react';
 import styles from './Toptable.module.css';
-import ButtonAdd from '../Botoes/ButtonAdd';
+import ButtonAdd from '../../Botoes/ButtonAdd';
 
 const TopTable = ({
   setAtivo
