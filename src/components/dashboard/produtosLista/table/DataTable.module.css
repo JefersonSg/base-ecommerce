@@ -22,7 +22,6 @@
   z-index: 999;
 }
 
-
 .delete_categoria {
   display: flex;
   flex-direction: column;
@@ -53,4 +52,10 @@
   color: #697a8d;
   font-size: 16px;
   text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .data_table {
+    max-width: max-content;
+  }
 }

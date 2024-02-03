@@ -3,10 +3,8 @@
 import React from 'react';
 import styles from './DataTable.module.css';
 import TopTable from './TopTable';
-import SideBarFormCreate from '../sidebars/SideBarFormCreate';
 import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
-import SideBarFormEdit from '../sidebars/SideBarFormEdit';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 
@@ -17,15 +15,6 @@ const DataTable = () => {
 
   return (
     <>
-      {ativoCreate && <SideBarFormCreate setAtivo={setAtivoCreate} />}
-      {ativoEdit && (
-        <SideBarFormEdit
-          setAtivo={setAtivoEdit}
-          title={'Batom'}
-          description={'Encontre os melhores batons'}
-          image={['']}
-        />
-      )}
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable

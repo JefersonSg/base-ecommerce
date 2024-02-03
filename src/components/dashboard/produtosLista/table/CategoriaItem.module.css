@@ -20,7 +20,6 @@
   height: 40px;
 }
 
-
 .infos {
   display: flex;
   flex-direction: column;
@@ -56,8 +55,6 @@
   cursor: pointer;
 }
 
-
-
 @media (min-width: 576px) {
   .description {
     display: block;
@@ -72,7 +69,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .categoria_item {
     grid-template-columns: 40px minmax(100px, 400px) 128px 160px 94px;
   }

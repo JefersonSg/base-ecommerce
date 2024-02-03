@@ -5,7 +5,7 @@ const TextInfos = () => {
   return (
     <div className={styles.textInfos_container}>
       <div className={styles.categoria}>
-        <h3>CATEGORIAS</h3>
+        <h3>PRODUTOS</h3>
       </div>
       <div className={styles.total_products_register}>
         <h3>TOTAL DE PRODUTOS</h3>

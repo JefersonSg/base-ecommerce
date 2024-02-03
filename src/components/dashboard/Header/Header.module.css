@@ -18,7 +18,6 @@
   gap: 16px;
 }
 
-
 .iconSetting {
   animation: 7s rotate linear forwards infinite;
 }
@@ -34,7 +33,7 @@
 
 @media (min-width: 1024px) {
   .header {
-    width: calc(100% - 1.625rem*2 - 16.25rem);
+    width: calc(100% - 1.625rem * 2 - 16.25rem);
     margin-left: 16.25rem;
     border-radius: 8px;
     margin-top: 16px;
