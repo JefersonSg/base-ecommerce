@@ -14,6 +14,8 @@ function UlLinksUteis() {
       {isAdmin && (
         <BotaoLi texto="Dashboard" image="dashboard" link="dashboard" />
       )}
+      <BotaoLi texto="Dashboard" image="dashboard" link="dashboard" />
+
       <BotaoLi texto="Atendimento" image="chat" link="atendimento" />
       <BotaoLi
         texto="Rastrear pedido"
