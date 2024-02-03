@@ -15,14 +15,16 @@
   color: #566a7f;
   cursor: pointer;
 }
-.total_products_register {
+
+.total_products_value ,
+.total_products_register,
+.total_products_amount,
+.categoria {
   display: none;
 }
-.total_products_register {
-  text-align: end;
-}
+.total_products_amount,
+.total_products_register ,
 .total_products_value {
-  display: none;
   text-align: end;
 }
 .actions {
@@ -45,6 +47,15 @@
     display: block;
   }
   .textInfos_container {
-    grid-template-columns: minmax(100px, 440px) 128px 160px 72px;
+    grid-template-columns: minmax(100px, 450px) 128px 160px 90px;
   }
 }
+@media (min-width: 1000px) {
+  .total_products_amount {
+    display: block;
+  }
+  .textInfos_container {
+    grid-template-columns: minmax(100px, 450px) 80px 100px 100px 90px;
+  }
+}
+

@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
-import styles from './CategoriaItem.module.css';
+import styles from './Produto.module.css';
 
-const CategoriaItem = ({
+const Produto = ({
   setAtivoEdit,
   setAtivoDelete
 }: {
@@ -14,15 +14,15 @@ const CategoriaItem = ({
       <div className={styles.div_img}>
         <Image
           alt="Imagem da categoria"
-          src={'/categorias/batom.png'}
+          src={'/produto/produto1.png'}
           width={40}
           height={40}
         />
       </div>
       <div className={styles.infos}>
-        <h3 className={`name ${styles.name}`}>Batom</h3>
+        <h3 className={`name ${styles.name}`}>Creme hydra</h3>
         <p className={`description ${styles.description}`}>
-          Encontre os melhores batons{' '}
+          O melhor creme para a sua pele a...{' '}
         </p>
       </div>
       <div className={styles.total_products_register}>
@@ -55,4 +55,4 @@ const CategoriaItem = ({
   );
 };
 
-export default CategoriaItem;
+export default Produto;

@@ -19,6 +19,9 @@
   width: 40px;
   height: 40px;
 }
+.div_img img {
+  border-radius: 8px;
+}
 
 .infos {
   display: flex;
