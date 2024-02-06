@@ -69,17 +69,9 @@ const DataTable = () => {
           <h2>Deseja mesmo deletar essa categoria?</h2>
           <div className={styles.botoes}>
             <div>
-              <ButtonDelete
-                text="Deletar"
-                setAtivo={setAtivoDelete}
-                isLoading={isLoading}
-              />
+              <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
             </div>
-            <ButtonAdd
-              text="Não deletar"
-              setAtivo={setAtivoDelete}
-              isLoading={isLoading}
-            />
+            <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
           </div>
         </div>
       )}
