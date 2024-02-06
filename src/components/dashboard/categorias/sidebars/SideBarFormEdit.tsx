@@ -62,6 +62,7 @@ const SideBarFormEdit = ({
   } = useForm<Inputs>({
     resolver: yupResolver(schema)
   });
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const dataCategory = {
@@ -105,8 +106,12 @@ const SideBarFormEdit = ({
         />
 
         <div className={styles.botoes}>
-          <ButtonAdd text="Salvar" setAtivo={setAtivo} />
-          <ButtonDelete text="Apagar Edições" setAtivo={setAtivo} />
+          <ButtonAdd text="Salvar" setAtivo={setAtivo} isLoading={isLoading} />
+          <ButtonDelete
+            text="Apagar Edições"
+            setAtivo={setAtivo}
+            isLoading={isLoading}
+          />
         </div>
       </form>
       <span
