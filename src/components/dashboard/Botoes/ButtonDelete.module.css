@@ -20,6 +20,15 @@
   background-color: #ffcbc3;
 }
 
+.btn_rmv.loading {
+  opacity: 0.6;
+  transform: translateY(-3px);
+  border: 1px solid #ff3e1d;
+  background-color: #ffcbc3;
+  font-weight: 700;
+  cursor: progress;
+}
+
 @media (max-width: 440px) {
   .btn_add {
     font-size: 10px;

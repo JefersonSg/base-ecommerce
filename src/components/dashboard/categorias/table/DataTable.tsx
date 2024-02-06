@@ -9,15 +9,33 @@ import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import ButtonAdd from '../../Botoes/ButtonAdd';
+import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+
+  React.useEffect(() => {
+    const temporizador = setTimeout(function closeError() {
+      setAtivoPopUp('');
+    }, 5000);
+
+    return () => {
+      clearTimeout(temporizador);
+    };
+  }, [ativoPopUp]);
 
   return (
     <>
-      {ativoCreate && <SideBarFormCreate setAtivo={setAtivoCreate} />}
+      {ativoCreate && (
+        <SideBarFormCreate
+          setAtivo={setAtivoCreate}
+          setAtivoPopUp={setAtivoPopUp}
+        />
+      )}
       {ativoEdit && (
         <SideBarFormEdit
           setAtivo={setAtivoEdit}
@@ -50,11 +68,22 @@ const DataTable = () => {
         <div className={styles.delete_categoria}>
           <h2>Deseja mesmo deletar essa categoria?</h2>
           <div className={styles.botoes}>
-            <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
-            <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
+            <div>
+              <ButtonDelete
+                text="Deletar"
+                setAtivo={setAtivoDelete}
+                isLoading={isLoading}
+              />
+            </div>
+            <ButtonAdd
+              text="Não deletar"
+              setAtivo={setAtivoDelete}
+              isLoading={isLoading}
+            />
           </div>
         </div>
       )}
+      {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
     </>
   );
 };

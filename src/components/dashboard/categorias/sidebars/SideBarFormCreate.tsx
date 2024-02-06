@@ -12,9 +12,6 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createCategory } from '@/src/shared/api/POSTS';
 
-import axios from 'axios';
-import Cookies from 'js-cookie';
-
 interface Inputs {
   title: string;
   description: string;
@@ -46,20 +43,13 @@ const schema = yup.object({
       return value[0] ? value[0]?.size <= 1024 * 1024 : true;
     })
 });
-const API = process.env.NEXT_PUBLIC_API_URL;
-const token = Cookies.get('auth_token') ?? false;
-
-const config = {
-  headers: {
-    Authorization: `Bearer ${token}`,
-    'Content-Type': 'multipart/form-data'
-  }
-};
 
 const SideBarFormCreate = ({
-  setAtivo
+  setAtivo,
+  setAtivoPopUp
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const {
     register,
@@ -68,34 +58,16 @@ const SideBarFormCreate = ({
   } = useForm<Inputs>({
     resolver: yupResolver(schema)
   });
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const formData = new FormData();
+    setIsLoading(true);
+    const response = await createCategory(data);
+    setIsLoading(false);
 
-    formData.append('name', data.title);
-    formData.append('description', data.description);
-
-    if (data.image[0] instanceof Blob) {
-      formData.append('image', data.image[0]);
-    } else {
-      console.error('O campo de imagem não é do tipo Blob.');
-      return;
-    }
-
-    try {
-      if (!token) {
-        return;
-      }
-
-      const response = await axios.post(
-        `http://localhost:3050/categories/create`,
-        formData,
-        config
-      );
-
+    if (response) {
       setAtivo(false);
-    } catch (error) {
-      console.error('Erro ao fazer a requisição:', error.response);
+      setAtivoPopUp('Categoria criada com sucesso');
     }
   };
 
@@ -129,8 +101,12 @@ const SideBarFormCreate = ({
         />
 
         <div className={styles.botoes}>
-          <ButtonAdd text="Add" setAtivo={setAtivo} />
-          <ButtonDelete text="Apagar" setAtivo={setAtivo} />
+          <ButtonAdd text="Criar" setAtivo={setAtivo} isLoading={isLoading} />
+          <ButtonDelete
+            text="Limpar formulario"
+            setAtivo={setAtivo}
+            isLoading
+          />
         </div>
       </form>
       <span

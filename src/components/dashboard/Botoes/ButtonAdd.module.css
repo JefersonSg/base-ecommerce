@@ -13,8 +13,21 @@
   letter-spacing: 0.5px;
   transition: all 0.1s;
 }
+
+.btn_add.loading {
+  outline: 2px solid rgba(105, 108, 255, 0.7);
+  background-color: #9fa0ea;
+  cursor: progress;
+  transform: translateY(-3px);
+}
+.btn_add.loading:hover {
+  background-color: #9fa0ea;
+  cursor: progress;
+  transform: translateY(-3px);
+}
 .btn_add:hover {
   outline: 2px solid rgba(105, 108, 255, 0.7);
   background-color: #5f61e1;
   transform: translateY(-3px);
 }
+

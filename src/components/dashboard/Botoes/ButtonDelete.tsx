@@ -3,18 +3,21 @@ import styles from './ButtonDelete.module.css';
 
 const ButtonDelete = ({
   text,
-  setAtivo
+  setAtivo,
+  isLoading
 }: {
   text: string;
+  isLoading: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <button
-      className={styles.btn_rmv}
+      className={`${styles.btn_rmv} ${isLoading ? styles.loading : ''}`}
       onClick={(e) => {
         e.preventDefault();
         setAtivo(false);
       }}
+      disabled={isLoading}
     >
       {text}
     </button>

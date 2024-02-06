@@ -11,31 +11,41 @@ const config = {
   }
 };
 
-export async function createCategory(
-  name: string,
-  description: string,
-  image: File
-) {
+const configFormdata = {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'multipart/form-data'
+  }
+};
+
+export async function createCategory(data: any) {
   const formData = new FormData();
 
-  formData.append('title', name);
-  formData.append('description', description);
-  formData.append('image', image);
+  formData.append('name', data.title);
+  formData.append('description', data.description);
 
-  if (!token) {
+  if (data.image[0] instanceof Blob) {
+    formData.append('image', data.image[0]);
+  } else {
+    console.error('O campo de imagem não é do tipo Blob.');
     return;
   }
 
   try {
+    if (!token) {
+      return;
+    }
+
     const response = await axios.post(
       `${API}categories/create`,
       formData,
-      config
+      configFormdata
     );
-    console.log(response);
-    return response;
-  } catch (error) {
-    console.log(error);
-    return error;
+
+    console.log(response.data);
+
+    return response.data;
+  } catch (error: any) {
+    console.error('Erro ao fazer a requisição:', error.response);
   }
 }
