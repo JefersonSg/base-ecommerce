@@ -13,7 +13,6 @@ import { getUser } from '@/src/shared/api/api';
 
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
-  // const [userData, setUserData] = React.useState<User | null>(null);
 
   const { data } = useQuery({
     queryKey: ['todos'],
@@ -64,7 +63,7 @@ export function Header() {
       </header>
       {estaAtivo && (
         <MenuMobile
-          userData={data?.currentUser}
+          userData={data ?? ''}
           ativo={estaAtivo}
           setAtivo={setAtivo}
         />

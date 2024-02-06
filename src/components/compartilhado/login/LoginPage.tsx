@@ -79,7 +79,7 @@ const LoginPage = () => {
     <div>
       <form
         className={styles.form_container}
-        action="POST"
+        action=""
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="titulo_sessao">Entre em sua conta</h1>

@@ -9,15 +9,12 @@
     }
   },
   "extends": [
-    "standard-with-typescript",
     "plugin:react/recommended",
+    "standard-with-typescript",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
     "prettier",
-    "plugin:prettier/recommended",
-    "eslint:recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -26,15 +23,15 @@
   },
   "plugins": ["@typescript-eslint", "react", "react-hooks", "prettier"],
   "rules": {
-    "linebreak-style": ["error", "unix"],
-    "@typescript-eslint/semi": "off",
     "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/semi": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "linebreak-style": ["error", "unix"],
+    "prettier/prettier": "error",
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "prettier/prettier": "error",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/no-explicit-any": "off"
   }

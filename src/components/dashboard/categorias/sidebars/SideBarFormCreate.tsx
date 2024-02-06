@@ -10,6 +10,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
+import { createCategory } from '@/src/shared/api/POSTS';
+
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 interface Inputs {
   title: string;
@@ -39,10 +43,18 @@ const schema = yup.object({
       }
     )
     .test('fileSize', 'o arquivo é muito grande', (value: any) => {
-      console.log(value[0]);
       return value[0] ? value[0]?.size <= 1024 * 1024 : true;
     })
 });
+const API = process.env.NEXT_PUBLIC_API_URL;
+const token = Cookies.get('auth_token') ?? false;
+
+const config = {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'multipart/form-data'
+  }
+};
 
 const SideBarFormCreate = ({
   setAtivo
@@ -58,13 +70,33 @@ const SideBarFormCreate = ({
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const dataCategory = {
-      title: data.title,
-      image: data.image,
-      description: data.description
-    };
+    const formData = new FormData();
 
-    console.log(dataCategory);
+    formData.append('name', data.title);
+    formData.append('description', data.description);
+
+    if (data.image[0] instanceof Blob) {
+      formData.append('image', data.image[0]);
+    } else {
+      console.error('O campo de imagem não é do tipo Blob.');
+      return;
+    }
+
+    try {
+      if (!token) {
+        return;
+      }
+
+      const response = await axios.post(
+        `http://localhost:3050/categories/create`,
+        formData,
+        config
+      );
+
+      setAtivo(false);
+    } catch (error) {
+      console.error('Erro ao fazer a requisição:', error.response);
+    }
   };
 
   return (

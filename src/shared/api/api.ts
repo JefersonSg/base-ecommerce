@@ -19,6 +19,7 @@ export const getUser = async () => {
       'Content-Type': 'application/json'
     }
   };
+
   if (!token) {
     return;
   }
