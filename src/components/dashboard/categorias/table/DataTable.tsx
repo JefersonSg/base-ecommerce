@@ -15,7 +15,7 @@ const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  // const [isLoading, setIsLoading] = React.useState(false);
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
 
   React.useEffect(() => {

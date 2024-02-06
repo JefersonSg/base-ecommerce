@@ -4,12 +4,12 @@ import Cookies from 'js-cookie';
 const API = process.env.NEXT_PUBLIC_API_URL;
 const token = Cookies.get('auth_token') ?? false;
 
-const config = {
-  headers: {
-    Authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json'
-  }
-};
+// const config = {
+//   headers: {
+//     Authorization: `Bearer ${token}`,
+//     'Content-Type': 'application/json'
+//   }
+// };
 
 const configFormdata = {
   headers: {
