@@ -115,7 +115,7 @@ const SideBarFormCreate = ({
           <ButtonDelete
             text="Limpar formulario"
             setAtivo={setAtivo}
-            isLoading
+            isLoading={isLoading}
           />
         </div>
       </form>

@@ -10,11 +10,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
+import { updateCategory } from '@/src/shared/api/UPDATES';
+import { useQuery } from '@tanstack/react-query';
+import { getAllCategories } from '@/src/shared/api/GETS';
 
 interface Inputs {
   title: string;
   description: string;
-  image: any;
+  image?: any;
 }
 
 const schema = yup.object({
@@ -24,10 +27,6 @@ const schema = yup.object({
     .required('É necessário preencher o campo de slogan'),
   image: yup
     .mixed()
-    .required()
-    .test('length', 'Por favor, selecione a imagem', (value: any) => {
-      return !!value[0];
-    })
     .test(
       'fileType',
       'o arquivo não é suportado, use uma foto PNG ou JPG',
@@ -45,11 +44,13 @@ const schema = yup.object({
 });
 
 const SideBarFormEdit = ({
+  idCategory,
   title,
   description,
   image,
   setAtivo
 }: {
+  idCategory: string;
   title: string;
   description: string;
   image: string[];
@@ -62,21 +63,27 @@ const SideBarFormEdit = ({
   } = useForm<Inputs>({
     resolver: yupResolver(schema)
   });
-  // const [isLoading, setIsLoading] = React.useState(false);
+
+  const { refetch } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getAllCategories
+  });
+
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const dataCategory = {
-      title: data.title,
-      image: data.image,
-      description: data.description
-    };
+    console.log(data.description);
 
-    console.log(dataCategory);
+    setIsLoading(true);
+    await updateCategory(data, idCategory);
+    await refetch();
+    setIsLoading(false);
+    setAtivo(false);
   };
 
   return (
     <div className={styles.sidebar_form}>
-      <h2>Adicione uma categoria</h2>
+      <h2>Edite a categoria</h2>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <InputFormulario
           name="title"
@@ -106,8 +113,12 @@ const SideBarFormEdit = ({
         />
 
         <div className={styles.botoes}>
-          <ButtonAdd text="Salvar" setAtivo={setAtivo} />
-          <ButtonDelete text="Apagar Edições" setAtivo={setAtivo} />
+          <ButtonAdd text="Salvar" setAtivo={setAtivo} isLoading={isLoading} />
+          <ButtonDelete
+            text="Apagar Edições"
+            setAtivo={setAtivo}
+            isLoading={isLoading}
+          />
         </div>
       </form>
       <span

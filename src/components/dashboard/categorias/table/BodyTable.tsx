@@ -21,17 +21,21 @@ interface GetAllCategoriesResponse {
 }
 
 const BodyTable = ({
-  idDelete,
+  idCategory,
   ativoDelete,
   setAtivoEdit,
   setAtivoDelete,
-  setIdDelete
+  setIdCategory,
+  setDefaultTitle,
+  setDefaultDescription
 }: {
-  idDelete: string;
+  idCategory: string;
   ativoDelete: boolean;
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
-  setIdDelete: React.Dispatch<React.SetStateAction<string>>;
+  setIdCategory: React.Dispatch<React.SetStateAction<string>>;
+  setDefaultTitle: React.Dispatch<React.SetStateAction<string>>;
+  setDefaultDescription: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   //
   const { data, refetch } = useQuery<GetAllCategoriesResponse>({
@@ -57,8 +61,10 @@ const BodyTable = ({
               image={category.image}
               setAtivoEdit={setAtivoEdit}
               setAtivoDelete={setAtivoDelete}
-              id={category._id}
-              setIdDelete={setIdDelete}
+              idCategory={category._id}
+              setIdCategory={setIdCategory}
+              setDefaultTitle={setDefaultTitle}
+              setDefaultDescription={setDefaultDescription}
             />
           </div>
         );
@@ -69,7 +75,7 @@ const BodyTable = ({
           <div className={styles.botoes}>
             <div
               onClick={() => {
-                void handleDelete(idDelete);
+                void handleDelete(idCategory);
               }}
             >
               <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />

@@ -13,8 +13,11 @@ const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [idDelete, setIdDelete] = React.useState('');
+  const [idCategory, setIdCategory] = React.useState('');
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
+
+  const [defaultTitle, setDefaultTitle] = React.useState('');
+  const [defaultDescription, setDefaultDescription] = React.useState('');
 
   React.useEffect(() => {
     const temporizador = setTimeout(function closeError() {
@@ -36,20 +39,23 @@ const DataTable = () => {
       )}
       {ativoEdit && (
         <SideBarFormEdit
+          idCategory={idCategory}
           setAtivo={setAtivoEdit}
-          title={'Batom'}
-          description={'Encontre os melhores batons'}
+          title={defaultTitle}
+          description={defaultDescription}
           image={['']}
         />
       )}
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
-          idDelete={idDelete}
-          setIdDelete={setIdDelete}
+          idCategory={idCategory}
+          setIdCategory={setIdCategory}
           setAtivoEdit={setAtivoEdit}
           setAtivoDelete={setAtivoDelete}
           ativoDelete={ativoDelete}
+          setDefaultTitle={setDefaultTitle}
+          setDefaultDescription={setDefaultDescription}
         />
         <RodapeTable />
       </div>

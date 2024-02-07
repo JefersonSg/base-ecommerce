@@ -3,21 +3,25 @@ import React from 'react';
 import styles from './CategoriaItem.module.css';
 
 const CategoriaItem = ({
+  idCategory,
   name,
   description,
   image,
-  id,
   setAtivoEdit,
   setAtivoDelete,
-  setIdDelete
+  setIdCategory,
+  setDefaultTitle,
+  setDefaultDescription
 }: {
+  idCategory: string;
   name: string;
   description: string;
   image: string;
-  id: string;
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
-  setIdDelete: React.Dispatch<React.SetStateAction<string>>;
+  setIdCategory: React.Dispatch<React.SetStateAction<string>>;
+  setDefaultTitle: React.Dispatch<React.SetStateAction<string>>;
+  setDefaultDescription: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
     <div className={styles.categoria_item}>
@@ -47,19 +51,27 @@ const CategoriaItem = ({
           width={16}
           height={18}
           onClick={() => {
-            setIdDelete(id);
+            setIdCategory(idCategory);
             setAtivoDelete(true);
           }}
         />
-        <Image
-          alt="Imagem de um laps para editar a categoria"
-          src={'/dashboard/edit.svg'}
-          width={16}
-          height={18}
+        <div
           onClick={() => {
-            setAtivoEdit(true);
+            setIdCategory(idCategory);
           }}
-        />
+        >
+          <Image
+            alt="Imagem de um laps para editar a categoria"
+            src={'/dashboard/edit.svg'}
+            width={16}
+            height={18}
+            onClick={() => {
+              setDefaultTitle(name);
+              setDefaultDescription(description);
+              setAtivoEdit(true);
+            }}
+          />
+        </div>
       </div>
     </div>
   );
