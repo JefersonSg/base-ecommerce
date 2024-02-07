@@ -8,7 +8,7 @@ function BtnProdutos({ texto, link }: { texto: string; link?: string }) {
   const linkClean = link ?? texto?.replace(/\s+/g, '')?.toLowerCase();
   const pathname = usePathname();
 
-  const isActive = pathname === link;
+  const isActive = pathname.includes(linkClean);
 
   return (
     <li className={styles.lista}>

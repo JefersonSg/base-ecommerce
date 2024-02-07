@@ -1,6 +1,7 @@
 import React, { type FormEvent } from 'react';
 import styles from './Toptable.module.css';
 import ButtonAdd from '../../Botoes/ButtonAdd';
+import Link from 'next/link';
 
 const TopTable = ({
   setAtivo
@@ -33,13 +34,9 @@ const TopTable = ({
           <option value="20">20</option>
           <option value="30">30</option>
         </select>
-        <div
-          onClick={() => {
-            setAtivo(true);
-          }}
-        >
-          <ButtonAdd text="+ Adicionar Categoria" setAtivo={setAtivo} />
-        </div>
+        <Link href={'/dashboard/produtos/create'}>
+          <ButtonAdd text="+ Adicionar Produto" setAtivo={setAtivo} />
+        </Link>
       </div>
     </div>
   );

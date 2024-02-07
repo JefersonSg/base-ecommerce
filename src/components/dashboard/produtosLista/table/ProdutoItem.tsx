@@ -2,28 +2,34 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './Produto.module.css';
 
-const Produto = ({
-  setAtivoEdit,
+const ProdutoItem = ({
+  idCategory,
+  name,
+  description,
+  images,
   setAtivoDelete
 }: {
-  setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  idCategory: string;
+  name: string;
+  description: string;
+  images: string[];
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  console.log(images);
   return (
     <div className={styles.categoria_item}>
       <div className={styles.div_img}>
         <Image
           alt="Imagem da categoria"
-          src={'/produto/produto1.png'}
+          src={images?.[0] || '/categorias/batom.png'}
           width={40}
           height={40}
         />
       </div>
+
       <div className={styles.infos}>
-        <h3 className={`name ${styles.name}`}>Creme hydra</h3>
-        <p className={`description ${styles.description}`}>
-          O melhor creme para a sua pele a...{' '}
-        </p>
+        <h3 className={`name ${styles.name}`}>{name}</h3>
+        <p className={`description ${styles.description}`}>{description}</p>
       </div>
       <div className={styles.total_products_register}>
         <h3>75</h3>
@@ -41,18 +47,18 @@ const Produto = ({
             setAtivoDelete(true);
           }}
         />
-        <Image
-          alt="Lixeira para deletar a categoria"
-          src={'/dashboard/edit.svg'}
-          width={16}
-          height={18}
-          onClick={() => {
-            setAtivoEdit(true);
-          }}
-        />
+        <div onClick={() => {}}>
+          <Image
+            alt="Imagem de um laps para editar a categoria"
+            src={'/dashboard/edit.svg'}
+            width={16}
+            height={18}
+            onClick={() => {}}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-export default Produto;
+export default ProdutoItem;

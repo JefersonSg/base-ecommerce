@@ -7,7 +7,7 @@ import Section from '@/src/components/loja/sections/Section';
 import SectionColecoes from '@/src/components/loja/sections/SectionColecoes';
 
 export const metadata: Metadata = {
-  title: 'Abayomi Make Beauty',
+  title: 'Abayomi Make Beauty | Home',
   description:
     'Aqui na Abayomi Make Beauty você encontra uma variedade enorme de produtos selecionados com a melhor qualidade do mercado',
   keywords: [

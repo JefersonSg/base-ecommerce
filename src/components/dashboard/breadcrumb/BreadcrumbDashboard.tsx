@@ -12,7 +12,11 @@ const BreadcrumbDashboard = () => {
   return (
     <div className={styles.breadcrumb}>
       <p>
-        eCommerce /<span>{texto[2] ? ` ${texto[2]}` : ''}</span>
+        eCommerce /
+        <span>
+          {texto[2] ? ` ${texto[2]}` : ''}
+          {texto[3] ? ` / ${texto[3]}` : ''}
+        </span>
       </p>
     </div>
   );
