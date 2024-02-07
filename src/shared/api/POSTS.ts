@@ -33,6 +33,7 @@ export async function createCategory(data: any) {
 
   try {
     if (!token) {
+      console.log('sem token de acesso');
       return;
     }
 

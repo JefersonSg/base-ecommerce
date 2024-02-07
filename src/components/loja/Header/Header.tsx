@@ -9,7 +9,7 @@ import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
 import { useQuery } from '@tanstack/react-query';
-import { getUser } from '@/src/shared/api/api';
+import { getUser } from '@/src/shared/api/GETS';
 
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);

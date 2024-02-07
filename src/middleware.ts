@@ -14,11 +14,14 @@ export default function middleware(req: NextRequest) {
     }
   }
   if (!token) {
-    if (req.nextUrl.pathname === '/minha-conta') {
+    if (
+      req.nextUrl.pathname === '/minha-conta' ||
+      req.nextUrl.pathname.includes('dashboard')
+    ) {
       return NextResponse.redirect(signInURL);
     }
   }
 }
 export const config = {
-  matcher: ['/login/:path*', '/registrar/', '/minha-conta']
+  matcher: ['/login/:path*', '/registrar/', '/minha-conta', '/dashboard/:path*']
 };

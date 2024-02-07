@@ -7,7 +7,7 @@ import Image from 'next/image';
 import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { getUser } from '@/src/shared/api/api';
+import { getUser } from '@/src/shared/api/GETS';
 import useMedia from '@/src/shared/hooks/useMedia';
 import MenuSideBar from './MenuMobile/MenuSideBar';
 

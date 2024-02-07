@@ -11,6 +11,8 @@ import * as yup from 'yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createCategory } from '@/src/shared/api/POSTS';
+import { getAllCategories } from '@/src/shared/api/GETS';
+import { useQuery } from '@tanstack/react-query';
 
 interface Inputs {
   title: string;
@@ -51,6 +53,12 @@ const SideBarFormCreate = ({
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  //
+  const { refetch } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getAllCategories
+  });
+
   const {
     register,
     handleSubmit,
@@ -58,6 +66,7 @@ const SideBarFormCreate = ({
   } = useForm<Inputs>({
     resolver: yupResolver(schema)
   });
+
   const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -68,6 +77,7 @@ const SideBarFormCreate = ({
     if (response) {
       setAtivo(false);
       setAtivoPopUp('Categoria criada com sucesso');
+      await refetch();
     }
   };
 

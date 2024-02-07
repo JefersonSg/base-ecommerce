@@ -7,15 +7,13 @@ import SideBarFormCreate from '../sidebars/SideBarFormCreate';
 import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
-import ButtonDelete from '../../Botoes/ButtonDelete';
-import ButtonAdd from '../../Botoes/ButtonAdd';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  // const [isLoading, setIsLoading] = React.useState(false);
+  const [idDelete, setIdDelete] = React.useState('');
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
 
   React.useEffect(() => {
@@ -47,8 +45,11 @@ const DataTable = () => {
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
+          idDelete={idDelete}
+          setIdDelete={setIdDelete}
           setAtivoEdit={setAtivoEdit}
           setAtivoDelete={setAtivoDelete}
+          ativoDelete={ativoDelete}
         />
         <RodapeTable />
       </div>
@@ -64,17 +65,7 @@ const DataTable = () => {
             }}
           ></div>
         ))}
-      {ativoDelete && (
-        <div className={styles.delete_categoria}>
-          <h2>Deseja mesmo deletar essa categoria?</h2>
-          <div className={styles.botoes}>
-            <div>
-              <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
-            </div>
-            <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
-          </div>
-        </div>
-      )}
+
       {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
     </>
   );
