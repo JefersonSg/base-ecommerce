@@ -7,6 +7,23 @@ import styles from './FormCreateProduct.module.css';
 import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { createCategory } from '@/src/shared/api/POSTS';
+
+// interface ProductData {
+//   name: string;
+//   brand: string;
+//   price: number;
+//   category: string;
+//   description: string;
+//   composition: string;
+//   characteristic: string;
+//   colors: string;
+//   codeColors: string;
+//   amount: number;
+//   promotion: boolean;
+//   active: boolean;
+//   promotionalPrice: number;
+// }
 
 const schema = yup.object().shape({
   name: yup.string().required('É necessário preencher o campo de Nome'),
@@ -17,7 +34,6 @@ const schema = yup.object().shape({
   category: yup.string().required(),
   composition: yup.string().required(),
   characteristic: yup.string().required(),
-  caract: yup.string().required(),
   description: yup.string().required(),
   colors: yup.string().required(),
   codeColors: yup.string().required(),
@@ -80,11 +96,18 @@ const FormCreateProduct = () => {
     resolver: yupResolver(schema)
   });
 
-  async function submitHandle() {
-    return setTimeout(() => {
-      console.log('ok');
-    }, 300);
-  }
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    setIsLoading(true);
+    const response = await createCategory(data);
+    setIsLoading(false);
+    console.log(isLoading);
+    if (response) {
+      // setAtivoPopUp('Categoria criada com sucesso');
+      // await refetch();
+    }
+  };
 
   return (
     <div className={styles.container_form_create}>
@@ -94,7 +117,7 @@ const FormCreateProduct = () => {
         className={styles.form_create_product}
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit(submitHandle);
+          handleSubmit(onSubmit);
         }}
       >
         <div className={styles.div_colum1}>
