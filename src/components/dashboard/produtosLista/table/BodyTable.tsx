@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
-import { useQuery } from '@tanstack/react-query';
-import { getAllProducts } from '@/src/shared/api/GETS';
 import ProdutoItem from './ProdutoItem';
 
 interface ProductsType {
@@ -27,12 +25,10 @@ interface GetAllProductsResponse {
 
 const BodyTable = ({
   data,
-  setAtivoEdit,
   setAtivoDelete,
   setIdDelete
 }: {
   data: GetAllProductsResponse;
-  setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setIdDelete: React.Dispatch<React.SetStateAction<string>>;
 }) => {
