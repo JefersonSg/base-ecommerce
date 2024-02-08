@@ -18,6 +18,7 @@
 
 .input::placeholder {
   color: #ccd;
+  transition: all .2s;
 }
 
 .input[type='file'] {
@@ -35,19 +36,33 @@
 
 .textArea {
   height: 100px;
-  width: 236px;
+  min-width: 236px;
+  width: calc(100% - 16px);
+  border-radius: 8px;
   resize: none;
   padding: 8px;
   box-sizing: border-box;
   font-size: 14px;
+  border: 1px solid var(--color-border);
 }
 
 .input[type='text']:focus,
-.input[type='text']:hover {
+.input[type='text']:hover,
+.input[type='number']:focus,
+.input[type='number']:hover {
   outline: none;
   border-color: var(--cor-primaria);
   background-color: white;
+}
+
+
+.input[type='text']:focus,
+.input[type='number']:focus{
   box-shadow: 0 0 0 3px #996557;
+}
+
+.input:focus::placeholder {
+  padding-left: 6px;
 }
 .input[type='file'] {
   outline: none !important;

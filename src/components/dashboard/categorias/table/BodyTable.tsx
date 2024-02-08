@@ -4,11 +4,6 @@ import React from 'react';
 import CategoriaItem from './CategoriaItem';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
-import { useQuery } from '@tanstack/react-query';
-import { getAllCategories } from '@/src/shared/api/GETS';
-import ButtonDelete from '../../Botoes/ButtonDelete';
-import ButtonAdd from '../../Botoes/ButtonAdd';
-import { deleteCategory } from '@/src/shared/api/DELETE';
 
 interface Category {
   _id: string;
@@ -21,14 +16,14 @@ interface GetAllCategoriesResponse {
 }
 
 const BodyTable = ({
-  idCategory,
-  ativoDelete,
+  data,
   setAtivoEdit,
   setAtivoDelete,
   setIdCategory,
   setDefaultTitle,
   setDefaultDescription
 }: {
+  data: GetAllCategoriesResponse;
   idCategory: string;
   ativoDelete: boolean;
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,15 +33,6 @@ const BodyTable = ({
   setDefaultDescription: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   //
-  const { data, refetch } = useQuery<GetAllCategoriesResponse>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
-  });
-
-  async function handleDelete(id: string) {
-    await deleteCategory(id);
-    await refetch();
-  }
 
   return (
     <div className={styles.BodyTable}>
@@ -69,21 +55,6 @@ const BodyTable = ({
           </div>
         );
       })}
-      {ativoDelete && (
-        <div className={styles.delete_categoria}>
-          <h2>Deseja mesmo deletar essa categoria?</h2>
-          <div className={styles.botoes}>
-            <div
-              onClick={() => {
-                void handleDelete(idCategory);
-              }}
-            >
-              <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
-            </div>
-            <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

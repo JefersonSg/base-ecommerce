@@ -37,10 +37,7 @@ export const getUser = async () => {
 };
 export const getAllCategories = async () => {
   try {
-    const response = await axios.get(
-      `http://localhost:3050/categories`,
-      config
-    );
+    const response = await axios.get(`${API}categories`, config);
 
     return response.data;
   } catch (error) {
@@ -49,7 +46,7 @@ export const getAllCategories = async () => {
 };
 export const getAllProducts = async () => {
   try {
-    const response = await axios.get(`http://localhost:3050/products`, config);
+    const response = await axios.get(`${API}products`, config);
 
     return response.data;
   } catch (error) {

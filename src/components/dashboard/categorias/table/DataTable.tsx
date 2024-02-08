@@ -8,6 +8,11 @@ import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
+import ButtonDelete from '../../Botoes/ButtonDelete';
+import ButtonAdd from '../../Botoes/ButtonAdd';
+import { deleteCategory } from '@/src/shared/api/DELETE';
+import { getAllCategories } from '@/src/shared/api/GETS';
+import { useQuery } from '@tanstack/react-query';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
@@ -19,6 +24,11 @@ const DataTable = () => {
   const [defaultTitle, setDefaultTitle] = React.useState('');
   const [defaultDescription, setDefaultDescription] = React.useState('');
 
+  const { data, refetch } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getAllCategories
+  });
+
   React.useEffect(() => {
     const temporizador = setTimeout(function closeError() {
       setAtivoPopUp('');
@@ -28,6 +38,11 @@ const DataTable = () => {
       clearTimeout(temporizador);
     };
   }, [ativoPopUp]);
+
+  async function handleDelete(id: string) {
+    await deleteCategory(id);
+    await refetch();
+  }
 
   return (
     <>
@@ -49,6 +64,7 @@ const DataTable = () => {
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
+          data={data}
           idCategory={idCategory}
           setIdCategory={setIdCategory}
           setAtivoEdit={setAtivoEdit}
@@ -59,6 +75,27 @@ const DataTable = () => {
         />
         <RodapeTable />
       </div>
+      {ativoDelete && (
+        <div className={styles.delete_categoria}>
+          <h2>Deseja mesmo deletar essa categoria?</h2>
+          <div className={styles.botoes}>
+            <div
+              onClick={() => {
+                void handleDelete(idCategory);
+              }}
+            >
+              <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
+            </div>
+            <div
+              onClick={() => {
+                setAtivoDelete(false);
+              }}
+            >
+              <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
+            </div>
+          </div>
+        </div>
+      )}
       {ativoCreate ||
         ativoEdit ||
         (ativoDelete && (

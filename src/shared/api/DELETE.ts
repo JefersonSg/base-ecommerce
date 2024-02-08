@@ -14,6 +14,10 @@ const config = {
 export async function deleteCategory(id: string) {
   const response = await axios.delete(`${API}categories/delete/${id}`, config);
 
-  console.log(response);
+  return response.data;
+}
+export async function deleteProduct(id: string) {
+  const response = await axios.delete(`${API}products/delete/${id}`, config);
+
   return response.data;
 }

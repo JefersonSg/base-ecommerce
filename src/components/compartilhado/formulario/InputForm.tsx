@@ -31,7 +31,7 @@ const InputFormulario = ({
           {...register(name)}
         />
       ) : (
-        <textarea className={styles.textArea}></textarea>
+        <textarea id={name} className={styles.textArea}></textarea>
       )}
       <span className={styles.error}>
         {error && typeof error === 'string' && error}

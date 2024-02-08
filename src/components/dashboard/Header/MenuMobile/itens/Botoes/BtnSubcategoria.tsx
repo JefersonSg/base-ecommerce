@@ -10,9 +10,6 @@ function BtnSubcategoria({ texto, link }: { texto: string; link?: string }) {
 
   const isActive = pathname.includes(linkClean);
 
-  console.log(linkClean);
-  console.log(pathname);
-
   return (
     <li className={styles.lista}>
       <Link href={`${linkClean}`} className={`${isActive ? styles.ativo : ''}`}>

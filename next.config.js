@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['teste-bucket-new.s3.sa-east-1.amazonaws.com'],
+        remotePatterns: [{
+          protocol: 'https',
+          hostname: 'teste-bucket-new.s3.sa-east-1.amazonaws.com',
+          port:'',
+        }],
       },
 };
 

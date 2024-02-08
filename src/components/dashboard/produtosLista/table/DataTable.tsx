@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
 import React from 'react';
@@ -7,17 +8,34 @@ import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import ButtonAdd from '../../Botoes/ButtonAdd';
+import { deleteProduct } from '@/src/shared/api/DELETE';
+import { useQuery } from '@tanstack/react-query';
+import { getAllProducts } from '@/src/shared/api/GETS';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
+  const [idDelete, setIdDelete] = React.useState('');
+
+  const { data, refetch } = useQuery({
+    queryKey: ['products'],
+    queryFn: getAllProducts
+  });
+
+  async function handleDelete() {
+    await deleteProduct(idDelete);
+
+    await refetch();
+  }
 
   return (
     <>
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
+          data={data}
+          setIdDelete={setIdDelete}
           setAtivoEdit={setAtivoEdit}
           setAtivoDelete={setAtivoDelete}
         />
@@ -39,8 +57,16 @@ const DataTable = () => {
         <div className={styles.delete_categoria}>
           <h2>Deseja mesmo deletar essa categoria?</h2>
           <div className={styles.botoes}>
-            <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
-            <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
+            <div onClick={handleDelete}>
+              <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
+            </div>
+            <div
+              onClick={() => {
+                setAtivoDelete(false);
+              }}
+            >
+              <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
+            </div>
           </div>
         </div>
       )}

@@ -26,18 +26,16 @@ interface GetAllProductsResponse {
 }
 
 const BodyTable = ({
+  data,
   setAtivoEdit,
-  setAtivoDelete
+  setAtivoDelete,
+  setIdDelete
 }: {
+  data: GetAllProductsResponse;
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  setIdDelete: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { data } = useQuery<GetAllProductsResponse>({
-    queryKey: ['products'],
-    queryFn: getAllProducts
-  });
-
-  console.log(data?.products);
   return (
     <div className={styles.BodyTable}>
       <TextInfos />
@@ -47,9 +45,10 @@ const BodyTable = ({
             <ProdutoItem
               name={product.name}
               images={product.images}
-              idCategory={product._id}
+              idProduct={product._id}
               description={product.description}
               setAtivoDelete={setAtivoDelete}
+              setIdDelete={setIdDelete}
             />
           </div>
         );

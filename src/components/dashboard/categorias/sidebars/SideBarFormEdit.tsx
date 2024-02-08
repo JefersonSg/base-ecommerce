@@ -24,7 +24,7 @@ const schema = yup.object({
   title: yup.string().required('É necessário preencher o campo de Titulo'),
   description: yup
     .string()
-    .required('É necessário preencher o campo de slogan'),
+    .required('É necessário preencher o campo de descrição'),
   image: yup
     .mixed()
     .test(

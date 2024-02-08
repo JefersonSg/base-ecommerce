@@ -3,19 +3,20 @@ import React from 'react';
 import styles from './Produto.module.css';
 
 const ProdutoItem = ({
-  idCategory,
+  idProduct,
   name,
   description,
   images,
-  setAtivoDelete
+  setAtivoDelete,
+  setIdDelete
 }: {
-  idCategory: string;
+  idProduct: string;
   name: string;
   description: string;
   images: string[];
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  setIdDelete: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  console.log(images);
   return (
     <div className={styles.categoria_item}>
       <div className={styles.div_img}>
@@ -45,6 +46,7 @@ const ProdutoItem = ({
           height={18}
           onClick={() => {
             setAtivoDelete(true);
+            setIdDelete(idProduct);
           }}
         />
         <div onClick={() => {}}>
@@ -53,7 +55,6 @@ const ProdutoItem = ({
             src={'/dashboard/edit.svg'}
             width={16}
             height={18}
-            onClick={() => {}}
           />
         </div>
       </div>
