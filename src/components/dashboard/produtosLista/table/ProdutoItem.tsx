@@ -1,42 +1,56 @@
 import Image from 'next/image';
 import React from 'react';
 import styles from './Produto.module.css';
+import ToggleButton from '../../Botoes/ToggleButton';
+
+interface ProductsType {
+  _id: string;
+  name: string;
+  brand: string;
+  description: string;
+  price: number;
+  colors: string[];
+  codecolors: string[];
+  category: string;
+  images: string[];
+  stock: { sizeP: string[]; sizeM: string; sizeG: string; sizeGG: string };
+  promotion: boolean;
+  to: string;
+  active: boolean;
+}
 
 const ProdutoItem = ({
-  idProduct,
-  name,
-  description,
-  images,
+  data,
   setAtivoDelete,
   setIdDelete
 }: {
-  idProduct: string;
-  name: string;
-  description: string;
-  images: string[];
+  data: ProductsType;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setIdDelete: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
-    <div className={styles.categoria_item}>
+    <div className={styles.produto_item}>
       <div className={styles.div_img}>
         <Image
           alt="Imagem da categoria"
-          src={images?.[0] || '/categorias/batom.png'}
+          src={data.images?.[0] || '/categorias/batom.png'}
           width={40}
           height={40}
         />
       </div>
 
       <div className={styles.infos}>
-        <h3 className={`name ${styles.name}`}>{name}</h3>
-        <p className={`description ${styles.description}`}>{description}</p>
+        <h3 className={`name ${styles.name}`}>{data?.name}</h3>
+        <p className={`description ${styles.description}`}>
+          {data?.description}
+        </p>
       </div>
+      <ToggleButton data={data} />
       <div className={styles.total_products_register}>
         <h3>75</h3>
       </div>
       <div className={styles.total_products_value}>
-        <h3>R$2479,23</h3>
+        <h3>R$ {data.price.toFixed(2).replace('.', ',')}</h3>
       </div>
       <div className={styles.actions}>
         <Image
@@ -46,7 +60,7 @@ const ProdutoItem = ({
           height={18}
           onClick={() => {
             setAtivoDelete(true);
-            setIdDelete(idProduct);
+            setIdDelete(data._id);
           }}
         />
         <div onClick={() => {}}>

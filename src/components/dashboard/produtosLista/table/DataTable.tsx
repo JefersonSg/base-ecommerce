@@ -18,7 +18,7 @@ const DataTable = () => {
   const [idDelete, setIdDelete] = React.useState('');
   const [qntSelected, setQntSelected] = React.useState(7);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [nextPage, setNextPage] = React.useState([0, qntSelected - 1]);
+  const [nextPage, setNextPage] = React.useState([1, qntSelected]);
 
   const { data, refetch } = useQuery({
     queryKey: ['products'],

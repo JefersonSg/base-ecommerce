@@ -42,13 +42,9 @@ const BodyTable = ({
       {data?.products.map((product, index) => {
         return (
           <div key={product._id}>
-            <p>{index}</p>
-            {index >= nextPage[0] && index <= nextPage[1] && (
+            {index >= nextPage[0] - 1 && index <= nextPage[1] - 1 && (
               <ProdutoItem
-                name={product.name}
-                images={product.images}
-                idProduct={product._id}
-                description={product.description}
+                data={product}
                 setAtivoDelete={setAtivoDelete}
                 setIdDelete={setIdDelete}
               />

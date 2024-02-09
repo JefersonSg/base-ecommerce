@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-confusing-void-expression */
 import * as yup from 'yup';
 
 export const validationProduct = yup.object({
@@ -26,11 +27,13 @@ export const validationProduct = yup.object({
     })
     .test(
       'fileType',
-      'o arquivo não é suportado, use uma foto PNG ou JPG',
+      'o arquivo não é suportado, use uma foto PNG, JPG, JPEG ou WEBP',
       (value: any) => {
         return (
           (value[0] ? value[0]?.type === 'image/png' : true) ||
-          (value[0] ? value[0]?.type === 'image/jpg' : true)
+          (value[0] ? value[0]?.type === 'image/jpg' : true) ||
+          (value[0] ? value[0]?.type === 'image/webp' : true) ||
+          (value[0] ? value[0]?.type === 'image/jpeg' : true)
         );
       }
     )

@@ -1,0 +1,37 @@
+.toggle_button {
+    width: 2rem;
+    height: 1rem;
+    background-color: white;
+    border: 1px solid rgba(67,89,113,.4) !important;
+    border-radius: 30rem;
+    cursor: pointer;
+    transition-duration: .2s;
+    justify-self: center;
+    position: relative;
+}
+
+.toggle_button::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+
+    left: 0;
+    border-radius: 999px;
+    background: rgba(67,89,113,.6);
+    box-shadow: 0 0 0 1px rgba(67,89,113,.04), 0 1px 6px rgba(67,89,113,.09);
+    top: -1px;
+    margin: 0.225rem 0 0 0.225rem;
+    transition: all .2s;
+}
+
+.toggle_button.ativo {
+    background: #696cff;
+    border-color: #696cff !important;
+    color: #fff;
+}
+.toggle_button.ativo::before {
+    left: 0.875rem;
+    background: #fff;
+}

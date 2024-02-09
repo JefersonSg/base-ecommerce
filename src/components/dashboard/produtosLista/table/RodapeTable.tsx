@@ -24,48 +24,40 @@ const RodapeTable = ({
   return (
     <div className={styles.container_rodape}>
       <p>
-        Mostrando {nextPage[0] < 1 ? 1 : nextPage[0]} a{' '}
-        {nextPage[1] < 7 ? 7 : nextPage[1]} de um total de{' '}
+        Mostrando {nextPage[0] > 0 ? nextPage[0] : 1} a{' '}
+        {nextPage[1] < qntSelected ? qntSelected : nextPage[1]} de um total de{' '}
         {data?.products?.length} produtos
       </p>
       <div className={styles.botoes}>
         <div
           onClick={() => {
             if (currentPage === 1) {
+              setNextPage([1, qntSelected]);
               return;
             }
-            let prev = currentPage * qntSelected - qntSelected - 1;
-            const next = currentPage * qntSelected - qntSelected - 1;
+            const next = nextPage[1] - qntSelected;
+            const prev = next - qntSelected + 1;
 
-            if (currentPage > 0) {
-              prev = next - qntSelected;
-            } else {
-              prev = 1;
-            }
-
-            const totalPages = data?.products?.length / qntSelected;
-
-            if (currentPage < Math.ceil(totalPages)) {
-              setCurrentPage(currentPage - 1);
-              setNextPage([prev, next]);
-            }
+            setCurrentPage(currentPage - 1);
+            setNextPage([prev, next]);
           }}
         >
           <ButtonPrevNext text="Anterior" />
         </div>
         <div
           onClick={() => {
-            let prev = currentPage * qntSelected - qntSelected;
-            const next = currentPage * qntSelected + qntSelected;
-
-            if (currentPage > 0) {
-              prev = next - qntSelected;
-            } else {
-              prev = 1;
-            }
+            const prev = nextPage[1] + 1;
+            const next = prev + qntSelected - 1;
 
             const totalPages = data?.products?.length / qntSelected;
 
+            if (next > data?.products?.length) {
+              setNextPage([
+                data?.products?.length - qntSelected + 1,
+                data?.products?.length
+              ]);
+              return;
+            }
             if (currentPage < Math.ceil(totalPages)) {
               setCurrentPage(currentPage + 1);
               setNextPage([prev, next]);

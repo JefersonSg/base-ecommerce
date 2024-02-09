@@ -68,6 +68,7 @@ const FormCreateProduct = () => {
 
   const onSubmit: SubmitHandler<ProductInputs> = async (data) => {
     setIsLoading(true);
+
     const response = await createProduct(
       data,
       schemeCodeColor,

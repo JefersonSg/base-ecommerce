@@ -45,3 +45,33 @@ export async function updateCategory(data: any, id: string) {
     console.log(error);
   }
 }
+
+export async function toggleStock(data: any) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('brand', data.brand);
+  formData.append('price', data.price);
+  formData.append('promotion', data.promotion);
+  formData.append('promotionPrice', data.promotionPrice);
+  formData.append('description', data.description);
+  formData.append('colors', data.colors);
+  // formData.append('images', data.images);
+  formData.append('category', data.category);
+  formData.append('codeColors', data.codeColors);
+  formData.append('active', data.active);
+  formData.append('size', data.size);
+  formData.append('amount', data.stock.amount);
+
+  try {
+    const response = await axios.patch(
+      `${API}products/edit/${data._id}`,
+      formData,
+      configFormdata
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}
