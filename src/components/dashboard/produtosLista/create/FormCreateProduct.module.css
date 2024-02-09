@@ -92,3 +92,35 @@
     color: #566a7f;
 }
 
+@media (max-width:1024px) {
+    .form_create_product {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width:767px) {
+    .container_form_create h3 {
+        font-size: 16px;
+        padding-bottom: 16px !important;
+        margin-top: 16px !important;
+    }
+
+    .form_create_product .subtitulo {
+        margin-bottom: 32px;
+        font-size: 16px;
+    }
+    .form_create_product p {
+        margin-bottom: 8px;
+    }
+}
+@media (max-width:576px) {
+.form_create_product {
+    grid-template-rows: 100px;
+}
+    .top_table {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

@@ -295,7 +295,7 @@ const FormCreateProduct = () => {
                   })}
                 </select>
               </div>
-              <div className={styles.select_colection}>
+              {/* <div className={styles.select_colection}>
                 <label htmlFor="colection">Coleção</label>
                 <select
                   name="colection"
@@ -304,7 +304,7 @@ const FormCreateProduct = () => {
                 >
                   <option value="outros">outros</option>
                 </select>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -321,6 +321,7 @@ const FormCreateProduct = () => {
               <ButtonAdd text="Publicar produto" isLoading={isLoading} />
             </div>
           </div>
+          <ButtonAdd text="Publicar produto" isLoading={isLoading} />
         </form>
       </div>
       {ativoNewCategory && (

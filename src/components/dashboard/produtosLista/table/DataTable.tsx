@@ -24,7 +24,6 @@ const DataTable = () => {
 
   async function handleDelete() {
     await deleteProduct(idDelete);
-
     await refetch();
   }
 

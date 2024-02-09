@@ -29,8 +29,13 @@
   cursor: progress;
 }
 
-@media (max-width: 440px) {
-  .btn_add {
-    font-size: 10px;
+@media (max-width:767px) {
+  .btn_rmv {
+    min-width: 50px ;
+    width: max-content;
+    padding: 6px 8px;
+    border-radius: 6px;
+    height: 35px;
+    font-size: 12px;
   }
 }

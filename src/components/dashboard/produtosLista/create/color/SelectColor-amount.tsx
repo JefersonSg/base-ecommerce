@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './SelectColor.module.css';
-import ButtonAdd from '../../../Botoes/ButtonAdd';
 import ButtonDelete from '../../../Botoes/ButtonDelete';
 import SelectAmount from '../amount/SelectAmount';
 
@@ -74,7 +73,7 @@ const SelectColor = ({
             setSchemeCodeColor(codeColor);
           }}
         >
-          <ButtonAdd text="adicionar outra cor" />
+          <button className={styles.btn_add}>adicionar outra cor</button>
         </div>
         <div
           onClick={(e) => {
