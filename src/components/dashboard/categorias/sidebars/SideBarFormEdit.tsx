@@ -7,12 +7,13 @@ import InputFormulario from '../../../compartilhado/formulario/InputForm';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { updateCategory } from '@/src/shared/api/UPDATES';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCategories } from '@/src/shared/api/GETS';
+import { validationCategoryEdit } from './validationCategoryEdit';
 
 interface Inputs {
   title: string;
@@ -20,28 +21,7 @@ interface Inputs {
   image?: any;
 }
 
-const schema = yup.object({
-  title: yup.string().required('É necessário preencher o campo de Titulo'),
-  description: yup
-    .string()
-    .required('É necessário preencher o campo de descrição'),
-  image: yup
-    .mixed()
-    .test(
-      'fileType',
-      'o arquivo não é suportado, use uma foto PNG ou JPG',
-      (value: any) => {
-        return (
-          (value[0] ? value[0]?.type === 'image/png' : true) ||
-          (value[0] ? value[0]?.type === 'image/jpg' : true)
-        );
-      }
-    )
-    .test('fileSize', 'o arquivo é muito grande', (value: any) => {
-      console.log(value[0]);
-      return value[0] ? value[0]?.size <= 1024 * 1024 : true;
-    })
-});
+const schema = validationCategoryEdit;
 
 const SideBarFormEdit = ({
   idCategory,

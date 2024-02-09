@@ -8,7 +8,7 @@ const ButtonAdd = ({
 }: {
   text: string;
   isLoading?: boolean;
-  setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivo?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <button

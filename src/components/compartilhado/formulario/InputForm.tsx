@@ -8,15 +8,17 @@ const InputFormulario = ({
   register,
   placeholder,
   defaultValue,
-  error
+  error,
+  multiple
 }: {
   label: string;
   name: string;
   type: string;
-  register: any;
+  register?: any;
   defaultValue?: any;
   placeholder: string;
   error?: string | any;
+  multiple?: boolean;
 }) => {
   return (
     <div className={`${styles.divInput}`}>
@@ -25,16 +27,24 @@ const InputFormulario = ({
         <input
           className={styles.input}
           type={type}
+          multiple={multiple !== undefined}
+          min={0}
           id={name}
           placeholder={placeholder}
-          defaultValue={defaultValue || ''}
+          defaultValue={defaultValue ?? ''}
           {...register(name)}
         />
       ) : (
-        <textarea id={name} className={styles.textArea}></textarea>
+        <textarea
+          id={name}
+          className={styles.textArea}
+          defaultValue={defaultValue}
+          {...register(name)}
+        ></textarea>
       )}
       <span className={styles.error}>
-        {error && typeof error === 'string' && error}
+        {(error && typeof error === 'string' && error) ||
+          (error?.message && error.message)}
       </span>
     </div>
   );

@@ -8,14 +8,16 @@ const ButtonDelete = ({
 }: {
   text: string;
   isLoading?: boolean;
-  setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivo?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <button
       className={`${styles.btn_rmv} ${isLoading ? styles.loading : ''}`}
       onClick={(e) => {
         e.preventDefault();
-        setAtivo(false);
+        if (setAtivo) {
+          setAtivo(false);
+        }
       }}
       disabled={isLoading}
     >

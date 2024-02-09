@@ -14,7 +14,6 @@ import { getAllProducts } from '@/src/shared/api/GETS';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
-  const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
   const [idDelete, setIdDelete] = React.useState('');
 
@@ -36,19 +35,16 @@ const DataTable = () => {
         <BodyTable
           data={data}
           setIdDelete={setIdDelete}
-          setAtivoEdit={setAtivoEdit}
           setAtivoDelete={setAtivoDelete}
         />
         <RodapeTable />
       </div>
       {ativoCreate ||
-        ativoEdit ||
         (ativoDelete && (
           <div
             className={styles.background}
             onClick={() => {
               setAtivoCreate(false);
-              setAtivoEdit(false);
               setAtivoDelete(false);
             }}
           ></div>

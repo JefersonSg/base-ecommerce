@@ -26,7 +26,7 @@ const useAuth = () => {
   async function authUser(data: { token: string }) {
     setAuthenticated(true);
 
-    Cookie.set('auth_token', data.token);
+    Cookie.set('auth_token', data.token, { expires: 2 });
     setToken(data.token);
     router.push('/');
 
