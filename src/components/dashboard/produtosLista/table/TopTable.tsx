@@ -4,12 +4,14 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import Link from 'next/link';
 
 const TopTable = ({
-  setAtivo
+  setAtivo,
+  qntSelected,
+  setQntSelected
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  qntSelected: number;
+  setQntSelected: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-  const [qntSelected, setQntSelected] = React.useState(7);
-
   function handleEdit(event: FormEvent<HTMLFormElement> | any) {
     setQntSelected(event?.target?.value);
   }
@@ -18,8 +20,8 @@ const TopTable = ({
       <input
         className={styles.input_searsh}
         type="text"
-        placeholder="Procurar categoria"
-        alt="Input para pesquisar categorias"
+        placeholder="Procurar produto"
+        alt="Input para pesquisar produtos"
       />
       <div className={styles.itens}>
         <select

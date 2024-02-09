@@ -9,6 +9,10 @@
   border-bottom: 1px solid #e6e6e6;
 }
 
+.linksUteis li {
+  font-family: 'Public sans', sans-serif;
+}
+
 .linksUteis li:hover svg path {
   fill: #4a4a69;
 }

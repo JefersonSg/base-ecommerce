@@ -16,6 +16,9 @@ const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
   const [idDelete, setIdDelete] = React.useState('');
+  const [qntSelected, setQntSelected] = React.useState(7);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [nextPage, setNextPage] = React.useState([0, qntSelected - 1]);
 
   const { data, refetch } = useQuery({
     queryKey: ['products'],
@@ -30,13 +33,26 @@ const DataTable = () => {
   return (
     <>
       <div className={styles.data_table}>
-        <TopTable setAtivo={setAtivoCreate} />
+        <TopTable
+          setAtivo={setAtivoCreate}
+          setQntSelected={setQntSelected}
+          qntSelected={qntSelected}
+        />
         <BodyTable
+          nextPage={nextPage}
+          qntSelected={qntSelected}
           data={data}
           setIdDelete={setIdDelete}
           setAtivoDelete={setAtivoDelete}
         />
-        <RodapeTable />
+        <RodapeTable
+          data={data}
+          setCurrentPage={setCurrentPage}
+          nextPage={nextPage}
+          currentPage={currentPage}
+          qntSelected={qntSelected}
+          setNextPage={setNextPage}
+        />
       </div>
       {ativoCreate ||
         (ativoDelete && (
