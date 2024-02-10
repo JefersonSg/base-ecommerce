@@ -1,20 +1,13 @@
-import React, { type FormEvent } from 'react';
+import React from 'react';
 import styles from './Toptable.module.css';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import Link from 'next/link';
 
 const TopTable = ({
-  setAtivo,
-  qntSelected,
-  setQntSelected
+  setAtivo
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  qntSelected: number;
-  setQntSelected: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-  function handleEdit(event: FormEvent<HTMLFormElement> | any) {
-    setQntSelected(event?.target?.value);
-  }
   return (
     <div className={styles.top_table}>
       <input
@@ -24,18 +17,6 @@ const TopTable = ({
         alt="Input para pesquisar produtos"
       />
       <div className={styles.itens}>
-        <select
-          name="qnty"
-          id="quantidade_views"
-          className={styles.quantidade_views}
-          value={qntSelected}
-          onChange={handleEdit}
-        >
-          <option value="7">7</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-        </select>
         <Link href={'/dashboard/produtos/create'}>
           <ButtonAdd text="+ Adicionar Produto" setAtivo={setAtivo} />
         </Link>

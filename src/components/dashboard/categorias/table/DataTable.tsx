@@ -24,6 +24,10 @@ const DataTable = () => {
   const [defaultTitle, setDefaultTitle] = React.useState('');
   const [defaultDescription, setDefaultDescription] = React.useState('');
 
+  const [qntSelected, setQntSelected] = React.useState(7);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [nextPage, setNextPage] = React.useState([1, qntSelected]);
+
   const { data, refetch } = useQuery({
     queryKey: ['categories'],
     queryFn: getAllCategories
@@ -62,7 +66,11 @@ const DataTable = () => {
         />
       )}
       <div className={styles.data_table}>
-        <TopTable setAtivo={setAtivoCreate} />
+        <TopTable
+          setAtivo={setAtivoCreate}
+          setQntSelected={setQntSelected}
+          qntSelected={qntSelected}
+        />
         <BodyTable
           data={data}
           idCategory={idCategory}
@@ -73,7 +81,14 @@ const DataTable = () => {
           setDefaultTitle={setDefaultTitle}
           setDefaultDescription={setDefaultDescription}
         />
-        <RodapeTable />
+        <RodapeTable
+          data={data}
+          setCurrentPage={setCurrentPage}
+          nextPage={nextPage}
+          currentPage={currentPage}
+          qntSelected={qntSelected}
+          setNextPage={setNextPage}
+        />
       </div>
       {ativoDelete && (
         <div className={styles.delete_categoria}>
