@@ -27,11 +27,9 @@ const BodyTable = ({
   data,
   setAtivoDelete,
   setIdDelete,
-  nextPage,
-  qntSelected
+  nextPage
 }: {
   data: GetAllProductsResponse;
-  qntSelected: number;
   nextPage: number[];
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setIdDelete: React.Dispatch<React.SetStateAction<string>>;

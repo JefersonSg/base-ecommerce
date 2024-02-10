@@ -5,13 +5,11 @@ import ButtonPrevNext from '../../Botoes/ButtonPrevNext';
 const RodapeTable = ({
   data,
   nextPage,
-  qntSelected,
   currentPage,
   setNextPage,
   setCurrentPage
 }: {
   data: any;
-  qntSelected: number;
   nextPage: number[];
   currentPage: number;
   setNextPage: React.Dispatch<React.SetStateAction<number[]>>;
@@ -21,20 +19,18 @@ const RodapeTable = ({
     <div className={styles.container_rodape}>
       <p>
         Mostrando {nextPage[0] > 0 ? nextPage[0] : 1} a{' '}
-        {data?.categories?.length < qntSelected
-          ? data?.categories?.length
-          : nextPage[1]}{' '}
+        {data?.categories?.length < 7 ? data?.categories?.length : nextPage[1]}{' '}
         de um total de {data?.categories?.length} categorias
       </p>
       <div className={styles.botoes}>
         <div
           onClick={() => {
             if (currentPage === 1) {
-              setNextPage([1, qntSelected]);
+              setNextPage([1, 7]);
               return;
             }
-            const next = nextPage[1] - qntSelected;
-            const prev = next - qntSelected + 1;
+            const next = nextPage[1] - 7;
+            const prev = next - 7 + 1;
 
             setCurrentPage(currentPage - 1);
             setNextPage([prev, next]);
@@ -45,13 +41,13 @@ const RodapeTable = ({
         <div
           onClick={() => {
             const prev = nextPage[1] + 1;
-            const next = prev + qntSelected - 1;
+            const next = prev + 7 - 1;
 
-            const totalPages = data?.products?.length / qntSelected;
+            const totalPages = data?.products?.length / 7;
 
             if (next > data?.products?.length) {
               setNextPage([
-                data?.products?.length - qntSelected + 1,
+                data?.products?.length - 7 + 1,
                 data?.products?.length
               ]);
               return;
