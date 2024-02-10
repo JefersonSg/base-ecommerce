@@ -7,7 +7,7 @@ import React from 'react';
 import styles from './FormCreateProduct.module.css';
 import './styles.css';
 
-import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createProduct } from '@/src/shared/api/POSTS';
 import { validationProduct } from './ValidationProduct';
@@ -16,7 +16,7 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import SelectColor from './color/SelectColor-amount';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories } from '@/src/shared/api/GETS';
+import { getAllCategories, getAllProducts } from '@/src/shared/api/GETS';
 
 import {
   type ProductInputs,
@@ -24,6 +24,8 @@ import {
 } from '@/src/shared/helpers/interfaces';
 import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
 import ButtonDelete from '../../Botoes/ButtonDelete';
+import ToggleButtonCreate from '../../Botoes/ToggleButtonCreate';
+import { useRouter } from 'next/navigation';
 
 const schema = validationProduct;
 
@@ -35,8 +37,8 @@ const FormCreateProduct = () => {
   const {
     register,
     handleSubmit,
-    control,
     reset,
+    watch,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema),
@@ -54,9 +56,16 @@ const FormCreateProduct = () => {
     }
   });
 
+  const promotionCheck = watch('promotion');
+  const activeCheck = watch('active');
+
   const { data } = useQuery<CategoriesResponse>({
     queryKey: ['categories'],
     queryFn: getAllCategories
+  });
+  const { refetch } = useQuery<CategoriesResponse>({
+    queryKey: ['products'],
+    queryFn: getAllProducts
   });
 
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
@@ -66,21 +75,26 @@ const FormCreateProduct = () => {
   const [amount, setAmount] = React.useState<number[]>([]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
 
-  const onSubmit: SubmitHandler<ProductInputs> = async (data) => {
-    setIsLoading(true);
+  const router = useRouter();
 
-    const response = await createProduct(
-      data,
-      schemeCodeColor,
-      schemeColor,
-      amount,
-      setAtivoPopUp
-    );
-    setIsLoading(false);
-    if (response) {
+  const onSubmit: SubmitHandler<ProductInputs> = async (data) => {
+    try {
+      setIsLoading(true);
+      await createProduct(
+        data,
+        schemeCodeColor,
+        schemeColor,
+        amount,
+        setAtivoPopUp
+      );
+      setIsLoading(false);
       setAtivoPopUp('Produto criado com sucesso');
       console.log(amount);
-      // await refetch();
+      await refetch();
+      router.push('/dashboard/produtos');
+    } catch (error) {
+      console.log(error);
+      setAtivoPopUp(`Erro ao criar o produto`);
     }
   };
 
@@ -186,36 +200,11 @@ const FormCreateProduct = () => {
               />
               <div className={styles.div_promocao}>
                 <p>Item em promoção?</p>
-                <label>
-                  <Controller
-                    control={control}
-                    name="promotion"
-                    render={({ field }) => (
-                      <input
-                        type="radio"
-                        {...field}
-                        value={'true'}
-                        checked={`${field.value}` === 'true'}
-                      />
-                    )}
-                  />
-                  Sim
-                </label>
-                <label>
-                  <Controller
-                    control={control}
-                    name="promotion"
-                    render={({ field }) => (
-                      <input
-                        type="radio"
-                        {...field}
-                        value={'false'}
-                        checked={`${field.value}` === 'false'}
-                      />
-                    )}
-                  />
-                  Não
-                </label>
+                <ToggleButtonCreate
+                  data={promotionCheck}
+                  register={register}
+                  name={'promotion'}
+                />
               </div>
               <InputFormulario
                 label="Preço da promoção"
@@ -227,36 +216,11 @@ const FormCreateProduct = () => {
               />
               <div>
                 <p>Produto em estoque</p>
-                <label>
-                  <Controller
-                    control={control}
-                    name="active"
-                    render={({ field }) => (
-                      <input
-                        type="radio"
-                        {...field}
-                        value={'true'}
-                        checked={`${`${field.value}`}` === 'true'}
-                      />
-                    )}
-                  />
-                  Sim
-                </label>
-                <label>
-                  <Controller
-                    control={control}
-                    name="active"
-                    render={({ field }) => (
-                      <input
-                        type="radio"
-                        {...field}
-                        value={'false'}
-                        checked={`${`${field.value}`}` === 'false'}
-                      />
-                    )}
-                  />
-                  Não
-                </label>
+                <ToggleButtonCreate
+                  data={activeCheck}
+                  register={register}
+                  name={'active'}
+                />
               </div>
             </div>
             <div className={`div_container ${styles.organization_items}`}>

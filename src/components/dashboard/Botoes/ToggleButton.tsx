@@ -4,23 +4,29 @@ import styles from './ToggleButton.module.css';
 import { toggleStock } from '@/src/shared/api/UPDATES';
 
 const ToggleButton = ({ data }: { data: any }) => {
-  const [active, setActive] = React.useState(data.active ?? false);
+  const [active, setActive] = React.useState(data?.active ?? data ?? false);
+
   async function toggleStockParam() {
     const newData = data;
 
-    newData.active = !newData.active;
+    if (newData?.active !== undefined) {
+      newData.active = !newData.active;
 
-    const response = await toggleStock(newData);
-    if (response) {
-      setActive(!active);
+      const response = await toggleStock(newData);
+      if (response) {
+        setActive(!active);
+      }
     }
+
+    setActive(!active);
   }
 
   return (
-    <div
+    <input
       onClick={toggleStockParam}
       className={`${styles.toggle_button} ${active ? styles.ativo : ''}`}
-    ></div>
+      type="checkbox"
+    />
   );
 };
 

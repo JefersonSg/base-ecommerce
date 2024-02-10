@@ -9,7 +9,7 @@ function LinksCategorias() {
       <h2 className="titulo_sideBar">Estilização</h2>
 
       <ul className={styles.links}>
-        <BotaoLi texto="Banner" />
+        <BotaoLi texto="Banners" />
         <BotaoLi texto="Colecoes" />
         <button className={styles.button_sair_dashboard} onClick={logout}>
           Sair

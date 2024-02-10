@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-confusing-void-expression */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
@@ -7,7 +6,7 @@ import React from 'react';
 import styles from './FormCreateProduct.module.css';
 import './styles.css';
 
-import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationProduct } from './ValidationProduct';
 
@@ -22,6 +21,7 @@ import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { updateProduct } from '@/src/shared/api/UPDATES';
 import { useRouter } from 'next/navigation';
+import ToggleButtonCreate from '../../Botoes/ToggleButtonCreate';
 
 const schema = validationProduct;
 
@@ -37,7 +37,7 @@ const FormCreateProduct = ({
   const {
     register,
     handleSubmit,
-    control,
+    watch,
     reset,
     formState: { errors }
   } = useForm({
@@ -93,6 +93,7 @@ const FormCreateProduct = ({
       router.push('/dashboard/produtos');
     } catch (error) {
       console.log(error);
+      setAtivoPopUp(`Erro ao Editar o produto`);
     }
   };
 
@@ -118,6 +119,9 @@ const FormCreateProduct = ({
       setSchemeCodeColor(dataProduct.product.codeColors.join(',').split(','));
     }
   }, [dataProduct]);
+
+  const promotionCheck = watch('promotion');
+  const activeCheck = watch('active');
 
   return (
     <>
@@ -211,36 +215,11 @@ const FormCreateProduct = ({
               />
               <div className={styles.div_promocao}>
                 <p>Item em promoção?</p>
-                <label>
-                  <Controller
-                    control={control}
-                    name="promotion"
-                    render={({ field }) => (
-                      <input
-                        type="radio"
-                        {...field}
-                        value={'true'}
-                        checked={`${field.value}` === 'true'}
-                      />
-                    )}
-                  />
-                  Sim
-                </label>
-                <label>
-                  <Controller
-                    control={control}
-                    name="promotion"
-                    render={({ field }) => (
-                      <input
-                        type="radio"
-                        {...field}
-                        value={'false'}
-                        checked={`${field.value}` === 'false'}
-                      />
-                    )}
-                  />
-                  Não
-                </label>
+                <ToggleButtonCreate
+                  data={promotionCheck}
+                  register={register}
+                  name={'promotion'}
+                />
               </div>
               <InputFormulario
                 label="Preço da promoção"
@@ -252,36 +231,11 @@ const FormCreateProduct = ({
               />
               <div>
                 <p>Produto em estoque</p>
-                <label>
-                  <Controller
-                    control={control}
-                    name="active"
-                    render={({ field }) => (
-                      <input
-                        type="radio"
-                        {...field}
-                        value={'true'}
-                        checked={`${`${field.value}`}` === 'true'}
-                      />
-                    )}
-                  />
-                  Sim
-                </label>
-                <label>
-                  <Controller
-                    control={control}
-                    name="active"
-                    render={({ field }) => (
-                      <input
-                        type="radio"
-                        {...field}
-                        value={'false'}
-                        checked={`${`${field.value}`}` === 'false'}
-                      />
-                    )}
-                  />
-                  Não
-                </label>
+                <ToggleButtonCreate
+                  data={activeCheck}
+                  register={register}
+                  name={'active'}
+                />
               </div>
             </div>
             <div className={`div_container ${styles.organization_items}`}>

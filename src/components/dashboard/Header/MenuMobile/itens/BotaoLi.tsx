@@ -26,7 +26,7 @@ function BotaoLi({
   return (
     <li className={styles.lista}>
       <Link
-        href={`/${linkClean}`}
+        href={`/dashboard/${linkClean}`}
         className={`${linkActiveClean === linkInsertClean ? styles.ativo : ''}`}
       >
         {image && (
