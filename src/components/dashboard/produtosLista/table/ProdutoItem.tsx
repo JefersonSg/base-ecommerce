@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './Produto.module.css';
 import ToggleButton from '../../Botoes/ToggleButton';
+import Link from 'next/link';
 
 interface ProductsType {
   _id: string;
@@ -63,14 +64,14 @@ const ProdutoItem = ({
             setIdDelete(data._id);
           }}
         />
-        <div onClick={() => {}}>
+        <Link href={`/dashboard/produtos/${data._id}`}>
           <Image
             alt="Imagem de um laps para editar a categoria"
             src={'/dashboard/edit.svg'}
             width={16}
             height={18}
           />
-        </div>
+        </Link>
       </div>
     </div>
   );

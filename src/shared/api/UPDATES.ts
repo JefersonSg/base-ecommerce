@@ -39,7 +39,6 @@ export async function updateCategory(data: any, id: string) {
       formData,
       configFormdata
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -73,5 +72,68 @@ export async function toggleStock(data: any) {
     return response.data;
   } catch (error: any) {
     console.log(error);
+  }
+}
+
+export async function updateProduct(
+  id: string,
+  data: any,
+  codeColors: string[],
+  colors: string[],
+  amount: number[],
+  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>
+) {
+  const formData = new FormData();
+
+  let ok = false;
+
+  if (colors) {
+    colors.forEach((color, index) => {
+      if (color.length < 1) {
+        setAtivoPopUp('Preencha todos os campos de cores');
+        ok = true;
+      }
+      if (amount[index] >= 0) {
+        ok = false;
+      } else {
+        setAtivoPopUp('Preencha todos os campos de quantidade');
+        ok = true;
+      }
+    });
+  }
+
+  if (ok) return;
+
+  Object.keys(data).forEach((key) => {
+    formData.append(key, data[key]);
+  });
+
+  formData.append('amount', amount.toString());
+  formData.append('colors', colors.join(','));
+  formData.append('codeColors', codeColors.join(','));
+
+  if (data.images) {
+    const imageArray = Array.from(data.images);
+
+    imageArray.forEach((image: any) => {
+      formData.append('images', image);
+    });
+  }
+  try {
+    const response = await axios.patch(
+      `${API}products/edit/${id}`,
+      formData,
+      configFormdata
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+
+    if (error.response.data.errorsResult.body) {
+      Object.keys(error.response.data.errorsResult.body).forEach((key) => {
+        setAtivoPopUp(error.response.data.errorsResult.body[key]);
+      });
+    }
   }
 }

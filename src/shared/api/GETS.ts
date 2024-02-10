@@ -53,3 +53,13 @@ export const getAllProducts = async () => {
     console.log(error);
   }
 };
+
+export const getProductById = async (id: string) => {
+  try {
+    const response = await axios.get(`${API}products/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
