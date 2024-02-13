@@ -1,38 +1,40 @@
 .toggle_button {
-    width: 2rem;
-    height: 16px;
-    background-color: white;
-    border: 1px solid rgba(67,89,113,.4) !important;
-    border-radius: 30rem;
-    cursor: pointer;
-    transition-duration: .2s;
-    justify-self: center;
-    position: relative;
-    appearance: none;
+  width: 2rem;
+  height: 16px;
+  background-color: white;
+  border: 1px solid rgba(67, 89, 113, 0.4) !important;
+  border-radius: 30rem;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  justify-self: center;
+  position: relative;
+  appearance: none;
 }
 
 .toggle_button::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    box-sizing: border-box;
-    border-radius: 999px;
-    background: rgba(67,89,113,.6);
-    box-shadow: 0 0 0 1px rgba(67,89,113,.04), 0 1px 6px rgba(67,89,113,.09);
-    left: 47%;
-    top: 87%;
-    transform: translate(-100%,-100%);
-    transition: all .2s;
+  content: '';
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background: rgba(67, 89, 113, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(67, 89, 113, 0.04),
+    0 1px 6px rgba(67, 89, 113, 0.09);
+  left: 47%;
+  top: 87%;
+  transform: translate(-100%, -100%);
+  transition: all 0.2s;
 }
 
 .toggle_button.ativo {
-    background: #696cff;
-    border-color: #696cff !important;
-    color: #fff;
+  background: #696cff;
+  border-color: #696cff !important;
+  color: #fff;
 }
 .toggle_button.ativo::before {
-    left: 90%;
-    background: #fff;
+  left: 90%;
+  background: #fff;
 }

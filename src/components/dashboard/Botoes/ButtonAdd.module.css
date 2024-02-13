@@ -14,7 +14,6 @@
   transition: all 0.1s;
 }
 
-
 .btn_add:hover {
   outline: 2px solid rgba(105, 108, 255, 0.7);
   background-color: #5f61e1;
@@ -33,9 +32,9 @@
   transform: translateY(-3px);
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .btn_add {
-    min-width: 50px ;
+    min-width: 50px;
     width: max-content;
     padding: 6px 8px;
     border-radius: 6px;

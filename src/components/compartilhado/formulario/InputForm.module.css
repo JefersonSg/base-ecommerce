@@ -18,9 +18,9 @@
 
 .input::placeholder {
   color: #ccd;
-  transition: all .2s;
+  transition: all 0.2s;
 }
- 
+
 .input[type='file'] {
   padding: 0;
   cursor: pointer;
@@ -55,9 +55,8 @@
   background-color: white;
 }
 
-
 .input[type='text']:focus,
-.input[type='number']:focus{
+.input[type='number']:focus {
   box-shadow: 0 0 0 3px #996557;
 }
 

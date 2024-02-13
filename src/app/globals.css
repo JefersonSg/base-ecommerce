@@ -42,9 +42,9 @@ img {
   --color-border: #d9dee3;
 }
 .container_dashboard {
-    min-height: 800px;
-    background-color: #f5f5f5;
-    padding-top: 32px;
+  min-height: 800px;
+  background-color: #f5f5f5;
+  padding-top: 32px;
 }
 .titulo_sessao {
   color: var(--cor-primaria);

@@ -22,7 +22,6 @@
   z-index: 999;
 }
 
-
 /* delete modal */
 .delete_categoria {
   display: flex;
@@ -54,7 +53,6 @@
   font-size: 16px;
   text-align: center;
 }
-
 
 @media (min-width: 1024px) {
   .data_table {

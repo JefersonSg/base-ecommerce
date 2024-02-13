@@ -29,9 +29,9 @@
   cursor: progress;
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .btn_rmv {
-    min-width: 50px ;
+    min-width: 50px;
     width: max-content;
     padding: 6px 8px;
     border-radius: 6px;
