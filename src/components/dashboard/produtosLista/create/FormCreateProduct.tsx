@@ -265,7 +265,7 @@ const FormCreateProduct = () => {
                   {...register('category')}
                 >
                   <option value="outros">outros</option>
-                  {dataCategory.data?.categories.map((category, index) => {
+                  {dataCategory?.data?.categories.map((category, index) => {
                     return (
                       <option key={category._id} value={category._id}>
                         {category.name}
@@ -292,13 +292,15 @@ const FormCreateProduct = () => {
                   {...register('subcategory')}
                 >
                   <option value="outros">outros</option>
-                  {dataSubCategories.data?.subcategories?.map((subcategory) => {
-                    return (
-                      <option key={subcategory._id} value={subcategory._id}>
-                        {subcategory.name}
-                      </option>
-                    );
-                  })}
+                  {dataSubCategories?.data?.subcategories?.map(
+                    (subcategory) => {
+                      return (
+                        <option key={subcategory._id} value={subcategory._id}>
+                          {subcategory.name}
+                        </option>
+                      );
+                    }
+                  )}
                 </select>
               </div>
               {/* <div className={styles.select_colection}>
