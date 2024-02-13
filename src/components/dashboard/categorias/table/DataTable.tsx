@@ -59,7 +59,7 @@ const DataTable = () => {
         <SideBarFormEdit
           idCategory={idCategory}
           setAtivo={setAtivoEdit}
-          title={defaultTitle}
+          name={defaultTitle}
           description={defaultDescription}
           image={['']}
         />
