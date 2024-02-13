@@ -19,6 +19,7 @@ export function Header() {
     queryFn: getUser
   });
 
+  console.log(data);
   React.useEffect(() => {
     if (estaAtivo) {
       document.body.classList.add('scroll-lock');

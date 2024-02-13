@@ -2,6 +2,9 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 export default function middleware(req: NextRequest) {
   const token = req.cookies.get('auth_token')?.value;
+  const admin = req.cookies.get('isAdmin')?.value;
+
+  console.log(req.nextUrl.pathname.includes('dashboard') && !admin);
 
   const signInURL = new URL('/', req.url);
 
@@ -12,13 +15,19 @@ export default function middleware(req: NextRequest) {
     ) {
       return NextResponse.redirect(signInURL);
     }
+    if (req.nextUrl.pathname.includes('dashboard') && !admin) {
+      return NextResponse.redirect(signInURL);
+    }
   }
   if (!token) {
     if (req.nextUrl.pathname === '/minha-conta') {
       return NextResponse.redirect(signInURL);
     }
+    if (req.nextUrl.pathname.includes('dashboard')) {
+      return NextResponse.redirect(signInURL);
+    }
   }
 }
 export const config = {
-  matcher: ['/login/:path*', '/registrar/', '/minha-conta']
+  matcher: ['/login/:path*', '/registrar/', '/minha-conta', '/dashboard/:path*']
 };

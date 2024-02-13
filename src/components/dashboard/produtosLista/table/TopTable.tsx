@@ -18,7 +18,7 @@ const TopTable = ({
       />
       <div className={styles.itens}>
         <Link href={'/dashboard/produtos/create'}>
-          <ButtonAdd text="+ Adicionar Produto" setAtivo={setAtivo} />
+          <ButtonAdd text="+Add Produto" setAtivo={setAtivo} />
         </Link>
       </div>
     </div>

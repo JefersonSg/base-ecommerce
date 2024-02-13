@@ -21,7 +21,7 @@ const TopTable = ({
             setAtivo(true);
           }}
         >
-          <ButtonAdd text="+ Adicionar Subcategoria" setAtivo={setAtivo} />
+          <ButtonAdd text="+Add Subcategoria" setAtivo={setAtivo} />
         </div>
       </div>
     </div>

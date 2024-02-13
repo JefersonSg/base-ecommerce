@@ -19,7 +19,7 @@ function MenuMobile({
 }: {
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  userData: User | null;
+  userData: { user: User } | null;
 }) {
   return (
     <>

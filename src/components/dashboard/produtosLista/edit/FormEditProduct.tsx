@@ -280,7 +280,7 @@ const FormCreateProduct = ({
                   {...register('category')}
                 >
                   <option value="outros">outros</option>
-                  {dataCategory.data?.categories.map((category, index) => {
+                  {dataCategory.data?.categories?.map((category, index) => {
                     return (
                       <option key={category._id} value={category._id}>
                         {category.name}

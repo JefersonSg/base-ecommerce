@@ -12,8 +12,9 @@ const config = {
 };
 
 async function isAdmin(response: any) {
-  const IdAdmin = process.env.NEXT_PUBLIC_ADMIN_ID;
-  if (IdAdmin === response?.currentUser?._id) {
+  const { isAdmin } = response;
+
+  if (isAdmin) {
     return Cookies.set('isAdmin', 'true');
   }
 
@@ -25,6 +26,8 @@ export const getUser = async () => {
   }
   try {
     const response = await axios.get(`${API}user/get`, config);
+
+    console.log(response);
 
     await isAdmin(response.data);
     return response.data;

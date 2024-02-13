@@ -18,7 +18,7 @@ function Usuario({
 }: {
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  userData: User | null;
+  userData: { user: User } | null;
 }) {
   return (
     <div className={styles.usuario}>
@@ -34,7 +34,11 @@ function Usuario({
         <h3 className="titulo_area">
           Olá,{' '}
           {userData
-            ? `${userData?.name + ' ' + userData?.surname?.split(' ')[0]}`
+            ? `${
+                userData?.user.name +
+                ' ' +
+                userData?.user.surname?.split(' ')[0]
+              }`
             : 'Visitante'}
         </h3>
         {!userData ? (
