@@ -30,6 +30,7 @@ const InputFormulario = ({
           multiple={multiple !== undefined}
           min={0}
           id={name}
+          step="0.01"
           placeholder={placeholder}
           defaultValue={defaultValue ?? ''}
           {...register(name)}

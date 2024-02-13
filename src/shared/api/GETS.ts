@@ -27,8 +27,6 @@ export const getUser = async () => {
   try {
     const response = await axios.get(`${API}user/get`, config);
 
-    console.log(response);
-
     await isAdmin(response.data);
     return response.data;
   } catch (error) {

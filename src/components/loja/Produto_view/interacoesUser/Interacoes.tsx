@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './interacoes.module.css';
 import Estrelas from './Estrelas';
 import Favotiro from './Favotiro';

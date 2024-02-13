@@ -12,22 +12,16 @@ import styles from './SlidesFotosProduto.module.css';
 import Image from 'next/image';
 
 function SlideFotos({
+  imagens,
   setImagem,
   imagemId,
   setImagemId
 }: {
+  imagens: string[];
   setImagem: React.Dispatch<React.SetStateAction<string>>;
   imagemId: string;
   setImagemId: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const imagens = [
-    'produto1.png',
-    'produto2.png',
-    'produto1.png',
-    'produto1.png',
-    'produto2.png'
-  ];
-
   return (
     <div className={styles.produto_thumbs}>
       <Swiper
@@ -37,7 +31,7 @@ function SlideFotos({
         spaceBetween={16}
         slidesPerView={3}
       >
-        {imagens.map((imagem: string, index) => {
+        {imagens?.map((imagem: string, index) => {
           return (
             <SwiperSlide key={index}>
               <Image
@@ -47,7 +41,7 @@ function SlideFotos({
                 }}
                 className={`${index.toString() === imagemId ? 'ativo' : ''}`}
                 alt="Foto do produto"
-                src={`/produto/${imagem}`}
+                src={imagem}
                 id={`${index}`}
                 width={94}
                 height={94}

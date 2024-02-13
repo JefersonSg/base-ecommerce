@@ -1,22 +1,21 @@
 'use client';
 
 import React from 'react';
-import FormCreateProduct from './FormEditProduct';
+import FormUpdateProduct from './FormUpdateProduct';
 import { useParams } from 'next/navigation';
-import { type ProductInputs } from '@/src/shared/helpers/interfaces';
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { getProductById } from '@/src/shared/api/GETS';
 
 const BodyEditForm = () => {
   const [dataProduct, setDataProduct] = React.useState<{
-    product: ProductInputs;
+    product: ProductApi;
   }>();
-
-  const { edit } = useParams<any>();
+  const { update } = useParams<any>();
 
   React.useEffect(() => {
     const response = async () => {
       try {
-        const responseData = await getProductById(edit);
+        const responseData = await getProductById(update);
         setDataProduct(responseData);
       } catch (error) {
         console.log(error);
@@ -24,9 +23,9 @@ const BodyEditForm = () => {
     };
 
     void response();
-  }, [edit]);
+  }, [update]);
   return (
-    <div>{dataProduct && <FormCreateProduct dataProduct={dataProduct} />}</div>
+    <div>{dataProduct && <FormUpdateProduct dataProduct={dataProduct} />}</div>
   );
 };
 

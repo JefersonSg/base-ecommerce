@@ -5,8 +5,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './SlideCategoria.module.css';
 import Categoria from './categoria/Categoria';
 import './styles.css';
+import { useQuery } from '@tanstack/react-query';
+import { getAllCategories } from '@/src/shared/api/GETS';
 
 function SlideCategoria() {
+  const { data } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getAllCategories
+  });
+
   return (
     <Swiper
       className={`${styles.mySwiper} slide-categoria`}
@@ -15,21 +22,13 @@ function SlideCategoria() {
       navigation={false}
       pagination={false}
     >
-      <SwiperSlide>
-        <Categoria nome="Batom" img="batom" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Categoria nome="Batom" img="batom" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Categoria nome="Batom" img="batom" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Categoria nome="Batom" img="batom" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Categoria nome="Batom" img="batom" />
-      </SwiperSlide>
+      {data?.categories?.map((category: any, index: number) => {
+        return (
+          <SwiperSlide key={category._id}>
+            <Categoria nome={category.name} img={category.image} />
+          </SwiperSlide>
+        );
+      })}
     </Swiper>
   );
 }

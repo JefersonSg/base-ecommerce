@@ -5,8 +5,8 @@ import styles from './FotosProduto.module.css';
 import Slide from './SlideFotos';
 import React from 'react';
 
-function FotosProduto({ img }: { img?: string[] }) {
-  const [imagemPrincipal, setImagemPrincipal] = React.useState('produto1.png');
+function FotosProduto({ img }: { img: string[] }) {
+  const [imagemPrincipal, setImagemPrincipal] = React.useState(img[0] ?? '');
   const [imagemId, setImagemId] = React.useState('0');
   const [fotoInteira, setFotoInteira] = React.useState(false);
 
@@ -34,7 +34,7 @@ function FotosProduto({ img }: { img?: string[] }) {
           className={styles.fotoPrincipal}
           alt="Foto do produto"
           id={imagemId}
-          src={`/produto/${imagemPrincipal || 'produto1.png'}`}
+          src={imagemPrincipal}
           width={350}
           height={350}
         />
@@ -46,7 +46,7 @@ function FotosProduto({ img }: { img?: string[] }) {
             <Image
               className={styles.fotoTelaInteira}
               alt="Foto do produto"
-              src={`/produto/${imagemPrincipal || 'produto1.png'}`}
+              src={imagemPrincipal}
               width={350}
               height={350}
             />
@@ -66,6 +66,7 @@ function FotosProduto({ img }: { img?: string[] }) {
         setImagem={setImagemPrincipal}
         setImagemId={setImagemId}
         imagemId={imagemId}
+        imagens={img}
       />
     </div>
   );

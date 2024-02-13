@@ -22,7 +22,8 @@ import {
 
 import {
   type subcategoryInterface,
-  type CategoryInterface
+  type CategoryInterface,
+  type ProductApi
 } from '@/src/shared/helpers/interfaces';
 import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
 import ButtonDelete from '../../Botoes/ButtonDelete';
@@ -38,10 +39,10 @@ interface CategoriesResponse {
 interface subcategoriesResponse {
   subcategories: subcategoryInterface[];
 }
-const FormCreateProduct = ({
+const FormUpdateProduct = ({
   dataProduct
 }: {
-  dataProduct: { product: any };
+  dataProduct: { product: ProductApi };
 }) => {
   const {
     register,
@@ -124,10 +125,10 @@ const FormCreateProduct = ({
   // setando Valores dos arrays
   React.useEffect(() => {
     if (dataProduct.product.colors[0]) {
-      setSchemeColor(dataProduct?.product?.colors.join(',').split(','));
+      setSchemeColor(dataProduct?.product?.colors);
     }
     if (dataProduct?.product?.stock?.amount) {
-      setAmount(dataProduct?.product?.stock?.amount.split(','));
+      setAmount(dataProduct?.product?.stock?.amount);
     }
     if (dataProduct.product.codeColors) {
       setSchemeCodeColor(dataProduct.product.codeColors.join(',').split(','));
@@ -346,4 +347,4 @@ const FormCreateProduct = ({
   );
 };
 
-export default FormCreateProduct;
+export default FormUpdateProduct;

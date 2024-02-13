@@ -5,29 +5,30 @@ import Link from 'next/link';
 
 interface produto {
   img?: string[];
-  nome: string;
-  preco: string;
-  promocao: boolean;
+  name: string;
+  price: string;
+  link: string;
+  promotion: boolean;
 }
 
-function Produto({ img, nome, preco, promocao }: produto) {
+function Produto({ img, name, price, promotion, link }: produto) {
   return (
-    <Link href={'/produto'} className={styles.produto}>
+    <Link href={`/produto/${link}`} className={styles.produto}>
       <Favotiro />
       <div className={styles.imagem_div}>
         {img && (
           <Image
             className={styles.imagem}
             alt="Imagem do produto"
-            src={`/produto/${img[0]}.png`}
+            src={img[0] ?? ''}
             width={144}
             height={206}
           />
         )}
       </div>
       <div className={styles.infos}>
-        <p className={styles.nome_produto}>{nome}</p>
-        <span className={styles.preco}>R$ {preco}</span>
+        <p className={styles.nome_produto}>{name}</p>
+        <span className={styles.preco}>R$ {price}</span>
       </div>
     </Link>
   );

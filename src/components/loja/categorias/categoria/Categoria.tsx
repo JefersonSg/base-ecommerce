@@ -7,7 +7,7 @@ function Categoria({ nome, img }: { nome: string; img: string }) {
       <Image
         className={styles.imagemCategoria}
         alt={`imagem da categoria ${nome}`}
-        src={`/categorias/${img}.png`}
+        src={img}
         width={104}
         height={104}
       />

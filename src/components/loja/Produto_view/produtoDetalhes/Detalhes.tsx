@@ -3,15 +3,18 @@ import Cores from './Cores';
 import styles from './Detalhes.module.css';
 import Preco from './Preco';
 import Tamanhos from './Tamanhos';
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
-function Detalhes() {
+function Detalhes({ data }: { data: ProductApi }) {
   return (
     <div className={styles.detalhes}>
       <div className={styles.informacoes}>
-        <Cores />
+        <Cores colors={data.colors} codeColors={data.codeColors} />
         <Tamanhos />
       </div>
-      <Preco texto="R$ 79,99" />
+      <Preco
+        texto={`R$ ${data.price.toFixed(2).toString().replace('.', ',')}`}
+      />
       <div className={styles.botao_carrinho}>
         <BotaoColorido
           texto="Adicionar ao carrinho"
