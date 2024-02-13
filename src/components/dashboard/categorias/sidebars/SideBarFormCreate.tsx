@@ -10,13 +10,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
-import { createCategory } from '@/src/shared/api/POSTS';
+import { createCategory } from '@/src/shared/api/CREATE';
 import { getAllCategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationCategory } from './validationCategory';
 
 interface Inputs {
-  title: string;
+  name: string;
   description: string;
   image: any;
 }
@@ -63,12 +63,12 @@ const SideBarFormCreate = ({
       <h2>Adicione uma categoria</h2>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <InputFormulario
-          name="title"
-          label="Titulo"
-          placeholder="Digite o titulo da categoria"
+          name="name"
+          label="Nome"
+          placeholder="Digite o nome da categoria"
           register={register}
           type="text"
-          error={errors?.title?.message}
+          error={errors?.name?.message}
         />
         <InputFormulario
           name="description"

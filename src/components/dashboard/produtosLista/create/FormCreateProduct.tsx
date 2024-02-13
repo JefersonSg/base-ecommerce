@@ -9,18 +9,23 @@ import './styles.css';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createProduct } from '@/src/shared/api/POSTS';
+import { createProduct } from '@/src/shared/api/CREATE';
 import { validationProduct } from './ValidationProduct';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import SelectColor from './color/SelectColor-amount';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories, getAllProducts } from '@/src/shared/api/GETS';
+import {
+  getAllCategories,
+  getAllProducts,
+  getAllSubcategories
+} from '@/src/shared/api/GETS';
 
 import {
   type ProductInputs,
-  type Category
+  type CategoryInterface,
+  type subcategoryInterface
 } from '@/src/shared/helpers/interfaces';
 import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
 import ButtonDelete from '../../Botoes/ButtonDelete';
@@ -30,7 +35,10 @@ import { useRouter } from 'next/navigation';
 const schema = validationProduct;
 
 interface CategoriesResponse {
-  categories: Category[];
+  categories: CategoryInterface[];
+}
+interface subcategoriesResponse {
+  subcategories: subcategoryInterface[];
 }
 
 const FormCreateProduct = () => {
@@ -50,6 +58,7 @@ const FormCreateProduct = () => {
       description: 'Descrição de teste',
       brand: 'Nike teste',
       category: '',
+      subcategory: '',
       characteristic: '',
       images: {},
       active: true
@@ -59,9 +68,13 @@ const FormCreateProduct = () => {
   const promotionCheck = watch('promotion');
   const activeCheck = watch('active');
 
-  const { data } = useQuery<CategoriesResponse>({
+  const dataCategory = useQuery<CategoriesResponse>({
     queryKey: ['categories'],
     queryFn: getAllCategories
+  });
+  const dataSubCategories = useQuery<subcategoriesResponse>({
+    queryKey: ['subcategories'],
+    queryFn: getAllSubcategories
   });
   const { refetch } = useQuery<CategoriesResponse>({
     queryKey: ['products'],
@@ -80,7 +93,7 @@ const FormCreateProduct = () => {
   const onSubmit: SubmitHandler<ProductInputs> = async (data) => {
     try {
       setIsLoading(true);
-      await createProduct(
+      const response = await createProduct(
         data,
         schemeCodeColor,
         schemeColor,
@@ -88,10 +101,11 @@ const FormCreateProduct = () => {
         setAtivoPopUp
       );
       setIsLoading(false);
-      setAtivoPopUp('Produto criado com sucesso');
-      console.log(amount);
-      await refetch();
-      router.push('/dashboard/produtos');
+      if (response) {
+        router.push('/dashboard/produtos');
+        await refetch();
+        setAtivoPopUp('Produto criado com sucesso');
+      }
     } catch (error) {
       console.log(error);
       setAtivoPopUp(`Erro ao criar o produto`);
@@ -233,8 +247,8 @@ const FormCreateProduct = () => {
                 error={errors.brand}
                 register={register}
               />
-              <div className={styles.select_categoria}>
-                <div className={styles.div_categoria}>
+              <div className={styles.selects_container}>
+                <div className={styles.select_div}>
                   <label htmlFor="category">Categoria</label>
                   <p
                     className={styles.click}
@@ -251,10 +265,37 @@ const FormCreateProduct = () => {
                   {...register('category')}
                 >
                   <option value="outros">outros</option>
-                  {data?.categories.map((category, index) => {
+                  {dataCategory.data?.categories.map((category, index) => {
                     return (
                       <option key={category._id} value={category._id}>
                         {category.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div className={styles.selects_container}>
+                <div className={styles.select_div}>
+                  <label htmlFor="subcategory">Subcategoria</label>
+                  <p
+                    className={styles.click}
+                    onClick={() => {
+                      setAtivoNewCategory(true);
+                    }}
+                  >
+                    Add nova subcategoria
+                  </p>
+                </div>
+                <select
+                  id="subcateogry"
+                  className={styles.category}
+                  {...register('subcategory')}
+                >
+                  <option value="outros">outros</option>
+                  {dataSubCategories.data?.subcategories?.map((subcategory) => {
+                    return (
+                      <option key={subcategory._id} value={subcategory._id}>
+                        {subcategory.name}
                       </option>
                     );
                   })}

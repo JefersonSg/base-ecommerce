@@ -6,14 +6,22 @@ export interface ProductInputs {
   promotion: boolean;
   promotionalPrice?: number;
   category: string;
+  subcategory: string;
   description: string;
   composition?: string;
   characteristic?: string;
   active: boolean;
   images: object;
 }
-export interface Category {
+export interface CategoryInterface {
   _id: string;
   name: string;
+  description: string;
+}
+
+export interface subcategoryInterface {
+  _id: string;
+  name: string;
+  category: string;
   description: string;
 }

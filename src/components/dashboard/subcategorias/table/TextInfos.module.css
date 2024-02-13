@@ -1,0 +1,50 @@
+.textInfos_container {
+  padding: 8px 32px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(100px, 1fr) 62px;
+  border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box;
+}
+
+.textInfos_container h3 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #566a7f;
+  cursor: pointer;
+}
+.total_products_register {
+  display: none;
+}
+.total_products_register {
+  text-align: end;
+}
+.total_products_value {
+  display: none;
+  text-align: end;
+}
+.actions {
+  text-align: start;
+}
+@media (min-width: 768px) {
+  .total_products_register {
+    display: block;
+  }
+  .textInfos_container {
+    grid-template-columns: minmax(100px, 440px) 128px 72px;
+  }
+  .actions {
+    text-align: end;
+  }
+}
+
+@media (min-width: 900px) {
+  .total_products_value {
+    display: block;
+  }
+  .textInfos_container {
+    grid-template-columns: minmax(100px, 440px) 128px 160px 72px;
+  }
+}

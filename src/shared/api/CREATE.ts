@@ -23,7 +23,7 @@ const configFormdata = {
 export async function createCategory(data: any) {
   const formData = new FormData();
 
-  formData.append('name', data.title);
+  formData.append('name', data.name);
   formData.append('description', data.description);
 
   if (data.image[0] instanceof Blob) {
@@ -41,6 +41,39 @@ export async function createCategory(data: any) {
 
     const response = await axios.post(
       `${API}categories/create`,
+      formData,
+      configFormdata
+    );
+
+    console.log(response.data);
+
+    return response.data;
+  } catch (error: any) {
+    console.error('Erro ao fazer a requisição:', error.response);
+  }
+}
+export async function createSubcategory(data: any) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('description', data.description);
+  formData.append('category', data.category);
+
+  if (data.image[0] instanceof Blob) {
+    formData.append('image', data.image[0]);
+  } else {
+    console.error('O campo de imagem não é do tipo Blob.');
+    return;
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.post(
+      `${API}subcategories/create`,
       formData,
       configFormdata
     );
@@ -103,7 +136,6 @@ export async function createProduct(
       configFormdata
     );
 
-    console.log(response.data);
     return response.data;
   } catch (error: any) {
     console.log(error);

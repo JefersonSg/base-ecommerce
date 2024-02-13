@@ -44,6 +44,15 @@ export const getAllCategories = async () => {
     console.log(error);
   }
 };
+export const getAllSubcategories = async () => {
+  try {
+    const response = await axios.get(`${API}subcategories/`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const getAllProducts = async () => {
   try {
     const response = await axios.get(`${API}products`, config);
@@ -57,6 +66,15 @@ export const getAllProducts = async () => {
 export const getProductById = async (id: string) => {
   try {
     const response = await axios.get(`${API}products/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getCategoryById = async (id: string) => {
+  try {
+    const response = await axios.get(`${API}categories/${id}`, config);
 
     return response.data;
   } catch (error) {

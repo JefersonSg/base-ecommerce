@@ -1,10 +1,12 @@
 .vantagem {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content max-content;
   justify-content: center;
   align-items: center;
   margin-top: 16px;
-  padding-bottom: 16px;
   gap: 8px;
+  height: 40px;
+  padding-bottom: 16px;
 }
 .vantagem h2 {
   color: #471703;
@@ -23,7 +25,3 @@
   line-height: normal;
 }
 
-.imagem {
-  width: auto;
-  height: 35px;
-}

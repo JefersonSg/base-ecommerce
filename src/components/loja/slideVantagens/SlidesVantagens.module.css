@@ -5,12 +5,3 @@
   --swiper-navigation-sides-offset: 10px;
   --swiper-navigation-color: black;
 }
-.imagem img {
-  width: 100%;
-  object-fit: contain;
-  height: auto;
-}
-.imagem {
-  width: 100%;
-  height: auto;
-}

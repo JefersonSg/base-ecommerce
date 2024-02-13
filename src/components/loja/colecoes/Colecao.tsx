@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from './SectionColecoes.module.css';
+import styles from './Colecao.module.css';
 
 interface colecao {
   nome: string;

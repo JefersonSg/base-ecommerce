@@ -68,16 +68,16 @@
 }
 
 
-.select_categoria {
+.selects_container {
     width: 100%;
     margin-bottom: 16px;
 }
-.form_create_product select {
-    padding-left: 8px;
-}
-.div_categoria{
+.select_div{
     display: flex;
     justify-content: space-between;
+}
+.form_create_product select {
+    padding-left: 8px;
 }
 .click {
     color: blue !important;

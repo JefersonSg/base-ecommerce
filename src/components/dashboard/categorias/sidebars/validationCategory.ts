@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const validationCategory = yup.object({
-  title: yup.string().required('É necessário preencher o campo de Titulo'),
+  name: yup.string().required('É necessário preencher o campo de Titulo'),
   description: yup
     .string()
     .required('É necessário preencher o campo de descrição'),
@@ -17,7 +17,9 @@ export const validationCategory = yup.object({
       (value: any) => {
         return (
           (value[0] ? value[0]?.type === 'image/png' : true) ||
-          (value[0] ? value[0]?.type === 'image/jpg' : true)
+          (value[0] ? value[0]?.type === 'image/jpg' : true) ||
+          (value[0] ? value[0]?.type === 'image/webp' : true) ||
+          (value[0] ? value[0]?.type === 'image/jpeg' : true)
         );
       }
     )

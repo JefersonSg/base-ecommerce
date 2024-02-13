@@ -10,32 +10,43 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
-import { updateCategory } from '@/src/shared/api/UPDATES';
+import { createSubcategory } from '@/src/shared/api/CREATE';
+import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories } from '@/src/shared/api/GETS';
-import { validationCategoryEdit } from './validationCategoryEdit';
+import { validationSubcategory } from './validationSubcategory';
 
 interface Inputs {
   name: string;
   description: string;
-  image?: any;
+  category: string;
+  image: any;
 }
-
-const schema = validationCategoryEdit;
-
-const SideBarFormEdit = ({
-  idCategory,
-  name,
-  description,
-  image,
-  setAtivo
-}: {
-  idCategory: string;
+interface Category {
+  _id: string;
   name: string;
   description: string;
-  image: string[];
+  image: string;
+}
+
+const schema = validationSubcategory;
+
+const SideBarFormCreate = ({
+  setAtivo,
+  setAtivoPopUp
+}: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  //
+  const { data } = useQuery<{ categories: Category[] }>({
+    queryKey: ['categories'],
+    queryFn: getAllCategories
+  });
+  const { refetch } = useQuery({
+    queryKey: ['subcategories'],
+    queryFn: getAllSubcategories
+  });
+
   const {
     register,
     handleSubmit,
@@ -44,33 +55,29 @@ const SideBarFormEdit = ({
     resolver: yupResolver(schema)
   });
 
-  const { refetch } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
-  });
-
   const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data.description);
-
     setIsLoading(true);
-    await updateCategory(data, idCategory);
-    await refetch();
+    const response = await createSubcategory(data);
     setIsLoading(false);
-    setAtivo(false);
+
+    if (response) {
+      setAtivo(false);
+      setAtivoPopUp('Subcategoria criada com sucesso');
+      await refetch();
+    }
   };
 
   return (
     <div className={styles.sidebar_form}>
-      <h2>Edite a categoria</h2>
+      <h2>Adicione uma Subcategoria</h2>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <InputFormulario
           name="name"
           label="Nome"
-          placeholder="Digite o nome da categoria"
+          placeholder="Digite o nome da Subcategoria"
           register={register}
-          defaultValue={name}
           type="text"
           error={errors?.name?.message}
         />
@@ -79,10 +86,25 @@ const SideBarFormEdit = ({
           label="Descrição"
           placeholder="Digite um texto descritivo"
           register={register}
-          defaultValue={description}
           type="text"
           error={errors?.description?.message}
         />
+        <div className={styles.select_categoria}>
+          <select
+            id="subcateogry"
+            className={styles.category}
+            {...register('category')}
+          >
+            <option value="outros">outros</option>
+            {data?.categories?.map((category) => {
+              return (
+                <option key={category._id} value={category._id}>
+                  {category.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
         <InputFormulario
           name="image"
           label="Imagem"
@@ -93,9 +115,9 @@ const SideBarFormEdit = ({
         />
 
         <div className={styles.botoes}>
-          <ButtonAdd text="Salvar" setAtivo={setAtivo} isLoading={isLoading} />
+          <ButtonAdd text="Criar" setAtivo={setAtivo} isLoading={isLoading} />
           <ButtonDelete
-            text="Apagar Edições"
+            text="Limpar formulario"
             setAtivo={setAtivo}
             isLoading={isLoading}
           />
@@ -113,4 +135,4 @@ const SideBarFormEdit = ({
   );
 };
 
-export default SideBarFormEdit;
+export default SideBarFormCreate;

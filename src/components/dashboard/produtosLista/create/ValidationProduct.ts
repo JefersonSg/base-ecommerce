@@ -16,6 +16,7 @@ export const validationProduct = yup.object({
   promotion: yup.boolean().required(),
   promotionalPrice: yup.number(),
   category: yup.string().required(),
+  subcategory: yup.string().required(),
   composition: yup.string(),
   characteristic: yup.string(),
   active: yup.boolean().required(),

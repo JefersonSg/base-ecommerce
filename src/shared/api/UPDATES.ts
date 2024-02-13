@@ -21,7 +21,7 @@ const configFormdata = {
 export async function updateCategory(data: any, id: string) {
   const formData = new FormData();
 
-  formData.append('name', data.title);
+  formData.append('name', data.name);
   formData.append('description', data.description);
 
   if (data.image[0]) {
@@ -36,6 +36,34 @@ export async function updateCategory(data: any, id: string) {
 
     const response = await axios.patch(
       `${API}categories/edit/${id}`,
+      formData,
+      configFormdata
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function updateSubcategory(data: any, id: string) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('description', data.description);
+
+  formData.append('category', data.category);
+
+  if (data.image[0]) {
+    formData.append('image', data.image[0]);
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.patch(
+      `${API}subcategories/edit/${id}`,
       formData,
       configFormdata
     );

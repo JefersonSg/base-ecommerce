@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  max-width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+.container h2 {
+  margin-bottom: 16px;
+}
+
+
+
+

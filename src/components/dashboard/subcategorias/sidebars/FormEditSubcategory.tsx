@@ -10,29 +10,32 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
-import { updateCategory } from '@/src/shared/api/UPDATES';
+import { updateSubcategory } from '@/src/shared/api/UPDATES';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories } from '@/src/shared/api/GETS';
-import { validationCategoryEdit } from './validationCategoryEdit';
+import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
+import { validationSubcategoryEdit } from './validationSubcategoryEdit';
 
 interface Inputs {
   name: string;
   description: string;
+  category: string;
   image?: any;
 }
 
-const schema = validationCategoryEdit;
+const schema = validationSubcategoryEdit;
 
 const SideBarFormEdit = ({
-  idCategory,
+  idSubcategory,
   name,
+  category,
   description,
   image,
   setAtivo
 }: {
-  idCategory: string;
+  idSubcategory: string;
   name: string;
   description: string;
+  category: string;
   image: string[];
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
@@ -41,36 +44,52 @@ const SideBarFormEdit = ({
     handleSubmit,
     formState: { errors }
   } = useForm<Inputs>({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
+    defaultValues: {
+      name,
+      category,
+      description
+    }
+  });
+
+  const { data } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getAllCategories
   });
 
   const { refetch } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+    queryKey: ['subcategories'],
+    queryFn: getAllSubcategories
   });
 
   const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data.description);
-
     setIsLoading(true);
-    await updateCategory(data, idCategory);
-    await refetch();
+    // if (data.category === 'Outros') {
+    //   data.category = category;
+    // }
+
+    console.log(category);
+
+    const response = await updateSubcategory(data, idSubcategory);
+    if (response) {
+      await refetch();
+      setAtivo(false);
+      console.log(response);
+    }
     setIsLoading(false);
-    setAtivo(false);
   };
 
   return (
     <div className={styles.sidebar_form}>
-      <h2>Edite a categoria</h2>
+      <h2>Edite a Subcategoria</h2>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <InputFormulario
           name="name"
           label="Nome"
-          placeholder="Digite o nome da categoria"
+          placeholder="Digite o nome da Subcategoria"
           register={register}
-          defaultValue={name}
           type="text"
           error={errors?.name?.message}
         />
@@ -79,10 +98,26 @@ const SideBarFormEdit = ({
           label="Descrição"
           placeholder="Digite um texto descritivo"
           register={register}
-          defaultValue={description}
           type="text"
           error={errors?.description?.message}
         />
+        <div className={styles.select_categoria}>
+          <select
+            id="category"
+            className={styles.category}
+            {...register('category')}
+            defaultValue={category}
+          >
+            <option value="outros">Outros</option>
+            {data?.categories?.map((categoryAPI: any) => {
+              return (
+                <option key={categoryAPI._id} value={categoryAPI._id}>
+                  {categoryAPI.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
         <InputFormulario
           name="image"
           label="Imagem"

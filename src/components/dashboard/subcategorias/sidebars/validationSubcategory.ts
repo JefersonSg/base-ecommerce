@@ -1,12 +1,19 @@
 import * as yup from 'yup';
 
-export const validationCategoryEdit = yup.object({
-  name: yup.string().required('É necessário preencher o campo de Titulo'),
+export const validationSubcategory = yup.object({
+  name: yup.string().required('É necessário preencher o campo de Nome'),
   description: yup
     .string()
     .required('É necessário preencher o campo de descrição'),
+  category: yup
+    .string()
+    .required('É necessário preencher o campo de Categoria'),
   image: yup
     .mixed()
+    .required()
+    .test('length', 'Por favor, selecione a imagem', (value: any) => {
+      return !!value[0];
+    })
     .test(
       'fileType',
       'o arquivo não é suportado, use uma foto PNG ou JPG',

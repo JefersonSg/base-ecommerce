@@ -1,10 +1,13 @@
 import * as yup from 'yup';
 
-export const validationCategoryEdit = yup.object({
-  name: yup.string().required('É necessário preencher o campo de Titulo'),
+export const validationSubcategoryEdit = yup.object({
+  name: yup.string().required('É necessário preencher o campo de Nome'),
   description: yup
     .string()
     .required('É necessário preencher o campo de descrição'),
+  category: yup
+    .string()
+    .required('É necessário preencher o campo de Categoria'),
   image: yup
     .mixed()
     .test(

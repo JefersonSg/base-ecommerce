@@ -14,9 +14,16 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import SelectColor from './color/SelectColor-amount';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories, getAllProducts } from '@/src/shared/api/GETS';
+import {
+  getAllCategories,
+  getAllProducts,
+  getAllSubcategories
+} from '@/src/shared/api/GETS';
 
-import { type Category } from '@/src/shared/helpers/interfaces';
+import {
+  type subcategoryInterface,
+  type CategoryInterface
+} from '@/src/shared/helpers/interfaces';
 import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { updateProduct } from '@/src/shared/api/UPDATES';
@@ -26,9 +33,11 @@ import ToggleButtonCreate from '../../Botoes/ToggleButtonCreate';
 const schema = validationProduct;
 
 interface CategoriesResponse {
-  categories: Category[];
+  categories: CategoryInterface[];
 }
-
+interface subcategoriesResponse {
+  subcategories: subcategoryInterface[];
+}
 const FormCreateProduct = ({
   dataProduct
 }: {
@@ -46,21 +55,26 @@ const FormCreateProduct = ({
       name: dataProduct.product.name,
       description: dataProduct.product.description,
       size: dataProduct.product.size,
+      category: dataProduct.product.category,
+      subcategory: dataProduct.product.subcategory,
       composition: dataProduct.product.composition,
       price: dataProduct.product.price,
       promotion: dataProduct.product.promotion,
       promotionalPrice: dataProduct.product.promotionalPrice,
       brand: dataProduct.product.brand,
-      category: dataProduct.product.category,
       characteristic: dataProduct.product.characteristic,
       images: {},
       active: dataProduct.product.active
     }
   });
 
-  const { data } = useQuery<CategoriesResponse>({
+  const dataCategory = useQuery<CategoriesResponse>({
     queryKey: ['categories'],
     queryFn: getAllCategories
+  });
+  const dataSubCategories = useQuery<subcategoriesResponse>({
+    queryKey: ['subcategories'],
+    queryFn: getAllSubcategories
   });
   const { refetch } = useQuery<CategoriesResponse>({
     queryKey: ['products'],
@@ -248,8 +262,8 @@ const FormCreateProduct = ({
                 error={errors.brand}
                 register={register}
               />
-              <div className={styles.select_categoria}>
-                <div className={styles.div_categoria}>
+              <div className={styles.selects_container}>
+                <div className={styles.select_div}>
                   <label htmlFor="category">Categoria</label>
                   <p
                     className={styles.click}
@@ -266,10 +280,37 @@ const FormCreateProduct = ({
                   {...register('category')}
                 >
                   <option value="outros">outros</option>
-                  {data?.categories.map((category, index) => {
+                  {dataCategory.data?.categories.map((category, index) => {
                     return (
                       <option key={category._id} value={category._id}>
                         {category.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div className={styles.selects_container}>
+                <div className={styles.select_div}>
+                  <label htmlFor="subcategory">Subcategoria</label>
+                  <p
+                    className={styles.click}
+                    onClick={() => {
+                      setAtivoNewCategory(true);
+                    }}
+                  >
+                    Add nova subcategoria
+                  </p>
+                </div>
+                <select
+                  id="subcateogry"
+                  className={styles.category}
+                  {...register('subcategory')}
+                >
+                  <option value="outros">outros</option>
+                  {dataSubCategories.data?.subcategories?.map((subcategory) => {
+                    return (
+                      <option key={subcategory._id} value={subcategory._id}>
+                        {subcategory.name}
                       </option>
                     );
                   })}
