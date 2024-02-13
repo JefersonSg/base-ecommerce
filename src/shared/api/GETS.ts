@@ -21,7 +21,7 @@ async function isAdmin(response: any) {
 }
 export const getUser = async () => {
   if (!token) {
-    return;
+    return null;
   }
   try {
     const response = await axios.get(`${API}user/get`, config);
@@ -33,6 +33,7 @@ export const getUser = async () => {
     Cookies.remove('isAdmin');
 
     console.log(error);
+    return [];
   }
 };
 export const getAllCategories = async () => {
@@ -42,6 +43,7 @@ export const getAllCategories = async () => {
     return response.data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };
 export const getAllSubcategories = async () => {
@@ -51,6 +53,7 @@ export const getAllSubcategories = async () => {
     return response.data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };
 export const getAllProducts = async () => {
@@ -60,6 +63,7 @@ export const getAllProducts = async () => {
     return response.data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };
 
@@ -70,8 +74,10 @@ export const getProductById = async (id: string) => {
     return response.data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };
+
 export const getCategoryById = async (id: string) => {
   try {
     const response = await axios.get(`${API}categories/${id}`, config);
@@ -79,5 +85,6 @@ export const getCategoryById = async (id: string) => {
     return response.data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };

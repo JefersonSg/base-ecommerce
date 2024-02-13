@@ -33,12 +33,14 @@ const DataTable = () => {
     <>
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
-        <BodyTable
-          nextPage={nextPage}
-          data={data}
-          setIdDelete={setIdDelete}
-          setAtivoDelete={setAtivoDelete}
-        />
+        {data && (
+          <BodyTable
+            nextPage={nextPage}
+            data={data}
+            setIdDelete={setIdDelete}
+            setAtivoDelete={setAtivoDelete}
+          />
+        )}
         <RodapeTable
           data={data}
           setCurrentPage={setCurrentPage}

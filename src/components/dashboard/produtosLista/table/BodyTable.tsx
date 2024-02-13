@@ -37,7 +37,7 @@ const BodyTable = ({
   return (
     <div className={styles.BodyTable}>
       <TextInfos />
-      {data?.products.map((product, index) => {
+      {data?.products?.map((product, index) => {
         return (
           <div key={product._id}>
             {index >= nextPage[0] - 1 && index <= nextPage[1] - 1 && (

@@ -51,7 +51,7 @@ const ProdutoItem = ({
         <h3>75</h3>
       </div>
       <div className={styles.total_products_value}>
-        <h3>R$ {data.price.toFixed(2).replace('.', ',')}</h3>
+        <h3>R$ {data?.price?.toFixed(2).replace('.', ',')}</h3>
       </div>
       <div className={styles.actions}>
         <Image
@@ -64,7 +64,7 @@ const ProdutoItem = ({
             setIdDelete(data._id);
           }}
         />
-        <Link href={`/dashboard/produtos/${data._id}`}>
+        <Link href={`/dashboard/produtos/${data?._id}`}>
           <Image
             alt="Imagem de um laps para editar a categoria"
             src={'/dashboard/edit.svg'}

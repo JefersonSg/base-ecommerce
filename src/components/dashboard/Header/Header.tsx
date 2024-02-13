@@ -15,7 +15,7 @@ export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
 
   const { data } = useQuery({
-    queryKey: ['todos'],
+    queryKey: ['user'],
     queryFn: getUser
   });
 
