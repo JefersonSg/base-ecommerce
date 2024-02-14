@@ -41,7 +41,9 @@ const ProdutoItem = ({
       </Link>
 
       <div className={styles.infos}>
-        <h3 className={`name ${styles.name}`}>{data?.name}</h3>
+        <Link href={`/produto/${data._id}`}>
+          <h3 className={`name ${styles.name}`}>{data?.name}</h3>
+        </Link>
         <p className={`description ${styles.description}`}>
           {data?.description}
         </p>

@@ -12,7 +12,10 @@ function Cores({
   codeColors: string[];
 }) {
   const [ativo, setAtivo] = React.useState(false);
-  const [colorSelected, setColorSelected] = React.useState(codeColors[0]);
+  const [colorSelected, setColorSelected] = React.useState(colors[0]);
+  const [codeColorSelected, setCodeColorSelected] = React.useState(
+    codeColors[0]
+  );
   return (
     <div className={styles.selectColor_container}>
       <div
@@ -21,11 +24,11 @@ function Cores({
           setAtivo(!ativo);
         }}
       >
-        <p className="texto">Cor</p>
+        <p className="texto">{colorSelected}</p>
         <div className={styles.select_color}>
           <div
             className={styles.cor_selecionada}
-            style={{ background: colorSelected }}
+            style={{ background: codeColorSelected }}
           ></div>
           <Image
             className={`${ativo ? styles.ativo : ''} ${styles.seta}`}
@@ -44,7 +47,8 @@ function Cores({
                 key={index}
                 className={styles.cores_disponiveis}
                 onClick={() => {
-                  setColorSelected(codeColors[index]);
+                  setColorSelected(colors[index]);
+                  setCodeColorSelected(codeColors[index]);
                   setAtivo(false);
                 }}
               >

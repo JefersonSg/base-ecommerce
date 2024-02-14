@@ -26,7 +26,7 @@ function Section({
       <h2 className="titulo_sessao">{nomeSessao}</h2>
 
       <div className={styles.produtos}>
-        {data?.products.map((product) => {
+        {data?.products?.map((product) => {
           return (
             <Produto
               key={product._id}

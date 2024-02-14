@@ -8,7 +8,6 @@ import FotosProduto from './fotosProduto/FotosProduto';
 import Detalhes from './produtoDetalhes/Detalhes';
 import Sections from './sections/Sections';
 import Avaliacoes from './avaliacoes/Avaliacoes';
-import { useQuery } from '@tanstack/react-query';
 import { getProductById } from '@/src/shared/api/GETS';
 import { useParams } from 'next/navigation';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
@@ -16,14 +15,16 @@ import { type ProductApi } from '@/src/shared/helpers/interfaces';
 const ContainerProduct = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { data } = useQuery<{ product: ProductApi }>({
-    queryKey: ['product'],
-    queryFn: async () => {
-      const data = getProductById(id);
+  const [data, setData] = React.useState<{ product: ProductApi }>();
 
-      return await data;
-    }
-  });
+  React.useEffect(() => {
+    const fetchProduct = async () => {
+      const newData = await getProductById(id);
+
+      setData(newData);
+    };
+    void fetchProduct();
+  }, [id]);
   return (
     <>
       {data && (

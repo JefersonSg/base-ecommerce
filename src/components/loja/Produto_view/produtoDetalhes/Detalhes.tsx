@@ -10,7 +10,7 @@ function Detalhes({ data }: { data: ProductApi }) {
     <div className={styles.detalhes}>
       <div className={styles.informacoes}>
         <Cores colors={data.colors} codeColors={data.codeColors} />
-        <Tamanhos />
+        <Tamanhos size={data.size} />
       </div>
       <Preco
         texto={`R$ ${data.price.toFixed(2).toString().replace('.', ',')}`}
