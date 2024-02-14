@@ -4,7 +4,7 @@ import TituloSection from './TituloSection';
 import styles from './Caracteristicas.module.css';
 import React from 'react';
 
-function Caracteristicas() {
+function Caracteristicas({ characteristic }: { characteristic: string }) {
   const [ativo, setAtivo] = React.useState(false);
 
   return (
@@ -18,11 +18,7 @@ function Caracteristicas() {
       </div>
       {ativo && (
         <div className={styles.texto}>
-          <p className={'texto'}>
-            Textura Leve e Absorção Rápida: Sua textura luxuosa e não oleosa é
-            facilmente absorvida, permitindo que o creme seja incorporado
-            perfeitamente à sua rotina diária de cuidados com a pele.
-          </p>
+          <p className={'texto'}>{characteristic}</p>
         </div>
       )}
     </div>

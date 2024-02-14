@@ -4,7 +4,7 @@ import TituloSection from './TituloSection';
 import styles from './Descricao.module.css';
 import React from 'react';
 
-function Descricao() {
+function Descricao({ description }: { description: string }) {
   const [ativo, setAtivo] = React.useState(true);
 
   return (
@@ -18,11 +18,7 @@ function Descricao() {
       </div>
       {ativo && (
         <div className={styles.texto}>
-          <p className={'texto'}>
-            Creme hydra, creme facial hidratante com acido hialurônico perfetio
-            para quem está buscando praticidade no seu dia a dia para cuidados
-            com a sua pele e rosto.
-          </p>
+          <p className={'texto'}>{description}</p>
         </div>
       )}
     </div>

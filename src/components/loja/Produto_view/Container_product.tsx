@@ -34,7 +34,7 @@ const ContainerProduct = () => {
           <Interacoes />
           <FotosProduto img={data?.product?.images} />
           <Detalhes data={data.product} />
-          <Sections />
+          <Sections data={data.product} />
           <Avaliacoes />
         </>
       )}

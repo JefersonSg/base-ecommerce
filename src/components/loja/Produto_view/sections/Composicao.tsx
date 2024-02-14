@@ -4,7 +4,7 @@ import TituloSection from './TituloSection';
 import styles from './Composicao.module.css';
 import React from 'react';
 
-function Composicao() {
+function Composicao({ composition }: { composition: string }) {
   const [ativo, setAtivo] = React.useState(false);
 
   return (
@@ -18,11 +18,7 @@ function Composicao() {
       </div>
       {ativo && (
         <div className={styles.texto}>
-          <p className="texto">
-            Hidratação Intensa: A fórmula rica em ácido hialurônico de alta
-            qualidade penetra nas camadas da pele, proporcionando uma hidratação
-            profunda e duradoura, mantendo-a suave e radiante.
-          </p>
+          <p className="texto">{composition}</p>
         </div>
       )}
     </div>
