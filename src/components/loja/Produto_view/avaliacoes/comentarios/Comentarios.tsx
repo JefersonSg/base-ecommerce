@@ -15,14 +15,14 @@ function Comentarios({ data }: { data: ProductApi }) {
       {data?.comments?.map((comment) => {
         return (
           <Comentario
-            key={comment._id}
-            data={comment.date}
+            key={comment?._id}
+            data={comment?.date}
             nome={'Ludimila'}
-            estrelas={comment.stars}
-            imgs={comment.images}
+            estrelas={comment?.stars}
+            imgs={comment?.images}
             tamanho="300ml"
             cor="Branco"
-            comentario={comment.comment}
+            comentario={comment?.comment}
           />
         );
       })}

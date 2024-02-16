@@ -3,11 +3,11 @@ import styles from './Estatisticas.module.css';
 import Porcentagens from './Porcentagem';
 
 function Estatisticas({ comments }: { comments: CommentInterface[] }) {
-  const uma = comments.filter((comment) => +comment.stars === 1);
-  const duas = comments.filter((comment) => +comment.stars === 2);
-  const tres = comments.filter((comment) => +comment.stars === 3);
-  const quatro = comments.filter((comment) => +comment.stars === 4);
-  const cinco = comments.filter((comment) => +comment.stars === 5);
+  const uma = comments?.filter((comment) => +comment?.stars === 1);
+  const duas = comments?.filter((comment) => +comment?.stars === 2);
+  const tres = comments?.filter((comment) => +comment?.stars === 3);
+  const quatro = comments?.filter((comment) => +comment?.stars === 4);
+  const cinco = comments?.filter((comment) => +comment?.stars === 5);
 
   const totalComentarios = comments.length;
 
