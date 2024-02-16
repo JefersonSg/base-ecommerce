@@ -23,7 +23,7 @@ function Comentario({
 }: comentario) {
   return (
     <div className={styles.comentario_div}>
-      <InformacoesUsuario nome={nome} data={data} />
+      <InformacoesUsuario nome={nome} data={data} stars={estrelas} />
       <InformacoesProduto
         cor={cor}
         tamanho={tamanho}

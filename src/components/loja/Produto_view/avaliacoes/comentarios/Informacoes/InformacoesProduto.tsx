@@ -22,18 +22,13 @@ function InformacoesProduto({ cor, tamanho, comentario, imgs }: infosProduto) {
       <div className={styles.comentario}>
         <p className={'texto'}>{comentario}</p>
       </div>
-      {imgs.map((img) => {
-        return (
-          <Image
-            key={img}
-            className={styles.image_review}
-            alt="Imagem review do produto"
-            src={imgs[0] ?? ''}
-            width={104}
-            height={132}
-          />
-        );
-      })}
+      <Image
+        className={styles.image_review}
+        alt="Imagem review do produto"
+        src={imgs[0] ?? ''}
+        width={104}
+        height={132}
+      />
     </div>
   );
 }

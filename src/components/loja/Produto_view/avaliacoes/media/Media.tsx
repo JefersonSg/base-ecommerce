@@ -1,10 +1,11 @@
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import styles from './Media.module.css';
 import MediaAvaliacoes from './MediaAvaliacoes';
 
-function Media() {
+function Media({ data }: { data: ProductApi }) {
   return (
     <div className={styles.media}>
-      <MediaAvaliacoes />
+      <MediaAvaliacoes data={data} />
     </div>
   );
 }

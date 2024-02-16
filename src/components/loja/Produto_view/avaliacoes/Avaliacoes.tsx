@@ -9,7 +9,7 @@ async function Avaliacoes({ id }: { id: string }) {
   return (
     <div className={styles.avaliacoes_container}>
       <h1 className={styles.titulo}>Avaliações</h1>
-      <Media />
+      <Media data={data} />
       <Comentarios data={data} />
     </div>
   );

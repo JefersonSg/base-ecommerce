@@ -16,7 +16,9 @@ function Porcentagens({
           style={{ width: `${porcentagem ?? 0}%` }}
         ></span>
       </div>
-      <span className={styles.porcentagem_numero}>{porcentagem ?? 0}%</span>
+      <span className={styles.porcentagem_numero}>
+        {porcentagem?.toFixed(0) ?? 0}%
+      </span>
     </div>
   );
 }

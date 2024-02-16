@@ -4,9 +4,10 @@ import styles from './InformacoesUsuario.module.css';
 interface InfoUsuario {
   nome: string;
   data: string;
+  stars: number;
 }
 
-function InformacoesUsuario({ nome, data }: InfoUsuario) {
+function InformacoesUsuario({ nome, data, stars }: InfoUsuario) {
   return (
     <div className={styles.informacoes_usuario}>
       <div>
@@ -14,7 +15,7 @@ function InformacoesUsuario({ nome, data }: InfoUsuario) {
         <span className={styles.data}>{data}</span>
       </div>
       <div className={styles.estrelas}>
-        <Estrelas />
+        <Estrelas stars={+stars} />
       </div>
     </div>
   );
