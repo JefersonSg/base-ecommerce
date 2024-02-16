@@ -5,9 +5,10 @@ interface infosProduto {
   cor: string;
   tamanho: string;
   comentario: string;
+  imgs: string[];
 }
 
-function InformacoesProduto({ cor, tamanho, comentario }: infosProduto) {
+function InformacoesProduto({ cor, tamanho, comentario, imgs }: infosProduto) {
   return (
     <div className={styles.review}>
       <div className={styles.informacoes_produto}>
@@ -21,13 +22,18 @@ function InformacoesProduto({ cor, tamanho, comentario }: infosProduto) {
       <div className={styles.comentario}>
         <p className={'texto'}>{comentario}</p>
       </div>
-      <Image
-        className={styles.image_review}
-        alt="Imagem review do produto"
-        src={'/produto/produto1.png'}
-        width={104}
-        height={132}
-      />
+      {imgs.map((img) => {
+        return (
+          <Image
+            key={img}
+            className={styles.image_review}
+            alt="Imagem review do produto"
+            src={imgs[0] ?? ''}
+            width={104}
+            height={132}
+          />
+        );
+      })}
     </div>
   );
 }

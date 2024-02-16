@@ -1,0 +1,35 @@
+import ContainerProduct from '@/src/components/loja/Produto_view/Container_product';
+import {
+  getCategoryById,
+  getProductById,
+  getSubcategoryById
+} from '@/src/shared/api/GETS';
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import styles from './Produto.module.css';
+
+interface Props {
+  _id: string;
+}
+
+const page = async ({ searchParams }: { searchParams: Props }) => {
+  const product: { product: ProductApi } = await getProductById(
+    searchParams?._id
+  );
+  const categoryName = await getCategoryById(product?.product?.category);
+  const subcategoryName = await getSubcategoryById(
+    product?.product?.subcategory
+  );
+  return (
+    <div className={styles.section_produtos}>
+      {product && (
+        <ContainerProduct
+          data={product}
+          categoryName={categoryName?.category?.name}
+          subcategoryName={subcategoryName?.subcategory?.name}
+        />
+      )}
+    </div>
+  );
+};
+
+export default page;

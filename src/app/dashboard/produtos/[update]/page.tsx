@@ -6,7 +6,7 @@ import BodyEditForm from '@/src/components/dashboard/produtosLista/update/BodyEd
 const page = () => {
   return (
     <div className={`container_dashboard ${styles.container_create_product}`}>
-      <BreadcrumbDashboard />
+      <BreadcrumbDashboard text="Update" />
       <BodyEditForm />
     </div>
   );

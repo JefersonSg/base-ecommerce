@@ -19,6 +19,17 @@ export interface CategoryInterface {
   description: string;
 }
 
+export interface CommentInterface {
+  _id: string;
+  userId: string;
+  comment: string;
+  date: string;
+  hours: number;
+  images: string[];
+  stars: number;
+  edited: boolean;
+}
+
 export interface subcategoryInterface {
   _id: string;
   name: string;
@@ -42,6 +53,7 @@ export interface ProductApi {
   images: string[];
   colors: string[];
   codeColors: string[];
+  comments: CommentInterface[];
   stock: {
     amount: number[];
   };

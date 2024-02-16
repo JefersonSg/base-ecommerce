@@ -12,13 +12,7 @@
 /* .slide-produto .swiper-slide{
   width: max-content !important ;
 } */
-.slide-produto img {
-  width: auto;
-  height: auto;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 3px solid transparent;
-}
+
 .slide-produto {
   padding: 0 10px;
 }

@@ -39,7 +39,9 @@ function SlideFotos({
                   setImagem(imagem);
                   setImagemId(index.toString());
                 }}
-                className={`${index.toString() === imagemId ? 'ativo' : ''}`}
+                className={`${styles.foto_slide} ${
+                  index.toString() === imagemId ? 'ativo' : ''
+                }`}
                 alt="Foto do produto"
                 src={imagem}
                 id={`${index}`}

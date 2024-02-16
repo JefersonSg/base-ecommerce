@@ -20,13 +20,6 @@ export const metadata: Metadata = {
     'https://i.pinimg.com/280x280_RS/20/bf/15/20bf15f77c6b9f85b6198a1538a683ca.jpg',
 
   robots: "'index', 'follow'"
-  // openGraph: {
-  //   title: 'Abayomi Make Beauty',
-  //   description:
-  //     'Aqui na Abayomi Make Beauty você encontra uma variedade enorme de produtos selecionados com a melhor qualidade do mercado',
-  //   images:
-  //     'https://i.pinimg.com/280x280_RS/20/bf/15/20bf15f77c6b9f85b6198a1538a683ca.jpg'
-  // }
 };
 
 export default function Home() {

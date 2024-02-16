@@ -133,7 +133,13 @@ const FormUpdateProduct = ({
     if (dataProduct.product.codeColors) {
       setSchemeCodeColor(dataProduct.product.codeColors.join(',').split(','));
     }
-  }, [dataProduct]);
+
+    if (dataProduct?.product) {
+      setTimeout(() => {
+        reset();
+      }, 100);
+    }
+  }, [dataProduct, reset]);
 
   const promotionCheck = watch('promotion');
   const activeCheck = watch('active');
@@ -303,7 +309,7 @@ const FormUpdateProduct = ({
                   </p>
                 </div>
                 <select
-                  id="subcateogry"
+                  id="subcategory"
                   className={styles.category}
                   {...register('subcategory')}
                 >

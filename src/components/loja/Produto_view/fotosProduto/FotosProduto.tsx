@@ -6,7 +6,9 @@ import Slide from './SlideFotos';
 import React from 'react';
 
 function FotosProduto({ img }: { img: string[] }) {
-  const [imagemPrincipal, setImagemPrincipal] = React.useState(img[0] ?? '');
+  const [imagemPrincipal, setImagemPrincipal] = React.useState(
+    img ? img[0] : ''
+  );
   const [imagemId, setImagemId] = React.useState('0');
   const [fotoInteira, setFotoInteira] = React.useState(false);
 

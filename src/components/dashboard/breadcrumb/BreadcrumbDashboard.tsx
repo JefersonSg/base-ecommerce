@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './Breadcrumb.module.css';
 import { usePathname } from 'next/navigation';
 
-const BreadcrumbDashboard = () => {
+const BreadcrumbDashboard = ({ text }: { text?: string }) => {
   const url = usePathname();
 
   const texto = url?.split('/');
@@ -15,7 +15,7 @@ const BreadcrumbDashboard = () => {
         eCommerce /
         <span>
           {texto[2] ? ` ${texto[2]}` : ''}
-          {texto[3] ? ` / ${texto[3]}` : ''}
+          {text ? ` / ${text}` : ''}
         </span>
       </p>
     </div>

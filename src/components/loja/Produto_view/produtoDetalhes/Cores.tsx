@@ -12,9 +12,11 @@ function Cores({
   codeColors: string[];
 }) {
   const [ativo, setAtivo] = React.useState(false);
-  const [colorSelected, setColorSelected] = React.useState(colors[0]);
+  const [colorSelected, setColorSelected] = React.useState(
+    colors ? colors[0] ?? '' : ''
+  );
   const [codeColorSelected, setCodeColorSelected] = React.useState(
-    codeColors[0]
+    codeColors ? codeColors[0] ?? '' : ''
   );
   return (
     <div className={styles.selectColor_container}>

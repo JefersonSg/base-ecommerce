@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
-import ProdutoItem from './ProdutoItem';
+import ProdutoItem from '../items/ProdutoItem';
 
 interface ProductsType {
   _id: string;

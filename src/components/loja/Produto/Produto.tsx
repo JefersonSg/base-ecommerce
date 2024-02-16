@@ -13,7 +13,10 @@ interface produto {
 
 function Produto({ img, name, price, promotion, link }: produto) {
   return (
-    <Link href={`/produto/${link}`} className={styles.produto}>
+    <Link
+      href={{ pathname: '/produto', query: { _id: link } }}
+      className={styles.produto}
+    >
       <Favotiro />
       <div className={styles.imagem_div}>
         {img && (

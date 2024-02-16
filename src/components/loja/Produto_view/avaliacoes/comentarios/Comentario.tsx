@@ -9,6 +9,7 @@ interface comentario {
   cor: string;
   tamanho: string;
   comentario: string;
+  imgs: string[];
 }
 
 function Comentario({
@@ -17,12 +18,18 @@ function Comentario({
   estrelas,
   cor,
   tamanho,
-  comentario
+  comentario,
+  imgs
 }: comentario) {
   return (
     <div className={styles.comentario_div}>
       <InformacoesUsuario nome={nome} data={data} />
-      <InformacoesProduto cor={cor} tamanho={tamanho} comentario={comentario} />
+      <InformacoesProduto
+        cor={cor}
+        tamanho={tamanho}
+        comentario={comentario}
+        imgs={imgs}
+      />
     </div>
   );
 }

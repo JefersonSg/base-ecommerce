@@ -1,3 +1,5 @@
+'use client';
+
 import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 import Cores from './Cores';
 import styles from './Detalhes.module.css';
@@ -9,11 +11,11 @@ function Detalhes({ data }: { data: ProductApi }) {
   return (
     <div className={styles.detalhes}>
       <div className={styles.informacoes}>
-        <Cores colors={data.colors} codeColors={data.codeColors} />
-        <Tamanhos size={data.size} />
+        <Cores colors={data?.colors} codeColors={data?.codeColors} />
+        <Tamanhos size={data?.size} />
       </div>
       <Preco
-        texto={`R$ ${data.price.toFixed(2).toString().replace('.', ',')}`}
+        texto={`R$ ${data?.price.toFixed(2).toString().replace('.', ',')}`}
       />
       <div className={styles.botao_carrinho}>
         <BotaoColorido

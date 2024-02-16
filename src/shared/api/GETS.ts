@@ -89,3 +89,24 @@ export const getCategoryById = async (id: string) => {
     return [];
   }
 };
+export const getSubcategoryById = async (id: string) => {
+  try {
+    const response = await axios.get(`${API}subcategories/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getAllComments = async (id: string) => {
+  try {
+    const response = await axios.get(`${API}products/comments/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

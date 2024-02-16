@@ -31,7 +31,10 @@ const ProdutoItem = ({
 }) => {
   return (
     <div className={styles.produto_item}>
-      <Link href={`/produto/${data._id}`} className={styles.div_img}>
+      <Link
+        href={{ pathname: '/produto', query: { _id: data._id } }}
+        className={styles.div_img}
+      >
         <Image
           alt="Imagem da categoria"
           src={data.images?.[0] || '/categorias/batom.png'}
@@ -41,7 +44,7 @@ const ProdutoItem = ({
       </Link>
 
       <div className={styles.infos}>
-        <Link href={`/produto/${data._id}`}>
+        <Link href={{ pathname: '/produto', query: { _id: data._id } }}>
           <h3 className={`name ${styles.name}`}>{data?.name}</h3>
         </Link>
         <p className={`description ${styles.description}`}>
