@@ -7,7 +7,6 @@ interface infosProduto {
   comentario: string;
   imgs: string[];
 }
-
 function InformacoesProduto({ cor, tamanho, comentario, imgs }: infosProduto) {
   return (
     <div className={styles.review}>
@@ -22,11 +21,11 @@ function InformacoesProduto({ cor, tamanho, comentario, imgs }: infosProduto) {
       <div className={styles.comentario}>
         <p className={'texto'}>{comentario}</p>
       </div>
-      {imgs && (
+      {imgs?.[0] && (
         <Image
           className={styles.image_review}
           alt="Imagem review do produto"
-          src={imgs[0] ?? ''}
+          src={imgs[0] ?? imgs}
           width={104}
           height={132}
         />

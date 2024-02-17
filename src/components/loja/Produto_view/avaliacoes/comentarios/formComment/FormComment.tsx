@@ -8,27 +8,57 @@ import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { createComment } from '@/src/shared/api/CREATE';
 import { validationComment } from './ValidationComment';
+import Image from 'next/image';
 
-// interface CommentInterface {
-//   comment: string;
-//   stars: number;
-//   images: any;
-// }
+interface User {
+  user: {
+    _id: string;
+  };
+}
 
-const FormComment = () => {
+const FormComment = ({
+  setModalForm,
+  dataUser
+}: {
+  dataUser: User;
+  setModalForm: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const router = useRouter();
   const [stars, setStars] = React.useState(1);
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, watch } = useForm({
     resolver: yupResolver(validationComment)
   });
-  const pathname = window?.location?.href?.split('=');
+  const searshParams = useSearchParams();
+  const pathname = searshParams?.toString()?.split('=');
   const idProduct = pathname ? pathname[1] : '';
+  const [imageUrl, setImageUrl] = React.useState<string | ArrayBuffer | null>();
+  const watchImage: File[] = watch('images') as File[];
+
+  const handleChange = React.useCallback(() => {
+    // const url = reader.readAsDataURL();
+    const reader = new FileReader();
+
+    if (watchImage?.length) {
+      reader.onloadend = () => {
+        setImageUrl(reader.result);
+      };
+
+      reader?.readAsDataURL(watchImage?.[0]);
+    }
+  }, [watchImage]);
+
+  React.useEffect(() => {
+    handleChange();
+  }, [handleChange, watchImage]);
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
     const dataComment = {
       idProduct,
+      userId: dataUser.user._id,
       comment: data.comment,
       stars,
       images: data.images
@@ -37,6 +67,11 @@ const FormComment = () => {
       const response = await createComment(dataComment);
 
       console.log(response);
+      router.refresh();
+
+      if (response) {
+        setModalForm(false);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -105,6 +140,16 @@ const FormComment = () => {
           <label htmlFor="images" className={styles.label_foto}>
             Escolha uma foto
           </label>
+          <div>
+            {imageUrl && typeof imageUrl === 'string' && (
+              <Image
+                alt="Imagem upload"
+                src={imageUrl ?? ''}
+                width={50}
+                height={50}
+              />
+            )}
+          </div>
           <input
             type="file"
             id="images"
