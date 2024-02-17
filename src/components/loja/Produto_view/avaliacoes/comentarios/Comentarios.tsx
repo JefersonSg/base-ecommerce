@@ -5,12 +5,14 @@ import Comentario from './Comentario';
 import styles from './Comentarios.module.css';
 
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import FormComment from './formComment/FormComment';
 
 function Comentarios({ data }: { data: ProductApi }) {
   return (
     <div className={styles.comentarios_container}>
       <div className={styles.botao_comentar}>
         <BotaoColorido texto="Comentar" />
+        <FormComment />
       </div>
       {data?.comments?.map((comment) => {
         return (

@@ -85,6 +85,36 @@ export async function createSubcategory(data: any) {
     console.error('Erro ao fazer a requisição:', error.response);
   }
 }
+export async function createComment(data: any) {
+  const formData = new FormData();
+  console.log(data.images[0]);
+  formData.append('comment', data.comment);
+  formData.append('userId', data.userId);
+  formData.append('stars', data.stars);
+
+  if (data.images[0] instanceof Blob) {
+    formData.append('images', data.images[0]);
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.post(
+      `${API}products/create/comment/${data.idProduct}`,
+      formData,
+      configFormdata
+    );
+
+    console.log(response.data);
+
+    return response.data;
+  } catch (error: any) {
+    console.error('Erro ao fazer a requisição:', error.response);
+  }
+}
 
 export async function createProduct(
   data: any,
