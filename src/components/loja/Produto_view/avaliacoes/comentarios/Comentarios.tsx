@@ -4,10 +4,13 @@ import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 import Comentario from './Comentario';
 import styles from './Comentarios.module.css';
 
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import FormComment from './formComment/FormComment';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
+import {
+  type CommentContextInterface,
+  useCommentContext
+} from '@/src/shared/context/AvaliacaoContext';
 
 interface User {
   user: {
@@ -15,13 +18,13 @@ interface User {
   };
 }
 
-function Comentarios({ dataComments }: { dataComments: ProductApi }) {
+function Comentarios() {
   const [modalForm, setModalForm] = React.useState(false);
   const { data } = useQuery<User>({
     queryKey: ['user']
   });
+  const { dataComments } = useCommentContext() as CommentContextInterface;
 
-  console.log(data?.user?._id);
   React.useEffect(() => {
     dataComments?.comments?.forEach((comment) => {
       if (comment?.userId === data?.user?._id) console.log('existe');
@@ -43,19 +46,16 @@ function Comentarios({ dataComments }: { dataComments: ProductApi }) {
       </div>
       {dataComments?.comments?.map((comment, index) => {
         return (
-          <>
-            <p>{comment.userId}</p>
-            <Comentario
-              key={index}
-              data={comment?.date}
-              nome={'Ludimila'}
-              estrelas={comment?.stars}
-              imgs={comment?.images}
-              tamanho="300ml"
-              cor="Branco"
-              comentario={comment?.comment}
-            />
-          </>
+          <Comentario
+            key={index}
+            data={comment?.date}
+            nome={'Ludimila'}
+            estrelas={comment?.stars}
+            imgs={comment?.images}
+            tamanho="300ml"
+            cor="Branco"
+            comentario={comment?.comment}
+          />
         );
       })}
     </div>

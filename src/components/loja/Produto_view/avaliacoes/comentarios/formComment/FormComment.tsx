@@ -13,6 +13,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { createComment } from '@/src/shared/api/CREATE';
 import { validationComment } from './ValidationComment';
 import Image from 'next/image';
+import {
+  type CommentContextInterface,
+  useCommentContext
+} from '@/src/shared/context/AvaliacaoContext';
 
 interface User {
   user: {
@@ -38,8 +42,9 @@ const FormComment = ({
   const [imageUrl, setImageUrl] = React.useState<string | ArrayBuffer | null>();
   const watchImage: File[] = watch('images') as File[];
 
+  const { refetch } = useCommentContext() as CommentContextInterface;
+
   const handleChange = React.useCallback(() => {
-    // const url = reader.readAsDataURL();
     const reader = new FileReader();
 
     if (watchImage?.length) {
@@ -66,8 +71,8 @@ const FormComment = ({
     try {
       const response = await createComment(dataComment);
 
-      console.log(response);
       router.refresh();
+      await refetch();
 
       if (response) {
         setModalForm(false);

@@ -6,6 +6,7 @@ import {
 } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import styles from './Produto.module.css';
+import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 
 interface Props {
   _id: string;
@@ -19,14 +20,19 @@ const page = async ({ searchParams }: { searchParams: Props }) => {
   const subcategoryName = await getSubcategoryById(
     product?.product?.subcategory
   );
+
   return (
     <div className={styles.section_produtos}>
-      {product && (
+      {product?.product ? (
         <ContainerProduct
           data={product}
           categoryName={categoryName?.category?.name}
           subcategoryName={subcategoryName?.subcategory?.name}
         />
+      ) : (
+        <div className={styles.not_found}>
+          <Titulo titulo="Nenhum produto encontrado" />
+        </div>
       )}
     </div>
   );

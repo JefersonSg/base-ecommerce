@@ -1,13 +1,20 @@
+'use client';
+
 import styles from './MediaAvaliacoes.module.css';
 import Informacoes from './informacoes/Informacoes';
 import Estatisticas from './estatisticas/Estatisticas';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import {
+  type CommentContextInterface,
+  useCommentContext
+} from '@/src/shared/context/AvaliacaoContext';
 
-function MediaAvaliacoes({ data }: { data: ProductApi }) {
+function MediaAvaliacoes() {
+  const { dataComments } = useCommentContext() as CommentContextInterface;
+
   return (
     <div className={styles.media_avaliacoes}>
-      <Informacoes comments={data?.comments} />
-      <Estatisticas comments={data?.comments} />
+      <Informacoes comments={dataComments?.comments} />
+      <Estatisticas comments={dataComments?.comments} />
     </div>
   );
 }
