@@ -1,3 +1,18 @@
 .comentario_div {
   margin-top: 64px;
 }
+
+.changes_comment {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+.changes_comment p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #878787;
+  line-height: 130%;
+  cursor: pointer;
+}

@@ -24,32 +24,42 @@ function Comentarios() {
     queryKey: ['user']
   });
   const { dataComments } = useCommentContext() as CommentContextInterface;
+  const [Commented, setCommented] = React.useState(true);
 
   React.useEffect(() => {
+    setCommented(false);
     dataComments?.comments?.forEach((comment) => {
-      if (comment?.userId === data?.user?._id) console.log('existe');
+      if (comment?.userId === data?.user?._id) {
+        setCommented(true);
+      }
     });
   }, [data, dataComments]);
+
   return (
     <div className={styles.comentarios_container}>
-      <div className={styles.botao_comentar}>
-        <div
-          onClick={() => {
-            setModalForm(!modalForm);
-          }}
-        >
-          <BotaoColorido texto="Comentar" />
+      {!Commented && (
+        <div className={styles.botao_comentar}>
+          <div
+            onClick={() => {
+              setModalForm(!modalForm);
+            }}
+          >
+            <BotaoColorido texto="Comentar" />
+          </div>
+          {modalForm && data && (
+            <FormComment dataUser={data} setModalForm={setModalForm} />
+          )}
         </div>
-        {modalForm && data && (
-          <FormComment dataUser={data} setModalForm={setModalForm} />
-        )}
-      </div>
+      )}
+      <h3 className="titulo_sessao">Commentários</h3>
       {dataComments?.comments?.map((comment, index) => {
         return (
           <Comentario
+            commentId={comment._id}
             key={index}
-            data={comment?.date}
+            dataTime={comment?.date}
             nome={'Ludimila'}
+            userId={comment.userId}
             estrelas={comment?.stars}
             imgs={comment?.images}
             tamanho="300ml"

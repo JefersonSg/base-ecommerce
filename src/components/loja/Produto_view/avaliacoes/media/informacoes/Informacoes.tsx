@@ -9,15 +9,10 @@ function Informacoes({ comments }: { comments?: CommentInterface[] }) {
     totalStars?.reduce((acumulador, numero) => acumulador + numero, 0) /
       totalStars?.length ?? 1;
 
-  console.log(media);
   return (
     <div className={styles.informacoes}>
       <h2 className={styles.numero_media}>
-        {media
-          ? media.toString().length > 3
-            ? media?.toFixed(2)
-            : media.toFixed(1)
-          : '5.0'}
+        {media ? media?.toFixed(1) : '5.0'}
       </h2>
       <p className={styles.texto_media}>
         baseado em {comments?.length ?? 0} comentários

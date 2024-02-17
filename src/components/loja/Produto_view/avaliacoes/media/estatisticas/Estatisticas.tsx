@@ -11,8 +11,6 @@ function Estatisticas({ comments }: { comments?: CommentInterface[] }) {
 
   const totalComentarios = comments?.length ?? 0;
 
-  console.log(comments);
-
   return (
     <div className={styles.estatisticas}>
       <Porcentagens

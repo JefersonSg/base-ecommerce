@@ -1,0 +1,31 @@
+.delete_categoria {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    width: 300px;
+    height: 150px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px 8px;
+    border: 1px solid rgba(67, 89, 113, 0.12);
+    box-shadow: 0 2px 6px 0 rgba(67, 89, 113, 0.12);
+  
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+  .delete_categoria .botoes {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .delete_categoria h2 {
+    font-family: 'Public Sans';
+    color: #697a8d;
+    font-size: 16px;
+    text-align: center;
+  }

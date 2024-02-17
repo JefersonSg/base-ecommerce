@@ -8,11 +8,11 @@ import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
-import ButtonDelete from '../../Botoes/ButtonDelete';
-import ButtonAdd from '../../Botoes/ButtonAdd';
 import { deleteCategory } from '@/src/shared/api/DELETE';
 import { getAllCategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
+import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
@@ -41,11 +41,6 @@ const DataTable = () => {
       clearTimeout(temporizador);
     };
   }, [ativoPopUp]);
-
-  async function handleDelete(id: string) {
-    await deleteCategory(id);
-    await refetch();
-  }
 
   return (
     <>
@@ -85,38 +80,23 @@ const DataTable = () => {
         />
       </div>
       {ativoDelete && (
-        <div className={styles.delete_categoria}>
-          <h2>Deseja mesmo deletar essa categoria?</h2>
-          <div className={styles.botoes}>
-            <div
-              onClick={() => {
-                void handleDelete(idCategory);
-              }}
-            >
-              <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
-            </div>
-            <div
-              onClick={() => {
-                setAtivoDelete(false);
-              }}
-            >
-              <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
-            </div>
-          </div>
-        </div>
+        <ModalDelete
+          id1={idCategory}
+          setState={setAtivoDelete}
+          text="Deseja mesmo deletar essa categoria?"
+          funcDelete={deleteCategory}
+          refetch={refetch}
+        />
       )}
-      {ativoCreate ||
-        ativoEdit ||
-        (ativoDelete && (
-          <div
-            className={styles.background}
-            onClick={() => {
-              setAtivoCreate(false);
-              setAtivoEdit(false);
-              setAtivoDelete(false);
-            }}
-          ></div>
-        ))}
+      {ativoCreate || ativoEdit || ativoDelete ? (
+        <BackgoundClick
+          setState1={setAtivoCreate}
+          setState2={setAtivoDelete}
+          setState3={setAtivoEdit}
+        />
+      ) : (
+        <></>
+      )}
 
       {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
     </>
