@@ -66,6 +66,34 @@ export async function updateSubcategory(data: any, id: string) {
   }
 }
 
+export async function updateComment(data: any) {
+  const formData = new FormData();
+
+  formData.append('idComment', data.commentId);
+  formData.append('comment', data.comment);
+  formData.append('stars', data.stars);
+
+  if (data.images[0]) {
+    formData.append('images', data.images[0]);
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.patch(
+      `${API}products/update/comment/${data.idProduct}`,
+      formData,
+      configFormdata
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function toggleStock(data: any) {
   const formData = new FormData();
 

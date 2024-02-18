@@ -13,17 +13,18 @@ import { deleteComment } from '@/src/shared/api/DELETE';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import { useSearchParams } from 'next/navigation';
+import ModalEdit from '@/src/components/compartilhado/modals/ModalEdit';
 
-interface comentario {
+interface Comment {
   commentId: string;
   userId: string;
-  nome: string;
+  name: string;
   dataTime: string;
-  estrelas: number;
-  cor: string;
-  tamanho: string;
-  comentario: string;
-  imgs: string[];
+  stars: number;
+  color: string;
+  size: string;
+  comment: string;
+  images: string[];
 }
 interface User {
   user: {
@@ -33,20 +34,32 @@ interface User {
 function Comentario({
   commentId,
   userId,
-  nome,
+  name,
   dataTime,
-  estrelas,
-  cor,
-  tamanho,
-  comentario,
-  imgs
-}: comentario) {
+  stars,
+  color,
+  size,
+  comment,
+  images
+}: Comment) {
   const { data } = useQuery<User>({
     queryKey: ['user']
   });
 
+  const dataComment = {
+    commentId,
+    userId,
+    name,
+    dataTime,
+    stars,
+    color,
+    size,
+    comment,
+    images
+  }
   const { refetch } = useCommentContext() as CommentContextInterface;
   const [modalDelte, setModalDelete] = React.useState(false)
+  const [modalEdit, setModalEdit] = React.useState(false)
   const productId = useSearchParams()?.toString()?.split('=')?.[1]
 
   const isAdmin = Cookies.get('isAdmin');
@@ -55,27 +68,31 @@ function Comentario({
   return (
     <>
     <div className={styles.comentario_div}>
-      <InformacoesUsuario nome={nome} data={dataTime} stars={estrelas} />
+      <InformacoesUsuario nome={name} data={dataTime} stars={stars} />
       <InformacoesProduto
-        cor={cor}
-        tamanho={tamanho}
-        comentario={comentario}
-        imgs={imgs}
+        cor={color}
+        tamanho={size}
+        comentario={comment}
+        imgs={images}
       />
       { isAdmin ?? myComment ?
           <div className={styles.changes_comment}>
-            <p>Editar</p>
+            <p
+            onClick={()=>{
+              setModalEdit(true)
+            }}>Editar</p>
             <p onClick={()=>{
               setModalDelete(true)
             }}>Excluir</p>
           </div>
         : <></>}
-        {modalDelte  ? (
-          <BackgoundClick setState1={setModalDelete}/>
+        {modalDelte || modalEdit ? (
+          <BackgoundClick setState1={setModalDelete}  setState2={setModalEdit}/>
         ) : (
           <></>
-        )}    
-        {modalDelte &&           <ModalDelete 
+        )} 
+        {modalDelte &&  data &&
+        <ModalDelete 
           id1={productId}
           id2={commentId}
           setState={setModalDelete} 
@@ -83,6 +100,9 @@ function Comentario({
           funcDelete={deleteComment}
           refetch={refetch}
           />}
+          {modalEdit && <ModalEdit setState={setModalEdit} id1='' 
+            dataUser={userId} dataComment={dataComment}
+        />}
         </div>
 
     </>

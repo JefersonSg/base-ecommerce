@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
-import styles from './ModalDelete.module.css';
+import styles from './Modals.module.css';
 import ButtonDelete from '../../dashboard/Botoes/ButtonDelete';
 import ButtonAdd from '../../dashboard/Botoes/ButtonAdd';
 import {
@@ -26,16 +26,20 @@ const ModalDelete = ({
   ) => Promise<QueryObserverResult<any, Error>>;
 }) => {
   async function handleDelete() {
-    if (!funcDelete) return;
+    try {
+      if (!funcDelete) return;
 
-    if (id1) {
-      await funcDelete(id1);
-    }
-    if (id1 && id2) {
-      await funcDelete(id1, id2);
-    }
-    if (refetch) {
-      await refetch();
+      if (id1) {
+        await funcDelete(id1);
+      }
+      if (id1 && id2) {
+        await funcDelete(id1, id2);
+      }
+      if (refetch) {
+        await refetch();
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 

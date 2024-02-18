@@ -58,13 +58,13 @@ function Comentarios() {
             commentId={comment._id}
             key={index}
             dataTime={comment?.date}
-            nome={'Ludimila'}
+            name={'Ludimila'}
             userId={comment.userId}
-            estrelas={comment?.stars}
-            imgs={comment?.images}
-            tamanho="300ml"
-            cor="Branco"
-            comentario={comment?.comment}
+            stars={comment?.stars}
+            images={comment?.images}
+            size="300ml"
+            color="Branco"
+            comment={comment?.comment}
           />
         );
       })}
