@@ -15,7 +15,7 @@ function InformacoesUsuario({ nome, data, stars }: InfoUsuario) {
         <span className={styles.data}>{data}</span>
       </div>
       <div className={styles.estrelas}>
-        <Estrelas stars={+stars} />
+        <Estrelas stars={+stars} type={1} />
       </div>
     </div>
   );

@@ -143,7 +143,7 @@ const FormEditComment = ({
                 setStars(5);
               }}
             />
-            <Estrelas stars={stars} />
+            <Estrelas stars={stars} type={0} />
           </div>
         </div>
         <div>

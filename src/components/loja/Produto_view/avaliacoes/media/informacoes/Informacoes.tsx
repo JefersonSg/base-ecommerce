@@ -18,7 +18,7 @@ function Informacoes({ comments }: { comments?: CommentInterface[] }) {
         baseado em {comments?.length ?? 0} comentários
       </p>
       <div className={styles.estrelas}>
-        <Estrelas stars={!Number.isNaN(media) ? media : 0} />
+        <Estrelas stars={!Number.isNaN(media) ? media : 0} type={1} />
       </div>
     </div>
   );
