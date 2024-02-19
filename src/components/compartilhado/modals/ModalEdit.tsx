@@ -38,24 +38,6 @@ const ModalEdit = ({
     options?: RefetchOptions | undefined
   ) => Promise<QueryObserverResult<any, Error>>;
 }) => {
-  // async function handleDelete() {
-  //   try {
-  //     if (!funcDelete) return;
-
-  //     if (id1) {
-  //       await funcDelete(id1);
-  //     }
-  //     if (id1 && id2) {
-  //       await funcDelete(id1, id2);
-  //     }
-  //     if (refetch) {
-  //       await refetch();
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   return (
     <div className={styles.delete_categoria}>
       <FormEditComment

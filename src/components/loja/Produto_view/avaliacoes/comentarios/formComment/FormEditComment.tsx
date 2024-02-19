@@ -90,7 +90,6 @@ const FormEditComment = ({
       if (response) {
         router.refresh();
         await refetch();
-        console.log(response);
         setModalForm(false);
       }
     } catch (error) {

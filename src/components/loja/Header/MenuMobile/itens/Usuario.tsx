@@ -35,9 +35,9 @@ function Usuario({
           Olá,{' '}
           {userData
             ? `${
-                userData?.user.name +
+                userData?.user?.name +
                 ' ' +
-                userData?.user.surname?.split(' ')[0]
+                userData?.user?.surname?.split(' ')[0]
               }`
             : 'Visitante'}
         </h3>

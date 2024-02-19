@@ -7,18 +7,18 @@ import {
   type CommentContextInterface,
   useCommentContext
 } from '@/src/shared/context/AvaliacaoContext';
-import React from 'react';
+import React, { Suspense } from 'react';
 import Cookies from 'js-cookie';
 import { deleteComment } from '@/src/shared/api/DELETE';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import { useSearchParams } from 'next/navigation';
 import ModalEdit from '@/src/components/compartilhado/modals/ModalEdit';
+import { getUserById } from '@/src/shared/api/GETS';
 
 interface Comment {
   commentId: string;
   userId: string;
-  name: string;
   dataTime: string;
   stars: number;
   color: string;
@@ -29,12 +29,28 @@ interface Comment {
 interface User {
   user: {
     _id: string;
+    name: string;
   };
 }
+
+function ModalDeleteSearsh({commentId, setModalDelete, refetch}:{commentId: string, setModalDelete: any, refetch: any}){
+  const searchParams = useSearchParams()
+  const productId = searchParams?.toString()?.split('=')?.[1]
+
+  return <ModalDelete 
+    id1={productId}
+    id2={commentId}
+    setState={setModalDelete} 
+    text='Deseja mesmo deletar esse comentário?' 
+    funcDelete={deleteComment}
+    refetch={refetch}
+/>
+
+}
+
 function Comentario({
   commentId,
   userId,
-  name,
   dataTime,
   stars,
   color,
@@ -46,10 +62,23 @@ function Comentario({
     queryKey: ['user']
   });
 
+  const dataUserComment = useQuery<User>({
+    queryKey: [userId],
+    queryFn: async ()=> {
+      return await getUserById(userId)
+    }
+  });
+  console.log(userId)
+  const { refetch } = useCommentContext() as CommentContextInterface;
+  const [modalDelte, setModalDelete] = React.useState(false)
+  const [modalEdit, setModalEdit] = React.useState(false)
+
+  const isAdmin = Cookies.get('isAdmin');
+  const myComment = userId === data?.user?._id;
   const dataComment = {
     commentId,
     userId,
-    name,
+    name: dataUserComment?.data?.user.name ?? 'Usuário não encontrado',
     dataTime,
     stars,
     color,
@@ -57,18 +86,10 @@ function Comentario({
     comment,
     images
   }
-  const { refetch } = useCommentContext() as CommentContextInterface;
-  const [modalDelte, setModalDelete] = React.useState(false)
-  const [modalEdit, setModalEdit] = React.useState(false)
-  const productId = useSearchParams()?.toString()?.split('=')?.[1]
-
-  const isAdmin = Cookies.get('isAdmin');
-  const myComment = userId === data?.user?._id;
-
   return (
     <>
     <div className={styles.comentario_div}>
-      <InformacoesUsuario nome={name} data={dataTime} stars={stars} />
+      <InformacoesUsuario nome={dataComment?.name} data={dataTime} stars={stars} />
       <InformacoesProduto
         cor={color}
         tamanho={size}
@@ -92,14 +113,10 @@ function Comentario({
           <></>
         )} 
         {modalDelte &&  data &&
-        <ModalDelete 
-          id1={productId}
-          id2={commentId}
-          setState={setModalDelete} 
-          text='Deseja mesmo deletar esse comentário?' 
-          funcDelete={deleteComment}
-          refetch={refetch}
-          />}
+          <Suspense>
+            <ModalDeleteSearsh commentId={commentId} refetch={refetch} setModalDelete={setModalDelete}/>
+          </Suspense>
+        }
           {modalEdit && <ModalEdit setState={setModalEdit} id1='' 
             dataUser={userId} dataComment={dataComment}
         />}

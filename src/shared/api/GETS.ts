@@ -10,7 +10,6 @@ const config = {
     'Content-Type': 'application/json'
   }
 };
-
 async function isAdmin(response: any) {
   const { isAdmin } = response;
 
@@ -20,12 +19,12 @@ async function isAdmin(response: any) {
 
   Cookies.remove('isAdmin');
 }
-export const getUser = async () => {
+export const getUserByToken = async () => {
   if (!token) {
     return null;
   }
   try {
-    const response = await axios.get(`${API}user/get`, config);
+    const response = await axios.get(`${API}user/token`, config);
 
     await isAdmin(response.data);
     return response.data;
@@ -68,6 +67,28 @@ export const getAllProducts = async () => {
   }
 };
 
+export const getAllComments = async (id: string) => {
+  try {
+    const response = await axios.get(`${API}products/comments/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// GETS BY ID
+export const getUserById = async (id: string) => {
+  try {
+    const response = await axios.get(`${API}user/get/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 export const getProductById = async (id: string) => {
   try {
     const response = await axios.get(`${API}products/${id}`, config);
@@ -92,17 +113,6 @@ export const getCategoryById = async (id: string) => {
 export const getSubcategoryById = async (id: string) => {
   try {
     const response = await axios.get(`${API}subcategories/${id}`, config);
-
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
-
-export const getAllComments = async (id: string) => {
-  try {
-    const response = await axios.get(`${API}products/comments/${id}`, config);
 
     return response.data;
   } catch (error) {

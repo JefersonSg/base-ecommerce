@@ -25,7 +25,6 @@ function Comentarios() {
   });
   const { dataComments } = useCommentContext() as CommentContextInterface;
   const [Commented, setCommented] = React.useState(true);
-
   React.useEffect(() => {
     setCommented(false);
     dataComments?.comments?.forEach((comment) => {
@@ -58,7 +57,6 @@ function Comentarios() {
             commentId={comment._id}
             key={index}
             dataTime={comment?.date}
-            name={'Ludimila'}
             userId={comment.userId}
             stars={comment?.stars}
             images={comment?.images}

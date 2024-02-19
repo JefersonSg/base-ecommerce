@@ -1,5 +1,3 @@
-'use client';
-
 import LoginPage from '@/src/components/compartilhado/login/LoginPage';
 import styles from './styles.module.css';
 
