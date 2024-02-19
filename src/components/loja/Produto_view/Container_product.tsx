@@ -18,6 +18,14 @@ const ContainerProduct = ({
   categoryName: string;
   subcategoryName: string;
 }) => {
+  const totalStars = data?.product?.comments?.map(
+    (comment) => +comment?.stars
+  ) ?? [1];
+
+  const media =
+    totalStars?.reduce((acumulador, numero) => acumulador + numero, 0) /
+      totalStars?.length ?? 1;
+
   return (
     <>
       {data && (
@@ -28,7 +36,7 @@ const ContainerProduct = ({
             } ${data?.product?.name}`}
           />
           <Titulo titulo={data?.product?.name} />
-          <Interacoes id={data?.product?._id} />
+          <Interacoes id={data?.product?._id} stars={media} />
           <FotosProduto img={data?.product?.images} />
           <Detalhes data={data?.product} />
           <Sections data={data?.product} />

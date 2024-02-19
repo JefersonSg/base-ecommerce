@@ -1,8 +1,8 @@
 .review {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .informacoes_produto {
@@ -12,5 +12,5 @@
 .image_review {
   object-fit: cover;
   border-radius: 12px;
-  margin-top: 16px;
+  margin-top: 8px;
 }

@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
 
-const MeiaEstrela = () => {
+const MeiaEstrela = ({ type }: { type?: string }) => {
   return (
     <Image
       alt="Meia estrela"
-      src={'/produto/pagina/comentarios/meia_estrela.svg'}
+      src={`/estrelas/${type ?? 'escuras'}/meia_estrela.svg`}
       width={16}
       height={16}
     />

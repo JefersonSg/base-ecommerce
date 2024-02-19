@@ -78,7 +78,7 @@ function Comentario({
   const dataComment = {
     commentId,
     userId,
-    name: dataUserComment?.data?.user.name ?? 'Usuário não encontrado',
+    name: dataUserComment?.data?.user?.name ?? 'Usuário não encontrado',
     dataTime,
     stars,
     color,

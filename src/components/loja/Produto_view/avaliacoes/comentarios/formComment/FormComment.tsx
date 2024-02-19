@@ -3,7 +3,7 @@
 
 import React from 'react';
 import styles from './FormComment.module.css';
-import Estrelas from '../../Estrelas';
+import Estrelas from '../../../../../compartilhado/estrelas/Estrelas';
 import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';

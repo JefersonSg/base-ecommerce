@@ -10,14 +10,14 @@ interface infosProduto {
 function InformacoesProduto({ cor, tamanho, comentario, imgs }: infosProduto) {
   return (
     <div className={styles.review}>
-      <div className={styles.informacoes_produto}>
+      {/* <div className={styles.informacoes_produto}>
         <span>
           <p className={'texto'}>{`Cor: ${cor}`}</p>
         </span>
         <span>
           <p className={'texto'}>{`Tamanho: ${tamanho}`}</p>
         </span>
-      </div>
+      </div> */}
       <div className={styles.comentario}>
         <p className={'texto'}>{comentario}</p>
       </div>

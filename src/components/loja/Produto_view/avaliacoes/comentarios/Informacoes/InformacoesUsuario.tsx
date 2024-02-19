@@ -1,4 +1,4 @@
-import Estrelas from '../../Estrelas';
+import Estrelas from '../../../../../compartilhado/estrelas/Estrelas';
 import styles from './InformacoesUsuario.module.css';
 
 interface InfoUsuario {

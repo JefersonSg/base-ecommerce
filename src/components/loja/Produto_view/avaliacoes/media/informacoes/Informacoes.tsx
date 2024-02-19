@@ -1,5 +1,5 @@
 import { type CommentInterface } from '@/src/shared/helpers/interfaces';
-import Estrelas from '../../Estrelas';
+import Estrelas from '../../../../../compartilhado/estrelas/Estrelas';
 import styles from './Informacoes.module.css';
 
 function Informacoes({ comments }: { comments?: CommentInterface[] }) {
