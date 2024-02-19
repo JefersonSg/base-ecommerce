@@ -34,20 +34,27 @@ interface User {
   };
 }
 
-function ModalDeleteSearsh(
-  {productId,commentId, setModalDelete, refetch}
-  :
-  {productId: string;commentId: string, setModalDelete: any, refetch: any}){
-
-  return <ModalDelete 
-    id1={productId ?? ''}
-    id2={commentId}
-    setState={setModalDelete} 
-    text='Deseja mesmo deletar esse comentário?' 
-    funcDelete={deleteComment}
-    refetch={refetch}
-/>
-
+function ModalDeleteSearsh({
+  productId,
+  commentId,
+  setModalDelete,
+  refetch
+}: {
+  productId: string;
+  commentId: string;
+  setModalDelete: any;
+  refetch: any;
+}) {
+  return (
+    <ModalDelete
+      id1={productId ?? ''}
+      id2={commentId}
+      setState={setModalDelete}
+      text="Deseja mesmo deletar esse comentário?"
+      funcDelete={deleteComment}
+      refetch={refetch}
+    />
+  );
 }
 
 function Comentario({
@@ -66,13 +73,13 @@ function Comentario({
 
   const dataUserComment = useQuery<User>({
     queryKey: [userId],
-    queryFn: async ()=> {
-      return await getUserById(userId)
+    queryFn: async () => {
+      return await getUserById(userId);
     }
   });
   const { refetch, productId } = useCommentContext() as CommentContextInterface;
-  const [modalDelte, setModalDelete] = React.useState(false)
-  const [modalEdit, setModalEdit] = React.useState(false)
+  const [modalDelte, setModalDelete] = React.useState(false);
+  const [modalEdit, setModalEdit] = React.useState(false);
 
   const isAdmin = Cookies.get('isAdmin');
   const myComment = userId === data?.user?._id;
@@ -86,43 +93,65 @@ function Comentario({
     size,
     comment,
     images
-  }
+  };
   return (
     <>
-    <div className={styles.comentario_div}>
-      <InformacoesUsuario nome={dataComment?.name} data={dataTime} stars={stars} />
-      <InformacoesProduto
-        cor={color}
-        tamanho={size}
-        comentario={comment}
-        imgs={images}
-      />
-      { isAdmin ?? myComment ?
+      <div className={styles.comentario_div}>
+        <InformacoesUsuario
+          nome={dataComment?.name}
+          data={dataTime}
+          stars={stars}
+        />
+        <InformacoesProduto
+          cor={color}
+          tamanho={size}
+          comentario={comment}
+          imgs={images}
+        />
+        {isAdmin ?? myComment ? (
           <div className={styles.changes_comment}>
             <p
-            onClick={()=>{
-              setModalEdit(true)
-            }}>Editar</p>
-            <p onClick={()=>{
-              setModalDelete(true)
-            }}>Excluir</p>
+              onClick={() => {
+                setModalEdit(true);
+              }}
+            >
+              Editar
+            </p>
+            <p
+              onClick={() => {
+                setModalDelete(true);
+              }}
+            >
+              Excluir
+            </p>
           </div>
-        : <></>}
-        {modalDelte || modalEdit ? (
-          <BackgoundClick setState1={setModalDelete}  setState2={setModalEdit}/>
         ) : (
           <></>
-        )} 
-        {modalDelte &&  data &&
+        )}
+        {modalDelte || modalEdit ? (
+          <BackgoundClick setState1={setModalDelete} setState2={setModalEdit} />
+        ) : (
+          <></>
+        )}
+        {modalDelte && data && (
           <Suspense>
-            <ModalDeleteSearsh productId={productId} commentId={commentId} refetch={refetch} setModalDelete={setModalDelete}/>
+            <ModalDeleteSearsh
+              productId={productId}
+              commentId={commentId}
+              refetch={refetch}
+              setModalDelete={setModalDelete}
+            />
           </Suspense>
-        }
-          {modalEdit && <ModalEdit setState={setModalEdit} id1='' 
-            dataUser={userId} dataComment={dataComment}
-        />}
-        </div>
-
+        )}
+        {modalEdit && (
+          <ModalEdit
+            setState={setModalEdit}
+            id1=""
+            dataUser={userId}
+            dataComment={dataComment}
+          />
+        )}
+      </div>
     </>
   );
 }
