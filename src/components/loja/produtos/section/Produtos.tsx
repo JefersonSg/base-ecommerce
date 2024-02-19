@@ -17,98 +17,14 @@ const Produtos = () => {
         return (
           <Produto
             key={product?._id}
-            link={product._id}
-            name={product.name}
-            price={product.price.toFixed(2).replace('.', ',')}
+            link={product?._id}
+            name={product?.name}
+            price={product?.price?.toFixed(2)?.replace('.', ',')}
             promotion={false}
             img={product?.images}
           />
         );
       })}
-      {/* <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      />
-      <Produto
-        link=""
-        name="Creme Hydra"
-        price="34,94"
-        promotion={false}
-        img={['produto1']}
-      /> */}
     </div>
   );
 };

@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable prettier/prettier */
 import { useQuery } from '@tanstack/react-query';
 import styles from './Comentario.module.css';
@@ -34,11 +36,10 @@ interface User {
 }
 
 function ModalDeleteSearsh({commentId, setModalDelete, refetch}:{commentId: string, setModalDelete: any, refetch: any}){
-  const searchParams = useSearchParams()
-  const productId = searchParams?.toString()?.split('=')?.[1]
+  const productId = useSearchParams()?.get("_id")
 
   return <ModalDelete 
-    id1={productId}
+    id1={productId ?? ''}
     id2={commentId}
     setState={setModalDelete} 
     text='Deseja mesmo deletar esse comentário?' 
@@ -68,7 +69,6 @@ function Comentario({
       return await getUserById(userId)
     }
   });
-  console.log(userId)
   const { refetch } = useCommentContext() as CommentContextInterface;
   const [modalDelte, setModalDelete] = React.useState(false)
   const [modalEdit, setModalEdit] = React.useState(false)

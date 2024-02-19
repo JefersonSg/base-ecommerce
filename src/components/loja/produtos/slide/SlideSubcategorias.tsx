@@ -18,19 +18,19 @@ function SlideSubcategorias() {
         spaceBetween={64}
       >
         <SwiperSlide>
-          <Categoria nome="Batom" img="batom" />
+          <Categoria nome="Batom" img="/categorias/batom.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <Categoria nome="Batom" img="batom" />
+          <Categoria nome="Batom" img="/categorias/batom.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <Categoria nome="Batom" img="batom" />
+          <Categoria nome="Batom" img="/categorias/batom.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <Categoria nome="Batom" img="batom" />
+          <Categoria nome="Batom" img="/categorias/batom.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <Categoria nome="Batom" img="batom" />
+          <Categoria nome="Batom" img="/categorias/batom.png" />
         </SwiperSlide>
       </Swiper>
     </>

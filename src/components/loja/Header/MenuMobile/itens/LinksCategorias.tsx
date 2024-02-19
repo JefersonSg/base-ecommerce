@@ -12,11 +12,11 @@ function LinksCategorias() {
   console.log(data);
   return (
     <ul className={styles.links}>
-      {data?.categories.map((category) => {
+      {data?.categories?.map((category) => {
         return (
           <BotaoLi
             key={category?._id}
-            texto={category.name}
+            texto={category?.name}
             link={`produtos/categoria/${category._id}`}
           />
         );

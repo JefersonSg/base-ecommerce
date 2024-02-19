@@ -36,9 +36,9 @@ const FormComment = ({
   const { register, handleSubmit, watch } = useForm({
     resolver: yupResolver(validationComment)
   });
-  const searshParams = useSearchParams();
-  const pathname = searshParams?.toString()?.split('=');
-  const idProduct = pathname ? pathname[1] : '';
+  const idProduct = useSearchParams().get('_id');
+
+  console.log(idProduct);
   const [imageUrl, setImageUrl] = React.useState<string | ArrayBuffer | null>();
   const watchImage: File[] = watch('images') as File[];
 
