@@ -7,7 +7,7 @@ import Image from 'next/image';
 import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { getUser } from '@/src/shared/api/GETS';
+import { getUserByToken } from '@/src/shared/api/GETS';
 import useMedia from '@/src/shared/hooks/useMedia';
 import MenuSideBar from './MenuMobile/MenuSideBar';
 
@@ -16,7 +16,7 @@ export function Header() {
 
   const { data } = useQuery({
     queryKey: ['user'],
-    queryFn: getUser
+    queryFn: getUserByToken
   });
 
   const mobile = useMedia('(max-width: 64rem)');
