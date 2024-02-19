@@ -80,7 +80,7 @@ const FormEditComment = ({
       stars,
       images: data?.images
     };
-
+    console.log(newDataComment);
     try {
       const response = await updateComment(newDataComment);
 

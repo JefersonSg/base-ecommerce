@@ -84,7 +84,7 @@ export async function updateComment(data: any) {
     }
 
     const response = await axios.patch(
-      `${API}products/update/comment/${data.idProduct}`,
+      `${API}products/update/comment/${data.productId}`,
       formData,
       configFormdata
     );

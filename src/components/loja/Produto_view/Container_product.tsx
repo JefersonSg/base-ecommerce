@@ -8,6 +8,7 @@ import Sections from './sections/Sections';
 import Avaliacoes from './avaliacoes/Avaliacoes';
 
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import { AvaliacoesProvider } from '@/src/shared/context/AvaliacaoContext';
 
 const ContainerProduct = ({
   data,
@@ -40,7 +41,9 @@ const ContainerProduct = ({
           <FotosProduto img={data?.product?.images} />
           <Detalhes data={data?.product} />
           <Sections data={data?.product} />
-          <Avaliacoes />
+          <AvaliacoesProvider>
+            <Avaliacoes />
+          </AvaliacoesProvider>
         </>
       )}
     </>
