@@ -8,7 +8,7 @@ import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import { validationComment } from './ValidationComment';
 import Image from 'next/image';
@@ -48,15 +48,12 @@ const FormEditComment = ({
     }
   });
 
-  const searshParams = useSearchParams();
-  const pathname = searshParams?.toString()?.split('=');
-  const idProduct = pathname ? pathname[1] : '';
   const [imageUrl, setImageUrl] = React.useState<string | ArrayBuffer | null>(
     dataComment.images[0]
   );
   const watchImage: File[] = watch('images') as File[];
 
-  const { refetch } = useCommentContext() as CommentContextInterface;
+  const { refetch, productId } = useCommentContext() as CommentContextInterface;
 
   const handleChange = React.useCallback(() => {
     const reader = new FileReader();
@@ -77,7 +74,7 @@ const FormEditComment = ({
   const onSubmit: SubmitHandler<any> = async (data: any) => {
     const newDataComment = {
       commentId: dataComment?.commentId,
-      idProduct,
+      productId,
       userId: dataUser,
       comment: data.comment,
       stars,

@@ -5,7 +5,7 @@ import Comentario from './Comentario';
 import styles from './Comentarios.module.css';
 
 import FormComment from './formComment/FormComment';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   type CommentContextInterface,
@@ -25,6 +25,7 @@ function Comentarios() {
   });
   const { dataComments } = useCommentContext() as CommentContextInterface;
   const [Commented, setCommented] = React.useState(true);
+
   React.useEffect(() => {
     setCommented(false);
     dataComments?.comments?.forEach((comment) => {
@@ -35,40 +36,42 @@ function Comentarios() {
   }, [data, dataComments]);
 
   return (
-    <div className={styles.comentarios_container}>
-      {!Commented && (
-        <div className={styles.botao_comentar}>
-          <div
-            onClick={() => {
-              setModalForm(!modalForm);
-            }}
-          >
-            <BotaoColorido texto="Comentar" />
+    <Suspense>
+      <div className={styles.comentarios_container}>
+        {!Commented && (
+          <div className={styles.botao_comentar}>
+            <div
+              onClick={() => {
+                setModalForm(!modalForm);
+              }}
+            >
+              <BotaoColorido texto="Comentar" />
+            </div>
+            {modalForm && data && (
+              <FormComment dataUser={data} setModalForm={setModalForm} />
+            )}
           </div>
-          {modalForm && data && (
-            <FormComment dataUser={data} setModalForm={setModalForm} />
-          )}
-        </div>
-      )}
-      <h3 className={`titulo_sessao ${styles.titulo_comentario}`}>
-        Commentários
-      </h3>
-      {dataComments?.comments?.map((comment, index) => {
-        return (
-          <Comentario
-            commentId={comment._id}
-            key={index}
-            dataTime={comment?.date}
-            userId={comment.userId}
-            stars={comment?.stars}
-            images={comment?.images}
-            size="300ml"
-            color="Branco"
-            comment={comment?.comment}
-          />
-        );
-      })}
-    </div>
+        )}
+        <h3 className={`titulo_sessao ${styles.titulo_comentario}`}>
+          Commentários
+        </h3>
+        {dataComments?.comments?.map((comment, index) => {
+          return (
+            <Comentario
+              commentId={comment._id}
+              key={index}
+              dataTime={comment?.date}
+              userId={comment.userId}
+              stars={comment?.stars}
+              images={comment?.images}
+              size="300ml"
+              color="Branco"
+              comment={comment?.comment}
+            />
+          );
+        })}
+      </div>
+    </Suspense>
   );
 }
 

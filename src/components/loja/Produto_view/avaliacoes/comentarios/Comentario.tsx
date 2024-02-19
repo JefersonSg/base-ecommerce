@@ -14,7 +14,6 @@ import Cookies from 'js-cookie';
 import { deleteComment } from '@/src/shared/api/DELETE';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
-import { useSearchParams } from 'next/navigation';
 import ModalEdit from '@/src/components/compartilhado/modals/ModalEdit';
 import { getUserById } from '@/src/shared/api/GETS';
 
@@ -35,8 +34,10 @@ interface User {
   };
 }
 
-function ModalDeleteSearsh({commentId, setModalDelete, refetch}:{commentId: string, setModalDelete: any, refetch: any}){
-  const productId = useSearchParams()?.get("_id")
+function ModalDeleteSearsh(
+  {productId,commentId, setModalDelete, refetch}
+  :
+  {productId: string;commentId: string, setModalDelete: any, refetch: any}){
 
   return <ModalDelete 
     id1={productId ?? ''}
@@ -69,7 +70,7 @@ function Comentario({
       return await getUserById(userId)
     }
   });
-  const { refetch } = useCommentContext() as CommentContextInterface;
+  const { refetch, productId } = useCommentContext() as CommentContextInterface;
   const [modalDelte, setModalDelete] = React.useState(false)
   const [modalEdit, setModalEdit] = React.useState(false)
 
@@ -114,7 +115,7 @@ function Comentario({
         )} 
         {modalDelte &&  data &&
           <Suspense>
-            <ModalDeleteSearsh commentId={commentId} refetch={refetch} setModalDelete={setModalDelete}/>
+            <ModalDeleteSearsh productId={productId} commentId={commentId} refetch={refetch} setModalDelete={setModalDelete}/>
           </Suspense>
         }
           {modalEdit && <ModalEdit setState={setModalEdit} id1='' 
