@@ -1,7 +1,7 @@
 'use client';
 
 import { type QueryObserverResult, useQuery } from '@tanstack/react-query';
-import React, { createContext } from 'react';
+import React, { Suspense, createContext } from 'react';
 import { getAllComments } from '../api/GETS';
 import { useSearchParams } from 'next/navigation';
 import { type CommentInterface } from '../helpers/interfaces';
@@ -27,7 +27,7 @@ const AvaliacoesProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <CommentContext.Provider value={{ dataComments, refetch, productId }}>
-      {children}
+      <Suspense>{children}</Suspense>
     </CommentContext.Provider>
   );
 };
