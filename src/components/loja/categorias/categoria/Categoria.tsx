@@ -1,9 +1,23 @@
 import Image from 'next/image';
 import styles from './Categoria.module.css';
+import Link from 'next/link';
 
-function Categoria({ nome, img }: { nome: string; img: string }) {
+function Categoria({
+  nome,
+  img,
+  link,
+  pathname
+}: {
+  nome: string;
+  img: string;
+  link: string;
+  pathname: string;
+}) {
   return (
-    <li className={styles.categoria}>
+    <Link
+      href={{ pathname: `/${pathname}`, query: { _id: link } }}
+      className={styles.categoria}
+    >
       <Image
         className={styles.imagemCategoria}
         alt={`imagem da categoria ${nome}`}
@@ -12,7 +26,7 @@ function Categoria({ nome, img }: { nome: string; img: string }) {
         height={104}
       />
       <span>{nome}</span>
-    </li>
+    </Link>
   );
 }
 

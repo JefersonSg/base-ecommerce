@@ -120,3 +120,43 @@ export const getSubcategoryById = async (id: string) => {
     return [];
   }
 };
+
+// getByCategory
+export const getProductsByCategory = async (id: string) => {
+  try {
+    const response = await axios.get(`${API}products/category/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+export const getSubcategoryByCategory = async (id: string) => {
+  try {
+    const response = await axios.get(
+      `${API}subcategories/category/${id}`,
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// getBySubcategory
+export const getProductsBySubcategory = async (id: string) => {
+  try {
+    const response = await axios.get(
+      `${API}products/subcategory/${id}`,
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

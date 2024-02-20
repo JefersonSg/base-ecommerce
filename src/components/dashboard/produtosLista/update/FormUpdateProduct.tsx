@@ -53,19 +53,19 @@ const FormUpdateProduct = ({
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: dataProduct.product.name,
-      description: dataProduct.product.description,
-      size: dataProduct.product.size,
-      category: dataProduct.product.category,
-      subcategory: dataProduct.product.subcategory,
-      composition: dataProduct.product.composition,
-      price: dataProduct.product.price,
-      promotion: dataProduct.product.promotion,
-      promotionalPrice: dataProduct.product.promotionalPrice,
-      brand: dataProduct.product.brand,
-      characteristic: dataProduct.product.characteristic,
+      name: dataProduct?.product?.name,
+      description: dataProduct?.product?.description,
+      size: dataProduct?.product?.size,
+      category: dataProduct?.product?.category,
+      subcategory: dataProduct?.product?.subcategory,
+      composition: dataProduct?.product?.composition,
+      price: dataProduct?.product?.price,
+      promotion: dataProduct?.product?.promotion,
+      promotionalPrice: dataProduct?.product?.promotionalPrice,
+      brand: dataProduct?.product?.brand,
+      characteristic: dataProduct?.product?.characteristic,
       images: {},
-      active: dataProduct.product.active
+      active: dataProduct?.product?.active
     }
   });
 
@@ -131,7 +131,9 @@ const FormUpdateProduct = ({
       setAmount(dataProduct?.product?.stock?.amount);
     }
     if (dataProduct.product.codeColors) {
-      setSchemeCodeColor(dataProduct.product.codeColors.join(',').split(','));
+      setSchemeCodeColor(
+        dataProduct?.product?.codeColors?.join(',')?.split(',')
+      );
     }
 
     if (dataProduct?.product) {

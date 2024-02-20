@@ -7,7 +7,15 @@ import SectionProdutos from './section/SectionProdutos';
 import SlideSubcategorias from './slide/SlideSubcategorias';
 import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
 
-function Produtos({ pesquisa }: { pesquisa?: string }) {
+function Produtos({
+  pesquisa,
+  data,
+  categoryId
+}: {
+  pesquisa?: string;
+  data?: any;
+  categoryId?: string;
+}) {
   const [ativo, setAtivo] = React.useState(false);
 
   return (
@@ -16,12 +24,12 @@ function Produtos({ pesquisa }: { pesquisa?: string }) {
         <Titulo titulo={pesquisa ?? ''} />
         <BotaoFiltro ativo={ativo} setAtivo={setAtivo} />
       </div>
-      {!pesquisa && (
+      {!pesquisa && categoryId && (
         <div className={styles.subcategorias}>
-          <SlideSubcategorias />
+          <SlideSubcategorias categoryId={categoryId} />
         </div>
       )}
-      <SectionProdutos pesquisa={pesquisa} />
+      <SectionProdutos pesquisa={pesquisa} data={data} />
     </div>
   );
 }
