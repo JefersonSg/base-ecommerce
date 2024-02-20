@@ -13,36 +13,39 @@ import ButtonDelete from '../../Botoes/ButtonDelete';
 import { updateCategory } from '@/src/shared/api/UPDATES';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCategories } from '@/src/shared/api/GETS';
-import { validationCategoryEdit } from './validationCategoryEdit';
-
-interface Inputs {
-  name: string;
-  description: string;
-  image?: any;
-}
+import { validationCategoryEdit } from './validationBannerEdit';
+import {
+  type BannerType,
+  type BannerTypeEdit
+} from '@/src/shared/helpers/interfaces';
 
 const schema = validationCategoryEdit;
 
 const SideBarFormEdit = ({
-  idCategory,
+  data,
+  bannerId,
   name,
   description,
+  image,
   setAtivo
 }: {
-  idCategory: string;
+  data: BannerType;
+  bannerId: string;
   name: string;
   description: string;
+  image: string;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<Inputs>({
+  } = useForm<BannerTypeEdit>({
     resolver: yupResolver(schema),
     defaultValues: {
-      name,
-      description
+      name: data.name,
+      link: data?.link,
+      active: data?.active
     }
   });
 
@@ -53,11 +56,9 @@ const SideBarFormEdit = ({
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data.description);
-
+  const onSubmit: SubmitHandler<BannerTypeEdit> = async (data) => {
     setIsLoading(true);
-    await updateCategory(data, idCategory);
+    await updateCategory(data, bannerId);
     await refetch();
     setIsLoading(false);
     setAtivo(false);
@@ -72,16 +73,27 @@ const SideBarFormEdit = ({
           label="Nome"
           placeholder="Digite o nome da categoria"
           register={register}
+          defaultValue={name}
           type="text"
           error={errors?.name?.message}
         />
         <InputFormulario
-          name="description"
-          label="Descrição"
-          placeholder="Digite um texto descritivo"
+          name="link"
+          label="Link"
+          placeholder="Digite o Link"
           register={register}
+          defaultValue={description}
           type="text"
-          error={errors?.description?.message}
+          error={errors?.link?.message}
+        />
+        <InputFormulario
+          name="active"
+          label="Mostrar na loja?"
+          placeholder="banner"
+          register={register}
+          defaultValue={description}
+          type="text"
+          error={errors?.active?.message}
         />
         <InputFormulario
           name="image"

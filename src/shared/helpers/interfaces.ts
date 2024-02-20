@@ -58,3 +58,23 @@ export interface ProductApi {
     amount: number[];
   };
 }
+
+export interface BannerType {
+  _id: string;
+  name: string;
+  link: string;
+  image: string;
+  active: boolean;
+}
+export interface BannerTypeEdit {
+  name: string;
+  link: string;
+  image?: any;
+  active: boolean;
+}
+export interface BannerTypeCreate {
+  name: string;
+  link: string;
+  image: any;
+  active: boolean;
+}

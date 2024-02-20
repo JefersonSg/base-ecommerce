@@ -18,17 +18,14 @@ const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [idCategory, setIdCategory] = React.useState('');
+  const [bannerId, setBannerId] = React.useState('');
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
-
-  const [defaultTitle, setDefaultTitle] = React.useState('');
-  const [defaultDescription, setDefaultDescription] = React.useState('');
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [nextPage, setNextPage] = React.useState([1, 7]);
 
   const { data, refetch } = useQuery({
-    queryKey: ['categories'],
+    queryKey: ['banners'],
     queryFn: getAllCategories
   });
 
@@ -52,23 +49,21 @@ const DataTable = () => {
       )}
       {ativoEdit && (
         <SideBarFormEdit
-          idCategory={idCategory}
+          bannerId={bannerId}
           setAtivo={setAtivoEdit}
-          name={defaultTitle}
-          description={defaultDescription}
+          data={data}
+          image={''}
         />
       )}
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
           data={data}
-          idCategory={idCategory}
-          setIdCategory={setIdCategory}
+          bannerId={bannerId}
+          setBannerId={setBannerId}
           setAtivoEdit={setAtivoEdit}
           setAtivoDelete={setAtivoDelete}
           ativoDelete={ativoDelete}
-          setDefaultTitle={setDefaultTitle}
-          setDefaultDescription={setDefaultDescription}
         />
         <RodapeTable
           data={data}
@@ -80,7 +75,7 @@ const DataTable = () => {
       </div>
       {ativoDelete && (
         <ModalDelete
-          id1={idCategory}
+          id1={bannerId}
           setState={setAtivoDelete}
           text="Deseja mesmo deletar essa categoria?"
           funcDelete={deleteCategory}
