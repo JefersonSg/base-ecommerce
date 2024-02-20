@@ -14,15 +14,13 @@ const BodyTable = ({
   data,
   setAtivoEdit,
   setAtivoDelete,
-  setBannerId,
-  bannerId
+  setBannerData
 }: {
   data: GetAllCategoriesResponse;
-  bannerId: string;
   ativoDelete: boolean;
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
-  setBannerId: React.Dispatch<React.SetStateAction<string>>;
+  setBannerData: React.Dispatch<React.SetStateAction<BannerType>>;
 }) => {
   //
 
@@ -34,10 +32,10 @@ const BodyTable = ({
         return (
           <div key={banner._id}>
             <BannerItem
-              data={banner}
+              setBannerData={setBannerData}
+              bannerData={banner}
               setAtivoEdit={setAtivoEdit}
               setAtivoDelete={setAtivoDelete}
-              setIdBanner={setIdBanner}
             />
           </div>
         );

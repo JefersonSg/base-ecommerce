@@ -12,17 +12,17 @@ function UlLinksUteis() {
   return (
     <ul className={styles.linksUteis}>
       {isAdmin && (
-        <BotaoLi texto="Dashboard" image="dashboard" link="dashboard" />
+        <BotaoLi texto="Dashboard" image="dashboard" pathname="/dashboard" />
       )}
 
-      <BotaoLi texto="Atendimento" image="chat" link="atendimento" />
+      <BotaoLi texto="Atendimento" image="chat" pathname="/atendimento" />
       <BotaoLi
         texto="Rastrear pedido"
         image="caminhao"
-        link="rastrear-pedido"
+        pathname="/rastrear-pedido"
       />
-      <BotaoLi texto="Meus Pedidos" image="caixa" link="meus-pedidos" />
-      <BotaoLi texto="Minha conta" image="usuario" link="minha-conta" />
+      <BotaoLi texto="Meus Pedidos" image="caixa" pathname="meus-pedidos" />
+      <BotaoLi texto="Minha conta" image="usuario" pathname="minha-conta" />
     </ul>
   );
 }

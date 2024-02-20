@@ -63,18 +63,18 @@ export interface BannerType {
   _id: string;
   name: string;
   link: string;
-  image: string;
+  images: string[];
   active: boolean;
 }
 export interface BannerTypeEdit {
   name: string;
   link: string;
-  image?: any;
+  images?: any;
   active: boolean;
 }
 export interface BannerTypeCreate {
   name: string;
   link: string;
-  image: any;
+  images: any;
   active: boolean;
 }

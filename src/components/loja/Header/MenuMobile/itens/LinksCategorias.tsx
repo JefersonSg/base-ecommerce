@@ -9,7 +9,7 @@ function LinksCategorias() {
     queryKey: ['categories'],
     queryFn: getAllCategories
   });
-  console.log(data);
+
   return (
     <ul className={styles.links}>
       {data?.categories?.map((category) => {
@@ -17,7 +17,8 @@ function LinksCategorias() {
           <BotaoLi
             key={category?._id}
             texto={category?.name}
-            link={`produtos/categoria/${category._id}`}
+            pathname="/produtos/categoria/"
+            query={category._id}
           />
         );
       })}

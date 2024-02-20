@@ -3,15 +3,15 @@ import React from 'react';
 import styles from './ToggleButton.module.css';
 
 const ToggleButtonCreate = ({
-  data,
+  watchValue,
   register,
   name
 }: {
-  data: any;
+  watchValue: any;
   register: any;
   name: string;
 }) => {
-  const [active, setActive] = React.useState(data);
+  const [active, setActive] = React.useState(watchValue);
 
   async function toggleStockParam() {
     setActive(!active);

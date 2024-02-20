@@ -9,7 +9,7 @@ import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import { deleteCategory } from '@/src/shared/api/DELETE';
-import { getAllCategories } from '@/src/shared/api/GETS';
+import { getAllBanners } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
@@ -18,15 +18,16 @@ const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [bannerId, setBannerId] = React.useState('');
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
+
+  const [bannerData, setBannerData] = React.useState<any>();
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [nextPage, setNextPage] = React.useState([1, 7]);
 
   const { data, refetch } = useQuery({
     queryKey: ['banners'],
-    queryFn: getAllCategories
+    queryFn: getAllBanners
   });
 
   React.useEffect(() => {
@@ -48,19 +49,13 @@ const DataTable = () => {
         />
       )}
       {ativoEdit && (
-        <SideBarFormEdit
-          bannerId={bannerId}
-          setAtivo={setAtivoEdit}
-          data={data}
-          image={''}
-        />
+        <SideBarFormEdit bannerData={bannerData} setAtivo={setAtivoEdit} />
       )}
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
+          setBannerData={setBannerData}
           data={data}
-          bannerId={bannerId}
-          setBannerId={setBannerId}
           setAtivoEdit={setAtivoEdit}
           setAtivoDelete={setAtivoDelete}
           ativoDelete={ativoDelete}
@@ -75,7 +70,7 @@ const DataTable = () => {
       </div>
       {ativoDelete && (
         <ModalDelete
-          id1={bannerId}
+          id1={bannerData._id}
           setState={setAtivoDelete}
           text="Deseja mesmo deletar essa categoria?"
           funcDelete={deleteCategory}

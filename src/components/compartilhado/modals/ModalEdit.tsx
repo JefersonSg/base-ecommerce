@@ -6,7 +6,7 @@ import {
   type QueryObserverResult,
   type RefetchOptions
 } from '@tanstack/react-query';
-import FormEditComment from '../../loja/Produto_view/avaliacoes/comentarios/formComment/FormEditComment';
+import FormEditComment from '@/src/components/loja/product-view/avaliacoes/comentarios/formComment/FormEditComment';
 
 interface Comment {
   commentId: string;

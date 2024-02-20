@@ -51,11 +51,28 @@
   color: #abb5bf;
   font-weight: 700;
 }
+.toggle_button_div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  gap: 8px;
+  align-items: self-start;
+}
+.toggle_button_div input {
+  margin: 0;
+}
 .botoes {
   display: flex;
   gap: 32px;
 }
-
+.view_banners_div {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.view_banners_div img {
+  margin-top: 8px;
+}
 @keyframes entrada {
   from {
     transform: translate3d(+400px, 0, 0);

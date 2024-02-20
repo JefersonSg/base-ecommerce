@@ -77,6 +77,16 @@ export const getAllComments = async (id: string) => {
     return [];
   }
 };
+export const getAllBanners = async () => {
+  try {
+    const response = await axios.get(`${API}banners/`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
 // GETS BY ID
 export const getUserById = async (id: string) => {
@@ -125,7 +135,7 @@ export const getSubcategoryById = async (id: string) => {
 export const getProductsByCategory = async (id: string) => {
   try {
     const response = await axios.get(`${API}products/category/${id}`, config);
-
+    console.log(response);
     return response.data;
   } catch (error) {
     console.log(error);

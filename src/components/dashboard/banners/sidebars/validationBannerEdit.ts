@@ -1,10 +1,10 @@
 import * as yup from 'yup';
 
-export const validationCategoryEdit = yup.object({
+export const validationBannerEdit = yup.object({
   name: yup.string().required('É necessário preencher o campo de Titulo'),
   link: yup.string().required('É necessário preencher o campo de Link'),
   active: yup.boolean().required('É necessário preencher o campo de Active'),
-  image: yup
+  images: yup
     .mixed()
     .test(
       'fileType',

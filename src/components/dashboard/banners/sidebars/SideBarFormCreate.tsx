@@ -14,7 +14,7 @@ import { createCategory } from '@/src/shared/api/CREATE';
 import { getAllCategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationCategory } from './validationBanner';
-import ToggleButtonCreate from '../../Botoes/ToggleButtonCreate';
+import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
 import { type BannerTypeCreate } from '@/src/shared/helpers/interfaces';
 
 const schema = validationCategory;
@@ -74,9 +74,13 @@ const SideBarFormCreate = ({
           type="text"
           error={errors?.link?.message}
         />
-        <div>
+        <div className={styles.toggle_button_div}>
           <label htmlFor="active">Deseja ativar o banner?</label>
-          <ToggleButtonCreate name="active" register={register} data={''} />
+          <ToggleButtonCreate
+            name="active"
+            register={register}
+            watchValue={''}
+          />
         </div>
         <InputFormulario
           name="image"

@@ -13,39 +13,34 @@ import ButtonDelete from '../../Botoes/ButtonDelete';
 import { updateCategory } from '@/src/shared/api/UPDATES';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCategories } from '@/src/shared/api/GETS';
-import { validationCategoryEdit } from './validationBannerEdit';
+import { validationBannerEdit } from './validationBannerEdit';
 import {
   type BannerType,
   type BannerTypeEdit
 } from '@/src/shared/helpers/interfaces';
+import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
+import Image from 'next/image';
 
-const schema = validationCategoryEdit;
+const schema = validationBannerEdit;
 
 const SideBarFormEdit = ({
-  data,
-  bannerId,
-  name,
-  description,
-  image,
+  bannerData,
   setAtivo
 }: {
-  data: BannerType;
-  bannerId: string;
-  name: string;
-  description: string;
-  image: string;
+  bannerData: BannerType;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors }
   } = useForm<BannerTypeEdit>({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: data.name,
-      link: data?.link,
-      active: data?.active
+      name: bannerData.name,
+      link: bannerData?.link,
+      active: bannerData?.active
     }
   });
 
@@ -55,10 +50,34 @@ const SideBarFormEdit = ({
   });
 
   const [isLoading, setIsLoading] = React.useState(false);
+  const [imageUrl1, setImageUrl1] = React.useState<any>();
+  const [imageUrl2, setImageUrl2] = React.useState<any>();
+
+  const activeWatch = watch('active');
+  const imagesWatch = watch('images');
+
+  const handleChange = React.useCallback(() => {
+    if (imagesWatch?.length > 0) {
+      for (let i = 0; i < imagesWatch?.length; i++) {
+        if (i === 0) {
+          const imageUrl = URL.createObjectURL(imagesWatch[i]);
+          setImageUrl1(imageUrl);
+        } else if (i === 1) {
+          const imageUrl = URL.createObjectURL(imagesWatch[i]);
+          setImageUrl2(imageUrl);
+        }
+      }
+    }
+  }, [imagesWatch]);
+  console.log(imageUrl1);
+
+  React.useEffect(() => {
+    handleChange();
+  }, [handleChange, imagesWatch]);
 
   const onSubmit: SubmitHandler<BannerTypeEdit> = async (data) => {
     setIsLoading(true);
-    await updateCategory(data, bannerId);
+    await updateCategory(data, bannerData._id);
     await refetch();
     setIsLoading(false);
     setAtivo(false);
@@ -73,7 +92,6 @@ const SideBarFormEdit = ({
           label="Nome"
           placeholder="Digite o nome da categoria"
           register={register}
-          defaultValue={name}
           type="text"
           error={errors?.name?.message}
         />
@@ -82,27 +100,48 @@ const SideBarFormEdit = ({
           label="Link"
           placeholder="Digite o Link"
           register={register}
-          defaultValue={description}
+          defaultValue={bannerData.link}
           type="text"
           error={errors?.link?.message}
         />
+        <div className={styles.toggle_button_div}>
+          <label htmlFor="active">Deseja ativar o banner?</label>
+          <ToggleButtonCreate
+            name="active"
+            register={register}
+            watchValue={activeWatch}
+          />
+        </div>
         <InputFormulario
-          name="active"
-          label="Mostrar na loja?"
-          placeholder="banner"
-          register={register}
-          defaultValue={description}
-          type="text"
-          error={errors?.active?.message}
-        />
-        <InputFormulario
-          name="image"
+          name="images"
           label="Imagem"
+          multiple={true}
           placeholder=""
           register={register}
           type="file"
-          error={errors?.image?.message}
+          error={errors?.images?.message}
         />
+        <div className={styles.view_banners_div}>
+          <div>
+            <label htmlFor="any">Mobile</label>
+            <Image
+              alt="imagem mobile"
+              src={imageUrl1 ?? bannerData.images[0]}
+              width={50}
+              height={50}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="any">Desktop</label>
+            <Image
+              alt="imagem Desktop"
+              src={imageUrl2 ?? bannerData.images[1]}
+              width={100}
+              height={50}
+            />
+          </div>
+        </div>
 
         <div className={styles.botoes}>
           <ButtonAdd text="Salvar" setAtivo={setAtivo} isLoading={isLoading} />
