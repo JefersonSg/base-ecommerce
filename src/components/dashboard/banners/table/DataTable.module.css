@@ -54,8 +54,3 @@
   text-align: center;
 }
 
-@media (min-width: 1024px) {
-  .data_table {
-    max-width: max-content;
-  }
-}

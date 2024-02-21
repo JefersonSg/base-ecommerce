@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './Banner.module.css';
 import ToggleButton from '../../../compartilhado/formulario/ToggleButton';
-import Link from 'next/link';
 import { type BannerType } from '@/src/shared/helpers/interfaces';
 
 const BannerItem = ({
@@ -17,7 +16,7 @@ const BannerItem = ({
   setBannerData: React.Dispatch<React.SetStateAction<BannerType>>;
 }) => {
   return (
-    <div className={styles.produto_item}>
+    <div className={styles.banner_item}>
       <Image
         alt="Imagem da categoria"
         src={bannerData?.images?.[0]}
@@ -26,20 +25,12 @@ const BannerItem = ({
       />
 
       <div className={styles.infos}>
-        <Link href={{ pathname: '/produto', query: { _id: bannerData._id } }}>
-          <h3 className={`name ${styles.name}`}>{bannerData?.name}</h3>
-        </Link>
-        <p className={`description ${styles.description}`}>
-          {bannerData?.link}
-        </p>
+        <h3 className={`name ${styles.name}`}>{bannerData?.name}</h3>
+
+        <p className={`description ${styles.link}`}>{bannerData?.link}</p>
       </div>
       <ToggleButton data={bannerData} pathnameUrl="banners/update/" />
-      <div className={styles.total_products_register}>
-        <h3>75</h3>
-      </div>
-      <div className={styles.total_products_value}>
-        <h3>R$ </h3>
-      </div>
+
       <div className={styles.actions}>
         <Image
           alt="Lixeira para deletar a categoria"
