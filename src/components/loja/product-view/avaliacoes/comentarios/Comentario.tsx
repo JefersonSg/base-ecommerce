@@ -106,18 +106,15 @@ function Comentario({ commentData }: { commentData: CommentInterface }) {
           <></>
         )}
         {modalDelte && data && (
-            <ModalDeleteSearsh
-              productId={productId}
-              commentId={commentData._id}
-              refetch={refetch}
-              setModalDelete={setModalDelete}
-            />
+          <ModalDeleteSearsh
+            productId={productId}
+            commentId={commentData._id}
+            refetch={refetch}
+            setModalDelete={setModalDelete}
+          />
         )}
         {modalEdit && (
-          <ModalEdit
-            setState={setModalEdit}
-            commentData={commentData}
-          />
+          <ModalEdit setState={setModalEdit} commentData={commentData} />
         )}
       </div>
     </>
