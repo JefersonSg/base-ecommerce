@@ -1,10 +1,17 @@
 import React from 'react';
 import styles from './SectionProdutos.module.css';
 import Image from 'next/image';
-import Produtos from './Produtos';
 import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
+import ProductsById from './ProductsById';
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
-const SectionProdutos = ({ pesquisa }: { pesquisa?: string }) => {
+const SectionProdutos = ({
+  pesquisa,
+  data
+}: {
+  pesquisa?: string;
+  data?: { products: ProductApi[] };
+}) => {
   return (
     <div className={styles.section_produtos}>
       <div className={styles.informacoes}>
@@ -28,9 +35,7 @@ const SectionProdutos = ({ pesquisa }: { pesquisa?: string }) => {
           />
         </div>
       </div>
-      <div>
-        <Produtos />
-      </div>
+      <div>{data && <ProductsById data={data} />}</div>
       <div className={styles.botao}>
         <BotaoColorido texto="Proximos 12 produtos" />
       </div>

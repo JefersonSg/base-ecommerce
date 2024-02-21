@@ -1,4 +1,4 @@
-import ContainerProduct from '@/src/components/loja/Produto_view/Container_product';
+import ContainerProduct from '@/src/components/loja/product-view/Container_product';
 import {
   getCategoryById,
   getProductById,

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import CategoriaItem from './CategoriaItem';
+import CategoriaItem from '../item/CategoriaItem';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 

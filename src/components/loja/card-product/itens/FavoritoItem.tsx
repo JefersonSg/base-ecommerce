@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './Favorito.module.css';
 
-function Favotiro() {
+function FavoritoItem() {
   return (
     <div className={styles.favorito}>
       <Image
@@ -14,4 +14,4 @@ function Favotiro() {
   );
 }
 
-export default Favotiro;
+export default FavoritoItem;

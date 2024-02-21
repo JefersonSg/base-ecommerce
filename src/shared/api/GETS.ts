@@ -77,6 +77,16 @@ export const getAllComments = async (id: string) => {
     return [];
   }
 };
+export const getAllBanners = async () => {
+  try {
+    const response = await axios.get(`${API}banners/`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
 // GETS BY ID
 export const getUserById = async (id: string) => {
@@ -113,6 +123,46 @@ export const getCategoryById = async (id: string) => {
 export const getSubcategoryById = async (id: string) => {
   try {
     const response = await axios.get(`${API}subcategories/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// getByCategory
+export const getProductsByCategory = async (id: string) => {
+  try {
+    const response = await axios.get(`${API}products/category/${id}`, config);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+export const getSubcategoryByCategory = async (id: string) => {
+  try {
+    const response = await axios.get(
+      `${API}subcategories/category/${id}`,
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// getBySubcategory
+export const getProductsBySubcategory = async (id: string) => {
+  try {
+    const response = await axios.get(
+      `${API}products/subcategory/${id}`,
+      config
+    );
 
     return response.data;
   } catch (error) {

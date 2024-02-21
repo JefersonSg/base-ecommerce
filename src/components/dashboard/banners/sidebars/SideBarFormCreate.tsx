@@ -10,62 +10,53 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
-import { updateCategory } from '@/src/shared/api/UPDATES';
-import { useQuery } from '@tanstack/react-query';
+import { createCategory } from '@/src/shared/api/CREATE';
 import { getAllCategories } from '@/src/shared/api/GETS';
-import { validationCategoryEdit } from './validationCategoryEdit';
+import { useQuery } from '@tanstack/react-query';
+import { validationBanner } from './validationBanner';
+import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
+import { type BannerTypeCreate } from '@/src/shared/helpers/interfaces';
 
-interface Inputs {
-  name: string;
-  description: string;
-  image?: any;
-}
+const schema = validationBanner;
 
-const schema = validationCategoryEdit;
-
-const SideBarFormEdit = ({
-  idCategory,
-  name,
-  description,
-  setAtivo
+const SideBarFormCreate = ({
+  setAtivo,
+  setAtivoPopUp
 }: {
-  idCategory: string;
-  name: string;
-  description: string;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<Inputs>({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      name,
-      description
-    }
-  });
-
+  //
   const { refetch } = useQuery({
     queryKey: ['categories'],
     queryFn: getAllCategories
   });
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<BannerTypeCreate>({
+    resolver: yupResolver(schema)
+  });
+
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data.description);
-
+  const onSubmit: SubmitHandler<BannerTypeCreate> = async (data) => {
     setIsLoading(true);
-    await updateCategory(data, idCategory);
-    await refetch();
+    const response = await createCategory(data);
     setIsLoading(false);
-    setAtivo(false);
+
+    if (response) {
+      setAtivo(false);
+      setAtivoPopUp('Categoria criada com sucesso');
+      await refetch();
+    }
   };
 
   return (
     <div className={styles.sidebar_form}>
-      <h2>Edite a categoria</h2>
+      <h2>Adicione uma categoria</h2>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <InputFormulario
           name="name"
@@ -76,26 +67,34 @@ const SideBarFormEdit = ({
           error={errors?.name?.message}
         />
         <InputFormulario
-          name="description"
+          name="link"
           label="Descrição"
-          placeholder="Digite um texto descritivo"
+          placeholder="Digite o link"
           register={register}
           type="text"
-          error={errors?.description?.message}
+          error={errors?.link?.message}
         />
+        <div className={styles.toggle_button_div}>
+          <label htmlFor="active">Deseja ativar o banner?</label>
+          <ToggleButtonCreate
+            name="active"
+            register={register}
+            watchValue={''}
+          />
+        </div>
         <InputFormulario
           name="image"
           label="Imagem"
           placeholder=""
           register={register}
           type="file"
-          error={errors?.image?.message}
+          error={errors?.images?.message}
         />
 
         <div className={styles.botoes}>
-          <ButtonAdd text="Salvar" setAtivo={setAtivo} isLoading={isLoading} />
+          <ButtonAdd text="Criar" setAtivo={setAtivo} isLoading={isLoading} />
           <ButtonDelete
-            text="Apagar Edições"
+            text="Limpar formulario"
             setAtivo={setAtivo}
             isLoading={isLoading}
           />
@@ -113,4 +112,4 @@ const SideBarFormEdit = ({
   );
 };
 
-export default SideBarFormEdit;
+export default SideBarFormCreate;

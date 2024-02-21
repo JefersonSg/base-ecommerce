@@ -1,7 +1,7 @@
 import { type Metadata } from 'next';
-import Slide from '@/src/components/loja/slideBanner/Slides';
+import Slide from '@/src/components/loja/slide-banner/Slides';
 import styles from './page.module.css';
-import SlideVantagens from '@/src/components/loja/slideVantagens/SlideVantagens';
+import SlideVantagens from '@/src/components/loja/slide-vantagens/SlideVantagens';
 import Categorias from '@/src/components/loja/categorias/Categorias';
 import Section from '@/src/components/loja/sections/Section';
 import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';

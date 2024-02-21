@@ -25,7 +25,12 @@ function SlideCategoria() {
       {data?.categories?.map((category: any, index: number) => {
         return (
           <SwiperSlide key={category._id}>
-            <Categoria nome={category.name} img={category.image} />
+            <Categoria
+              pathname="categoria"
+              link={category?._id}
+              nome={category?.name}
+              img={category?.image}
+            />
           </SwiperSlide>
         );
       })}

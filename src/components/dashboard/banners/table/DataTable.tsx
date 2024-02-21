@@ -9,7 +9,7 @@ import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import { deleteCategory } from '@/src/shared/api/DELETE';
-import { getAllCategories } from '@/src/shared/api/GETS';
+import { getAllBanners } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
@@ -18,18 +18,16 @@ const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [idCategory, setIdCategory] = React.useState('');
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
 
-  const [defaultTitle, setDefaultTitle] = React.useState('');
-  const [defaultDescription, setDefaultDescription] = React.useState('');
+  const [bannerData, setBannerData] = React.useState<any>();
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [nextPage, setNextPage] = React.useState([1, 7]);
 
   const { data, refetch } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+    queryKey: ['banners'],
+    queryFn: getAllBanners
   });
 
   React.useEffect(() => {
@@ -51,24 +49,16 @@ const DataTable = () => {
         />
       )}
       {ativoEdit && (
-        <SideBarFormEdit
-          idCategory={idCategory}
-          setAtivo={setAtivoEdit}
-          name={defaultTitle}
-          description={defaultDescription}
-        />
+        <SideBarFormEdit bannerData={bannerData} setAtivo={setAtivoEdit} />
       )}
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
+          setBannerData={setBannerData}
           data={data}
-          idCategory={idCategory}
-          setIdCategory={setIdCategory}
           setAtivoEdit={setAtivoEdit}
           setAtivoDelete={setAtivoDelete}
           ativoDelete={ativoDelete}
-          setDefaultTitle={setDefaultTitle}
-          setDefaultDescription={setDefaultDescription}
         />
         <RodapeTable
           data={data}
@@ -80,7 +70,7 @@ const DataTable = () => {
       </div>
       {ativoDelete && (
         <ModalDelete
-          id1={idCategory}
+          id1={bannerData._id}
           setState={setAtivoDelete}
           text="Deseja mesmo deletar essa categoria?"
           funcDelete={deleteCategory}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-confusing-void-expression */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
@@ -8,6 +9,7 @@ import './styles.css';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { createProduct } from '@/src/shared/api/CREATE';
 import { validationProduct } from './ValidationProduct';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
@@ -21,15 +23,14 @@ import {
 } from '@/src/shared/api/GETS';
 
 import {
-  type subcategoryInterface,
+  type ProductInputs,
   type CategoryInterface,
-  type ProductApi
+  type subcategoryInterface
 } from '@/src/shared/helpers/interfaces';
 import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
 import ButtonDelete from '../../Botoes/ButtonDelete';
-import { updateProduct } from '@/src/shared/api/UPDATES';
+import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
 import { useRouter } from 'next/navigation';
-import ToggleButtonCreate from '../../Botoes/ToggleButtonCreate';
 
 const schema = validationProduct;
 
@@ -39,35 +40,33 @@ interface CategoriesResponse {
 interface subcategoriesResponse {
   subcategories: subcategoryInterface[];
 }
-const FormUpdateProduct = ({
-  dataProduct
-}: {
-  dataProduct: { product: ProductApi };
-}) => {
+
+const FormCreateProduct = () => {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
+    watch,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: dataProduct.product.name,
-      description: dataProduct.product.description,
-      size: dataProduct.product.size,
-      category: dataProduct.product.category,
-      subcategory: dataProduct.product.subcategory,
-      composition: dataProduct.product.composition,
-      price: dataProduct.product.price,
-      promotion: dataProduct.product.promotion,
-      promotionalPrice: dataProduct.product.promotionalPrice,
-      brand: dataProduct.product.brand,
-      characteristic: dataProduct.product.characteristic,
+      name: 'Teste',
+      price: 15,
+      promotion: false,
+      promotionalPrice: 15,
+      description: 'Descrição de teste',
+      brand: 'Nike teste',
+      category: '',
+      subcategory: '',
+      characteristic: '',
       images: {},
-      active: dataProduct.product.active
+      active: true
     }
   });
+
+  const promotionWatch = watch('promotion');
+  const activeWatch = watch('active');
 
   const dataCategory = useQuery<CategoriesResponse>({
     queryKey: ['categories'],
@@ -82,19 +81,19 @@ const FormUpdateProduct = ({
     queryFn: getAllProducts
   });
 
-  const router = useRouter();
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
-  const [schemeColor, setSchemeColor] = React.useState(['']);
+  const [schemeColor, setSchemeColor] = React.useState(['item1']);
   const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
   const [amount, setAmount] = React.useState<number[]>([]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
 
-  const onSubmit: SubmitHandler<any> = async (data: any) => {
+  const router = useRouter();
+
+  const onSubmit: SubmitHandler<ProductInputs> = async (data) => {
     try {
       setIsLoading(true);
-      await updateProduct(
-        dataProduct.product._id,
+      const response = await createProduct(
         data,
         schemeCodeColor,
         schemeColor,
@@ -102,13 +101,14 @@ const FormUpdateProduct = ({
         setAtivoPopUp
       );
       setIsLoading(false);
-
-      setAtivoPopUp('Produto atualizado com sucesso');
-      await refetch();
-      router.push('/dashboard/produtos');
+      if (response) {
+        router.push('/dashboard/produtos');
+        await refetch();
+        setAtivoPopUp('Produto criado com sucesso');
+      }
     } catch (error) {
       console.log(error);
-      setAtivoPopUp(`Erro ao Editar o produto`);
+      setAtivoPopUp(`Erro ao criar o produto`);
     }
   };
 
@@ -121,28 +121,6 @@ const FormUpdateProduct = ({
       clearTimeout(temporizador);
     };
   }, [ativoPopUp]);
-
-  // setando Valores dos arrays
-  React.useEffect(() => {
-    if (dataProduct.product.colors[0]) {
-      setSchemeColor(dataProduct?.product?.colors);
-    }
-    if (dataProduct?.product?.stock?.amount) {
-      setAmount(dataProduct?.product?.stock?.amount);
-    }
-    if (dataProduct.product.codeColors) {
-      setSchemeCodeColor(dataProduct.product.codeColors.join(',').split(','));
-    }
-
-    if (dataProduct?.product) {
-      setTimeout(() => {
-        reset();
-      }, 100);
-    }
-  }, [dataProduct, reset]);
-
-  const promotionCheck = watch('promotion');
-  const activeCheck = watch('active');
 
   return (
     <>
@@ -237,7 +215,7 @@ const FormUpdateProduct = ({
               <div className={styles.div_promocao}>
                 <p>Item em promoção?</p>
                 <ToggleButtonCreate
-                  data={promotionCheck}
+                  watchValue={promotionWatch}
                   register={register}
                   name={'promotion'}
                 />
@@ -253,7 +231,7 @@ const FormUpdateProduct = ({
               <div>
                 <p>Produto em estoque</p>
                 <ToggleButtonCreate
-                  data={activeCheck}
+                  watchValue={activeWatch}
                   register={register}
                   name={'active'}
                 />
@@ -287,7 +265,7 @@ const FormUpdateProduct = ({
                   {...register('category')}
                 >
                   <option value="outros">outros</option>
-                  {dataCategory.data?.categories?.map((category, index) => {
+                  {dataCategory?.data?.categories?.map((category, index) => {
                     return (
                       <option key={category._id} value={category._id}>
                         {category.name}
@@ -309,20 +287,32 @@ const FormUpdateProduct = ({
                   </p>
                 </div>
                 <select
-                  id="subcategory"
+                  id="subcateogry"
                   className={styles.category}
                   {...register('subcategory')}
                 >
                   <option value="outros">outros</option>
-                  {dataSubCategories.data?.subcategories?.map((subcategory) => {
-                    return (
-                      <option key={subcategory._id} value={subcategory._id}>
-                        {subcategory.name}
-                      </option>
-                    );
-                  })}
+                  {dataSubCategories?.data?.subcategories?.map(
+                    (subcategory) => {
+                      return (
+                        <option key={subcategory._id} value={subcategory._id}>
+                          {subcategory.name}
+                        </option>
+                      );
+                    }
+                  )}
                 </select>
               </div>
+              {/* <div className={styles.select_colection}>
+                <label htmlFor="colection">Coleção</label>
+                <select
+                  name="colection"
+                  id="colection"
+                  className={styles.colection}
+                >
+                  <option value="outros">outros</option>
+                </select>
+              </div> */}
             </div>
           </div>
 
@@ -336,10 +326,10 @@ const FormUpdateProduct = ({
               >
                 <ButtonDelete text="Resetar" />
               </div>
-              <ButtonAdd text="Salvar mudanças" isLoading={isLoading} />
+              <ButtonAdd text="Publicar produto" isLoading={isLoading} />
             </div>
           </div>
-          <ButtonAdd text="Salvar mudanças" isLoading={isLoading} />
+          <ButtonAdd text="Publicar produto" isLoading={isLoading} />
         </form>
       </div>
       {ativoNewCategory && (
@@ -353,4 +343,4 @@ const FormUpdateProduct = ({
   );
 };
 
-export default FormUpdateProduct;
+export default FormCreateProduct;

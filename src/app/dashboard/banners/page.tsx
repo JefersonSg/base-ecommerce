@@ -1,12 +1,13 @@
-import Home from '@/src/components/dashboard/banners/Home';
-import BreadcrumbDashboard from '@/src/components/dashboard/breadcrumb/BreadcrumbDashboard';
 import React from 'react';
+import styles from './styles.module.css';
+import DataTable from '@/src/components/dashboard/banners/table/DataTable';
+import BreadcrumbDashboard from '@/src/components/dashboard/breadcrumb/BreadcrumbDashboard';
 
 const page = () => {
   return (
-    <div>
+    <div className={`container_dashboard ${styles.categoria_container}`}>
       <BreadcrumbDashboard />
-      <Home />
+      <DataTable />
     </div>
   );
 };

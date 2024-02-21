@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './Produto.module.css';
-import Favotiro from './itens/Favotiro';
+import Favorito from '@/src/components/loja/card-product/itens/FavoritoItem';
+
 import Link from 'next/link';
 
 interface produto {
@@ -17,7 +18,7 @@ function Produto({ img, name, price, promotion, link }: produto) {
       href={{ pathname: '/produto', query: { _id: link } }}
       className={styles.produto}
     >
-      <Favotiro />
+      <Favorito />
       <div className={styles.imagem_div}>
         {img && (
           <Image

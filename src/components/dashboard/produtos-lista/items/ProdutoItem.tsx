@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import styles from './Produto.module.css';
-import ToggleButton from '../../Botoes/ToggleButton';
+import ToggleButton from '../../../compartilhado/formulario/ToggleButton';
 import Link from 'next/link';
 
 interface ProductsType {
