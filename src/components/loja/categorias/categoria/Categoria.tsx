@@ -15,7 +15,7 @@ function Categoria({
 }) {
   return (
     <Link
-      href={{ pathname: `/${pathname}`, query: { _id: link } }}
+      href={{ pathname: `/produtos/${pathname}`, query: { _id: link } }}
       className={styles.categoria}
     >
       <Image

@@ -66,6 +66,16 @@ export const getAllProducts = async () => {
     return [];
   }
 };
+export const getAllActiveProducts = async () => {
+  try {
+    const response = await axios.get(`${API}products/actives`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
 export const getAllComments = async (id: string) => {
   try {
@@ -80,6 +90,16 @@ export const getAllComments = async (id: string) => {
 export const getAllBanners = async () => {
   try {
     const response = await axios.get(`${API}banners/`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+export const getAllActiveBanners = async () => {
+  try {
+    const response = await axios.get(`${API}banners/actives`, config);
 
     return response.data;
   } catch (error) {

@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import Slide from '@/src/components/loja/slide-banner/Slides';
+import Slide from '@/src/components/loja/slide-banners-home/Slides';
 import styles from './page.module.css';
 import SlideVantagens from '@/src/components/loja/slide-vantagens/SlideVantagens';
 import Categorias from '@/src/components/loja/categorias/Categorias';
