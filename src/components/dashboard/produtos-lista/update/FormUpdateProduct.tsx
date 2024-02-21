@@ -239,7 +239,7 @@ const FormUpdateProduct = ({
               <div className={styles.div_promocao}>
                 <p>Item em promoção?</p>
                 <ToggleButtonCreate
-                  data={promotionCheck}
+                  watchValue={promotionCheck}
                   register={register}
                   name={'promotion'}
                 />
@@ -255,7 +255,7 @@ const FormUpdateProduct = ({
               <div>
                 <p>Produto em estoque</p>
                 <ToggleButtonCreate
-                  data={activeCheck}
+                  watchValue={activeCheck}
                   register={register}
                   name={'active'}
                 />

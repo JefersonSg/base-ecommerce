@@ -1,5 +1,5 @@
 import React from 'react';
-import Produto from '../../Produto/Produto';
+import Produto from '@/src/components/loja/produto/Produto';
 import styles from './Produtos.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '@/src/shared/api/GETS';

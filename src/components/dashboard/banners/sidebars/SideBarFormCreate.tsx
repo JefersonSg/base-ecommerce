@@ -13,11 +13,11 @@ import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createCategory } from '@/src/shared/api/CREATE';
 import { getAllCategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
-import { validationCategory } from './validationBanner';
+import { validationBanner } from './validationBanner';
 import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
 import { type BannerTypeCreate } from '@/src/shared/helpers/interfaces';
 
-const schema = validationCategory;
+const schema = validationBanner;
 
 const SideBarFormCreate = ({
   setAtivo,
@@ -88,7 +88,7 @@ const SideBarFormCreate = ({
           placeholder=""
           register={register}
           type="file"
-          error={errors?.image?.message}
+          error={errors?.images?.message}
         />
 
         <div className={styles.botoes}>
