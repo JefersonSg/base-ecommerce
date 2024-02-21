@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './Produto.module.css';
-import Favorito from '@/src/components/loja/produto/itens/FavoritoItem';
+import Favorito from '@/src/components/loja/card-product/itens/FavoritoItem';
+
 import Link from 'next/link';
 
 interface produto {

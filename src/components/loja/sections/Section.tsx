@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import React from 'react';
-import Produto from '@/src/components/loja/produto/Produto';
+import Produto from '@/src/components/loja/card-product/Produto';
 
 function Section({
   nomeSessao,
