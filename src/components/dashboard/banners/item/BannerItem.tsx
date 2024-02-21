@@ -33,7 +33,7 @@ const BannerItem = ({
           {bannerData?.link}
         </p>
       </div>
-      <ToggleButton data={bannerData} />
+      <ToggleButton data={bannerData} pathnameUrl="banners/update/" />
       <div className={styles.total_products_register}>
         <h3>75</h3>
       </div>
@@ -48,6 +48,7 @@ const BannerItem = ({
           height={18}
           onClick={() => {
             setAtivoDelete(true);
+            setBannerData(bannerData);
           }}
         />
         <Image

@@ -3,7 +3,13 @@ import React from 'react';
 import styles from './ToggleButton.module.css';
 import { toggleStock } from '@/src/shared/api/UPDATES';
 
-const ToggleButton = ({ data }: { data: any }) => {
+const ToggleButton = ({
+  data,
+  pathnameUrl
+}: {
+  data: any;
+  pathnameUrl: string;
+}) => {
   const [active, setActive] = React.useState(data?.active ?? data ?? false);
 
   async function toggleStockParam() {
@@ -12,7 +18,7 @@ const ToggleButton = ({ data }: { data: any }) => {
     if (newData?.active !== undefined) {
       newData.active = !newData.active;
 
-      const response = await toggleStock(newData);
+      const response = await toggleStock(newData, pathnameUrl);
       if (response) {
         setActive(!active);
       }

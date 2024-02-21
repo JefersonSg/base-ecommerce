@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
-// import { type ProductInputs } from '@/src/shared/helpers/interfaces';
+import { type BannerTypeCreate } from '../helpers/interfaces';
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 const token = Cookies.get('auth_token') ?? false;
@@ -85,14 +84,14 @@ export async function createSubcategory(data: any) {
     console.error('Erro ao fazer a requisição:', error.response);
   }
 }
-export async function createComment(data: any) {
+export async function createComment(data: any, idProduct: string) {
   const formData = new FormData();
-  console.log(data.images[0]);
-  formData.append('comment', data.comment);
-  formData.append('userId', data.userId);
-  formData.append('stars', data.stars);
 
-  if (data.images[0] instanceof Blob) {
+  formData.append('comment', data?.comment);
+  formData.append('userId', data?.userId);
+  formData.append('stars', data?.stars);
+
+  if (data?.images[0]) {
     formData.append('images', data.images[0]);
   }
 
@@ -103,7 +102,7 @@ export async function createComment(data: any) {
     }
 
     const response = await axios.post(
-      `${API}products/create/comment/${data.idProduct}`,
+      `${API}products/create/comment/${idProduct}`,
       formData,
       configFormdata
     );
@@ -115,7 +114,38 @@ export async function createComment(data: any) {
     console.error('Erro ao fazer a requisição:', error.response);
   }
 }
+export async function createBanner(data: BannerTypeCreate) {
+  const formData = new FormData();
 
+  formData.append('name', data?.name);
+  formData.append('link', data?.link);
+  formData.append('active', `${data?.active}`);
+
+  if (data.images) {
+    const imageArray = Array.from(data.images);
+
+    imageArray.forEach((image: any) => {
+      formData.append('images', image);
+    });
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.post(
+      `${API}banners/create`,
+      formData,
+      configFormdata
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.error('Erro ao fazer a requisição:', error.response);
+  }
+}
 export async function createProduct(
   data: any,
   codeColors: string[],

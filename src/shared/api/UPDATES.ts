@@ -37,6 +37,7 @@ export async function updateCategory(data: any, id: string) {
     console.log(error);
   }
 }
+
 export async function updateSubcategory(data: any, id: string) {
   const formData = new FormData();
 
@@ -94,26 +95,22 @@ export async function updateComment(data: any) {
   }
 }
 
-export async function toggleStock(data: any) {
+export async function toggleStock(data: any, pathnameUrl: string) {
   const formData = new FormData();
 
-  formData.append('name', data.name);
-  formData.append('brand', data.brand);
-  formData.append('price', data.price);
-  formData.append('promotion', data.promotion);
-  formData.append('promotionPrice', data.promotionPrice);
-  formData.append('description', data.description);
-  formData.append('colors', data.colors);
-  // formData.append('images', data.images);
-  formData.append('category', data.category);
-  formData.append('codeColors', data.codeColors);
-  formData.append('active', data.active);
-  formData.append('size', data.size);
-  formData.append('amount', data.stock.amount);
+  Object.keys(data).forEach((key) => {
+    if (key !== 'images' && key !== 'image') {
+      formData.append(key, data[key]);
+    }
+  });
+
+  if (data?.stock?.amount) {
+    formData.append('amount', data.stock.amount);
+  }
 
   try {
     const response = await axios.patch(
-      `${API}products/edit/${data._id}`,
+      `${API}${pathnameUrl}${data._id}`,
       formData,
       configFormdata
     );
@@ -184,5 +181,52 @@ export async function updateProduct(
         setAtivoPopUp(error.response.data.errorsResult.body[key]);
       });
     }
+  }
+}
+
+export async function toggleBanner(data: any) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('link', data.link);
+  formData.append('active', data.active);
+
+  try {
+    const response = await axios.patch(
+      `${API}banners/update/${data._id}`,
+      formData,
+      configFormdata
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export async function updateBanner(id: string, data: any) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('link', data.link);
+  formData.append('active', `${data?.active}`);
+
+  if (data.images[0]) {
+    const imageArray = Array.from(data.images);
+
+    imageArray.forEach((image: any) => {
+      formData.append('images', image);
+    });
+  }
+  try {
+    const response = await axios.patch(
+      `${API}banners/update/${id}`,
+      formData,
+      configFormdata
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
   }
 }

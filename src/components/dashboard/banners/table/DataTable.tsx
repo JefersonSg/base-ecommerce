@@ -8,7 +8,7 @@ import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
-import { deleteCategory } from '@/src/shared/api/DELETE';
+import { deleteBanner } from '@/src/shared/api/DELETE';
 import { getAllBanners } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
@@ -70,10 +70,10 @@ const DataTable = () => {
       </div>
       {ativoDelete && (
         <ModalDelete
-          id1={bannerData._id}
+          id1={bannerData?._id}
           setState={setAtivoDelete}
           text="Deseja mesmo deletar essa categoria?"
-          funcDelete={deleteCategory}
+          funcDelete={deleteBanner}
           refetch={refetch}
         />
       )}

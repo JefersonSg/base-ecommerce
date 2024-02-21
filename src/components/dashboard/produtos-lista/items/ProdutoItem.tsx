@@ -51,7 +51,7 @@ const ProdutoItem = ({
           {data?.description}
         </p>
       </div>
-      <ToggleButton data={data} />
+      <ToggleButton data={data} pathnameUrl="products/edit/" />
       <div className={styles.total_products_register}>
         <h3>75</h3>
       </div>

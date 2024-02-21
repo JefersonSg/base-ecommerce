@@ -26,6 +26,12 @@ export async function deletesubcategory(id: string) {
   return response.data;
 }
 
+export async function deleteBanner(id: string) {
+  const response = await axios.delete(`${API}banners/delete/${id}`, config);
+
+  return response.data;
+}
+
 export async function deleteComment(idProduct: string, idComment?: string) {
   const response = await axios.delete(
     `${API}products/delete/comment/${idProduct}/${idComment}`,

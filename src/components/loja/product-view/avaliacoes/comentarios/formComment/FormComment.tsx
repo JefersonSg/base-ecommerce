@@ -17,6 +17,7 @@ import {
   type CommentContextInterface,
   useCommentContext
 } from '@/src/shared/context/AvaliacaoContext';
+import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 
 interface User {
   user: {
@@ -60,15 +61,22 @@ const FormComment = ({
   }, [handleChange, watchImage]);
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
-    const dataComment = {
-      idProduct,
+    if (!idProduct) {
+      console.log('sem id do produto');
+      return;
+    }
+    const dataComment: CommentInterface = {
+      _id: '',
+      date: '',
+      edited: false,
+      hours: new Date().getHours(),
       userId: dataUser.user._id,
       comment: data.comment,
       stars,
       images: data.images
     };
     try {
-      const response = await createComment(dataComment);
+      const response = await createComment(dataComment, idProduct);
 
       router.refresh();
       await refetch();

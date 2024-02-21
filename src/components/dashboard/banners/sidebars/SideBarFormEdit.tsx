@@ -10,9 +10,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
-import { updateCategory } from '@/src/shared/api/UPDATES';
+import { updateBanner } from '@/src/shared/api/UPDATES';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories } from '@/src/shared/api/GETS';
+import { getAllBanners } from '@/src/shared/api/GETS';
 import { validationBannerEdit } from './validationBannerEdit';
 import {
   type BannerType,
@@ -45,8 +45,8 @@ const SideBarFormEdit = ({
   });
 
   const { refetch } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+    queryKey: ['banners'],
+    queryFn: getAllBanners
   });
 
   const [isLoading, setIsLoading] = React.useState(false);
@@ -69,7 +69,6 @@ const SideBarFormEdit = ({
       }
     }
   }, [imagesWatch]);
-  console.log(imageUrl1);
 
   React.useEffect(() => {
     handleChange();
@@ -77,7 +76,7 @@ const SideBarFormEdit = ({
 
   const onSubmit: SubmitHandler<BannerTypeEdit> = async (data) => {
     setIsLoading(true);
-    await updateCategory(data, bannerData._id);
+    await updateBanner(bannerData._id, data);
     await refetch();
     setIsLoading(false);
     setAtivo(false);
