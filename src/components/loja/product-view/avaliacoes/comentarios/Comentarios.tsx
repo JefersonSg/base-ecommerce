@@ -56,19 +56,7 @@ function Comentarios() {
           Commentários
         </h3>
         {dataComments?.comments?.map((comment, index) => {
-          return (
-            <Comentario
-              commentId={comment._id}
-              key={index}
-              dataTime={comment?.date}
-              userId={comment.userId}
-              stars={comment?.stars}
-              images={comment?.images}
-              size="300ml"
-              color="Branco"
-              comment={comment?.comment}
-            />
-          );
+          return <Comentario key={index} commentData={comment} />;
         })}
       </div>
     </Suspense>

@@ -2,49 +2,19 @@
 import React from 'react';
 import styles from './ModalEdit.module.css';
 
-import {
-  type QueryObserverResult,
-  type RefetchOptions
-} from '@tanstack/react-query';
 import FormEditComment from '@/src/components/loja/product-view/avaliacoes/comentarios/formComment/FormEditComment';
+import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 
-interface Comment {
-  commentId: string;
-  userId: string;
-  name: string;
-  dataTime: string;
-  stars: number;
-  color: string;
-  size: string;
-  comment: string;
-  images: string[];
-}
 const ModalEdit = ({
-  dataUser,
-  id1,
-  dataComment,
-  setState,
-  id2,
-  funcDelete,
-  refetch
+  commentData,
+  setState
 }: {
-  dataComment: Comment;
-  dataUser: string;
-  id1: string;
+  commentData: CommentInterface;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
-  id2?: string;
-  funcDelete?: (id: string, id2?: string) => Promise<any>;
-  refetch?: (
-    options?: RefetchOptions | undefined
-  ) => Promise<QueryObserverResult<any, Error>>;
 }) => {
   return (
     <div className={styles.delete_categoria}>
-      <FormEditComment
-        dataUser={dataUser}
-        setModalForm={setState}
-        dataComment={dataComment}
-      />
+      <FormEditComment setModalForm={setState} commentData={commentData} />
     </div>
   );
 };

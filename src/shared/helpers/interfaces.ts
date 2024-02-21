@@ -21,13 +21,11 @@ export interface CategoryInterface {
 
 export interface CommentInterface {
   _id: string;
+  productId: string;
   userId: string;
   comment: string;
-  date: string;
-  hours: number;
-  images: string[];
+  image: string[];
   stars: number;
-  edited: boolean;
 }
 
 export interface subcategoryInterface {

@@ -77,9 +77,12 @@ export const getAllActiveProducts = async () => {
   }
 };
 
-export const getAllComments = async (id: string) => {
+export const getAllComments = async (productId: string) => {
   try {
-    const response = await axios.get(`${API}products/comments/${id}`, config);
+    const response = await axios.get(
+      `${API}products/comments/get-all/${productId}`,
+      config
+    );
 
     return response.data;
   } catch (error) {

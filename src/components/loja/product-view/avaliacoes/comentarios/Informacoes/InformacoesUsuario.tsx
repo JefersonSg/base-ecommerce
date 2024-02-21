@@ -11,7 +11,9 @@ function InformacoesUsuario({ nome, data, stars }: InfoUsuario) {
   return (
     <div className={styles.informacoes_usuario}>
       <div>
-        <h2 className={styles.nome}>{nome}</h2>
+        <h2 className={styles.nome}>{`${
+          nome.length > 0 ? nome : 'usuario indefinido'
+        }`}</h2>
         <span className={styles.data}>{data}</span>
       </div>
       <div className={styles.estrelas}>

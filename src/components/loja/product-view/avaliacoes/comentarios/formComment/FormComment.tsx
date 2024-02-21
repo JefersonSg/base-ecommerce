@@ -17,7 +17,6 @@ import {
   type CommentContextInterface,
   useCommentContext
 } from '@/src/shared/context/AvaliacaoContext';
-import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 
 interface User {
   user: {
@@ -65,15 +64,11 @@ const FormComment = ({
       console.log('sem id do produto');
       return;
     }
-    const dataComment: CommentInterface = {
-      _id: '',
-      date: '',
-      edited: false,
-      hours: new Date().getHours(),
+    const dataComment = {
       userId: dataUser.user._id,
       comment: data.comment,
       stars,
-      images: data.images
+      image: data.image
     };
     try {
       const response = await createComment(dataComment, idProduct);

@@ -17,43 +17,30 @@ import {
   useCommentContext
 } from '@/src/shared/context/AvaliacaoContext';
 import { updateComment } from '@/src/shared/api/UPDATES';
-
-interface Comment {
-  commentId: string;
-  userId: string;
-  name: string;
-  dataTime: string;
-  stars: number;
-  color: string;
-  size: string;
-  comment: string;
-  images: string[];
-}
+import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 
 const FormEditComment = ({
   setModalForm,
-  dataUser,
-  dataComment
+  commentData
 }: {
-  dataComment: Comment;
-  dataUser: string;
+  commentData: CommentInterface;
   setModalForm: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const router = useRouter();
-  const [stars, setStars] = React.useState(+dataComment?.stars);
+  const [stars, setStars] = React.useState(+commentData?.stars);
   const { register, handleSubmit, watch } = useForm({
     resolver: yupResolver(validationComment),
     defaultValues: {
-      comment: dataComment?.comment
+      comment: commentData?.comment
     }
   });
 
   const [imageUrl, setImageUrl] = React.useState<string | ArrayBuffer | null>(
-    dataComment.images[0]
+    commentData?.image?.[0] ?? ''
   );
   const watchImage: File[] = watch('images') as File[];
 
-  const { refetch, productId } = useCommentContext() as CommentContextInterface;
+  const { refetch } = useCommentContext() as CommentContextInterface;
 
   const handleChange = React.useCallback(() => {
     const reader = new FileReader();
@@ -72,16 +59,15 @@ const FormEditComment = ({
   }, [handleChange, watchImage]);
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
-    const newDataComment = {
-      commentId: dataComment?.commentId,
-      productId,
-      userId: dataUser,
-      comment: data.comment,
+    const newcommentData = {
+      commentId: commentData._id,
+      userId: commentData._id,
+      comment: data?.comment,
       stars,
-      images: data?.images
+      image: watchImage
     };
     try {
-      const response = await updateComment(newDataComment);
+      const response = await updateComment(newcommentData);
 
       if (response) {
         router.refresh();

@@ -1,7 +1,10 @@
 .banner_item {
   display: grid;
-  grid-template-columns: 40px minmax(100px, 1fr)  138px 94px;
-  grid-template-columns:  40px minmax(100px, 1fr) minmax(40px, 148px) minmax(40px, 100px);
+  grid-template-columns: 40px minmax(100px, 1fr) 138px 94px;
+  grid-template-columns: 40px minmax(100px, 1fr) minmax(40px, 148px) minmax(
+      40px,
+      100px
+    );
   height: 66px;
   width: 100%;
   padding: 0 16px;
@@ -59,13 +62,8 @@
   cursor: pointer;
 }
 
-
 @media (min-width: 768px) {
   .total_products_register {
     display: block;
   }
 }
-
-
-
-

@@ -84,15 +84,16 @@ export async function createSubcategory(data: any) {
     console.error('Erro ao fazer a requisição:', error.response);
   }
 }
-export async function createComment(data: any, idProduct: string) {
+export async function createComment(data: any, productId: string) {
   const formData = new FormData();
 
   formData.append('comment', data?.comment);
   formData.append('userId', data?.userId);
   formData.append('stars', data?.stars);
+  formData.append('productId', productId);
 
-  if (data?.images[0]) {
-    formData.append('images', data.images[0]);
+  if (data?.image) {
+    formData.append('image', data.image[0]);
   }
 
   try {
@@ -102,12 +103,10 @@ export async function createComment(data: any, idProduct: string) {
     }
 
     const response = await axios.post(
-      `${API}products/create/comment/${idProduct}`,
+      `${API}products/create/comment/`,
       formData,
       configFormdata
     );
-
-    console.log(response.data);
 
     return response.data;
   } catch (error: any) {
@@ -205,5 +204,20 @@ export async function createProduct(
         setAtivoPopUp(error.response.data.errorsResult.body[key]);
       });
     }
+  }
+}
+export async function addFavotie(userId: string, productId: string) {
+  try {
+    const response = await axios.post(
+      `${API}favorites`,
+      {
+        userId,
+        productId
+      },
+      configFormdata
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
   }
 }
