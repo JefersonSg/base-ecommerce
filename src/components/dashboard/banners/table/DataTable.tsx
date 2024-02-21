@@ -26,7 +26,7 @@ const DataTable = () => {
   const [nextPage, setNextPage] = React.useState([1, 7]);
 
   const { data, refetch } = useQuery({
-    queryKey: ['banners'],
+    queryKey: ['banners-dashboard'],
     queryFn: getAllBanners
   });
 

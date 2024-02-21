@@ -3,6 +3,8 @@ import React from 'react';
 import styles from './Banner.module.css';
 import ToggleButton from '../../../compartilhado/formulario/ToggleButton';
 import { type BannerType } from '@/src/shared/helpers/interfaces';
+import { useQuery } from '@tanstack/react-query';
+import { getAllActiveBanners, getAllBanners } from '@/src/shared/api/GETS';
 
 const BannerItem = ({
   bannerData,
@@ -15,6 +17,15 @@ const BannerItem = ({
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setBannerData: React.Dispatch<React.SetStateAction<BannerType>>;
 }) => {
+  const { refetch } = useQuery({
+    queryKey: ['banners-dashboard'],
+    queryFn: getAllBanners
+  });
+  const bannerHome = useQuery({
+    queryKey: ['banners-home'],
+    queryFn: getAllActiveBanners
+  });
+
   return (
     <div className={styles.banner_item}>
       <Image
@@ -29,7 +40,12 @@ const BannerItem = ({
 
         <p className={`description ${styles.link}`}>{bannerData?.link}</p>
       </div>
-      <ToggleButton data={bannerData} pathnameUrl="banners/update/" />
+      <ToggleButton
+        data={bannerData}
+        pathnameUrl="banners/update/"
+        refetch2={bannerHome}
+        refetch={refetch}
+      />
 
       <div className={styles.actions}>
         <Image

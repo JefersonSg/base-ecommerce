@@ -19,7 +19,7 @@ import useMedia from '@/src/shared/hooks/useMedia';
 
 function Slide() {
   const { data } = useQuery<{ banners: BannerType[] }>({
-    queryKey: ['banners'],
+    queryKey: ['banners-home'],
     queryFn: getAllActiveBanners
   });
 
@@ -45,7 +45,7 @@ function Slide() {
             <SwiperSlide key={banner._id}>
               {' '}
               <div className={styles.imagem}>
-                <Link href={'/produtos'}>
+                <Link href={banner.link}>
                   <Image
                     alt="imagem banner"
                     src={mobile ? banner.images[0] : banner.images[1]}

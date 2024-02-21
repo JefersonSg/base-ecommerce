@@ -11,7 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createBanner } from '@/src/shared/api/CREATE';
-import { getAllBanners } from '@/src/shared/api/GETS';
+import { getAllActiveBanners, getAllBanners } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationBanner } from './validationBanner';
 import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
@@ -30,8 +30,12 @@ const SideBarFormCreate = ({
   const [imageUrl1, setImageUrl1] = React.useState<any>();
   const [imageUrl2, setImageUrl2] = React.useState<any>();
   const { refetch } = useQuery({
-    queryKey: ['banners'],
+    queryKey: ['banners-dashboard'],
     queryFn: getAllBanners
+  });
+  const bannerHome = useQuery({
+    queryKey: ['banners-home'],
+    queryFn: getAllActiveBanners
   });
 
   const {
@@ -78,6 +82,7 @@ const SideBarFormCreate = ({
       setAtivo(false);
       setAtivoPopUp('Banner criado com sucesso');
       await refetch();
+      await bannerHome.refetch();
     }
   };
 
@@ -120,7 +125,7 @@ const SideBarFormCreate = ({
         />
         <div className={styles.view_banners_div}>
           <div>
-            <label htmlFor="any">Mobile: 420 x 490</label>
+            <label htmlFor="any">Mobile: 340 x 530</label>
             {imageUrl1 && (
               <Image
                 alt="imagem mobile"
@@ -132,7 +137,7 @@ const SideBarFormCreate = ({
           </div>
 
           <div>
-            <label htmlFor="any">Desktop: 1920 x 430</label>
+            <label htmlFor="any">Desktop: 1920 x 600</label>
             {imageUrl2 && (
               <Image
                 alt="imagem Desktop"

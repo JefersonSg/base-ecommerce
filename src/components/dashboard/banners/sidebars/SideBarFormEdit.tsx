@@ -122,20 +122,20 @@ const SideBarFormEdit = ({
         />
         <div className={styles.view_banners_div}>
           <div>
-            <label htmlFor="any">Mobile</label>
+            <label htmlFor="any">Mobile: 340 x 530</label>
             <Image
               alt="imagem mobile"
-              src={imageUrl1 ?? bannerData.images[0]}
+              src={imageUrl1 ?? bannerData.images[0] ?? ''}
               width={50}
               height={50}
             />
           </div>
 
           <div>
-            <label htmlFor="any">Desktop</label>
+            <label htmlFor="any">Desktop: 1920 x 600</label>
             <Image
               alt="imagem Desktop"
-              src={imageUrl2 ?? bannerData.images[1]}
+              src={imageUrl2 ?? bannerData.images[1] ?? ''}
               width={100}
               height={50}
             />

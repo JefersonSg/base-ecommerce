@@ -1,0 +1,12 @@
+.like {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  z-index: 100;
+  background-color: white;
+  border-radius: 9999px;
+}
+.like div {
+  pointer-events: none;
+}
+
