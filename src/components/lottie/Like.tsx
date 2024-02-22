@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
 import React from 'react';
@@ -6,12 +7,32 @@ import styles from './Likes.module.css';
 
 // Arquivos Lottie
 import Likes from '../../../public/lottie/like/Like2.json';
+import { addFavorite } from '@/src/shared/api/CREATE';
+import { type FavoriteInterface } from '@/src/shared/helpers/interfaces';
+import { useQuery } from '@tanstack/react-query';
+import { deleteFavorite } from '@/src/shared/api/DELETE';
+import { getFavoriteByUserId } from '@/src/shared/api/GETS';
 
-const Like = () => {
-  // const [favorites, setNewFavorite] = React.useState(false);
+const Like = ({ productId }: { productId: string }) => {
+  const [isFavorites, setIsFavorite] = React.useState(false);
+  const [favoriteId, setFavoriteId] = React.useState<string>('');
 
   const [paused, setPaused] = React.useState(true);
   const [stope, setStope] = React.useState(true);
+
+  const userData: any = useQuery({
+    queryKey: ['user']
+  });
+
+  const { data, refetch } = useQuery<{ favorites: FavoriteInterface[] }>({
+    queryKey: ['favorites', userData?.data?.user?._id ?? 0],
+    queryFn: async () => {
+      if (userData?.data?.user?.name) {
+        return await getFavoriteByUserId(userData?.data?.user?._id);
+      }
+      return [];
+    }
+  });
 
   const animation = Likes;
 
@@ -21,33 +42,63 @@ const Like = () => {
     animationData: animation
   };
 
-  function addNewFavorite() {
-    const infos = localStorage?.getItem('favoritos') ?? [];
+  React.useEffect(() => {
+    let already = false;
+    data?.favorites.forEach((favorite) => {
+      if (favorite.productId === productId) {
+        setIsFavorite(true);
+        setFavoriteId(favorite?._id);
+        already = true;
+      }
+    });
 
-    console.log(infos);
+    if (already) {
+      setPaused(false);
+      setStope(false);
+    }
+  }, [data, productId]);
+
+  async function addNewFavorite() {
+    if (!isFavorites) {
+      try {
+        const response = await addFavorite(
+          userData?.data?.user?._id,
+          productId
+        );
+        setIsFavorite(true);
+        await refetch();
+
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
+  async function removeFavorite() {
+    if (isFavorites) {
+      try {
+        if (!favoriteId) return;
+        const response = await deleteFavorite(favoriteId);
 
-  // se Ja tiver no favorito, fica vermelho
-  // React.useEffect(() => {
-  //   const infos = localStorage.getItem('favoritos')
-  //     ? JSON.parse(localStorage.getItem('favoritos'))
-  //     : false;
-  //   if (infos) {
-  //     const igual = infos.filter((info) => info === id);
-  //     if (igual[0]) {
-  //       setPaused(false);
-  //       setStoped(false);
-  //     }
-  //   }
-  // }, [id]);
+        setIsFavorite(false);
+        await refetch();
+
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   return (
     <div
       className={styles.like}
-      onClick={(e) => {
+      onClick={async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        addNewFavorite();
+        await removeFavorite();
+
+        await addNewFavorite();
         if (paused && stope) {
           setPaused(false);
           setStope(false);

@@ -1,24 +1,31 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import Image from 'next/image';
 import styles from './Produto.module.css';
 
 import Link from 'next/link';
 import Like from '../../lottie/Like';
 
-interface produto {
+function Produto({
+  _id,
+  img,
+  name,
+  price,
+  promotion,
+  link
+}: {
+  _id: string;
   img?: string[];
   name: string;
   price: string;
   link: string;
   promotion: boolean;
-}
-
-function Produto({ img, name, price, promotion, link }: produto) {
+}) {
   return (
     <Link
       href={{ pathname: '/produto', query: { _id: link } }}
       className={styles.produto}
     >
-      <Like />
+      <Like productId={_id} />
       <div className={styles.imagem_div}>
         {img && (
           <Image

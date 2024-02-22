@@ -5,12 +5,12 @@ import { type BannerTypeCreate } from '../helpers/interfaces';
 const API = process.env.NEXT_PUBLIC_API_URL;
 const token = Cookies.get('auth_token') ?? false;
 
-// const config = {
-//   headers: {
-//     Authorization: `Bearer ${token}`,
-//     'Content-Type': 'application/json'
-//   }
-// };
+const configJson = {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  }
+};
 
 const configFormdata = {
   headers: {
@@ -206,15 +206,15 @@ export async function createProduct(
     }
   }
 }
-export async function addFavotie(userId: string, productId: string) {
+export async function addFavorite(user: string, product: string) {
   try {
     const response = await axios.post(
-      `${API}favorites`,
+      `${API}favorites/create`,
       {
-        userId,
-        productId
+        userId: user,
+        productId: product
       },
-      configFormdata
+      configJson
     );
     return response.data;
   } catch (error) {

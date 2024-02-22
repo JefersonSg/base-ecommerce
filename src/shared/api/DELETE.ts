@@ -46,3 +46,8 @@ export async function deleteProduct(id: string) {
 
   return response.data;
 }
+export async function deleteFavorite(id: string) {
+  const response = await axios.delete(`${API}favorites/delete/${id}`, config);
+
+  return response.data;
+}

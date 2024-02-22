@@ -31,6 +31,7 @@ function Section({
           return (
             <Produto
               key={product._id}
+              _id={product._id}
               link={product._id}
               name={product.name}
               price={product.price.toFixed(2).toString().replace('.', ',')}

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { type FavoriteInterface } from '../helpers/interfaces';
 
 const token = Cookies.get('auth_token') ?? false;
 const API = process.env.NEXT_PUBLIC_API_URL;
@@ -132,6 +133,26 @@ export const getProductById = async (id: string) => {
     return [];
   }
 };
+export const getFavoritesProducts = async (favorites: any) => {
+  try {
+    const products = await favorites?.map(
+      async (favorite: FavoriteInterface) => {
+        const response = await axios.get(
+          `${API}products/${favorite?.productId}`,
+          config
+        );
+        return response?.data?.product;
+      }
+    );
+    const FavoriteProducts = await Promise.all(products);
+
+    return FavoriteProducts ?? [];
+  } catch (error) {
+    console.log(error);
+
+    throw new Error('Ocorreu um erro ao consultar os dados.');
+  }
+};
 
 export const getCategoryById = async (id: string) => {
   try {
@@ -184,6 +205,21 @@ export const getProductsBySubcategory = async (id: string) => {
   try {
     const response = await axios.get(
       `${API}products/subcategory/${id}`,
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// getByUserId
+export const getFavoriteByUserId = async (id: string) => {
+  try {
+    const response = await axios.get(
+      `${API}favorites/get-by-user/${id}`,
       config
     );
 

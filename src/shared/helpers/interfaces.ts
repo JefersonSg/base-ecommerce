@@ -76,3 +76,8 @@ export interface BannerTypeCreate {
   images: any;
   active: boolean;
 }
+export interface FavoriteInterface {
+  _id: string;
+  userId: string;
+  productId: string;
+}
