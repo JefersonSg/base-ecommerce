@@ -17,6 +17,7 @@ const Produtos = () => {
       {data?.products?.map((product) => {
         return (
           <Produto
+            _id={product._id}
             key={product?._id}
             link={product?._id}
             name={product?.name}
