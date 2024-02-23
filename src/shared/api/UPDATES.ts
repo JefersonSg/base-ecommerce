@@ -253,3 +253,17 @@ export async function updateItemCart(
     console.log(error);
   }
 }
+
+export async function updateAddress(addressId: string, data: any) {
+  try {
+    const response = await axios.patch(
+      `${API}user/address/update/${addressId}`,
+      data,
+      configJson
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}

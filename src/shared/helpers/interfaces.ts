@@ -97,3 +97,17 @@ export interface ItemCartInterface {
   size: string;
   color: string;
 }
+export interface AddressInterface {
+  _id: string;
+  nome: string;
+  userId: string;
+  cidade: string;
+  uf: string;
+  rua: string;
+  bairro: string;
+  cep: string;
+  complemento: string;
+  referencia: string;
+  numero: string;
+  telefone: string;
+}

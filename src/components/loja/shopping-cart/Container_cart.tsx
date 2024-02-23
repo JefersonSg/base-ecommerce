@@ -48,30 +48,36 @@ const ContainerCart = () => {
           <Breadcrumb texto="Home / Carrinho" />
           <Titulo titulo="Carrinho" />
           <p className={`${styles.texto_indicativo} texto_indicativo`}>
-            Você tem 2 itens no seu carrinho
+            Você tem {data?.itemsCarts?.length ?? 0} itens no seu carrinho
           </p>
         </div>
       </div>
-      {data?.itemsCarts?.map((itemCart) => {
-        return (
-          <ProdutoCarrinho
-            refetchData={refetch}
-            ItemCartId={itemCart._id}
-            amount={itemCart.amount}
-            key={itemCart?._id}
-            productId={itemCart?.productId}
-            color={itemCart?.color}
-            size={itemCart?.size}
-          />
-        );
-      })}
-      <div className={styles.produtos}></div>
-      <div className={styles.entregas}>
-        <EntregaCarrinho />
+      <div className={styles.produtos}>
+        {data?.itemsCarts?.map((itemCart) => {
+          return (
+            <ProdutoCarrinho
+              refetchData={refetch}
+              ItemCartId={itemCart._id}
+              amount={itemCart.amount}
+              key={itemCart?._id}
+              productId={itemCart?.productId}
+              color={itemCart?.color}
+              size={itemCart?.size}
+            />
+          );
+        })}
       </div>
-      <div className={styles.finalizar_container}>
-        <Finalizar />
-      </div>
+      {data?.itemsCarts && (
+        <div className={styles.entregas}>
+          <EntregaCarrinho />
+        </div>
+      )}
+
+      {data?.itemsCarts && (
+        <div className={styles.finalizar_container}>
+          <Finalizar />
+        </div>
+      )}
     </div>
   );
 };

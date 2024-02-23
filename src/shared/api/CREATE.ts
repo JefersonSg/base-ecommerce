@@ -233,3 +233,17 @@ export async function addNewItemCart(data: any) {
     console.log(error);
   }
 }
+
+export async function createAddress(data: any) {
+  try {
+    const response = await axios.post(
+      `${API}user/address/create`,
+      data,
+      configJson
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}

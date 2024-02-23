@@ -6,7 +6,12 @@ import { MetodoPagamentos } from './metodoPagamentos/MetodoPagamentos';
 import InfosLoja from './infos/InfosLoja';
 
 export function Footer() {
-  const images = ['Facebook', 'Instagram', 'Tiktok'];
+  const images = [
+    'Facebook.svg',
+    'Instagram.svg',
+    'Tiktok.svg',
+    'Whatsapp.svg'
+  ];
   const metodos = ['Visa', 'Cartao', 'Mir'];
 
   return (

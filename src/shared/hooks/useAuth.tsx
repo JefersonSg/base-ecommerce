@@ -75,7 +75,7 @@ const useAuth = () => {
     setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
   ) {
     try {
-      const data = await axios.post(`${API_URL}user/create`, dataUser);
+      const data = await axios.post(`${API_URL}user/register`, dataUser);
 
       await authUser(data.data);
       router.push('/');

@@ -5,8 +5,7 @@ export function Botoes() {
   return (
     <>
       <ul className={styles.botoes}>
-        <Botao img="entrega" text="Entrega" link="minhas-entregas" />
-        <Botao img="telefone" text="(21) 969871826" type="telefone" />
+        <Botao img="entrega" text="Envios" link="minhas-entregas" />
         <Botao
           img="devolucao"
           text="Trocas e Devoluções"

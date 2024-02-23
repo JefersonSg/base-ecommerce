@@ -243,3 +243,14 @@ export const getAllItemsCartByUserId = async (userId: string) => {
     return [];
   }
 };
+
+export const getAddress = async () => {
+  try {
+    const response = await axios.get(`${API}user/address/`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
