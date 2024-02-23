@@ -6,15 +6,17 @@ import Image from 'next/image';
 
 function Cores({
   colors,
-  codeColors
+  codeColors,
+  colorSelected,
+  setColorSelected
 }: {
+  colorSelected: string;
   colors: string[];
   codeColors: string[];
+  setColorSelected: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [ativo, setAtivo] = React.useState(false);
-  const [colorSelected, setColorSelected] = React.useState(
-    colors ? colors[0] ?? '' : ''
-  );
+
   const [codeColorSelected, setCodeColorSelected] = React.useState(
     codeColors ? codeColors[0] ?? '' : ''
   );

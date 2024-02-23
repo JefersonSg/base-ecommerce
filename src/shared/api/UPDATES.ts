@@ -4,6 +4,13 @@ import Cookies from 'js-cookie';
 const API = process.env.NEXT_PUBLIC_API_URL;
 const token = Cookies.get('auth_token') ?? false;
 
+const configJson = {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  }
+};
+
 const configFormdata = {
   headers: {
     Authorization: `Bearer ${token}`,
@@ -223,6 +230,22 @@ export async function updateBanner(id: string, data: any) {
       `${API}banners/update/${id}`,
       formData,
       configFormdata
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+export async function updateItemCart(
+  ItemCartId: string,
+  data: { size: string; amount: number; color: string }
+) {
+  try {
+    const response = await axios.patch(
+      `${API}shopping/update/${ItemCartId}`,
+      data,
+      configJson
     );
 
     return response.data;

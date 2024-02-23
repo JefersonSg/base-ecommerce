@@ -1,10 +1,14 @@
 import ContainerProduct from '@/src/components/loja/product-view/Container_product';
 import {
+  getAllComments,
   getCategoryById,
   getProductById,
   getSubcategoryById
 } from '@/src/shared/api/GETS';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import {
+  type CommentInterface,
+  type ProductApi
+} from '@/src/shared/helpers/interfaces';
 import styles from './Produto.module.css';
 import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 
@@ -16,6 +20,9 @@ const page = async ({ searchParams }: { searchParams: Props }) => {
   const product: { product: ProductApi } = await getProductById(
     searchParams?._id
   );
+  const commentData: { comments: CommentInterface[] } = await getAllComments(
+    searchParams?._id
+  );
   const categoryName = await getCategoryById(product?.product?.category);
   const subcategoryName = await getSubcategoryById(
     product?.product?.subcategory
@@ -25,6 +32,7 @@ const page = async ({ searchParams }: { searchParams: Props }) => {
     <div className={styles.section_produtos}>
       {product?.product ? (
         <ContainerProduct
+          commentData={commentData}
           data={product}
           categoryName={categoryName?.category?.name}
           subcategoryName={subcategoryName?.subcategory?.name}

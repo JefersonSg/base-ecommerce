@@ -1,3 +1,10 @@
+export interface UserInterface {
+  _id: string;
+  name: string;
+  surname: string;
+  email: string;
+}
+
 export interface ProductInputs {
   name: string;
   brand: string;
@@ -80,4 +87,13 @@ export interface FavoriteInterface {
   _id: string;
   userId: string;
   productId: string;
+}
+
+export interface ItemCartInterface {
+  _id: string;
+  amount: number;
+  productId: string;
+  shoppingCartId: string;
+  size: string;
+  color: string;
 }

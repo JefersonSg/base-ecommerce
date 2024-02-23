@@ -6,18 +6,16 @@ import Image from 'next/image';
 
 const BotaoQuantidade = ({
   contador,
-  setContador
+  functionUpdate
 }: {
   contador: number;
-  setContador: React.Dispatch<React.SetStateAction<number>>;
+  functionUpdate: (number: number) => Promise<any>;
 }) => {
   return (
     <button className={styles.botao_quantidade}>
       <Image
         onClick={() => {
-          if (contador > 1) {
-            setContador(contador - 1);
-          }
+          void functionUpdate(-1);
         }}
         alt="Simbolo de subtração"
         src={'/carrinho/subtracao.svg'}
@@ -27,7 +25,7 @@ const BotaoQuantidade = ({
       {contador}
       <Image
         onClick={() => {
-          setContador(contador + 1);
+          void functionUpdate(+1);
         }}
         alt="Simbolo de adição"
         src={'/carrinho/adicao.svg'}

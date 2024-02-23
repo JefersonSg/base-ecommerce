@@ -221,3 +221,15 @@ export async function addFavorite(user: string, product: string) {
     console.log(error);
   }
 }
+export async function addNewItemCart(data: any) {
+  try {
+    const response = await axios.post(
+      `${API}shopping/create`,
+      data,
+      configJson
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}

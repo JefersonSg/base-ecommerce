@@ -44,8 +44,8 @@ const Like = ({ productId }: { productId: string }) => {
 
   React.useEffect(() => {
     let already = false;
-    data?.favorites.forEach((favorite) => {
-      if (favorite.productId === productId) {
+    data?.favorites?.forEach((favorite) => {
+      if (favorite?.productId === productId) {
         setIsFavorite(true);
         setFavoriteId(favorite?._id);
         already = true;

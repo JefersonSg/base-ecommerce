@@ -229,3 +229,17 @@ export const getFavoriteByUserId = async (id: string) => {
     return [];
   }
 };
+
+export const getAllItemsCartByUserId = async (userId: string) => {
+  try {
+    const response = await axios.get(
+      `${API}shopping/get-all/${userId}`,
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

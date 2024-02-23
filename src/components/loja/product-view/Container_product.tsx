@@ -7,19 +7,24 @@ import Detalhes from './produtoDetalhes/Detalhes';
 import Sections from './sections/Sections';
 import Avaliacoes from './avaliacoes/Avaliacoes';
 
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import {
+  type CommentInterface,
+  type ProductApi
+} from '@/src/shared/helpers/interfaces';
 import { AvaliacoesProvider } from '@/src/shared/context/AvaliacaoContext';
 
 const ContainerProduct = ({
   data,
+  commentData,
   categoryName,
   subcategoryName
 }: {
   data: { product: ProductApi };
+  commentData: { comments: CommentInterface[] };
   categoryName: string;
   subcategoryName: string;
 }) => {
-  const totalStars = data?.product?.comments?.map(
+  const totalStars = commentData?.comments?.map(
     (comment) => +comment?.stars
   ) ?? [1];
 

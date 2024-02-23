@@ -51,3 +51,11 @@ export async function deleteFavorite(id: string) {
 
   return response.data;
 }
+export async function deleteCartItem(itemCartId: string) {
+  const response = await axios.delete(
+    `${API}shopping/delete/${itemCartId}`,
+    config
+  );
+
+  return response.data;
+}
