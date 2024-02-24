@@ -13,7 +13,10 @@ export function ButtonMenu({
         onClick={() => {
           setAtivo(true);
         }}
-      ></button>
+        aria-label="abrir menu mobile"
+      >
+        Menu Mobile
+      </button>
     </>
   );
 }

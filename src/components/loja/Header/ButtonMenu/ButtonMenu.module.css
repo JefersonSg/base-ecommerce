@@ -11,6 +11,7 @@
   border: 1px solid transparent;
   transition: 0.1s;
   cursor: pointer;
+  font-size: 0px;
 }
 
 .mobile_button::after {

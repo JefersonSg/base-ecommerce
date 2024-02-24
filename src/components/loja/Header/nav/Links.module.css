@@ -1,13 +1,30 @@
-.container_links {
+.container_nav ul{
+    display: flex;
+    justify-content: center;
+}
+
+.link {
   height: 60px;
   background-color: white;
-  width: 100%;
-  box-shadow: 0 7px 26px rgba(154, 154, 204, 0.1);
   display: none;
 }
 
+
 @media (min-width: 1024px) {
-  .container_links {
-    display: block;
+  .link {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    padding: 0 32px;
+    gap: 8px;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .link:hover p{
+    color: var(--cor-secundaria);
+  }
+  .link:hover svg path{
+    stroke: var(--cor-secundaria);
   }
 }
