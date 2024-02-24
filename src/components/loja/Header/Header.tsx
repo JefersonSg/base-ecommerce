@@ -12,11 +12,12 @@ import { useQuery } from '@tanstack/react-query';
 import { getUserByToken } from '@/src/shared/api/GETS';
 import Links from './nav/Links';
 import useMedia from '@/src/shared/hooks/useMedia';
+import { type UserInterface } from '@/src/shared/helpers/interfaces';
 
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
 
-  const { data } = useQuery({
+  const { data } = useQuery<{ user: UserInterface; isAdmin: boolean }>({
     queryKey: ['user'],
     queryFn: getUserByToken
   });
@@ -47,6 +48,24 @@ export function Header() {
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
         </Link>
         <div className={styles.container2}>
+          {!mobile && (
+            <Link
+              href={`${data?.user ? '/minha-conta' : '/login'}`}
+              className={styles.login}
+            >
+              <Image
+                alt="account image"
+                src={'/header/account.svg'}
+                width={24}
+                height={24}
+              />
+              <p>
+                {data?.user
+                  ? 'Olá ' + data.user.name + ' ' + data.user.surname
+                  : 'Entre ou cadastre-se'}
+              </p>
+            </Link>
+          )}
           <Link href={'/favoritos'}>
             <Image
               alt="Imagem de coração"
@@ -67,11 +86,7 @@ export function Header() {
       </header>
       <Links />
       {estaAtivo && mobile && (
-        <MenuMobile
-          userData={data ?? ''}
-          ativo={estaAtivo}
-          setAtivo={setAtivo}
-        />
+        <MenuMobile ativo={estaAtivo} setAtivo={setAtivo} />
       )}
     </div>
   );

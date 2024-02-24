@@ -9,6 +9,8 @@
   box-sizing: border-box;
   position: relative;
   z-index: 999;
+  max-width: 1220px;
+  margin: 0 auto;
 }
 .container_header {
   box-shadow: 0 7px 26px rgba(154, 154, 204, 0.1);
@@ -17,4 +19,31 @@
 .container2 {
   display: flex;
   gap: 16px;
+}
+
+@media (min-width:64rem) {
+  .login {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .login p {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--cor-quarta);
+  }
+  .header {
+    height: 100px;
+  }
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: auto;
+  }
+  .logo img {
+    height: 60px;
+    width: auto;
+  }
 }

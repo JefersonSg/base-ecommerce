@@ -244,9 +244,22 @@ export const getAllItemsCartByUserId = async (userId: string) => {
   }
 };
 
+// Get CEP
 export const getAddress = async () => {
   try {
     const response = await axios.get(`${API}user/address/`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// getByName
+export const getProductByName = async (name: string) => {
+  try {
+    const response = await axios.get(`${API}products/name/${name}`, config);
 
     return response.data;
   } catch (error) {

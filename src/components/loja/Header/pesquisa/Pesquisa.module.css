@@ -4,7 +4,7 @@
   left: 0;
   height: 50px;
   width: 100%;
-  background: #996557;
+  background: white;
   animation: entrada 0.1s ease-in forwards;
   z-index: -1;
   display: flex;
@@ -12,19 +12,21 @@
   justify-content: center;
 }
 
+.lupaInput,
 .lupa {
   cursor: pointer;
 }
-
 .input_pesquisa {
   border: none;
   height: 30px;
   padding: 0;
-  border-radius: 8px 0 0 8px;
+  border-radius: 4px 0 0 4px;
   width: 250px;
   padding-left: 16px;
   box-sizing: border-box;
   border-right: 1px solid rgba(200, 200, 200, 0.3);
+  border: 1px solid var(--cor-quarta);
+  border-right:none ;
 }
 
 .input_pesquisa::placeholder {
@@ -39,11 +41,13 @@
   width: 40px;
   height: 30px;
   background-color: white;
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 4px 4px 0;
   cursor: pointer;
   padding-right: 4px;
   align-items: center;
   justify-content: center;
+  border: 1px solid var(--cor-quarta);
+  box-sizing: border-box;
 }
 
 .fundo {
@@ -63,5 +67,39 @@
   to {
     opacity: 1;
     bottom: -50px;
+  }
+}
+
+@media (min-width: 64rem) {
+  .lupa {
+    display: none;
+  }
+  .button_pesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+  }
+  .input_pesquisa {
+    border: none;
+    border-right: 1px solid var(--cor-quarta);
+  }
+  .lupaInput {
+    height: 100%;
+    width: 40px;
+    background-color: transparent;
+  }
+  .pesquisa {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    height: 40px;
+    position: relative;
+    background: white;
+    top: 0;
+    border: 1px solid var(--cor-quarta);
+    z-index: 1000;
   }
 }

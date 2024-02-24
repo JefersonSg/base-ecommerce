@@ -4,22 +4,12 @@ import Usuario from './itens/Usuario';
 import UlLinksUteis from './itens/UlLinksUteis';
 import LinksCategorias from './itens/LinksCategorias';
 
-interface User {
-  _id: string;
-  name: string;
-  surname: string;
-  username: string;
-  email: string;
-}
-
 function MenuMobile({
   ativo,
-  setAtivo,
-  userData
+  setAtivo
 }: {
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  userData: { user: User } | null;
 }) {
   return (
     <>
@@ -40,7 +30,7 @@ function MenuMobile({
 
       <div className={styles.menuMobile}>
         <nav className={styles.container}>
-          <Usuario ativo={ativo} setAtivo={setAtivo} userData={userData} />
+          <Usuario ativo={ativo} setAtivo={setAtivo} />
           <UlLinksUteis />
           <div className={styles.categorias}>
             <h2 className={styles.subtitulo}>Navegue por categorias</h2>

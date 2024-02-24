@@ -1,0 +1,20 @@
+.resultado_container {
+    position: absolute;
+    top: 41px;
+    left: -1px;
+    background: white;
+    width: 100%;
+    border: 1px solid var(--color-border);
+}
+
+.produco_pesquisa {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+}
+
+.produco_pesquisa:hover {
+    background-color: var(--color-border);
+}

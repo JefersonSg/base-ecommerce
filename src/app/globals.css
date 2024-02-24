@@ -34,10 +34,13 @@ img {
 
 :root {
   --fonte-primaria: 'Montserrat', 'sans-serif';
+  
+  --cor-de-indicacao: rgb(36, 36, 36);
 
   --cor-primaria: #471703;
   --cor-secundaria: #996557;
   --cor-terciaria: #3a292f;
+  --cor-quarta: #6b4024;
 
   --color-border: #d9dee3;
 }

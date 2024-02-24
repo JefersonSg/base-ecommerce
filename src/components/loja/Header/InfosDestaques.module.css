@@ -20,3 +20,9 @@
   font-weight: 500;
   color: white;
 }
+
+@media (min-width: 64rem) {
+  .infos {
+    height: 32px;
+  }
+}
