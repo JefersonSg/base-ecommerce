@@ -10,6 +10,8 @@ import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
 import { useQuery } from '@tanstack/react-query';
 import { getUserByToken } from '@/src/shared/api/GETS';
+import Links from './nav/Links';
+import useMedia from '@/src/shared/hooks/useMedia';
 
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
@@ -18,6 +20,8 @@ export function Header() {
     queryKey: ['user'],
     queryFn: getUserByToken
   });
+
+  const mobile = useMedia('(max-width: 64rem)');
 
   React.useEffect(() => {
     if (estaAtivo) {
@@ -32,11 +36,11 @@ export function Header() {
   }, [estaAtivo]);
 
   return (
-    <>
+    <div className={styles.container_header}>
       <InfosDestaques />
       <header className={styles.header}>
         <div className={styles.container1}>
-          <ButtonMenu setAtivo={setAtivo} />
+          {mobile && <ButtonMenu setAtivo={setAtivo} />}
           <Pesquisa />
         </div>
         <Link href={'/'} className={styles.logo}>
@@ -61,13 +65,14 @@ export function Header() {
           </Link>
         </div>
       </header>
-      {estaAtivo && (
+      <Links />
+      {estaAtivo && mobile && (
         <MenuMobile
           userData={data ?? ''}
           ativo={estaAtivo}
           setAtivo={setAtivo}
         />
       )}
-    </>
+    </div>
   );
 }

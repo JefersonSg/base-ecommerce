@@ -25,14 +25,20 @@
 }
 
 .fechar {
-  display: block;
-  font-size: 36px;
+  display: flex;
   position: fixed;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
   top: 40px;
   right: 50px;
   cursor: pointer;
   color: white;
   z-index: 1001;
+  border: 1px solid white;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
 }
 .background {
   width: 100%;
@@ -63,3 +69,4 @@
   height: max-content;
   padding-bottom: 80px;
 }
+
