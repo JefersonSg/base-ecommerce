@@ -1,45 +1,45 @@
 .divInput {
-    max-width: 327px;
-    display: flex;
-    flex-direction: column;
-  }
+  max-width: 327px;
+  display: flex;
+  flex-direction: column;
+}
 .input::placeholder {
-    color: rgb(184, 184, 204);
-    transition: all 0.2s;
-    }
-  .divInput label {
-    display: block;
-    font-size: 14px;
-    line-height: 1;
-  }
+  color: rgb(184, 184, 204);
+  transition: all 0.2s;
+}
+.divInput label {
+  display: block;
+  font-size: 14px;
+  line-height: 1;
+}
 .input {
-    height: 48px;
-    flex-shrink: 0;
-    border-radius: 6px;
-    border: 1px solid var(--Light-Blue, #dbe5f1);
-    padding: 0px 16px;
-    box-sizing: border-box;
-    outline: none;
-    margin-top: 8px;
-    max-width: 100%;
-  }
-  
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid var(--Light-Blue, #dbe5f1);
+  padding: 0px 16px;
+  box-sizing: border-box;
+  outline: none;
+  margin-top: 8px;
+  max-width: 100%;
+}
+
 .input:active {
-    border: 1px solid #131313;
-  }
-  
+  border: 1px solid #131313;
+}
+
 .input:focus {
-    border: 1px solid #131313;
-  }
-  
+  border: 1px solid #131313;
+}
+
 .input:focus::placeholder {
-    padding-left: 8px !important;
-  }
+  padding-left: 8px !important;
+}
 
 .error {
-    min-height: max-content;
-    display: block;
-    color: #f31;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
+  min-height: max-content;
+  display: block;
+  color: #f31;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

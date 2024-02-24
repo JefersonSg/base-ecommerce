@@ -16,7 +16,7 @@
   outline: none;
 }
 .formulario_enderecos input::placeholder {
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .formulario_enderecos input:active {
