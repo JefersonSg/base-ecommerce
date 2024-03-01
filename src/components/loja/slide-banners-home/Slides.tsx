@@ -12,17 +12,10 @@ import Image from 'next/image';
 
 import './styles.css';
 import Link from 'next/link';
-import { useQuery } from '@tanstack/react-query';
-import { getAllActiveBanners } from '@/src/shared/api/GETS';
 import { type BannerType } from '@/src/shared/helpers/interfaces';
 import useMedia from '@/src/shared/hooks/useMedia';
 
-function Slide() {
-  const { data } = useQuery<{ banners: BannerType[] }>({
-    queryKey: ['banners-home'],
-    queryFn: getAllActiveBanners
-  });
-
+function Slide({ data }: { data: { banners: BannerType[] } }) {
   const mobile = useMedia('(max-width: 48rem)');
 
   return (

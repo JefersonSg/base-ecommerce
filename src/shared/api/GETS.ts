@@ -39,9 +39,8 @@ export const getUserByToken = async () => {
 };
 export const getAllCategories = async () => {
   try {
-    const response = await axios.get(`${API}categories`, config);
-
-    return response.data;
+    const response = await fetch(`${API}categories`);
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -49,9 +48,9 @@ export const getAllCategories = async () => {
 };
 export const getAllSubcategories = async () => {
   try {
-    const response = await axios.get(`${API}subcategories/`, config);
+    const response = await fetch(`${API}subcategories/`);
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -103,9 +102,9 @@ export const getAllBanners = async () => {
 };
 export const getAllActiveBanners = async () => {
   try {
-    const response = await axios.get(`${API}banners/actives`, config);
+    const response = await fetch(`${API}banners/actives`);
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -125,9 +124,9 @@ export const getUserById = async (id: string) => {
 };
 export const getProductById = async (id: string) => {
   try {
-    const response = await axios.get(`${API}products/${id}`, config);
+    const response = await fetch(`${API}products/${id}`);
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -259,7 +258,11 @@ export const getAddress = async () => {
 // getByName
 export const getProductByName = async (name: string) => {
   try {
-    const response = await axios.get(`${API}products/name/${name}`, config);
+    const response = await axios.get(
+      `${API}products/name/${name}`,
+
+      config
+    );
 
     return response.data;
   } catch (error) {

@@ -1,14 +1,11 @@
-'use client';
-
 import BotaoSessao from '@/src/components/compartilhado/botoes/BotaoSessao';
 import styles from './Section.module.css';
-import { useQuery } from '@tanstack/react-query';
 import { getAllActiveProducts } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import React from 'react';
 import Produto from '@/src/components/loja/card-product/Produto';
 
-function Section({
+async function Section({
   nomeSessao,
   quantidadeItens,
   IdSessao
@@ -17,10 +14,7 @@ function Section({
   quantidadeItens: number;
   IdSessao: string;
 }) {
-  const { data } = useQuery<{ products: ProductApi[] }>({
-    queryKey: ['products-home'],
-    queryFn: getAllActiveProducts
-  });
+  const data: { products: ProductApi[] } = await getAllActiveProducts();
 
   return (
     <div className={styles.section}>

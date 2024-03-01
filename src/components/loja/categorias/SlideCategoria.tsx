@@ -5,15 +5,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './SlideCategoria.module.css';
 import Categoria from './categoria/Categoria';
 import './styles.css';
-import { useQuery } from '@tanstack/react-query';
-import { getAllCategories } from '@/src/shared/api/GETS';
+import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
 
-function SlideCategoria() {
-  const { data } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
-  });
-
+function SlideCategoria({
+  data
+}: {
+  data: { categories: CategoryInterface[] };
+}) {
   return (
     <Swiper
       className={`${styles.mySwiper} slide-categoria`}

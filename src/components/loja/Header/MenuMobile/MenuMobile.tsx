@@ -3,6 +3,7 @@ import styles from './MenuMobile.module.css';
 import Usuario from './itens/Usuario';
 import UlLinksUteis from './itens/UlLinksUteis';
 import LinksCategorias from './itens/LinksCategorias';
+import BtnFechar from '@/src/components/compartilhado/botoes/BtnFechar';
 
 function MenuMobile({
   ativo,
@@ -13,14 +14,7 @@ function MenuMobile({
 }) {
   return (
     <>
-      <span
-        className={styles.fechar}
-        onClick={() => {
-          setAtivo(false);
-        }}
-      >
-        X
-      </span>
+      <BtnFechar setAtivo={setAtivo} />
       <div
         className={styles.background}
         onClick={() => {

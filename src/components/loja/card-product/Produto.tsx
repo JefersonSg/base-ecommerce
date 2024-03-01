@@ -31,7 +31,7 @@ function Produto({
           <Image
             className={styles.imagem}
             alt="Imagem do produto"
-            src={img[0] ?? ''}
+            src={img[0]}
             width={144}
             height={206}
           />

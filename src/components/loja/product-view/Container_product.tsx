@@ -4,7 +4,7 @@ import { Titulo } from '../../compartilhado/textos/Titulo';
 import Interacoes from './interacoesUser/Interacoes';
 import FotosProduto from './fotosProduto/FotosProduto';
 import Detalhes from './produtoDetalhes/Detalhes';
-import Sections from './sections/Sections';
+import Sections from './sections-page-product/Sections';
 import Avaliacoes from './avaliacoes/Avaliacoes';
 
 import {

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import styles from './SectionProdutos.module.css';
 import Image from 'next/image';
@@ -10,8 +12,10 @@ const SectionProdutos = ({
   data
 }: {
   pesquisa?: string;
-  data?: { products: ProductApi[] };
+  data: { products: ProductApi[] };
 }) => {
+  const [totalProdutos, setTotalProdutos] = React.useState(9);
+
   return (
     <div className={styles.section_produtos}>
       <div className={styles.informacoes}>
@@ -35,10 +39,20 @@ const SectionProdutos = ({
           />
         </div>
       </div>
-      <div>{data && <ProductsById data={data} />}</div>
-      <div className={styles.botao}>
-        <BotaoColorido texto="Proximos 12 produtos" />
+      <div>
+        {data && <ProductsById data={data} totalProdutos={totalProdutos} />}
       </div>
+      {data?.products?.length > 9 && data.products.length > totalProdutos && (
+        <div className={styles.botao}>
+          <div
+            onClick={() => {
+              setTotalProdutos(totalProdutos + 9);
+            }}
+          >
+            <BotaoColorido texto="Mostrar mais" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

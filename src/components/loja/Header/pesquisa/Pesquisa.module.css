@@ -1,15 +1,20 @@
 .pesquisa {
   position: absolute;
-  bottom: -50px;
-  left: 0;
-  height: 50px;
-  width: 100%;
+  top: 5px;
+  left: 16px;
+  height: 45px;
+  width: 316px;
   background: white;
   animation: entrada 0.1s ease-in forwards;
   z-index: -1;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
+}
+
+.seta_voltar {
+  margin-right:8px ;
 }
 
 .lupaInput,
@@ -72,6 +77,9 @@
 
 @media (min-width: 64rem) {
   .lupa {
+    display: none;
+  }
+  .seta_voltar {
     display: none;
   }
   .button_pesquisa {

@@ -1,9 +1,10 @@
 .resultado_container {
     position: absolute;
     top: 41px;
-    left: -1px;
+    left: 28px;
     background: white;
-    width: 100%;
+    width: 287px;
+    margin: 0 auto;
     border: 1px solid var(--color-border);
 }
 
@@ -13,8 +14,21 @@
     height: 40px;
     border-bottom: 1px solid var(--color-border);
     cursor: pointer;
+    padding: 4px 8px;
 }
 
 .produco_pesquisa:hover {
     background-color: var(--color-border);
+}
+
+.produco_pesquisa img {
+    border-radius: 6px;
+    margin-right: 8px;
+}
+
+@media (min-width: 64rem) {
+    .resultado_container{
+        width: 100%;
+        left: -1px;
+    }
 }

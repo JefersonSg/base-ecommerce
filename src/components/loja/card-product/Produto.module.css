@@ -18,8 +18,8 @@
 .imagem {
   object-fit: cover;
   width: 100%;
+  height: auto;
   border-radius: 12px;
-  height: 206px;
 }
 .infos {
   margin-left: 2px;

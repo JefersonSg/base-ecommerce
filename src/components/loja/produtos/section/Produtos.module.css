@@ -1,5 +1,6 @@
 .produtos {
   width: 100%;
+  height: auto;
   max-width: 327px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
