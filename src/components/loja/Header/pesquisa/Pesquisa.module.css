@@ -14,7 +14,7 @@
 }
 
 .seta_voltar {
-  margin-right:8px ;
+  margin-right: 8px;
 }
 
 .lupaInput,
@@ -31,7 +31,7 @@
   box-sizing: border-box;
   border-right: 1px solid rgba(200, 200, 200, 0.3);
   border: 1px solid var(--cor-quarta);
-  border-right:none ;
+  border-right: none;
 }
 
 .input_pesquisa::placeholder {

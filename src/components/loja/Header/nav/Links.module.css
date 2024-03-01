@@ -1,7 +1,7 @@
-.container_nav ul{
-    display: flex;
-    background-color:var(--cor-terciaria);
-    justify-content: space-between;
+.container_nav ul {
+  display: flex;
+  background-color: var(--cor-terciaria);
+  justify-content: space-between;
 }
 
 .link {
@@ -9,7 +9,6 @@
   background-color: white;
   display: none;
 }
-
 
 @media (min-width: 1024px) {
   .link {
@@ -23,17 +22,16 @@
     text-align: center;
     justify-content: center;
     cursor: pointer;
-    background-color:var(--cor-terciaria);
+    background-color: var(--cor-terciaria);
     border-bottom: 2px solid transparent;
   }
-  .link p{
+  .link p {
     color: white;
   }
   .link:hover {
-    
     border-bottom: 2px solid white;
   }
-  .link svg path{
+  .link svg path {
     stroke: white;
   }
 }
