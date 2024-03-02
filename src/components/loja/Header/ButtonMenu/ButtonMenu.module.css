@@ -1,6 +1,6 @@
 .mobile_button {
-  width: 25px;
-  height: 20px;
+  width: 26px;
+  height: 24px;
   background-color: transparent;
   border-radius: 0.2rem;
   height: 20px;
@@ -15,11 +15,11 @@
 }
 
 .mobile_button::after {
-  width: 25px;
-  background: #6b4020;
+  width: 26px;
+  background: var(--cor-quinta);
   box-shadow:
-    0 6px #6b4020,
-    0 -6px #6b4020;
+    0 8px var(--cor-quinta),
+    0 -8px var(--cor-quinta);
 }
 .mobile_button::after {
   content: '';

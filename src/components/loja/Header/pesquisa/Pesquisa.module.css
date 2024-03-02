@@ -15,6 +15,7 @@
 
 .seta_voltar {
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .lupaInput,
