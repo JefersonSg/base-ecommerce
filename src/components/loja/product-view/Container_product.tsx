@@ -12,8 +12,10 @@ import {
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
 import { AvaliacoesProvider } from '@/src/shared/context/AvaliacaoContext';
+import { addViews } from '@/src/shared/api/CREATE';
+import { cookies } from 'next/headers';
 
-const ContainerProduct = ({
+const ContainerProduct = async ({
   data,
   commentData,
   categoryName,
@@ -31,6 +33,10 @@ const ContainerProduct = ({
   const media =
     totalStars?.reduce((acumulador, numero) => acumulador + numero, 0) /
       totalStars?.length ?? 1;
+
+  const token = cookies().get('auth_token')?.value;
+
+  await addViews(data.product._id, token);
 
   return (
     <>

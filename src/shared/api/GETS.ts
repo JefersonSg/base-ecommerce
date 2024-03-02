@@ -39,7 +39,11 @@ export const getUserByToken = async () => {
 };
 export const getAllCategories = async () => {
   try {
-    const response = await fetch(`${API}categories`);
+    const response = await fetch(`${API}categories`, {
+      next: {
+        revalidate: 1 * 60
+      }
+    });
     return await response.json();
   } catch (error) {
     console.log(error);
@@ -48,7 +52,11 @@ export const getAllCategories = async () => {
 };
 export const getAllSubcategories = async () => {
   try {
-    const response = await fetch(`${API}subcategories/`);
+    const response = await fetch(`${API}subcategories/`, {
+      next: {
+        revalidate: 1 * 60
+      }
+    });
 
     return await response.json();
   } catch (error) {
@@ -102,7 +110,11 @@ export const getAllBanners = async () => {
 };
 export const getAllActiveBanners = async () => {
   try {
-    const response = await fetch(`${API}banners/actives`);
+    const response = await fetch(`${API}banners/actives`, {
+      next: {
+        revalidate: 1 * 60
+      }
+    });
 
     return await response.json();
   } catch (error) {
@@ -124,7 +136,11 @@ export const getUserById = async (id: string) => {
 };
 export const getProductById = async (id: string) => {
   try {
-    const response = await fetch(`${API}products/${id}`);
+    const response = await fetch(`${API}products/${id}`, {
+      next: {
+        revalidate: 1 * 60
+      }
+    });
 
     return await response.json();
   } catch (error) {

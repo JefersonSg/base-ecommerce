@@ -247,3 +247,21 @@ export async function createAddress(data: any) {
     console.log(error);
   }
 }
+
+export async function addViews(
+  productId: string,
+  userToken: string | undefined
+) {
+  try {
+    const response = await axios.post(
+      `${API}products/views/add/${productId}`,
+      {
+        userToken
+      },
+      configJson
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
