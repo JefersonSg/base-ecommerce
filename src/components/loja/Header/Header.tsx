@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
 import { useQuery } from '@tanstack/react-query';
 import { getUserByToken } from '@/src/shared/api/GETS';
-import Links from './nav/Links';
+import CategoriasLinks from './nav/CategoriasLinks';
 import useMedia from '@/src/shared/hooks/useMedia';
 import { type UserInterface } from '@/src/shared/helpers/interfaces';
 
@@ -24,6 +24,7 @@ export function Header() {
 
   const mobile = useMedia('(max-width: 64rem)');
 
+  console.log(data);
   React.useEffect(() => {
     if (estaAtivo) {
       document.body.classList.add('scroll-lock');
@@ -62,8 +63,18 @@ export function Header() {
               <p>
                 {data?.user
                   ? 'Olá ' + data.user.name + ' ' + data.user.surname
-                  : 'Entre ou cadastre-se'}
+                  : 'Olá, faça seu login ou cadastre-se.'}
               </p>
+            </Link>
+          )}
+          {data?.isAdmin && !mobile && (
+            <Link href={'/dashboard'}>
+              <Image
+                alt="Imagem de coração"
+                src={'/header/Menu/dashboard.svg'}
+                width={24}
+                height={24}
+              />
             </Link>
           )}
           <Link href={'/favoritos'}>
@@ -84,7 +95,7 @@ export function Header() {
           </Link>
         </div>
       </header>
-      <Links />
+      <CategoriasLinks />
       {estaAtivo && mobile && (
         <MenuMobile ativo={estaAtivo} setAtivo={setAtivo} />
       )}

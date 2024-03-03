@@ -5,9 +5,9 @@ import styles from './Links.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
 import { getAllCategories } from '@/src/shared/api/GETS';
-import SvgSetaBaixo from '../svgs/SvgSetaBaixo';
+import Categoria from './Categoria';
 
-const Links = () => {
+const CategoriasLinks = () => {
   const { data } = useQuery<{ categories: CategoryInterface[] }>({
     queryKey: ['categories'],
     queryFn: getAllCategories
@@ -15,18 +15,13 @@ const Links = () => {
 
   return (
     <nav className={styles.container_nav}>
-      <ul>
+      <ul className={styles.categorias_lista}>
         {data?.categories?.map((category) => {
-          return (
-            <li className={styles.link} key={category?._id}>
-              <p>{category.name}</p>
-              <SvgSetaBaixo />
-            </li>
-          );
+          return <Categoria key={category._id} category={category} />;
         })}
       </ul>
     </nav>
   );
 };
 
-export default Links;
+export default CategoriasLinks;

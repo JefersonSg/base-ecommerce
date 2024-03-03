@@ -24,6 +24,12 @@ export interface CategoryInterface {
   _id: string;
   name: string;
   description: string;
+  image: string;
+}
+export interface CategoryInterfaceCreate {
+  _id: string;
+  name: string;
+  description: string;
 }
 
 export interface CommentInterface {

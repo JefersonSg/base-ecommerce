@@ -18,10 +18,13 @@
 .container1,
 .container2 {
   display: flex;
-  gap: 16px;
+  gap: 24px;
 }
 
 @media (min-width: 64rem) {
+  .header {
+    padding: 0px;
+  }
   .login {
     display: flex;
     align-items: center;
@@ -31,7 +34,7 @@
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;
-    color: var(--cor-quarta);
+    color: var(--cor-quinta);
   }
   .header {
     height: 64px;

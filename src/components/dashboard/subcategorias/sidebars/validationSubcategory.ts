@@ -4,7 +4,8 @@ export const validationSubcategory = yup.object({
   name: yup.string().required('É necessário preencher o campo de Nome'),
   description: yup
     .string()
-    .required('É necessário preencher o campo de descrição'),
+    .required('É necessário preencher o campo de descrição')
+    .min(3, 'digite ao menos 3 caracteres'),
   category: yup
     .string()
     .required('É necessário preencher o campo de Categoria'),
