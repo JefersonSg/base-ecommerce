@@ -4,3 +4,8 @@
   gap: 16px;
   margin-left: 16px;
 }
+.links div {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 190px 30px;
+}

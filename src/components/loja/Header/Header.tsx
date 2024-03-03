@@ -24,7 +24,6 @@ export function Header() {
 
   const mobile = useMedia('(max-width: 64rem)');
 
-  console.log(data);
   React.useEffect(() => {
     if (estaAtivo) {
       document.body.classList.add('scroll-lock');

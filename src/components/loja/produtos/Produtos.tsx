@@ -6,15 +6,18 @@ import styles from './Produtos.module.css';
 import SectionProdutos from './section/SectionProdutos';
 import SlideSubcategorias from './slide/SlideSubcategorias';
 import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
+import { type subcategoryInterface } from '@/src/shared/helpers/interfaces';
 
 function Produtos({
   pesquisa,
   data,
-  categoryId
+  categoryId,
+  subcategorieDataSlide
 }: {
   pesquisa?: string;
   data?: any;
   categoryId?: string;
+  subcategorieDataSlide?: { subcategories: subcategoryInterface[] };
 }) {
   const [ativo, setAtivo] = React.useState(false);
 
@@ -24,9 +27,9 @@ function Produtos({
         <Titulo titulo={pesquisa ?? ''} />
         <BotaoFiltro ativo={ativo} setAtivo={setAtivo} />
       </div>
-      {!pesquisa && categoryId && (
+      {!pesquisa && subcategorieDataSlide && (
         <div className={styles.subcategorias}>
-          <SlideSubcategorias categoryId={categoryId} />
+          <SlideSubcategorias subcategorieDataSlide={subcategorieDataSlide} />
         </div>
       )}
       <SectionProdutos pesquisa={pesquisa} data={data} />

@@ -1,10 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import BotaoLi from './BotaoLi';
 import styles from './LinksCategorias.module.css';
 import { getAllCategories } from '@/src/shared/api/GETS';
 import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
+import BotaoCategoria from './BotaoCategoria';
 
-function LinksCategorias() {
+function LinksCategorias({
+  setAtivo
+}: {
+  setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const { data } = useQuery<{ categories: CategoryInterface[] }>({
     queryKey: ['categories'],
     queryFn: getAllCategories
@@ -14,11 +18,10 @@ function LinksCategorias() {
     <ul className={styles.links}>
       {data?.categories?.map((category) => {
         return (
-          <BotaoLi
-            key={category?._id}
-            texto={category?.name}
-            pathname="/produtos/categoria/"
-            query={category._id}
+          <BotaoCategoria
+            key={category._id}
+            category={category}
+            setAtivo={setAtivo}
           />
         );
       })}

@@ -9,7 +9,7 @@ async function page({ searchParams }: { searchParams: { _id: string } }) {
   return (
     <div className={styles.produtos_container}>
       <Breadcrumb texto="Home / Produtos" />
-      <Produtos data={data} categoryId={searchParams?._id} />
+      <Produtos data={data} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  height: 60px;
+  height: 64px;
   background: white;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@
   margin: 0 auto;
 }
 .container_header {
-  box-shadow: 0 7px 26px rgba(154, 154, 204, 0.1);
+  box-shadow: 0 7px 26px rgba(154, 154, 204, 0.2);
 }
 .container1,
 .container2 {
@@ -24,6 +24,7 @@
 @media (min-width: 64rem) {
   .header {
     padding: 0px;
+    height: 84px;
   }
   .login {
     display: flex;
@@ -36,9 +37,6 @@
     line-height: 21px;
     color: var(--cor-quinta);
   }
-  .header {
-    height: 64px;
-  }
   .logo {
     position: absolute;
     left: 50%;
@@ -48,5 +46,8 @@
   .logo img {
     height: 60px;
     width: auto;
+  }
+  .container2 {
+    margin-right: 24px;
   }
 }

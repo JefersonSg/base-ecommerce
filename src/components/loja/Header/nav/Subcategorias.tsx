@@ -21,7 +21,11 @@ const Subcategorias = ({
     columns.push(
       <ul className="grid-column" key={i}>
         {columnItems.map((item, index) => (
-          <li key={index}>{item.name}</li>
+          <li key={index}>
+            <Link href={{ pathname: 'subcategoria', query: { _id: item._id } }}>
+              {item.name}
+            </Link>
+          </li>
         ))}
       </ul>
     );

@@ -28,7 +28,7 @@ function MenuMobile({
           <UlLinksUteis />
           <div className={styles.categorias}>
             <h2 className={styles.subtitulo}>Navegue por categorias</h2>
-            <LinksCategorias />
+            <LinksCategorias setAtivo={setAtivo} />
           </div>
         </nav>
       </div>

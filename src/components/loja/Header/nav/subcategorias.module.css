@@ -2,13 +2,13 @@
   display: grid;
   position: absolute;
   grid-template-columns:  1fr 1fr;
-  top: 142px;
+  top: 42px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
   width: 80%;
   max-width: 1220px;
-  height: 200px;
+  height: max-content;
   background-color: white;
   cursor: default;
   padding-bottom: 32px;
@@ -25,15 +25,20 @@
   align-items: flex-start;
   gap: 0px;
 }
+
 .subcategorias ul li {
+  padding: 4px;
+}
+.subcategorias ul li a{
   cursor: pointer;
   transition: all 0.1s;
   line-height: 24px;
   font-size: 16px;
   font-weight: 400;
   color: #242424;
+  padding: 8px;
 }
-.subcategorias ul li:hover {
+.subcategorias ul li a:hover {
   color: var(--cor-contraste);
 }
 
