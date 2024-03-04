@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.categorias_lista{
+.categorias_lista {
   display: flex;
   background-color: white;
   max-width: 1220px;
@@ -48,7 +48,7 @@
     font-weight: 400;
     line-height: 20px;
     text-transform: uppercase;
-    font-family:"Montserrat" ;
+    font-family: 'Montserrat';
   }
 
   .link svg path {

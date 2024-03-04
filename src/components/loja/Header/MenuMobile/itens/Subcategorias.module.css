@@ -1,37 +1,37 @@
 .subcategorias_lista {
-    margin-left: 16px;
+  margin-left: 16px;
 }
 .subcategorias_lista ul {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .subcategorias_lista ul li p {
-    font-weight: 600;
-    font-size: 14px;
-    color: #393939;
+  font-weight: 600;
+  font-size: 14px;
+  color: #393939;
 }
 
-.subcategorias_lista ul li a{
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    color: #393939;
-    font-family: var(--fonte-primaria);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    max-width: max-content;
-    cursor: pointer;
-  }
+.subcategorias_lista ul li a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #393939;
+  font-family: var(--fonte-primaria);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: max-content;
+  cursor: pointer;
+}
 
 .subcategorias_lista ul li a:hover {
-    color: var(--cor-contraste);
-    font-weight: 600;
-  }
+  color: var(--cor-contraste);
+  font-weight: 600;
+}
 .subcategorias_lista ul li p:hover {
-    color: var(--cor-contraste);
+  color: var(--cor-contraste);
 }
