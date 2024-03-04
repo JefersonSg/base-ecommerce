@@ -94,7 +94,7 @@ export function Header() {
           </Link>
         </div>
       </header>
-      <CategoriasLinks />
+      {!mobile && <CategoriasLinks />}
       {estaAtivo && mobile && (
         <MenuMobile ativo={estaAtivo} setAtivo={setAtivo} />
       )}

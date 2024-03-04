@@ -3,7 +3,7 @@ import React from 'react';
 const useMedia = (media: string) => {
   const [match, setMatch] = React.useState<string | any>(true);
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     function changeMatch() {
       const { matches } = window.matchMedia(media);
       setMatch(matches);
