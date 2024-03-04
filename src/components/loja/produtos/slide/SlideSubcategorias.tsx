@@ -16,7 +16,6 @@ function SlideSubcategorias({
 }: {
   subcategorieDataSlide: { subcategories: subcategoryInterface[] };
 }) {
-  console.log(subcategorieDataSlide);
   return (
     <>
       <Swiper

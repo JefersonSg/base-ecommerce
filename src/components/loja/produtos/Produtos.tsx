@@ -21,6 +21,7 @@ function Produtos({
 }) {
   const [ativo, setAtivo] = React.useState(false);
 
+  console.log(subcategorieDataSlide);
   return (
     <div className={styles.produtos_container}>
       <div className={styles.div_titulo}>

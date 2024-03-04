@@ -208,7 +208,10 @@ export const getSubcategoryByCategory = async (id: string) => {
       config
     );
 
-    return response.data;
+    if (response) {
+      return response.data;
+    }
+    return [];
   } catch (error) {
     console.log(error);
     return [];
