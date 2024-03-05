@@ -4,7 +4,7 @@
   height: 40px;
   border-radius: 12px;
   background-color: var(--cor-primaria);
-  opacity: .8;
+  opacity: 0.8;
   margin-top: calc(-10px - (var(--swiper-navigation-size) / 2));
   color: white;
 
@@ -12,7 +12,6 @@
   --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 10px;
   --swiper-navigation-color: black;
-
 
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -28,7 +27,7 @@
 }
 
 .slide-banner .swiper-button-next:hover,
-.slide-banner .swiper-button-prev:hover{
+.slide-banner .swiper-button-prev:hover {
   opacity: 1;
 }
 .slide-banner .swiper-button-next.swiper-button-disabled {
@@ -37,16 +36,14 @@
 }
 @media (min-width: 768px) {
   .slide-banner .swiper-button-next,
-.slide-banner .swiper-button-prev {
-  width: 48px;
-  height: 48px;
+  .slide-banner .swiper-button-prev {
+    width: 48px;
+    height: 48px;
+  }
+  .slide-banner .swiper-button-next {
+    right: 100px;
+  }
+  .slide-banner .swiper-button-prev {
+    left: 100px;
+  }
 }
-.slide-banner .swiper-button-next {
-  right: 100px;
-}
-.slide-banner .swiper-button-prev {
-  left: 100px;
-}
-}
-
-
