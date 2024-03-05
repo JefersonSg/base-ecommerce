@@ -27,6 +27,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
           delay: 5000,
           disableOnInteraction: false
         }}
+        speed={1000}
         navigation={true}
         pagination={{
           clickable: true

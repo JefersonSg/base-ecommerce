@@ -4,11 +4,7 @@ import Slide from './Slides';
 const ContainerSlideBanner = async () => {
   const bannersData = await getAllActiveBanners();
 
-  return (
-    <>
-      <Slide data={bannersData} />
-    </>
-  );
+  return <Slide data={bannersData} />;
 };
 
 export default ContainerSlideBanner;
