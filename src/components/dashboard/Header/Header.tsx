@@ -34,8 +34,8 @@ export function Header() {
   }, [estaAtivo]);
 
   return (
-    <>
-      <header className={styles.header}>
+    <div className={styles.header_container}>
+      <header className={styles.header_dashboard}>
         {mobile && (
           <>
             <div className={styles.container1}>
@@ -72,6 +72,6 @@ export function Header() {
         />
       )}
       {!mobile && <MenuSideBar />}
-    </>
+    </div>
   );
 }

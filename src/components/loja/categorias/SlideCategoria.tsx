@@ -6,19 +6,28 @@ import styles from './SlideCategoria.module.css';
 import Categoria from './categoria/Categoria';
 import './styles.css';
 import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
+import useMedia from '@/src/shared/hooks/useMedia';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 
 function SlideCategoria({
   data
 }: {
   data: { categories: CategoryInterface[] };
 }) {
+  const tablets = useMedia('(max-width:64rem)');
+  const mobile = useMedia('(max-width:48rem)');
   return (
     <Swiper
       className={`${styles.mySwiper} slide-categoria`}
-      slidesPerView={'auto'}
-      spaceBetween={32}
-      navigation={false}
-      pagination={false}
+      slidesPerView={mobile ? 3.5 : 5.5}
+      navigation={!tablets}
+      modules={[Navigation, Autoplay, Pagination]}
+      autoplay={{
+        delay: 2000,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false
+      }}
+      pagination={true}
     >
       {data?.categories?.map((category: any, index: number) => {
         return (
