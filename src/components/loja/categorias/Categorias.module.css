@@ -1,12 +1,11 @@
 .categorias {
   padding: 32px 24px;
-
 }
 .categorias h2 {
   margin-bottom: 16px;
 }
 
-@media (min-width:48rem) {
+@media (min-width: 48rem) {
   .categorias {
     display: flex;
     flex-direction: column;

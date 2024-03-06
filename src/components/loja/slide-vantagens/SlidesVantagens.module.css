@@ -6,9 +6,8 @@
   --swiper-navigation-color: black;
 }
 
-@media (min-width:64rem) {
+@media (min-width: 64rem) {
   .mySwiper {
     max-width: 1200px;
   }
-
 }
