@@ -13,22 +13,20 @@ const ProductsById = ({
 }) => {
   return (
     <div className={styles.produtos}>
-      {data?.products?.map((product, index) => {
-        return (
-          <div key={product?._id}>
-            {index <= totalProdutos && (
-              <Produto
-                _id={product._id}
-                link={product?._id}
-                name={product?.name}
-                price={product?.price?.toFixed(2)?.replace('.', ',')}
-                promotion={false}
-                img={product?.images}
-              />
-            )}
-          </div>
-        );
-      })}
+      {data?.products?.map(
+        (product, index) =>
+          index <= totalProdutos && (
+            <Produto
+              key={product._id}
+              _id={product._id}
+              link={product?._id}
+              name={product?.name}
+              price={product?.price?.toFixed(2)?.replace('.', ',')}
+              promotion={false}
+              img={product?.images}
+            />
+          )
+      )}
     </div>
   );
 };

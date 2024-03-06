@@ -16,10 +16,11 @@ function SlideCategoria({
 }) {
   const tablets = useMedia('(max-width:64rem)');
   const mobile = useMedia('(max-width:48rem)');
+  const smartphone = useMedia('(max-width:26rem)');
   return (
     <Swiper
       className={`${styles.mySwiper} slide-categoria`}
-      slidesPerView={mobile ? 3.5 : 5.5}
+      slidesPerView={smartphone ? 2.5 : mobile ? 3.5 : 5.5}
       navigation={!tablets}
       modules={[Navigation, Autoplay, Pagination]}
       autoplay={{
