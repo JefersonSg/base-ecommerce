@@ -31,12 +31,23 @@
 .slide-banner .swiper-button-prev:hover{
   opacity: 1;
 }
-.slide-banner .swiper-button-next.swiper-button-disabled {
+
+
+.slide-banner .swiper-button-next.swiper-button-disabled,
+.slide-banner .swiper-button-prev.swiper-button-disabled {
   pointer-events: visible !important;
   opacity: 0.35;
 }
+
+.slide-banner .swiper-pagination-bullet {
+  border-radius: 2px !important;
+}
+
+.slide-banner .swiper-pagination-bullet-active {
+  background-color: white !important;
+}
 @media (min-width: 768px) {
-  .slide-banner .swiper-button-next,
+.slide-banner .swiper-button-next,
 .slide-banner .swiper-button-prev {
   width: 48px;
   height: 48px;
