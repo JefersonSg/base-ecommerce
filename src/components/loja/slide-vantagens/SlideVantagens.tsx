@@ -26,7 +26,7 @@ function SlideVantagens() {
         spaceBetween={!mobile && !tablets ? 32 : 0}
         centeredSlidesBounds
         pagination={false}
-        loop={true}
+        loop={!!mobile}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false

@@ -32,7 +32,7 @@ function Produto({
             className={styles.imagem}
             alt="Imagem do produto"
             src={img[0]}
-            width={144}
+            width={152}
             height={206}
           />
         )}

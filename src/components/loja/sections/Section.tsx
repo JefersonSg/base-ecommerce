@@ -21,23 +21,20 @@ async function Section({
       <h2 className="titulo_sessao">{nomeSessao}</h2>
 
       <div className={styles.produtos}>
-        {data?.products?.map((product, index) => {
-          return (
-            <>
-              {index <= 3 && (
-                <Produto
-                  key={product._id}
-                  _id={product._id}
-                  link={product._id}
-                  name={product.name}
-                  price={product.price.toFixed(2).toString().replace('.', ',')}
-                  promotion={product.promotion}
-                  img={product.images}
-                />
-              )}
-            </>
-          );
-        })}
+        {data?.products?.map(
+          (product, index) =>
+            index <= 3 && (
+              <Produto
+                key={product._id}
+                _id={product._id}
+                link={product._id}
+                name={product.name}
+                price={product.price.toFixed(2).toString().replace('.', ',')}
+                promotion={product.promotion}
+                img={product.images}
+              />
+            )
+        )}
       </div>
       <BotaoSessao texto="Todos os produtos" />
     </div>

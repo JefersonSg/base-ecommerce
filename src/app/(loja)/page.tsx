@@ -3,7 +3,7 @@ import styles from './page.module.css';
 import SlideVantagens from '@/src/components/loja/slide-vantagens/SlideVantagens';
 import Categorias from '@/src/components/loja/categorias/Categorias';
 import Section from '@/src/components/loja/sections/Section';
-import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
+// import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 import ContainerSlideBanner from '@/src/components/loja/slide-banners-home/ContainerSlideBanner';
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function Home() {
           IdSessao="teste"
           quantidadeItens={4}
         />
-        <SectionColecoes />
+        {/* <SectionColecoes /> */}
       </main>
     </>
   );
