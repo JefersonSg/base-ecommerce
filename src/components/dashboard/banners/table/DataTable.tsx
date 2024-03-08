@@ -72,7 +72,7 @@ const DataTable = () => {
         <ModalDelete
           id1={bannerData?._id}
           setState={setAtivoDelete}
-          text="Deseja mesmo deletar essa categoria?"
+          text="Deseja mesmo deletar esse banner?"
           funcDelete={deleteBanner}
           refetch={refetch}
         />

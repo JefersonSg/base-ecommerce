@@ -74,19 +74,22 @@ export interface BannerType {
   _id: string;
   name: string;
   link: string;
-  images: string[];
+  imageMobile: string;
+  imageDesktop: string;
   active: boolean;
 }
 export interface BannerTypeEdit {
   name: string;
   link: string;
-  images?: any;
+  imageMobile?: any;
+  imageDesktop?: any;
   active: boolean;
 }
 export interface BannerTypeCreate {
   name: string;
   link: string;
-  images: any;
+  imageMobile: any;
+  imageDesktop: any;
   active: boolean;
 }
 export interface FavoriteInterface {

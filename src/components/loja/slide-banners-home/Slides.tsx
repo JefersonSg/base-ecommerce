@@ -41,7 +41,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                 <Link href={banner.link}>
                   <Image
                     alt="imagem banner"
-                    src={mobile ? banner.images[0] : banner.images[1]}
+                    src={mobile ? banner.imageMobile : banner.imageDesktop}
                     width={750}
                     height={878}
                   />

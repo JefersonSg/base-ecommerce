@@ -120,8 +120,8 @@ export async function createBanner(data: BannerTypeCreate) {
   formData.append('link', data?.link);
   formData.append('active', `${data?.active}`);
 
-  if (data.images) {
-    const imageArray = Array.from(data.images);
+  if (data.imageMobile && data.imageDesktop) {
+    const imageArray = [data.imageMobile[0], data.imageDesktop[0]];
 
     imageArray.forEach((image: any) => {
       formData.append('images', image);

@@ -45,7 +45,7 @@ const SideBarFormEdit = ({
   });
 
   const { refetch } = useQuery({
-    queryKey: ['banners'],
+    queryKey: ['banners-dashboard'],
     queryFn: getAllBanners
   });
 
@@ -54,28 +54,27 @@ const SideBarFormEdit = ({
   const [imageUrl2, setImageUrl2] = React.useState<any>();
 
   const activeWatch = watch('active');
-  const imagesWatch = watch('images');
+  const imageMobileWatch = watch('imageMobile');
+  const imageDesktopWatch = watch('imageDesktop');
 
   const handleChange = React.useCallback(() => {
-    if (imagesWatch?.length > 0) {
-      for (let i = 0; i < imagesWatch?.length; i++) {
-        if (i === 0) {
-          const imageUrl = URL.createObjectURL(imagesWatch[i]);
-          setImageUrl1(imageUrl);
-        } else if (i === 1) {
-          const imageUrl = URL.createObjectURL(imagesWatch[i]);
-          setImageUrl2(imageUrl);
-        }
-      }
+    if (imageMobileWatch?.[0]) {
+      const imageUrl = URL?.createObjectURL(imageMobileWatch?.[0]);
+      setImageUrl1(imageUrl);
     }
-  }, [imagesWatch]);
+    if (imageDesktopWatch?.[0]) {
+      const imageUrl2 = URL?.createObjectURL(imageDesktopWatch?.[0]);
+      setImageUrl2(imageUrl2);
+    }
+  }, [imageDesktopWatch, imageMobileWatch]);
 
   React.useEffect(() => {
     handleChange();
-  }, [handleChange, imagesWatch]);
+  }, [handleChange]);
 
   const onSubmit: SubmitHandler<BannerTypeEdit> = async (data) => {
     setIsLoading(true);
+
     await updateBanner(bannerData._id, data);
     await refetch();
     setIsLoading(false);
@@ -112,20 +111,27 @@ const SideBarFormEdit = ({
           />
         </div>
         <InputFormulario
-          name="images"
-          label="Imagem"
-          multiple={true}
+          name="imageMobile"
+          label="Imagem Mobile"
           placeholder=""
           register={register}
           type="file"
-          error={errors?.images?.message}
+          error={errors?.imageDesktop?.message}
+        />
+        <InputFormulario
+          name="imageDesktop"
+          label="Imagem Desktop"
+          placeholder=""
+          register={register}
+          type="file"
+          error={errors?.imageDesktop?.message}
         />
         <div className={styles.view_banners_div}>
           <div>
-            <label htmlFor="any">Mobile: 340 x 530</label>
+            <label htmlFor="any">Mobile: 420 x 490</label>
             <Image
               alt="imagem mobile"
-              src={imageUrl1 ?? bannerData.images[0] ?? ''}
+              src={imageUrl1 ?? bannerData.imageMobile ?? ''}
               width={50}
               height={50}
             />
@@ -135,7 +141,7 @@ const SideBarFormEdit = ({
             <label htmlFor="any">Desktop: 1920 x 600</label>
             <Image
               alt="imagem Desktop"
-              src={imageUrl2 ?? bannerData.images[1] ?? ''}
+              src={imageUrl2 ?? bannerData.imageDesktop ?? ''}
               width={100}
               height={50}
             />

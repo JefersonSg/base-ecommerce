@@ -29,6 +29,7 @@ const SideBarFormCreate = ({
 }) => {
   const [imageUrl1, setImageUrl1] = React.useState<any>();
   const [imageUrl2, setImageUrl2] = React.useState<any>();
+
   const { refetch } = useQuery({
     queryKey: ['banners-dashboard'],
     queryFn: getAllBanners
@@ -52,37 +53,40 @@ const SideBarFormCreate = ({
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const imagesWatch = watch('images');
+  const imageMobileWatch = watch('imageMobile');
+  const imageDesktopWatch = watch('imageDesktop');
   const activeWatch = watch('active');
 
   const handleChange = React.useCallback(() => {
-    if (imagesWatch?.length > 0) {
-      for (let i = 0; i < imagesWatch?.length; i++) {
-        if (i === 0) {
-          const imageUrl = URL.createObjectURL(imagesWatch[i]);
-          setImageUrl1(imageUrl);
-        } else if (i === 1) {
-          const imageUrl = URL.createObjectURL(imagesWatch[i]);
-          setImageUrl2(imageUrl);
-        }
-      }
+    if (imageMobileWatch?.[0]) {
+      const imageUrl = URL?.createObjectURL(imageMobileWatch[0]);
+      setImageUrl1(imageUrl);
     }
-  }, [imagesWatch]);
+    if (imageDesktopWatch?.[0]) {
+      const imageUrl2 = URL?.createObjectURL(imageDesktopWatch[0]);
+      setImageUrl2(imageUrl2);
+    }
+  }, [imageDesktopWatch, imageMobileWatch]);
 
   React.useEffect(() => {
     handleChange();
-  }, [handleChange, imagesWatch]);
+  }, [handleChange]);
 
   const onSubmit: SubmitHandler<BannerTypeCreate> = async (data) => {
     setIsLoading(true);
-    const response = await createBanner(data);
-    setIsLoading(false);
+    try {
+      const response = await createBanner(data);
+      setIsLoading(false);
 
-    if (response) {
-      setAtivo(false);
-      setAtivoPopUp('Banner criado com sucesso');
-      await refetch();
-      await bannerHome.refetch();
+      if (response) {
+        setAtivo(false);
+        setAtivoPopUp('Banner criado com sucesso');
+        await refetch();
+        await bannerHome.refetch();
+      }
+    } catch (error: any) {
+      setAtivoPopUp(error?.data?.message);
+      console.log(error);
     }
   };
 
@@ -115,13 +119,20 @@ const SideBarFormCreate = ({
           />
         </div>
         <InputFormulario
-          name="images"
-          label="Imagem"
-          multiple={true}
+          name="imageMobile"
+          label="Imagem Mobile"
           placeholder=""
           register={register}
           type="file"
-          error={errors?.images?.message}
+          error={errors?.imageMobile?.message}
+        />
+        <InputFormulario
+          name="imageDesktop"
+          label="Imagem Desktop"
+          placeholder=""
+          register={register}
+          type="file"
+          error={errors?.imageDesktop?.message}
         />
         <div className={styles.view_banners_div}>
           <div>

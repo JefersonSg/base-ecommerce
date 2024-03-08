@@ -30,7 +30,7 @@ const BannerItem = ({
     <div className={styles.banner_item}>
       <Image
         alt="Imagem da categoria"
-        src={bannerData?.images?.[0]}
+        src={bannerData.imageMobile}
         width={40}
         height={40}
       />

@@ -211,20 +211,43 @@ export async function toggleBanner(data: any) {
   }
 }
 
-export async function updateBanner(id: string, data: any) {
+export async function updateBanner(
+  id: string,
+  data: {
+    name: string;
+    link: string;
+    imageMobile?: any;
+    imageDesktop?: any;
+    active: boolean;
+  }
+) {
   const formData = new FormData();
 
+  console.log();
   formData.append('name', data.name);
   formData.append('link', data.link);
+  formData.append('mobile', data.imageMobile[0] ? 'true' : data.imageMobile[0]);
+  formData.append(
+    'desktop',
+    data.imageDesktop[0] ? 'true' : data.imageDesktop[0]
+  );
   formData.append('active', `${data?.active}`);
 
-  if (data.images[0]) {
-    const imageArray = Array.from(data.images);
+  const imageArray = [];
 
+  if (data.imageMobile[0]) {
+    imageArray.push(data.imageMobile[0]);
+  }
+
+  if (data.imageDesktop[0]) {
+    imageArray.push(data.imageDesktop[0]);
+  }
+  if (imageArray[0]) {
     imageArray.forEach((image: any) => {
       formData.append('images', image);
     });
   }
+
   try {
     const response = await axios.patch(
       `${API}banners/update/${id}`,
