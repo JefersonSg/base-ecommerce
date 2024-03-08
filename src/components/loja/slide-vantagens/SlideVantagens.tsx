@@ -21,10 +21,9 @@ function SlideVantagens() {
       <Swiper
         className={`${styles.mySwiper} slide-vantagens`}
         centeredSlides={mobile ?? false}
-        slidesPerView={mobile ? 1 : tablets ? 2 : 4}
+        slidesPerView={mobile ? 1 : tablets ? 3 : 4}
         navigation={true}
-        spaceBetween={!mobile && !tablets ? 32 : 0}
-        centeredSlidesBounds
+        spaceBetween={!mobile ? 32 : 0}
         pagination={false}
         loop={!!mobile}
         autoplay={{

@@ -16,7 +16,7 @@ function SlideCategoria({
 }) {
   const tablets = useMedia('(max-width:64rem)');
   const mobile = useMedia('(max-width:48rem)');
-  const smartphone = useMedia('(max-width:26rem)');
+  const smartphone = useMedia('(max-width:30rem)');
   return (
     <Swiper
       className={`${styles.mySwiper} slide-categoria`}

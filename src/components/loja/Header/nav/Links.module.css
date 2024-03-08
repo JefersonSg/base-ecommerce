@@ -1,14 +1,16 @@
 .container_nav {
   margin-top: 8px;
   position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .categorias_lista {
   display: flex;
   background-color: white;
+  width: max-content;
   max-width: 1220px;
-  justify-content: center;
-  gap: 24px;
+  justify-content: space-between;
   margin: 0 auto;
 }
 
