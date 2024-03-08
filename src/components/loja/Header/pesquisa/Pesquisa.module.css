@@ -1,8 +1,8 @@
 .pesquisa {
   position: absolute;
-  top: 5px;
+  top: 0px;
   left: 16px;
-  height: 45px;
+  height: 64px;
   width: 316px;
   background: white;
   animation: entrada 0.1s ease-in forwards;
