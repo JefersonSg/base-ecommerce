@@ -12,6 +12,11 @@
   justify-content: space-between;
   margin-top: 8px;
 }
+.total_pesquisa {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: var(--fonte-primaria);
+}
 
 .select_view {
   display: flex;

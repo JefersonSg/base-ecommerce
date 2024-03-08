@@ -19,9 +19,9 @@ const SectionProdutos = ({
   return (
     <div className={styles.section_produtos}>
       <div className={styles.informacoes}>
-        <p className="texto">
-          {pesquisa ? `Resultado de ${pesquisa}` : 'Todos os produtos'}
-        </p>
+        <span className={styles.total_pesquisa}>{`Total de ${
+          data?.products?.length ?? 0
+        } ${data?.products?.length > 1 ? 'produtos' : 'produto'}`}</span>
 
         <div className={styles.select_view}>
           <Image
