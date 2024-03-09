@@ -14,17 +14,27 @@ function SlideCategoria({
 }: {
   data: { categories: CategoryInterface[] };
 }) {
-  const tablets = useMedia('(max-width:64rem)');
   const mobile = useMedia('(max-width:48rem)');
-  const smartphone = useMedia('(max-width:30rem)');
+
   return (
     <Swiper
       className={`${styles.mySwiper} slide-categoria`}
-      slidesPerView={smartphone ? 2.5 : mobile ? 3.5 : 5.5}
-      navigation={!tablets}
+      slidesPerView={5.5}
+      navigation={!mobile}
       modules={[Navigation, Autoplay, Pagination]}
+      breakpoints={{
+        0: {
+          slidesPerView: 2.5
+        },
+        768: {
+          slidesPerView: 3.5
+        },
+        1024: {
+          slidesPerView: 5.5
+        }
+      }}
       autoplay={{
-        delay: 2000,
+        delay: 2500,
         pauseOnMouseEnter: true,
         disableOnInteraction: false
       }}

@@ -5,6 +5,8 @@ import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import React from 'react';
 import Produto from '@/src/components/loja/card-product/Produto';
 
+import SlideProduct from './slide-produto';
+
 async function Section({
   nomeSessao,
   quantidadeItens,
@@ -36,7 +38,10 @@ async function Section({
             )
         )}
       </div>
-      <BotaoSessao texto="Todos os produtos" />
+      <SlideProduct data={data} />
+      <div className={styles.botao_sessao}>
+        <BotaoSessao texto="Todos os produtos" />
+      </div>
     </div>
   );
 }

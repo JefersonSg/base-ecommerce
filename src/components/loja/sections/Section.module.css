@@ -23,4 +23,16 @@
     margin-top: 32px;
     text-align: center;
   }
+  .gallery_layout_container {
+    display: none;
+  }
+  .botao_sessao {
+    max-width: 200px;
+    margin: 0 auto;
+    }
+}
+
+@media (min-width: 64rem) {
+
+
 }

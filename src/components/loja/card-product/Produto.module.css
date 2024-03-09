@@ -10,6 +10,8 @@
   padding: 5px;
   gap: 16px;
   box-sizing: border-box;
+  background-color: white;
+  text-align: start;
 }
 .imagem_div {
   justify-content: center;
@@ -33,39 +35,33 @@
 }
 .nome_produto {
   color: #000;
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 110.697%; /* 17.712px */
+  line-height: 110.697%;
 }
+
 .preco {
   color: #471703;
-
-  /* Bold / 16 */
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
 }
 
 @media (min-width: 48rem) {
   .produto {
-    height: 46vw;
-    flex-basis: 33%;
+    height: 35vw;
+    flex-basis: 25%;
+    max-height: 480px;
+    max-width: 280px;
   }
 }
 
 @media (min-width: 64rem) {
   .produto {
-    height: 35vw;
-    flex-basis: 25%;
-    max-height: 450px;
-    max-width: 305px;
-  }
-  .imagem,
-  .imagem_div {
-    border-radius: 0px;
+    padding: 0;
   }
 }
