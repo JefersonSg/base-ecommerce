@@ -21,27 +21,29 @@ function Produto({
   promotion: boolean;
 }) {
   return (
-    <Link
-      href={{ pathname: '/produto', query: { _id: link } }}
-      className={styles.produto}
-    >
-      <Like productId={_id} />
-      <div className={styles.imagem_div}>
-        {img && (
-          <Image
-            className={styles.imagem}
-            alt="Imagem do produto"
-            src={img[0]}
-            width={185}
-            height={243}
-          />
-        )}
-      </div>
-      <div className={styles.infos}>
-        <p className={styles.nome_produto}>{name}</p>
-        <span className={styles.preco}>R$ {price}</span>
-      </div>
-    </Link>
+    <div>
+      <Link
+        href={{ pathname: '/produto', query: { _id: link } }}
+        className={styles.produto}
+      >
+        <Like productId={_id} />
+        <div className={styles.imagem_div}>
+          {img && (
+            <Image
+              className={styles.imagem}
+              alt="Imagem do produto"
+              src={img[0]}
+              width={185}
+              height={243}
+            />
+          )}
+        </div>
+        <div className={styles.infos}>
+          <p className={styles.nome_produto}>{name}</p>
+          <span className={styles.preco}>R$ {price}</span>
+        </div>
+      </Link>
+    </div>
   );
 }
 

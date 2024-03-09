@@ -46,7 +46,7 @@ const SectionProdutos = ({
         <div className={styles.botao}>
           <div
             onClick={() => {
-              setTotalProdutos(totalProdutos + 9);
+              setTotalProdutos(totalProdutos + 8);
             }}
           >
             <BotaoColorido texto="Mostrar mais" />
