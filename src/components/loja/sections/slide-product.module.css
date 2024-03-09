@@ -1,9 +1,9 @@
 .mySwiper {
-    display: none !important;
+  display: none !important;
 }
 
 @media (min-width: 48rem) {
-    .mySwiper {
-        display: flex !important;
-    }
+  .mySwiper {
+    display: flex !important;
+  }
 }
