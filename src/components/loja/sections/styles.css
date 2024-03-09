@@ -1,4 +1,4 @@
-.slide-produtos{
+.slide-produtos {
   padding: 0 30px;
 }
 .slide-produtos .swiper-button-next,
@@ -47,4 +47,3 @@
 .slide-produtos .swiper-pagination-bullet-active {
   background-color: white !important;
 }
-
