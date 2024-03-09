@@ -53,7 +53,7 @@
 @media (min-width: 48rem) {
   .produto {
     height: 46vw;
-   flex-basis: 33%;
+    flex-basis: 33%;
   }
 }
 
