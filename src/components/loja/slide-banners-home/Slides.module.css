@@ -1,13 +1,28 @@
 .imagem img {
   width: 100%;
   object-fit: contain;
-  height: auto;
+  height: max-content;
+}
+.imagem_mobile {
+  display: block;
+}
+.imagem_desktop {
+  display: none;
 }
 .imagem {
   width: 100%;
-  height: auto;
+  height: max-content;
 }
 
 .container_banner {
-  height: auto;
+  height: max-content;
+}
+
+@media (min-width:48rem) {
+  .imagem_mobile {
+    display: none;
+  }
+  .imagem_desktop {
+    display: block;
+  }
 }

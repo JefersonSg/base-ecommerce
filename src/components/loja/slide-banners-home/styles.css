@@ -18,7 +18,9 @@
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Padrão */
 }
-
+.banner-wraper {
+  max-height: max-content;
+}
 .slide-banner .swiper-button-next {
   right: 12px;
 }

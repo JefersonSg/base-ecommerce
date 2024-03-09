@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 
 import styles from './Slides.module.css';
 import Image from 'next/image';
@@ -12,16 +11,14 @@ import Image from 'next/image';
 import './styles.css';
 import Link from 'next/link';
 import { type BannerType } from '@/src/shared/helpers/interfaces';
-import useMedia from '@/src/shared/hooks/useMedia';
 
 function Slide({ data }: { data: { banners: BannerType[] } }) {
-  const mobile = useMedia('(max-width: 48rem)');
-
   return (
     <div className={styles.container_banner}>
       <Swiper
         className={`${'slide-banner'} mySwiper`}
         centeredSlides={true}
+        height={400}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false
@@ -35,15 +32,23 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
       >
         {data?.banners?.map((banner) => {
           return (
-            <SwiperSlide key={banner._id}>
+            <SwiperSlide key={banner._id} className="banner-wraper">
               {' '}
               <div className={styles.imagem}>
                 <Link href={banner.link}>
                   <Image
-                    alt="imagem banner"
-                    src={mobile ? banner.imageMobile : banner.imageDesktop}
+                    className={styles.imagem_mobile}
+                    alt="imagem banner mobile"
+                    src={banner.imageMobile}
                     width={750}
                     height={878}
+                  />
+                  <Image
+                    className={styles.imagem_desktop}
+                    alt="imagem banner desktop"
+                    src={banner.imageDesktop}
+                    width={1920}
+                    height={600}
                   />
                 </Link>
               </div>
