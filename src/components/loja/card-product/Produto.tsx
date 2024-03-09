@@ -32,8 +32,8 @@ function Produto({
             className={styles.imagem}
             alt="Imagem do produto"
             src={img[0]}
-            width={152}
-            height={206}
+            width={185}
+            height={243}
           />
         )}
       </div>

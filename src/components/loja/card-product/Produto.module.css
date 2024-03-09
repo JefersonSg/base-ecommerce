@@ -1,23 +1,27 @@
 .produto {
+  flex-basis: 50%;
   width: 100%;
-  max-width: 200px;
-  position: relative;
-}
-
-.produto {
+  max-width: 50%;
   display: flex;
   flex-direction: column;
+  height: 70vw;
+  position: relative;
   cursor: pointer;
+  padding: 5px;
+  gap: 16px;
+  box-sizing: border-box;
 }
 .imagem_div {
-  height: 206px;
+  justify-content: center;
   background-color: #e7e7e7;
-  margin-bottom: 16px;
   border-radius: 12px;
+  height: 100%;
+  object-fit: fill;
 }
+
 .imagem {
   object-fit: cover;
-  width: 100%;
+  width: auto;
   height: 100%;
   border-radius: 12px;
 }
@@ -44,4 +48,24 @@
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 24px */
+}
+
+@media (min-width: 48rem) {
+  .produto {
+    height: 46vw;
+   flex-basis: 33%;
+  }
+}
+
+@media (min-width: 64rem) {
+  .produto {
+    height: 35vw;
+    flex-basis: 25%;
+    max-height: 450px;
+    max-width: 305px;
+  }
+  .imagem,
+  .imagem_div {
+    border-radius: 0px;
+  }
 }
