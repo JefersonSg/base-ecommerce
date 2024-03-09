@@ -26,8 +26,11 @@ function SlideCategoria({
         0: {
           slidesPerView: 2.5
         },
-        768: {
+        450: {
           slidesPerView: 3.5
+        },
+        650: {
+          slidesPerView: 4.5
         },
         1024: {
           slidesPerView: 5.5

@@ -1,6 +1,5 @@
 import BotaoSessao from '@/src/components/compartilhado/botoes/BotaoSessao';
 import styles from './Section.module.css';
-import { getAllActiveProducts } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import React from 'react';
 import Produto from '@/src/components/loja/card-product/Produto';
@@ -8,16 +7,12 @@ import Produto from '@/src/components/loja/card-product/Produto';
 import SlideProduct from './slide-produto';
 
 async function Section({
-  nomeSessao,
-  quantidadeItens,
-  IdSessao
+  data,
+  nomeSessao
 }: {
+  data: { products: ProductApi[] };
   nomeSessao: string;
-  quantidadeItens: number;
-  IdSessao: string;
 }) {
-  const data: { products: ProductApi[] } = await getAllActiveProducts();
-
   return (
     <div className={styles.section}>
       <h2 className="titulo_sessao">{nomeSessao}</h2>

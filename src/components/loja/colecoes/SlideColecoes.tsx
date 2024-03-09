@@ -16,7 +16,15 @@ const SlideColecoes = () => {
       className={`${'slide-colecoes'} ${styles.slide_colecoes}`}
       centeredSlides={false}
       spaceBetween={32}
-      slidesPerView={'auto'}
+      slidesPerView={3}
+      breakpoints={{
+        0: {
+          slidesPerView: 2.2
+        },
+        768: {
+          slidesPerView: 3
+        }
+      }}
       navigation={true}
       modules={[Navigation]}
     >

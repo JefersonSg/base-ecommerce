@@ -20,6 +20,7 @@ async function isAdmin(response: any) {
 
   Cookies.remove('isAdmin');
 }
+
 export const getUserByToken = async () => {
   if (!token) {
     return null;
@@ -77,6 +78,17 @@ export const getAllProducts = async () => {
 export const getAllActiveProducts = async () => {
   try {
     const response = await axios.get(`${API}products/actives`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getProductBySales = async () => {
+  try {
+    const response = await axios.get(`${API}products/sales/get-all`, config);
 
     return response.data;
   } catch (error) {

@@ -3,8 +3,9 @@ import styles from './page.module.css';
 import SlideVantagens from '@/src/components/loja/slide-vantagens/SlideVantagens';
 import Categorias from '@/src/components/loja/categorias/Categorias';
 import Section from '@/src/components/loja/sections/Section';
-// import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 import ContainerSlideBanner from '@/src/components/loja/slide-banners-home/ContainerSlideBanner';
+import { getAllActiveProducts, getProductBySales } from '@/src/shared/api/GETS';
+// import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 
 export const metadata: Metadata = {
   title: 'Abayomi Make Beauty | Home',
@@ -22,19 +23,18 @@ export const metadata: Metadata = {
   robots: "'index', 'follow'"
 };
 
-export default function Home() {
+export default async function Home() {
+  const novidades = await getAllActiveProducts();
+  const maisVendidos = await getProductBySales();
+
   return (
     <>
       <main className={styles.main}>
         <ContainerSlideBanner />
         <SlideVantagens />
         <Categorias />
-        <Section nomeSessao="Novidades" IdSessao="teste" quantidadeItens={4} />
-        <Section
-          nomeSessao="Mais vendidos"
-          IdSessao="teste"
-          quantidadeItens={4}
-        />
+        <Section data={novidades} nomeSessao="Novidades" />
+        <Section data={maisVendidos} nomeSessao="Mais vendidos" />
         {/* <SectionColecoes /> */}
       </main>
     </>

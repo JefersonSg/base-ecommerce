@@ -57,11 +57,6 @@
     flex-basis: 25%;
     max-height: 480px;
     max-width: 280px;
-  }
-}
-
-@media (min-width: 64rem) {
-  .produto {
     padding: 0;
   }
 }
