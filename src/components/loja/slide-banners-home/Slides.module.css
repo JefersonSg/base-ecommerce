@@ -18,7 +18,7 @@
   height: max-content;
 }
 
-@media (min-width:48rem) {
+@media (min-width: 48rem) {
   .imagem_mobile {
     display: none;
   }
