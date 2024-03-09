@@ -1,8 +1,6 @@
 .container_nav {
   margin-top: 8px;
   position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 
 .categorias_lista {
