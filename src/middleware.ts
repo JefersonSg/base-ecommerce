@@ -5,6 +5,7 @@ export default function middleware(req: NextRequest) {
   const admin = req.cookies.get('isAdmin')?.value;
 
   const signInURL = new URL('/', req.url);
+  const urlLogin = new URL('/login', req.url);
 
   if (token) {
     if (
@@ -19,13 +20,22 @@ export default function middleware(req: NextRequest) {
   }
   if (!token) {
     if (req.nextUrl.pathname === '/minha-conta') {
-      return NextResponse.redirect(signInURL);
+      return NextResponse.redirect(urlLogin);
+    }
+    if (req.nextUrl.pathname === '/favoritos') {
+      return NextResponse.redirect(urlLogin);
     }
     if (req.nextUrl.pathname.includes('dashboard')) {
-      return NextResponse.redirect(signInURL);
+      return NextResponse.redirect(urlLogin);
     }
   }
 }
 export const config = {
-  matcher: ['/login/:path*', '/registrar/', '/minha-conta', '/dashboard/:path*']
+  matcher: [
+    '/login/:path*',
+    '/registrar/',
+    '/minha-conta',
+    '/favoritos',
+    '/dashboard/:path*'
+  ]
 };
