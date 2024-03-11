@@ -23,9 +23,8 @@
   padding-left: 8px;
 }
 .seta img {
-  transition: all .2s;
+  transition: all 0.2s;
 }
 .seta.ativo img {
   transform: rotate(180deg);
 }
-
