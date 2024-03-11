@@ -2,7 +2,7 @@ import { type Metadata } from 'next';
 import styles from './page.module.css';
 import SlideVantagens from '@/src/components/loja/slide-vantagens/SlideVantagens';
 import Categorias from '@/src/components/loja/categorias/Categorias';
-import Section from '@/src/components/loja/sections/Section';
+import Section from '@/src/components/loja/sections-home/Section';
 import ContainerSlideBanner from '@/src/components/loja/slide-banners-home/ContainerSlideBanner';
 import { getAllActiveProducts, getProductBySales } from '@/src/shared/api/GETS';
 // import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
