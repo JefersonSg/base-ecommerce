@@ -12,10 +12,12 @@ import { type FavoriteInterface } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import { deleteFavorite } from '@/src/shared/api/DELETE';
 import { getFavoriteByUserId } from '@/src/shared/api/GETS';
+import Cookies from 'js-cookie';
 
 const Like = ({ productId }: { productId: string }) => {
   const [isFavorites, setIsFavorite] = React.useState(false);
   const [favoriteId, setFavoriteId] = React.useState<string>('');
+  const [token, setToken] = React.useState('');
 
   const [paused, setPaused] = React.useState(true);
   const [stope, setStope] = React.useState(true);
@@ -58,6 +60,15 @@ const Like = ({ productId }: { productId: string }) => {
     }
   }, [data, productId]);
 
+  // get token
+  React.useEffect(() => {
+    const token = Cookies.get('auth_token');
+
+    if (token) {
+      setToken(token);
+    }
+  }, []);
+
   async function addNewFavorite() {
     if (!isFavorites) {
       try {
@@ -96,15 +107,18 @@ const Like = ({ productId }: { productId: string }) => {
       onClick={async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        await removeFavorite();
 
-        await addNewFavorite();
-        if (paused && stope) {
-          setPaused(false);
-          setStope(false);
-        } else {
-          setPaused(true);
-          setStope(true);
+        if (token) {
+          await removeFavorite();
+
+          await addNewFavorite();
+          if (paused && stope) {
+            setPaused(false);
+            setStope(false);
+          } else {
+            setPaused(true);
+            setStope(true);
+          }
         }
       }}
     >
