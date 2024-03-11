@@ -3,6 +3,7 @@ import styles from './LinksCategorias.module.css';
 import { getAllCategories } from '@/src/shared/api/GETS';
 import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
 import BotaoCategoria from './BotaoCategoria';
+import React from 'react';
 
 function LinksCategorias({
   setAtivo
@@ -13,6 +14,7 @@ function LinksCategorias({
     queryKey: ['categories'],
     queryFn: getAllCategories
   });
+  const [ativoLista, setAtivoLista] = React.useState<string>('');
 
   return (
     <ul className={styles.links}>
@@ -21,6 +23,8 @@ function LinksCategorias({
           <BotaoCategoria
             key={category._id}
             category={category}
+            setAtivoLista={setAtivoLista}
+            ativoLista={ativoLista}
             setAtivo={setAtivo}
           />
         );

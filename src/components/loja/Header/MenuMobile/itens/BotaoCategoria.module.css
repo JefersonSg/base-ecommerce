@@ -2,21 +2,18 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  color: #393939;
+  color: #242424;
   font-family: var(--fonte-primaria);
-  font-size: 16px;
-  font-style: normal;
+  text-transform: uppercase;
+  font-size: 13px;
   font-weight: 400;
-  line-height: normal;
-  max-width: max-content;
   cursor: pointer;
 }
 .div_name {
   cursor: pointer;
 }
 .lista p:hover {
-  color: #4a4a69;
-  font-weight: 600;
+  color: var(--cor-contraste);
 }
 
 .seta {
@@ -26,5 +23,9 @@
   padding-left: 8px;
 }
 .seta img {
-  transform: rotate(270deg);
+  transition: all .2s;
 }
+.seta.ativo img {
+  transform: rotate(180deg);
+}
+

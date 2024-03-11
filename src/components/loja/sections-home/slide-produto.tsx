@@ -32,7 +32,7 @@ function SlideProduct({ data }: { data: { products: ProductApi[] } }) {
         modules={[Navigation]}
         speed={700}
       >
-        {data.products.map((product) => {
+        {data?.products?.map((product) => {
           return (
             <SwiperSlide key={product._id}>
               <Produto

@@ -5,10 +5,15 @@ import Cookies from 'js-cookie';
 
 function UlLinksUteis() {
   const [isAdmin, setIsAdmin] = React.useState<string | undefined>('');
+  const [auth, setAuth] = React.useState<string | undefined>('');
 
   React.useEffect(() => {
     setIsAdmin(Cookies.get('isAdmin'));
   }, []);
+  React.useEffect(() => {
+    setAuth(Cookies.get('auth_token'));
+  }, []);
+
   return (
     <ul className={styles.linksUteis}>
       {isAdmin && (
@@ -22,7 +27,11 @@ function UlLinksUteis() {
         pathname="/rastrear-pedido"
       />
       <BotaoLi texto="Meus Pedidos" image="caixa" pathname="meus-pedidos" />
-      <BotaoLi texto="Minha conta" image="usuario" pathname="minha-conta" />
+      <BotaoLi
+        texto="Minha conta"
+        image="usuario"
+        pathname={auth ? 'minha-conta' : 'login'}
+      />
     </ul>
   );
 }

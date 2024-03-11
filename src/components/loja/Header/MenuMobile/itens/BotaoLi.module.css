@@ -8,10 +8,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  max-width: max-content;
 }
 
 .lista a:hover {
-  color: #4a4a69;
-  font-weight: 600;
+  color: var(--cor-contraste);
 }
