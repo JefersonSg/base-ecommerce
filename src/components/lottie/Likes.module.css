@@ -5,6 +5,7 @@
   z-index: 100;
   background-color: white;
   border-radius: 9999px;
+  cursor: auto;
 }
 .like div {
   pointer-events: none;

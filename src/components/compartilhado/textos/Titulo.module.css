@@ -3,7 +3,8 @@
   align-items: center;
   gap: 16px;
   width: 100%;
-  max-width: 326px;
+  padding: 0 16px;
+  max-width: 1220px;
   margin: 0 auto;
 }
 
@@ -13,6 +14,6 @@
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
-  line-height: 120%; /* 28.8px */
+  line-height: 120%;
   font-variant: small-caps;
 }

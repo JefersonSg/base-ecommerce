@@ -43,20 +43,21 @@ const SectionFavorites = () => {
 
   return (
     <div className={styles.section}>
-      <div className={styles.produtos}>
-        {data?.map((product, index) => {
-          return (
-            <Produto
-              key={index}
-              _id={product._id}
-              link={product._id}
-              name={product.name}
-              price={product.price?.toFixed(2)?.toString()?.replace('.', ',')}
-              promotion={product.promotion}
-              img={product.images}
-            />
-          );
-        })}
+      <div className={`${styles.gallery_layout_container} ${styles.favorites}`}>
+        {data?.map(
+          (product, index) =>
+            index <= 3 && (
+              <Produto
+                key={product._id}
+                _id={product._id}
+                link={product._id}
+                name={product.name}
+                price={product.price.toFixed(2).toString().replace('.', ',')}
+                promotion={product.promotion}
+                img={product.images}
+              />
+            )
+        )}
       </div>
     </div>
   );

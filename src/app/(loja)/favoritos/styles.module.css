@@ -1,3 +1,4 @@
-.login_container {
-  min-height: 600px;
+.favorite_container {
+  min-height: 100vh;
+  margin-top: 32px;
 }

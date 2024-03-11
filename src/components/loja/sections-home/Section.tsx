@@ -17,7 +17,7 @@ async function Section({
     <div className={styles.section}>
       <h2 className="titulo_sessao">{nomeSessao}</h2>
 
-      <div className={styles.gallery_layout_container}>
+      <div className={`${styles.gallery_layout_container} ${styles.home}`}>
         {data?.products?.map(
           (product, index) =>
             index <= 3 && (
