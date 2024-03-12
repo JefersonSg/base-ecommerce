@@ -25,7 +25,7 @@ function SlideVantagens() {
         navigation={true}
         spaceBetween={!mobile ? 32 : 0}
         pagination={false}
-        loop={!!mobile}
+        loop={!!tablets}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false
