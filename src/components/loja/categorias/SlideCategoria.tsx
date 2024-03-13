@@ -41,7 +41,7 @@ function SlideCategoria({
         pauseOnMouseEnter: true,
         disableOnInteraction: false
       }}
-      pagination={true}
+      pagination={false}
     >
       {data?.categories?.map((category: any, index: number) => {
         return (
