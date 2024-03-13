@@ -20,15 +20,14 @@ function SlideVantagens() {
     <>
       <Swiper
         className={`${styles.mySwiper} slide-vantagens`}
-        centeredSlides={mobile ?? false}
+        centeredSlides={tablets}
         slidesPerView={mobile ? 1 : tablets ? 3 : 4}
         navigation={true}
-        spaceBetween={!mobile ? 32 : 0}
+        spaceBetween={mobile ? 0 : 32}
         pagination={false}
-        loop={!!tablets}
+        loop={tablets}
         autoplay={{
-          delay: 2500,
-          disableOnInteraction: false
+          delay: 2500
         }}
         modules={[Autoplay, Navigation]}
       >

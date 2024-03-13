@@ -2,6 +2,7 @@
   flex-basis: 50%;
   width: 100%;
   max-width: 50%;
+  min-width: 144px;
   display: flex;
   flex-direction: column;
   height: 70vw;
@@ -42,18 +43,34 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 110.697%;
+  line-height: 110%;
 }
 
 .preco {
-  color: #471703;
+  color: var(--cor-primaria);
   font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: 150%;
 }
-
+.promotion {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  width: max-content;
+  min-width: 58px;
+  height: 24px;
+  background-color: var(--cor-contraste);
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  font-family: var(--fonte-primaria);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
 @media (min-width: 48rem) {
   .produto {
     height: 35vw;

@@ -35,14 +35,7 @@ function SlideProduct({ data }: { data: { products: ProductApi[] } }) {
         {data?.products?.map((product) => {
           return (
             <SwiperSlide key={product._id}>
-              <Produto
-                _id={product._id}
-                link={product._id}
-                name={product.name}
-                price={`${product.price}`}
-                promotion={product.promotion}
-                img={product.images}
-              />
+              <Produto productData={product} />
             </SwiperSlide>
           );
         })}

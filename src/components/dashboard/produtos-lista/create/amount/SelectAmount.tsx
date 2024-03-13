@@ -13,7 +13,7 @@ const SelectAmount = ({
 }) => {
   return (
     <div>
-      <label htmlFor={color}>Estoque de {color}</label>
+      <label htmlFor={color}>Estoque da cor {color}</label>
       <input
         name={color}
         id={color}

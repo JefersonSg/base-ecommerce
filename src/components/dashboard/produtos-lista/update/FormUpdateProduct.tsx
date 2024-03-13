@@ -1,14 +1,22 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import './styles.css';
+import './slideProducts.css';
+
 import InputFormulario from '@/src/components/compartilhado/formulario/InputForm';
 import React from 'react';
 import styles from './FormCreateProduct.module.css';
-import './styles.css';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationProduct } from './ValidationProduct';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
@@ -30,6 +38,7 @@ import ButtonDelete from '../../Botoes/ButtonDelete';
 import { updateProduct } from '@/src/shared/api/UPDATES';
 import { useRouter } from 'next/navigation';
 import ToggleButtonCreate from '../../../compartilhado/formulario/ToggleButtonCreate';
+import Image from 'next/image';
 
 const schema = validationProduct;
 
@@ -45,6 +54,24 @@ const FormUpdateProduct = ({
   dataProduct: { product: ProductApi };
 }) => {
   const {
+    active,
+    brand,
+    category,
+    codeColors,
+    colors,
+    description,
+    name,
+    price,
+    promotion,
+    images,
+    size,
+    stock,
+    subcategory,
+    characteristic,
+    composition,
+    promotionalPrice
+  } = dataProduct.product;
+  const {
     register,
     handleSubmit,
     watch,
@@ -53,21 +80,35 @@ const FormUpdateProduct = ({
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: dataProduct?.product?.name,
-      description: dataProduct?.product?.description,
-      size: dataProduct?.product?.size,
-      category: dataProduct?.product?.category,
-      subcategory: dataProduct?.product?.subcategory,
-      composition: dataProduct?.product?.composition,
-      price: dataProduct?.product?.price,
-      promotion: dataProduct?.product?.promotion,
-      promotionalPrice: dataProduct?.product?.promotionalPrice,
-      brand: dataProduct?.product?.brand,
-      characteristic: dataProduct?.product?.characteristic,
+      name,
+      description,
+      size,
+      category,
+      subcategory,
+      composition,
+      price,
+      promotion,
+      promotionalPrice: promotionalPrice ?? 0,
+      brand,
+      characteristic,
       images: {},
-      active: dataProduct?.product?.active
+      active
     }
   });
+
+  const router = useRouter();
+  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [schemeColor, setSchemeColor] = React.useState(['']);
+  const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
+  const [amount, setAmount] = React.useState<number[]>([]);
+  const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
+  const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
+
+  const promotionCheck = watch('promotion');
+  const promotionPriceCheck = watch('promotionalPrice');
+  const activeCheck = watch('active');
+  const imagesWatch: any = watch('images');
 
   const dataCategory = useQuery<CategoriesResponse>({
     queryKey: ['categories'],
@@ -82,18 +123,10 @@ const FormUpdateProduct = ({
     queryFn: getAllProducts
   });
 
-  const router = useRouter();
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [schemeColor, setSchemeColor] = React.useState(['']);
-  const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
-  const [amount, setAmount] = React.useState<number[]>([]);
-  const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
-
   const onSubmit: SubmitHandler<any> = async (data: any) => {
     try {
       setIsLoading(true);
-      await updateProduct(
+      const response = await updateProduct(
         dataProduct.product._id,
         data,
         schemeCodeColor,
@@ -103,9 +136,12 @@ const FormUpdateProduct = ({
       );
       setIsLoading(false);
 
-      setAtivoPopUp('Produto atualizado com sucesso');
-      await refetch();
-      router.push('/dashboard/produtos');
+      if (response) {
+        console.log(response);
+        setAtivoPopUp('Produto atualizado com sucesso');
+        await refetch();
+        router.push('/dashboard/produtos');
+      }
     } catch (error) {
       console.log(error);
       setAtivoPopUp(`Erro ao Editar o produto`);
@@ -124,16 +160,14 @@ const FormUpdateProduct = ({
 
   // setando Valores dos arrays
   React.useEffect(() => {
-    if (dataProduct.product.colors[0]) {
-      setSchemeColor(dataProduct?.product?.colors);
+    if (colors[0]) {
+      setSchemeColor(colors);
     }
-    if (dataProduct?.product?.stock?.amount) {
-      setAmount(dataProduct?.product?.stock?.amount);
+    if (stock?.amount) {
+      setAmount(stock?.amount);
     }
-    if (dataProduct.product.codeColors) {
-      setSchemeCodeColor(
-        dataProduct?.product?.codeColors?.join(',')?.split(',')
-      );
+    if (codeColors) {
+      setSchemeCodeColor(codeColors?.join(',')?.split(','));
     }
 
     if (dataProduct?.product) {
@@ -141,10 +175,23 @@ const FormUpdateProduct = ({
         reset();
       }, 100);
     }
-  }, [dataProduct, reset]);
+  }, [codeColors, colors, dataProduct, reset, stock?.amount]);
 
-  const promotionCheck = watch('promotion');
-  const activeCheck = watch('active');
+  const handleChange = React.useCallback(() => {
+    const imageUrlArray: any[] = [];
+    if (imagesWatch?.[0]) {
+      const arrayImages = [...imagesWatch];
+      arrayImages?.forEach((image: any) => {
+        const imageURL = URL?.createObjectURL(image);
+        imageUrlArray.push(imageURL);
+      });
+    }
+    setImageUrl1(imageUrlArray);
+  }, [imagesWatch]);
+
+  React.useEffect(() => {
+    handleChange();
+  }, [handleChange]);
 
   return (
     <>
@@ -214,6 +261,51 @@ const FormUpdateProduct = ({
                 type="file"
                 error={errors.images}
               />
+              <Swiper
+                className={`${styles.mySwiper} slide-images`}
+                slidesPerView={4.8}
+                navigation={true}
+                spaceBetween={32}
+                pagination={false}
+                modules={[Navigation]}
+              >
+                {images && !imageUrl1[0] ? (
+                  <>
+                    {images.map((image, index) => {
+                      return (
+                        <SwiperSlide key={index}>
+                          <p>{index + 1}</p>
+                          <Image
+                            alt="imagens do produto"
+                            src={image}
+                            width={50}
+                            height={50}
+                          />
+                        </SwiperSlide>
+                      );
+                    })}
+                  </>
+                ) : (
+                  ''
+                )}
+                {imageUrl1?.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <p>{index + 1}</p>
+                      <Image
+                        alt="imagens do produto"
+                        src={image}
+                        width={50}
+                        height={50}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+
+              {/* <div className={styles.exibicao_div}>
+                <p>Deseja alterar a ordem de exibicao?</p>
+              </div> */}
             </div>
 
             <SelectColor
@@ -244,10 +336,18 @@ const FormUpdateProduct = ({
                   name={'promotion'}
                 />
               </div>
+              {promotionPriceCheck
+                ? promotionPriceCheck > price && (
+                    <p style={{ color: 'red' }}>
+                      O preco da promocao não pode ser maior <br /> que o preco
+                      normal
+                    </p>
+                  )
+                : ''}
               <InputFormulario
                 label="Preço da promoção"
                 name="promotionalPrice"
-                placeholder="7.00"
+                placeholder="9.99"
                 type="number"
                 error={errors.promotionalPrice}
                 register={register}

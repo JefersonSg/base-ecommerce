@@ -22,17 +22,7 @@ async function Section({
       <div className={`${styles.gallery_layout_container} ${styles.home}`}>
         {data?.products?.map(
           (product, index) =>
-            index <= 3 && (
-              <Produto
-                key={product._id}
-                _id={product._id}
-                link={product._id}
-                name={product.name}
-                price={product.price.toFixed(2).toString().replace('.', ',')}
-                promotion={product.promotion}
-                img={product.images}
-              />
-            )
+            index <= 3 && <Produto key={product._id} productData={product} />
         )}
       </div>
       <SlideProduct data={data} />

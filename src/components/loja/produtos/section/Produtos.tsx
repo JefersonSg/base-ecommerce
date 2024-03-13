@@ -14,16 +14,8 @@ const Produtos = () => {
 
   return (
     <div className={styles.gallery_layout_container}>
-      {data?.products?.map((product, index) => (
-        <Produto
-          key={product._id}
-          _id={product._id}
-          link={product._id}
-          name={product.name}
-          price={product.price.toFixed(2).toString().replace('.', ',')}
-          promotion={product.promotion}
-          img={product.images}
-        />
+      {data?.products?.map((product) => (
+        <Produto key={product._id} productData={product} />
       ))}
     </div>
   );

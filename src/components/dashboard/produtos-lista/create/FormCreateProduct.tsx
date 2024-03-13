@@ -2,10 +2,15 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import './styles.css';
+import './slideProducts.css';
+
 import InputFormulario from '@/src/components/compartilhado/formulario/InputForm';
 import React from 'react';
 import styles from './FormCreateProduct.module.css';
-import './styles.css';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -31,6 +36,9 @@ import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
 import { useRouter } from 'next/navigation';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import Image from 'next/image';
 
 const schema = validationProduct;
 
@@ -67,6 +75,17 @@ const FormCreateProduct = () => {
 
   const promotionWatch = watch('promotion');
   const activeWatch = watch('active');
+  const imagesWatch: any = watch('images');
+
+  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [schemeColor, setSchemeColor] = React.useState(['item1']);
+  const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
+  const [amount, setAmount] = React.useState<number[]>([]);
+  const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
+  const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
+
+  const router = useRouter();
 
   const dataCategory = useQuery<CategoriesResponse>({
     queryKey: ['categories'],
@@ -81,14 +100,21 @@ const FormCreateProduct = () => {
     queryFn: getAllProducts
   });
 
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [schemeColor, setSchemeColor] = React.useState(['item1']);
-  const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
-  const [amount, setAmount] = React.useState<number[]>([]);
-  const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
+  const handleChange = React.useCallback(() => {
+    const imageUrlArray: any[] = [];
+    if (imagesWatch?.[0]) {
+      const arrayImages = [...imagesWatch];
+      arrayImages?.forEach((image: any) => {
+        const imageURL = URL?.createObjectURL(image);
+        imageUrlArray.push(imageURL);
+      });
+    }
+    setImageUrl1(imageUrlArray);
+  }, [imagesWatch]);
 
-  const router = useRouter();
+  React.useEffect(() => {
+    handleChange();
+  }, [handleChange]);
 
   const onSubmit: SubmitHandler<ProductInputs> = async (data) => {
     try {
@@ -111,6 +137,7 @@ const FormCreateProduct = () => {
       setAtivoPopUp(`Erro ao criar o produto`);
     }
   };
+  console.log(imagesWatch);
 
   React.useEffect(() => {
     const temporizador = setTimeout(function closeError() {
@@ -190,6 +217,27 @@ const FormCreateProduct = () => {
                 type="file"
                 error={errors.images}
               />
+              <Swiper
+                className={`${styles.mySwiper} slide-images`}
+                slidesPerView={5}
+                navigation={true}
+                spaceBetween={32}
+                pagination={false}
+                modules={[Navigation]}
+              >
+                {imageUrl1?.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <Image
+                        alt="imagens do produto"
+                        src={image}
+                        width={50}
+                        height={50}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
             </div>
 
             <SelectColor

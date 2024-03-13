@@ -41,17 +41,22 @@ const SelectColor = ({
                 }}
               />
             </div>
-            <input
-              type="color"
-              id={`codeColor${index + 1}`}
-              value={schemeCodeColor[index] ?? '#000000'}
-              onChange={(e) => {
-                e.preventDefault();
-                const schemeCode = [...schemeCodeColor];
-                schemeCode[index] = e.currentTarget.value;
-                setSchemeCodeColor(schemeCode);
-              }}
-            />
+            <div>
+              <label htmlFor={`codeColor${index + 1}`}>
+                Selecione o tom da cor
+              </label>
+              <input
+                type="color"
+                id={`codeColor${index + 1}`}
+                value={schemeCodeColor[index] ?? '#000000'}
+                onChange={(e) => {
+                  e.preventDefault();
+                  const schemeCode = [...schemeCodeColor];
+                  schemeCode[index] = e.currentTarget.value;
+                  setSchemeCodeColor(schemeCode);
+                }}
+              />
+            </div>
             <SelectAmount
               color={color}
               index={index}
