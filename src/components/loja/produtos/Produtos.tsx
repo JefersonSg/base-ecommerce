@@ -6,30 +6,47 @@ import styles from './Produtos.module.css';
 import SectionProdutos from './section/SectionProdutos';
 import SlideSubcategorias from './slide/SlideSubcategorias';
 import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
-import { type subcategoryInterface } from '@/src/shared/helpers/interfaces';
+import {
+  type CategoryInterface,
+  type subcategoryInterface
+} from '@/src/shared/helpers/interfaces';
 
 function Produtos({
   pesquisa,
   data,
   categoryId,
-  subcategorieDataSlide
+  subcategorieDataSlide,
+  categorieDataSlide
 }: {
   pesquisa?: string;
   data?: any;
   categoryId?: string;
   subcategorieDataSlide?: { subcategories: subcategoryInterface[] };
+  categorieDataSlide?: { categories: CategoryInterface[] };
 }) {
   const [ativo, setAtivo] = React.useState(false);
 
   return (
     <div className={styles.produtos_container}>
+      <Titulo
+        titulo={`${pesquisa ?? ''} ${categoryId ? 'Subcategorias' : ''} ${
+          subcategorieDataSlide && !categoryId ? 'Subcategorias' : ''
+        }
+          ${categorieDataSlide ? 'Categorias' : ''}`}
+      />
       <div className={styles.div_titulo}>
-        <Titulo titulo={pesquisa ?? ''} />
-        <BotaoFiltro ativo={ativo} setAtivo={setAtivo} />
+        <div className={styles.div_filtro}>
+          <BotaoFiltro ativo={ativo} setAtivo={setAtivo} />
+        </div>
       </div>
       {!pesquisa && subcategorieDataSlide && (
         <div className={styles.subcategorias}>
           <SlideSubcategorias subcategorieDataSlide={subcategorieDataSlide} />
+        </div>
+      )}
+      {!pesquisa && categorieDataSlide && (
+        <div className={styles.subcategorias}>
+          <SlideSubcategorias categorieDataSlide={categorieDataSlide} />
         </div>
       )}
       <SectionProdutos pesquisa={pesquisa} data={data} />

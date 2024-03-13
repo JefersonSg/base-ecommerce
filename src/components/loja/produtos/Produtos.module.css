@@ -6,10 +6,23 @@
   width: 100%;
 }
 
+.div_filtro {
+  position: absolute;
+  right: 32px;
+}
 .div_titulo {
   display: flex;
   width: 100%;
-  max-width: 327px;
   margin: 0 auto;
+  padding: 0 12px;
+  max-width: 1220px;
   align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+@media (min-width: 64rem) {
+  .div_filtro {
+    display: none;
+  }
 }

@@ -12,7 +12,7 @@ const ProductsById = ({
   totalProdutos: number;
 }) => {
   return (
-    <div className={styles.produtos}>
+    <div className={styles.gallery_layout_container}>
       {data?.products?.map(
         (product, index) =>
           index <= totalProdutos && (

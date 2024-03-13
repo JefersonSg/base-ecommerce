@@ -33,8 +33,12 @@ export default async function Home() {
         <ContainerSlideBanner />
         <SlideVantagens />
         <Categorias />
-        <Section data={novidades} nomeSessao="Novidades" />
-        <Section data={maisVendidos} nomeSessao="Mais vendidos" />
+        <Section data={novidades} nomeSessao="Novidades" link={'novidades'} />
+        <Section
+          data={maisVendidos}
+          nomeSessao="Mais vendidos"
+          link={'mais-vendidos'}
+        />
         {/* <SectionColecoes /> */}
       </main>
     </>

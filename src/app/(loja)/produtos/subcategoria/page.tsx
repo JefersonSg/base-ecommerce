@@ -1,15 +1,40 @@
 import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
 import styles from './page.module.css';
-import { getProductsBySubcategory } from '@/src/shared/api/GETS';
+import {
+  getCategoryById,
+  getProductsBySubcategory,
+  getSubcategoryByCategory,
+  getSubcategoryById
+} from '@/src/shared/api/GETS';
 import Produtos from '@/src/components/loja/produtos/Produtos';
+import {
+  type subcategoryInterface,
+  type ProductApi,
+  type CategoryInterface
+} from '@/src/shared/helpers/interfaces';
 
 async function page({ searchParams }: { searchParams: { _id: string } }) {
-  const data = await getProductsBySubcategory(searchParams._id);
+  const data: { products: ProductApi[] } = await getProductsBySubcategory(
+    searchParams._id
+  );
+  const subcategoria: { subcategory: subcategoryInterface } =
+    await getSubcategoryById(searchParams._id);
+  const category: { category: CategoryInterface } = await getCategoryById(
+    subcategoria.subcategory.category
+  );
+
+  const subcategories = await getSubcategoryByCategory(
+    subcategoria.subcategory.category
+  );
 
   return (
     <div className={styles.produtos_container}>
-      <Breadcrumb texto="Home / Produtos" />
-      <Produtos data={data} />
+      <Breadcrumb
+        texto={`Home / Produtos / ${category?.category?.name ?? ''} / ${
+          subcategoria?.subcategory?.name ?? ''
+        }`}
+      />
+      <Produtos data={data} subcategorieDataSlide={subcategories} />
     </div>
   );
 }

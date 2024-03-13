@@ -7,10 +7,13 @@
 .informacoes {
   display: flex;
   align-items: center;
-  width: 327px;
+  width: 100%;
+  max-width: 950px;
+  padding: 0 16px;
   margin: 0 auto;
   justify-content: space-between;
   margin-top: 8px;
+  box-sizing: border-box;
 }
 .total_pesquisa {
   font-size: 14px;

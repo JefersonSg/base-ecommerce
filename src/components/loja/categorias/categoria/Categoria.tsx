@@ -18,13 +18,15 @@ function Categoria({
       href={{ pathname: `/produtos/${pathname}`, query: { _id: link } }}
       className={styles.categoria}
     >
-      <Image
-        className={styles.imagemCategoria}
-        alt={`imagem da categoria ${nome}`}
-        src={img}
-        width={104}
-        height={104}
-      />
+      <div className={styles.div_img}>
+        <Image
+          className={styles.imagemCategoria}
+          alt={`imagem da categoria ${nome}`}
+          src={img}
+          width={104}
+          height={104}
+        />
+      </div>
       <span>{nome}</span>
     </Link>
   );

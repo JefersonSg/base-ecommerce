@@ -39,9 +39,7 @@ const SectionProdutos = ({
           />
         </div>
       </div>
-      <div>
-        {data && <ProductsById data={data} totalProdutos={totalProdutos} />}
-      </div>
+      {data && <ProductsById data={data} totalProdutos={totalProdutos} />}
       {data?.products?.length > 9 && data.products.length > totalProdutos && (
         <div className={styles.botao}>
           <div

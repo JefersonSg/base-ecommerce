@@ -10,6 +10,7 @@ import {
   getFavoritesProducts
 } from '@/src/shared/api/GETS';
 import { usePathname } from 'next/navigation';
+import { Titulo } from '../../compartilhado/textos/Titulo';
 
 const SectionFavorites = () => {
   const pathname = usePathname();
@@ -43,6 +44,8 @@ const SectionFavorites = () => {
 
   return (
     <div className={styles.section}>
+      <Titulo titulo="Seus favoritos" />
+
       <div className={`${styles.gallery_layout_container} ${styles.favorites}`}>
         {data?.map(
           (product, index) =>

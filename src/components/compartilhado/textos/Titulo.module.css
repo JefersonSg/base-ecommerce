@@ -6,6 +6,7 @@
   padding: 0 16px;
   max-width: 1220px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .titulo {
