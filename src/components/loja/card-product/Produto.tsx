@@ -16,21 +16,25 @@ function Produto({ productData }: Props) {
     if (promotionalPrice && promotion) {
       const diferenca = price - promotionalPrice;
       const porcentagem = (diferenca / price) * 100;
-      console.log(diferenca, name);
-      return porcentagem.toFixed(2);
+      return porcentagem.toFixed(0);
     }
-    return undefined;
+    return null;
   };
 
-  promotionPorcent();
   return (
     <Link
       href={{ pathname: '/produto', query: { _id } }}
-      className={styles.produto}
+      className={`${styles.produto} ${
+        promotionPorcent() ? styles.promotion_active : ''
+      }`}
     >
       <Like productId={_id} />
       <div className={styles.imagem_div}>
-        <span className={styles.promotion}>Pro</span>
+        {promotionPorcent() ? (
+          <span className={styles.promotion}>{`-${promotionPorcent()}%`}</span>
+        ) : (
+          ''
+        )}
         {images && (
           <Image
             className={styles.imagem}
@@ -43,7 +47,15 @@ function Produto({ productData }: Props) {
       </div>
       <div className={styles.infos}>
         <p className={styles.nome_produto}>{name}</p>
-        <span className={styles.preco}>R$ {price}</span>
+
+        <div
+          className={`${styles.div_preco} ${
+            promotionPorcent() ? styles.promocao_preco : ''
+          }`}
+        >
+          <span className={`${styles.preco}`}>R$ {price.toFixed(2)}</span>
+          {promotionPorcent() ? <p>R$ {promotionalPrice}</p> : ''}
+        </div>
       </div>
     </Link>
   );

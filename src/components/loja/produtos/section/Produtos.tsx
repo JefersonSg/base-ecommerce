@@ -13,7 +13,7 @@ const Produtos = () => {
   });
 
   return (
-    <div className={styles.gallery_layout_container}>
+    <div className={'gallery_layout_container'}>
       {data?.products?.map((product) => (
         <Produto key={product._id} productData={product} />
       ))}

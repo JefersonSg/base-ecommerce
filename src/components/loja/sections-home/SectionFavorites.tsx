@@ -46,7 +46,7 @@ const SectionFavorites = () => {
     <div className={styles.section}>
       <Titulo titulo="Seus favoritos" />
 
-      <div className={`${styles.gallery_layout_container} ${styles.favorites}`}>
+      <div className={`styles.gallery_layout_container ${styles.favorites}`}>
         {data?.map(
           (product, index) =>
             index <= 3 && <Produto key={product._id} productData={product} />

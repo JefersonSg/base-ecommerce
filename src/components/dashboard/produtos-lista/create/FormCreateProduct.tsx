@@ -137,7 +137,6 @@ const FormCreateProduct = () => {
       setAtivoPopUp(`Erro ao criar o produto`);
     }
   };
-  console.log(imagesWatch);
 
   React.useEffect(() => {
     const temporizador = setTimeout(function closeError() {

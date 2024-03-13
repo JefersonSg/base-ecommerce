@@ -1,7 +1,7 @@
 import React from 'react';
 import Produto from '@/src/components/loja/card-product/Produto';
 
-import styles from './Produtos.module.css';
+// import styles from './Produtos.module.css';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
 const ProductsById = ({
@@ -12,7 +12,7 @@ const ProductsById = ({
   totalProdutos: number;
 }) => {
   return (
-    <div className={styles.gallery_layout_container}>
+    <div className={'gallery_layout_container'}>
       {data?.products?.map(
         (product, index) =>
           index <= totalProdutos && (
