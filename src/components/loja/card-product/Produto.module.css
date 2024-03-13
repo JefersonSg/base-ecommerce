@@ -15,8 +15,7 @@
   text-align: start;
 }
 .promotion_active {
-  height: calc(70vw + 20px) ;
-
+  height: calc(70vw + 20px);
 }
 .imagem_div {
   display: flex;
@@ -80,7 +79,7 @@
   flex-direction: column;
   gap: 0px;
 }
-.promocao_preco span{
+.promocao_preco span {
   font-weight: 300;
   font-size: 16;
   color: rgba(0, 0, 0, 0.6);
