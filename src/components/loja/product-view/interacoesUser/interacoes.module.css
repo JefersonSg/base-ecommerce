@@ -14,6 +14,6 @@
   align-items: center;
 }
 
-.interacao  div  div  svg g path{
+.interacao div div svg g path {
   stroke: var(--cor-secundaria);
 }

@@ -27,12 +27,13 @@
 .botaoColorido.loading {
   cursor: progress;
   opacity: 0.5;
-  animation: afundarSubir .5s  forwards ease-in-out;
+  animation: afundarSubir 0.5s forwards ease-in-out;
   transform-style: preserve-3d;
 }
 
-@keyframes afundarSubir  {
-  0%, 100% {
+@keyframes afundarSubir {
+  0%,
+  100% {
     transform: translateY(0) scale(1);
   }
   50% {
