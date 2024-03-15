@@ -12,6 +12,7 @@ import {
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { addNewItemCart } from '@/src/shared/api/CREATE';
+import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<{ user: UserInterface }>({
@@ -21,6 +22,10 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [colorSelected, setColorSelected] = React.useState(
     data.colors[0] ?? ''
   );
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const [textPopUp, setTextPopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   async function addCartItem() {
     const infosCartItem = {
@@ -30,9 +35,38 @@ function Detalhes({ data }: { data: ProductApi }) {
       color: colorSelected,
       amount: 1
     };
-    const response = await addNewItemCart(infosCartItem);
-    return response;
+
+    try {
+      setIsLoading(true);
+      const response = await addNewItemCart(infosCartItem);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 700);
+
+      if (response) {
+        setTextPopUp('Produdo adicionado ao carrinho');
+        setTypePopUp('');
+      }
+      return response;
+    } catch (error) {
+      console.log(error);
+      setTypePopUp('Erro ao adicionar ao carrinho');
+      setTypePopUp('error');
+      setIsLoading(false);
+    }
   }
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setTextPopUp('');
+      setTypePopUp('');
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [setTextPopUp, setTypePopUp]);
 
   return (
     <div className={styles.detalhes}>
@@ -51,6 +85,7 @@ function Detalhes({ data }: { data: ProductApi }) {
       <div
         className={styles.botao_carrinho}
         onClick={() => {
+          if (isLoading) return;
           void addCartItem();
         }}
       >
@@ -58,8 +93,10 @@ function Detalhes({ data }: { data: ProductApi }) {
           texto="Adicionar ao carrinho"
           img="carrinho.svg"
           alt="Imagem do carrinho"
+          isLoading={isLoading}
         />
       </div>
+      {typePopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
     </div>
   );
 }

@@ -1,17 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import styles from './Favorito.module.css';
+import Like from '@/src/components/lottie/Like';
 
-function Favotiro() {
+function Favotiro({ productId }: { productId: string }) {
   return (
     <div className={styles.favorito}>
-      <Image
-        alt="Foto de coração para favoritar o produto"
-        src={'/produto/pagina/favorito.svg'}
-        width={18}
-        height={16}
-      />
+      <Like productId={productId} />
     </div>
   );
 }

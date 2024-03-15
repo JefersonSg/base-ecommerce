@@ -24,3 +24,18 @@
   font-weight: 500;
   line-height: 150%;
 }
+.botaoColorido.loading {
+  cursor: progress;
+  opacity: 0.5;
+  animation: afundarSubir .5s  forwards ease-in-out;
+  transform-style: preserve-3d;
+}
+
+@keyframes afundarSubir  {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(5px) scale(0.98);
+  }
+}

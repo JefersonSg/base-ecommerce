@@ -28,7 +28,9 @@ function Produto({ productData }: Props) {
         promotionPorcent() ? styles.promotion_active : ''
       }`}
     >
-      <Like productId={_id} />
+      <div className={styles.like}>
+        <Like productId={_id} />
+      </div>
       <div className={styles.imagem_div}>
         {promotionPorcent() ? (
           <span className={styles.promotion}>{`-${promotionPorcent()}%`}</span>

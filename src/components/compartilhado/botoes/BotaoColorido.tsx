@@ -6,11 +6,14 @@ interface Botao {
   img?: string;
   alt?: string;
   caps?: boolean;
+  isLoading?: boolean;
 }
 
-function BotaoColorido({ texto, img, caps, alt }: Botao) {
+function BotaoColorido({ texto, img, caps, alt, isLoading }: Botao) {
   return (
-    <button className={styles.botaoColorido}>
+    <button
+      className={`${styles.botaoColorido} ${isLoading ? styles.loading : ''}`}
+    >
       {img && (
         <Image alt={`${alt}`} src={`/produto/${img}`} width={23} height={24} />
       )}

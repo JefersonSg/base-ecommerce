@@ -1,13 +1,19 @@
 .interatividades {
-  height: 24px;
+  height: 30px;
   width: 100%;
   max-width: 326px;
   margin: 0 auto;
   margin-top: 16px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .interacao {
   display: flex;
   gap: 16px;
+  align-items: center;
+}
+
+.interacao  div  div  svg g path{
+  stroke: var(--cor-secundaria);
 }

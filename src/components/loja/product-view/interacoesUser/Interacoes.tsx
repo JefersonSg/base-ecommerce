@@ -10,7 +10,7 @@ async function Interacoes({ id, stars }: { id: string; stars: number }) {
       <Estrelas stars={stars} type={1} />
       <div className={styles.interacao}>
         <Update id={id} />
-        <Favotiro />
+        <Favotiro productId={id} />
         <Compartilhar />
       </div>
     </div>
