@@ -1,3 +1,4 @@
+import { revalidateTagAction } from '@/src/actions/revalidates';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -17,119 +18,8 @@ const configFormdata = {
     'Content-Type': 'multipart/form-data'
   }
 };
-
-export async function updateCategory(data: any, id: string) {
-  const formData = new FormData();
-
-  formData.append('name', data.name);
-  formData.append('description', data.description);
-
-  if (data.image[0]) {
-    formData.append('image', data.image[0]);
-  }
-
-  try {
-    if (!token) {
-      console.log('sem token de acesso');
-      return;
-    }
-
-    const response = await axios.patch(
-      `${API}categories/edit/${id}`,
-      formData,
-      configFormdata
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function updateSubcategory(data: any, id: string) {
-  const formData = new FormData();
-
-  formData.append('name', data.name);
-  formData.append('description', data.description);
-
-  formData.append('category', data.category);
-
-  if (data.image[0]) {
-    formData.append('image', data.image[0]);
-  }
-
-  try {
-    if (!token) {
-      console.log('sem token de acesso');
-      return;
-    }
-
-    const response = await axios.patch(
-      `${API}subcategories/edit/${id}`,
-      formData,
-      configFormdata
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function updateComment(data: any) {
-  const formData = new FormData();
-
-  formData.append('commentId', data.commentId);
-  formData.append('comment', data.comment);
-  formData.append('stars', data.stars);
-
-  if (data.image) {
-    formData.append('image', data.image[0]);
-  }
-
-  try {
-    if (!token) {
-      console.log('sem token de acesso');
-      return;
-    }
-
-    const response = await axios.patch(
-      `${API}products/update/comment`,
-      formData,
-      configFormdata
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function toggleStock(data: any, pathnameUrl: string) {
-  const formData = new FormData();
-
-  Object.keys(data).forEach((key) => {
-    if (key !== 'images' && key !== 'image') {
-      formData.append(key, data[key]);
-    }
-  });
-
-  if (data?.stock?.amount) {
-    formData.append('amount', data.stock.amount);
-  }
-
-  try {
-    const response = await axios.patch(
-      `${API}${pathnameUrl}${data._id}`,
-      formData,
-      configFormdata
-    );
-
-    return response.data;
-  } catch (error: any) {
-    console.log(error);
-  }
-}
-
 export async function updateProduct(
-  id: string,
+  productId: string,
   data: any,
   codeColors: string[],
   colors: string[],
@@ -174,10 +64,14 @@ export async function updateProduct(
   }
   try {
     const response = await axios.patch(
-      `${API}products/edit/${id}`,
+      `${API}products/edit/${productId}`,
       formData,
       configFormdata
     );
+
+    await revalidateTagAction('all-active-products');
+    await revalidateTagAction('all-products');
+    await revalidateTagAction('product-' + productId);
 
     return response.data;
   } catch (error: any) {
@@ -188,6 +82,91 @@ export async function updateProduct(
         setAtivoPopUp(error.response.data.errorsResult.body[key]);
       });
     }
+  }
+}
+
+export async function updateCategory(data: any, id: string) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('description', data.description);
+
+  if (data.image[0]) {
+    formData.append('image', data.image[0]);
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.patch(
+      `${API}categories/edit/${id}`,
+      formData,
+      configFormdata
+    );
+    await revalidateTagAction('all-categories');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function updateSubcategory(data: any, id: string) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('description', data.description);
+
+  formData.append('category', data.category);
+
+  if (data.image[0]) {
+    formData.append('image', data.image[0]);
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.patch(
+      `${API}subcategories/edit/${id}`,
+      formData,
+      configFormdata
+    );
+    await revalidateTagAction('all-subcategories');
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function toggleStock(data: any, pathnameUrl: string) {
+  const formData = new FormData();
+
+  Object.keys(data).forEach((key) => {
+    if (key !== 'images' && key !== 'image') {
+      formData.append(key, data[key]);
+    }
+  });
+
+  if (data?.stock?.amount) {
+    formData.append('amount', data.stock.amount);
+  }
+
+  try {
+    const response = await axios.patch(
+      `${API}${pathnameUrl}${data._id}`,
+      formData,
+      configFormdata
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
   }
 }
 
@@ -204,6 +183,9 @@ export async function toggleBanner(data: any) {
       formData,
       configFormdata
     );
+
+    await revalidateTagAction('all-banners');
+    await revalidateTagAction('all-active-banners');
 
     return response.data;
   } catch (error: any) {
@@ -254,12 +236,44 @@ export async function updateBanner(
       formData,
       configFormdata
     );
+    await revalidateTagAction('all-banners');
+    await revalidateTagAction('all-active-banners');
 
     return response.data;
   } catch (error: any) {
     console.log(error);
   }
 }
+
+// No Revalidation
+export async function updateComment(data: any) {
+  const formData = new FormData();
+
+  formData.append('commentId', data.commentId);
+  formData.append('comment', data.comment);
+  formData.append('stars', data.stars);
+
+  if (data.image) {
+    formData.append('image', data.image[0]);
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.patch(
+      `${API}products/update/comment`,
+      formData,
+      configFormdata
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function updateItemCart(
   ItemCartId: string,
   data: { size: string; amount: number; color: string }

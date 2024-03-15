@@ -20,6 +20,7 @@ import {
 } from '@/src/shared/helpers/interfaces';
 import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
 import Image from 'next/image';
+import { revalidateTagAction } from '@/src/actions/revalidates';
 
 const schema = validationBannerEdit;
 
@@ -76,6 +77,7 @@ const SideBarFormEdit = ({
     setIsLoading(true);
 
     await updateBanner(bannerData._id, data);
+    await revalidateTagAction('all-active-banners');
     await refetch();
     setIsLoading(false);
     setAtivo(false);

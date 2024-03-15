@@ -1,3 +1,4 @@
+import { revalidateTagAction } from '@/src/actions/revalidates';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -11,27 +12,55 @@ const config = {
   }
 };
 
+// Revalidations
+
+export async function deleteBanner(id: string) {
+  try {
+    const response = await axios.delete(`${API}banners/delete/${id}`, config);
+    await revalidateTagAction('all-active-banners');
+    await revalidateTagAction('all-banners');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteProduct(productId: string) {
+  const response = await axios.delete(
+    `${API}products/delete/${productId}`,
+    config
+  );
+  await revalidateTagAction('all-active-products');
+  await revalidateTagAction('all-products');
+  return response.data;
+}
+
+export async function deleteSubcategory(id: string) {
+  const response = await axios.delete(
+    `${API}subcategories/delete/${id}`,
+    config
+  );
+  await revalidateTagAction('all-subcategories');
+  return response.data;
+}
+
 export async function deleteCategory(id: string) {
   const response = await axios.delete(`${API}categories/delete/${id}`, config);
+
+  await revalidateTagAction('all-categories');
 
   return response.data;
 }
 
-export async function deletesubcategory(id: string) {
+// No revalidate
+export async function deleteCartItem(itemCartId: string) {
   const response = await axios.delete(
-    `${API}subcategories/delete/${id}`,
+    `${API}shopping/delete/${itemCartId}`,
     config
   );
 
   return response.data;
 }
-
-export async function deleteBanner(id: string) {
-  const response = await axios.delete(`${API}banners/delete/${id}`, config);
-
-  return response.data;
-}
-
 export async function deleteComment(idComment?: string) {
   const response = await axios.delete(
     `${API}products/delete/comment/${idComment}`,
@@ -40,22 +69,8 @@ export async function deleteComment(idComment?: string) {
 
   return response.data;
 }
-
-export async function deleteProduct(id: string) {
-  const response = await axios.delete(`${API}products/delete/${id}`, config);
-
-  return response.data;
-}
 export async function deleteFavorite(id: string) {
   const response = await axios.delete(`${API}favorites/delete/${id}`, config);
-
-  return response.data;
-}
-export async function deleteCartItem(itemCartId: string) {
-  const response = await axios.delete(
-    `${API}shopping/delete/${itemCartId}`,
-    config
-  );
 
   return response.data;
 }

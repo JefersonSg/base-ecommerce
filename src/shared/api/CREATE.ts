@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { type BannerTypeCreate } from '../helpers/interfaces';
+import { revalidateTagAction } from '@/src/actions/revalidates';
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 const token = Cookies.get('auth_token') ?? false;
@@ -19,71 +20,6 @@ const configFormdata = {
   }
 };
 
-export async function createCategory(data: any) {
-  const formData = new FormData();
-
-  formData.append('name', data.name);
-  formData.append('description', data.description);
-
-  if (data.image[0] instanceof Blob) {
-    formData.append('image', data.image[0]);
-  } else {
-    console.error('O campo de imagem não é do tipo Blob.');
-    return;
-  }
-
-  try {
-    if (!token) {
-      console.log('sem token de acesso');
-      return;
-    }
-
-    const response = await axios.post(
-      `${API}categories/create`,
-      formData,
-      configFormdata
-    );
-
-    console.log(response.data);
-
-    return response.data;
-  } catch (error: any) {
-    console.error('Erro ao fazer a requisição:', error.response);
-  }
-}
-export async function createSubcategory(data: any) {
-  const formData = new FormData();
-
-  formData.append('name', data.name);
-  formData.append('description', data.description);
-  formData.append('category', data.category);
-
-  if (data.image[0] instanceof Blob) {
-    formData.append('image', data.image[0]);
-  } else {
-    console.error('O campo de imagem não é do tipo Blob.');
-    return;
-  }
-
-  try {
-    if (!token) {
-      console.log('sem token de acesso');
-      return;
-    }
-
-    const response = await axios.post(
-      `${API}subcategories/create`,
-      formData,
-      configFormdata
-    );
-
-    console.log(response.data);
-
-    return response.data;
-  } catch (error: any) {
-    console.error('Erro ao fazer a requisição:', error.response);
-  }
-}
 export async function createComment(data: any, productId: string) {
   const formData = new FormData();
 
@@ -113,38 +49,61 @@ export async function createComment(data: any, productId: string) {
     console.error('Erro ao fazer a requisição:', error.response);
   }
 }
-export async function createBanner(data: BannerTypeCreate) {
-  const formData = new FormData();
 
-  formData.append('name', data?.name);
-  formData.append('link', data?.link);
-  formData.append('active', `${data?.active}`);
-
-  if (data.imageMobile && data.imageDesktop) {
-    const imageArray = [data.imageMobile[0], data.imageDesktop[0]];
-
-    imageArray.forEach((image: any) => {
-      formData.append('images', image);
-    });
-  }
-
+export async function addNewItemCart(data: {
+  productId: string;
+  userId: string;
+  size: string;
+  amount: string | number;
+  color: string;
+}) {
   try {
-    if (!token) {
-      console.log('sem token de acesso');
-      return;
-    }
-
     const response = await axios.post(
-      `${API}banners/create`,
-      formData,
-      configFormdata
+      `${API}shopping/create`,
+      data,
+      configJson
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function createAddress(data: any) {
+  try {
+    const response = await axios.post(
+      `${API}user/address/create`,
+      data,
+      configJson
     );
 
     return response.data;
   } catch (error: any) {
-    console.error('Erro ao fazer a requisição:', error.response);
+    console.log(error);
   }
 }
+
+export async function addViews(
+  productId: string,
+  userToken: string | undefined
+) {
+  try {
+    const response = await axios.post(
+      `${API}products/views/add/${productId}`,
+      {
+        userToken
+      },
+      configJson
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Revalidations
+
 export async function createProduct(
   data: any,
   codeColors: string[],
@@ -195,6 +154,8 @@ export async function createProduct(
       configFormdata
     );
 
+    await revalidateTagAction('all-active-products');
+
     return response.data;
   } catch (error: any) {
     console.log(error);
@@ -221,47 +182,108 @@ export async function addFavorite(user: string, product: string) {
     console.log(error);
   }
 }
-export async function addNewItemCart(data: any) {
-  try {
-    const response = await axios.post(
-      `${API}shopping/create`,
-      data,
-      configJson
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
+export async function createBanner(data: BannerTypeCreate) {
+  const formData = new FormData();
 
-export async function createAddress(data: any) {
+  formData.append('name', data?.name);
+  formData.append('link', data?.link);
+  formData.append('active', `${data?.active}`);
+
+  if (data.imageMobile && data.imageDesktop) {
+    const imageArray = [data.imageMobile[0], data.imageDesktop[0]];
+
+    imageArray.forEach((image: any) => {
+      formData.append('images', image);
+    });
+  }
+
   try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
     const response = await axios.post(
-      `${API}user/address/create`,
-      data,
-      configJson
+      `${API}banners/create`,
+      formData,
+      configFormdata
     );
+
+    await revalidateTagAction('all-active-banners');
 
     return response.data;
   } catch (error: any) {
-    console.log(error);
+    console.error('Erro ao fazer a requisição:', error.response);
   }
 }
+export async function createCategory(data: any) {
+  const formData = new FormData();
 
-export async function addViews(
-  productId: string,
-  userToken: string | undefined
-) {
+  formData.append('name', data.name);
+  formData.append('description', data.description);
+
+  if (data.image[0] instanceof Blob) {
+    formData.append('image', data.image[0]);
+  } else {
+    console.error('O campo de imagem não é do tipo Blob.');
+    return;
+  }
+
   try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
     const response = await axios.post(
-      `${API}products/views/add/${productId}`,
-      {
-        userToken
-      },
-      configJson
+      `${API}categories/create`,
+      formData,
+      configFormdata
     );
+
+    await revalidateTagAction('all-categories');
+
     return response.data;
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    console.error('Erro ao fazer a requisição:', error.response);
+  }
+}
+export async function createSubcategory(data: {
+  name: string;
+  description: string;
+  category: string;
+  image: any;
+}) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('description', data.description);
+  formData.append('category', data.category);
+
+  if (data.image[0] instanceof Blob) {
+    formData.append('image', data.image[0]);
+  } else {
+    console.error('O campo de imagem não é do tipo Blob.');
+    return;
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.post(
+      `${API}subcategories/create`,
+      formData,
+      configFormdata
+    );
+
+    await revalidateTagAction('all-subcategories');
+    await revalidateTagAction('get-subcategories-' + data.category);
+
+    return response.data;
+  } catch (error: any) {
+    console.error('Erro ao fazer a requisição:', error.response);
   }
 }

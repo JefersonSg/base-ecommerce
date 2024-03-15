@@ -38,3 +38,11 @@
   left: 90%;
   background: #fff;
 }
+
+.toggle_button.loading {
+  opacity: 0.5;
+  cursor: progress;
+  pointer-events: none;
+  background: #8a8cff;
+  border-color: #8a8cff !important;
+}

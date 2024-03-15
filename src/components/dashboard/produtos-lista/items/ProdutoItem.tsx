@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Produto.module.css';
 import ToggleButton from '../../../compartilhado/formulario/ToggleButton';
 import Link from 'next/link';
+import { revalidateTagAction } from '@/src/actions/revalidates';
 
 interface ProductsType {
   _id: string;
@@ -29,10 +30,15 @@ const ProdutoItem = ({
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setIdDelete: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  const revalidate = async () => {
+    await revalidateTagAction('product-' + data?._id);
+    await revalidateTagAction('all-products');
+    await revalidateTagAction('all-active-products');
+  };
   return (
     <div className={styles.produto_item}>
       <Link
-        href={{ pathname: '/produto', query: { _id: data._id } }}
+        href={{ pathname: '/produto', query: { _id: data?._id } }}
         className={styles.div_img}
       >
         <Image
@@ -51,7 +57,11 @@ const ProdutoItem = ({
           {data?.description}
         </p>
       </div>
-      <ToggleButton data={data} pathnameUrl="products/edit/" />
+      <ToggleButton
+        data={data}
+        pathnameUrl="products/edit/"
+        revalidate={revalidate}
+      />
       <div className={styles.total_products_register}>
         <h3>75</h3>
       </div>

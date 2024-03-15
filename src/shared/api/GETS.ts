@@ -23,58 +23,12 @@ async function isAdmin(response: any) {
   Cookies.remove('isAdmin');
 }
 
+// Revalidates
 export const getTesteCache = async () => {
   try {
     const response = await fetch(`${API}products/teste-cache`, {
       next: {
         revalidate: 10
-      }
-    });
-
-    return await response.json();
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
-export const getUserByToken = async () => {
-  if (!token) {
-    return null;
-  }
-  try {
-    const response = await axios.get(`${API}user/token`, config);
-
-    await isAdmin(response.data);
-    return response.data;
-  } catch (error) {
-    Cookies.remove('auth_token');
-    Cookies.remove('isAdmin');
-
-    console.log(error);
-    return [];
-  }
-};
-
-export const getAllCategories = async () => {
-  try {
-    const response = await fetch(`${API}categories`, {
-      next: {
-        revalidate: 10,
-        tags: ['all-categories']
-      }
-    });
-    return await response.json();
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
-export const getAllSubcategories = async () => {
-  try {
-    const response = await fetch(`${API}subcategories/`, {
-      next: {
-        revalidate: timeRevalidate,
-        tags: ['subcategories']
       }
     });
 
@@ -99,22 +53,6 @@ export const getAllProducts = async () => {
     return [];
   }
 };
-export const getAllActiveProducts = async () => {
-  try {
-    const response = await fetch(`${API}products/actives`, {
-      next: {
-        revalidate: timeRevalidate,
-        tags: ['all-active-products']
-      }
-    });
-
-    return await response.json();
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
-
 export const getProductBySales = async () => {
   try {
     const response = await fetch(`${API}products/sales/get-all`, {
@@ -130,18 +68,43 @@ export const getProductBySales = async () => {
     return [];
   }
 };
-
-export const getAllComments = async (productId: string) => {
+export const getAllActiveProducts = async () => {
   try {
-    const response = await fetch(
-      `${API}products/comments/get-all/${productId}`,
-      {
-        next: {
-          revalidate: timeRevalidate,
-          tags: ['comments']
-        }
+    const response = await fetch(`${API}products/actives`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['all-active-products']
       }
-    );
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+export const getAllCategories = async () => {
+  try {
+    const response = await fetch(`${API}categories`, {
+      next: {
+        revalidate: 10,
+        tags: ['all-categories']
+      }
+    });
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+export const getAllSubcategories = async () => {
+  try {
+    const response = await fetch(`${API}subcategories/`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['all-subcategories']
+      }
+    });
 
     return await response.json();
   } catch (error) {
@@ -168,7 +131,7 @@ export const getAllActiveBanners = async () => {
   try {
     const response = await fetch(`${API}banners/actives`, {
       next: {
-        revalidate: 0,
+        revalidate: timeRevalidate,
         tags: ['all-active-banners']
       }
     });
@@ -180,10 +143,49 @@ export const getAllActiveBanners = async () => {
   }
 };
 
-// GETS BY ID
-export const getUserById = async (id: string) => {
+// No revalidate
+export const getUserByToken = async () => {
+  if (!token) {
+    return null;
+  }
   try {
-    const response = await axios.get(`${API}user/get/${id}`, config);
+    const response = await axios.get(`${API}user/token`, config);
+
+    await isAdmin(response.data);
+    return response.data;
+  } catch (error) {
+    Cookies.remove('auth_token');
+    Cookies.remove('isAdmin');
+
+    console.log(error);
+    return [];
+  }
+};
+
+export const getAllComments = async (productId: string) => {
+  try {
+    const response = await fetch(
+      `${API}products/comments/get-all/${productId}`,
+      {
+        next: {
+          revalidate: timeRevalidate,
+          tags: ['comments']
+        }
+      }
+    );
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// GETS BY ID
+// revalidate
+export const getUserById = async (userId: string) => {
+  try {
+    const response = await axios.get(`${API}user/get/${userId}`, config);
 
     return response.data;
   } catch (error) {
@@ -191,12 +193,12 @@ export const getUserById = async (id: string) => {
     return [];
   }
 };
-export const getProductById = async (id: string) => {
+export const getProductById = async (productId: string) => {
   try {
-    const response = await fetch(`${API}products/${id}`, {
+    const response = await fetch(`${API}products/${productId}`, {
       next: {
         revalidate: timeRevalidate,
-        tags: [`product-${id}`]
+        tags: [`product-${productId}`]
       }
     });
 
@@ -239,9 +241,12 @@ export const getCategoryById = async (id: string) => {
   }
 };
 
-export const getSubcategoryById = async (id: string) => {
+export const getSubcategoryById = async (subcategoryId: string) => {
   try {
-    const response = await axios.get(`${API}subcategories/${id}`, config);
+    const response = await axios.get(
+      `${API}subcategories/${subcategoryId}`,
+      config
+    );
 
     return response.data;
   } catch (error) {
@@ -251,12 +256,12 @@ export const getSubcategoryById = async (id: string) => {
 };
 
 // getByCategory
-export const getProductsByCategory = async (id: string) => {
+export const getProductsByCategory = async (categoryId: string) => {
   try {
-    const response = await fetch(`${API}products/category/${id}`, {
+    const response = await fetch(`${API}products/category/${categoryId}`, {
       next: {
-        revalidate: timeRevalidate,
-        tags: ['products-by-category-' + id]
+        revalidate: 3600,
+        tags: ['products-by-category-' + categoryId]
       }
     });
 
@@ -266,12 +271,12 @@ export const getProductsByCategory = async (id: string) => {
     return [];
   }
 };
-export const getSubcategoryByCategory = async (id: string) => {
+export const getSubcategoryByCategory = async (categoryId: string) => {
   try {
-    const response = await fetch(`${API}subcategories/category/${id}`, {
+    const response = await fetch(`${API}subcategories/category/${categoryId}`, {
       next: {
-        revalidate: timeRevalidate,
-        tags: ['get-subcategories-' + id]
+        revalidate: 0,
+        tags: ['get-subcategories-' + categoryId]
       }
     });
 
@@ -321,8 +326,7 @@ export const getAllItemsCartByUserId = async (userId: string) => {
   try {
     const response = await fetch(`${API}shopping/get-all/${userId}`, {
       next: {
-        revalidate: timeRevalidate,
-        tags: ['items-cart-by-user-id-' + userId]
+        revalidate: 0
       }
     });
 

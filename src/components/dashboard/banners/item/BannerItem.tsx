@@ -4,7 +4,8 @@ import styles from './Banner.module.css';
 import ToggleButton from '../../../compartilhado/formulario/ToggleButton';
 import { type BannerType } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
-import { getAllActiveBanners, getAllBanners } from '@/src/shared/api/GETS';
+import { getAllBanners } from '@/src/shared/api/GETS';
+import { revalidateTagAction } from '@/src/actions/revalidates';
 
 const BannerItem = ({
   bannerData,
@@ -21,10 +22,10 @@ const BannerItem = ({
     queryKey: ['banners-dashboard'],
     queryFn: getAllBanners
   });
-  const bannerHome = useQuery({
-    queryKey: ['banners-home'],
-    queryFn: getAllActiveBanners
-  });
+
+  const bannerHomeRevalidate = async () => {
+    await revalidateTagAction('all-active-banners');
+  };
 
   return (
     <div className={styles.banner_item}>
@@ -43,7 +44,7 @@ const BannerItem = ({
       <ToggleButton
         data={bannerData}
         pathnameUrl="banners/update/"
-        refetch2={bannerHome}
+        revalidate={bannerHomeRevalidate}
         refetch={refetch}
       />
 
