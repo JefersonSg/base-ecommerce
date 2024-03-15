@@ -1,23 +1,28 @@
-'use client';
-
-import React from 'react';
 import styles from './Links.module.css';
-import { useQuery } from '@tanstack/react-query';
 import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
-import { getAllCategories } from '@/src/shared/api/GETS';
 import Categoria from './Categoria';
+import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
 
-const CategoriasLinks = () => {
-  const { data } = useQuery<{ categories: CategoryInterface[] }>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
-  });
-
+const CategoriasLinks = ({
+  categories,
+  subcategoriesList
+}: {
+  categories: {
+    categories: CategoryInterface[];
+  };
+  subcategoriesList: subcategoriesListByCategory;
+}) => {
   return (
     <nav className={styles.container_nav}>
       <ul className={styles.categorias_lista}>
-        {data?.categories?.map((category) => {
-          return <Categoria key={category._id} category={category} />;
+        {categories?.categories?.map((category, index) => {
+          return (
+            <Categoria
+              key={category?._id}
+              category={category}
+              subcategoriesList={subcategoriesList[index]}
+            />
+          );
         })}
       </ul>
     </nav>

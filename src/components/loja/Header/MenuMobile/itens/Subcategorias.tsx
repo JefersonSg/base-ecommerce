@@ -1,29 +1,22 @@
 'use client';
 
-import { getSubcategoryByCategory } from '@/src/shared/api/GETS';
 import {
-  type CategoryInterface,
-  type subcategoryInterface
+  type subcategoryInterface,
+  type CategoryInterface
 } from '@/src/shared/helpers/interfaces';
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import styles from './Subcategorias.module.css';
 import Link from 'next/link';
 
 const Subcategorias = ({
   category,
-  setAtivo
+  setAtivo,
+  subcategories
 }: {
   category: CategoryInterface;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  subcategories: { subcategories: subcategoryInterface[] };
 }) => {
-  const { data } = useQuery<{ subcategories: subcategoryInterface[] }>({
-    queryKey: ['subcategories', category._id],
-    queryFn: async () => {
-      return await getSubcategoryByCategory(category._id);
-    }
-  });
-
   return (
     <div className={styles.subcategorias_lista}>
       <ul>
@@ -40,7 +33,7 @@ const Subcategorias = ({
             <p>{category.name}</p>
           </Link>
         </li>
-        {data?.subcategories?.map((subcategory) => {
+        {subcategories?.subcategories?.map((subcategory) => {
           return (
             <li key={subcategory._id}>
               <Link
@@ -48,7 +41,7 @@ const Subcategorias = ({
                   setAtivo(false);
                 }}
                 href={{
-                  pathname: 'subcategoria',
+                  pathname: '/produtos/subcategoria',
                   query: { _id: subcategory._id }
                 }}
               >

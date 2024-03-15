@@ -12,16 +12,27 @@ import { useQuery } from '@tanstack/react-query';
 import { getUserByToken } from '@/src/shared/api/GETS';
 import CategoriasLinks from './nav/CategoriasLinks';
 import useMedia from '@/src/shared/hooks/useMedia';
-import { type UserInterface } from '@/src/shared/helpers/interfaces';
+import {
+  type CategoryInterface,
+  type UserInterface
+} from '@/src/shared/helpers/interfaces';
+import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
 
-export function Header() {
+export function Header({
+  categories,
+  subcategoriesList
+}: {
+  categories: {
+    categories: CategoryInterface[];
+  };
+  subcategoriesList: subcategoriesListByCategory;
+}) {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
 
   const { data } = useQuery<{ user: UserInterface; isAdmin: boolean }>({
     queryKey: ['user'],
     queryFn: getUserByToken
   });
-
   const mobile = useMedia('(max-width: 64rem)');
 
   React.useEffect(() => {
@@ -36,6 +47,7 @@ export function Header() {
     };
   }, [estaAtivo]);
 
+  console.log(subcategoriesList);
   return (
     <div className={styles.container_header}>
       <InfosDestaques />
@@ -94,9 +106,19 @@ export function Header() {
           </Link>
         </div>
       </header>
-      {!mobile && <CategoriasLinks />}
+      {!mobile && (
+        <CategoriasLinks
+          categories={categories}
+          subcategoriesList={subcategoriesList}
+        />
+      )}
       {estaAtivo && mobile && (
-        <MenuMobile ativo={estaAtivo} setAtivo={setAtivo} />
+        <MenuMobile
+          ativo={estaAtivo}
+          setAtivo={setAtivo}
+          categories={categories}
+          subcategoriesList={subcategoriesList}
+        />
       )}
     </div>
   );

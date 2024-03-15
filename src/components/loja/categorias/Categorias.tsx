@@ -1,14 +1,16 @@
-import { getAllCategories } from '@/src/shared/api/GETS';
+import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
 import styles from './Categorias.module.css';
 import SlideCategoria from './SlideCategoria';
 
-async function Categorias() {
-  const data = await getAllCategories();
-
+async function Categorias({
+  categorias
+}: {
+  categorias: { categories: CategoryInterface[] };
+}) {
   return (
     <div className={styles.categorias}>
       <h2 className={'titulo_sessao'}> Categorias</h2>
-      <SlideCategoria data={data} />
+      <SlideCategoria data={categorias} />
     </div>
   );
 }

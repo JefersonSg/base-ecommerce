@@ -5,6 +5,8 @@ import { type FavoriteInterface } from '../helpers/interfaces';
 const token = Cookies.get('auth_token') ?? false;
 const API = process.env.NEXT_PUBLIC_API_URL;
 
+const timeRevalidate = 5 * 24 * 60 * 60;
+
 const config = {
   headers: {
     Authorization: `Bearer ${token}`,
@@ -21,6 +23,20 @@ async function isAdmin(response: any) {
   Cookies.remove('isAdmin');
 }
 
+export const getTesteCache = async () => {
+  try {
+    const response = await fetch(`${API}products/teste-cache`, {
+      next: {
+        revalidate: 10
+      }
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 export const getUserByToken = async () => {
   if (!token) {
     return null;
@@ -38,11 +54,13 @@ export const getUserByToken = async () => {
     return [];
   }
 };
+
 export const getAllCategories = async () => {
   try {
     const response = await fetch(`${API}categories`, {
       next: {
-        revalidate: 1 * 60
+        revalidate: 10,
+        tags: ['all-categories']
       }
     });
     return await response.json();
@@ -55,7 +73,8 @@ export const getAllSubcategories = async () => {
   try {
     const response = await fetch(`${API}subcategories/`, {
       next: {
-        revalidate: 1 * 60
+        revalidate: timeRevalidate,
+        tags: ['subcategories']
       }
     });
 
@@ -67,9 +86,14 @@ export const getAllSubcategories = async () => {
 };
 export const getAllProducts = async () => {
   try {
-    const response = await axios.get(`${API}products`, config);
+    const response = await fetch(`${API}products`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['all-products']
+      }
+    });
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -77,9 +101,14 @@ export const getAllProducts = async () => {
 };
 export const getAllActiveProducts = async () => {
   try {
-    const response = await axios.get(`${API}products/actives`, config);
+    const response = await fetch(`${API}products/actives`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['all-active-products']
+      }
+    });
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -88,9 +117,14 @@ export const getAllActiveProducts = async () => {
 
 export const getProductBySales = async () => {
   try {
-    const response = await axios.get(`${API}products/sales/get-all`, config);
+    const response = await fetch(`${API}products/sales/get-all`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['all-products-by-sales']
+      }
+    });
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -99,12 +133,17 @@ export const getProductBySales = async () => {
 
 export const getAllComments = async (productId: string) => {
   try {
-    const response = await axios.get(
+    const response = await fetch(
       `${API}products/comments/get-all/${productId}`,
-      config
+      {
+        next: {
+          revalidate: timeRevalidate,
+          tags: ['comments']
+        }
+      }
     );
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -112,9 +151,14 @@ export const getAllComments = async (productId: string) => {
 };
 export const getAllBanners = async () => {
   try {
-    const response = await axios.get(`${API}banners/`, config);
+    const response = await fetch(`${API}banners/`, {
+      next: {
+        revalidate: 0,
+        tags: ['all-banners']
+      }
+    });
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -124,7 +168,8 @@ export const getAllActiveBanners = async () => {
   try {
     const response = await fetch(`${API}banners/actives`, {
       next: {
-        revalidate: 1 * 60
+        revalidate: 0,
+        tags: ['all-active-banners']
       }
     });
 
@@ -150,7 +195,8 @@ export const getProductById = async (id: string) => {
   try {
     const response = await fetch(`${API}products/${id}`, {
       next: {
-        revalidate: 1 * 60
+        revalidate: timeRevalidate,
+        tags: [`product-${id}`]
       }
     });
 
@@ -160,6 +206,7 @@ export const getProductById = async (id: string) => {
     return [];
   }
 };
+
 export const getFavoritesProducts = async (favorites: any) => {
   try {
     const products = await favorites?.map(
@@ -191,6 +238,7 @@ export const getCategoryById = async (id: string) => {
     return [];
   }
 };
+
 export const getSubcategoryById = async (id: string) => {
   try {
     const response = await axios.get(`${API}subcategories/${id}`, config);
@@ -205,9 +253,14 @@ export const getSubcategoryById = async (id: string) => {
 // getByCategory
 export const getProductsByCategory = async (id: string) => {
   try {
-    const response = await axios.get(`${API}products/category/${id}`, config);
+    const response = await fetch(`${API}products/category/${id}`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['products-by-category-' + id]
+      }
+    });
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -215,13 +268,15 @@ export const getProductsByCategory = async (id: string) => {
 };
 export const getSubcategoryByCategory = async (id: string) => {
   try {
-    const response = await axios.get(
-      `${API}subcategories/category/${id}`,
-      config
-    );
+    const response = await fetch(`${API}subcategories/category/${id}`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['get-subcategories-' + id]
+      }
+    });
 
     if (response) {
-      return response.data;
+      return await response.json();
     }
     return [];
   } catch (error) {
@@ -233,12 +288,14 @@ export const getSubcategoryByCategory = async (id: string) => {
 // getBySubcategory
 export const getProductsBySubcategory = async (id: string) => {
   try {
-    const response = await axios.get(
-      `${API}products/subcategory/${id}`,
-      config
-    );
+    const response = await fetch(`${API}products/subcategory/${id}`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['products-by-subcategory-' + id]
+      }
+    });
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];
@@ -262,12 +319,14 @@ export const getFavoriteByUserId = async (id: string) => {
 
 export const getAllItemsCartByUserId = async (userId: string) => {
   try {
-    const response = await axios.get(
-      `${API}shopping/get-all/${userId}`,
-      config
-    );
+    const response = await fetch(`${API}shopping/get-all/${userId}`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['items-cart-by-user-id-' + userId]
+      }
+    });
 
-    return response.data;
+    return await response.json();
   } catch (error) {
     console.log(error);
     return [];

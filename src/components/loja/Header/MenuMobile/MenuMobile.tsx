@@ -4,13 +4,21 @@ import Usuario from './itens/Usuario';
 import UlLinksUteis from './itens/UlLinksUteis';
 import LinksCategorias from './itens/LinksCategorias';
 import BtnFechar from '@/src/components/compartilhado/botoes/BtnFechar';
+import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
+import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
 
 function MenuMobile({
   ativo,
-  setAtivo
+  setAtivo,
+  categories,
+  subcategoriesList
 }: {
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  categories: {
+    categories: CategoryInterface[];
+  };
+  subcategoriesList: subcategoriesListByCategory;
 }) {
   return (
     <>
@@ -28,7 +36,11 @@ function MenuMobile({
           <UlLinksUteis />
           <div className={styles.categorias}>
             <h2 className={styles.subtitulo}>Navegue por categorias</h2>
-            <LinksCategorias setAtivo={setAtivo} />
+            <LinksCategorias
+              setAtivo={setAtivo}
+              categories={categories}
+              subcategoriesList={subcategoriesList}
+            />
           </div>
         </nav>
       </div>

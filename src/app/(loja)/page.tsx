@@ -4,7 +4,11 @@ import SlideVantagens from '@/src/components/loja/slide-vantagens/SlideVantagens
 import Categorias from '@/src/components/loja/categorias/Categorias';
 import Section from '@/src/components/loja/sections-home/Section';
 import ContainerSlideBanner from '@/src/components/loja/slide-banners-home/ContainerSlideBanner';
-import { getAllActiveProducts, getProductBySales } from '@/src/shared/api/GETS';
+import {
+  getAllActiveProducts,
+  getAllCategories,
+  getProductBySales
+} from '@/src/shared/api/GETS';
 // import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 
 export const metadata: Metadata = {
@@ -26,13 +30,14 @@ export const metadata: Metadata = {
 export default async function Home() {
   const novidades = await getAllActiveProducts();
   const maisVendidos = await getProductBySales();
+  const categorias = await getAllCategories();
 
   return (
     <>
       <main className={styles.main}>
         <ContainerSlideBanner />
         <SlideVantagens />
-        <Categorias />
+        <Categorias categorias={categorias} />
         <Section data={novidades} nomeSessao="Novidades" link={'novidades'} />
         <Section
           data={maisVendidos}
