@@ -16,8 +16,8 @@
     text-align: center;
   }
 
-  .gallery_layout_container.home {
-    display: none;
+  .home {
+    display: none !important;
   }
   .gallery_layout_container.favorites a {
     padding: 6px;
