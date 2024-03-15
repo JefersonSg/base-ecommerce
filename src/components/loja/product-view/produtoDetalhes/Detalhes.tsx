@@ -28,6 +28,9 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [typePopUp, setTypePopUp] = React.useState('');
 
   async function addCartItem() {
+    setTextPopUp('');
+    setTypePopUp('');
+
     const infosCartItem = {
       productId: data._id,
       userId: userData?.data?.user?._id,
@@ -44,10 +47,15 @@ function Detalhes({ data }: { data: ProductApi }) {
         setIsLoading(false);
       }, 700);
 
-      if (response) {
-        setTextPopUp('Produdo adicionado ao carrinho');
+      setTextPopUp('Produdo adicionado ao carrinho');
+      setTypePopUp('');
+
+      const timeout = setTimeout(() => {
+        setTextPopUp('');
         setTypePopUp('');
-      }
+      }, 3000);
+
+      clearTimeout(timeout);
       return response;
     } catch (error) {
       console.log(error);
@@ -56,17 +64,6 @@ function Detalhes({ data }: { data: ProductApi }) {
       setIsLoading(false);
     }
   }
-
-  React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      setTextPopUp('');
-      setTypePopUp('');
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [setTextPopUp, setTypePopUp]);
 
   return (
     <div className={styles.detalhes}>
@@ -96,7 +93,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           isLoading={isLoading}
         />
       </div>
-      {typePopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
+      {textPopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
     </div>
   );
 }
