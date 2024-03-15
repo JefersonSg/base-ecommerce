@@ -26,14 +26,23 @@ interface User {
 
 const FormComment = ({
   setModalForm,
-  dataUser
+  dataUser,
+  setTextPopUp,
+  setTypePopUp
 }: {
   dataUser: User;
   setModalForm: React.Dispatch<React.SetStateAction<boolean>>;
+  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const router = useRouter();
   const [stars, setStars] = React.useState(1);
-  const { register, handleSubmit, watch } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm({
     resolver: yupResolver(validationComment)
   });
   const idProduct = useSearchParams().get('_id');
@@ -62,8 +71,11 @@ const FormComment = ({
   const onSubmit: SubmitHandler<any> = async (data: any) => {
     if (!idProduct) {
       console.log('sem id do produto');
+      setTextPopUp('Não foi possivel encontrar o id do produto');
+      setTypePopUp('error');
       return;
     }
+
     const dataComment = {
       userId: dataUser.user._id,
       comment: data.comment,
@@ -78,11 +90,42 @@ const FormComment = ({
 
       if (response) {
         setModalForm(false);
+        setTextPopUp('Comentario postado');
+        setTypePopUp('');
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  React.useEffect(() => {
+    if (errors.comment?.message) {
+      setTextPopUp(errors.comment?.message);
+      setTypePopUp('error');
+
+      const timeout = setTimeout(() => {
+        setTextPopUp('');
+        setTypePopUp('');
+      }, 3000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+    if (errors.images?.message) {
+      setTextPopUp(errors.images?.message);
+      setTypePopUp('error');
+
+      const timeout = setTimeout(() => {
+        setTextPopUp('');
+        setTypePopUp('');
+      }, 3000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [errors, setTextPopUp, setTypePopUp]);
 
   return (
     <div className={styles.form_comment_container}>
@@ -165,6 +208,9 @@ const FormComment = ({
           />
         </div>
         <BotaoRedondo texto="enviar" />
+        <p className="error">
+          {errors?.comment?.message ?? errors?.images?.message ?? ''}
+        </p>
       </form>
     </div>
   );

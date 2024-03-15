@@ -11,6 +11,7 @@ import {
   type CommentContextInterface,
   useCommentContext
 } from '@/src/shared/context/AvaliacaoContext';
+import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 
 interface User {
   user: {
@@ -25,6 +26,8 @@ function Comentarios() {
   });
   const { dataComments } = useCommentContext() as CommentContextInterface;
   const [Commented, setCommented] = React.useState(true);
+  const [textPopUp, setTextPopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   React.useEffect(() => {
     setCommented(false);
@@ -45,10 +48,15 @@ function Comentarios() {
                 setModalForm(!modalForm);
               }}
             >
-              <BotaoColorido texto="Comentar" />
+              <BotaoColorido texto={modalForm ? 'Cancelar' : 'Comentar'} />
             </div>
             {modalForm && data && (
-              <FormComment dataUser={data} setModalForm={setModalForm} />
+              <FormComment
+                dataUser={data}
+                setModalForm={setModalForm}
+                setTextPopUp={setTextPopUp}
+                setTypePopUp={setTypePopUp}
+              />
             )}
           </div>
         )}
@@ -56,9 +64,17 @@ function Comentarios() {
           Commentários
         </h3>
         {dataComments?.comments?.map((comment, index) => {
-          return <Comentario key={index} commentData={comment} />;
+          return (
+            <Comentario
+              key={index}
+              commentData={comment}
+              setTextPopUp={setTextPopUp}
+              setTypePopUp={setTypePopUp}
+            />
+          );
         })}
       </div>
+      {textPopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
     </Suspense>
   );
 }

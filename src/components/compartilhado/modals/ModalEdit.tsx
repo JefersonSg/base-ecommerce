@@ -7,14 +7,23 @@ import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 
 const ModalEdit = ({
   commentData,
-  setState
+  setState,
+  setTextPopUp,
+  setTypePopUp
 }: {
   commentData: CommentInterface;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
+  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
     <div className={styles.delete_categoria}>
-      <FormEditComment setModalForm={setState} commentData={commentData} />
+      <FormEditComment
+        setModalForm={setState}
+        commentData={commentData}
+        setTextPopUp={setTextPopUp}
+        setTypePopUp={setTypePopUp}
+      />
     </div>
   );
 };

@@ -21,14 +21,23 @@ import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 
 const FormEditComment = ({
   setModalForm,
-  commentData
+  commentData,
+  setTextPopUp,
+  setTypePopUp
 }: {
   commentData: CommentInterface;
   setModalForm: React.Dispatch<React.SetStateAction<boolean>>;
+  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const router = useRouter();
   const [stars, setStars] = React.useState(+commentData?.stars);
-  const { register, handleSubmit, watch } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm({
     resolver: yupResolver(validationComment),
     defaultValues: {
       comment: commentData?.comment
@@ -73,11 +82,42 @@ const FormEditComment = ({
         router.refresh();
         await refetch();
         setModalForm(false);
+        setTextPopUp('Comentario Editado');
+        setTypePopUp('');
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  React.useEffect(() => {
+    if (errors.comment?.message) {
+      setTextPopUp(errors?.comment?.message);
+      setTypePopUp('error');
+
+      const timeout = setTimeout(() => {
+        setTextPopUp('');
+        setTypePopUp('');
+      }, 3000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+    if (errors?.images?.message) {
+      setTextPopUp(errors?.images?.message);
+      setTypePopUp('error');
+
+      const timeout = setTimeout(() => {
+        setTextPopUp('');
+        setTypePopUp('');
+      }, 3000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [errors, setTextPopUp, setTypePopUp]);
 
   return (
     <div className={styles.form_comment_container}>
@@ -159,6 +199,9 @@ const FormEditComment = ({
             {...register('images')}
           />
         </div>
+        <p className="error">
+          {errors?.comment?.message ?? errors?.images?.message ?? ''}
+        </p>
         <div onClick={() => handleSubmit(onSubmit)}>
           <BotaoRedondo texto="enviar" />
         </div>

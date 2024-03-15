@@ -47,7 +47,12 @@ function ModalDeleteSearsh({
   );
 }
 
-function Comentario({ commentData }: { commentData: CommentInterface }) {
+function Comentario({ 
+  commentData,
+  setTextPopUp,
+  setTypePopUp }: { commentData: CommentInterface,
+  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>; }) {
   const { data } = useQuery<User>({
     queryKey: ['user']
   });
@@ -114,7 +119,7 @@ function Comentario({ commentData }: { commentData: CommentInterface }) {
           />
         )}
         {modalEdit && (
-          <ModalEdit setState={setModalEdit} commentData={commentData} />
+          <ModalEdit setState={setModalEdit} commentData={commentData} setTextPopUp={setTextPopUp} setTypePopUp={setTypePopUp}/>
         )}
       </div>
     </>

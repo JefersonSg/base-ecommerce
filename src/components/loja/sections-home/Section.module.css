@@ -6,15 +6,7 @@
 .section h2 {
   margin-bottom: 16px;
 }
-.gallery_layout_container {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  align-items: stretch;
-  justify-items: center;
-  max-width: 100%;
-  margin: 0;
-}
+
 @media (min-width: 48rem) {
   .produtos_wraper {
     grid-template-columns: repeat(auto-fit, minmax(240px, 290px));

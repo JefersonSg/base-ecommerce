@@ -4,8 +4,8 @@ import * as yup from 'yup';
 export const validationComment = yup.object({
   comment: yup
     .string()
-    .required('É necessário preencher o campo de Nome')
-    .min(2, 'É necessario ao menos 2 caracteres no nome'),
+    .required('É necessário preencher o campo de Comentario')
+    .min(3, 'É necessario ao menos 2 caracteres no comentário'),
 
   images: yup
     .mixed()
@@ -21,7 +21,11 @@ export const validationComment = yup.object({
         );
       }
     )
-    .test('fileSize', 'o arquivo é muito grande', (value: any) => {
-      return value[0] ? value[0]?.size <= 1024 * 1024 : true;
-    })
+    .test(
+      'fileSize',
+      'o arquivo é muito grande, tamanho Maximo de 3MB',
+      (value: any) => {
+        return value[0] ? value[0]?.size <= 1024 * 1024 * 3 : true;
+      }
+    )
 });
