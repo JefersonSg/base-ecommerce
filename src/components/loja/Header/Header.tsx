@@ -47,7 +47,6 @@ export function Header({
     };
   }, [estaAtivo]);
 
-  console.log(subcategoriesList);
   return (
     <div className={styles.container_header}>
       <InfosDestaques />
