@@ -15,7 +15,9 @@ function Usuario({
 }) {
   const { data } = useQuery<{ user: UserInterface; isAdmin: boolean }>({
     queryKey: ['user'],
-    queryFn: getUserByToken
+    queryFn: async () => {
+      return await getUserByToken();
+    }
   });
 
   return (
