@@ -25,7 +25,6 @@ const ProdutoCarrinho = ({
   total,
   refetchData
 }: {
-  product: ProductApi;
   productId: string;
   color: string;
   size: string;
@@ -47,7 +46,14 @@ const ProdutoCarrinho = ({
 
   async function updateItem(valueAmount: number) {
     setIsloading(true);
+
     const newAmount = amount + valueAmount;
+
+    if (newAmount < 1) {
+      setIsloading(false);
+      setModalDeleteActive(true);
+      return;
+    }
     const data = {
       size,
       color,
