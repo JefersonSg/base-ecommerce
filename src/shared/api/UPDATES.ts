@@ -246,6 +246,7 @@ export async function updateBanner(
 }
 
 // No Revalidation
+
 export async function updateComment(data: any) {
   const formData = new FormData();
 
