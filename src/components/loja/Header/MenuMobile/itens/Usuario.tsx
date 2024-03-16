@@ -2,24 +2,17 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './Usuario.module.css';
 import Link from 'next/link';
-import { getUserByToken } from '@/src/shared/api/GETS';
-import { useQuery } from '@tanstack/react-query';
 import { type UserInterface } from '@/src/shared/helpers/interfaces';
 
 function Usuario({
+  userData,
   ativo,
   setAtivo
 }: {
+  userData: UserInterface;
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const { data } = useQuery<UserInterface>({
-    queryKey: ['user'],
-    queryFn: async () => {
-      return await getUserByToken();
-    }
-  });
-
   return (
     <div className={styles.usuario}>
       <div className={styles.fotoUsuario}>
@@ -33,11 +26,15 @@ function Usuario({
       <div className={styles.boasVindas}>
         <h3 className="titulo_area">
           Olá,{' '}
-          {data
-            ? `${data?.user?.name + ' ' + data?.user?.surname?.split(' ')[0]}`
+          {userData
+            ? `${
+                userData?.user?.name +
+                ' ' +
+                userData?.user?.surname?.split(' ')[0]
+              }`
             : 'Visitante'}
         </h3>
-        {!data ? (
+        {!userData ? (
           <p>
             <Link
               onClick={() => {

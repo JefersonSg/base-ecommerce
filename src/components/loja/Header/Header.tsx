@@ -105,6 +105,7 @@ export function Header({
       {estaAtivo && (
         <Suspense>
           <MenuMobile
+            userData={userData}
             ativo={estaAtivo}
             setAtivo={setAtivo}
             categories={categories}
