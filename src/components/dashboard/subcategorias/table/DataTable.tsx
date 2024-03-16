@@ -10,7 +10,7 @@ import SideBarFormEdit from '../sidebars/FormEditSubcategory';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import ButtonAdd from '../../Botoes/ButtonAdd';
-import { deletesubcategory } from '@/src/shared/api/DELETE';
+import { deleteSubcategory } from '@/src/shared/api/DELETE';
 import { getAllSubcategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 
@@ -44,7 +44,7 @@ const DataTable = () => {
   }, [ativoPopUp]);
 
   async function handleDelete(id: string) {
-    await deletesubcategory(id);
+    await deleteSubcategory(id);
     await refetch();
   }
 

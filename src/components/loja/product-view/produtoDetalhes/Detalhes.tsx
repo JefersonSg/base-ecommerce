@@ -31,9 +31,15 @@ function Detalhes({ data }: { data: ProductApi }) {
     setTextPopUp('');
     setTypePopUp('');
 
+    if (!userData?.data?.user?._id) {
+      setTextPopUp('Faça login para adicionar ao carrinho');
+      setTypePopUp('error');
+      return;
+    }
+
     const infosCartItem = {
       productId: data._id,
-      userId: userData?.data?.user?._id,
+      userId: userData.data.user._id,
       size: data.size,
       color: colorSelected,
       amount: 1
