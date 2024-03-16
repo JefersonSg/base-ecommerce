@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import styles from './styles.module.css';
 import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
@@ -8,7 +8,9 @@ const page = () => {
   return (
     <div className={styles.favorite_container}>
       <Breadcrumb texto="Home / Favoritos" />
-      <SectionFavorites />
+      <Suspense>
+        <SectionFavorites />
+      </Suspense>
     </div>
   );
 };

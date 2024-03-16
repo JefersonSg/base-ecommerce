@@ -7,6 +7,7 @@ import {
 } from '@/src/shared/api/GETS';
 import Produtos from '@/src/components/loja/produtos/Produtos';
 import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
+import { Suspense } from 'react';
 
 async function page({ searchParams }: { searchParams: { _id: string } }) {
   const data = await getProductsByCategory(searchParams?._id);
@@ -20,11 +21,13 @@ async function page({ searchParams }: { searchParams: { _id: string } }) {
       <Breadcrumb
         texto={`Home / Produtos / ${category?.category?.name ?? ''}`}
       />
-      <Produtos
-        data={data}
-        categoryId={searchParams?._id}
-        subcategorieDataSlide={subcategories}
-      />
+      <Suspense>
+        <Produtos
+          data={data}
+          categoryId={searchParams?._id}
+          subcategorieDataSlide={subcategories}
+        />
+      </Suspense>
     </div>
   );
 }

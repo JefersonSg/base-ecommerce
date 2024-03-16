@@ -11,7 +11,6 @@ import Pesquisa from './pesquisa/Pesquisa';
 import { useQuery } from '@tanstack/react-query';
 import { getUserByToken } from '@/src/shared/api/GETS';
 import CategoriasLinks from './nav/CategoriasLinks';
-import useMedia from '@/src/shared/hooks/useMedia';
 import {
   type CategoryInterface,
   type UserInterface
@@ -35,8 +34,6 @@ export function Header({
       return await getUserByToken();
     }
   });
-
-  const mobile = useMedia('(max-width: 64rem)');
 
   React.useEffect(() => {
     if (estaAtivo) {
@@ -112,7 +109,7 @@ export function Header({
           subcategoriesList={subcategoriesList}
         />
       </Suspense>
-      {estaAtivo && mobile && (
+      {estaAtivo && (
         <Suspense>
           <MenuMobile
             ativo={estaAtivo}

@@ -12,6 +12,7 @@ import {
   type ProductApi,
   type CategoryInterface
 } from '@/src/shared/helpers/interfaces';
+import { Suspense } from 'react';
 
 async function page({ searchParams }: { searchParams: { _id: string } }) {
   const data: { products: ProductApi[] } = await getProductsBySubcategory(
@@ -34,7 +35,9 @@ async function page({ searchParams }: { searchParams: { _id: string } }) {
           subcategoria?.subcategory?.name ?? ''
         }`}
       />
-      <Produtos data={data} subcategorieDataSlide={subcategories} />
+      <Suspense>
+        <Produtos data={data} subcategorieDataSlide={subcategories} />
+      </Suspense>
     </div>
   );
 }

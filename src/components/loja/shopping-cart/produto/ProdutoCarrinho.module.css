@@ -78,4 +78,5 @@
 .valor.promotion {
   display: flex;
   flex-direction: column;
+  color: var(--cor-contraste);
 }

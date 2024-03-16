@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './MenuMobile.module.css';
 import Usuario from './itens/Usuario';
 import UlLinksUteis from './itens/UlLinksUteis';
@@ -22,13 +22,15 @@ function MenuMobile({
 }) {
   return (
     <>
-      <BtnFechar setAtivo={setAtivo} />
-      <div
-        className={styles.background}
-        onClick={() => {
-          setAtivo(false);
-        }}
-      ></div>
+      <div className={styles.container_background}>
+        <BtnFechar setAtivo={setAtivo} />
+        <div
+          className={styles.background}
+          onClick={() => {
+            setAtivo(false);
+          }}
+        ></div>
+      </div>
 
       <div className={styles.menuMobile}>
         <nav className={styles.container}>
@@ -36,11 +38,13 @@ function MenuMobile({
           <UlLinksUteis />
           <div className={styles.categorias}>
             <h2 className={styles.subtitulo}>Navegue por categorias</h2>
-            <LinksCategorias
-              setAtivo={setAtivo}
-              categories={categories}
-              subcategoriesList={subcategoriesList}
-            />
+            <Suspense>
+              <LinksCategorias
+                setAtivo={setAtivo}
+                categories={categories}
+                subcategoriesList={subcategoriesList}
+              />
+            </Suspense>
           </div>
         </nav>
       </div>

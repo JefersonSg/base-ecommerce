@@ -2,6 +2,7 @@ import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
 import styles from './page.module.css';
 import { getAllCategories, getProductBySales } from '@/src/shared/api/GETS';
 import Produtos from '@/src/components/loja/produtos/Produtos';
+import { Suspense } from 'react';
 
 async function page() {
   const data = await getProductBySales();
@@ -10,7 +11,9 @@ async function page() {
   return (
     <div className={styles.produtos_container}>
       <Breadcrumb texto="Home / Produtos" />
-      <Produtos data={data} categorieDataSlide={categories} />
+      <Suspense>
+        <Produtos data={data} categorieDataSlide={categories} />
+      </Suspense>
     </div>
   );
 }
