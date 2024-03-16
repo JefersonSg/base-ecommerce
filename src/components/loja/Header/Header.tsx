@@ -8,8 +8,6 @@ import Image from 'next/image';
 import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
-import { useQuery } from '@tanstack/react-query';
-import { getUserByToken } from '@/src/shared/api/GETS';
 import CategoriasLinks from './nav/CategoriasLinks';
 import {
   type CategoryInterface,
@@ -18,22 +16,17 @@ import {
 import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
 
 export function Header({
+  userData,
   categories,
   subcategoriesList
 }: {
+  userData: UserInterface;
   categories: {
     categories: CategoryInterface[];
   };
   subcategoriesList: subcategoriesListByCategory;
 }) {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
-
-  const { data } = useQuery<{ user: UserInterface; isAdmin: boolean }>({
-    queryKey: ['user'],
-    queryFn: async () => {
-      return await getUserByToken();
-    }
-  });
 
   React.useEffect(() => {
     if (estaAtivo) {
@@ -60,7 +53,7 @@ export function Header({
         </Link>
         <div className={styles.container2}>
           <Link
-            href={`${data?.user ? '/minha-conta' : '/login'}`}
+            href={`${userData?.user ? '/minha-conta' : '/login'}`}
             className={styles.login}
           >
             <Image
@@ -70,12 +63,12 @@ export function Header({
               height={24}
             />
             <p>
-              {data?.user
-                ? 'Olá ' + data.user.name + ' ' + data.user.surname
+              {userData?.user
+                ? 'Olá ' + userData.user.name + ' ' + userData.user.surname
                 : 'Olá, faça seu login ou cadastre-se.'}
             </p>
           </Link>
-          {data?.isAdmin && (
+          {userData?.isAdmin && (
             <Link href={'/dashboard'} className={styles.button_dashboard}>
               <Image
                 alt="Imagem do dashboard"

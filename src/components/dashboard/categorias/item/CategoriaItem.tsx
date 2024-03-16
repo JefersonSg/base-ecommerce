@@ -29,8 +29,10 @@ const CategoriaItem = ({
         <Image
           alt="Imagem da categoria"
           src={image || '/categorias/batom.png'}
+          quality={40}
           width={40}
           height={40}
+          placeholder="empty"
         />
       </div>
 

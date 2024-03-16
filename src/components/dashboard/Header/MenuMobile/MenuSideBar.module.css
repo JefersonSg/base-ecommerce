@@ -71,3 +71,9 @@
   height: max-content;
   padding-bottom: 80px;
 }
+
+@media (max-width: 64rem) {
+  .sidebar {
+    display: none;
+  }
+}

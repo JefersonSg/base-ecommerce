@@ -6,13 +6,10 @@ import { ButtonMenu } from './ButtonMenu/ButtonMenu';
 import Image from 'next/image';
 import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
-import useMedia from '@/src/shared/hooks/useMedia';
 import MenuSideBar from './MenuMobile/MenuSideBar';
 
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
-
-  const mobile = useMedia('(max-width: 64rem)');
 
   React.useEffect(() => {
     if (estaAtivo) {
@@ -29,22 +26,18 @@ export function Header() {
   return (
     <div className={styles.header_container}>
       <header className={styles.header_dashboard}>
-        {mobile && (
-          <>
-            <div className={styles.container1}>
-              <ButtonMenu setAtivo={setAtivo} ativo={estaAtivo} />
-            </div>
+        <>
+          <div className={styles.container1}>
+            <ButtonMenu setAtivo={setAtivo} ativo={estaAtivo} />
+          </div>
 
-            <Link href={'/dashboard'} className={styles.logo}>
-              <Image
-                alt="Logo"
-                src={'/header/Logo.svg'}
-                width={60}
-                height={42}
-              />
-            </Link>
-          </>
-        )}
+          <Link
+            href={'/dashboard'}
+            className={`${styles.logo} ${styles.mobile}`}
+          >
+            <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
+          </Link>
+        </>
         <div className={styles.container2}>
           <Link href={'/dashboard/settings'}>
             <Image
@@ -53,12 +46,13 @@ export function Header() {
               src={'/header/icons/config.svg'}
               width={20}
               height={20}
+              quality={60}
             />
           </Link>
         </div>
       </header>
       {estaAtivo && <MenuMobile setAtivo={setAtivo} />}
-      {!mobile && <MenuSideBar />}
+      <MenuSideBar setAtivo={setAtivo} />
     </div>
   );
 }

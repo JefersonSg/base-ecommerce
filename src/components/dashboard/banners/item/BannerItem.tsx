@@ -34,6 +34,8 @@ const BannerItem = ({
         src={bannerData.imageMobile}
         width={40}
         height={40}
+        quality={40}
+        placeholder="empty"
       />
 
       <div className={styles.infos}>

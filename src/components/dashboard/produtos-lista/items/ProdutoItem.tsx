@@ -43,9 +43,11 @@ const ProdutoItem = ({
       >
         <Image
           alt="Imagem da categoria"
-          src={data.images?.[0] || '/categorias/batom.png'}
+          src={data.images?.[0]}
           width={40}
           height={40}
+          quality={30}
+          placeholder="empty"
         />
       </Link>
 

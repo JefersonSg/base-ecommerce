@@ -74,6 +74,8 @@ const SubcategoriaItem = ({
           src={'/dashboard/lixeira.svg'}
           width={16}
           height={18}
+          quality={40}
+          placeholder="empty"
           onClick={() => {
             setIdSubcategory(idSubcategory);
             setAtivoDelete(true);

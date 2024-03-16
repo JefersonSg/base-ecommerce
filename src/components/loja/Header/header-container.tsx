@@ -2,10 +2,14 @@ import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
 import { Header } from './Header';
 import {
   getAllCategories,
-  getSubcategoryByCategory
+  getSubcategoryByCategory,
+  getUserByToken
 } from '@/src/shared/api/GETS';
+import { cookies } from 'next/headers';
 
 export default async function HeaderContainer() {
+  const token = cookies().get('auth_token')?.value;
+  const userData = await getUserByToken(token);
   const categories = await getAllCategories();
 
   const subcategoriesList: subcategoriesListByCategory = [];
@@ -23,7 +27,11 @@ export default async function HeaderContainer() {
   await getSubcategoriesList();
   return (
     <>
-      <Header categories={categories} subcategoriesList={subcategoriesList} />
+      <Header
+        userData={userData}
+        categories={categories}
+        subcategoriesList={subcategoriesList}
+      />
     </>
   );
 }

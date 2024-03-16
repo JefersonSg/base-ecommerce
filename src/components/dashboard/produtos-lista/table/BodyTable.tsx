@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 import ProdutoItem from '../items/ProdutoItem';
@@ -41,11 +41,13 @@ const BodyTable = ({
         return (
           <div key={product._id}>
             {index >= nextPage[0] - 1 && index <= nextPage[1] - 1 && (
-              <ProdutoItem
-                data={product}
-                setAtivoDelete={setAtivoDelete}
-                setIdDelete={setIdDelete}
-              />
+              <Suspense>
+                <ProdutoItem
+                  data={product}
+                  setAtivoDelete={setAtivoDelete}
+                  setIdDelete={setIdDelete}
+                />
+              </Suspense>
             )}
           </div>
         );

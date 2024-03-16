@@ -4,14 +4,29 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import SvgPedidos from '../svgs/SvgPedidos';
 
-function BtnPedidos({ texto, link }: { texto: string; link?: string }) {
+function BtnPedidos({
+  texto,
+  link,
+  setAtivo
+}: {
+  texto: string;
+  link?: string;
+  setAtivo?: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const linkClean = link ?? texto?.replace(/\s+/g, '')?.toLowerCase();
   const pathname = usePathname();
 
   const isActive = pathname.includes(linkClean);
 
   return (
-    <li className={styles.lista}>
+    <li
+      className={styles.lista}
+      onClick={() => {
+        if (setAtivo) {
+          setAtivo(false);
+        }
+      }}
+    >
       <Link href={`${linkClean}`} className={`${isActive ? styles.ativo : ''}`}>
         <SvgPedidos isActive={isActive} />
 

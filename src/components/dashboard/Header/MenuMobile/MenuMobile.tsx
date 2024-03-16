@@ -24,9 +24,9 @@ function MenuMobile({
 
       <div className={styles.menuMobile}>
         <nav className={styles.container}>
-          <UlLinksUteis />
+          <UlLinksUteis setAtivo={setAtivo} />
           <div className={styles.categorias}>
-            <LinksCategorias />
+            <LinksCategorias setAtivo={setAtivo} />
           </div>
         </nav>
       </div>

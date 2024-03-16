@@ -5,7 +5,11 @@ import LinksCategorias from './itens/LinksCategorias';
 import Link from 'next/link';
 import Image from 'next/image';
 
-function MenuSideBar() {
+function MenuSideBar({
+  setAtivo
+}: {
+  setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <>
       <div className={styles.sidebar}>
@@ -13,9 +17,9 @@ function MenuSideBar() {
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
         </Link>
         <nav className={styles.container}>
-          <UlLinksUteis />
+          <UlLinksUteis setAtivo={setAtivo} />
           <div className={styles.categorias}>
-            <LinksCategorias />
+            <LinksCategorias setAtivo={setAtivo} />
           </div>
         </nav>
       </div>

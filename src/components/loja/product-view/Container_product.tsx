@@ -40,7 +40,7 @@ const ContainerProduct = async ({
 
   return (
     <>
-      {data && (
+      {data.product && (
         <>
           <Breadcrumb
             texto={`${'Home'} / ${categoryName ? categoryName + ' /' : ''}  ${

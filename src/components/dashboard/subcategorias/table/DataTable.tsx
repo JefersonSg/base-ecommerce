@@ -70,7 +70,6 @@ const DataTable = () => {
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
           data={data}
-          categoryId={categoryId}
           setIdCategory={setIdCategory}
           idSubcategory={idSubcategory}
           setIdSubcategory={setIdSubcategory}

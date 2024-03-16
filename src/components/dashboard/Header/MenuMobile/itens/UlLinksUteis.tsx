@@ -10,17 +10,45 @@ import BtnSubcategoria from './Botoes/BtnSubcategoria';
 import BtnHome from './Botoes/BtnHome';
 import BtnEstatistica from './Botoes/BtnEstatistica';
 
-function UlLinksUteis() {
+function UlLinksUteis({
+  setAtivo
+}: {
+  setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <ul className={styles.linksUteis}>
       <h2 className={'titulo_sideBar'}>Main</h2>
-      <BtnDashboard texto="Home dashboard" link="/dashboard" />
-      <BtnHome texto="Retornar a loja" link="/" />
-      <BtnPedidos texto="Pedidos" link={'/dashboard/pedidos'} />
-      <BtnProdutos texto="Produtos" link="/dashboard/produtos" />
-      <BtnCategoria texto="Categorias" link="/dashboard/categorias" />
-      <BtnSubcategoria texto="Subcategorias" link="/dashboard/subcategorias" />
-      <BtnEstatistica texto="Estatísticas" link="/dashboard/estatisticas" />
+      <BtnDashboard
+        texto="Home dashboard"
+        link="/dashboard"
+        setAtivo={setAtivo}
+      />
+      <BtnHome texto="Retornar a loja" link="/" setAtivo={setAtivo} />
+      <BtnPedidos
+        texto="Pedidos"
+        link={'/dashboard/pedidos'}
+        setAtivo={setAtivo}
+      />
+      <BtnProdutos
+        texto="Produtos"
+        link="/dashboard/produtos"
+        setAtivo={setAtivo}
+      />
+      <BtnCategoria
+        texto="Categorias"
+        link="/dashboard/categorias"
+        setAtivo={setAtivo}
+      />
+      <BtnSubcategoria
+        texto="Subcategorias"
+        link="/dashboard/subcategorias"
+        setAtivo={setAtivo}
+      />
+      <BtnEstatistica
+        texto="Estatísticas"
+        link="/dashboard/estatisticas"
+        setAtivo={setAtivo}
+      />
     </ul>
   );
 }

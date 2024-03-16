@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 import BannerItem from '../item/BannerItem';
@@ -31,12 +31,14 @@ const BodyTable = ({
       {data?.banners?.map((banner, index) => {
         return (
           <div key={banner._id}>
-            <BannerItem
-              setBannerData={setBannerData}
-              bannerData={banner}
-              setAtivoEdit={setAtivoEdit}
-              setAtivoDelete={setAtivoDelete}
-            />
+            <Suspense fallback={<p>Carregando...</p>}>
+              <BannerItem
+                setBannerData={setBannerData}
+                bannerData={banner}
+                setAtivoEdit={setAtivoEdit}
+                setAtivoDelete={setAtivoDelete}
+              />
+            </Suspense>
           </div>
         );
       })}

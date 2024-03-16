@@ -11,11 +11,13 @@ import React from 'react';
 function BotaoLi({
   texto,
   image,
-  link
+  link,
+  setAtivo
 }: {
   texto: string;
   image?: string;
   link?: string;
+  setAtivo?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const linkClean = link ?? texto?.replace(/\s+/g, '')?.toLowerCase();
   const pathname = usePathname();
@@ -24,7 +26,14 @@ function BotaoLi({
   const linkInsertClean = linkClean?.replaceAll('/', '')?.replaceAll(' ', '');
 
   return (
-    <li className={styles.lista}>
+    <li
+      className={styles.lista}
+      onClick={() => {
+        if (setAtivo) {
+          setAtivo(false);
+        }
+      }}
+    >
       <Link
         href={`/dashboard/${linkClean}`}
         className={`${linkActiveClean === linkInsertClean ? styles.ativo : ''}`}

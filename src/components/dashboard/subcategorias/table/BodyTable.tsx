@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 import SubcategoriaItem from './SubcategoriaItem';
@@ -18,7 +18,6 @@ interface GetAllSubcategoriesResponse {
 
 const BodyTable = ({
   data,
-  categoryId,
   setAtivoEdit,
   setAtivoDelete,
   setIdSubcategory,
@@ -27,7 +26,6 @@ const BodyTable = ({
   setDefaultDescription
 }: {
   data: GetAllSubcategoriesResponse;
-  categoryId: string;
   idSubcategory: string;
   ativoDelete: boolean;
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -46,19 +44,21 @@ const BodyTable = ({
       {data?.subcategories?.map((subcategory, index) => {
         return (
           <div key={subcategory._id}>
-            <SubcategoriaItem
-              name={subcategory.name}
-              description={subcategory.description}
-              category={subcategory.category}
-              image={subcategory.image}
-              setAtivoEdit={setAtivoEdit}
-              setAtivoDelete={setAtivoDelete}
-              idSubcategory={subcategory._id}
-              setIdSubcategory={setIdSubcategory}
-              setIdCategory={setIdCategory}
-              setDefaultTitle={setDefaultTitle}
-              setDefaultDescription={setDefaultDescription}
-            />
+            <Suspense fallback={'Carregando...'}>
+              <SubcategoriaItem
+                name={subcategory.name}
+                description={subcategory.description}
+                category={subcategory.category}
+                image={subcategory.image}
+                setAtivoEdit={setAtivoEdit}
+                setAtivoDelete={setAtivoDelete}
+                idSubcategory={subcategory._id}
+                setIdSubcategory={setIdSubcategory}
+                setIdCategory={setIdCategory}
+                setDefaultTitle={setDefaultTitle}
+                setDefaultDescription={setDefaultDescription}
+              />
+            </Suspense>
           </div>
         );
       })}

@@ -1,8 +1,11 @@
 export interface UserInterface {
-  _id: string;
-  name: string;
-  surname: string;
-  email: string;
+  user: {
+    _id: string;
+    name: string;
+    surname: string;
+    email: string;
+  };
+  isAdmin: boolean;
 }
 
 export interface ProductInputs {

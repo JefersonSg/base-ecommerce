@@ -28,14 +28,12 @@ const DataTable = () => {
     <>
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
-        {data && (
-          <BodyTable
-            nextPage={nextPage}
-            data={data}
-            setIdDelete={setIdDelete}
-            setAtivoDelete={setAtivoDelete}
-          />
-        )}
+        <BodyTable
+          nextPage={nextPage}
+          data={data}
+          setIdDelete={setIdDelete}
+          setAtivoDelete={setAtivoDelete}
+        />
         <RodapeTable
           data={data}
           setCurrentPage={setCurrentPage}
