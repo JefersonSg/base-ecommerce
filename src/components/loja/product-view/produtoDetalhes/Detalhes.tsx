@@ -34,7 +34,15 @@ function Detalhes({ data }: { data: ProductApi }) {
     if (!userData?.data?.user?._id) {
       setTextPopUp('Faça login para adicionar ao carrinho');
       setTypePopUp('error');
-      return;
+
+      const timeout = setTimeout(() => {
+        setTextPopUp('');
+        setTypePopUp('');
+      }, 3000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
 
     const infosCartItem = {

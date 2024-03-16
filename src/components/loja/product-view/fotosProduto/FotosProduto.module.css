@@ -26,14 +26,14 @@
 }
 
 .fotoInteira {
-  position: fixed;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
+  position: absolute;
   z-index: 1001;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
 }
 .fotoInteira img {
   width: 100%;

@@ -44,6 +44,8 @@ function Produto({ productData }: Props) {
             src={images[0]}
             width={185}
             height={243}
+            placeholder="blur"
+            blurDataURL={images[0]}
           />
         )}
       </div>

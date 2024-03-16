@@ -49,6 +49,8 @@ function FotosProduto({ img }: { img: string[] }) {
             src={imagemPrincipal}
             width={350}
             height={350}
+            placeholder="blur"
+            blurDataURL={img?.[0]}
           />
         </div>
         {fotoInteira && (
