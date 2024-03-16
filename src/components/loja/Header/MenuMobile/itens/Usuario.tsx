@@ -13,7 +13,7 @@ function Usuario({
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const { data } = useQuery<{ user: UserInterface; isAdmin: boolean }>({
+  const { data } = useQuery<UserInterface>({
     queryKey: ['user'],
     queryFn: async () => {
       return await getUserByToken();

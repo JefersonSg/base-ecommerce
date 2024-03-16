@@ -18,7 +18,7 @@ import { usePathname } from 'next/navigation';
 
 const ContainerCart = () => {
   const pathname = usePathname();
-  const userData = useQuery<{ user: UserInterface }>({
+  const userData = useQuery<UserInterface>({
     queryKey: ['user'],
     queryFn: async () => {
       return await getUserByToken();

@@ -15,7 +15,7 @@ import { addNewItemCart } from '@/src/shared/api/CREATE';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 
 function Detalhes({ data }: { data: ProductApi }) {
-  const userData = useQuery<{ user: UserInterface }>({
+  const userData = useQuery<UserInterface>({
     queryKey: ['user']
   });
 
