@@ -25,6 +25,7 @@ const ProdutoCarrinho = ({
   total,
   refetchData
 }: {
+  product: ProductApi;
   productId: string;
   color: string;
   size: string;
@@ -91,9 +92,12 @@ const ProdutoCarrinho = ({
         {data?.product && (
           <Image
             alt="Imagem do produto"
-            src={`${data?.product?.images?.[0]}`}
+            src={data?.product?.images?.[0]}
+            placeholder="blur"
+            blurDataURL={data?.product?.images?.[0]}
             width={104}
             height={135}
+            quality={40}
           />
         )}
         <div className={styles.informacoes}>
@@ -127,7 +131,16 @@ const ProdutoCarrinho = ({
           isLoading={isLoading}
           functionUpdate={updateItem}
         />
-        <p className={styles.valor}>R$ {total.toFixed(2)}</p>
+        <p
+          className={`${styles.valor} ${
+            data?.product.promotion && data.product.promotionalPrice
+              ? styles.promotion
+              : ''
+          }`}
+        >
+          <span> R$ {(Number(data?.product.price) * amount).toFixed(2)}</span>
+          R$ {total.toFixed(2)}
+        </p>
       </div>
       {modalDeleteActive && <BackgoundClick setState1={setModalDeleteActive} />}
       {modalDeleteActive && (

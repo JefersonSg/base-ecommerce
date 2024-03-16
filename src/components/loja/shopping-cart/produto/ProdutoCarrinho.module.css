@@ -66,3 +66,16 @@
   font-weight: 700;
   line-height: 150%;
 }
+.valor span {
+  display: none;
+}
+.valor.promotion span {
+  display: block;
+  font-weight: 300;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+.valor.promotion {
+  display: flex;
+  flex-direction: column;
+}
