@@ -6,18 +6,11 @@ import { ButtonMenu } from './ButtonMenu/ButtonMenu';
 import Image from 'next/image';
 import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
-import { useQuery } from '@tanstack/react-query';
-import { getUserByToken } from '@/src/shared/api/GETS';
 import useMedia from '@/src/shared/hooks/useMedia';
 import MenuSideBar from './MenuMobile/MenuSideBar';
 
 export function Header() {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
-
-  const { data } = useQuery({
-    queryKey: ['user'],
-    queryFn: getUserByToken
-  });
 
   const mobile = useMedia('(max-width: 64rem)');
 
@@ -64,13 +57,7 @@ export function Header() {
           </Link>
         </div>
       </header>
-      {estaAtivo && (
-        <MenuMobile
-          userData={data?.currentUser}
-          ativo={estaAtivo}
-          setAtivo={setAtivo}
-        />
-      )}
+      {estaAtivo && <MenuMobile setAtivo={setAtivo} />}
       {!mobile && <MenuSideBar />}
     </div>
   );
