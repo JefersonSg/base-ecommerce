@@ -29,3 +29,9 @@
   border-radius: 2px;
   transition: 0.2s;
 }
+
+@media (min-width: 64rem) {
+  .mobile_button {
+    display: none;
+  }
+}

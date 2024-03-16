@@ -33,6 +33,7 @@ export function Header({
     queryKey: ['user'],
     queryFn: getUserByToken
   });
+
   const mobile = useMedia('(max-width: 64rem)');
 
   React.useEffect(() => {
@@ -52,35 +53,33 @@ export function Header({
       <InfosDestaques />
       <header className={styles.header}>
         <div className={styles.container1}>
-          {mobile && <ButtonMenu setAtivo={setAtivo} />}
+          <ButtonMenu setAtivo={setAtivo} />
           <Pesquisa />
         </div>
         <Link href={'/'} className={styles.logo}>
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
         </Link>
         <div className={styles.container2}>
-          {!mobile && (
-            <Link
-              href={`${data?.user ? '/minha-conta' : '/login'}`}
-              className={styles.login}
-            >
+          <Link
+            href={`${data?.user ? '/minha-conta' : '/login'}`}
+            className={styles.login}
+          >
+            <Image
+              alt="account image"
+              src={'/header/account.svg'}
+              width={24}
+              height={24}
+            />
+            <p>
+              {data?.user
+                ? 'Olá ' + data.user.name + ' ' + data.user.surname
+                : 'Olá, faça seu login ou cadastre-se.'}
+            </p>
+          </Link>
+          {data?.isAdmin && (
+            <Link href={'/dashboard'} className={styles.button_dashboard}>
               <Image
-                alt="account image"
-                src={'/header/account.svg'}
-                width={24}
-                height={24}
-              />
-              <p>
-                {data?.user
-                  ? 'Olá ' + data.user.name + ' ' + data.user.surname
-                  : 'Olá, faça seu login ou cadastre-se.'}
-              </p>
-            </Link>
-          )}
-          {data?.isAdmin && !mobile && (
-            <Link href={'/dashboard'}>
-              <Image
-                alt="Imagem de coração"
+                alt="Imagem do dashboard"
                 src={'/header/Menu/dashboard.svg'}
                 width={24}
                 height={24}
@@ -105,12 +104,10 @@ export function Header({
           </Link>
         </div>
       </header>
-      {!mobile && (
-        <CategoriasLinks
-          categories={categories}
-          subcategoriesList={subcategoriesList}
-        />
-      )}
+      <CategoriasLinks
+        categories={categories}
+        subcategoriesList={subcategoriesList}
+      />
       {estaAtivo && mobile && (
         <MenuMobile
           ativo={estaAtivo}

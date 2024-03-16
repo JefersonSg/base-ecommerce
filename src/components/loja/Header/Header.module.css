@@ -21,8 +21,20 @@
   display: flex;
   gap: 24px;
 }
-
+.container2 {
+  position: relative;
+}
+.button_dashboard {
+  position: absolute;
+  left: -40px;
+  top: -1px;
+}
 @media (min-width: 64rem) {
+  .button_dashboard {
+    position: relative;
+    left: 0px;
+    top: 0px;
+  }
   .header {
     padding: 0px;
     height: 84px;
@@ -50,5 +62,10 @@
   }
   .container2 {
     margin-right: 24px;
+  }
+}
+@media (max-width: 64rem) {
+  .login {
+    display: none;
   }
 }

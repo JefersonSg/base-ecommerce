@@ -9,7 +9,7 @@ function MenuSideBar() {
   return (
     <>
       <div className={styles.sidebar}>
-        <Link href={'/'} className={styles.logo}>
+        <Link href={'/dashboard'} className={styles.logo}>
           <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
         </Link>
         <nav className={styles.container}>

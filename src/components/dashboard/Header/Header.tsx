@@ -42,7 +42,7 @@ export function Header() {
               <ButtonMenu setAtivo={setAtivo} ativo={estaAtivo} />
             </div>
 
-            <Link href={'/'} className={styles.logo}>
+            <Link href={'/dashboard'} className={styles.logo}>
               <Image
                 alt="Logo"
                 src={'/header/Logo.svg'}

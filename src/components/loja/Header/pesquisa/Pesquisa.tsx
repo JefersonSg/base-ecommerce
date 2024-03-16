@@ -4,7 +4,6 @@ import React, { type ChangeEvent } from 'react';
 import styles from './Pesquisa.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import useMedia from '@/src/shared/hooks/useMedia';
 import ResultadoPesquisa from './ResultadoPesquisa';
 
 const Pesquisa = () => {
@@ -15,8 +14,6 @@ const Pesquisa = () => {
     setPesquisa(event.target?.value);
     setAtivo(true);
   }
-
-  const mobile = useMedia('(max-width: 64rem)');
 
   return (
     <>
@@ -30,67 +27,62 @@ const Pesquisa = () => {
         width={24}
         height={24}
       />
-      {ativo || !mobile ? (
-        <>
-          <div className={styles.pesquisa}>
-            {ativo && pesquisa && (
-              <ResultadoPesquisa
-                pesquisa={pesquisa}
-                setAtivo={setAtivo}
-                setPesquisa={setPesquisa}
-              />
-            )}
 
-            {mobile && (
-              <Image
-                alt="seta de voltar"
-                className={styles.seta_voltar}
-                src={'/setaVoltar.svg'}
-                width={20}
-                height={20}
-                onClick={() => {
-                  setAtivo(false);
-                }}
-              />
-            )}
-            <input
-              className={styles.input_pesquisa}
-              type="text"
-              placeholder="O que você procura?"
-              value={pesquisa}
-              onChange={handleChange}
+      <>
+        <div className={`${styles.pesquisa} ${ativo ? styles.ativo : ''}`}>
+          {ativo && pesquisa && (
+            <ResultadoPesquisa
+              pesquisa={pesquisa}
+              setAtivo={setAtivo}
+              setPesquisa={setPesquisa}
             />
-
-            <Link
-              onClick={() => {
-                setAtivo(!ativo);
-              }}
-              href={`/produtos/${pesquisa}`}
-              className={styles.button_pesquisa}
-            >
-              <Image
-                alt="Lupa"
-                className={styles.lupaInput}
-                src={'/header/icons/lupa.svg'}
-                width={24}
-                height={24}
-              />
-            </Link>
-          </div>
-          {(mobile && ativo) || (pesquisa && ativo) ? (
-            <div
-              className={styles.fundo}
-              onClick={() => {
-                setAtivo(false);
-              }}
-            ></div>
-          ) : (
-            <></>
           )}
-        </>
-      ) : (
-        <></>
-      )}
+
+          <Image
+            alt="seta de voltar"
+            className={styles.seta_voltar}
+            src={'/setaVoltar.svg'}
+            width={20}
+            height={20}
+            onClick={() => {
+              setAtivo(false);
+            }}
+          />
+          <input
+            className={styles.input_pesquisa}
+            type="text"
+            placeholder="O que você procura?"
+            value={pesquisa}
+            onChange={handleChange}
+          />
+
+          <Link
+            onClick={() => {
+              setAtivo(!ativo);
+            }}
+            href={`/produtos/${pesquisa}`}
+            className={styles.button_pesquisa}
+          >
+            <Image
+              alt="Lupa"
+              className={styles.lupaInput}
+              src={'/header/icons/lupa.svg'}
+              width={24}
+              height={24}
+            />
+          </Link>
+        </div>
+        {pesquisa || ativo ? (
+          <div
+            className={styles.fundo}
+            onClick={() => {
+              setAtivo(false);
+            }}
+          ></div>
+        ) : (
+          <></>
+        )}
+      </>
     </>
   );
 };

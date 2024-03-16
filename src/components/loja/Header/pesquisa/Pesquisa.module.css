@@ -7,12 +7,14 @@
   background: white;
   animation: entrada 0.1s ease-in forwards;
   z-index: -1;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
-
+.pesquisa.ativo {
+  display: flex;
+}
 .seta_voltar {
   margin-right: 8px;
   cursor: pointer;
@@ -83,17 +85,20 @@
   .seta_voltar {
     display: none;
   }
+  .pesquisa.ativo {
+    display: grid;
+  }
   .button_pesquisa {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     width: 100%;
     background-color: transparent;
     border: none;
   }
   .input_pesquisa {
     border: none;
+    width: 265px;
     border-right: 1px solid var(--cor-quarta);
   }
   .lupaInput {

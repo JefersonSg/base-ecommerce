@@ -28,7 +28,7 @@
   z-index: 999;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .link {
     display: flex;
     align-items: center;
@@ -65,5 +65,13 @@
   }
   .link:hover svg path {
     stroke: var(--cor-contraste);
+  }
+}
+
+@media (max-width: 64rem) {
+  .background,
+  .container_nav,
+  .categorias_lista {
+    display: none;
   }
 }

@@ -4,22 +4,10 @@ import UlLinksUteis from './itens/UlLinksUteis';
 import LinksCategorias from './itens/LinksCategorias';
 import useMedia from '@/src/shared/hooks/useMedia';
 
-interface User {
-  _id: string;
-  name: string;
-  surname: string;
-  username: string;
-  email: string;
-}
-
 function MenuMobile({
-  ativo,
-  setAtivo,
-  userData
+  setAtivo
 }: {
-  ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  userData: User | null;
 }) {
   const mobile = useMedia('(max-width: 64rem)');
 
