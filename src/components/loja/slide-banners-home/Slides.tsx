@@ -40,9 +40,8 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     className={styles.imagem_mobile}
                     alt="imagem banner mobile"
                     src={banner.imageMobile}
-                    placeholder="blur"
-                    blurDataURL={banner.imageMobile}
-                    quality={80}
+                    placeholder="empty"
+                    quality={60}
                     width={750}
                     height={878}
                   />
@@ -50,9 +49,8 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     className={styles.imagem_desktop}
                     alt="imagem banner desktop"
                     src={banner.imageDesktop}
-                    placeholder="blur"
-                    blurDataURL={banner.imageDesktop}
-                    quality={80}
+                    placeholder="empty"
+                    quality={70}
                     width={1920}
                     height={600}
                   />

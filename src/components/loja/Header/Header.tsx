@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './Header.module.css';
 import { ButtonMenu } from './ButtonMenu/ButtonMenu';
 import { InfosDestaques } from './InfosDestaques';
@@ -104,17 +104,21 @@ export function Header({
           </Link>
         </div>
       </header>
-      <CategoriasLinks
-        categories={categories}
-        subcategoriesList={subcategoriesList}
-      />
-      {estaAtivo && mobile && (
-        <MenuMobile
-          ativo={estaAtivo}
-          setAtivo={setAtivo}
+      <Suspense>
+        <CategoriasLinks
           categories={categories}
           subcategoriesList={subcategoriesList}
         />
+      </Suspense>
+      {estaAtivo && mobile && (
+        <Suspense>
+          <MenuMobile
+            ativo={estaAtivo}
+            setAtivo={setAtivo}
+            categories={categories}
+            subcategoriesList={subcategoriesList}
+          />
+        </Suspense>
       )}
     </div>
   );

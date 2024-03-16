@@ -9,6 +9,7 @@ import {
   getAllCategories,
   getProductBySales
 } from '@/src/shared/api/GETS';
+import { Suspense } from 'react';
 // import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 
 export const metadata: Metadata = {
@@ -35,15 +36,21 @@ export default async function Home() {
   return (
     <>
       <main className={styles.main}>
-        <ContainerSlideBanner />
-        <SlideVantagens />
-        <Categorias categorias={categorias} />
-        <Section data={novidades} nomeSessao="Novidades" link={'novidades'} />
-        <Section
-          data={maisVendidos}
-          nomeSessao="Mais vendidos"
-          link={'mais-vendidos'}
-        />
+        <Suspense>
+          <ContainerSlideBanner />
+        </Suspense>
+        <Suspense>
+          <SlideVantagens />
+        </Suspense>
+        <Suspense>
+          <Categorias categorias={categorias} />
+          <Section data={novidades} nomeSessao="Novidades" link={'novidades'} />
+          <Section
+            data={maisVendidos}
+            nomeSessao="Mais vendidos"
+            link={'mais-vendidos'}
+          />
+        </Suspense>
         {/* <SectionColecoes /> */}
       </main>
     </>
