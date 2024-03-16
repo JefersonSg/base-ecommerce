@@ -21,3 +21,11 @@
   cursor: pointer;
   padding: 16px;
 }
+.botao_quantidade.loading img,
+.botao_quantidade.loading {
+  opacity: 0.5;
+  cursor: progress !important;
+}
+.botao_quantidade.loading {
+  border-color: rgba(0, 0, 0, 0.5);
+}

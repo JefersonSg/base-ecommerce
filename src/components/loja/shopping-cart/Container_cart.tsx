@@ -11,7 +11,7 @@ import Finalizar from './finalizar/Finalizar';
 import { useQuery } from '@tanstack/react-query';
 import { getAllItemsCartByUserId, getUserByToken } from '@/src/shared/api/GETS';
 import {
-  type ItemCartInterface,
+  type CartInterface,
   type UserInterface
 } from '@/src/shared/helpers/interfaces';
 import { usePathname } from 'next/navigation';
@@ -20,10 +20,12 @@ const ContainerCart = () => {
   const pathname = usePathname();
   const userData = useQuery<{ user: UserInterface }>({
     queryKey: ['user'],
-    queryFn: getUserByToken
+    queryFn: async () => {
+      return await getUserByToken();
+    }
   });
 
-  const { data, refetch } = useQuery<{ itemsCarts: ItemCartInterface[] }>({
+  const { data, refetch } = useQuery<CartInterface>({
     queryKey: ['shopping-cart', userData?.data?.user?._id],
     queryFn: async () => {
       if (userData?.data?.user?._id) {
@@ -32,7 +34,6 @@ const ContainerCart = () => {
       return [];
     }
   });
-
   React.useEffect(() => {
     async function handleChangeRoute() {
       await refetch();
@@ -48,12 +49,12 @@ const ContainerCart = () => {
           <Breadcrumb texto="Home / Carrinho" />
           <Titulo titulo="Carrinho" />
           <p className={`${styles.texto_indicativo} texto_indicativo`}>
-            Você tem {data?.itemsCarts?.length ?? 0} itens no seu carrinho
+            Você tem {data?.itemsCart?.length ?? 0} itens no seu carrinho
           </p>
         </div>
       </div>
       <div className={styles.produtos}>
-        {data?.itemsCarts?.map((itemCart) => {
+        {data?.itemsCart?.map((itemCart, index) => {
           return (
             <ProdutoCarrinho
               refetchData={refetch}
@@ -63,19 +64,20 @@ const ContainerCart = () => {
               productId={itemCart?.productId}
               color={itemCart?.color}
               size={itemCart?.size}
+              total={data?.prices[index]}
             />
           );
         })}
       </div>
-      {data?.itemsCarts && (
+      {data?.itemsCart && (
         <div className={styles.entregas}>
           <EntregaCarrinho />
         </div>
       )}
 
-      {data?.itemsCarts && (
+      {data?.itemsCart && (
         <div className={styles.finalizar_container}>
-          <Finalizar />
+          <Finalizar valorProdutos={data.totalValue} />
         </div>
       )}
     </div>

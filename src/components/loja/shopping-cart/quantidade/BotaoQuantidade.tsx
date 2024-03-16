@@ -6,13 +6,19 @@ import Image from 'next/image';
 
 const BotaoQuantidade = ({
   contador,
-  functionUpdate
+  functionUpdate,
+  isLoading
 }: {
   contador: number;
   functionUpdate: (number: number) => Promise<any>;
+  isLoading: boolean;
 }) => {
   return (
-    <button className={styles.botao_quantidade}>
+    <button
+      className={`${styles.botao_quantidade} ${
+        isLoading ? styles.loading : ''
+      }`}
+    >
       <Image
         onClick={() => {
           void functionUpdate(-1);

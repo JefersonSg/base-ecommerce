@@ -31,7 +31,9 @@ export function Header({
 
   const { data } = useQuery<{ user: UserInterface; isAdmin: boolean }>({
     queryKey: ['user'],
-    queryFn: getUserByToken
+    queryFn: async () => {
+      return await getUserByToken();
+    }
   });
 
   const mobile = useMedia('(max-width: 64rem)');

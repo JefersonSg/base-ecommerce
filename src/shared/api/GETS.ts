@@ -24,20 +24,7 @@ async function isAdmin(response: any) {
 }
 
 // Revalidates
-export const getTesteCache = async () => {
-  try {
-    const response = await fetch(`${API}products/teste-cache`, {
-      next: {
-        revalidate: 10
-      }
-    });
 
-    return await response.json();
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
 export const getAllProducts = async () => {
   try {
     const response = await fetch(`${API}products`, {
@@ -144,12 +131,18 @@ export const getAllActiveBanners = async () => {
 };
 
 // No revalidate
-export const getUserByToken = async () => {
-  if (!token) {
+export const getUserByToken = async (token2?: string) => {
+  if (!token && !token2) {
     return null;
   }
+  const configHeader = {
+    headers: {
+      Authorization: `Bearer ${token || token2}`,
+      'Content-Type': 'application/json'
+    }
+  };
   try {
-    const response = await axios.get(`${API}user/token`, config);
+    const response = await axios.get(`${API}user/token`, configHeader);
 
     await isAdmin(response.data);
     return response.data;
@@ -326,7 +319,8 @@ export const getAllItemsCartByUserId = async (userId: string) => {
   try {
     const response = await fetch(`${API}shopping/get-all/${userId}`, {
       next: {
-        revalidate: 0
+        revalidate: 0,
+        tags: ['item-cart-id-' + userId]
       }
     });
 

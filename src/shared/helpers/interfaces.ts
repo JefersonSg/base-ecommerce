@@ -98,13 +98,18 @@ export interface FavoriteInterface {
   productId: string;
 }
 
-export interface ItemCartInterface {
+export interface ItemsCartInterface {
   _id: string;
   amount: number;
   productId: string;
   shoppingCartId: string;
   size: string;
   color: string;
+}
+export interface CartInterface {
+  itemsCart: ItemsCartInterface[];
+  prices: number[];
+  totalValue: number;
 }
 export interface AddressInterface {
   _id: string;

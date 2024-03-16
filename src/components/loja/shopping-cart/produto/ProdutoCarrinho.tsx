@@ -22,6 +22,7 @@ const ProdutoCarrinho = ({
   size,
   amount,
   ItemCartId,
+  total,
   refetchData
 }: {
   productId: string;
@@ -29,7 +30,8 @@ const ProdutoCarrinho = ({
   size: string;
   amount: number;
   ItemCartId: string;
-  refetchData: (
+  total: number;
+  refetchData?: (
     options?: RefetchOptions | undefined
   ) => Promise<QueryObserverResult<any, Error>>;
 }) => {
@@ -40,8 +42,10 @@ const ProdutoCarrinho = ({
     }
   });
   const [modalDeleteActive, setModalDeleteActive] = React.useState(false);
+  const [isLoading, setIsloading] = React.useState(false);
 
   async function updateItem(valueAmount: number) {
+    setIsloading(true);
     const newAmount = amount + valueAmount;
     const data = {
       size,
@@ -50,22 +54,33 @@ const ProdutoCarrinho = ({
     };
     try {
       const response = await updateItemCart(ItemCartId, data);
-      await refetchData();
+      if (refetchData) {
+        await refetchData();
+      }
       await refetch();
+      setIsloading(false);
+
       return response.data;
     } catch (error) {
+      setIsloading(false);
+
       console.log(error);
     }
   }
 
   async function deleteItem(idCart: string) {
     try {
+      setIsloading(true);
       const response = await deleteCartItem(idCart);
 
-      await refetchData();
+      if (refetchData) {
+        await refetchData();
+      }
       await refetch();
       return response.data;
+      setIsloading(false);
     } catch (error) {
+      setIsloading(false);
       console.log(error);
     }
   }
@@ -73,12 +88,14 @@ const ProdutoCarrinho = ({
   return (
     <div className={styles.produto_Carrinho}>
       <div className={styles.informacoes_produto}>
-        <Image
-          alt="Imagem do produto"
-          src={`${data?.product?.images?.[0] ?? '/produto/produto1.png'}`}
-          width={104}
-          height={135}
-        />
+        {data?.product && (
+          <Image
+            alt="Imagem do produto"
+            src={`${data?.product?.images?.[0]}`}
+            width={104}
+            height={135}
+          />
+        )}
         <div className={styles.informacoes}>
           <span className={styles.titulo}>
             {data?.product?.name ?? 'carregando...'}
@@ -105,13 +122,12 @@ const ProdutoCarrinho = ({
         />
       </div>
       <div className={styles.quantidade}>
-        <BotaoQuantidade contador={amount} functionUpdate={updateItem} />
-        <p className={styles.valor}>
-          R${' '}
-          {(data?.product?.price ? +data?.product?.price * amount : 0).toFixed(
-            2
-          )}
-        </p>
+        <BotaoQuantidade
+          contador={amount}
+          isLoading={isLoading}
+          functionUpdate={updateItem}
+        />
+        <p className={styles.valor}>R$ {total.toFixed(2)}</p>
       </div>
       {modalDeleteActive && <BackgoundClick setState1={setModalDeleteActive} />}
       {modalDeleteActive && (
