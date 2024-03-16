@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Controller, FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -15,21 +15,26 @@ function SlideFotos({
   imagens,
   setImagem,
   imagemId,
-  setImagemId
+  setImagemId,
+  setThumbsSwiper
 }: {
   imagens: string[];
   setImagem: React.Dispatch<React.SetStateAction<string>>;
   imagemId: string;
   setImagemId: React.Dispatch<React.SetStateAction<string>>;
+  setThumbsSwiper: React.Dispatch<React.SetStateAction<any>>;
 }) {
   return (
     <div className={styles.produto_thumbs}>
       <Swiper
+        onSwiper={setThumbsSwiper}
         className={`${styles.mySwiper} slide-produto`}
         navigation={true}
-        modules={[Navigation]}
         spaceBetween={16}
         slidesPerView={3}
+        watchSlidesProgress
+        freeMode={true}
+        modules={[Navigation, Controller, Thumbs, FreeMode]}
       >
         {imagens?.map((imagem: string, index) => {
           return (

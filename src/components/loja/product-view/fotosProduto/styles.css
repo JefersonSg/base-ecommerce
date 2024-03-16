@@ -18,10 +18,15 @@
 }
 
 .slide-produto .swiper-slide {
+  display: flex;
   width: 94px;
   height: auto;
+  border: 3px solid transparent;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
-.slide-produto .swiper-slide .ativo {
+.slide-produto .swiper-slide-thumb-active {
   border: 3px solid #6b4020;
+  border-radius: 8px;
 }

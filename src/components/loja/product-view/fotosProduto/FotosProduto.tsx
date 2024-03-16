@@ -1,5 +1,7 @@
 'use client';
 
+import 'swiper/css';
+
 import Image from 'next/image';
 import styles from './FotosProduto.module.css';
 import Slide from './SlideFotos';
@@ -7,6 +9,8 @@ import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import BtnFechar from '@/src/components/compartilhado/botoes/BtnFechar';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Controller, FreeMode, Thumbs } from 'swiper/modules';
 
 function FotosProduto({ img }: { img: string[] }) {
   const [imagemPrincipal, setImagemPrincipal] = React.useState<string>(
@@ -14,6 +18,7 @@ function FotosProduto({ img }: { img: string[] }) {
   );
   const [imagemId, setImagemId] = React.useState('0');
   const [fotoInteira, setFotoInteira] = React.useState(false);
+  const [thumbsSwiper, setThumbsSwiper] = React.useState(null);
 
   const params = useSearchParams()?.get('_id');
 
@@ -42,16 +47,36 @@ function FotosProduto({ img }: { img: string[] }) {
             setFotoInteira(true);
           }}
         >
-          <Image
-            className={styles.fotoPrincipal}
-            alt="Foto do produto"
-            id={imagemId}
-            src={imagemPrincipal}
-            width={350}
-            height={350}
-            placeholder="blur"
-            blurDataURL={img?.[0]}
-          />
+          <Swiper
+            slidesPerView={1}
+            thumbs={{ swiper: thumbsSwiper }}
+            modules={[Controller, Thumbs, FreeMode]}
+          >
+            {img.map((image) => {
+              return (
+                <SwiperSlide
+                  key={image}
+                  style={{
+                    maxWidth: '326px',
+                    maxHeight: '312px',
+                    padding: '20px',
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <Image
+                    className={styles.fotoPrincipal}
+                    alt="Foto do produto"
+                    id={imagemId}
+                    src={image}
+                    width={350}
+                    height={350}
+                    placeholder="blur"
+                    blurDataURL={img?.[0]}
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </div>
         {fotoInteira && (
           <div className={styles.fotoInteira}>
@@ -71,6 +96,7 @@ function FotosProduto({ img }: { img: string[] }) {
         <Slide
           setImagem={setImagemPrincipal}
           setImagemId={setImagemId}
+          setThumbsSwiper={setThumbsSwiper}
           imagemId={imagemId}
           imagens={img}
         />
