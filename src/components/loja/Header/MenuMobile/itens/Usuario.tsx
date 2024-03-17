@@ -26,7 +26,7 @@ function Usuario({
       <div className={styles.boasVindas}>
         <h3 className="titulo_area">
           Olá,{' '}
-          {userData
+          {userData?.user
             ? `${
                 userData?.user?.name +
                 ' ' +
@@ -34,7 +34,7 @@ function Usuario({
               }`
             : 'Visitante'}
         </h3>
-        {!userData ? (
+        {!userData.user ? (
           <p>
             <Link
               onClick={() => {

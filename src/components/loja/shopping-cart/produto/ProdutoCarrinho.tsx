@@ -15,6 +15,7 @@ import { updateItemCart } from '@/src/shared/api/UPDATES';
 import { deleteCartItem } from '@/src/shared/api/DELETE';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import Link from 'next/link';
 
 const ProdutoCarrinho = ({
   productId,
@@ -96,20 +97,25 @@ const ProdutoCarrinho = ({
     <div className={styles.produto_Carrinho}>
       <div className={styles.informacoes_produto}>
         {data?.product && (
-          <Image
-            alt="Imagem do produto"
-            src={data?.product?.images?.[0]}
-            placeholder="blur"
-            blurDataURL={data?.product?.images?.[0]}
-            width={104}
-            height={135}
-            quality={40}
-          />
+          <Link href={{ pathname: '/produto', query: { _id: productId } }}>
+            <Image
+              alt="Imagem do produto"
+              src={data?.product?.images?.[0]}
+              placeholder="blur"
+              blurDataURL={data?.product?.images?.[0]}
+              width={104}
+              height={135}
+              quality={40}
+            />
+          </Link>
         )}
         <div className={styles.informacoes}>
-          <span className={styles.titulo}>
+          <Link
+            className={styles.titulo}
+            href={{ pathname: '/produto', query: { _id: productId } }}
+          >
             {data?.product?.name ?? 'carregando...'}
-          </span>
+          </Link>
           <p>
             <span>Cor: </span> {color}
           </p>
