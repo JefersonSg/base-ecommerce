@@ -36,15 +36,17 @@ export default async function Home() {
   return (
     <>
       <main className={styles.main}>
-        <Suspense>
-          <ContainerSlideBanner />
-        </Suspense>
+        <ContainerSlideBanner />
         <Suspense>
           <SlideVantagens />
         </Suspense>
         <Suspense>
           <Categorias categorias={categorias} />
+        </Suspense>
+        <Suspense>
           <Section data={novidades} nomeSessao="Novidades" link={'novidades'} />
+        </Suspense>
+        <Suspense>
           <Section
             data={maisVendidos}
             nomeSessao="Mais vendidos"

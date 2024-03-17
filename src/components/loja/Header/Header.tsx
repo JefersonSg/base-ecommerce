@@ -14,6 +14,7 @@ import {
   type UserInterface
 } from '@/src/shared/helpers/interfaces';
 import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
+import { isAdmin } from '@/src/actions/isAdmin';
 
 export function Header({
   userData,
@@ -39,6 +40,12 @@ export function Header({
       document.body.classList.remove('scroll-lock');
     };
   }, [estaAtivo]);
+
+  React.useEffect(() => {
+    if (userData.isAdmin) {
+      void isAdmin();
+    }
+  }, [userData.isAdmin]);
 
   return (
     <div className={styles.container_header}>

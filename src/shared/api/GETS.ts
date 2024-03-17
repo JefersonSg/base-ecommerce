@@ -1,6 +1,9 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { type FavoriteInterface } from '../helpers/interfaces';
+import {
+  type UserInterface,
+  type FavoriteInterface
+} from '../helpers/interfaces';
 
 const token = Cookies.get('auth_token') ?? false;
 const API = process.env.NEXT_PUBLIC_API_URL;
@@ -13,15 +16,6 @@ const config = {
     'Content-Type': 'application/json'
   }
 };
-async function isAdmin(response: any) {
-  const { isAdmin } = response;
-
-  if (isAdmin) {
-    return Cookies.set('isAdmin', 'true');
-  }
-
-  Cookies.remove('isAdmin');
-}
 
 // Revalidates
 
@@ -133,7 +127,7 @@ export const getAllActiveBanners = async () => {
 // No revalidate
 export const getUserByToken = async (token2?: string) => {
   if (!token && !token2) {
-    return null;
+    return [];
   }
   const configHeader = {
     headers: {
@@ -142,9 +136,11 @@ export const getUserByToken = async (token2?: string) => {
     }
   };
   try {
-    const response = await axios.get(`${API}user/token`, configHeader);
+    const response: { data: UserInterface } = await axios.get(
+      `${API}user/token`,
+      configHeader
+    );
 
-    await isAdmin(response.data);
     return response.data;
   } catch (error) {
     Cookies.remove('auth_token');

@@ -15,13 +15,15 @@ import {
   type UserInterface
 } from '@/src/shared/helpers/interfaces';
 import { usePathname } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 const ContainerCart = () => {
   const pathname = usePathname();
+  const token = Cookies.get('auth_token');
   const userData = useQuery<UserInterface>({
     queryKey: ['user'],
     queryFn: async () => {
-      return await getUserByToken();
+      return (await getUserByToken(token)) as UserInterface;
     }
   });
 

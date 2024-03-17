@@ -6,10 +6,11 @@ import {
   getUserByToken
 } from '@/src/shared/api/GETS';
 import { cookies } from 'next/headers';
+import { type UserInterface } from '@/src/shared/helpers/interfaces';
 
 export default async function HeaderContainer() {
   const token = cookies().get('auth_token')?.value;
-  const userData = await getUserByToken(token);
+  const userData = (await getUserByToken(token)) as UserInterface;
   const categories = await getAllCategories();
 
   const subcategoriesList: subcategoriesListByCategory = [];

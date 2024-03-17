@@ -8,10 +8,11 @@ import {
   getUserByToken
 } from '../shared/api/GETS';
 import { cookies } from 'next/headers';
+import { type UserInterface } from '../shared/helpers/interfaces';
 
 const NotFound = async () => {
   const token = cookies().get('auth_token')?.value;
-  const userData = await getUserByToken(token);
+  const userData = (await getUserByToken(token)) as UserInterface;
   const categories = await getAllCategories();
 
   const subcategoriesList: subcategoriesListByCategory = [];

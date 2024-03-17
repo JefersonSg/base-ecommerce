@@ -11,7 +11,7 @@ import { addFavorite } from '@/src/shared/api/CREATE';
 import { type FavoriteInterface } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import { deleteFavorite } from '@/src/shared/api/DELETE';
-import { getFavoriteByUserId } from '@/src/shared/api/GETS';
+import { getFavoriteByUserId, getUserByToken } from '@/src/shared/api/GETS';
 import Cookies from 'js-cookie';
 
 const Like = ({ productId }: { productId: string }) => {
@@ -23,7 +23,10 @@ const Like = ({ productId }: { productId: string }) => {
   const [stope, setStope] = React.useState(true);
 
   const userData: any = useQuery({
-    queryKey: ['user']
+    queryKey: ['user'],
+    queryFn: async () => {
+      return await getUserByToken();
+    }
   });
 
   const { data, refetch } = useQuery<{ favorites: FavoriteInterface[] }>({
