@@ -70,7 +70,7 @@ const FormUpdateProduct = ({
     characteristic,
     composition,
     promotionalPrice
-  } = dataProduct.product;
+  } = dataProduct.product ?? [];
   const {
     register,
     handleSubmit,
@@ -141,9 +141,8 @@ const FormUpdateProduct = ({
         await refetch();
         router.push('/dashboard/produtos');
       }
-    } catch (error) {
-      console.log(error);
-      setAtivoPopUp(`Erro ao Editar o produto`);
+    } catch (error: any) {
+      setIsLoading(false);
     }
   };
 
@@ -157,15 +156,21 @@ const FormUpdateProduct = ({
     };
   }, [ativoPopUp]);
 
+  React.useEffect(() => {
+    if (!dataProduct?.product) {
+      router.push('/dashboard/produtos');
+    }
+  }, [dataProduct?.product, router]);
+
   // setando Valores dos arrays
   React.useEffect(() => {
-    if (colors[0]) {
+    if (colors?.[0]) {
       setSchemeColor(colors);
     }
     if (stock?.amount) {
       setAmount(stock?.amount);
     }
-    if (codeColors) {
+    if (codeColors?.[0]) {
       setSchemeCodeColor(codeColors?.join(',')?.split(','));
     }
 

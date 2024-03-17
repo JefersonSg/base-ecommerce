@@ -17,6 +17,9 @@ export default async function HeaderContainer() {
 
   const getSubcategoriesList = async () => {
     let i = 0;
+
+    if (!categories?.categories?.[0]) return null;
+
     for (const category of categories.categories) {
       const subcategory = await getSubcategoryByCategory(category._id);
 

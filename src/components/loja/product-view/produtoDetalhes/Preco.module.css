@@ -3,3 +3,11 @@
   margin-top: 74px;
   text-align: end;
 }
+
+.preco span {
+  font-size: 16px;
+  text-decoration: line-through;
+}
+.preco .promotion {
+  color: var(--cor-contraste);
+}

@@ -76,8 +76,9 @@ export async function updateProduct(
 
     return response.data;
   } catch (error: any) {
-    console.log(error);
-
+    if (error?.response?.data?.message) {
+      setAtivoPopUp(error?.response?.data?.message);
+    }
     if (error.response.data.errorsResult.body) {
       Object.keys(error.response.data.errorsResult.body).forEach((key) => {
         setAtivoPopUp(error.response.data.errorsResult.body[key]);

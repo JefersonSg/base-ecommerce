@@ -1,9 +1,10 @@
 .popUp {
   display: flex;
+  max-width: 190px;
   width: max-content;
-  max-width: 150px;
   padding: 8px 16px;
-
+  min-width: 160px;
+  flex-wrap: wrap;
   position: fixed;
   top: 100px;
   right: -300px;

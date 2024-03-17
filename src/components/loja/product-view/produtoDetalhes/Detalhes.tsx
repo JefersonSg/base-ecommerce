@@ -91,6 +91,8 @@ function Detalhes({ data }: { data: ProductApi }) {
         <Tamanhos size={data?.size} />
       </div>
       <Preco
+        promotion={data.promotion}
+        promotionalPrice={Number(data?.promotionalPrice ?? 0)}
         texto={`R$ ${data?.price.toFixed(2).toString().replace('.', ',')}`}
       />
       <div
