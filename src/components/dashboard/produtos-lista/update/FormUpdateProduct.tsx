@@ -137,7 +137,6 @@ const FormUpdateProduct = ({
       setIsLoading(false);
 
       if (response) {
-        console.log(response);
         setAtivoPopUp('Produto atualizado com sucesso');
         await refetch();
         router.push('/dashboard/produtos');
