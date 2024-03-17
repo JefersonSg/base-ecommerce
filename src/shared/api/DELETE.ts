@@ -32,6 +32,9 @@ export async function deleteProduct(productId: string) {
   );
   await revalidateTagAction('all-active-products');
   await revalidateTagAction('all-products');
+  await revalidateTagAction(`product-${productId}`);
+  await revalidateTagAction('all-products-by-sales');
+
   return response.data;
 }
 

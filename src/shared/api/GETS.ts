@@ -8,7 +8,7 @@ import {
 const token = Cookies.get('auth_token') ?? false;
 const API = process.env.NEXT_PUBLIC_API_URL;
 
-const timeRevalidate = 5 * 24 * 60 * 60;
+const timeRevalidate = 2 * 24 * 60 * 60;
 
 const config = {
   headers: {
@@ -186,8 +186,8 @@ export const getProductById = async (productId: string) => {
   try {
     const response = await fetch(`${API}products/${productId}`, {
       next: {
-        revalidate: timeRevalidate,
-        tags: [`product-${productId}`]
+        revalidate: 3600,
+        tags: [productId]
       }
     });
 

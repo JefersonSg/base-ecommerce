@@ -71,7 +71,8 @@ export async function updateProduct(
 
     await revalidateTagAction('all-active-products');
     await revalidateTagAction('all-products');
-    await revalidateTagAction(`product-${productId}`);
+    await revalidateTagAction(productId);
+    await revalidateTagAction('all-products-by-sales');
 
     return response.data;
   } catch (error: any) {
@@ -163,6 +164,13 @@ export async function toggleStock(data: any, pathnameUrl: string) {
       formData,
       configFormdata
     );
+
+    if (data.stock.amount) {
+      await revalidateTagAction('all-products');
+      await revalidateTagAction('all-active-products');
+      await revalidateTagAction('all-products-by-sales');
+      await revalidateTagAction(data._id);
+    }
 
     return response.data;
   } catch (error: any) {

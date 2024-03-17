@@ -154,7 +154,9 @@ export async function createProduct(
       configFormdata
     );
 
+    await revalidateTagAction('all-products');
     await revalidateTagAction('all-active-products');
+    await revalidateTagAction('all-products-by-sales');
 
     return response.data;
   } catch (error: any) {

@@ -13,7 +13,7 @@ import BtnEstatistica from './Botoes/BtnEstatistica';
 function UlLinksUteis({
   setAtivo
 }: {
-  setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivo?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
     <ul className={styles.linksUteis}>

@@ -5,7 +5,7 @@ import { useUserContext } from '@/src/shared/context';
 function LinksCategorias({
   setAtivo
 }: {
-  setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivo?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const { logout } = useUserContext();
   return (
