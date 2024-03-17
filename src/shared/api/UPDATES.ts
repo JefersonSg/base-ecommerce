@@ -71,7 +71,7 @@ export async function updateProduct(
 
     await revalidateTagAction('all-active-products');
     await revalidateTagAction('all-products');
-    await revalidateTagAction('product-' + productId);
+    await revalidateTagAction(`product-${productId}`);
 
     return response.data;
   } catch (error: any) {
