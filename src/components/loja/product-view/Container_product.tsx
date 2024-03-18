@@ -43,9 +43,11 @@ const ContainerProduct = async ({
       {data.product && (
         <>
           <Breadcrumb
-            texto={`${'Home'} / ${categoryName ? categoryName + ' /' : ''}  ${
-              subcategoryName ? subcategoryName + ' /' : ''
-            } ${data?.product?.name}`}
+            texto1={categoryName}
+            link1={`/produtos/categoria?_id=${data.product.category}`}
+            texto2={subcategoryName}
+            link2={`/produtos/subcategoria?_id=${data.product.subcategory}`}
+            texto3={data.product.name}
           />
           <Titulo titulo={data?.product?.name} />
           <Interacoes id={data?.product?._id} stars={media} />

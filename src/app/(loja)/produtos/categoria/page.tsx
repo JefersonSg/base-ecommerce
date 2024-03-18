@@ -18,9 +18,7 @@ async function page({ searchParams }: { searchParams: { _id: string } }) {
 
   return (
     <div className={styles.produtos_container}>
-      <Breadcrumb
-        texto={`Home / Produtos / ${category?.category?.name ?? ''}`}
-      />
+      <Breadcrumb texto1={category?.category?.name} />
       <Suspense>
         <Produtos
           data={data}

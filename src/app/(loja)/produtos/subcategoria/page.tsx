@@ -16,24 +16,24 @@ import { Suspense } from 'react';
 
 async function page({ searchParams }: { searchParams: { _id: string } }) {
   const data: { products: ProductApi[] } = await getProductsBySubcategory(
-    searchParams._id
+    searchParams?._id
   );
   const subcategoria: { subcategory: subcategoryInterface } =
     await getSubcategoryById(searchParams._id);
   const category: { category: CategoryInterface } = await getCategoryById(
-    subcategoria.subcategory.category
+    subcategoria?.subcategory?.category
   );
 
   const subcategories = await getSubcategoryByCategory(
-    subcategoria.subcategory.category
+    subcategoria?.subcategory?.category
   );
 
   return (
     <div className={styles.produtos_container}>
       <Breadcrumb
-        texto={`Home / Produtos / ${category?.category?.name ?? ''} / ${
-          subcategoria?.subcategory?.name ?? ''
-        }`}
+        texto1={category?.category?.name}
+        link1={`/produtos/categoria?_id=${category.category._id}`}
+        texto2={subcategoria.subcategory.name}
       />
       <Suspense>
         <Produtos data={data} subcategorieDataSlide={subcategories} />

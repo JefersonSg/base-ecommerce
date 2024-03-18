@@ -47,6 +47,8 @@ const FormEditComment = ({
   const [imageUrl, setImageUrl] = React.useState<string | ArrayBuffer | null>(
     commentData?.image?.[0] ?? ''
   );
+
+  const [isLoading, setIsloading] = React.useState(false);
   const watchImage: File[] = watch('images') as File[];
 
   const { refetch } = useCommentContext() as CommentContextInterface;
@@ -75,18 +77,25 @@ const FormEditComment = ({
       stars,
       image: watchImage
     };
-    try {
-      const response = await updateComment(newcommentData);
+    if (!isLoading) {
+      setIsloading(true);
+      try {
+        const response = await updateComment(newcommentData);
 
-      if (response) {
-        router.refresh();
-        await refetch();
-        setModalForm(false);
-        setTextPopUp('Comentario Editado');
-        setTypePopUp('');
+        if (response) {
+          router.refresh();
+          await refetch();
+          setModalForm(false);
+          setTextPopUp('Comentario Editado');
+          setTypePopUp('');
+        }
+        setIsloading(false);
+      } catch (error) {
+        setIsloading(false);
+        console.log(error);
+        setTextPopUp('Erro ao atualizar o comentario');
+        setTypePopUp('error');
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -203,7 +212,7 @@ const FormEditComment = ({
           {errors?.comment?.message ?? errors?.images?.message ?? ''}
         </p>
         <div onClick={() => handleSubmit(onSubmit)}>
-          <BotaoRedondo texto="enviar" />
+          <BotaoRedondo disabled={isLoading} texto="enviar" />
         </div>
       </form>
     </div>

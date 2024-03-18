@@ -145,13 +145,13 @@ const ProdutoCarrinho = ({
         />
         <p
           className={`${styles.valor} ${
-            data?.product.promotion && data.product.promotionalPrice
+            data?.product?.promotion && data?.product?.promotionalPrice
               ? styles.promotion
               : ''
           }`}
         >
-          <span> R$ {(Number(data?.product.price) * amount).toFixed(2)}</span>
-          R$ {total.toFixed(2)}
+          <span> R$ {(Number(data?.product?.price) * amount).toFixed(2)}</span>
+          R$ {total?.toFixed(2)}
         </p>
       </div>
       {modalDeleteActive && <BackgoundClick setState1={setModalDeleteActive} />}

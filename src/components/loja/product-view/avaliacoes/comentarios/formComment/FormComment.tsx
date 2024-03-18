@@ -47,6 +47,7 @@ const FormComment = ({
   });
   const idProduct = useSearchParams().get('_id');
 
+  const [isLoading, setIsloading] = React.useState(false);
   const [imageUrl, setImageUrl] = React.useState<string | ArrayBuffer | null>();
   const watchImage: File[] = watch('images') as File[];
 
@@ -76,25 +77,30 @@ const FormComment = ({
       return;
     }
 
-    const dataComment = {
-      userId: dataUser.user._id,
-      comment: data.comment,
-      stars,
-      image: watchImage
-    };
-    try {
-      const response = await createComment(dataComment, idProduct);
+    if (!isLoading) {
+      setIsloading(true);
+      const dataComment = {
+        userId: dataUser.user._id,
+        comment: data.comment,
+        stars,
+        image: watchImage
+      };
+      try {
+        const response = await createComment(dataComment, idProduct);
 
-      router.refresh();
-      await refetch();
+        router.refresh();
+        await refetch();
 
-      if (response) {
-        setModalForm(false);
-        setTextPopUp('Comentario postado');
-        setTypePopUp('');
+        if (response) {
+          setModalForm(false);
+          setTextPopUp('Comentario postado');
+          setTypePopUp('');
+        }
+        setIsloading(false);
+      } catch (error) {
+        setIsloading(false);
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -207,7 +213,7 @@ const FormComment = ({
             {...register('images')}
           />
         </div>
-        <BotaoRedondo texto="enviar" />
+        <BotaoRedondo disabled={isLoading} texto="enviar" />
         <p className="error">
           {errors?.comment?.message ?? errors?.images?.message ?? ''}
         </p>
