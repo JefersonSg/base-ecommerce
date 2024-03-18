@@ -10,7 +10,7 @@ async function page() {
 
   return (
     <div className={styles.produtos_container}>
-      <Breadcrumb texto="Home / Produtos" />
+      <Breadcrumb texto1="Mais vendidos" />
       <Suspense>
         <Produtos data={data} categorieDataSlide={categories} />
       </Suspense>

@@ -58,7 +58,7 @@ const Pesquisa = () => {
 
           <Link
             onClick={() => {
-              setAtivo(!ativo);
+              setAtivo(false);
             }}
             href={`/produtos/${pesquisa}`}
             className={styles.button_pesquisa}
@@ -69,10 +69,13 @@ const Pesquisa = () => {
               src={'/header/icons/lupa.svg'}
               width={24}
               height={24}
+              onClick={() => {
+                setAtivo(false);
+              }}
             />
           </Link>
         </div>
-        {pesquisa || ativo ? (
+        {(pesquisa && ativo) || ativo ? (
           <div
             className={styles.fundo}
             onClick={() => {

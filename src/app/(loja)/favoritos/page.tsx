@@ -7,7 +7,7 @@ import SectionFavorites from '@/src/components/loja/sections-home/SectionFavorit
 const page = () => {
   return (
     <div className={styles.favorite_container}>
-      <Breadcrumb texto="Home / Favoritos" />
+      <Breadcrumb texto1="Favoritos" />
       <Suspense>
         <SectionFavorites />
       </Suspense>

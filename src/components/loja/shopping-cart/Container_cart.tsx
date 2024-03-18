@@ -48,7 +48,7 @@ const ContainerCart = () => {
     <div>
       <div className={styles.area_textos_container}>
         <div className={styles.area_textos}>
-          <Breadcrumb texto="Home / Carrinho" />
+          <Breadcrumb texto1="Carrinho" />
           <Titulo titulo="Carrinho" />
           <p className={`${styles.texto_indicativo} texto_indicativo`}>
             Você tem {data?.itemsCart?.length ?? 0} itens no seu carrinho

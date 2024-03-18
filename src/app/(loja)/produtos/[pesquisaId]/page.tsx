@@ -9,7 +9,7 @@ function page({ params }: { params: { pesquisaId: string } }) {
 
   return (
     <div className={styles.produtos_container}>
-      <Breadcrumb texto={`Home / Produtos / pesquisa`} />
+      <Breadcrumb texto1={stringDecoded} />
       <Suspense>
         <ProdutosContainer stringDecoded={stringDecoded} />
       </Suspense>

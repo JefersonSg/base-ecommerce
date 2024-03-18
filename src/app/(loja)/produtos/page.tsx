@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 function page() {
   return (
     <div className={styles.produtos_container}>
-      <Breadcrumb texto="Home / Produtos" />
+      <Breadcrumb texto1="Produtos" />
       <Suspense>
         <Produtos />
       </Suspense>

@@ -56,6 +56,9 @@ function FotosProduto({ img }: { img: string[] }) {
               return (
                 <SwiperSlide
                   key={image}
+                  onClick={() => {
+                    setImagemPrincipal(image);
+                  }}
                   style={{
                     maxWidth: '326px',
                     maxHeight: '312px',
@@ -79,17 +82,16 @@ function FotosProduto({ img }: { img: string[] }) {
           </Swiper>
         </div>
         {fotoInteira && (
-          <div className={styles.fotoInteira}>
+          <div className={styles.fotoInteira_bg}>
             <>
-              (
               <Image
-                className={styles.fotoTelaInteira}
+                className={styles.fotoInteira_img}
                 alt="Foto do produto"
                 src={imagemPrincipal}
                 width={350}
                 height={350}
               />
-              <BtnFechar setAtivo={setFotoInteira} />)
+              <BtnFechar setAtivo={setFotoInteira} />
             </>
           </div>
         )}

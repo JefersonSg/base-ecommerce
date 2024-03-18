@@ -4,7 +4,7 @@ import Media from './media/Media';
 
 async function Avaliacoes() {
   return (
-    <div className={styles.avaliacoes_container}>
+    <div className={styles.avaliacoes_container} id="avaliacoes">
       <h1 className={`titulo_sessao`}>Avaliações</h1>
       <Media />
       <Comentarios />
