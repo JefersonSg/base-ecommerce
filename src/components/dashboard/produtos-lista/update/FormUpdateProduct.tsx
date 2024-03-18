@@ -109,6 +109,7 @@ const FormUpdateProduct = ({
   const promotionPriceCheck = watch('promotionalPrice');
   const activeCheck = watch('active');
   const imagesWatch: any = watch('images');
+  const categoryWatch: any = watch('category');
 
   const dataCategory = useQuery<CategoriesResponse>({
     queryKey: ['categories'],
@@ -392,7 +393,6 @@ const FormUpdateProduct = ({
                   className={styles.category}
                   {...register('category')}
                 >
-                  <option value="outros">outros</option>
                   {dataCategory.data?.categories?.map((category, index) => {
                     return (
                       <option key={category._id} value={category._id}>
@@ -419,10 +419,19 @@ const FormUpdateProduct = ({
                   className={styles.category}
                   {...register('subcategory')}
                 >
-                  <option value="outros">outros</option>
                   {dataSubCategories.data?.subcategories?.map((subcategory) => {
                     return (
-                      <option key={subcategory._id} value={subcategory._id}>
+                      <option
+                        key={subcategory._id}
+                        value={subcategory._id}
+                        style={{
+                          display: `${
+                            subcategory.category === categoryWatch
+                              ? 'block'
+                              : 'none'
+                          }`
+                        }}
+                      >
                         {subcategory.name}
                       </option>
                     );

@@ -76,6 +76,7 @@ const FormCreateProduct = () => {
   const promotionWatch = watch('promotion');
   const activeWatch = watch('active');
   const imagesWatch: any = watch('images');
+  const categoryWatch: any = watch('category');
 
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
@@ -311,7 +312,6 @@ const FormCreateProduct = () => {
                   className={styles.category}
                   {...register('category')}
                 >
-                  <option value="outros">outros</option>
                   {dataCategory?.data?.categories?.map((category, index) => {
                     return (
                       <option key={category._id} value={category._id}>
@@ -338,11 +338,20 @@ const FormCreateProduct = () => {
                   className={styles.category}
                   {...register('subcategory')}
                 >
-                  <option value="outros">outros</option>
                   {dataSubCategories?.data?.subcategories?.map(
                     (subcategory) => {
                       return (
-                        <option key={subcategory._id} value={subcategory._id}>
+                        <option
+                          key={subcategory._id}
+                          style={{
+                            display: `${
+                              subcategory.category === categoryWatch
+                                ? 'block'
+                                : 'none'
+                            }`
+                          }}
+                          value={subcategory._id}
+                        >
                           {subcategory.name}
                         </option>
                       );
