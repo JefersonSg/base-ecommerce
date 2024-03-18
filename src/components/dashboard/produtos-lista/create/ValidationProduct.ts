@@ -40,6 +40,6 @@ export const validationProduct = yup.object({
       }
     )
     .test('fileSize', 'o arquivo é muito grande', (value: any) => {
-      return value[0] ? value[0]?.size <= 1024 * 1024 * 2 : true;
+      return value[0] ? value[0]?.size <= 1024 * 1024 * 3 : true;
     })
 });
