@@ -17,8 +17,10 @@
   fill: #4a4a69;
 }
 
-.linksUteis li:nth-child(2):hover svg path,
+.linksUteis li:nth-child(1):hover svg path,
+.linksUteis li:nth-child(3):hover svg path,
 .linksUteis li:nth-child(4):hover svg path {
   fill: none;
   stroke: #4a4a69;
 }
+

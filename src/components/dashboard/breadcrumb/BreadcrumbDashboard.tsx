@@ -2,22 +2,28 @@
 
 import React from 'react';
 import styles from './Breadcrumb.module.css';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const BreadcrumbDashboard = ({ text }: { text?: string }) => {
   const url = usePathname();
+  const router = useRouter();
 
   const texto = url?.split('/');
 
   return (
     <div className={styles.breadcrumb}>
-      <p>
+      <Link href={'/dashboard'} className={styles.first_texto}>
         eCommerce /
-        <span>
-          {texto[2] ? ` ${texto[2]}` : ''}
-          {text ? ` / ${text}` : ''}
-        </span>
-      </p>
+      </Link>
+      <span
+        onClick={() => {
+          router.push(texto[2]);
+        }}
+      >
+        {texto[2] ? `${' '} ${texto[2]} ` : ''}
+      </span>
+      {text ? <span> {'/ ' + text}</span> : ''}
     </div>
   );
 };

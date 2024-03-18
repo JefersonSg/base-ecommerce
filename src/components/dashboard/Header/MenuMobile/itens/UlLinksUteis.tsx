@@ -18,12 +18,13 @@ function UlLinksUteis({
   return (
     <ul className={styles.linksUteis}>
       <h2 className={'titulo_sideBar'}>Main</h2>
+
+      <BtnHome texto="Retornar a loja" link="/" setAtivo={setAtivo} />
       <BtnDashboard
         texto="Home dashboard"
         link="/dashboard"
         setAtivo={setAtivo}
       />
-      <BtnHome texto="Retornar a loja" link="/" setAtivo={setAtivo} />
       <BtnPedidos
         texto="Pedidos"
         link={'/dashboard/pedidos'}

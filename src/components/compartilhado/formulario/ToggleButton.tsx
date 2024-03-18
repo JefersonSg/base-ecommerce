@@ -32,22 +32,27 @@ const ToggleButton = ({
     if (!isLoading) {
       setIsLoading(true);
 
-      if (newData?.active !== undefined) {
-        newData.active = !newData.active;
+      try {
+        if (newData?.active !== undefined) {
+          newData.active = !newData.active;
 
-        const response = await toggleStock(newData, pathnameUrl);
-        if (refetch) {
-          await refetch();
+          const response = await toggleStock(newData, pathnameUrl);
+          if (refetch) {
+            await refetch();
+          }
+          if (refetch2) {
+            await refetch2.refetch();
+          }
+          if (response) {
+            setActive(!active);
+          }
+          if (revalidate) {
+            await revalidate();
+          }
         }
-        if (refetch2) {
-          await refetch2.refetch();
-        }
-        if (response) {
-          setActive(!active);
-        }
-        if (revalidate) {
-          await revalidate();
-        }
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
       }
     }
     setIsLoading(false);

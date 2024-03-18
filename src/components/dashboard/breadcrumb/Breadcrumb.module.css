@@ -6,15 +6,18 @@
   font-weight: 300;
   font-size: 22px;
   line-height: 24px;
-}
-.breadcrumb p {
   display: flex;
+  gap: 4px;
+}
+.first_texto {
   align-items: center;
   gap: 4px;
   color: #a1acb8;
+  cursor: pointer;
 }
 
 .breadcrumb span {
   color: #566a7f;
   font-weight: 500;
+  cursor: pointer;
 }
