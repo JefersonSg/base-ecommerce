@@ -20,7 +20,7 @@
 
 .corpo p {
   color: #fff;
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

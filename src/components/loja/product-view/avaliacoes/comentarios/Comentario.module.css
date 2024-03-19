@@ -9,7 +9,7 @@
   margin-top: 8px;
 }
 .changes_comment p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--fonte-primaria);
   font-weight: 400;
   font-size: 12px;
   color: #878787;

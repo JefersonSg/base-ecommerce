@@ -12,7 +12,7 @@
 
 .boasVindas p {
   color: #000;
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -20,7 +20,7 @@
 }
 .boasVindas p a {
   color: #000;
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

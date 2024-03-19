@@ -15,7 +15,7 @@
 
 .botao {
   color: #3a292f;
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

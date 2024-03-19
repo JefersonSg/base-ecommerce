@@ -15,7 +15,7 @@
   color: white;
   font-size: 12px;
   font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--fonte-primaria);
 }
 .texto span {
   font-weight: 500;
