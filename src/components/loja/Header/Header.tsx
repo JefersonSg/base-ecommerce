@@ -75,10 +75,10 @@ export function Header({
                 ? 'Olá ' +
                   userData?.user?.name +
                   ' ' +
-                  userData?.user?.surname.split(' ')[0] +
+                  userData?.user?.surname?.split(' ')?.[0] +
                   ` ${
-                    userData?.user?.surname.split(' ')[1].length > 2
-                      ? userData?.user?.surname.split(' ')[1]
+                    userData?.user?.surname?.split(' ')?.[1]?.length > 2
+                      ? userData?.user?.surname?.split(' ')?.[1]
                       : ''
                   }`
                 : 'Olá, faça seu login ou cadastre-se.'}
