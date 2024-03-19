@@ -5,7 +5,7 @@
   gap: 8px;
 
   color: #000;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-weight: 500;
   text-decoration-line: underline;

@@ -75,7 +75,8 @@ const FormEditComment = ({
       userId: commentData._id,
       comment: data?.comment,
       stars,
-      image: watchImage
+      image: watchImage,
+      productId: commentData.productId
     };
     if (!isLoading) {
       setIsloading(true);

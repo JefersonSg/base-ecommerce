@@ -4,6 +4,10 @@ import Slide from './Slides';
 const ContainerSlideBanner = async () => {
   const bannersData = await getAllActiveBanners();
 
+  if (!bannersData) {
+    return <></>;
+  }
+
   return <Slide data={bannersData} />;
 };
 

@@ -44,6 +44,10 @@ export async function createComment(data: any, productId: string) {
       configFormdata
     );
 
+    if (data.productId) {
+      await revalidateTagAction(data.productId);
+    }
+
     return response.data;
   } catch (error: any) {
     console.error('Erro ao fazer a requisição:', error.response);

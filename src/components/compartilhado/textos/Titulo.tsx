@@ -23,7 +23,7 @@ export function Titulo({ titulo }: { titulo: string }) {
           height={12}
         />
       </Link>
-      <h1 className={styles.titulo}>{titulo}</h1>
+      <h1 className={'titulo_sessao'}>{titulo}</h1>
     </div>
   );
 }

@@ -29,7 +29,7 @@ const ModalDelete = ({
     try {
       if (!funcDelete) return;
 
-      if (id1) {
+      if (id1 && !id2) {
         await funcDelete(id1);
       }
       if (id1 && id2) {

@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { typeFirst } from '../shared/functions/fonts';
 import './globals.css';
 
 import Providers from '@/src/shared/providers/providers';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Abayomi Make Beauty',
@@ -52,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={typeFirst.variable}>
         <Providers>{children}</Providers>
       </body>
     </html>

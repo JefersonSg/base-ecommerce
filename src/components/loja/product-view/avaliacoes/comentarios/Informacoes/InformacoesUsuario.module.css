@@ -10,7 +10,7 @@
 
 .nome {
   color: #471703;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -18,7 +18,7 @@
 }
 .data {
   color: #a0a0a0;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

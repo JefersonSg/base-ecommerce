@@ -17,6 +17,7 @@ export default function middleware(req: NextRequest) {
     if (req.nextUrl.pathname.includes('dashboard') && !admin) {
       return NextResponse.redirect(signInURL);
     }
+    return NextResponse.next();
   }
   if (!token) {
     if (req.nextUrl.pathname === '/minha-conta') {
@@ -28,7 +29,9 @@ export default function middleware(req: NextRequest) {
     if (req.nextUrl.pathname.includes('dashboard')) {
       return NextResponse.redirect(urlLogin);
     }
+    return NextResponse.next();
   }
+  return NextResponse.next();
 }
 export const config = {
   matcher: [

@@ -1,6 +1,6 @@
 .numero_media {
   color: #471703;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
@@ -10,7 +10,7 @@
 
 .texto_media {
   color: #471703;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

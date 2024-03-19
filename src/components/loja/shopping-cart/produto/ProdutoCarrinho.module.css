@@ -27,7 +27,7 @@
 
 .informacoes p {
   color: var(--Black, #212429);
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -39,7 +39,7 @@
 .informacoes a,
 .informacoes_produto span {
   color: #471703;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -61,7 +61,7 @@
 .valor {
   color: #000;
   text-align: right;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

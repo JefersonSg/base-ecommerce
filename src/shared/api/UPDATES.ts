@@ -256,12 +256,18 @@ export async function updateBanner(
 
 // No Revalidation
 
-export async function updateComment(data: any) {
+export async function updateComment(data: {
+  commentId: string;
+  comment: string;
+  stars: number;
+  image: any;
+  productId: string;
+}) {
   const formData = new FormData();
 
   formData.append('commentId', data.commentId);
   formData.append('comment', data.comment);
-  formData.append('stars', data.stars);
+  formData.append('stars', `${data.stars}`);
 
   if (data.image) {
     formData.append('image', data.image[0]);
@@ -278,6 +284,11 @@ export async function updateComment(data: any) {
       formData,
       configFormdata
     );
+
+    if (data.productId) {
+      await revalidateTagAction(data.productId);
+    }
+
     return response.data;
   } catch (error) {
     console.log(error);

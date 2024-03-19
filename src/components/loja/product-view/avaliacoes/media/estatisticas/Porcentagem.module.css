@@ -17,7 +17,7 @@
 }
 .numero_estrelas {
   color: #471703;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -35,7 +35,7 @@
 .porcentagem_numero {
   margin-left: 16px;
   color: #878787;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

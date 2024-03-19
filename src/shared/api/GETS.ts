@@ -141,7 +141,12 @@ export const getUserByToken = async (token2?: string) => {
       configHeader
     );
 
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      Cookies.remove('auth_token');
+      Cookies.remove('isAdmin');
+    }
   } catch (error) {
     Cookies.remove('auth_token');
     Cookies.remove('isAdmin');

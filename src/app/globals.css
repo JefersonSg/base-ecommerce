@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 .body {
   min-height: 100vh;
+}
+body{
+  --fonte-primaria: var(--type-first-montserrat), 'sans-serif';
 }
 
 body,
@@ -37,9 +39,7 @@ img {
 }
 
 :root {
-  --fonte-primaria: 'Montserrat', 'sans-serif';
   --fonte-secundaria: 'Montserrat', 'sans-serif';
-
   --cor-de-indicacao: rgb(36, 36, 36);
 
   --cor-primaria: #471703;
@@ -71,7 +71,7 @@ img {
 }
 .titulo_sessao {
   color: var(--cor-primaria);
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--fonte-primaria);
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -81,7 +81,7 @@ img {
 
 .titulo_area {
   color: black;
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -91,6 +91,7 @@ img {
 .titulo_sideBar {
   color: #7b8191;
   font-size: 11px;
+  font-family: var(--fonte-primaria);
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -101,7 +102,7 @@ img {
 
 .subtitulo {
   color: #000;
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -112,7 +113,7 @@ img {
 /* textos normais */
 .texto {
   color: #000;
-  font-family: Montserrat;
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -120,7 +121,7 @@ img {
 
 .texto_indicativo {
   color: #808080;
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -129,4 +130,5 @@ img {
 
 .error {
   color: red;
+  font-family: var(--fonte-primaria);
 }

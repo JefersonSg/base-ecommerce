@@ -8,13 +8,3 @@
   margin: 0 auto;
   box-sizing: border-box;
 }
-
-.titulo {
-  color: var(--cor-primaria);
-  font-family: 'Montserrat';
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
-  font-variant: small-caps;
-}

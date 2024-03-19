@@ -10,7 +10,7 @@
   background: #f8f8f8;
 
   color: var(--Black, #212429);
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

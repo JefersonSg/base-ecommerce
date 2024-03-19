@@ -36,7 +36,7 @@ const useAuth = () => {
   React.useEffect(() => {
     if (!token) {
       const authToken = Cookie.get('auth_token') ?? false;
-      setAuthenticated(true);
+      setAuthenticated(!!authToken);
       setToken(authToken);
     }
   }, [token]);

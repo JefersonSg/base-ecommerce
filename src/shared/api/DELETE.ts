@@ -64,11 +64,15 @@ export async function deleteCartItem(itemCartId: string) {
 
   return response.data;
 }
-export async function deleteComment(idComment?: string) {
+export async function deleteComment(idComment: string, productId?: string) {
   const response = await axios.delete(
     `${API}products/delete/comment/${idComment}`,
     config
   );
+
+  if (productId) {
+    await revalidateTagAction(productId);
+  }
 
   return response.data;
 }

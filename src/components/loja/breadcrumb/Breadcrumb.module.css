@@ -1,7 +1,7 @@
 .breadcrumb {
   display: flex;
   color: rgba(33, 36, 41, 0.6);
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -16,7 +16,7 @@
 }
 .breadcrumb a {
   color: rgba(33, 36, 41, 0.6);
-  font-family: 'Montserrat';
+  font-family: var(--fonte-primaria);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

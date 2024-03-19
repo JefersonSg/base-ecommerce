@@ -43,7 +43,7 @@
 
 .aviso {
   color: red;
-  font-family: 'montserrat';
+  font-family: var(--fonte-primaria);
   font-weight: 700 !important;
 }
 

@@ -48,7 +48,7 @@
     font-weight: 400;
     line-height: 20px;
     text-transform: uppercase;
-    font-family: 'Montserrat';
+    font-family: var(--fonte-primaria);
   }
 
   .link svg path {

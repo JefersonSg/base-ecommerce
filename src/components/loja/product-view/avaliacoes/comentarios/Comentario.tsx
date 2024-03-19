@@ -39,6 +39,7 @@ function ModalDeleteSearsh({
   return (
     <ModalDelete
       id1={commentId}
+      id2={productId}
       setState={setModalDelete}
       text="Deseja mesmo deletar esse comentário?"
       funcDelete={deleteComment}
