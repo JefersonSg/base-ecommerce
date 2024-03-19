@@ -37,7 +37,7 @@ export const config = {
   matcher: [
     '/login/:path*',
     '/registrar/',
-    '/minha-conta',
+    '/minha-conta/:path*',
     '/favoritos',
     '/dashboard/:path*'
   ]

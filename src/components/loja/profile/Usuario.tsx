@@ -12,7 +12,9 @@ export default async function ProfileUSuario({
   return (
     <div className={styles.usuario_div}>
       <Image
-        src={`${userData?.user?.image ?? '/profile/profile.svg'}`}
+        src={
+          userData?.user?.image ? userData?.user?.image : '/profile/profile.svg'
+        }
         alt="Foto de perfil do usuario"
         width={84}
         height={84}

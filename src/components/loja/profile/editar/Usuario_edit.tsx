@@ -26,10 +26,12 @@ export default function ProfileUSuario({
 }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [imageUrl, setImageUrl] = React.useState<string>();
   const schema = validationUser;
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors }
   } = useForm<userEdit>({
     resolver: yupResolver(schema),
@@ -38,6 +40,19 @@ export default function ProfileUSuario({
       surname: userData.user.surname
     }
   });
+
+  const imageUser = watch('image');
+
+  const handleChange = React.useCallback(() => {
+    if (imageUser?.[0]) {
+      const newUrl = URL?.createObjectURL(imageUser?.[0]);
+      setImageUrl(newUrl);
+    }
+  }, [imageUser]);
+
+  React.useEffect(() => {
+    handleChange();
+  }, [handleChange]);
 
   const onSubmit: SubmitHandler<userEdit> = async (data) => {
     setIsLoading(true);
@@ -53,11 +68,10 @@ export default function ProfileUSuario({
       console.log(error);
     }
   };
-
   return (
     <form className={styles.usuario_div} onSubmit={handleSubmit(onSubmit)}>
       <Image
-        src={`${userData?.user?.image ?? '/profile/profile.svg'}`}
+        src={imageUrl ?? userData?.user?.image ?? '/profile/profile.svg'}
         alt="Foto de perfil do usuario"
         width={84}
         height={84}
