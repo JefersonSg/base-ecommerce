@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
@@ -15,53 +15,51 @@ import { type BannerType } from '@/src/shared/helpers/interfaces';
 function Slide({ data }: { data: { banners: BannerType[] } }) {
   return (
     <div className={styles.container_banner}>
-      <Suspense fallback={<div>Carregando...</div>}>
-        <Swiper
-          className={`${'slide-banner'} mySwiper`}
-          centeredSlides={true}
-          height={400}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false
-          }}
-          speed={1000}
-          navigation={true}
-          pagination={{
-            clickable: true
-          }}
-          modules={[Autoplay, Pagination, Navigation]}
-        >
-          {data?.banners?.map((banner) => {
-            return (
-              <SwiperSlide key={banner._id} className="banner-wraper">
-                {' '}
-                <div className={styles.imagem}>
-                  <Link href={banner.link}>
-                    <Image
-                      className={styles.imagem_mobile}
-                      alt="imagem banner mobile"
-                      src={banner.imageMobile}
-                      placeholder="empty"
-                      quality={60}
-                      width={750}
-                      height={878}
-                    />
-                    <Image
-                      className={styles.imagem_desktop}
-                      alt="imagem banner desktop"
-                      src={banner.imageDesktop}
-                      placeholder="empty"
-                      quality={70}
-                      width={1920}
-                      height={600}
-                    />
-                  </Link>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </Suspense>
+      <Swiper
+        className={`${'slide-banner'} mySwiper`}
+        centeredSlides={true}
+        height={400}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false
+        }}
+        speed={1000}
+        navigation={true}
+        pagination={{
+          clickable: true
+        }}
+        modules={[Autoplay, Pagination, Navigation]}
+      >
+        {data?.banners?.map((banner) => {
+          return (
+            <SwiperSlide key={banner._id} className="banner-wraper">
+              {' '}
+              <div className={styles.imagem}>
+                <Link href={banner.link}>
+                  <Image
+                    className={styles.imagem_mobile}
+                    alt="imagem banner mobile"
+                    src={banner.imageMobile}
+                    placeholder="empty"
+                    quality={60}
+                    width={750}
+                    height={878}
+                  />
+                  <Image
+                    className={styles.imagem_desktop}
+                    alt="imagem banner desktop"
+                    src={banner.imageDesktop}
+                    placeholder="empty"
+                    quality={70}
+                    width={1920}
+                    height={600}
+                  />
+                </Link>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </div>
   );
 }

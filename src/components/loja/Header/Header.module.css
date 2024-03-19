@@ -45,6 +45,7 @@
     gap: 8px;
   }
   .login p {
+    font-family: var(--fonte-primaria);
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;

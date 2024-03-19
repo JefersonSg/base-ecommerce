@@ -6,6 +6,7 @@ import {
 import SvgSetaBaixo from '../svgs/SvgSetaBaixo';
 import styles from './Links.module.css';
 import Subcategorias from './Subcategorias';
+import Link from 'next/link';
 
 const Categoria = ({
   category,
@@ -27,15 +28,23 @@ const Categoria = ({
         setViewActive(false);
       }}
     >
-      <p>{category.name}</p>
-      <SvgSetaBaixo />
+      <Link
+        className={styles.category_name}
+        href={{
+          pathname: '/produtos/categoria',
+          query: { _id: category._id }
+        }}
+      >
+        {category.name}
+      </Link>
+      {subcategoriesList.subcategories[0] && <SvgSetaBaixo />}
       {subcategoriesList?.subcategories?.[0] && viewActive && (
         <Subcategorias
           data={subcategoriesList.subcategories}
           category={category}
         />
       )}
-      {viewActive && (
+      {viewActive && subcategoriesList.subcategories?.[0] && (
         <div
           className={styles.background}
           onMouseEnter={() => {

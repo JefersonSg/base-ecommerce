@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 16px;
   margin-left: 16px;
-  font-family: 'Public sans', sans-serif;
+  font-family: var(--fonte-primaria-dashboard);
 }
 
 .sidebar_nav h2 {

@@ -12,7 +12,7 @@
   justify-self: start;
 }
 .textInfos_container h3 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: var(--fonte-primaria-dashboard);
   font-size: 12px;
   font-weight: 600;
   line-height: 18px;

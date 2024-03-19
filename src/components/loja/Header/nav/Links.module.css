@@ -41,7 +41,7 @@
     cursor: pointer;
     border-top: 2px solid transparent;
   }
-  .link p {
+  .category_name {
     color: var(--cor-quinta);
     transition: all 0.2s;
     font-size: 13px;
@@ -60,7 +60,7 @@
   .link:hover {
     border-top: 2px solid var(--cor-contraste);
   }
-  .link:hover p {
+  .link:hover .category_name {
     color: var(--cor-contraste);
   }
   .link:hover svg path {

@@ -86,7 +86,7 @@
   box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
   color: #696cff;
   cursor: pointer;
-  font-family: 'Public Sans', sans-serif;
+  font-family: var(--fonte-primaria-dashboard);
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.1s;

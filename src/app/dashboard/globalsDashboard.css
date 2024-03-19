@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@200;300;400;500;600;700&display=swap');
-
 body {
-  font-family: 'Public Sans', sans-serif;
+  font-family: var(--fonte-primaria-dashboard);
+  --fonte-primaria-dashboard: var(--type-first-Dashboard), sans-serif;
 }
 .name {
-  font-family: 'Public Sans', sans-serif;
+  font-family: var(--fonte-primaria-dashboard);
   font-style: 'normal';
   font-size: 15px;
   font-weight: 500;

@@ -30,6 +30,7 @@
   padding: 4px;
 }
 .subcategorias ul li a {
+  font-family: var(--fonte-primaria);
   cursor: pointer;
   transition: all 0.1s;
   line-height: 24px;

@@ -10,7 +10,7 @@
 }
 
 .linksUteis li {
-  font-family: 'Public sans', sans-serif;
+  font-family: var(--fonte-primaria-dashboard);
 }
 
 .linksUteis li:hover svg path {

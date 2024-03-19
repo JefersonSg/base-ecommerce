@@ -25,7 +25,7 @@
 }
 
 .container_form_create h3 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: var(--fonte-primaria-dashboard);
   font-weight: 500;
   font-size: 22px;
   line-height: 24px;
@@ -35,7 +35,7 @@
 }
 .form_create_product p,
 .form_create_product label {
-  font-family: 'Public Sans', sans-serif;
+  font-family: var(--fonte-primaria-dashboard);
   font-weight: 600;
   font-size: 12px;
   color: #566a7f;
