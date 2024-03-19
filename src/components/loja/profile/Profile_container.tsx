@@ -1,7 +1,6 @@
 import { type UserInterface } from '@/src/shared/helpers/interfaces';
 import React from 'react';
 import styles from './ProfileContainer.module.css';
-import Image from 'next/image';
 import ProfileUSuario from './Usuario';
 import ProfileNAvBUttons from './NavButtons';
 
