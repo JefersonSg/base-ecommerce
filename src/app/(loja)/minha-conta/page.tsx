@@ -13,7 +13,9 @@ const page = async () => {
   return (
     <main className={styles.minha_conta_container}>
       <ProfileContainer userData={user} />
-      <BotaoSair />
+      <div className={styles.sair}>
+        <BotaoSair />
+      </div>
     </main>
   );
 };

@@ -9,7 +9,9 @@
   border-bottom: 1px solid #e6e6e6;
   box-sizing: border-box;
 }
-
+.fotoUsuario img {
+  border-radius: 999px;
+}
 .boasVindas p {
   color: #000;
   font-family: var(--fonte-primaria);

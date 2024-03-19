@@ -6,7 +6,11 @@ import { useUserContext } from '@/src/shared/context';
 const BotaoSair = () => {
   const { logout } = useUserContext();
 
-  return <button onClick={logout}>Sair</button>;
+  return (
+    <button style={{ minWidth: '60px', height: '40px' }} onClick={logout}>
+      Sair
+    </button>
+  );
 };
 
 export default BotaoSair;

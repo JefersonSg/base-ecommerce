@@ -64,14 +64,23 @@ export function Header({
             className={styles.login}
           >
             <Image
+              className={styles.imagem_user}
               alt="account image"
-              src={'/header/account.svg'}
+              src={userData.user?.image ?? '/header/account.svg'}
               width={24}
               height={24}
             />
             <p>
               {userData?.user
-                ? 'Olá ' + userData.user.name + ' ' + userData.user.surname
+                ? 'Olá ' +
+                  userData?.user?.name +
+                  ' ' +
+                  userData?.user?.surname.split(' ')[0] +
+                  ` ${
+                    userData?.user?.surname.split(' ')[1].length > 2
+                      ? userData?.user?.surname.split(' ')[1]
+                      : ''
+                  }`
                 : 'Olá, faça seu login ou cadastre-se.'}
             </p>
           </Link>
