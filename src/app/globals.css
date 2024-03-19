@@ -1,7 +1,7 @@
 .body {
   min-height: 100vh;
 }
-body{
+body {
   --fonte-primaria: var(--type-first-montserrat), 'sans-serif';
 }
 
