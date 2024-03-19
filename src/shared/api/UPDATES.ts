@@ -295,6 +295,37 @@ export async function updateComment(data: {
   }
 }
 
+export async function updateUser(
+  data: { name: string; surname: string; image?: any },
+  userId: string
+) {
+  const formData = new FormData();
+
+  formData.append('name', data.name);
+  formData.append('surname', data.surname);
+
+  if (data.image) {
+    formData.append('image', data.image[0]);
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.patch(
+      `${API}user/edit/${userId}`,
+      formData,
+      configFormdata
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function updateItemCart(
   ItemCartId: string,
   data: { size: string; amount: number; color: string }
