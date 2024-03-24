@@ -2,6 +2,7 @@
   max-width: 327px;
   display: flex;
   flex-direction: column;
+  font-family: var(--fonte-primaria);
 }
 .input::placeholder {
   color: rgb(184, 184, 204);
@@ -22,6 +23,7 @@
   outline: none;
   margin-top: 8px;
   max-width: 100%;
+  font-family: var(--fonte-primaria);
 }
 
 .input:active {

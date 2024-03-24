@@ -77,7 +77,7 @@ export default function ProfileUSuario({
         height={84}
       />
       <InputFormulario
-        label="Nova imagem"
+        label="Editar"
         name="image"
         placeholder=""
         type="file"
