@@ -20,10 +20,10 @@
   margin: 0;
 }
 
-.usuario_div label[for="image"] {
+.usuario_div label[for='image'] {
   cursor: pointer;
   align-self: center;
 }
-.usuario_div input[type="file"] {
+.usuario_div input[type='file'] {
   display: none;
 }
