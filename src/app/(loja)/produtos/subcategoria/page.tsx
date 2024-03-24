@@ -32,7 +32,7 @@ async function page({ searchParams }: { searchParams: { _id: string } }) {
     <div className={styles.produtos_container}>
       <Breadcrumb
         texto1={category?.category?.name}
-        link1={`/produtos/categoria?_id=${category.category._id}`}
+        link1={`/produtos/categoria?_id=${category?.category?._id}`}
         texto2={subcategoria.subcategory.name}
       />
       <Suspense>

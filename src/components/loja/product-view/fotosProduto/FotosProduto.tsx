@@ -55,15 +55,10 @@ function FotosProduto({ img }: { img: string[] }) {
             {img.map((image) => {
               return (
                 <SwiperSlide
+                  className={styles.imagem_slide_principal}
                   key={image}
                   onClick={() => {
                     setImagemPrincipal(image);
-                  }}
-                  style={{
-                    maxWidth: '326px',
-                    maxHeight: '312px',
-                    padding: '20px',
-                    boxSizing: 'border-box'
                   }}
                 >
                   <Image

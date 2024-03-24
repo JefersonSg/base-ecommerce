@@ -68,7 +68,7 @@
   }
 }
 
-@media (max-width: 64rem) {
+@media (max-width: 1023px) {
   .background,
   .container_nav,
   .categorias_lista {

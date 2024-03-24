@@ -68,7 +68,7 @@
     margin-right: 24px;
   }
 }
-@media (max-width: 64rem) {
+@media (max-width: 1023px) {
   .login {
     display: none;
   }
