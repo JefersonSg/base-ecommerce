@@ -1,9 +1,9 @@
 .sections {
-    grid-column: 2;
+  grid-column: 2;
 }
 
 @media (min-width: 1024px) {
-    .entrega {
-        display: none;
-    }
+  .entrega {
+    display: none;
+  }
 }

@@ -17,15 +17,15 @@
   .navegação {
     display: block;
     height: 500px;
-    width:  100%;
+    width: 100%;
     background-color: gray;
     grid-column: 1;
     grid-row: 2;
   }
- .section_produtos {
-  display: grid;
-  gap: 0 16px;
-  grid-template-columns: minmax(250px,350px) 410px minmax(300px,490px);
-  grid-template-rows: 16px 46px 100px calc(740px - 100px - 26px - 16px) auto;
- } 
+  .section_produtos {
+    display: grid;
+    gap: 0 16px;
+    grid-template-columns: minmax(250px, 350px) 410px minmax(300px, 490px);
+    grid-template-rows: 16px 46px 100px calc(740px - 100px - 26px - 16px) auto;
+  }
 }

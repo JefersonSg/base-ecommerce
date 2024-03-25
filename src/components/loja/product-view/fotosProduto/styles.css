@@ -28,8 +28,7 @@
 }
 
 @media (min-width: 64rem) {
-
-  .slide-produto .swiper-slide { 
+  .slide-produto .swiper-slide {
     height: 146px;
     width: 110px !important;
     max-width: 130px !important;

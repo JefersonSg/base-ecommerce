@@ -18,7 +18,6 @@
   stroke: var(--cor-secundaria);
 }
 
-
 @media (min-width: 64rem) {
   .interatividades {
     grid-column: 3;
