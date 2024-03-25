@@ -3,5 +3,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": ["lottiefiles"]
+  "cSpell.words": [
+    "lottiefiles"
+  ],
+  "cSpell.language": "en,pt-BR,pt"
 }

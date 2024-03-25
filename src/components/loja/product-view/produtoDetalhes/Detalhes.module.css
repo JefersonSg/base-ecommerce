@@ -23,8 +23,41 @@
   .detalhes {
     grid-column: 3;
     grid-row: 4/5;
+    background-color: white;
+    max-width: 350px;
+    display: grid;
+    gap: 32px;
+    grid-template-rows: minmax(30px, max-content) max-content max-content 50px;
+    margin: 0px;
+    padding: 0;
   }
   .entrega {
-    display: block;
+    background-color: #D9D9D950;
+    width: 100%;
+    height: 184px;
+    justify-content: center;
+    padding-left: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border-radius: 12px;
+  }
+  .entrega p {
+    display: flex;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: var(--fonte-primaria);
+    align-items: center;
+    width: 90%;
+  }
+  .botao_carrinho {
+    margin: 0;
+  }
+  .informacoes {
+    flex-direction: column;
+    min-height: 200px;
+    grid-row: 2;
   }
 }

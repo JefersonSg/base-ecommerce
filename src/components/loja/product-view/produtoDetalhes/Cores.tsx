@@ -43,6 +43,7 @@ function Cores({
           />
         </div>
       </div>
+      <span className={styles.cor_selecionada_span}>Cor: {colorSelected}</span>
       <div className={`${styles.selectColors} ${ativo ? styles.ativo : ''}`}>
         {colors.map((color, index) => {
           return (

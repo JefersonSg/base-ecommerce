@@ -37,7 +37,7 @@ const Categoria = ({
       >
         {category.name}
       </Link>
-      {subcategoriesList.subcategories[0] && <SvgSetaBaixo />}
+      {subcategoriesList.subcategories?.[0] && <SvgSetaBaixo />}
       {subcategoriesList?.subcategories?.[0] && viewActive && (
         <Subcategorias
           data={subcategoriesList.subcategories}

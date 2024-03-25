@@ -13,3 +13,11 @@
 .preco .promotion {
   color: var(--cor-contraste);
 }
+
+@media (min-width: 64rem) {
+  .preco {
+    grid-row: 1;
+    margin: 0px;
+    text-align: start;
+  }
+}

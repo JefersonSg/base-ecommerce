@@ -64,49 +64,62 @@
   padding: 4px 8px;
   cursor: pointer;
   padding-right: 42px;
+  font-family: var(--fonte-primaria);
 }
 .cores_disponiveis:hover {
   background: rgba(220, 220, 220, 0.6);
 }
+.cor_selecionada_span {
+  font-family: var(--fonte-primaria);
+  display: none;
+}
 
 @media (min-width: 64rem) {
+  .selectColor_container {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
   .cores_disponiveis:hover {
     background: none;
   }
+  .cores_disponiveis {
+    width: max-content;
+    padding: 0;
+  }
   .selectColors {
+    position: relative;
     display: flex;
+    top: 0;
     font-size: 0px;
     width: max-content;
     box-shadow: none;
     border: none;
     flex-direction: row;
     gap: 16px;
+    padding: 0;
     position: relative;
   }
-  .cores_disponiveis {
-    width: max-content;
-    padding: 0;
-  }
+
   .cor_selecionada {
     width: 47px;
     height: 47px;
+    box-sizing: border-box;
     border: 3px solid transparent;
+    box-shadow: 0 0 1px 1px #00000030;
   }
   .cor_selecionada.ativo {
-    border: 3px solid black;
-    box-shadow: inset 0px 0px 1px 4px #fff;
+    box-shadow: inset 0px 0px 1px 4px #fff, 0 0 1px 1px #00000080;
   }
-  .selectColors::before {
-    content: 'Cor:';
-    display: block;
-    position: absolute;
-    width: 40px;
-    height: 24px;
-    top: -20px;
+  .cor_selecionada_span {
+    display: flex;
+    width: max-content;
+    top: -16px;
     left: 0;
     color: black;
     font-size: 16px;
-    font-family: var(--fonte-primaria);
+    height: max-content;
   }
   .cores {
     display: none;

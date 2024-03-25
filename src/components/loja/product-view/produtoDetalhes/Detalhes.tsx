@@ -13,7 +13,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { addNewItemCart } from '@/src/shared/api/CREATE';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
-import Entrega from '../sections-page-product/Entrega';
+import Image from 'next/image';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
@@ -96,6 +96,26 @@ function Detalhes({ data }: { data: ProductApi }) {
         promotionalPrice={Number(data?.promotionalPrice ?? 0)}
         texto={`R$ ${data?.price.toFixed(2).toString().replace('.', ',')}`}
       />
+      <div className={styles.entrega}>
+        <p>
+          <Image
+            alt="imagem de caminhão"
+            src={'/produto/caminhao.svg'}
+            width={33}
+            height={20}
+          />
+          Entregas por correio e transportadora
+        </p>
+        <p>
+          <Image
+            alt="imagem de caixa"
+            src={'/produto/box.svg'}
+            width={27}
+            height={24}
+          />
+          Entrega grátis comprando acima de R$ 250,00
+        </p>
+      </div>
       <div
         className={styles.botao_carrinho}
         onClick={() => {
@@ -103,10 +123,6 @@ function Detalhes({ data }: { data: ProductApi }) {
           void addCartItem();
         }}
       >
-        <div className={styles.entrega}>
-          <Entrega />
-        </div>
-
         <BotaoColorido
           texto="Adicionar ao carrinho"
           img="carrinho.svg"

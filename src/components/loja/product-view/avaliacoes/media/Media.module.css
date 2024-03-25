@@ -7,3 +7,10 @@
   padding: 16px;
   box-sizing: border-box;
 }
+
+@media (min-width:64rem) {
+  .media {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}

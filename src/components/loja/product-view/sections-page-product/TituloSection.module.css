@@ -1,14 +1,13 @@
 .titulo_section {
   display: flex;
   align-items: center;
-  width: 327px;
   justify-content: space-between;
-  margin: 0 auto;
+  max-width: 800px;
   cursor: pointer;
 }
 
 .seta {
-  transition: 0.2s ease-in;
+  transition: 0.1s ease-in;
 }
 .seta.ativo {
   rotate: 180deg;

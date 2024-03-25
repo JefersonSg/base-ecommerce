@@ -5,7 +5,7 @@ import Comentario from './Comentario';
 import styles from './Comentarios.module.css';
 
 import FormComment from './formComment/FormComment';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   type CommentContextInterface,
@@ -39,7 +39,7 @@ function Comentarios() {
   }, [data, dataComments]);
 
   return (
-    <Suspense>
+    <>
       <div className={styles.comentarios_container}>
         {!Commented && (
           <div className={styles.botao_comentar}>
@@ -75,7 +75,7 @@ function Comentarios() {
         })}
       </div>
       {textPopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
-    </Suspense>
+    </>
   );
 }
 

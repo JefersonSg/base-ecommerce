@@ -8,3 +8,11 @@
   margin: 0 auto;
   margin-top: 16px;
 }
+
+@media (min-width:64rem) {
+  .texto {
+    width: 100%;
+  }
+  .descricao {
+  }
+}
