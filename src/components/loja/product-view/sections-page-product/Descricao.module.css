@@ -9,7 +9,7 @@
   margin-top: 16px;
 }
 
-@media (min-width:64rem) {
+@media (min-width: 64rem) {
   .texto {
     width: 100%;
   }

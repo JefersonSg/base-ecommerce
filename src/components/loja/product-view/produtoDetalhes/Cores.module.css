@@ -110,7 +110,9 @@
     box-shadow: 0 0 1px 1px #00000030;
   }
   .cor_selecionada.ativo {
-    box-shadow: inset 0px 0px 1px 4px #fff, 0 0 1px 1px #00000080;
+    box-shadow:
+      inset 0px 0px 1px 4px #fff,
+      0 0 1px 1px #00000080;
   }
   .cor_selecionada_span {
     display: flex;

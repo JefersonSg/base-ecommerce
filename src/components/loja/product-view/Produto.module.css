@@ -31,7 +31,9 @@
     display: grid;
     gap: 0 16px;
     grid-template-columns: minmax(250px, 350px) 410px minmax(300px, 490px);
-    grid-template-rows: 16px 46px minmax(40px, max-content) calc(740px - 100px - 26px - 16px) auto;
+    grid-template-rows: 16px 46px minmax(40px, max-content) calc(
+        740px - 100px - 26px - 16px
+      ) auto;
     margin: 0 auto;
     width: max-content;
     max-width: 100%;

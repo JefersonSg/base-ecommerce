@@ -15,8 +15,7 @@
   font-weight: 500;
 }
 
-
-@media (min-width:64rem) {
+@media (min-width: 64rem) {
   .tamanhos_container {
     display: flex;
     flex-direction: column;
