@@ -35,10 +35,15 @@ function SlideFotos({
         watchSlidesProgress
         freeMode={true}
         modules={[Navigation, Controller, Thumbs, FreeMode]}
+        breakpoints={{
+          1024: {
+            spaceBetween: 12
+          }
+        }}
       >
         {imagens?.map((imagem: string, index) => {
           return (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className={styles.container_image}>
               <Image
                 onClick={() => {
                   setImagem(imagem);
@@ -50,8 +55,7 @@ function SlideFotos({
                 alt="Foto do produto"
                 src={imagem}
                 id={`${index}`}
-                width={94}
-                height={94}
+                fill
               />
             </SwiperSlide>
           );

@@ -5,7 +5,7 @@ import 'swiper/css';
 import Image from 'next/image';
 import styles from './FotosProduto.module.css';
 import Slide from './SlideFotos';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import BtnFechar from '@/src/components/compartilhado/botoes/BtnFechar';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
@@ -19,6 +19,13 @@ function FotosProduto({ img }: { img: string[] }) {
   const [imagemId, setImagemId] = React.useState('0');
   const [fotoInteira, setFotoInteira] = React.useState(false);
   const [thumbsSwiper, setThumbsSwiper] = React.useState(null);
+  const [, setActiveSlide] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setActiveSlide(true);
+    }, 0);
+  }, []);
 
   const params = useSearchParams()?.get('_id');
 
@@ -47,34 +54,35 @@ function FotosProduto({ img }: { img: string[] }) {
             setFotoInteira(true);
           }}
         >
-          <Swiper
-            slidesPerView={1}
-            thumbs={{ swiper: thumbsSwiper }}
-            modules={[Controller, Thumbs, FreeMode]}
-          >
-            {img.map((image) => {
-              return (
-                <SwiperSlide
-                  className={styles.imagem_slide_principal}
-                  key={image}
-                  onClick={() => {
-                    setImagemPrincipal(image);
-                  }}
-                >
-                  <Image
-                    className={styles.fotoPrincipal}
-                    alt="Foto do produto"
-                    id={imagemId}
-                    src={image}
-                    width={350}
-                    height={350}
-                    placeholder="blur"
-                    blurDataURL={image}
-                  />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+          <Suspense>
+            <Swiper
+              slidesPerView={1}
+              thumbs={{ swiper: thumbsSwiper }}
+              modules={[Controller, Thumbs, FreeMode]}
+            >
+              {img?.map((image) => {
+                return (
+                  <SwiperSlide
+                    className={styles.imagem_slide_principal}
+                    key={image}
+                    onClick={() => {
+                      setImagemPrincipal(image);
+                    }}
+                  >
+                    <Image
+                      className={styles.fotoPrincipal}
+                      alt="Foto do produto"
+                      id={imagemId}
+                      src={image}
+                      fill
+                      placeholder="blur"
+                      blurDataURL={image}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </Suspense>
         </div>
         {fotoInteira && (
           <div className={styles.fotoInteira_bg}>
@@ -90,13 +98,17 @@ function FotosProduto({ img }: { img: string[] }) {
             </>
           </div>
         )}
-        <Slide
-          setImagem={setImagemPrincipal}
-          setImagemId={setImagemId}
-          setThumbsSwiper={setThumbsSwiper}
-          imagemId={imagemId}
-          imagens={img}
-        />
+        {img[0] && (
+          <Suspense>
+            <Slide
+              setImagem={setImagemPrincipal}
+              setImagemId={setImagemId}
+              setThumbsSwiper={setThumbsSwiper}
+              imagemId={imagemId}
+              imagens={img}
+            />
+          </Suspense>
+        )}
       </div>
       {fotoInteira && <BackgoundClick setState1={setFotoInteira} />}
     </>

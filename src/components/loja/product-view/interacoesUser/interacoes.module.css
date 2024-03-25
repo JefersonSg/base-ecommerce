@@ -17,3 +17,11 @@
 .interacao div div svg g path {
   stroke: var(--cor-secundaria);
 }
+
+
+@media (min-width: 64rem) {
+  .interatividades {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}

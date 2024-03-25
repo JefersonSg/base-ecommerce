@@ -4,3 +4,10 @@
   position: relative;
   height: 30px;
 }
+
+@media (min-width: 64rem) {
+  .favorito {
+    position: relative;
+    top: 26px;
+  }
+}

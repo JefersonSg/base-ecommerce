@@ -21,3 +21,9 @@
   font-style: normal;
   font-weight: 400;
 }
+
+@media (min-width: 64rem) {
+  .breadcrumb {
+    grid-column: 2;
+  }
+}

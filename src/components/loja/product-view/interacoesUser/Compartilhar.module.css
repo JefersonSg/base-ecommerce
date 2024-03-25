@@ -1,3 +1,9 @@
 .compartilhar {
   cursor: pointer;
 }
+@media (min-width: 64rem) {
+  .compartilhar {
+    position: relative;
+    top: 26px;
+  }
+}

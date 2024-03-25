@@ -38,7 +38,7 @@
 }
 
 .selectColors {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: absolute;
   top: 50px;
@@ -53,6 +53,9 @@
   padding-bottom: 8px;
   box-sizing: border-box;
 }
+.selectColors.ativo {
+  display: flex;
+}
 
 .cores_disponiveis {
   display: flex;
@@ -64,4 +67,48 @@
 }
 .cores_disponiveis:hover {
   background: rgba(220, 220, 220, 0.6);
+}
+
+@media (min-width:64rem) {
+  .cores_disponiveis:hover {
+   background: none;
+  }
+  .selectColors {
+    display: flex;
+    font-size: 0px;
+    width: max-content;
+    box-shadow: none;
+    border: none;
+    flex-direction: row;
+    gap: 16px;
+    position: relative;
+  }
+  .cores_disponiveis {
+    width: max-content;
+    padding: 0;
+  }
+  .cor_selecionada {
+    width: 47px;
+    height: 47px;
+    border: 3px solid transparent;
+  }
+  .cor_selecionada.ativo {
+    border: 3px solid black;
+    box-shadow: inset 0px 0px 1px 4px #fff;
+  }
+  .selectColors::before {
+    content: 'Cor:';
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 24px;
+    top: -20px;
+    left: 0;
+    color: black;
+    font-size: 16px;
+    font-family: var(--fonte-primaria);
+  }
+  .cores {
+    display: none;
+  }
 }

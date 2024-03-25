@@ -3,3 +3,29 @@
   padding: 32px 0px 0 0px;
   margin-bottom: 128px;
 }
+.navegação {
+  display: none;
+}
+@media (min-width: 64rem) {
+  .titulo {
+    grid-column: 3;
+    grid-row: 3;
+  }
+  .titulo img {
+    display: none;
+  }
+  .navegação {
+    display: block;
+    height: 500px;
+    width:  100%;
+    background-color: gray;
+    grid-column: 1;
+    grid-row: 2;
+  }
+ .section_produtos {
+  display: grid;
+  gap: 0 16px;
+  grid-template-columns: minmax(250px,350px) 410px minmax(300px,490px);
+  grid-template-rows: 16px 46px 100px calc(740px - 100px - 26px - 16px) auto;
+ } 
+}

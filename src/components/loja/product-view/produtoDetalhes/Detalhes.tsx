@@ -13,6 +13,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { addNewItemCart } from '@/src/shared/api/CREATE';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
+import Entrega from '../sections-page-product/Entrega';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
@@ -102,6 +103,10 @@ function Detalhes({ data }: { data: ProductApi }) {
           void addCartItem();
         }}
       >
+        <div className={styles.entrega}>
+          <Entrega />
+        </div>
+
         <BotaoColorido
           texto="Adicionar ao carrinho"
           img="carrinho.svg"

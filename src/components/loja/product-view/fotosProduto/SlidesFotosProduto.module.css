@@ -1,13 +1,16 @@
 .mySwiper {
   padding-bottom: 8px;
   max-width: 326px;
+  height: 94px;
   width: 95%;
   --swiper-navigation-size: 22px;
   --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 10px;
   --swiper-navigation-color: black;
 }
+
 .produto_thumbs {
+  height: max-content;
   width: 100%;
   padding: 0px 20px;
   padding-top: 10px;
@@ -16,10 +19,15 @@
 }
 
 .foto_slide {
-  width: 102px;
-  height: 102px;
   border-radius: 8px;
   cursor: pointer;
-  border: 3px solid transparent;
-  object-fit: contain;
+  object-fit: cover;
+  box-shadow: 0 0 1px 2px white;
+}
+
+@media (min-width: 64rem) {
+  .mySwiper {
+    height: max-content;
+    max-width: 396px;
+  }
 }

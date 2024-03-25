@@ -4,3 +4,9 @@
   margin-top: 64px;
   box-sizing: border-box;
 }
+
+@media (min-width: 64rem) {
+  .avaliacoes_container {
+    grid-column: 2;
+  }
+}

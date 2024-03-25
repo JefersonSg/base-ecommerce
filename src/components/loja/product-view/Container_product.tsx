@@ -6,6 +6,7 @@ import FotosProduto from './fotosProduto/FotosProduto';
 import Detalhes from './produtoDetalhes/Detalhes';
 import Sections from './sections-page-product/Sections';
 import Avaliacoes from './avaliacoes/Avaliacoes';
+import styles from './Produto.module.css';
 
 import {
   type CommentInterface,
@@ -49,7 +50,10 @@ const ContainerProduct = async ({
             link2={`/produtos/subcategoria?_id=${data.product.subcategory}`}
             texto3={data.product.name}
           />
-          <Titulo titulo={data?.product?.name} />
+          <div className={styles.titulo}>
+            <Titulo titulo={data?.product?.name} />
+          </div>
+          <div className={styles.navegação}></div>
           <Interacoes id={data?.product?._id} stars={media} />
           <FotosProduto img={data?.product?.images} />
           <Detalhes data={data?.product} />

@@ -43,29 +43,36 @@ function Cores({
           />
         </div>
       </div>
-      {ativo && (
-        <div className={styles.selectColors}>
-          {colors.map((color, index) => {
-            return (
+      <div className={`${styles.selectColors} ${ativo ? styles.ativo : ''}`}>
+        {colors.map((color, index) => {
+          return (
+            <div
+              key={index}
+              className={styles.cores_disponiveis}
+              onClick={() => {
+                setColorSelected(colors[index]);
+                setCodeColorSelected(codeColors[index]);
+                setAtivo(false);
+              }}
+            >
+              {color}
               <div
-                key={index}
-                className={styles.cores_disponiveis}
-                onClick={() => {
-                  setColorSelected(colors[index]);
-                  setCodeColorSelected(codeColors[index]);
-                  setAtivo(false);
+                className={`${styles.cor_selecionada} ${
+                  codeColorSelected === codeColors[index] ? styles.ativo : ''
+                }`}
+                style={{
+                  background: codeColors[index],
+                  border: `${
+                    codeColorSelected === codeColors[index]
+                      ? '3px solid' + codeColors[index]
+                      : ''
+                  }`
                 }}
-              >
-                {color}
-                <div
-                  className={styles.cor_selecionada}
-                  style={{ background: codeColors[index] }}
-                ></div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+              ></div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

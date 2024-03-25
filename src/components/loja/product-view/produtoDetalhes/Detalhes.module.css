@@ -16,3 +16,15 @@
 .botao_carrinho {
   margin-top: 32px;
 }
+.entrega {
+  display: none;
+}
+@media (min-width: 64rem) {
+  .detalhes {
+    grid-column: 3;
+    grid-row: 4/5;
+  }
+  .entrega {
+    display: block;
+  }
+}
