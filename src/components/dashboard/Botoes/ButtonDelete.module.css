@@ -8,7 +8,7 @@
   box-shadow: 0 0.125rem 0.25rem 0 #ffe0db;
   color: #ff3e1d !important;
   cursor: pointer;
-  font-family: var(--fonte-primaria-dashboard);
+  font-family: var(--fonte-secundaria);
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.2s;

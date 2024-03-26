@@ -10,7 +10,7 @@
 }
 
 .linksUteis li {
-  font-family: var(--fonte-primaria-dashboard);
+  font-family: var(--fonte-secundaria);
 }
 
 .linksUteis li:hover svg path {

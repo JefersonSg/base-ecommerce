@@ -1,9 +1,8 @@
 body {
-  --fonte-primaria-dashboard: var(--type-first-Dashboard), sans-serif;
-  font-family: var(--fonte-primaria-dashboard);
+  font-family: var(--fonte-secundaria);
 }
 .name {
-  font-family: var(--fonte-primaria-dashboard);
+  font-family: var(--fonte-secundaria);
   font-style: 'normal';
   font-size: 15px;
   font-weight: 500;

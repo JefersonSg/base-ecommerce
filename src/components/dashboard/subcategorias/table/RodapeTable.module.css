@@ -6,7 +6,7 @@
   gap: 8px;
 }
 .container_rodape p {
-  font-family: 'Public Sans';
+  font-family: var(--fonte-secundaria), sans-serif;
   font-size: 15px;
   font-weight: 400;
   color: #a1acb8;

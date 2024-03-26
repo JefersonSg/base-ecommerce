@@ -11,5 +11,5 @@ export const typeFirstDashboard = Public_Sans({
   weight: ['200', '300', '400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'auto',
-  variable: '--type-first-Dashboard'
+  variable: '--type-first-dashboard'
 });

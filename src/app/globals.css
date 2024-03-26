@@ -3,6 +3,7 @@
 }
 body {
   --fonte-primaria: var(--type-first-montserrat), 'sans-serif';
+  --fonte-secundaria: var(--type-first-dashboard), 'sans-serif';
 }
 
 body,
@@ -39,7 +40,6 @@ img {
 }
 
 :root {
-  --fonte-secundaria: 'Montserrat', 'sans-serif';
   --cor-de-indicacao: rgb(36, 36, 36);
 
   --cor-primaria: #471703;

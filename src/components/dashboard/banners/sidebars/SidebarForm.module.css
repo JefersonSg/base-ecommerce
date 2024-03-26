@@ -33,7 +33,7 @@
   letter-spacing: inherit;
   font-weight: 500;
   color: #566a7f;
-  font-family: var(--fonte-primaria);
+  font-family: var(--fonte-secundaria);
 }
 
 .fechar {

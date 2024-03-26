@@ -85,12 +85,12 @@ const SideBarFormEdit = ({
 
   return (
     <div className={styles.sidebar_form}>
-      <h2>Edite a categoria</h2>
+      <h2>Edite o Banner</h2>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <InputFormulario
           name="name"
           label="Nome"
-          placeholder="Digite o nome da categoria"
+          placeholder="Digite o nome do banner"
           register={register}
           type="text"
           error={errors?.name?.message}

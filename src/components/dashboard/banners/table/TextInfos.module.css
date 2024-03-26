@@ -13,7 +13,7 @@
   display: block;
 }
 .textInfos_container h3 {
-  font-family: var(--fonte-primaria-dashboard);
+  font-family: var(--fonte-secundaria);
   font-size: 12px;
   font-weight: 600;
   line-height: 18px;

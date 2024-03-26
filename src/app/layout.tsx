@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { typeFirst } from '../shared/functions/fonts';
+import { typeFirst, typeFirstDashboard } from '../shared/functions/fonts';
 import './globals.css';
 
 import Providers from '@/src/shared/providers/providers';
@@ -50,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={typeFirst.variable}>
+      <body className={`${typeFirst.variable} ${typeFirstDashboard.variable}`}>
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -48,7 +48,7 @@
 }
 
 .delete_categoria h2 {
-  font-family: 'Public Sans';
+  font-family: var(--fonte-secundaria), sans-serif;
   color: #697a8d;
   font-size: 16px;
   text-align: center;
