@@ -13,15 +13,16 @@
   gap: 16px;
   align-items: center;
 }
-.estrelas {
-  position: relative;
-  left: -83px;
-}
+
 .interacao div div svg g path {
   stroke: var(--cor-secundaria);
 }
 
 @media (min-width: 64rem) {
+  .estrelas {
+    position: relative;
+    left: -83px;
+  }
   .interatividades {
     grid-column: 3;
     grid-row: 2;

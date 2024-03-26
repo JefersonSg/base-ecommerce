@@ -14,7 +14,9 @@
 .tamanhos p {
   font-weight: 500;
 }
-
+.span_tamanho {
+  display: none;
+}
 @media (min-width: 64rem) {
   .tamanhos_container {
     display: flex;
