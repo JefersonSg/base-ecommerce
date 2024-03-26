@@ -1,4 +1,7 @@
-import { revalidateTagAction } from '@/src/actions/revalidates';
+import {
+  revalidatePathAction,
+  revalidateTagAction
+} from '@/src/actions/revalidates';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -247,6 +250,7 @@ export async function updateBanner(
     );
     await revalidateTagAction('all-banners');
     await revalidateTagAction('all-active-banners');
+    await revalidatePathAction('/');
 
     return response.data;
   } catch (error: any) {

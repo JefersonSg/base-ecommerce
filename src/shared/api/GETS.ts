@@ -112,7 +112,7 @@ export const getAllActiveBanners = async () => {
   try {
     const response = await fetch(`${API}banners/actives`, {
       next: {
-        revalidate: timeRevalidate,
+        revalidate: 3600,
         tags: ['all-active-banners']
       }
     });
