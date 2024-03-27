@@ -7,11 +7,13 @@ const TextInfos = () => {
       <div className={styles.produto}>
         <h3>PRODUTO</h3>
       </div>
-      <div className={styles.total_products_register}>
-        <h3>ESTOQUE</h3>
-      </div>
+
       <div className={styles.categoria}>
         <h3>CATEGORIA</h3>
+      </div>
+
+      <div className={styles.total_products_register}>
+        <h3>ESTOQUE</h3>
       </div>
       <div className={styles.total_products_amount}>
         <h3>QUANTIDADE</h3>

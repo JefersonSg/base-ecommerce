@@ -4,29 +4,14 @@ import styles from './Produto.module.css';
 import ToggleButton from '../../../compartilhado/formulario/ToggleButton';
 import Link from 'next/link';
 import { revalidateTagAction } from '@/src/actions/revalidates';
-
-interface ProductsType {
-  _id: string;
-  name: string;
-  brand: string;
-  description: string;
-  price: number;
-  colors: string[];
-  codecolors: string[];
-  category: string;
-  images: string[];
-  stock: { sizeP: string[]; sizeM: string; sizeG: string; sizeGG: string };
-  promotion: boolean;
-  to: string;
-  active: boolean;
-}
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
 const ProdutoItem = ({
   data,
   setAtivoDelete,
   setIdDelete
 }: {
-  data: ProductsType;
+  data: ProductApi;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setIdDelete: React.Dispatch<React.SetStateAction<string>>;
 }) => {
@@ -35,6 +20,19 @@ const ProdutoItem = ({
     await revalidateTagAction('all-products');
     await revalidateTagAction('all-active-products');
   };
+
+  const [totalProducts, setTotalProducts] = React.useState<any>(0);
+
+  React.useEffect(() => {
+    async function totalProducts() {
+      const total = data.stock.amount.reduce((cont, amount) => {
+        return cont + amount;
+      }, 0);
+      setTotalProducts(total);
+    }
+    console.log(data);
+    void totalProducts();
+  }, [data]);
   return (
     <div className={styles.produto_item}>
       <Link
@@ -65,7 +63,7 @@ const ProdutoItem = ({
         revalidate={revalidate}
       />
       <div className={styles.total_products_register}>
-        <h3>75</h3>
+        <h3>{totalProducts}</h3>
       </div>
       <div className={styles.total_products_value}>
         <h3>R$ {data?.price?.toFixed(2).replace('.', ',')}</h3>

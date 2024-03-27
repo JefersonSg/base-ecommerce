@@ -2,25 +2,10 @@ import React, { Suspense } from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 import ProdutoItem from '../items/ProdutoItem';
-
-interface ProductsType {
-  _id: string;
-  name: string;
-  brand: string;
-  description: string;
-  price: number;
-  colors: string[];
-  codecolors: string[];
-  category: string;
-  images: string[];
-  stock: { sizeP: string[]; sizeM: string; sizeG: string; sizeGG: string };
-  promotion: boolean;
-  to: string;
-  active: boolean;
-}
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
 interface GetAllProductsResponse {
-  products: ProductsType[];
+  products: ProductApi[];
 }
 
 const BodyTable = ({

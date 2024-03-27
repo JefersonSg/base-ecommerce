@@ -61,6 +61,10 @@
 @media (min-width: 576px) {
   .description {
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
   }
   .produto_item {
     grid-template-columns: 40px minmax(100px, 1fr) 100px 94px;
