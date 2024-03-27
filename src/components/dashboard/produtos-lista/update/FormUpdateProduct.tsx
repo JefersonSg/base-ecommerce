@@ -76,6 +76,7 @@ const FormUpdateProduct = ({
     handleSubmit,
     watch,
     reset,
+    setValue,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema),
@@ -104,6 +105,9 @@ const FormUpdateProduct = ({
   const [amount, setAmount] = React.useState<number[]>([]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
+  const [subcategoriesList, setSubcategoriesList] = React.useState<
+    subcategoryInterface[] | undefined
+  >([]);
 
   const promotionCheck = watch('promotion');
   const promotionPriceCheck = watch('promotionalPrice');
@@ -181,6 +185,17 @@ const FormUpdateProduct = ({
       }, 100);
     }
   }, [codeColors, colors, dataProduct, reset, stock?.amount]);
+
+  React.useEffect(() => {
+    const subcategories = dataSubCategories.data?.subcategories.filter(
+      (subcategorie) => subcategorie.category === categoryWatch
+    );
+
+    setSubcategoriesList(subcategories);
+    if (!subcategories?.[0]) {
+      setValue('subcategory', '');
+    }
+  }, [categoryWatch, dataSubCategories.data?.subcategories, setValue]);
 
   const handleChange = React.useCallback(() => {
     const imageUrlArray: any[] = [];
@@ -385,7 +400,7 @@ const FormUpdateProduct = ({
                       setAtivoNewCategory(true);
                     }}
                   >
-                    Add nova categoria
+                    Nova categoria
                   </p>
                 </div>
                 <select
@@ -411,7 +426,7 @@ const FormUpdateProduct = ({
                       setAtivoNewCategory(true);
                     }}
                   >
-                    Add nova subcategoria
+                    Nova subcategoria
                   </p>
                 </div>
                 <select
@@ -419,23 +434,23 @@ const FormUpdateProduct = ({
                   className={styles.category}
                   {...register('subcategory')}
                 >
-                  {dataSubCategories.data?.subcategories?.map((subcategory) => {
+                  <option
+                    value={''}
+                    disabled
+                    style={{ display: 'none' }}
+                  ></option>
+                  {subcategoriesList?.map((subcategory) => {
                     return (
-                      <option
-                        key={subcategory._id}
-                        value={subcategory._id}
-                        style={{
-                          display: `${
-                            subcategory.category === categoryWatch
-                              ? 'block'
-                              : 'none'
-                          }`
-                        }}
-                      >
+                      <option key={subcategory._id} value={subcategory._id}>
                         {subcategory.name}
                       </option>
                     );
                   })}
+                  {!subcategoriesList?.[0] && (
+                    <option disabled value={''}>
+                      Nenhuma subcategoria
+                    </option>
+                  )}
                 </select>
               </div>
             </div>

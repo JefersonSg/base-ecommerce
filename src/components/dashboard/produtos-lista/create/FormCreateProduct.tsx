@@ -55,6 +55,7 @@ const FormCreateProduct = () => {
     handleSubmit,
     reset,
     watch,
+    setValue,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema),
@@ -85,6 +86,9 @@ const FormCreateProduct = () => {
   const [amount, setAmount] = React.useState<number[]>([]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
+  const [subcategoriesList, setSubcategoriesList] = React.useState<
+    subcategoryInterface[] | undefined
+  >([]);
 
   const router = useRouter();
 
@@ -116,6 +120,17 @@ const FormCreateProduct = () => {
   React.useEffect(() => {
     handleChange();
   }, [handleChange]);
+
+  React.useEffect(() => {
+    const subcategories = dataSubCategories.data?.subcategories.filter(
+      (subcategorie) => subcategorie.category === categoryWatch
+    );
+
+    setSubcategoriesList(subcategories);
+    if (!subcategories?.[0]) {
+      setValue('subcategory', '');
+    }
+  }, [categoryWatch, dataSubCategories.data?.subcategories, setValue]);
 
   const onSubmit: SubmitHandler<ProductInputs> = async (data) => {
     try {
@@ -304,7 +319,7 @@ const FormCreateProduct = () => {
                       setAtivoNewCategory(true);
                     }}
                   >
-                    Add nova categoria
+                    Nova categoria
                   </p>
                 </div>
                 <select
@@ -312,6 +327,11 @@ const FormCreateProduct = () => {
                   className={styles.category}
                   {...register('category')}
                 >
+                  <option
+                    value={''}
+                    disabled
+                    style={{ display: 'none' }}
+                  ></option>
                   {dataCategory?.data?.categories?.map((category, index) => {
                     return (
                       <option key={category._id} value={category._id}>
@@ -330,7 +350,7 @@ const FormCreateProduct = () => {
                       setAtivoNewCategory(true);
                     }}
                   >
-                    Add nova subcategoria
+                    Nova subcategoria
                   </p>
                 </div>
                 <select
@@ -338,24 +358,22 @@ const FormCreateProduct = () => {
                   className={styles.category}
                   {...register('subcategory')}
                 >
-                  {dataSubCategories?.data?.subcategories?.map(
-                    (subcategory) => {
-                      return (
-                        <option
-                          key={subcategory._id}
-                          style={{
-                            display: `${
-                              subcategory.category === categoryWatch
-                                ? 'block'
-                                : 'none'
-                            }`
-                          }}
-                          value={subcategory._id}
-                        >
-                          {subcategory.name}
-                        </option>
-                      );
-                    }
+                  <option
+                    value={''}
+                    disabled
+                    style={{ display: 'none' }}
+                  ></option>
+                  {subcategoriesList?.map((subcategory) => {
+                    return (
+                      <option key={subcategory._id} value={subcategory._id}>
+                        {subcategory.name}
+                      </option>
+                    );
+                  })}
+                  {!subcategoriesList?.[0] && (
+                    <option disabled value={''}>
+                      Nenhuma subcategoria
+                    </option>
                   )}
                 </select>
               </div>
