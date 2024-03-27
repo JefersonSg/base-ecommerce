@@ -62,6 +62,7 @@ const DataTable = () => {
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
           data={data}
+          nextPage={nextPage}
           idCategory={idCategory}
           setIdCategory={setIdCategory}
           setAtivoEdit={setAtivoEdit}

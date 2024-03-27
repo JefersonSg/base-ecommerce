@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './RodapeTable.module.css';
 import ButtonPrevNext from '../../Botoes/ButtonPrevNext';
+import { type subcategoryInterface } from '@/src/shared/helpers/interfaces';
 
 const RodapeTable = ({
   data,
@@ -9,7 +10,7 @@ const RodapeTable = ({
   setNextPage,
   setCurrentPage
 }: {
-  data: any;
+  data: { subcategories: subcategoryInterface[] };
   nextPage: number[];
   currentPage: number;
   setNextPage: React.Dispatch<React.SetStateAction<number[]>>;
@@ -19,8 +20,10 @@ const RodapeTable = ({
     <div className={styles.container_rodape}>
       <p>
         Mostrando {nextPage[0] > 0 ? nextPage[0] : 1} a{' '}
-        {data?.categories?.length < 7 ? data?.categories?.length : nextPage[1]}{' '}
-        de um total de {data?.categories?.length} categorias
+        {data?.subcategories?.length < 7
+          ? data?.subcategories?.length
+          : nextPage[1]}{' '}
+        de um total de {data?.subcategories?.length} categorias
       </p>
       <div className={styles.botoes}>
         <div
@@ -43,12 +46,12 @@ const RodapeTable = ({
             const prev = nextPage[1] + 1;
             const next = prev + 7 - 1;
 
-            const totalPages = data?.products?.length / 7;
+            const totalPages = data?.subcategories?.length / 7;
 
-            if (next > data?.products?.length) {
+            if (next > data?.subcategories?.length) {
               setNextPage([
-                data?.products?.length - 7 + 1,
-                data?.products?.length
+                data?.subcategories?.length - 7 + 1,
+                data?.subcategories?.length
               ]);
               return;
             }

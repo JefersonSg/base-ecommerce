@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 import SubcategoriaItem from './SubcategoriaItem';
@@ -18,6 +18,7 @@ interface GetAllSubcategoriesResponse {
 
 const BodyTable = ({
   data,
+  nextPage,
   setAtivoEdit,
   setAtivoDelete,
   setIdSubcategory,
@@ -28,6 +29,7 @@ const BodyTable = ({
   data: GetAllSubcategoriesResponse;
   idSubcategory: string;
   ativoDelete: boolean;
+  nextPage: number[];
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setIdSubcategory: React.Dispatch<React.SetStateAction<string>>;
@@ -35,33 +37,31 @@ const BodyTable = ({
   setDefaultTitle: React.Dispatch<React.SetStateAction<string>>;
   setDefaultDescription: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  //
-
   return (
     <div className={styles.BodyTable}>
       <TextInfos />
 
-      {data?.subcategories?.map((subcategory, index) => {
-        return (
-          <div key={subcategory._id}>
-            <Suspense fallback={'Carregando...'}>
+      {data?.subcategories?.map(
+        (subcategory, index) =>
+          index >= nextPage[0] - 1 &&
+          index <= nextPage[1] - 1 && (
+            <div key={subcategory._id}>
               <SubcategoriaItem
                 name={subcategory.name}
                 description={subcategory.description}
                 category={subcategory.category}
+                subcategoryId={subcategory._id}
                 image={subcategory.image}
                 setAtivoEdit={setAtivoEdit}
                 setAtivoDelete={setAtivoDelete}
-                idSubcategory={subcategory._id}
                 setIdSubcategory={setIdSubcategory}
                 setIdCategory={setIdCategory}
                 setDefaultTitle={setDefaultTitle}
                 setDefaultDescription={setDefaultDescription}
               />
-            </Suspense>
-          </div>
-        );
-      })}
+            </div>
+          )
+      )}
     </div>
   );
 };

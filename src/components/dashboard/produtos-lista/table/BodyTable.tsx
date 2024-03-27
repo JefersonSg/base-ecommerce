@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 import ProdutoItem from '../items/ProdutoItem';
@@ -22,21 +22,19 @@ const BodyTable = ({
   return (
     <div className={styles.BodyTable}>
       <TextInfos />
-      {data?.products?.map((product, index) => {
-        return (
-          <div key={product._id}>
-            {index >= nextPage[0] - 1 && index <= nextPage[1] - 1 && (
-              <Suspense>
-                <ProdutoItem
-                  data={product}
-                  setAtivoDelete={setAtivoDelete}
-                  setIdDelete={setIdDelete}
-                />
-              </Suspense>
-            )}
-          </div>
-        );
-      })}
+      {data?.products?.map(
+        (product, index) =>
+          index >= nextPage[0] - 1 &&
+          index <= nextPage[1] - 1 && (
+            <div key={product._id}>
+              <ProdutoItem
+                data={product}
+                setAtivoDelete={setAtivoDelete}
+                setIdDelete={setIdDelete}
+              />
+            </div>
+          )
+      )}
     </div>
   );
 };

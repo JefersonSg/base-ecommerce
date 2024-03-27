@@ -3,12 +3,19 @@
 import Image from 'next/image';
 import React from 'react';
 import styles from './subcategoriaItem.module.css';
-import { getCategoryById } from '@/src/shared/api/GETS';
-import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
+import {
+  getCategoryById,
+  getProductsBySubcategory
+} from '@/src/shared/api/GETS';
+import {
+  type ProductApi,
+  type CategoryInterface
+} from '@/src/shared/helpers/interfaces';
+import { useQuery } from '@tanstack/react-query';
 // import { getCategoryById } from '@/src/shared/api/GETS';
 
 const SubcategoriaItem = ({
-  idSubcategory,
+  subcategoryId,
   name,
   description,
   image,
@@ -20,7 +27,7 @@ const SubcategoriaItem = ({
   setDefaultTitle,
   setDefaultDescription
 }: {
-  idSubcategory: string;
+  subcategoryId: string;
   name: string;
   description: string;
   image: string;
@@ -45,6 +52,37 @@ const SubcategoriaItem = ({
     void getCategoryName();
   }, [category]);
 
+  const { data } = useQuery({
+    queryKey: ['productBySubcategory', subcategoryId],
+    queryFn: async () => {
+      return (await getProductsBySubcategory(subcategoryId)) as {
+        products: ProductApi[];
+      };
+    }
+  });
+  const [valorTotal, setValorTotal] = React.useState<string>();
+
+  React.useEffect(() => {
+    async function setValorCategory() {
+      const valorTotalArray = data?.products?.reduce((i, product) => {
+        const totalProducts = product.stock.amount.reduce((count, amount) => {
+          return count + +amount;
+        }, 0);
+
+        const totalValor = +product.price * +totalProducts;
+        return i + totalValor;
+      }, 0);
+
+      if (valorTotalArray && valorTotalArray > 0) {
+        const formatoNumero = new Intl.NumberFormat('pt-BR');
+        const numeroFormatado = formatoNumero.format(valorTotalArray);
+
+        setValorTotal(numeroFormatado);
+      }
+    }
+    void setValorCategory();
+  }, [data?.products]);
+
   return (
     <div className={styles.categoria_item}>
       <div className={styles.div_img}>
@@ -63,10 +101,21 @@ const SubcategoriaItem = ({
         </p>
       </div>
       <div className={styles.total_products_register}>
-        <h3>75</h3>
+        <h3>{data?.products?.length}</h3>
       </div>
       <div className={styles.total_products_value}>
-        <h3>R$2479,23</h3>
+        <h3>
+          {' '}
+          R${' '}
+          {valorTotal?.split(',')?.[0]
+            ? valorTotal?.split(',')?.[0] + ','
+            : '0,'}{' '}
+          {valorTotal?.split(',')?.[1]
+            ? valorTotal?.split(',')?.[1].length > 1
+              ? valorTotal?.split(',')?.[1]
+              : valorTotal?.split(',')?.[1] + '0'
+            : '00'}
+        </h3>
       </div>
       <div className={styles.actions}>
         <Image
@@ -77,13 +126,13 @@ const SubcategoriaItem = ({
           quality={40}
           placeholder="empty"
           onClick={() => {
-            setIdSubcategory(idSubcategory);
+            setIdSubcategory(subcategoryId);
             setAtivoDelete(true);
           }}
         />
         <div
           onClick={() => {
-            setIdSubcategory(idSubcategory);
+            setIdSubcategory(subcategoryId);
             setIdCategory(category);
           }}
         >

@@ -17,6 +17,7 @@ interface GetAllCategoriesResponse {
 
 const BodyTable = ({
   data,
+  nextPage,
   setAtivoEdit,
   setAtivoDelete,
   setIdCategory,
@@ -24,6 +25,7 @@ const BodyTable = ({
   setDefaultDescription
 }: {
   data: GetAllCategoriesResponse;
+  nextPage: number[];
   idCategory: string;
   ativoDelete: boolean;
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,23 +40,25 @@ const BodyTable = ({
     <div className={styles.BodyTable}>
       <TextInfos />
 
-      {data?.categories?.map((category, index) => {
-        return (
-          <div key={category._id}>
-            <CategoriaItem
-              name={category.name}
-              description={category.description}
-              image={category.image}
-              setAtivoEdit={setAtivoEdit}
-              setAtivoDelete={setAtivoDelete}
-              idCategory={category._id}
-              setIdCategory={setIdCategory}
-              setDefaultTitle={setDefaultTitle}
-              setDefaultDescription={setDefaultDescription}
-            />
-          </div>
-        );
-      })}
+      {data?.categories?.map(
+        (category, index) =>
+          index >= nextPage[0] - 1 &&
+          index <= nextPage[1] - 1 && (
+            <div key={category._id}>
+              <CategoriaItem
+                name={category.name}
+                description={category.description}
+                image={category.image}
+                setAtivoEdit={setAtivoEdit}
+                setAtivoDelete={setAtivoDelete}
+                idCategory={category._id}
+                setIdCategory={setIdCategory}
+                setDefaultTitle={setDefaultTitle}
+                setDefaultDescription={setDefaultDescription}
+              />
+            </div>
+          )
+      )}
     </div>
   );
 };
