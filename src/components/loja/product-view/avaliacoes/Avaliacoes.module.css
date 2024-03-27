@@ -11,7 +11,7 @@
     width: 100%;
     max-width: max-content;
     justify-items: start;
-    grid-column: 2 / -1;
+    grid-column: 1 / 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 94px auto;

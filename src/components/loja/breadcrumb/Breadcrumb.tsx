@@ -29,45 +29,65 @@ function Breadcrumb({
       {<Link href={'/'}>Home </Link>}
       {texto1 ? (
         link1 ? (
-          <Link href={link1}>/ {texto1}</Link>
+          <Link href={link1}>
+            {'>'} {texto1}
+          </Link>
         ) : (
-          <p>/ {texto1}</p>
+          <p>
+            {'>'} {texto1}
+          </p>
         )
       ) : (
         ''
       )}
       {texto2 ? (
         link2 ? (
-          <Link href={link2}>/ {texto2}</Link>
+          <Link href={link2}>
+            {'>'} {texto2}
+          </Link>
         ) : (
-          <p>/ {texto2}</p>
+          <p>
+            {'>'} {texto2}
+          </p>
         )
       ) : (
         ''
       )}
       {texto3 ? (
         link3 ? (
-          <Link href={link3}>/ {texto3}</Link>
+          <Link href={link3}>
+            {'>'} {texto3}
+          </Link>
         ) : (
-          <p>/ {texto3}</p>
+          <p>
+            {'>'} {texto3}
+          </p>
         )
       ) : (
         ''
       )}
       {texto4 ? (
         link4 ? (
-          <Link href={link4}>/ {texto4}</Link>
+          <Link href={link4}>
+            {'>'} {texto4}
+          </Link>
         ) : (
-          <p>/ {texto4}</p>
+          <p>
+            {'>'} {texto4}
+          </p>
         )
       ) : (
         ''
       )}
       {texto5 ? (
         link5 ? (
-          <Link href={link5}>/ {texto5}</Link>
+          <Link href={link5}>
+            {'>'} {texto5}
+          </Link>
         ) : (
-          <p>/ {texto5}</p>
+          <p>
+            {'>'} {texto5}
+          </p>
         )
       ) : (
         ''

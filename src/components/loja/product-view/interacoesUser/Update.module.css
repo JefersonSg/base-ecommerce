@@ -1,3 +1,5 @@
 .update {
   cursor: pointer;
+  position: relative;
+  top: 26px;
 }

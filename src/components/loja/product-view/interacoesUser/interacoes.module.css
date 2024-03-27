@@ -21,10 +21,11 @@
 @media (min-width: 64rem) {
   .estrelas {
     position: relative;
-    left: -83px;
   }
   .interatividades {
-    grid-column: 3;
+    max-width: none;
+    width: 100%;
+    grid-column: 2;
     grid-row: 2;
   }
 }

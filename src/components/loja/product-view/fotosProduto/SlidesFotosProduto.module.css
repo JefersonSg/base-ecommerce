@@ -1,4 +1,10 @@
-.mySwiper {
+.produto_thumbs {
+  height: max-content;
+  width: 100%;
+  padding: 0px 20px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
   padding-bottom: 8px;
   max-width: 326px;
   height: 94px;
@@ -9,15 +15,6 @@
   --swiper-navigation-color: black;
 }
 
-.produto_thumbs {
-  height: max-content;
-  width: 100%;
-  padding: 0px 20px;
-  padding-top: 10px;
-  box-sizing: border-box;
-  margin-bottom: 16px;
-}
-
 .foto_slide {
   border-radius: 8px;
   cursor: pointer;
@@ -26,8 +23,18 @@
 }
 
 @media (min-width: 64rem) {
-  .mySwiper {
-    height: max-content;
+  .foto_slide {
+    box-shadow: none;
+  }
+
+  .produto_thumbs {
+    height: 100%;
     max-width: 396px;
+    width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
   }
 }

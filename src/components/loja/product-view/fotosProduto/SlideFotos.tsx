@@ -37,7 +37,9 @@ function SlideFotos({
         modules={[Navigation, Controller, Thumbs, FreeMode]}
         breakpoints={{
           1024: {
-            spaceBetween: 12
+            spaceBetween: 24,
+            slidesPerView: 5,
+            direction: 'vertical'
           }
         }}
       >

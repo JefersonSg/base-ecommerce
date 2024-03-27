@@ -8,7 +8,6 @@ import Slide from './SlideFotos';
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import BtnFechar from '@/src/components/compartilhado/botoes/BtnFechar';
-import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Controller, FreeMode, Thumbs } from 'swiper/modules';
 
@@ -110,7 +109,6 @@ function FotosProduto({ img }: { img: string[] }) {
           </Suspense>
         )}
       </div>
-      {fotoInteira && <BackgoundClick setState1={setFotoInteira} />}
     </>
   );
 }

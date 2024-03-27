@@ -24,6 +24,11 @@
 
 @media (min-width: 64rem) {
   .breadcrumb {
-    grid-column: 2;
+    grid-column: 1/-1;
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+  .breadcrumb a {
+    font-size: 16px;
   }
 }
