@@ -6,9 +6,11 @@
   gap: 16px;
   margin-top: 32px;
   padding-left: 16px;
+  box-sizing: border-box;
 }
-.entrega div div {
-  min-width: calc(100vw - 30px);
+
+.textos {
+  width: max-content;
 }
 .entrega input {
   width: 152px;
