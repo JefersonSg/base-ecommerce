@@ -1,5 +1,6 @@
 .avaliacoes_container {
-  width: 327px;
+  width: 100%;
+  padding: 0 16px;
   margin: 0 auto;
   margin-top: 64px;
   box-sizing: border-box;
@@ -13,7 +14,7 @@
     justify-items: start;
     grid-column: 1 / 2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 450px 400px;
     grid-template-rows: 94px auto;
     gap: 0 32px;
   }

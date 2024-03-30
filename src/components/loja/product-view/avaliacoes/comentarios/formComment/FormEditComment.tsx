@@ -18,6 +18,7 @@ import {
 } from '@/src/shared/context/AvaliacaoContext';
 import { updateComment } from '@/src/shared/api/UPDATES';
 import { type CommentInterface } from '@/src/shared/helpers/interfaces';
+import { revalidatePathAction } from '@/src/actions/revalidates';
 
 const FormEditComment = ({
   setModalForm,
@@ -84,6 +85,7 @@ const FormEditComment = ({
         const response = await updateComment(newcommentData);
 
         if (response) {
+          await revalidatePathAction(`/produto?_id=${commentData.productId}`);
           router.refresh();
           await refetch();
           setModalForm(false);

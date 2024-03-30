@@ -290,7 +290,7 @@ export async function updateComment(data: {
     );
 
     if (data.productId) {
-      await revalidateTagAction(data.productId);
+      await revalidateTagAction('product-by-id-' + data.productId);
     }
 
     return response.data;

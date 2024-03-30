@@ -1,5 +1,6 @@
 .comentario_div {
   margin-bottom: 64px;
+  max-width: 450px;
 }
 
 .changes_comment {
@@ -15,4 +16,10 @@
   color: #878787;
   line-height: 130%;
   cursor: pointer;
+}
+
+@media (min-width:64rem) {
+  .comentario_div {
+    grid-column: 1;
+  }
 }

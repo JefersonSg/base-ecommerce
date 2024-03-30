@@ -6,6 +6,7 @@
 .navegação {
   display: none;
 }
+
 @media (min-width: 64rem) {
   .titulo {
     grid-column: 2;

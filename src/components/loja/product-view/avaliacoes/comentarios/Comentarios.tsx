@@ -41,7 +41,7 @@ function Comentarios() {
   return (
     <>
       <div className={styles.comentarios_container}>
-        {!Commented && (
+        {!Commented && data?.user && (
           <div className={styles.botao_comentar}>
             <div
               onClick={() => {

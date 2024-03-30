@@ -192,7 +192,7 @@ export const getProductById = async (productId: string) => {
     const response = await fetch(`${API}products/${productId}`, {
       next: {
         revalidate: 3600,
-        tags: [productId]
+        tags: ['product-by-id-' + productId]
       }
     });
 

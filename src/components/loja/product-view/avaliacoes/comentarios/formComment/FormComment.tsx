@@ -94,6 +94,7 @@ const FormComment = ({
         if (response) {
           setModalForm(false);
           setTextPopUp('Comentario postado');
+
           setTypePopUp('');
         }
         setIsloading(false);
@@ -213,7 +214,11 @@ const FormComment = ({
             {...register('images')}
           />
         </div>
-        <BotaoRedondo disabled={isLoading} texto="enviar" />
+        <BotaoRedondo
+          disabled={isLoading}
+          texto="Enviar"
+          textDisabled="Enviando..."
+        />
         <p className="error">
           {errors?.comment?.message ?? errors?.images?.message ?? ''}
         </p>
