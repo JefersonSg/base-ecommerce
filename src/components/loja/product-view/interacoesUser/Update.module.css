@@ -1,5 +1,21 @@
 .update {
   cursor: pointer;
   position: relative;
-  top: 26px;
+
+}
+@media (min-width:64rem) {
+  .update {
+    cursor: pointer;
+    position: absolute;
+    top: 180px;
+    right: 10px;
+  }
+}
+@media (min-width:1400px) {
+  .update {
+    cursor: pointer;
+    position: absolute;
+    top: 180px;
+    right: 40px;
+  }
 }

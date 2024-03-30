@@ -43,7 +43,9 @@ function Cores({
           />
         </div>
       </div>
-      <span className={styles.cor_selecionada_span}>Cor: {colorSelected}</span>
+      <p className={styles.cor_selecionada_span}>
+        Cor: <span>{colorSelected}</span>
+      </p>
       <div className={`${styles.selectColors} ${ativo ? styles.ativo : ''}`}>
         {colors.map((color, index) => {
           return (
@@ -65,7 +67,7 @@ function Cores({
                   background: codeColors[index],
                   border: `${
                     codeColorSelected === codeColors[index]
-                      ? '3px solid' + codeColors[index]
+                      ? '1.5px solid' + codeColors[index]
                       : ''
                   }`
                 }}

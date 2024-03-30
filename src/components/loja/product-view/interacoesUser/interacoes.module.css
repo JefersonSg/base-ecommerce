@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .interacao {
   display: flex;
@@ -23,9 +24,14 @@
     position: relative;
   }
   .interatividades {
+    position: initial;
+    padding-left: 32px;
+    box-sizing: border-box;
     max-width: none;
     width: 100%;
+    max-width: 740px;
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 3;
+    margin: 0;
   }
 }

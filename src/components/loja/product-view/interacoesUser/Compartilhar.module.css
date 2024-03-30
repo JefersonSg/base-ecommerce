@@ -3,7 +3,18 @@
 }
 @media (min-width: 64rem) {
   .compartilhar {
-    position: relative;
-    top: 26px;
+    position: absolute;
+    top: 128px;
+    right: 16px;
+  }
+  .compartilhar img {
+    width: 21px;
+    height: 23px;
+  }
+}
+@media (min-width:1400px) {
+  .compartilhar {
+    top: 130px;
+    right: 56px;
   }
 }

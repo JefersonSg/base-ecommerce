@@ -29,8 +29,12 @@
     display: block;
     width: max-content;
     height: max-content;
+    font-weight: 600;
+    color: #471703;
+    font-size: 20px;
   }
   .tamanhos {
+    width: 94px;
     border-color: #212429;
     cursor: pointer;
   }

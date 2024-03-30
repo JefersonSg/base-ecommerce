@@ -87,13 +87,17 @@
   .cores_disponiveis {
     width: max-content;
     padding: 0;
+    height: 50px;
+    justify-self: center;
   }
   .selectColors {
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 50px);
+    grid-template-rows:  auto;
     top: 0;
     font-size: 0px;
-    width: max-content;
+    width: 100%;
     box-shadow: none;
     border: none;
     flex-direction: row;
@@ -103,25 +107,34 @@
   }
 
   .cor_selecionada {
-    width: 47px;
-    height: 47px;
+    width: 38px;
+    height: 38px;
     box-sizing: border-box;
     border: 3px solid transparent;
-    box-shadow: 0 0 1px 1px #00000030;
+    box-shadow: 0 0 1px 1px #000000;
   }
   .cor_selecionada.ativo {
+    width: 48px;
+    height: 48px;
     box-shadow:
-      inset 0px 0px 1px 4px #fff,
-      0 0 1px 1px #00000080;
+      inset 0px 0px 0px 4px #fff,
+      0 0 1px 1px #00000080, inset 0 0 0 6px #00000030;
   }
   .cor_selecionada_span {
     display: flex;
+    align-items: flex-end;
+    gap: 8px;
     width: max-content;
     top: -16px;
     left: 0;
-    color: black;
-    font-size: 16px;
+    font-weight: 600;
+    color: #471703;
+    font-size: 20px;
     height: max-content;
+  }
+  .cor_selecionada_span span {
+    font-weight: 400;
+    font-size: 16px;
   }
   .cores {
     display: none;

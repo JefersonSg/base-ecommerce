@@ -1,11 +1,14 @@
 .entrega {
-  width: 327px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 16px;
   margin-top: 32px;
+  padding-left: 16px;
+}
+.entrega div div {
+  min-width: calc(100vw - 30px);
 }
 .entrega input {
   width: 152px;
@@ -34,6 +37,10 @@
   align-items: flex-start;
   height: auto;
   margin-bottom: 16px;
+  margin: 0 auto;
+  align-self: center;
+  width: max-content;
+  margin: 0 auto;
 }
 .textos p {
   width: 256px;

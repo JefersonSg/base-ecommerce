@@ -7,3 +7,6 @@
 .like div {
   pointer-events: none;
 }
+.like div svg g g path{
+  fill: #6B4020 !important;
+}

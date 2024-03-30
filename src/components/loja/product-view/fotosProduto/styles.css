@@ -11,11 +11,12 @@
 }
 .slide-produto {
   padding: 0 ;
+  min-height: 94px;
 }
 .slide-produto .swiper-slide {
   display: flex;
   width: 94px;
-  height: auto;
+  height: 94px;
   border: 3px solid transparent;
   justify-content: center;
   box-sizing: border-box;

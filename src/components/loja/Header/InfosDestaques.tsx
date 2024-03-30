@@ -10,7 +10,8 @@ export function InfosDestaques() {
         <Image alt="Pix" src={'/header/PIX.svg'} width={15} height={15} />
 
         <p className={styles.texto}>
-          Parcele suas compras em até <span>10x sem juros!</span>
+          Parcele suas compras em até 10x
+          {/* <span> sem juros!</span> */}
         </p>
       </Link>
     </div>

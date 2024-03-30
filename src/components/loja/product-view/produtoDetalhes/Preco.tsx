@@ -22,6 +22,15 @@ function Preco({
       ) : (
         ''
       )}
+      <p className={styles.dividido}>
+        ou em até{' '}
+        <span>
+          4x de{' '}
+          {((+texto.replace('R$', '').replace(',', '.') * 1.2) / 4)
+            .toFixed(2)
+            .replace('.', ',')}
+        </span>
+      </p>
     </div>
   );
 }
