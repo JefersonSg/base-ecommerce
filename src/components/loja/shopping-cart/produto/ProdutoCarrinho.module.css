@@ -44,6 +44,12 @@
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
+  max-width: 130px;
+  max-height: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }
 
 .lixeira {

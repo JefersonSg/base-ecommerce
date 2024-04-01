@@ -9,7 +9,8 @@ const InputClean = ({
   placeholder,
   defaultValue,
   error,
-  multiple
+  multiple,
+  maxLength
 }: {
   label: string;
   name: string;
@@ -19,6 +20,7 @@ const InputClean = ({
   placeholder: string;
   error?: string | any;
   multiple?: boolean;
+  maxLength?: number;
 }) => {
   return (
     <div className={`${styles.divInput}`}>
@@ -30,6 +32,7 @@ const InputClean = ({
           multiple={multiple !== undefined}
           min={0}
           id={name}
+          maxLength={maxLength}
           step="0.01"
           placeholder={placeholder}
           defaultValue={defaultValue ?? ''}

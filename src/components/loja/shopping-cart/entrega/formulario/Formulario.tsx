@@ -32,12 +32,15 @@ const Formulario = () => {
 
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const telefoneWatch = watch('telefone');
+  const cpfWatch = watch('cpf');
   const CEPWatch = watch('cep');
 
   React.useEffect(() => {
     if (data?.address) {
       setValue('nome', data?.address?.nome);
+      setValue('cpf', data?.address?.cpf);
       setValue('telefone', data?.address?.telefone);
+      setValue('email', data?.address?.email);
       setValue('cep', data?.address?.cep);
       setValue('cidade', data?.address?.cidade);
       setValue('uf', data?.address?.uf);
@@ -76,6 +79,57 @@ const Formulario = () => {
     }
     formatPhoneNumber();
   }, [setValue, telefoneWatch]);
+
+  React.useEffect(() => {
+    function formatPhoneNumber() {
+      // Remove todos os caracteres que não sejam dígitos
+      const cleaned = telefoneWatch?.replace(/\D/g, '');
+
+      if (telefoneWatch?.length > 0) {
+        // Formatar o número conforme necessário
+        let formatted = '';
+        if (cleaned.length >= 2) {
+          formatted += `(${cleaned.substring(0, 2)})`;
+          setValue('telefone', formatted);
+        }
+        if (cleaned.length > 2 && cleaned.length <= 7) {
+          formatted += ` ${cleaned.substring(2)}`;
+          setValue('telefone', formatted);
+        }
+        if (cleaned.length > 7) {
+          formatted += ` ${cleaned.substring(2, 7)}-${cleaned.substring(
+            7,
+            11
+          )}`;
+          setValue('telefone', formatted);
+        }
+      }
+    }
+    formatPhoneNumber();
+  }, [setValue, telefoneWatch]);
+
+  React.useEffect(() => {
+    function formatCPF() {
+      // Remove todos os caracteres que não sejam dígitos
+      const cleaned = cpfWatch?.replace(/\D/g, '');
+
+      if (cpfWatch?.length > 0 && cpfWatch.length < 13) {
+        // Formatar o CPF conforme necessário
+        let formatted = '';
+        for (let i = 0; i < cleaned.length; i++) {
+          if (i > 0 && i % 3 === 0 && i < 9) {
+            formatted += '.';
+          }
+          if (i === 9) {
+            formatted += '-';
+          }
+          formatted += cleaned[i];
+        }
+        setValue('cpf', formatted);
+      }
+    }
+    formatCPF();
+  }, [setValue, cpfWatch]);
 
   React.useEffect(() => {
     async function fetchApi() {
@@ -136,6 +190,31 @@ const Formulario = () => {
             register={register}
           />
           <InputClean
+            label="CPF"
+            name="cpf"
+            placeholder="123.456.789-00"
+            type="text"
+            maxLength={14}
+            error={errors.cpf}
+            register={register}
+          />
+          <InputClean
+            label="Whatsapp"
+            name="telefone"
+            placeholder={'Ex: 21 99999-9999'}
+            type="text"
+            error={errors.telefone}
+            register={register}
+          />
+          <InputClean
+            label="Email"
+            name="email"
+            placeholder={'Ex: loja@gmail.com'}
+            type="email"
+            error={errors.email}
+            register={register}
+          />
+          <InputClean
             label="CEP"
             name="cep"
             placeholder="CEP"
@@ -183,15 +262,7 @@ const Formulario = () => {
             name="complemento"
             placeholder={'Ex: Ao lado da casa amarela...'}
             type="text"
-            error={errors.cep}
-            register={register}
-          />
-          <InputClean
-            label="Telefone de contato"
-            name="telefone"
-            placeholder={'Ex: 21 99999-9999'}
-            type="text"
-            error={errors.telefone}
+            error={errors.complemento}
             register={register}
           />
 
@@ -213,6 +284,7 @@ const Formulario = () => {
               register={register}
             />
           </div>
+
           <div className={styles.buttonSave}>
             <BotaoRedondo texto="Salvar" />
           </div>

@@ -118,6 +118,9 @@ export interface CartInterface {
 export interface AddressInterface {
   _id: string;
   nome: string;
+  cpf: string;
+  telefone: string;
+  email: string;
   userId: string;
   cidade: string;
   uf: string;
@@ -127,5 +130,4 @@ export interface AddressInterface {
   complemento: string;
   referencia: string;
   numero: string;
-  telefone: string;
 }

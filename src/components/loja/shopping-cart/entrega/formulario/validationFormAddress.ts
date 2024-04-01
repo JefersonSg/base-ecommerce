@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 
 export const phoneRegex = /^\([1-9]{2}\) 9?[0-9]{4}-?[0-9]{4}$/;
+export const cpfRegex = /^(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{11})$/;
 
 export const validationFormAddress = yup.object({
   nome: yup
@@ -12,6 +13,15 @@ export const validationFormAddress = yup.object({
     .required('É necessário preencher o campo de telefone')
     .matches(phoneRegex, 'O número de telefone invalido')
     .min(11, 'O telefone deve ter no mínimo 11 caracteres'),
+  cpf: yup
+    .string()
+    .required('É necessário preencher o campo de cpf')
+    .min(11, 'O CPF deve ter no mínimo 11 caracteres')
+    .matches(cpfRegex, 'O número de cpf está invalido'),
+  email: yup
+    .string()
+    .email('Digite um email valido')
+    .required('É necessário preencher o campo de email'),
   cep: yup
     .string()
     .required('É necessário preencher o campo de cep')
