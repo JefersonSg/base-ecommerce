@@ -163,7 +163,7 @@ export const getAllComments = async (productId: string) => {
       {
         next: {
           revalidate: timeRevalidate,
-          tags: ['comments']
+          tags: [`comments-by-id=${productId}`]
         }
       }
     );
@@ -191,8 +191,8 @@ export const getProductById = async (productId: string) => {
   try {
     const response = await fetch(`${API}products/${productId}`, {
       next: {
-        revalidate: 3600,
-        tags: ['product-by-id-' + productId]
+        revalidate: 0,
+        tags: [`product-by-id=${productId}`, `${productId}`]
       }
     });
 

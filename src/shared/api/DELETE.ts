@@ -71,7 +71,8 @@ export async function deleteComment(idComment: string, productId?: string) {
   );
 
   if (productId) {
-    await revalidateTagAction(productId);
+    await revalidateTagAction(`product-by-id-${productId}`);
+    await revalidateTagAction(`comments-by-id=${productId}`);
   }
 
   return response.data;

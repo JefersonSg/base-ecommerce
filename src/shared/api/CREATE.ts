@@ -20,40 +20,6 @@ const configFormdata = {
   }
 };
 
-export async function createComment(data: any, productId: string) {
-  const formData = new FormData();
-
-  formData.append('comment', data?.comment);
-  formData.append('userId', data?.userId);
-  formData.append('stars', data?.stars);
-  formData.append('productId', productId);
-
-  if (data?.image) {
-    formData.append('image', data.image[0]);
-  }
-
-  try {
-    if (!token) {
-      console.log('sem token de acesso');
-      return;
-    }
-
-    const response = await axios.post(
-      `${API}products/create/comment/`,
-      formData,
-      configFormdata
-    );
-
-    if (data.productId) {
-      await revalidateTagAction(data.productId);
-    }
-
-    return response.data;
-  } catch (error: any) {
-    console.error('Erro ao fazer a requisição:', error.response);
-  }
-}
-
 export async function addNewItemCart(data: {
   productId: string;
   userId: string;
@@ -287,6 +253,41 @@ export async function createSubcategory(data: {
 
     await revalidateTagAction('all-subcategories');
     await revalidateTagAction('get-subcategories-' + data.category);
+
+    return response.data;
+  } catch (error: any) {
+    console.error('Erro ao fazer a requisição:', error.response);
+  }
+}
+
+export async function createComment(data: any, productId: string) {
+  const formData = new FormData();
+
+  formData.append('comment', data?.comment);
+  formData.append('userId', data?.userId);
+  formData.append('stars', data?.stars);
+  formData.append('productId', productId);
+
+  if (data?.image) {
+    formData.append('image', data.image[0]);
+  }
+
+  try {
+    if (!token) {
+      console.log('sem token de acesso');
+      return;
+    }
+
+    const response = await axios.post(
+      `${API}products/create/comment/`,
+      formData,
+      configFormdata
+    );
+
+    if (response) {
+      await revalidateTagAction(`product-by-id-${productId}`);
+      await revalidateTagAction(`comments-by-id=${productId}`);
+    }
 
     return response.data;
   } catch (error: any) {

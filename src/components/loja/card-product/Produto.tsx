@@ -57,7 +57,7 @@ function Produto({ productData }: Props) {
             promotionPorcent() ? styles.promocao_preco : ''
           }`}
         >
-          <span className={`${styles.preco}`}>R$ {price.toFixed(2)}</span>
+          <span className={`${styles.preco}`}>R$ {price?.toFixed(2)}</span>
           {promotionPorcent() ? <p>R$ {promotionalPrice}</p> : ''}
         </div>
       </div>

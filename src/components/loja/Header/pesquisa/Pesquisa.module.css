@@ -98,20 +98,32 @@
   }
   .input_pesquisa {
     border: none;
-    width: 265px;
-    border-right: 1px solid var(--cor-quarta);
+    width: 100%;
+    border: none;
+    background: none;
+    color: #6B4020;
+  }
+  .input_pesquisa::placeholder {
+    color: #6B4020;
   }
   .lupaInput {
     height: 100%;
     width: 40px;
     background-color: transparent;
   }
+  .lupaInput {
+    width: 24px;
+    height: 24px;
+    display: flex;
+  }
   .pesquisa {
     display: grid;
-    grid-template-columns: 1fr 50px;
+    grid-template-columns: 80% 50px;
+    width: 25vw;
+    border-radius: 9999px;
     height: 40px;
     position: relative;
-    background: white;
+    background: #99655744;
     top: 0;
     border: 1px solid var(--cor-quarta);
     z-index: 1000;

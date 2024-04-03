@@ -74,7 +74,7 @@ export async function updateProduct(
 
     await revalidateTagAction('all-active-products');
     await revalidateTagAction('all-products');
-    await revalidateTagAction(productId);
+    await revalidateTagAction(`product-by-id-${productId}`);
     await revalidateTagAction('all-products-by-sales');
 
     return response.data;
@@ -273,6 +273,7 @@ export async function updateComment(data: {
   formData.append('comment', data.comment);
   formData.append('stars', `${data.stars}`);
 
+  console.log(data);
   if (data.image) {
     formData.append('image', data.image[0]);
   }
@@ -289,8 +290,9 @@ export async function updateComment(data: {
       configFormdata
     );
 
-    if (data.productId) {
-      await revalidateTagAction('product-by-id-' + data.productId);
+    if (response) {
+      await revalidateTagAction(`product-by-id-${data.productId}`);
+      await revalidateTagAction(`comments-by-id=${data.productId}`);
     }
 
     return response.data;
