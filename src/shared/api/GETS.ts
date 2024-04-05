@@ -162,7 +162,7 @@ export const getAllComments = async (productId: string) => {
       `${API}products/comments/get-all/${productId}`,
       {
         next: {
-          revalidate: timeRevalidate,
+          revalidate: 0,
           tags: [`comments-by-id=${productId}`]
         }
       }
