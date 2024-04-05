@@ -1,11 +1,5 @@
-.produtos_checkout {
-  border: 1px solid #00000020;
-  width: max-content;
-  margin: 0 auto;
-  border-radius: 4px;
-  box-shadow: 0 0 15px 3px rgba(100, 100, 100, .5);
-  margin-top: 32px;
-}
+
+
 .produto_finalizar::after {
   border-top: 1px dashed #ddd;
   display: block;
@@ -71,10 +65,15 @@
   justify-content: center;
   align-content: center;
   gap: 16px;
-  border: 1px solid #999999;
   border-radius: 110px;
 }
 
+.div_quantidade {
+  height: 30px;
+}
+.div_quantidade button img {
+  padding: 8px;
+}
 
 .valor {
   color: #000;
@@ -100,4 +99,18 @@
   display: flex;
   flex-direction: column;
   color: var(--cor-contraste);
+}
+
+
+@media (max-width: 600px) {
+  .produto_finalizar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    height: auto;
+    min-width: 90vw;
+  }
+   .valor_produto {
+    display: none;
+  }
 }

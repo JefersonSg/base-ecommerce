@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './Produto.module.css';
+import styles from './FinalizarFetchs.module.css';
 import React from 'react';
 import Cookies from 'js-cookie';
 import { useQuery } from '@tanstack/react-query';
@@ -9,7 +9,7 @@ import {
   type CartInterface,
   type UserInterface
 } from '@/src/shared/helpers/interfaces';
-import ProdutosFinalizar from './ProdutosFinalizar';
+import ProdutosFinalizar from './produto/ProdutosFinalizar';
 
 const Finalizarfetchs = () => {
   const token = Cookies.get('auth_token');
@@ -20,7 +20,7 @@ const Finalizarfetchs = () => {
     }
   });
 
-  const { data } = useQuery<CartInterface>({
+  const { data, refetch } = useQuery<CartInterface>({
     queryKey: ['shopping-cart', userData?.data?.user?._id],
     queryFn: async () => {
       if (userData?.data?.user?._id) {
@@ -32,6 +32,7 @@ const Finalizarfetchs = () => {
 
   return (
     <div className={styles.produtos_checkout}>
+      <p className={styles.titulo_table}>Resumo do pedido</p>
       <table>
         <thead>
           <tr>
@@ -51,6 +52,8 @@ const Finalizarfetchs = () => {
               size={item.size}
               total={data?.prices[index]}
               productId={item.productId}
+              ItemCartId={item._id}
+              refetchData={refetch}
             />
           ))}
         </tbody>

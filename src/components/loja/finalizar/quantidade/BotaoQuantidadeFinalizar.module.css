@@ -2,15 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 180px;
-  height: 50px;
+  width: 70px;
+  height: 30px;
   border-radius: 48px;
   border: 1px solid black;
   background: white;
-
   color: var(--Black, #212429);
   font-family: var(--fonte-primaria);
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: 24px;
@@ -18,7 +17,7 @@
 
 .botao_quantidade img {
   cursor: pointer;
-  padding: 16px;
+  padding: 6px;
 }
 .botao_quantidade.loading img,
 .botao_quantidade.loading {

@@ -30,8 +30,8 @@ const ProdutoCarrinho = ({
   color: string;
   size: string;
   amount: number;
-  ItemCartId: string;
   total: number;
+  ItemCartId: string;
   refetchData?: (
     options?: RefetchOptions | undefined
   ) => Promise<QueryObserverResult<any, Error>>;
@@ -85,8 +85,8 @@ const ProdutoCarrinho = ({
         await refetchData();
       }
       await refetch();
-      return response.data;
       setIsloading(false);
+      return response.data;
     } catch (error) {
       setIsloading(false);
       console.log(error);
