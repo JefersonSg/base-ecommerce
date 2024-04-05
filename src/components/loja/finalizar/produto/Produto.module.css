@@ -105,10 +105,11 @@
 @media (max-width: 600px) {
   .produto_finalizar {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: max-content 1fr;
     align-items: center;
     height: auto;
     min-width: 90vw;
+    box-sizing: border-box;
   }
    .valor_produto {
     display: none;
