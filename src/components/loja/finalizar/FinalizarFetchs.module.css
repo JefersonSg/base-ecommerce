@@ -17,7 +17,9 @@
     font-family: var(--fonte-primaria);
     margin-bottom: 8px;
   }
-
+  .botao_comprar {
+    margin-top: 32px;
+}
   @media (max-width: 600px) {
     .produtos_checkout thead {
       display: none;

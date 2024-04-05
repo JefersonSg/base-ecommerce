@@ -44,6 +44,7 @@ const ProdutoCarrinho = ({
   });
   const [modalDeleteActive, setModalDeleteActive] = React.useState(false);
   const [isLoading, setIsloading] = React.useState(false);
+  const [stock, setStock] = React.useState(true);
 
   async function updateItem(valueAmount: number) {
     setIsloading(true);
@@ -92,9 +93,17 @@ const ProdutoCarrinho = ({
       console.log(error);
     }
   }
+  React.useEffect(() => {
+    data?.product.colors.filter((cor) => cor === color);
 
+    if (!data) {
+      setStock(false);
+    }
+  }, [color, data]);
   return (
-    <div className={styles.produto_Carrinho}>
+    <div
+      className={`${styles.produto_Carrinho} ${stock ? '' : styles.no_stock}`}
+    >
       <div className={styles.informacoes_produto}>
         {data?.product && (
           <Link href={{ pathname: '/produto', query: { _id: productId } }}>

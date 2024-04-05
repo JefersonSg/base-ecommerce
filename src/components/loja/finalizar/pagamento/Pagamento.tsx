@@ -3,12 +3,23 @@ import React from 'react';
 import styles from './Pagamento.module.css';
 import Image from 'next/image';
 
-const Pagamento = () => {
+const Pagamento = ({
+  selectPayment,
+  setSelectPayment
+}: {
+  selectPayment: string;
+  setSelectPayment: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   return (
     <div className={styles.pagamento_container}>
       <h3>Forma de pagamento</h3>
       <div className={styles.formas_pagamento}>
-        <div className={styles.metodo_pagamento}>
+        <div
+          className={styles.metodo_pagamento}
+          onClick={() => {
+            setSelectPayment('card');
+          }}
+        >
           <div className={styles.info}>
             <div className={styles.background_image}>
               <Image
@@ -20,9 +31,18 @@ const Pagamento = () => {
             </div>
             Cartão
           </div>
-          <span className={styles.select}></span>
+          <span
+            className={`${styles.select} ${
+              selectPayment === 'card' ? styles.selected : ''
+            }`}
+          ></span>
         </div>
-        <div className={styles.metodo_pagamento}>
+        <div
+          className={styles.metodo_pagamento}
+          onClick={() => {
+            setSelectPayment('pix');
+          }}
+        >
           <div className={styles.info}>
             <div className={styles.background_image}>
               <Image
@@ -34,7 +54,11 @@ const Pagamento = () => {
             </div>
             PIX
           </div>
-          <span className={styles.select}></span>
+          <span
+            className={`${styles.select} ${
+              selectPayment === 'pix' ? styles.selected : ''
+            }`}
+          ></span>
         </div>
       </div>
     </div>
