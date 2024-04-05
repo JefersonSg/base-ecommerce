@@ -36,6 +36,7 @@ const ContainerCart = () => {
       return [];
     }
   });
+
   React.useEffect(() => {
     async function handleChangeRoute() {
       await refetch();

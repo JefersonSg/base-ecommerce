@@ -12,6 +12,7 @@ interface Props {
 
 function Produto({ productData }: Props) {
   const { _id, images, name, price, promotion, promotionalPrice } = productData;
+
   const promotionPorcent = () => {
     if (promotionalPrice && promotion) {
       const diferenca = price - promotionalPrice;
