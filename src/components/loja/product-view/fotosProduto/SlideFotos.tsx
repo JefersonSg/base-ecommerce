@@ -56,6 +56,8 @@ function SlideFotos({
                 }`}
                 alt="Foto do produto"
                 src={imagem}
+                quality={50}
+                sizes="80px"
                 id={`${index}`}
                 fill
               />

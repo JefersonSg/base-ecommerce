@@ -39,7 +39,7 @@
 .fotoInteira_img {
   position: absolute;
   max-height: 100vh;
-  width: 100%;
+  width: auto;
   max-width: 1200px;
   height: auto;
   pointer-events: none;

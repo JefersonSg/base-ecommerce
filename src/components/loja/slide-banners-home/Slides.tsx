@@ -30,7 +30,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
         }}
         modules={[Autoplay, Pagination, Navigation]}
       >
-        {data?.banners?.map((banner) => {
+        {data?.banners?.map((banner, index) => {
           return (
             <SwiperSlide key={banner._id} className="banner-wraper">
               {' '}
@@ -41,9 +41,11 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     alt="imagem banner mobile"
                     src={banner.imageMobile}
                     placeholder="empty"
-                    quality={60}
+                    quality={75}
                     width={750}
                     height={878}
+                    sizes="100vw"
+                    priority={index < 2}
                   />
                   <Image
                     className={styles.imagem_desktop}
@@ -53,6 +55,8 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     quality={70}
                     width={1920}
                     height={600}
+                    sizes="100vw"
+                    priority={index < 2}
                   />
                 </Link>
               </div>

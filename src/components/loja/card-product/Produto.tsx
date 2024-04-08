@@ -47,6 +47,8 @@ function Produto({ productData }: Props) {
             height={243}
             quality={65}
             placeholder="empty"
+            sizes="(max-width: 1024px) 25vw, 50vw"
+            property="true"
           />
         )}
       </div>

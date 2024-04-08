@@ -59,7 +59,7 @@ function FotosProduto({ img }: { img: string[] }) {
               thumbs={{ swiper: thumbsSwiper }}
               modules={[Controller, Thumbs, FreeMode]}
             >
-              {img?.map((image) => {
+              {img?.map((image, index) => {
                 return (
                   <SwiperSlide
                     className={styles.imagem_slide_principal}
@@ -73,9 +73,12 @@ function FotosProduto({ img }: { img: string[] }) {
                       alt="Foto do produto"
                       id={imagemId}
                       src={image}
+                      quality={70}
                       fill
                       placeholder="blur"
                       blurDataURL={image}
+                      sizes="(max-width: 1024px) 550px, 100vw"
+                      priority={index < 2}
                     />
                   </SwiperSlide>
                 );
@@ -92,6 +95,8 @@ function FotosProduto({ img }: { img: string[] }) {
                 src={imagemPrincipal}
                 width={350}
                 height={350}
+                quality={75}
+                sizes="100vw"
               />
               <BtnFechar setAtivo={setFotoInteira} />
             </>

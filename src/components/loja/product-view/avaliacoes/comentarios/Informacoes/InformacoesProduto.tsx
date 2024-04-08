@@ -28,6 +28,8 @@ function InformacoesProduto({ cor, tamanho, comentario, imgs }: infosProduto) {
           src={imgs[0] ?? imgs}
           width={104}
           height={132}
+          quality={50}
+          sizes="50vw"
         />
       )}
     </div>

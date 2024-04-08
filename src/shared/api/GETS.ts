@@ -8,7 +8,8 @@ import {
 const token = Cookies.get('auth_token') ?? false;
 const API = process.env.NEXT_PUBLIC_API_URL;
 
-const timeRevalidate = 2 * 24 * 60 * 60;
+// const timeRevalidate = 2 * 24 * 60 * 60;
+const timeRevalidate = 10 * 60;
 
 const config = {
   headers: {
