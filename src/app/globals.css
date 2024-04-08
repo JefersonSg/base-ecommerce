@@ -1,5 +1,9 @@
 .body {
   min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 body {
   --fonte-primaria: var(--type-first-montserrat), 'sans-serif';
