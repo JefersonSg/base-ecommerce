@@ -25,7 +25,7 @@
   line-height: 130%;
 }
 
-@media (min-width:64rem) {
+@media (min-width: 64rem) {
   .informacoes_usuario {
     width: 350px;
   }

@@ -31,11 +31,11 @@
     position: relative;
     display: grid;
     gap: 0;
-    grid-template-columns:  1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     box-sizing: border-box;
-    grid-template-rows:  46px max-content 72px calc(
-        800px - 50px - 26px - 16px
-      ) auto;
+    grid-template-rows:
+      46px max-content 72px calc(800px - 50px - 26px - 16px)
+      auto;
     margin: 0 auto;
     width: max-content;
     max-width: 1200px;
@@ -58,8 +58,8 @@
     width: 100%;
     max-width: 1400px;
     box-sizing: border-box;
-    grid-template-rows:  46px max-content 72px calc(
-      800px - 120px - 26px - 16px
-    ) auto;
+    grid-template-rows:
+      46px max-content 72px calc(800px - 120px - 26px - 16px)
+      auto;
   }
 }

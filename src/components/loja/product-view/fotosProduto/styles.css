@@ -10,7 +10,7 @@
   color: #a9a9a9;
 }
 .slide-produto {
-  padding: 0 ;
+  padding: 0;
   min-height: 94px;
 }
 .slide-produto .swiper-slide {
@@ -30,12 +30,12 @@
 
 @media (min-width: 64rem) {
   .slide-produto .swiper-button-next,
-  .slide-produto .swiper-button-prev { 
-  display: none;
-}
-.slide-produto {
-  max-height: 550px;
-}
+  .slide-produto .swiper-button-prev {
+    display: none;
+  }
+  .slide-produto {
+    max-height: 550px;
+  }
   .slide-produto .swiper-slide {
     height: 146px;
     width: 110px !important;

@@ -10,14 +10,13 @@
     position: absolute;
     top: 124px;
     right: 46px;
-
   }
   .favorito div div svg {
     width: 32px !important;
     height: 32px !important;
   }
 }
-@media (min-width:1400px) {
+@media (min-width: 1400px) {
   .favorito {
     top: 124px;
     right: 86px;

@@ -1,14 +1,14 @@
 .produto {
-    display: flex;
-    gap: 32px;
+  display: flex;
+  gap: 32px;
 }
 
 .informacoes_produto div {
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    font-weight: 400;
-    color: #3f3f40;
-    gap: 4px;
-    margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 400;
+  color: #3f3f40;
+  gap: 4px;
+  margin-top: 8px;
 }

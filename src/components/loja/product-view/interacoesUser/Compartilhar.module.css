@@ -12,7 +12,7 @@
     height: 23px;
   }
 }
-@media (min-width:1400px) {
+@media (min-width: 1400px) {
   .compartilhar {
     top: 130px;
     right: 56px;

@@ -1,9 +1,8 @@
 .update {
   cursor: pointer;
   position: relative;
-
 }
-@media (min-width:64rem) {
+@media (min-width: 64rem) {
   .update {
     cursor: pointer;
     position: absolute;
@@ -11,7 +10,7 @@
     right: 10px;
   }
 }
-@media (min-width:1400px) {
+@media (min-width: 1400px) {
   .update {
     cursor: pointer;
     position: absolute;

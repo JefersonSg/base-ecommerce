@@ -1,13 +1,13 @@
 .total_container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px;
-    box-sizing: border-box;
-    width: 100%;
-    border-bottom: 1px  solid #F2F2F2;
-    font-weight: 700;
-    font-family: var(--fonte-primaria);
-    color: var(--cor-primaria);
-    font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2;
+  font-weight: 700;
+  font-family: var(--fonte-primaria);
+  color: var(--cor-primaria);
+  font-size: 16px;
 }

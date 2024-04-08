@@ -31,7 +31,6 @@
 }
 
 @media (min-width: 576px) {
-
   .textInfos_container {
     grid-template-columns: 40px minmax(100px, 1fr) 100px 94px;
   }
@@ -52,7 +51,6 @@
   }
 }
 @media (min-width: 1100px) {
-
   .textInfos_container {
     grid-template-columns: 40px 260px 100px 128px 120px 94px;
   }
