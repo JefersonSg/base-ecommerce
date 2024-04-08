@@ -1,3 +1,11 @@
+.pedidos_container {
+    min-height: 100vh;
+    padding-top: 32px;
+}
+
+.pedidos_container > div{
+    margin-bottom: 16px;
+}
 .order_table {
     display: flex;
     flex-direction: column;

@@ -5,3 +5,6 @@
   flex-direction: column;
   justify-content: center;
 }
+.profile_container > div {
+  margin-bottom: 16px;
+}
