@@ -131,3 +131,19 @@ export interface AddressInterface {
   referencia: string;
   numero: string;
 }
+
+export interface OrderInterface {
+  _id: string;
+  userId: string;
+  address: [AddressInterface];
+  status: string;
+  productIds: string[];
+  valueProducts: number[];
+  productAmounts: number[];
+  productColors: string[];
+  totalPayment: number;
+  methodPayment: string;
+  discount: number;
+  orderTracking: string;
+  createdAt: Date;
+}

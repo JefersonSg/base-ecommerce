@@ -36,8 +36,8 @@ export default function ProfileUSuario({
   } = useForm<userEdit>({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: userData.user.name,
-      surname: userData.user.surname
+      name: userData?.user?.name,
+      surname: userData?.user?.surname
     }
   });
 

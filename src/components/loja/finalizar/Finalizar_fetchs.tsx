@@ -2,29 +2,20 @@
 
 import styles from './FinalizarFetchs.module.css';
 import React from 'react';
-import Cookies from 'js-cookie';
 import { useQuery } from '@tanstack/react-query';
-import { getAllItemsCartByUserId, getUserByToken } from '@/src/shared/api/GETS';
+import { getAllItemsCartByUserId } from '@/src/shared/api/GETS';
 import {
   type CartInterface,
   type UserInterface
 } from '@/src/shared/helpers/interfaces';
 import ProdutosFinalizar from './produto/ProdutosFinalizar';
 
-const Finalizarfetchs = () => {
-  const token = Cookies.get('auth_token');
-  const userData = useQuery<UserInterface>({
-    queryKey: ['user'],
-    queryFn: async () => {
-      return (await getUserByToken(token)) as UserInterface;
-    }
-  });
-
+const Finalizarfetchs = ({ userData }: { userData: UserInterface }) => {
   const { data, refetch } = useQuery<CartInterface>({
-    queryKey: ['shopping-cart', userData?.data?.user?._id],
+    queryKey: ['shopping-cart', userData?.user?._id],
     queryFn: async () => {
-      if (userData?.data?.user?._id) {
-        return await getAllItemsCartByUserId(userData?.data?.user?._id);
+      if (userData?.user?._id) {
+        return await getAllItemsCartByUserId(userData?.user?._id);
       }
       return [];
     }

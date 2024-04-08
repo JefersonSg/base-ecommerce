@@ -6,7 +6,7 @@ const BackgoundClick = ({
   setState2,
   setState3
 }: {
-  setState1: React.Dispatch<React.SetStateAction<boolean>>;
+  setState1?: React.Dispatch<React.SetStateAction<boolean>>;
   setState2?: React.Dispatch<React.SetStateAction<boolean>>;
   setState3?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
@@ -14,7 +14,9 @@ const BackgoundClick = ({
     <div
       className={styles.background}
       onClick={() => {
-        setState1(false);
+        if (setState1) {
+          setState1(false);
+        }
 
         if (setState2) {
           setState2(false);

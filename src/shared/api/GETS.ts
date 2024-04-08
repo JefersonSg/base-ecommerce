@@ -224,6 +224,22 @@ export const getFavoritesProducts = async (favorites: any) => {
   }
 };
 
+export const getSubcategoryById = async (subcategoryId: string) => {
+  try {
+    const response = await axios.get(
+      `${API}subcategories/${subcategoryId}`,
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// no revalidate
+
 export const getCategoryById = async (id: string) => {
   try {
     const response = await axios.get(`${API}categories/${id}`, config);
@@ -235,10 +251,10 @@ export const getCategoryById = async (id: string) => {
   }
 };
 
-export const getSubcategoryById = async (subcategoryId: string) => {
+export const getOrderByUserId = async (userId: string) => {
   try {
     const response = await axios.get(
-      `${API}subcategories/${subcategoryId}`,
+      `${API}order/get-by-user-id/${userId}`,
       config
     );
 
@@ -254,7 +270,7 @@ export const getProductsByCategory = async (categoryId: string) => {
   try {
     const response = await fetch(`${API}products/category/${categoryId}`, {
       next: {
-        revalidate: 3600,
+        revalidate: 0,
         tags: ['products-by-category-' + categoryId]
       }
     });
@@ -289,7 +305,7 @@ export const getProductsBySubcategory = async (id: string) => {
   try {
     const response = await fetch(`${API}products/subcategory/${id}`, {
       next: {
-        revalidate: timeRevalidate,
+        revalidate: 0,
         tags: ['products-by-subcategory-' + id]
       }
     });

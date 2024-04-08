@@ -294,3 +294,23 @@ export async function createComment(data: any, productId: string) {
     console.error('Erro ao fazer a requisição:', error.response);
   }
 }
+
+export async function createNewOrder(
+  userId: string,
+  methodPayment: string,
+  cupom?: string
+) {
+  try {
+    const response = await axios.post(
+      `${API}order/create/${userId}`,
+      {
+        cupom,
+        methodPayment
+      },
+      configJson
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}

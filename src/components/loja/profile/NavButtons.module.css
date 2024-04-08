@@ -7,7 +7,8 @@
 .botoes_navegacao ul li:nth-child(1) {
   border-right: 1px solid #cdcdcd;
 }
-.botoes_navegacao ul li {
+.botoes_navegacao ul li,
+.botoes_navegacao ul li a {
   display: flex;
   justify-content: center;
   flex-direction: column;
