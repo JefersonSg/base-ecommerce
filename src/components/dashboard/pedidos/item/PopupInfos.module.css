@@ -1,8 +1,8 @@
 .PopupInfos {
   position: fixed;
-  top: 30%;
+  top: 100px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   background-color: white;
   z-index: 1004;
   border-radius: 8px;
@@ -10,7 +10,7 @@
   height: max-content;
   padding: 16px;
   box-sizing: border-box;
-  max-width: 550px;
+  max-width: 500px;
 }
 .PopupInfos h1 {
   font-size: 21px;
@@ -140,6 +140,11 @@
   --bs-text-opacity: 1;
 }
 
+.botoes_atividade {
+  display: flex;
+  gap: 8px;
+}
+
 @media (max-width: 460px) {
   .email {
     display: block;
@@ -147,5 +152,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     width: 90px;
+  }
+}
+
+@media (max-height: 700px) {
+  .PopupInfos {
+    top: 50px;
   }
 }

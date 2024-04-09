@@ -98,7 +98,7 @@ const PopupInfos = ({
                 : 'Confirmado'}
           </div>
         </div>
-      </div>{' '}
+      </div>
       <div className={`${styles.valor_pedido} `}>
         <p>Valor do pedido: </p>
         <span>R$ {convertNumberInReal(data?.totalPayment)}</span>
@@ -115,15 +115,15 @@ const PopupInfos = ({
           {data.methodPayment}
         </span>
       </div>
-      <div>
-        <button>Ver mais</button>{' '}
+      <div className={styles.botoes_atividade}>
+        <button>Ver mais</button>
         <button
           onClick={() => {
             void confirmOrderNow();
           }}
         >
           Confirmar pedido
-        </button>{' '}
+        </button>
         <button>Cancelar Pedido</button> <button>Pedido enviado</button>
       </div>
     </div>
