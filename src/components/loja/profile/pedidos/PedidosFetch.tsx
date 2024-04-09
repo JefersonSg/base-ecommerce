@@ -15,7 +15,7 @@ export default async function PedidosFetch() {
     <main className={styles.pedidos_container}>
       <Breadcrumb texto1="Minha conta" link1="/minha-conta" texto2="Pedidos" />
       <Titulo titulo="Pedidos" />
-      <PedidosContainer data={data} />
+      {data && <PedidosContainer data={data} />}
     </main>
   );
 }
