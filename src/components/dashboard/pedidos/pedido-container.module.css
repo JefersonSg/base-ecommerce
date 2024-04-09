@@ -10,12 +10,12 @@
   width: 96%;
   box-sizing: border-box;
   clear: both;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
-    max-width: none !important;
-    border-collapse: separate !important;
-    border-spacing: 0;
-    position: relative;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  position: relative;
 }
 .topo_tabela {
   height: 40px;
@@ -39,27 +39,27 @@
   flex-direction: column;
   gap: 32px;
 }
-@media (max-width:460px) {
+@media (max-width: 460px) {
   .data {
     display: none;
   }
 }
-@media (max-width:600px) {
+@media (max-width: 600px) {
   .status {
     display: none;
   }
 }
-@media (max-width:800px) {
+@media (max-width: 800px) {
   .pagamento {
     display: none;
   }
 }
-@media (max-width:900px) {
+@media (max-width: 900px) {
   .metodo {
     display: none;
   }
 }
-@media (max-width:1200px) {
+@media (max-width: 1200px) {
   .valor {
     display: none;
   }

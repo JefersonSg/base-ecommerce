@@ -21,7 +21,7 @@
   height: 1px;
   background-color: var(--color-border);
 }
-.id_pedido a{
+.id_pedido a {
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -68,7 +68,7 @@
   --bs-text-opacity: 1;
 }
 
-.status_pagamento_pedido div{ 
+.status_pagamento_pedido div {
   display: grid;
   grid-template-columns: 10px 100px;
   align-items: center;
@@ -79,34 +79,31 @@
 
 .bolinha {
   display: block;
-  width:10px;
+  width: 10px;
   height: 10px;
   background-color: black;
   border-radius: 50%;
 }
 
-
-
- .bolinha.confirmado {
+.bolinha.confirmado {
   background-color: #71dd37;
 }
- .bolinha.pendente {
+.bolinha.pendente {
   background-color: #ffab00;
 }
- .bolinha.cancelado {
+.bolinha.cancelado {
   background-color: #ff3e1d;
 }
 
 .status_pagamento_pedido.confirmado {
   color: #71dd37 !important;
 }
-.status_pagamento_pedido.pendente{
+.status_pagamento_pedido.pendente {
   color: #ffab00 !important;
 }
 .status_pagamento_pedido.cancelado {
   color: #ff3e1d !important;
 }
-
 
 .status_pedido {
   display: flex;
@@ -145,7 +142,7 @@
   font-weight: 400;
   color: #697a8d;
 }
-@media (max-width:460px) {
+@media (max-width: 460px) {
   .data_pedido {
     display: none;
   }

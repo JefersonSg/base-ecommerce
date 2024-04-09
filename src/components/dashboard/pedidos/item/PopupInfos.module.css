@@ -1,152 +1,151 @@
 .PopupInfos {
-    position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: white;
-    z-index: 1004;
-    border-radius: 8px;
-    width: 90%;
-    height: max-content;
-    padding: 16px;
-    box-sizing: border-box;
-    max-width: 550px;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 1004;
+  border-radius: 8px;
+  width: 90%;
+  height: max-content;
+  padding: 16px;
+  box-sizing: border-box;
+  max-width: 550px;
 }
 .PopupInfos h1 {
-    font-size: 21px;
-    font-weight: 500;
-    color: #566a7f;
+  font-size: 21px;
+  font-weight: 500;
+  color: #566a7f;
 }
 .PopupInfos div p {
-    font-size: 15px;
-    font-weight: 400;
-    color: #697a8d;
+  font-size: 15px;
+  font-weight: 400;
+  color: #697a8d;
 }
 .PopupInfos > div {
-    border-bottom: 1px solid var(--color-border);
-    padding: 16px 32px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    box-sizing: border-box;
-    max-width: 100%;
+  border-bottom: 1px solid var(--color-border);
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
 }
-.id_pedido a{
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  
-    font-size: 15px;
-    font-weight: 500;
-    color: #787bff;
-    cursor: pointer;
-  }
-.cliente_pedido {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-  }
-  .imagemPerfil {
-    position: relative;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-  }
-  .imagemPerfil img {
-    border-radius: 50%;
-  }
+.id_pedido a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-  .status_pagamento_pedido div{ 
-    display: grid;
-    grid-template-columns: 10px 100px;
-    text-align: start;
-    gap: 8px;
-  }
-  
-  .bolinha {
-    display: block;
-    width:10px;
-    height: 10px;
-    background-color: black;
-    border-radius: 50%;
-  }
-  
+  font-size: 15px;
+  font-weight: 500;
+  color: #787bff;
+  cursor: pointer;
+}
+.cliente_pedido {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.imagemPerfil {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+.imagemPerfil img {
+  border-radius: 50%;
+}
+
+.status_pagamento_pedido div {
+  display: grid;
+  grid-template-columns: 10px 100px;
+  text-align: start;
+  gap: 8px;
+}
+
+.bolinha {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+}
+
 .valor_pedido span,
 .metodo_pagamento_pedido {
   font-size: 15px;
   font-weight: 400;
   color: #697a8d;
 }
-  
-   .bolinha.confirmado {
-    background-color: #71dd37;
-  }
-   .bolinha.pendente {
-    background-color: #ffab00;
-  }
-   .bolinha.cancelado {
-    background-color: #ff3e1d;
-  }
-  
-  .status_pagamento_pedido.confirmado {
-    color: #71dd37 !important;
-  }
-  .status_pagamento_pedido.pendente{
-    color: #ffab00 !important;
-  }
-  .status_pagamento_pedido.cancelado {
-    color: #ff3e1d !important;
-  }
-  .status_pedido {
-    display: flex;
-    width: 92px;
-    padding: 6px 8px;
-    border-radius: 4px;
-    color: white;
-    font-size: 12px;
-    font-family: var(--fonte-primaria);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  .status_pedido.confirmado {
-    background-color: #e8fadf !important;
-    color: #54b71f !important;
-  }
-  .status_pedido.cancelado {
-    background-color: #ffd6d6;
-    color: #d80e0e !important;
-  }
-  .status_pedido.enviado {
-    background-color: #e7e7ff !important;
-    color: #696cff !important;
-  }
-  
+
+.bolinha.confirmado {
+  background-color: #71dd37;
+}
+.bolinha.pendente {
+  background-color: #ffab00;
+}
+.bolinha.cancelado {
+  background-color: #ff3e1d;
+}
+
+.status_pagamento_pedido.confirmado {
+  color: #71dd37 !important;
+}
+.status_pagamento_pedido.pendente {
+  color: #ffab00 !important;
+}
+.status_pagamento_pedido.cancelado {
+  color: #ff3e1d !important;
+}
+.status_pedido {
+  display: flex;
+  width: 92px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+  font-family: var(--fonte-primaria);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.status_pedido.confirmado {
+  background-color: #e8fadf !important;
+  color: #54b71f !important;
+}
+.status_pedido.cancelado {
+  background-color: #ffd6d6;
+  color: #d80e0e !important;
+}
+.status_pedido.enviado {
+  background-color: #e7e7ff !important;
+  color: #696cff !important;
+}
+
 .texto_estilo_1 {
-    font-size: 15px;
-    font-weight: 500;
-    color: #697a8d !important;
-    --bs-text-opacity: 1;
-  }
-  
-  .texto_estilo_2 {
-    font-size: 13px;
-    font-weight: 400;
-    color: #a1acb8 !important;
-    --bs-text-opacity: 1;
-  }
+  font-size: 15px;
+  font-weight: 500;
+  color: #697a8d !important;
+  --bs-text-opacity: 1;
+}
 
-  @media (max-width:460px) {
+.texto_estilo_2 {
+  font-size: 13px;
+  font-weight: 400;
+  color: #a1acb8 !important;
+  --bs-text-opacity: 1;
+}
 
-    .email {
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 90px;
-    }
+@media (max-width: 460px) {
+  .email {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90px;
   }
+}

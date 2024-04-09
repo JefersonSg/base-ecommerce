@@ -7,9 +7,11 @@ import PopupInfos from './item/PopupInfos';
 import BackgoundClick from '../../compartilhado/backgrounds/BackgoundClick';
 
 const PedidosContainer = ({
-  data
+  data,
+  refetchData
 }: {
   data: { pedidos: OrderInterface[] };
+  refetchData: any;
 }) => {
   const [ativoPopUp, setAtivoPopUp] = React.useState(false);
   const [infosPopUp, setInfosPopUp] = React.useState<OrderInterface>();
@@ -49,6 +51,7 @@ const PedidosContainer = ({
           setAtivoPopUp={setAtivoPopUp}
           data={infosPopUp}
           imageUser={imageUser}
+          refetchData={refetchData}
         />
       )}
     </>
