@@ -11,7 +11,7 @@ const PedidosContainer = ({
 }: {
   data: { pedidos: OrderInterface[] };
 }) => {
-  const [ativoPopUp, setAtivoPopUp] = React.useState(true);
+  const [ativoPopUp, setAtivoPopUp] = React.useState(false);
   const [infosPopUp, setInfosPopUp] = React.useState<OrderInterface>();
   const [imageUser, setImageUser] = React.useState<string>('');
   return (
