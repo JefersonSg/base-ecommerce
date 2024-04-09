@@ -9,14 +9,15 @@ const HeaderPedidos = () => {
         <div className={styles.info_container}>
           <h3>56</h3>
           <span>Pagamento pendente</span>
+          <div className={styles.imagem}>
+            <Image
+              alt="Imagem de calendário"
+              src={'/dashboard/pedidos/calendario.svg'}
+              fill={true}
+            />
+          </div>
         </div>
-        <div className={styles.imagem}>
-          <Image
-            alt="Imagem de calendário"
-            src={'/dashboard/pedidos/calendario.svg'}
-            fill={true}
-          />
-        </div>
+
         <div className={styles.info_container}>
           <h3>12,500</h3>
           <span>Concluido</span>
