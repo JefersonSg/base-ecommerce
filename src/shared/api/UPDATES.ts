@@ -10,14 +10,14 @@ const token = Cookies.get('auth_token') ?? false;
 
 const configJson = {
   headers: {
-    Authorization: `Bearer ${token}`,
+    authorization: `Bearer ${token}`,
     'Content-Type': 'application/json'
   }
 };
 
 const configFormdata = {
   headers: {
-    Authorization: `Bearer ${token}`,
+    authorization: `Bearer ${token}`,
     'Content-Type': 'multipart/form-data'
   }
 };
@@ -354,6 +354,21 @@ export async function updateAddress(addressId: string, data: any) {
     const response = await axios.patch(
       `${API}user/address/update/${addressId}`,
       data,
+      configJson
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export async function confirmOrder(orderId: string) {
+  try {
+    console.log(token);
+    const response = await axios.patch(
+      `${API}order/confirm/${orderId}`,
+      [],
       configJson
     );
 

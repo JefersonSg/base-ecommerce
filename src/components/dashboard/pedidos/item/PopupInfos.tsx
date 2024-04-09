@@ -6,15 +6,18 @@ import { type OrderInterface } from '@/src/shared/helpers/interfaces';
 import Image from 'next/image';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 import Link from 'next/link';
+import { confirmOrder } from '@/src/shared/api/UPDATES';
 
 const PopupInfos = ({
   imageUser,
   setAtivoPopUp,
-  data
+  data,
+  refetchData
 }: {
   imageUser: string;
   setAtivoPopUp: React.Dispatch<React.SetStateAction<boolean>>;
   data: OrderInterface;
+  refetchData: any;
 }) => {
   const [dataTime, setDataTime] = React.useState('');
 
@@ -32,6 +35,19 @@ const PopupInfos = ({
 
     setDataTime(dataFormatada);
   }, [data]);
+
+  const confirmOrderNow = async () => {
+    try {
+      const response = await confirmOrder(data._id);
+
+      if (response) {
+        await refetchData();
+        setAtivoPopUp(false);
+      }
+    } catch (error) {
+      console.log('Erro ao confirmar o pedido', error);
+    }
+  };
 
   return (
     <div className={styles.PopupInfos}>
@@ -99,7 +115,17 @@ const PopupInfos = ({
           {data.methodPayment}
         </span>
       </div>
-      <button>Ver mais</button>
+      <div>
+        <button>Ver mais</button>{' '}
+        <button
+          onClick={() => {
+            void confirmOrderNow();
+          }}
+        >
+          Confirmar pedido
+        </button>{' '}
+        <button>Cancelar Pedido</button> <button>Pedido enviado</button>
+      </div>
     </div>
   );
 };

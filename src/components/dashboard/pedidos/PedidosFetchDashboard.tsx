@@ -7,7 +7,7 @@ import HeaderPedidos from './item/HeaderPedidos';
 import { useQuery } from '@tanstack/react-query';
 
 export default function PedidosFetchDashboard() {
-  const { data } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ['all-orders'],
     queryFn: getAllOrders
   });
@@ -15,7 +15,7 @@ export default function PedidosFetchDashboard() {
   return (
     <main className={styles.pedidos_container}>
       <HeaderPedidos data={data} />
-      <PedidosContainer data={data} />
+      <PedidosContainer data={data} refetchData={refetch} />
     </main>
   );
 }
