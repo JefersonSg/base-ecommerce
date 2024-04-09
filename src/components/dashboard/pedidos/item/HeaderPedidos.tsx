@@ -72,7 +72,7 @@ const HeaderPedidos = ({
           <div className={styles.imagem}>
             <Image
               alt="Imagem de alerta"
-              src={'/dashboard/pedidos/Alerta.svg'}
+              src={'/dashboard/pedidos/alerta.svg'}
               fill={true}
             />
           </div>
