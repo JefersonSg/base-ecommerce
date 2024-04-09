@@ -4,6 +4,7 @@ import styles from './CategoriaItem.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { getProductsByCategory } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 const CategoriaItem = ({
   idCategory,
@@ -34,7 +35,7 @@ const CategoriaItem = ({
       };
     }
   });
-  const [valorTotal, setValorTotal] = React.useState<string>();
+  const [valorTotal, setValorTotal] = React.useState<number>();
 
   React.useEffect(() => {
     async function setValorCategory() {
@@ -48,10 +49,7 @@ const CategoriaItem = ({
       }, 0);
 
       if (valorTotalArray && valorTotalArray > 0) {
-        const formatoNumero = new Intl.NumberFormat('pt-BR');
-        const numeroFormatado = formatoNumero.format(valorTotalArray);
-
-        setValorTotal(numeroFormatado);
+        setValorTotal(valorTotalArray);
       }
     }
     void setValorCategory();
@@ -78,18 +76,7 @@ const CategoriaItem = ({
         <h3>{data?.products?.length}</h3>
       </div>
       <div className={styles.total_products_value}>
-        <h3>
-          {' '}
-          R${' '}
-          {valorTotal?.split(',')?.[0]
-            ? valorTotal?.split(',')?.[0] + ','
-            : '0,'}{' '}
-          {valorTotal?.split(',')?.[1]
-            ? valorTotal?.split(',')?.[1].length > 1
-              ? valorTotal?.split(',')?.[1]
-              : valorTotal?.split(',')?.[1] + '0'
-            : '00'}
-        </h3>
+        <h3> R$ {convertNumberInReal(valorTotal ?? 0)}</h3>
       </div>
       <div className={styles.actions}>
         <Image

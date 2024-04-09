@@ -4,10 +4,10 @@ import React from 'react';
 import styles from './pedido.module.css';
 import { type OrderInterface } from '@/src/shared/helpers/interfaces';
 import ProdutoInfos from './item/ProdutoInfos';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
   const [dataTime, setDataTime] = React.useState('');
-  const [valorTotal, setValorTotal] = React.useState('');
 
   React.useEffect(() => {
     const timestamp = orderData.createdAt;
@@ -24,20 +24,6 @@ const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
     setDataTime(dataFormatada);
   }, [orderData]);
 
-  React.useEffect(() => {
-    async function setValorCategory() {
-      const valorTotalArray = orderData?.totalPayment;
-
-      if (valorTotalArray && valorTotalArray > 0) {
-        const formatoNumero = new Intl.NumberFormat('pt-BR');
-        const numeroFormatado = formatoNumero.format(valorTotalArray);
-
-        setValorTotal(numeroFormatado);
-      }
-    }
-    void setValorCategory();
-  }, [orderData]);
-
   return (
     <div className={styles.pedido_card}>
       <div className={styles.orderHeader}>
@@ -48,17 +34,7 @@ const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
         </div>
         <div className={styles.total_pedido}>
           <p>Total do pedido</p>
-          <span>
-            R${' '}
-            {valorTotal?.split(',')?.[0]
-              ? valorTotal?.split(',')?.[0] + ','
-              : '0,'}{' '}
-            {valorTotal?.split(',')?.[1]
-              ? valorTotal?.split(',')?.[1].length > 1
-                ? valorTotal?.split(',')?.[1]
-                : valorTotal?.split(',')?.[1] + '0'
-              : '00'}
-          </span>
+          <span>R$ {convertNumberInReal(orderData.totalPayment)}</span>
         </div>
         <span className={`${styles.status_pedido} ${styles[orderData.status]}`}>
           Pedido {orderData.status}
@@ -67,7 +43,14 @@ const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
       <div className={styles.bodyOrder}>
         {orderData.productIds.map(
           (productId, index) =>
-            index < 3 && <ProdutoInfos key={productId} productId={productId} />
+            index < 3 && (
+              <ProdutoInfos
+                key={productId}
+                productId={productId}
+                quantidade={orderData.productAmounts[index]}
+                valorPago={orderData.valueProducts[index]}
+              />
+            )
         )}
       </div>
       <button className={styles.botao_ver_mais}>Ver detalhes do pedido</button>

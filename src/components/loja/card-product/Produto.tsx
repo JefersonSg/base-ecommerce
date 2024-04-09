@@ -5,6 +5,7 @@ import styles from './Produto.module.css';
 import Link from 'next/link';
 import Like from '../../lottie/Like';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 interface Props {
   productData: ProductApi;
@@ -60,8 +61,14 @@ function Produto({ productData }: Props) {
             promotionPorcent() ? styles.promocao_preco : ''
           }`}
         >
-          <span className={`${styles.preco}`}>R$ {price?.toFixed(2)}</span>
-          {promotionPorcent() ? <p>R$ {promotionalPrice}</p> : ''}
+          <span className={`${styles.preco}`}>
+            R$ {convertNumberInReal(price)}
+          </span>
+          {promotionPorcent() ? (
+            <p>R$ {convertNumberInReal(promotionalPrice ?? 0)}</p>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </Link>

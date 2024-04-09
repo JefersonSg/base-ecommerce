@@ -5,6 +5,7 @@ import ToggleButton from '../../../compartilhado/formulario/ToggleButton';
 import Link from 'next/link';
 import { revalidateTagAction } from '@/src/actions/revalidates';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 const ProdutoItem = ({
   data,
@@ -66,7 +67,7 @@ const ProdutoItem = ({
         <h3>{totalProducts}</h3>
       </div>
       <div className={styles.total_products_value}>
-        <h3>R$ {data?.price?.toFixed(2).replace('.', ',')}</h3>
+        <h3>R$ {convertNumberInReal(data.price)}</h3>
       </div>
       <div className={styles.actions}>
         <Image

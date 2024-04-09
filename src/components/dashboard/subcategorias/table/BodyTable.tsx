@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
-import SubcategoriaItem from './SubcategoriaItem';
+import SubcategoriaItem from '../items/SubcategoriaItem';
 
 interface Subcategory {
   _id: string;

@@ -94,7 +94,7 @@ function Detalhes({ data }: { data: ProductApi }) {
       <Preco
         promotion={data.promotion}
         promotionalPrice={Number(data?.promotionalPrice ?? 0)}
-        texto={`R$ ${data?.price.toFixed(2).toString().replace('.', ',')}`}
+        price={data?.price}
       />
       <div className={styles.entrega}>
         <p>

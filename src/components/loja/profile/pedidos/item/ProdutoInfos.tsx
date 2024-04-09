@@ -8,7 +8,15 @@ import { useQuery } from '@tanstack/react-query';
 import { getProductById } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
-const ProdutoInfos = ({ productId }: { productId: string }) => {
+const ProdutoInfos = ({
+  productId,
+  valorPago,
+  quantidade
+}: {
+  productId: string;
+  valorPago: number;
+  quantidade: number;
+}) => {
   const { data } = useQuery({
     queryKey: ['product-by-id-' + productId],
     queryFn: async () => {
@@ -32,11 +40,11 @@ const ProdutoInfos = ({ productId }: { productId: string }) => {
           href={{ pathname: 'products', query: { _id: 'productId' } }}
           className={styles.nome}
         >
-          Name do produto
+          {data?.product?.name}
         </Link>
         <div>
           <p>
-            <span className={styles.quantidade}>5 un </span>
+            <span className={styles.quantidade}>{quantidade} un </span>
             <span className={styles.valor}>R$ 29,90</span>
           </p>
           <span className={styles.total}>Total: 89,90</span>

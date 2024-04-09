@@ -1,22 +1,27 @@
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 import styles from './Preco.module.css';
 
 function Preco({
-  texto,
+  price,
   promotion,
   promotionalPrice
 }: {
-  texto: string;
+  price: number;
   promotion: boolean;
   promotionalPrice: number;
 }) {
   return (
     <div className={styles.preco}>
-      {!promotion ? <h2 className={`titulo_sessao`}>{texto}</h2> : ''}
+      {!promotion ? (
+        <h2 className={`titulo_sessao`}>R$ {convertNumberInReal(price)}</h2>
+      ) : (
+        ''
+      )}
       {promotion && promotionalPrice > 0 ? (
         <>
-          <span>{texto}</span>
+          <span>R$ {convertNumberInReal(price)}</span>
           <h2 className={`titulo_sessao ${styles.promotion}`}>
-            R$ {promotionalPrice.toFixed(2).replace('.', ',')}
+            R$ {convertNumberInReal(Number(promotionalPrice))}
           </h2>
         </>
       ) : (
@@ -26,9 +31,12 @@ function Preco({
         ou em até{' '}
         <span>
           4x de{' '}
-          {((+texto.replace('R$', '').replace(',', '.') * 1.2) / 4)
-            .toFixed(2)
-            .replace('.', ',')}
+          {price && !promotion
+            ? 'R$ ' + convertNumberInReal(Number(price * 1.2) / 4 ?? 0)
+            : promotion &&
+              promotionalPrice &&
+              'R$ ' +
+                convertNumberInReal(Number(promotionalPrice * 1.2) / 4 ?? 0)}
         </span>
       </p>
     </div>
