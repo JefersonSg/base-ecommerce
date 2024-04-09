@@ -104,7 +104,7 @@ const PedidoCard = ({
               : 'Confirmado'}
         </div>
       </td>
-      <td className={`${styles.valor_pedido} ${styles.texto_estilo_1}`}>
+      <td className={`${styles.valor_pedido}`}>
         R$ {convertNumberInReal(orderData?.totalPayment)}
       </td>
       <td>
