@@ -4,6 +4,7 @@
   font-smooth: antialiased;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: white;
 }
 body {
   --fonte-primaria: var(--type-first-montserrat), 'sans-serif';

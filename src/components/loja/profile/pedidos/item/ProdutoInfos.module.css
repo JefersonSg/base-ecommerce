@@ -3,12 +3,12 @@
   gap: 32px;
 }
 
-.informacoes_produto div {
+.container_valores {
   display: flex;
   flex-direction: column;
   font-size: 14px;
   font-weight: 400;
   color: #3f3f40;
-  gap: 4px;
-  margin-top: 8px;
+  gap: 4px 0px;
+  margin: 8px 0;
 }

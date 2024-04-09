@@ -125,6 +125,17 @@ export const getAllActiveBanners = async () => {
   }
 };
 
+export const getAllOrders = async () => {
+  try {
+    const response = await axios.get(`${API}order/get-all`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
 // No revalidate
 export const getUserByToken = async (token2?: string) => {
   if (!token && !token2) {
@@ -252,20 +263,6 @@ export const getCategoryById = async (id: string) => {
   }
 };
 
-export const getOrderByUserId = async (userId: string) => {
-  try {
-    const response = await axios.get(
-      `${API}order/get-by-user-id/${userId}`,
-      config
-    );
-
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
-
 // getByCategory
 export const getProductsByCategory = async (categoryId: string) => {
   try {
@@ -343,6 +340,20 @@ export const getAllItemsCartByUserId = async (userId: string) => {
     });
 
     return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getOrderByUserId = async (userId: string) => {
+  try {
+    const response = await axios.get(
+      `${API}order/get-by-user-id/${userId}`,
+      config
+    );
+
+    return response.data;
   } catch (error) {
     console.log(error);
     return [];

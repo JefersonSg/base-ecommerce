@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { getProductById } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 const ProdutoInfos = ({
   productId,
@@ -42,12 +43,16 @@ const ProdutoInfos = ({
         >
           {data?.product?.name}
         </Link>
-        <div>
+        <div className={styles.container_valores}>
           <p>
             <span className={styles.quantidade}>{quantidade} un </span>
-            <span className={styles.valor}>R$ 29,90</span>
+            <span className={styles.valor}>
+              R$ {convertNumberInReal(valorPago)}
+            </span>
           </p>
-          <span className={styles.total}>Total: 89,90</span>
+          <span className={styles.total}>
+            Total: {convertNumberInReal(valorPago * quantidade)}
+          </span>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { BtnZap } from '@/src/components/compartilhado/botoes/btnZap/BtnZap';
 
 import { type subcategoryInterface } from '@/src/shared/helpers/interfaces';
 import HeaderContainer from '@/src/components/loja/Header/header-container';
+import './globalsLoja.css';
 
 export type subcategoriesListByCategory = Record<
   number,
