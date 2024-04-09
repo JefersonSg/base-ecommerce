@@ -11,8 +11,21 @@ import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import { getUserById } from '@/src/shared/api/GETS';
 import Link from 'next/link';
+import VerMais from '@/src/components/compartilhado/botoes/VerMais';
 
-const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
+const PedidoCard = ({
+  orderData,
+  setAtivoPopUp,
+  setInfosPopUp,
+  setImageUser
+}: {
+  orderData: OrderInterface;
+  setAtivoPopUp: React.Dispatch<React.SetStateAction<boolean>>;
+  setImageUser: React.Dispatch<React.SetStateAction<string>>;
+  setInfosPopUp: React.Dispatch<
+    React.SetStateAction<OrderInterface | undefined>
+  >;
+}) => {
   const [dataTime, setDataTime] = React.useState('');
 
   const { data } = useQuery<UserInterface>({
@@ -38,15 +51,25 @@ const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
 
   return (
     <tr className={styles.pedido_card}>
+      <td
+        className={styles.ver_mais}
+        onClick={() => {
+          setAtivoPopUp(true);
+          setInfosPopUp(orderData);
+          setImageUser(data?.user?.image);
+        }}
+      >
+        <VerMais />
+      </td>
       <td className={`${styles.id_pedido}`}>
-        <Link href={{ pathname: '/pedido', query: { _id: orderData._id } }}>
+        <Link href={`/dashboard/pedidos/${orderData._id}`}>
           #{orderData._id}
         </Link>
       </td>
       <td className={`${styles.data_pedido} ${styles.texto_estilo_2}`}>
         {dataTime}
       </td>
-      <td>
+      <td className={styles.td_cliente}>
         <div className={styles.cliente_pedido}>
           <div className={styles.imagemPerfil}>
             <Image
@@ -81,7 +104,7 @@ const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
               : 'Confirmado'}
         </div>
       </td>
-      <td className={styles.valor_pedido}>
+      <td className={`${styles.valor_pedido} ${styles.texto_estilo_1}`}>
         R$ {convertNumberInReal(orderData?.totalPayment)}
       </td>
       <td>

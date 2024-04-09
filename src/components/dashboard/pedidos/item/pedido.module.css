@@ -8,7 +8,7 @@
   align-items: center;
 }
 .pedido_card td {
-  padding: 0 16px !important;
+  padding: 0 8px !important;
   text-align: center;
 }
 .pedido_card::after {
@@ -133,16 +133,47 @@
 .status_pedido.enviado {
   background-color: #e7e7ff !important;
   color: #696cff !important;
-
 }
 .status_pedido.pendente {
   background-color: #fff2d6 !important;
   color: #d89000 !important;
 }
 
-
+.valor_pedido,
 .metodo_pagamento_pedido {
   font-size: 15px;
   font-weight: 400;
   color: #697a8d;
+}
+@media (max-width:460px) {
+  .data_pedido {
+    display: none;
+  }
+  .email {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90px;
+  }
+}
+@media (max-width: 600px) {
+  .status_pedido {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .status_pagamento_pedido {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .metodo_pagamento_pedido {
+    display: none;
+  }
+}
+@media (max-width: 1200px) {
+  .valor_pedido {
+    display: none;
+  }
 }

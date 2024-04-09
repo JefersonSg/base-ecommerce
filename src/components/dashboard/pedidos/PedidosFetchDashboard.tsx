@@ -14,7 +14,7 @@ export default function PedidosFetchDashboard() {
 
   return (
     <main className={styles.pedidos_container}>
-      <HeaderPedidos />
+      <HeaderPedidos data={data} />
       <PedidosContainer data={data} />
     </main>
   );
