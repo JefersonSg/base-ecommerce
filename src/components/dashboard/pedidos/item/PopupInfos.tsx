@@ -6,7 +6,7 @@ import { type OrderInterface } from '@/src/shared/helpers/interfaces';
 import Image from 'next/image';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 import Link from 'next/link';
-import { confirmOrder } from '@/src/shared/api/UPDATES';
+import { cancelOrder, confirmOrder } from '@/src/shared/api/UPDATES';
 
 const PopupInfos = ({
   imageUser,
@@ -46,6 +46,18 @@ const PopupInfos = ({
       }
     } catch (error) {
       console.log('Erro ao confirmar o pedido', error);
+    }
+  };
+  const cancelOrderNow = async () => {
+    try {
+      const response = await cancelOrder(data._id);
+
+      if (response) {
+        await refetchData();
+        setAtivoPopUp(false);
+      }
+    } catch (error) {
+      console.log('Erro ao cancelar o pedido', error);
     }
   };
 
@@ -117,14 +129,27 @@ const PopupInfos = ({
       </div>
       <div className={styles.botoes_atividade}>
         <button>Ver mais</button>
-        <button
-          onClick={() => {
-            void confirmOrderNow();
-          }}
-        >
-          Confirmar pedido
-        </button>
-        <button>Cancelar Pedido</button> <button>Pedido enviado</button>
+        {data.status !== 'cancelado' && (
+          <>
+            {data.status !== 'confirmado' && (
+              <button
+                onClick={() => {
+                  void confirmOrderNow();
+                }}
+              >
+                Confirmar pedido
+              </button>
+            )}
+            <button
+              onClick={() => {
+                void cancelOrderNow();
+              }}
+            >
+              Cancelar Pedido
+            </button>
+            <button>Pedido enviado</button>
+          </>
+        )}
       </div>
     </div>
   );

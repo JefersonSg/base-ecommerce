@@ -377,3 +377,17 @@ export async function confirmOrder(orderId: string) {
     console.log(error);
   }
 }
+export async function cancelOrder(orderId: string) {
+  try {
+    console.log(token);
+    const response = await axios.patch(
+      `${API}order/cancel/${orderId}`,
+      [],
+      configJson
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}

@@ -156,7 +156,23 @@
 }
 @media (max-width: 600px) {
   .status_pedido {
-    display: none;
+    font-size: 0;
+    width: 0px;
+    height: 3px;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  .status_pedido.confirmado {
+    background-color: #54b71f !important;
+  }
+  .status_pedido.cancelado {
+    background-color: #d80e0e;
+  }
+  .status_pedido.enviado {
+    background-color: #696cff !important;
+  }
+  .status_pedido.pendente {
+    background-color: #d89000 !important;
   }
 }
 @media (max-width: 800px) {

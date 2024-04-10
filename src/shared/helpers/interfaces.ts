@@ -145,5 +145,5 @@ export interface OrderInterface {
   methodPayment: string;
   discount: number;
   orderTracking: string;
-  createdAt: Date;
+  createdAt: string;
 }

@@ -187,7 +187,7 @@ export const getAllComments = async (productId: string) => {
   }
 };
 
-// GETS BY ID
+// GET BY ID
 // revalidate
 export const getUserById = async (userId: string) => {
   try {
@@ -251,6 +251,19 @@ export const getSubcategoryById = async (subcategoryId: string) => {
 };
 
 // no revalidate
+export const getOrderById = async (userId: string) => {
+  try {
+    const response = await fetch(
+      `${API}order/get-by-order-id/${userId}`,
+      config
+    );
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
 export const getCategoryById = async (id: string) => {
   try {
