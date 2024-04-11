@@ -38,15 +38,18 @@ const BodyTable = ({
   setDefaultDescription: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
-    <div className={styles.BodyTable}>
-      <TextInfos />
+    <table className={styles.BodyTable}>
+      <thead>
+        <TextInfos />
+      </thead>
 
-      {data?.subcategories?.map(
-        (subcategory, index) =>
-          index >= nextPage[0] - 1 &&
-          index <= nextPage[1] - 1 && (
-            <div key={subcategory._id}>
+      <tbody>
+        {data?.subcategories?.map(
+          (subcategory, index) =>
+            index >= nextPage[0] - 1 &&
+            index <= nextPage[1] - 1 && (
               <SubcategoriaItem
+                key={subcategory._id}
                 name={subcategory.name}
                 description={subcategory.description}
                 category={subcategory.category}
@@ -59,10 +62,10 @@ const BodyTable = ({
                 setDefaultTitle={setDefaultTitle}
                 setDefaultDescription={setDefaultDescription}
               />
-            </div>
-          )
-      )}
-    </div>
+            )
+        )}
+      </tbody>
+    </table>
   );
 };
 

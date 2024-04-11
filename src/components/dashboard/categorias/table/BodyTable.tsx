@@ -37,15 +37,18 @@ const BodyTable = ({
   //
 
   return (
-    <div className={styles.BodyTable}>
-      <TextInfos />
+    <table className={styles.BodyTable}>
+      <thead>
+        <TextInfos />
+      </thead>
 
-      {data?.categories?.map(
-        (category, index) =>
-          index >= nextPage[0] - 1 &&
-          index <= nextPage[1] - 1 && (
-            <div key={category._id}>
+      <tbody>
+        {data?.categories?.map(
+          (category, index) =>
+            index >= nextPage[0] - 1 &&
+            index <= nextPage[1] - 1 && (
               <CategoriaItem
+                key={category._id}
                 name={category.name}
                 description={category.description}
                 image={category.image}
@@ -56,10 +59,10 @@ const BodyTable = ({
                 setDefaultTitle={setDefaultTitle}
                 setDefaultDescription={setDefaultDescription}
               />
-            </div>
-          )
-      )}
-    </div>
+            )
+        )}
+      </tbody>
+    </table>
   );
 };
 

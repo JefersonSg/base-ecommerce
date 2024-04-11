@@ -82,61 +82,67 @@ const SubcategoriaItem = ({
   }, [data?.products]);
 
   return (
-    <div className={styles.categoria_item}>
-      <div className={styles.div_img}>
-        <Image
-          alt="Imagem da categoria"
-          src={image || '/categorias/batom.png'}
-          width={40}
-          height={40}
-        />
-      </div>
+    <tr className={styles.subcategoria_item}>
+      <td>
+        <div className={styles.subcategoria_infos}>
+          <div className={styles.div_img}>
+            <Image
+              alt="Imagem da categoria"
+              src={image || '/categorias/batom.png'}
+              width={40}
+              height={40}
+            />
+          </div>
 
-      <div className={styles.infos}>
-        <h3 className={`name ${styles.name}`}>{name}</h3>
-        <p className={`description ${styles.description}`}>
-          {categoryApi?.category?.name ?? '"categoria não encontrada"'}
-        </p>
-      </div>
-      <div className={styles.total_products_register}>
+          <div className={styles.infos}>
+            <h3 className={`name ${styles.name}`}>{name}</h3>
+            <p className={`description ${styles.description}`}>
+              {categoryApi?.category?.name ?? '"subcategoria não encontrada"'}
+            </p>
+          </div>
+        </div>
+      </td>
+      <td className={styles.total_products_register}>
         <h3>{data?.products?.length}</h3>
-      </div>
-      <div className={styles.total_products_value}>
+      </td>
+      <td className={styles.total_products_value}>
         <h3> R${convertNumberInReal(valorTotal ?? 0)}</h3>
-      </div>
-      <div className={styles.actions}>
-        <Image
-          alt="Lixeira para deletar a categoria"
-          src={'/dashboard/lixeira.svg'}
-          width={16}
-          height={18}
-          quality={40}
-          placeholder="empty"
-          onClick={() => {
-            setIdSubcategory(subcategoryId);
-            setAtivoDelete(true);
-          }}
-        />
-        <div
-          onClick={() => {
-            setIdSubcategory(subcategoryId);
-            setIdCategory(category);
-          }}
-        >
+      </td>
+      <td>
+        <div className={styles.actions}>
           <Image
-            alt="Imagem de um lapis para editar a subcategoria"
-            src={'/dashboard/edit.svg'}
+            alt="Lixeira para deletar a categoria"
+            src={'/dashboard/lixeira.svg'}
             width={16}
             height={18}
+            quality={40}
+            placeholder="empty"
             onClick={() => {
-              setDefaultTitle(name);
-              setDefaultDescription(description);
-              setAtivoEdit(true);
+              setIdSubcategory(subcategoryId);
+              setAtivoDelete(true);
             }}
           />
+          <div
+            onClick={() => {
+              setIdSubcategory(subcategoryId);
+              setIdCategory(category);
+            }}
+          >
+            <Image
+              alt="Imagem de um lapis para editar a subcategoria"
+              src={'/dashboard/edit.svg'}
+              width={16}
+              height={18}
+              onClick={() => {
+                setDefaultTitle(name);
+                setDefaultDescription(description);
+                setAtivoEdit(true);
+              }}
+            />
+          </div>
         </div>
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 };
 

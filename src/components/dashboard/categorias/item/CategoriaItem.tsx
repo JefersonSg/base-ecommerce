@@ -56,58 +56,65 @@ const CategoriaItem = ({
   }, [data?.products]);
 
   return (
-    <div className={styles.categoria_item}>
-      <div className={styles.div_img}>
-        <Image
-          alt="Imagem da categoria"
-          src={image || '/categorias/batom.png'}
-          quality={40}
-          width={40}
-          height={40}
-          placeholder="empty"
-        />
-      </div>
+    <tr className={styles.categoria_item}>
+      <td>
+        <div className={styles.categoria_infos}>
+          <div className={styles.div_img}>
+            <Image
+              alt="Imagem da categoria"
+              src={image || '/categorias/batom.png'}
+              quality={40}
+              width={40}
+              height={40}
+              placeholder="empty"
+            />
+          </div>
 
-      <div className={styles.infos}>
-        <h3 className={`name ${styles.name}`}>{name}</h3>
-        <p className={`description ${styles.description}`}>{description}</p>
-      </div>
-      <div className={styles.total_products_register}>
+          <div className={styles.infos}>
+            <h3 className={`name ${styles.name}`}>{name}</h3>
+            <p className={`description ${styles.description}`}>{description}</p>
+          </div>
+        </div>
+      </td>
+
+      <td className={styles.total_products_register}>
         <h3>{data?.products?.length}</h3>
-      </div>
-      <div className={styles.total_products_value}>
+      </td>
+      <td className={styles.total_products_value}>
         <h3> R$ {convertNumberInReal(valorTotal ?? 0)}</h3>
-      </div>
-      <div className={styles.actions}>
-        <Image
-          alt="Lixeira para deletar a categoria"
-          src={'/dashboard/lixeira.svg'}
-          width={16}
-          height={18}
-          onClick={() => {
-            setIdCategory(idCategory);
-            setAtivoDelete(true);
-          }}
-        />
-        <div
-          onClick={() => {
-            setIdCategory(idCategory);
-          }}
-        >
+      </td>
+      <td>
+        <div className={styles.actions}>
           <Image
-            alt="Imagem de um laps para editar a categoria"
-            src={'/dashboard/edit.svg'}
+            alt="Lixeira para deletar a categoria"
+            src={'/dashboard/lixeira.svg'}
             width={16}
             height={18}
             onClick={() => {
-              setDefaultTitle(name);
-              setDefaultDescription(description);
-              setAtivoEdit(true);
+              setIdCategory(idCategory);
+              setAtivoDelete(true);
             }}
           />
+          <div
+            onClick={() => {
+              setIdCategory(idCategory);
+            }}
+          >
+            <Image
+              alt="Imagem de um laps para editar a categoria"
+              src={'/dashboard/edit.svg'}
+              width={16}
+              height={18}
+              onClick={() => {
+                setDefaultTitle(name);
+                setDefaultDescription(description);
+                setAtivoEdit(true);
+              }}
+            />
+          </div>
         </div>
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 };
 
