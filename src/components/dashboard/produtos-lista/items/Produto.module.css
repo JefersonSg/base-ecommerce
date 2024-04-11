@@ -55,7 +55,11 @@
 .total_products_value {
   display: none;
 }
-
+.estoque {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
 .actions {
   display: flex;
   gap: 8px;
