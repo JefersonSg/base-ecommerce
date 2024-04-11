@@ -210,6 +210,8 @@ export const getProductById = async (productId: string) => {
 
     return await response.json();
   } catch (error) {
+    Cookies.remove('auth_token');
+    Cookies.remove('isAdmin');
     console.log(error);
     return [];
   }

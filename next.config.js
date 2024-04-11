@@ -6,6 +6,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'teste-bucket-new.s3.sa-east-1.amazonaws.com',
         port: ''
+      },
+      {
+        protocol: 'https',
+        hostname: 'mayse-bucket-site.s3.sa-east-1.amazonaws.com',
+        port: ''
       }
     ]
   }
