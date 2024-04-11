@@ -1,14 +1,23 @@
 .produto_item {
-  display: grid;
-  grid-template-columns: 40px minmax(100px, 1fr) 75px 70px;
   height: 66px;
-  width: 100%;
-  padding: 0 32px;
   border-bottom: 1px solid var(--color-border);
   align-items: center;
   box-sizing: border-box;
+  width: 100%;
+  max-width: max-content;
 }
 
+.produto_info div {
+  display: flex;
+  width: max-content;
+}
+.name,
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
 .div_img {
   width: max-content;
   border: 1px solid var(--color-border);
@@ -49,9 +58,10 @@
 
 .actions {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   align-items: center;
   justify-content: center;
+  width: max-content;
 }
 .actions img {
   padding: 4px;
@@ -60,27 +70,32 @@
 
 @media (min-width: 576px) {
   .description {
-    display: block;
+    display: table-cell;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .produto_item {
-    grid-template-columns: 40px minmax(100px, 1fr) 100px 94px;
-  }
+
 }
 @media (min-width: 768px) {
   .total_products_register {
-    display: block;
+    display: table-cell;
   }
-  .produto_item {
-    grid-template-columns: 40px minmax(100px, 1fr) 100px 128px 94px;
+  .actions {
+    gap: 16px;
+  }
+  .name,
+  .description {
+
+    max-width: 200px;
   }
 }
 
 @media (min-width: 1000px) {
-  .produto_item {
-    grid-template-columns: 40px minmax(100px, 1fr) 100px 128px 94px;
+  .name,
+  .description {
+
+    max-width: 250px;
   }
   .total_products_value h3,
   .total_products_register h3 {
@@ -90,10 +105,8 @@
 
 @media (min-width: 1100px) {
   .total_products_value {
-    display: block;
+    display: table-cell;
   }
 
-  .produto_item {
-    grid-template-columns: 40px 260px 100px 128px 120px 94px;
-  }
+
 }

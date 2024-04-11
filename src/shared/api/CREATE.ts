@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { type BannerTypeCreate } from '../helpers/interfaces';
+import { type ProductApi, type BannerTypeCreate } from '../helpers/interfaces';
 import { revalidateTagAction } from '@/src/actions/revalidates';
 
 const API = process.env.NEXT_PUBLIC_API_URL;
@@ -109,6 +109,61 @@ export async function createProduct(
   formData.append('amount', amount.toString());
   formData.append('colors', colors.join(','));
   formData.append('codeColors', codeColors.join(','));
+
+  if (data.images) {
+    const imageArray = Array.from(data.images);
+
+    imageArray.forEach((image: any) => {
+      formData.append('images', image);
+    });
+  }
+  try {
+    const response = await axios.post(
+      `${API}products/create`,
+      formData,
+      configFormdata
+    );
+
+    await revalidateTagAction('all-products');
+    await revalidateTagAction('all-active-products');
+    await revalidateTagAction('all-products-by-sales');
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+
+    if (error.response.data.errorsResult.body) {
+      Object.keys(error.response.data.errorsResult.body).forEach((key) => {
+        setAtivoPopUp(error.response.data.errorsResult.body[key]);
+      });
+    }
+  }
+}
+export async function duplicateProduct(
+  data: ProductApi,
+
+  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>
+) {
+  const formData = new FormData();
+
+  const ok = false;
+
+  if (ok) return;
+
+  // Object.keys(data).forEach((key) => {
+  //   formData.append(key, data[key]);
+  // });
+  formData.append('name', data.name);
+  formData.append('active', `${data.active}`);
+  formData.append('brand', data.brand);
+  formData.append('category', data.category);
+  formData.append('subcategory', data.subcategory);
+  formData.append('characteristic', `${data.characteristic}`);
+  formData.append('composition', `${data.composition}`);
+
+  formData.append('amount', data.stock.amount.toString());
+  formData.append('colors', data.colors.join(','));
+  formData.append('codeColors', data.codeColors.join(','));
 
   if (data.images) {
     const imageArray = Array.from(data.images);

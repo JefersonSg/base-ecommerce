@@ -3,28 +3,18 @@ import styles from './TextInfos.module.css';
 
 const TextInfos = () => {
   return (
-    <div className={styles.textInfos_container}>
-      <div className={styles.produto}>
-        <h3>PRODUTO</h3>
-      </div>
+    <tr className={styles.textInfos_container}>
+      <th className={styles.produto}>PRODUTO</th>
 
-      <div className={styles.categoria}>
-        <h3>CATEGORIA</h3>
-      </div>
+      {/* <th className={styles.categoria}>
+          CATEGORIA
+        </th> */}
 
-      <div className={styles.total_products_register}>
-        <h3>ESTOQUE</h3>
-      </div>
-      <div className={styles.total_products_amount}>
-        <h3>QUANTIDADE</h3>
-      </div>
-      <div className={styles.total_products_value}>
-        <h3>PREÇO</h3>
-      </div>
-      <div className={styles.actions}>
-        <h3>AÇÕES</h3>
-      </div>
-    </div>
+      <th className={styles.total_products_register}>ESTOQUE</th>
+      <th className={styles.total_products_amount}>QUANTIDADE</th>
+      <th className={styles.total_products_value}>PREÇO</th>
+      <th className={styles.actions}>AÇÕES</th>
+    </tr>
   );
 };
 

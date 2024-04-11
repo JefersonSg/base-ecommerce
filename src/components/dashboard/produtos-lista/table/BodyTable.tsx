@@ -20,22 +20,26 @@ const BodyTable = ({
   setIdDelete: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
-    <div className={styles.BodyTable}>
-      <TextInfos />
-      {data?.products?.map(
-        (product, index) =>
-          index >= nextPage[0] - 1 &&
-          index <= nextPage[1] - 1 && (
-            <div key={product._id}>
+    <table className={styles.BodyTable}>
+      <thead>
+        <TextInfos />
+      </thead>
+
+      <tbody>
+        {data?.products?.map(
+          (product, index) =>
+            index >= nextPage[0] - 1 &&
+            index <= nextPage[1] - 1 && (
               <ProdutoItem
+                key={product._id}
                 data={product}
                 setAtivoDelete={setAtivoDelete}
                 setIdDelete={setIdDelete}
               />
-            </div>
-          )
-      )}
-    </div>
+            )
+        )}
+      </tbody>
+    </table>
   );
 };
 

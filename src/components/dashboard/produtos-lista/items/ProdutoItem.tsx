@@ -35,41 +35,49 @@ const ProdutoItem = ({
     void totalProducts();
   }, [data]);
   return (
-    <div className={styles.produto_item}>
-      <Link
-        href={{ pathname: '/produto', query: { _id: data?._id } }}
-        className={styles.div_img}
-      >
-        <Image
-          alt="Imagem da categoria"
-          src={data.images?.[0]}
-          width={40}
-          height={40}
-          quality={30}
-          placeholder="empty"
-        />
-      </Link>
+    <tr className={styles.produto_item}>
+      <td className={styles.produto_info}>
+        <div>
+          <Link
+            href={{ pathname: '/produto', query: { _id: data?._id } }}
+            className={styles.div_img}
+          >
+            <Image
+              alt="Imagem da categoria"
+              src={data.images?.[0]}
+              width={40}
+              height={40}
+              quality={30}
+              placeholder="empty"
+            />
+          </Link>
 
-      <div className={styles.infos}>
-        <Link href={{ pathname: '/produto', query: { _id: data._id } }}>
-          <h3 className={`name ${styles.name}`}>{data?.name}</h3>
-        </Link>
-        <p className={`description ${styles.description}`}>
-          {data?.description}
-        </p>
-      </div>
-      <ToggleButton
-        data={data}
-        pathnameUrl="products/edit/"
-        revalidate={revalidate}
-      />
-      <div className={styles.total_products_register}>
+          <div className={styles.infos}>
+            <Link href={{ pathname: '/produto', query: { _id: data._id } }}>
+              <h3 className={`name ${styles.name}`}>{data?.name}</h3>
+            </Link>
+            <p className={`description ${styles.description}`}>
+              {data?.description}
+            </p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div className={styles.estoque}>
+          <ToggleButton
+            data={data}
+            pathnameUrl="products/edit/"
+            revalidate={revalidate}
+          />
+        </div>
+      </td>
+      <td className={styles.total_products_register}>
         <h3>{totalProducts}</h3>
-      </div>
-      <div className={styles.total_products_value}>
+      </td>
+      <td className={styles.total_products_value}>
         <h3>R$ {convertNumberInReal(data.price)}</h3>
-      </div>
-      <div className={styles.actions}>
+      </td>
+      <td className={styles.actions}>
         <Image
           alt="Lixeira para deletar a categoria"
           src={'/dashboard/lixeira.svg'}
@@ -88,8 +96,16 @@ const ProdutoItem = ({
             height={18}
           />
         </Link>
-      </div>
-    </div>
+        <Link href={`/dashboard/produtos/${data?._id}`}>
+          <Image
+            alt="Imagem de um laps para editar a categoria"
+            src={'/dashboard/copiar.svg'}
+            width={16}
+            height={18}
+          />
+        </Link>
+      </td>
+    </tr>
   );
 };
 
