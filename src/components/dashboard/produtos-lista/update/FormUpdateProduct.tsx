@@ -39,6 +39,7 @@ import { updateProduct } from '@/src/shared/api/UPDATES';
 import { useRouter } from 'next/navigation';
 import ToggleButtonCreate from '../../../compartilhado/formulario/ToggleButtonCreate';
 import Image from 'next/image';
+import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
 
 const schema = validationProduct;
 
@@ -104,6 +105,8 @@ const FormUpdateProduct = ({
   const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
   const [amount, setAmount] = React.useState<number[]>([]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
+  const [ativoNewSubcategory, setAtivoNewSubcategory] = React.useState(false);
+
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
   const [subcategoriesList, setSubcategoriesList] = React.useState<
     subcategoryInterface[] | undefined
@@ -339,7 +342,14 @@ const FormUpdateProduct = ({
           </div>
           <div className={styles.div_colum2}>
             <div className={`div_container ${styles.price_items}`}>
-              <p className={styles.subtitulo}>Preços</p>
+              <div>
+                <p>Produto em estoque</p>
+                <ToggleButtonCreate
+                  watchValue={activeCheck}
+                  register={register}
+                  name={'active'}
+                />
+              </div>
               <InputFormulario
                 label="Preço"
                 name="price"
@@ -372,14 +382,6 @@ const FormUpdateProduct = ({
                 error={errors.promotionalPrice}
                 register={register}
               />
-              <div>
-                <p>Produto em estoque</p>
-                <ToggleButtonCreate
-                  watchValue={activeCheck}
-                  register={register}
-                  name={'active'}
-                />
-              </div>
             </div>
             <div className={`div_container ${styles.organization_items}`}>
               <p className={styles.subtitulo}>Organizar</p>
@@ -423,7 +425,7 @@ const FormUpdateProduct = ({
                   <p
                     className={styles.click}
                     onClick={() => {
-                      setAtivoNewCategory(true);
+                      setAtivoNewSubcategory(true);
                     }}
                   >
                     Nova subcategoria
@@ -475,6 +477,12 @@ const FormUpdateProduct = ({
       {ativoNewCategory && (
         <SideBarFormCreate
           setAtivo={setAtivoNewCategory}
+          setAtivoPopUp={setAtivoPopUp}
+        />
+      )}
+      {ativoNewSubcategory && (
+        <SideBarFormCreateSubcategory
+          setAtivo={setAtivoNewSubcategory}
           setAtivoPopUp={setAtivoPopUp}
         />
       )}

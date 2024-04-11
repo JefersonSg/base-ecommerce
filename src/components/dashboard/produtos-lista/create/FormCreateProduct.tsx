@@ -66,6 +66,7 @@ const FormCreateProduct = () => {
       description: '',
       brand: '',
       category: '',
+      promotionalPrice: 0,
       subcategory: '',
       characteristic: '',
       images: {},
@@ -266,7 +267,14 @@ const FormCreateProduct = () => {
           </div>
           <div className={styles.div_colum2}>
             <div className={`div_container ${styles.price_items}`}>
-              <p className={styles.subtitulo}>Preços</p>
+              <div className={styles.estoque}>
+                <p>Produto em estoque</p>
+                <ToggleButtonCreate
+                  watchValue={activeWatch}
+                  register={register}
+                  name={'active'}
+                />
+              </div>
               <InputFormulario
                 label="Preço"
                 name="price"
@@ -275,6 +283,7 @@ const FormCreateProduct = () => {
                 error={errors.price}
                 register={register}
               />
+
               <div className={styles.div_promocao}>
                 <p>Item em promoção?</p>
                 <ToggleButtonCreate
@@ -291,14 +300,6 @@ const FormCreateProduct = () => {
                 error={errors.promotionalPrice}
                 register={register}
               />
-              <div>
-                <p>Produto em estoque</p>
-                <ToggleButtonCreate
-                  watchValue={activeWatch}
-                  register={register}
-                  name={'active'}
-                />
-              </div>
             </div>
             <div className={`div_container ${styles.organization_items}`}>
               <p className={styles.subtitulo}>Organizar</p>
