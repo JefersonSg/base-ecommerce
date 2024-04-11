@@ -6,7 +6,13 @@ import { type OrderInterface } from '@/src/shared/helpers/interfaces';
 import Image from 'next/image';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 import Link from 'next/link';
-import { cancelOrder, confirmOrder } from '@/src/shared/api/UPDATES';
+import {
+  cancelOrder,
+  concludedOrder,
+  confirmOrder,
+  dispatchedOrder,
+  reversalOrder
+} from '@/src/shared/api/UPDATES';
 
 const PopupInfos = ({
   imageUser,
@@ -20,6 +26,13 @@ const PopupInfos = ({
   refetchData: any;
 }) => {
   const [dataTime, setDataTime] = React.useState('');
+  const [confirmCancel, setConfirmCancel] = React.useState(false);
+  const [confirmOrderState, setConfirmOrder] = React.useState(false);
+  const [confirmDispatched, setConfirmDispatched] = React.useState(false);
+  const [confirmConcluded, setConfirmConcluded] = React.useState(false);
+  const [confirmEstorno, setConfirmEstorno] = React.useState(false);
+
+  const [orderTracking, setOrderTracking] = React.useState('');
 
   React.useEffect(() => {
     const timestamp = data.createdAt;
@@ -48,6 +61,34 @@ const PopupInfos = ({
       console.log('Erro ao confirmar o pedido', error);
     }
   };
+  const dispatchOrderNow = async () => {
+    try {
+      if (orderTracking) {
+        const response = await dispatchedOrder(data._id, orderTracking);
+
+        if (response) {
+          await refetchData();
+          setAtivoPopUp(false);
+        }
+      }
+    } catch (error) {
+      console.log('Erro atualizar o pedido', error);
+    }
+  };
+  const reversalOrderNow = async () => {
+    try {
+      if (orderTracking) {
+        const response = await reversalOrder(data._id);
+
+        if (response) {
+          await refetchData();
+          setAtivoPopUp(false);
+        }
+      }
+    } catch (error) {
+      console.log('Erro atualizar o pedido', error);
+    }
+  };
   const cancelOrderNow = async () => {
     try {
       const response = await cancelOrder(data._id);
@@ -58,6 +99,18 @@ const PopupInfos = ({
       }
     } catch (error) {
       console.log('Erro ao cancelar o pedido', error);
+    }
+  };
+  const concludedOrderNow = async () => {
+    try {
+      const response = await concludedOrder(data._id);
+
+      if (response) {
+        await refetchData();
+        setAtivoPopUp(false);
+      }
+    } catch (error) {
+      console.log('Erro ao concluir o pedido', error);
     }
   };
 
@@ -131,26 +184,178 @@ const PopupInfos = ({
         <button>Ver mais</button>
         {data.status !== 'cancelado' && (
           <>
-            {data.status !== 'confirmado' && (
+            {data.status === 'pendente' && (
               <button
                 onClick={() => {
-                  void confirmOrderNow();
+                  setConfirmOrder(true);
+                  setConfirmDispatched(false);
+                  setConfirmCancel(false);
+                  setConfirmConcluded(false);
+                  setConfirmEstorno(false);
                 }}
               >
-                Confirmar pedido
+                Aceitar pedido
               </button>
             )}
+
+            {data.status === 'confirmado' && (
+              <button
+                onClick={() => {
+                  setConfirmDispatched(true);
+                  setConfirmCancel(false);
+                  setConfirmConcluded(false);
+                  setConfirmOrder(false);
+                  setConfirmEstorno(false);
+                }}
+              >
+                Pedido enviado
+              </button>
+            )}
+            {data.status === 'confirmado' || data.status === 'enviado' ? (
+              <button
+                onClick={() => {
+                  setConfirmConcluded(true);
+                  setConfirmDispatched(false);
+                  setConfirmCancel(false);
+                  setConfirmOrder(false);
+                  setConfirmEstorno(false);
+                }}
+              >
+                Pedido Entregue / Concluido
+              </button>
+            ) : (
+              ''
+            )}
+            <button
+              onClick={() => {
+                setConfirmCancel(true);
+                setConfirmDispatched(false);
+                setConfirmConcluded(false);
+                setConfirmOrder(false);
+              }}
+            >
+              Cancelar Pedido
+            </button>
+            {data.status !== 'pendente' && (
+              <button
+                onClick={() => {
+                  setConfirmEstorno(true);
+                  setConfirmCancel(false);
+                  setConfirmDispatched(false);
+                  setConfirmConcluded(false);
+                  setConfirmOrder(false);
+                }}
+              >
+                Estornar Pedido
+              </button>
+            )}
+          </>
+        )}
+      </div>
+      {confirmCancel && (
+        <div className={styles.confirm_cancelar}>
+          <p>Deseja cancelar o pedido?</p>
+          <div>
+            <button
+              onClick={() => {
+                setConfirmCancel(false);
+              }}
+            >
+              Não
+            </button>
             <button
               onClick={() => {
                 void cancelOrderNow();
               }}
             >
-              Cancelar Pedido
+              Sim
             </button>
-            <button>Pedido enviado</button>
-          </>
-        )}
-      </div>
+          </div>
+        </div>
+      )}
+      {confirmDispatched && (
+        <div>
+          <label htmlFor="codigo">Código de rastreio</label>
+          <input
+            value={orderTracking}
+            onChange={(e) => {
+              setOrderTracking(e?.target?.value);
+            }}
+            name="codigo"
+            placeholder="Codigo de rastreio"
+          />
+          <button
+            onClick={() => {
+              void dispatchOrderNow();
+            }}
+          >
+            Salvar
+          </button>
+        </div>
+      )}
+      {confirmOrderState && (
+        <div className={styles.confirm_cancelar}>
+          <p>Deseja aceitar o pedido?</p>
+          <div>
+            <button
+              onClick={() => {
+                setConfirmOrder(false);
+              }}
+            >
+              Não
+            </button>
+            <button
+              onClick={() => {
+                void confirmOrderNow();
+              }}
+            >
+              Sim
+            </button>
+          </div>
+        </div>
+      )}
+      {confirmConcluded && (
+        <div className={styles.confirm_cancelar}>
+          <p>O pedido ja foi realmente entregue / concluído ?</p>
+          <div>
+            <button
+              onClick={() => {
+                setConfirmConcluded(false);
+              }}
+            >
+              Não
+            </button>
+            <button
+              onClick={() => {
+                void concludedOrderNow();
+              }}
+            >
+              Sim
+            </button>
+          </div>
+        </div>
+      )}
+      {confirmEstorno && (
+        <div className={styles.confirm_cancelar}>
+          <p>Deseja confirmar a devolução do pedido?</p>
+          <div>
+            <button
+              onClick={() => {
+                setConfirmEstorno(false);
+              }}
+            >
+              Não
+            </button>
+            <button
+              onClick={() => {
+                void reversalOrderNow();
+              }}
+            >
+              Sim
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

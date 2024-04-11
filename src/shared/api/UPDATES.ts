@@ -391,3 +391,44 @@ export async function cancelOrder(orderId: string) {
     console.log(error);
   }
 }
+export async function dispatchedOrder(orderId: string, orderTracking: string) {
+  try {
+    const response = await axios.patch(
+      `${API}order/dispatch/${orderId}`,
+      { orderTracking },
+      configJson
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+export async function concludedOrder(orderId: string) {
+  try {
+    console.log(token);
+    const response = await axios.patch(
+      `${API}order/concluded/${orderId}`,
+      [],
+      configJson
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+export async function reversalOrder(orderId: string) {
+  try {
+    console.log(token);
+    const response = await axios.patch(
+      `${API}order/reversal/${orderId}`,
+      [],
+      configJson
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+}

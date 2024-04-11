@@ -88,6 +88,9 @@
 .bolinha.confirmado {
   background-color: #71dd37;
 }
+.bolinha.concluido {
+  background-color: #71dd37;
+}
 .bolinha.pendente {
   background-color: #ffab00;
 }
@@ -96,6 +99,9 @@
 }
 
 .status_pagamento_pedido.confirmado {
+  color: #71dd37 !important;
+}
+.status_pagamento_pedido.concluido {
   color: #71dd37 !important;
 }
 .status_pagamento_pedido.pendente {
@@ -120,6 +126,10 @@
   text-transform: uppercase;
 }
 .status_pedido.confirmado {
+  background-color: #d6eef7 !important;
+  color: #2cb3e4 !important;
+}
+.status_pedido.concluido {
   background-color: #e8fadf !important;
   color: #54b71f !important;
 }
