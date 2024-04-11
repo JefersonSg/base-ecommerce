@@ -60,12 +60,10 @@ const FormCreateProduct = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: 'Teste',
-      price: 15,
+      name: '',
       promotion: false,
-      promotionalPrice: 15,
-      description: 'Descrição de teste',
-      brand: 'Nike teste',
+      description: '',
+      brand: '',
       category: '',
       subcategory: '',
       characteristic: '',
