@@ -30,7 +30,7 @@ interface Category {
 
 const schema = validationSubcategory;
 
-const SideBarFormCreate = ({
+const SideBarFormCreateSubcategory = ({
   setAtivo,
   setAtivoPopUp
 }: {
@@ -90,12 +90,13 @@ const SideBarFormCreate = ({
           error={errors?.description?.message}
         />
         <div className={styles.select_categoria}>
+          <label htmlFor="subcategory">Categoria</label>
           <select
             id="subcateogry"
             className={styles.category}
             {...register('category')}
           >
-            <option value="outros">outros</option>
+            <option value="" disabled style={{ display: 'none' }}></option>
             {data?.categories?.map((category) => {
               return (
                 <option key={category._id} value={category._id}>
@@ -103,6 +104,9 @@ const SideBarFormCreate = ({
                 </option>
               );
             })}
+            {!data?.categories[0] && (
+              <option value={''}>Nenhuma categoria</option>
+            )}
           </select>
         </div>
         <InputFormulario
@@ -135,4 +139,4 @@ const SideBarFormCreate = ({
   );
 };
 
-export default SideBarFormCreate;
+export default SideBarFormCreateSubcategory;

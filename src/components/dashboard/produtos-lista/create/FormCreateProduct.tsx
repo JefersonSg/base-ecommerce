@@ -39,6 +39,7 @@ import { useRouter } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
+import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
 
 const schema = validationProduct;
 
@@ -79,10 +80,11 @@ const FormCreateProduct = () => {
 
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
-  const [schemeColor, setSchemeColor] = React.useState(['item1']);
+  const [schemeColor, setSchemeColor] = React.useState(['']);
   const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
   const [amount, setAmount] = React.useState<number[]>([]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
+  const [ativoNewSubcategory, setAtivoNewSubcategory] = React.useState(false);
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
   const [subcategoriesList, setSubcategoriesList] = React.useState<
     subcategoryInterface[] | undefined
@@ -345,7 +347,7 @@ const FormCreateProduct = () => {
                   <p
                     className={styles.click}
                     onClick={() => {
-                      setAtivoNewCategory(true);
+                      setAtivoNewSubcategory(true);
                     }}
                   >
                     Nova subcategoria
@@ -407,6 +409,12 @@ const FormCreateProduct = () => {
       {ativoNewCategory && (
         <SideBarFormCreate
           setAtivo={setAtivoNewCategory}
+          setAtivoPopUp={setAtivoPopUp}
+        />
+      )}
+      {ativoNewSubcategory && (
+        <SideBarFormCreateSubcategory
+          setAtivo={setAtivoNewSubcategory}
           setAtivoPopUp={setAtivoPopUp}
         />
       )}
