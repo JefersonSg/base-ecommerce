@@ -5,18 +5,29 @@
   box-sizing: border-box;
   width: 100%;
   max-width: max-content;
+  position: relative;
 }
-
+.produto_item::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+}
 .produto_info div {
   display: flex;
   width: max-content;
 }
 .name,
 .description {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 150px;
+  max-width: 120px;
+  max-height: 50px;
 }
 .div_img {
   width: max-content;
@@ -62,7 +73,7 @@
 }
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
   justify-content: center;
   width: max-content;

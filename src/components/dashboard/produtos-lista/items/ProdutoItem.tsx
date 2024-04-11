@@ -77,33 +77,35 @@ const ProdutoItem = ({
       <td className={styles.total_products_value}>
         <h3>R$ {convertNumberInReal(data.price)}</h3>
       </td>
-      <td className={styles.actions}>
-        <Image
-          alt="Lixeira para deletar a categoria"
-          src={'/dashboard/lixeira.svg'}
-          width={16}
-          height={18}
-          onClick={() => {
-            setAtivoDelete(true);
-            setIdDelete(data._id);
-          }}
-        />
-        <Link href={`/dashboard/produtos/${data?._id}`}>
+      <td>
+        <div className={styles.actions}>
           <Image
-            alt="Imagem de um laps para editar a categoria"
-            src={'/dashboard/edit.svg'}
+            alt="Lixeira para deletar a categoria"
+            src={'/dashboard/lixeira.svg'}
             width={16}
             height={18}
+            onClick={() => {
+              setAtivoDelete(true);
+              setIdDelete(data._id);
+            }}
           />
-        </Link>
-        <Link href={`/dashboard/produtos/${data?._id}`}>
-          <Image
-            alt="Imagem de um laps para editar a categoria"
-            src={'/dashboard/copiar.svg'}
-            width={16}
-            height={18}
-          />
-        </Link>
+          <Link href={`/dashboard/produtos/${data?._id}`}>
+            <Image
+              alt="Imagem de um laps para editar a categoria"
+              src={'/dashboard/edit.svg'}
+              width={16}
+              height={18}
+            />
+          </Link>
+          <Link href={`/dashboard/produtos/${data?._id}`}>
+            <Image
+              alt="Imagem de um laps para editar a categoria"
+              src={'/dashboard/copiar.svg'}
+              width={16}
+              height={18}
+            />
+          </Link>
+        </div>
       </td>
     </tr>
   );

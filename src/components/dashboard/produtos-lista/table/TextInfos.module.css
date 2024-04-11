@@ -1,5 +1,4 @@
 .textInfos_container {
-
   width: 100%;
   border-bottom: 1px solid var(--color-border);
   box-sizing: border-box;
@@ -13,7 +12,9 @@
   color: #566a7f;
   cursor: pointer;
 }
-
+.textInfos_container th {
+  text-align: center;
+}
 .total_products_value,
 .total_products_amount,
 .categoria {
