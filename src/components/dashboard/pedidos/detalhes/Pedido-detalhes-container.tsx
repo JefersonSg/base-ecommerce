@@ -64,12 +64,12 @@ const PedidoDetalhesContainer = ({ orderId }: { orderId: string }) => {
           </p>
         </div>
         <div className={styles.data}>{dataTime}</div>
-        <div className={styles.botoes}>
+        {/* <div className={styles.botoes}>
           <SepararPedido />
           <EnviarPedido />
           <ConfirmarPedido />
           <CancelarPedido />
-        </div>
+        </div> */}
         <TabelaProdutos data={data?.pedido} />
         <UsuarioInfos
           userId={data?.pedido?.userId}
