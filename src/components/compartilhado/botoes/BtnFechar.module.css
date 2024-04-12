@@ -13,4 +13,6 @@
   width: 30px;
   height: 30px;
   border-radius: 6px;
+  z-index: 1004;
+  background-color: #00000060;
 }
