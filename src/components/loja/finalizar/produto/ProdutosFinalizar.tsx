@@ -82,8 +82,8 @@ const ProdutosFinalizar = ({
         await refetchData();
       }
       await refetch();
-      return response.data;
       setIsloading(false);
+      return response.data;
     } catch (error) {
       setIsloading(false);
       console.log(error);
@@ -95,7 +95,7 @@ const ProdutosFinalizar = ({
       <tr className={styles.produto_finalizar}>
         <td className={styles.informacoes_produto}>
           {data?.product && (
-            <Link href={`produto/${productId}`}>
+            <Link href={`/produtos/produto/${productId}`}>
               <Image
                 alt="Imagem do produto"
                 src={data?.product?.images?.[0]}
@@ -108,7 +108,10 @@ const ProdutosFinalizar = ({
             </Link>
           )}
           <td className={styles.informacoes}>
-            <Link className={styles.titulo} href={`produto/${productId}`}>
+            <Link
+              className={styles.titulo}
+              href={`/produtos/produto/${productId}`}
+            >
               {data?.product?.name ?? 'carregando...'}
             </Link>
             <p>

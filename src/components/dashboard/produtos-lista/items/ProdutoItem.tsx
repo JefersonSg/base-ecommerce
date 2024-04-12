@@ -39,7 +39,7 @@ const ProdutoItem = ({
       <td className={styles.produto_info}>
         <div>
           <Link
-            href={{ pathname: '/produto', query: { _id: data?._id } }}
+            href={`/produtos/produto/${data._id}`}
             className={styles.div_img}
           >
             <Image
@@ -53,7 +53,7 @@ const ProdutoItem = ({
           </Link>
 
           <div className={styles.infos}>
-            <Link href={{ pathname: '/produto', query: { _id: data._id } }}>
+            <Link href={`/produtos/produto/${data._id}`}>
               <h3 className={`name ${styles.name}`}>{data?.name}</h3>
             </Link>
             <p className={`description ${styles.description}`}>

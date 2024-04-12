@@ -42,7 +42,7 @@ const ResultadoPesquisa = ({
                     setAtivo(false);
                     setPesquisa('');
                   }}
-                  href={`produto/${product._id}`}
+                  href={`/produtos/produto/${product._id}`}
                   className={styles.produco_pesquisa}
                   key={product?._id}
                 >

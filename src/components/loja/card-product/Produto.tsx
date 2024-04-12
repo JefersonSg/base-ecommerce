@@ -25,7 +25,7 @@ function Produto({ productData }: Props) {
 
   return (
     <Link
-      href={`/produto/${_id}`}
+      href={`/produtos/produto/${_id}`}
       className={`${styles.produto} ${
         promotionPorcent() ? styles.promotion_active : ''
       }`}

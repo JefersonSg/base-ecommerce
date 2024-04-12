@@ -17,12 +17,12 @@ import { addViews } from '@/src/shared/api/CREATE';
 import { cookies } from 'next/headers';
 
 const ContainerProduct = async ({
-  data,
+  productData,
   commentData,
   categoryName,
   subcategoryName
 }: {
-  data: { product: ProductApi };
+  productData: ProductApi;
   commentData: { comments: CommentInterface[] };
   categoryName: string;
   subcategoryName: string;
@@ -37,32 +37,28 @@ const ContainerProduct = async ({
 
   const token = cookies().get('auth_token')?.value;
 
-  await addViews(data.product._id, token);
+  await addViews(productData._id, token);
 
   return (
     <>
-      {data.product && (
-        <>
-          <Breadcrumb
-            texto1={categoryName}
-            link1={`/produtos/categoria?_id=${data.product.category}`}
-            texto2={subcategoryName}
-            link2={`/produtos/subcategoria?_id=${data.product.subcategory}`}
-            texto3={data.product.name}
-          />
-          <div className={styles.titulo}>
-            <Titulo titulo={data?.product?.name} />
-          </div>
-          <div className={styles.navegação}></div>
-          <Interacoes id={data?.product?._id} stars={media} />
-          <FotosProduto img={data?.product?.images} />
-          <Detalhes data={data?.product} />
-          <Sections data={data?.product} />
-          <AvaliacoesProvider>
-            <Avaliacoes />
-          </AvaliacoesProvider>
-        </>
-      )}
+      <Breadcrumb
+        texto1={categoryName}
+        link1={`/produtos/categoria?_id=${productData.category}`}
+        texto2={subcategoryName}
+        link2={`/produtos/subcategoria?_id=${productData.subcategory}`}
+        texto3={productData.name}
+      />
+      <div className={styles.titulo}>
+        <Titulo titulo={productData?.name} />
+      </div>
+      <div className={styles.navegação}></div>
+      <Interacoes id={productData?._id} stars={media} />
+      <FotosProduto img={productData?.images} />
+      <Detalhes data={productData} />
+      <Sections data={productData} />
+      <AvaliacoesProvider>
+        <Avaliacoes />
+      </AvaliacoesProvider>
     </>
   );
 };
