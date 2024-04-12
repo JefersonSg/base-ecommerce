@@ -13,6 +13,13 @@
   width: 100%;
   box-sizing: border-box;
   gap: 6px;
+  overflow-x: auto;
+}
+.breadcrumb::-webkit-scrollbar {
+  height: 5px;
+}
+.breadcrumb::-webkit-scrollbar-thumb {
+  background-color: #c9c9c9; /* Cor do botão de rolagem */
 }
 .breadcrumb a {
   color: rgba(33, 36, 41, 0.6);
@@ -20,6 +27,10 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
+  white-space: nowrap;
+}
+.breadcrumb p {
+  white-space: nowrap;
 }
 
 @media (min-width: 64rem) {
