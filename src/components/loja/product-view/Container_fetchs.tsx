@@ -13,13 +13,13 @@ import { Titulo } from '../../compartilhado/textos/Titulo';
 import styles from './Produto.module.css';
 
 export default async function ContainerFetchs({
-  searchParams
+  productId
 }: {
-  searchParams: string;
+  productId: string;
 }) {
-  const product: { product: ProductApi } = await getProductById(searchParams);
+  const product: { product: ProductApi } = await getProductById(productId);
   const commentData: { comments: CommentInterface[] } =
-    await getAllComments(searchParams);
+    await getAllComments(productId);
   const categoryName = await getCategoryById(product?.product?.category);
   const subcategoryName = await getSubcategoryById(
     product?.product?.subcategory

@@ -95,7 +95,7 @@ const ProdutosFinalizar = ({
       <tr className={styles.produto_finalizar}>
         <td className={styles.informacoes_produto}>
           {data?.product && (
-            <Link href={{ pathname: '/produto', query: { _id: productId } }}>
+            <Link href={`produto/${productId}`}>
               <Image
                 alt="Imagem do produto"
                 src={data?.product?.images?.[0]}
@@ -108,10 +108,7 @@ const ProdutosFinalizar = ({
             </Link>
           )}
           <td className={styles.informacoes}>
-            <Link
-              className={styles.titulo}
-              href={{ pathname: '/produto', query: { _id: productId } }}
-            >
+            <Link className={styles.titulo} href={`produto/${productId}`}>
               {data?.product?.name ?? 'carregando...'}
             </Link>
             <p>

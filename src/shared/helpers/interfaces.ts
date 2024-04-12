@@ -68,7 +68,6 @@ export interface ProductApi {
   images: string[];
   colors: string[];
   codeColors: string[];
-  comments: CommentInterface[];
   stock: {
     amount: number[];
   };

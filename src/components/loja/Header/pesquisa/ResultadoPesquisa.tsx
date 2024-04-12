@@ -42,7 +42,7 @@ const ResultadoPesquisa = ({
                     setAtivo(false);
                     setPesquisa('');
                   }}
-                  href={{ pathname: '/produto', query: { _id: product._id } }}
+                  href={`produto/${product._id}`}
                   className={styles.produco_pesquisa}
                   key={product?._id}
                 >

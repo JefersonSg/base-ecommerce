@@ -41,10 +41,7 @@ const ProdutoInfos = ({
             )}
           </div>
           <div className={styles.escolhas_pedido}>
-            <Link
-              href={{ pathname: '/produto', query: { _id: productId } }}
-              className={styles.nome}
-            >
+            <Link href={`produto/${productId}`} className={styles.nome}>
               {data?.product?.name}
             </Link>
             <p className={styles.cor}>Cor: {corEscolhida}</p>

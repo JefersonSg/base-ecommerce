@@ -25,7 +25,7 @@ function Produto({ productData }: Props) {
 
   return (
     <Link
-      href={{ pathname: '/produto', query: { _id } }}
+      href={`/produto/${_id}`}
       className={`${styles.produto} ${
         promotionPorcent() ? styles.promotion_active : ''
       }`}

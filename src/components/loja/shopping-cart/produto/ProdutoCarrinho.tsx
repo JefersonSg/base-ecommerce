@@ -106,7 +106,7 @@ const ProdutoCarrinho = ({
     >
       <div className={styles.informacoes_produto}>
         {data?.product && (
-          <Link href={{ pathname: '/produto', query: { _id: productId } }}>
+          <Link href={`produto/${productId}`}>
             <Image
               alt="Imagem do produto"
               src={data?.product?.images?.[0]}

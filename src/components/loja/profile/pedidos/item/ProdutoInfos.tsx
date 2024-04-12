@@ -37,10 +37,7 @@ const ProdutoInfos = ({
         )}
       </div>
       <div className={styles.informacoes_produto}>
-        <Link
-          href={{ pathname: 'products', query: { _id: 'productId' } }}
-          className={styles.nome}
-        >
+        <Link href={`produto/${productId}`} className={styles.nome}>
           {data?.product?.name}
         </Link>
         <div className={styles.container_valores}>
