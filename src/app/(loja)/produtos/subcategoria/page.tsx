@@ -33,7 +33,7 @@ async function page({ searchParams }: { searchParams: { _id: string } }) {
       <Breadcrumb
         texto1={category?.category?.name}
         link1={`/produtos/categoria?_id=${category?.category?._id}`}
-        texto2={subcategoria.subcategory.name}
+        texto2={subcategoria?.subcategory?.name}
       />
       <Suspense>
         <Produtos data={data} subcategorieDataSlide={subcategories} />

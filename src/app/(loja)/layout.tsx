@@ -12,7 +12,7 @@ export type subcategoriesListByCategory = Record<
     subcategories: subcategoryInterface[];
   }
 >;
-export default async function RootLayout({
+export default async function LojaLayout({
   children
 }: {
   children: React.ReactNode;

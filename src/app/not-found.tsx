@@ -9,6 +9,7 @@ import {
 } from '../shared/api/GETS';
 import { cookies } from 'next/headers';
 import { type UserInterface } from '../shared/helpers/interfaces';
+import Link from 'next/link';
 
 const NotFound = async () => {
   const token = cookies().get('auth_token')?.value;
@@ -38,6 +39,7 @@ const NotFound = async () => {
       />
       <div className={styles.notFound}>
         <h1 className="titulo_sessao">404 - Página não encontrada</h1>
+        <Link href={'/'}>Volte para a home</Link>
       </div>
       <Footer />
     </>
