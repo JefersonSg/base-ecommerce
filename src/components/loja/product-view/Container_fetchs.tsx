@@ -18,8 +18,9 @@ export default async function ContainerFetchs({
   productId: string;
   productData: ProductApi;
 }) {
-  const commentData: { comments: CommentInterface[] } =
-    await getAllComments(productId);
+  const commentData: { comments: CommentInterface[] } = await getAllComments(
+    productData._id
+  );
   const categoryName = await getCategoryById(productData?.category);
   const subcategoryName = await getSubcategoryById(productData?.subcategory);
 

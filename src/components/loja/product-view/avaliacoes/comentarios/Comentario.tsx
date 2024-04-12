@@ -5,10 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import styles from './Comentario.module.css';
 import InformacoesProduto from './Informacoes/InformacoesProduto';
 import InformacoesUsuario from './Informacoes/InformacoesUsuario';
-import {
-  type CommentContextInterface,
-  useCommentContext
-} from '@/src/shared/context/AvaliacaoContext';
+
 import React from 'react';
 import Cookies from 'js-cookie';
 import { deleteComment } from '@/src/shared/api/DELETE';
@@ -16,7 +13,9 @@ import BackgoundClick from '@/src/components/compartilhado/backgrounds/Backgound
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import ModalEdit from '@/src/components/compartilhado/modals/ModalEdit';
 import { type CommentInterface } from '@/src/shared/helpers/interfaces';
-import { getUserById } from '@/src/shared/api/GETS';
+import { getAllComments, getUserById } from '@/src/shared/api/GETS';
+import { useParams } from 'next/navigation';
+import { type PageParams } from './Comentarios';
 
 interface User {
   user: {
@@ -57,6 +56,9 @@ function Comentario({
   setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) {
+
+  const pathname = useParams() as unknown as PageParams;
+
   const { data } = useQuery<User>({
     queryKey: ['user']
   });
@@ -68,12 +70,18 @@ function Comentario({
     }
   });
 
-  const { refetch, productId } = useCommentContext() as CommentContextInterface;
   const [modalDelte, setModalDelete] = React.useState(false);
   const [modalEdit, setModalEdit] = React.useState(false);
 
   const isAdmin = Cookies.get('isAdmin');
   const myComment = commentData?.userId === data?.user?._id;
+
+  const {refetch} = useQuery<{ comments: CommentInterface[] }>({
+    queryKey: ['comments-id-' + pathname.id],
+    queryFn: async () => {
+      return await getAllComments(pathname.id);
+    }
+  });
 
   return (
     <>
@@ -116,7 +124,7 @@ function Comentario({
         )}
         {modalDelte && data && (
           <ModalDeleteSearsh
-            productId={productId}
+            productId={pathname.id}
             commentId={commentData._id}
             refetch={refetch}
             setModalDelete={setModalDelete}
@@ -128,6 +136,7 @@ function Comentario({
             commentData={commentData}
             setTextPopUp={setTextPopUp}
             setTypePopUp={setTypePopUp}
+            refetch={refetch}
           />
         )}
       </div>

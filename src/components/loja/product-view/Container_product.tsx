@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Breadcrumb from '../breadcrumb/Breadcrumb';
 import { Titulo } from '../../compartilhado/textos/Titulo';
 import Interacoes from './interacoesUser/Interacoes';
@@ -12,7 +12,6 @@ import {
   type CommentInterface,
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
-import { AvaliacoesProvider } from '@/src/shared/context/AvaliacaoContext';
 import { addViews } from '@/src/shared/api/CREATE';
 import { cookies } from 'next/headers';
 
@@ -56,9 +55,9 @@ const ContainerProduct = async ({
       <FotosProduto img={productData?.images} />
       <Detalhes data={productData} />
       <Sections data={productData} />
-      <AvaliacoesProvider>
+      <Suspense>
         <Avaliacoes />
-      </AvaliacoesProvider>
+      </Suspense>
     </>
   );
 };

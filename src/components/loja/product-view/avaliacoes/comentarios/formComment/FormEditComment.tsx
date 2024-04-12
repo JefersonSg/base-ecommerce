@@ -12,10 +12,7 @@ import { useRouter } from 'next/navigation';
 
 import { validationComment } from './ValidationComment';
 import Image from 'next/image';
-import {
-  type CommentContextInterface,
-  useCommentContext
-} from '@/src/shared/context/AvaliacaoContext';
+
 import { updateComment } from '@/src/shared/api/UPDATES';
 import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 import { revalidatePathAction } from '@/src/actions/revalidates';
@@ -24,12 +21,14 @@ const FormEditComment = ({
   setModalForm,
   commentData,
   setTextPopUp,
-  setTypePopUp
+  setTypePopUp,
+  refetch
 }: {
   commentData: CommentInterface;
   setModalForm: React.Dispatch<React.SetStateAction<boolean>>;
   setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  refetch: any;
 }) => {
   const router = useRouter();
   const [stars, setStars] = React.useState(+commentData?.stars);
@@ -51,8 +50,6 @@ const FormEditComment = ({
 
   const [isLoading, setIsloading] = React.useState(false);
   const watchImage: File[] = watch('images') as File[];
-
-  const { refetch } = useCommentContext() as CommentContextInterface;
 
   const handleChange = React.useCallback(() => {
     const reader = new FileReader();

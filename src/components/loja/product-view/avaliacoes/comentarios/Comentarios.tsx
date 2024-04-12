@@ -7,31 +7,41 @@ import styles from './Comentarios.module.css';
 import FormComment from './formComment/FormComment';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import {
-  type CommentContextInterface,
-  useCommentContext
-} from '@/src/shared/context/AvaliacaoContext';
+
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
+import { type CommentInterface } from '@/src/shared/helpers/interfaces';
+import { useParams } from 'next/navigation';
+import { getAllComments } from '@/src/shared/api/GETS';
 
 interface User {
   user: {
     _id: string;
   };
 }
+export interface PageParams {
+  id: string;
+}
 
 function Comentarios() {
+  const pathname = useParams() as unknown as PageParams;
   const [modalForm, setModalForm] = React.useState(false);
   const { data } = useQuery<User>({
     queryKey: ['user']
   });
-  const { dataComments } = useCommentContext() as CommentContextInterface;
+  const dataComments = useQuery<{ comments: CommentInterface[] }>({
+    queryKey: ['comments-id-' + pathname.id],
+    queryFn: async () => {
+      return await getAllComments(pathname.id);
+    }
+  });
+
   const [Commented, setCommented] = React.useState(true);
   const [textPopUp, setTextPopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
   React.useEffect(() => {
     setCommented(false);
-    dataComments?.comments?.forEach((comment) => {
+    dataComments.data?.comments?.forEach((comment) => {
       if (comment?.userId === data?.user?._id) {
         setCommented(true);
       }
@@ -63,7 +73,7 @@ function Comentarios() {
         <h3 className={`titulo_sessao ${styles.titulo_comentario}`}>
           Commentários
         </h3>
-        {dataComments?.comments?.map((comment, index) => {
+        {dataComments?.data?.comments?.map((comment, index) => {
           return (
             <Comentario
               key={index}

@@ -9,12 +9,14 @@ const ModalEdit = ({
   commentData,
   setState,
   setTextPopUp,
-  setTypePopUp
+  setTypePopUp,
+  refetch
 }: {
   commentData: CommentInterface;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
   setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  refetch: any;
 }) => {
   return (
     <div className={styles.delete_categoria}>
@@ -23,6 +25,7 @@ const ModalEdit = ({
         commentData={commentData}
         setTextPopUp={setTextPopUp}
         setTypePopUp={setTypePopUp}
+        refetch={refetch}
       />
     </div>
   );
