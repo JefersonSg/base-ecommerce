@@ -16,6 +16,29 @@ const SectionProdutos = ({
 }) => {
   const [totalProdutos, setTotalProdutos] = React.useState(9);
 
+  // Scrolls
+  React.useEffect(() => {
+    function infiniteScroll() {
+      const scroll = Math.floor(window.scrollY);
+      const heigth = document.body.offsetHeight - window.innerHeight;
+      const scrollagem = scroll > heigth * 0.6;
+
+      if (
+        scrollagem &&
+        data?.products?.length > 9 &&
+        data.products.length > totalProdutos
+      ) {
+        setTotalProdutos(totalProdutos + 8);
+      }
+    }
+    infiniteScroll();
+
+    window.addEventListener('scroll', infiniteScroll);
+    return () => {
+      window.removeEventListener('scroll', infiniteScroll);
+    };
+  }, [data.products.length, totalProdutos]);
+
   return (
     <div className={styles.section_produtos}>
       <div className={styles.informacoes}>

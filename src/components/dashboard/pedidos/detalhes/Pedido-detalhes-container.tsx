@@ -7,10 +7,6 @@ import React from 'react';
 import styles from './PedidoDetalhes.module.css';
 import TabelaProdutos from './tabela/TabelaProdutos';
 import UsuarioInfos from './usuario/UsuarioInfos';
-import ConfirmarPedido from '../item/botoes/ConfirmarPedido';
-import CancelarPedido from '../item/botoes/CancelarPedido';
-import EnviarPedido from '../item/botoes/EnviarPedido';
-import SepararPedido from '../item/botoes/SepararPedido';
 
 const PedidoDetalhesContainer = ({ orderId }: { orderId: string }) => {
   const { data } = useQuery<{ pedido: OrderInterface }>({
