@@ -27,6 +27,7 @@ function Detalhes({ data }: { data: ProductApi }) {
 
   const [textPopUp, setTextPopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
+  const [haveStock, setHaveStock] = React.useState<boolean>();
 
   async function addCartItem() {
     setTextPopUp('');
@@ -62,8 +63,13 @@ function Detalhes({ data }: { data: ProductApi }) {
         setIsLoading(false);
       }, 700);
 
-      setTextPopUp('Produdo adicionado ao carrinho');
-      setTypePopUp('');
+      if (response) {
+        setTextPopUp('Produdo adicionado ao carrinho');
+        setTypePopUp('');
+      } else {
+        setTextPopUp('Erro ao adicionar ao carrinho');
+        setTypePopUp('error');
+      }
 
       const timeout = setTimeout(() => {
         setTextPopUp('');
@@ -79,6 +85,18 @@ function Detalhes({ data }: { data: ProductApi }) {
       setIsLoading(false);
     }
   }
+
+  React.useEffect(() => {
+    const stockIndex = data.colors.findIndex(
+      (color) => color === colorSelected
+    );
+    console.log(data.stock.amount[stockIndex]);
+    if (!data.stock.amount[stockIndex]) {
+      setHaveStock(false);
+      return;
+    }
+    setHaveStock(true);
+  }, [colorSelected, data]);
 
   return (
     <div className={styles.detalhes}>
@@ -124,10 +142,11 @@ function Detalhes({ data }: { data: ProductApi }) {
         }}
       >
         <BotaoColorido
-          texto="Adicionar ao carrinho"
+          texto={`${haveStock ? 'Adicionar ao carrinho' : 'Sem estoque'} `}
           img="carrinho.svg"
           alt="Imagem do carrinho"
           isLoading={isLoading}
+          disabled={!haveStock}
         />
       </div>
       {textPopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}

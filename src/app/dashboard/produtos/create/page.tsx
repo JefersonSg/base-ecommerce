@@ -5,10 +5,12 @@ import BreadcrumbDashboard from '@/src/components/dashboard/breadcrumb/Breadcrum
 
 const page = () => {
   return (
-    <div className={`container_dashboard ${styles.container_create_product}`}>
-      <BreadcrumbDashboard text="Create" />
-      <FormCreateProduct />
-    </div>
+    <main className="dashboard_container">
+      <div className={`container_dashboard ${styles.container_create_product}`}>
+        <BreadcrumbDashboard text="Create" />
+        <FormCreateProduct />
+      </div>
+    </main>
   );
 };
 

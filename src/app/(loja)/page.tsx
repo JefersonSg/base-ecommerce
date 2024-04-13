@@ -28,19 +28,17 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <>
-      <main className={styles.main}>
-        <Suspense fallback={<LoadingBanners />}>
-          <ContainerSlideBanner />
-        </Suspense>
-        <Suspense>
-          <SlideVantagens />
-        </Suspense>
-        <Suspense fallback={<Loading />}>
-          <HomeFetchs />
-        </Suspense>
-        {/* <SectionColecoes /> */}
-      </main>
-    </>
+    <main className={styles.main}>
+      <Suspense fallback={<LoadingBanners />}>
+        <ContainerSlideBanner />
+      </Suspense>
+      <Suspense>
+        <SlideVantagens />
+      </Suspense>
+      <Suspense fallback={<Loading />}>
+        <HomeFetchs />
+      </Suspense>
+      {/* <SectionColecoes /> */}
+    </main>
   );
 }

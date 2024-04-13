@@ -5,9 +5,11 @@ import PedidosFetchDashboard from '@/src/components/dashboard/pedidos/PedidosFet
 
 const page = () => {
   return (
-    <div className={`container_dashboard ${styles.categoria_container}`}>
-      <BreadcrumbDashboard />
-      <PedidosFetchDashboard />
+    <div className="dashboard_container">
+      <div className={`container_dashboard ${styles.categoria_container}`}>
+        <BreadcrumbDashboard />
+        <PedidosFetchDashboard />
+      </div>
     </div>
   );
 };

@@ -4,10 +4,12 @@ import BodyEditForm from '@/src/components/dashboard/produtos-lista/update/BodyE
 
 const page = () => {
   return (
-    <div className={`container_dashboard`}>
-      <BreadcrumbDashboard text="Update" />
-      <BodyEditForm />
-    </div>
+    <main className="dashboard_container">
+      <div className={`container_dashboard`}>
+        <BreadcrumbDashboard text="Update" />
+        <BodyEditForm />
+      </div>
+    </main>
   );
 };
 

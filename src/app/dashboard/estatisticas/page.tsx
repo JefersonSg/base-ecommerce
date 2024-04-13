@@ -4,9 +4,11 @@ import BreadcrumbDashboard from '@/src/components/dashboard/breadcrumb/Breadcrum
 
 const page = () => {
   return (
-    <div className={`container_dashboard ${styles.categoria_container}`}>
-      <BreadcrumbDashboard />
-    </div>
+    <main className="dashboard_container">
+      <div className={`container_dashboard ${styles.categoria_container}`}>
+        <BreadcrumbDashboard />
+      </div>
+    </main>
   );
 };
 

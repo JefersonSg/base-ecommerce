@@ -1,6 +1,12 @@
-.body_dashboard {
+body {
   font-family: var(--fonte-secundaria);
   background-color: #f5f5f5 !important;
+}
+.dashboard_container {
+  min-height: calc(100vh - 76px);
+  min-width: 327px;
+  width: 100%;
+  background: #f5f5f5;
 }
 .name {
   font-family: var(--fonte-secundaria);

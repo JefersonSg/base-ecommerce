@@ -30,6 +30,10 @@
   animation: afundarSubir 0.5s forwards ease-in-out;
   transform-style: preserve-3d;
 }
+.botaoColorido.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 
 @keyframes afundarSubir {
   0%,

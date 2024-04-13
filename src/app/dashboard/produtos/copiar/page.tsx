@@ -4,10 +4,12 @@ import BodyCopyForm from '@/src/components/dashboard/produtos-lista/copiar/BodyE
 
 const page = () => {
   return (
-    <div className={`container_dashboard `}>
-      <BreadcrumbDashboard text="Update" />
-      <BodyCopyForm />
-    </div>
+    <main className="dashboard_container">
+      <div className={`container_dashboard `}>
+        <BreadcrumbDashboard text="Update" />
+        <BodyCopyForm />
+      </div>
+    </main>
   );
 };
 
