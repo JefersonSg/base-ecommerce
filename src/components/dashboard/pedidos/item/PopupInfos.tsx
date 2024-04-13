@@ -181,7 +181,10 @@ const PopupInfos = ({
         </span>
       </div>
       <div className={styles.botoes_atividade}>
-        <button>Ver mais</button>
+        <Link href={`/dashboard/pedidos/${data._id}`}>
+          <button>Ver mais</button>
+        </Link>
+
         {data.status !== 'cancelado' && (
           <>
             {data.status === 'pendente' && (
@@ -226,16 +229,18 @@ const PopupInfos = ({
             ) : (
               ''
             )}
-            <button
-              onClick={() => {
-                setConfirmCancel(true);
-                setConfirmDispatched(false);
-                setConfirmConcluded(false);
-                setConfirmOrder(false);
-              }}
-            >
-              Cancelar Pedido
-            </button>
+            {data.status !== 'concluido' && (
+              <button
+                onClick={() => {
+                  setConfirmCancel(true);
+                  setConfirmDispatched(false);
+                  setConfirmConcluded(false);
+                  setConfirmOrder(false);
+                }}
+              >
+                Cancelar Pedido
+              </button>
+            )}
             {data.status !== 'pendente' && (
               <button
                 onClick={() => {

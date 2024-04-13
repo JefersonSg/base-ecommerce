@@ -31,7 +31,6 @@ const ProdutoItem = ({
       }, 0);
       setTotalProducts(total);
     }
-    console.log(data);
     void totalProducts();
   }, [data]);
   return (

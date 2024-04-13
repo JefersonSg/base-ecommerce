@@ -1,6 +1,6 @@
-body {
+.body_dashboard {
   font-family: var(--fonte-secundaria);
-  background-color: #f5f5f5;
+  background-color: #f5f5f5 !important;
 }
 .name {
   font-family: var(--fonte-secundaria);

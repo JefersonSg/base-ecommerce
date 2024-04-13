@@ -18,7 +18,7 @@ const BreadcrumbDashboard = ({ text }: { text?: string }) => {
       </Link>
       <span
         onClick={() => {
-          router.push(texto[2]);
+          router.push(`/dashboard/${texto[2]}`);
         }}
       >
         {texto[2] ? `${' '} ${texto[2]} ` : ''}
