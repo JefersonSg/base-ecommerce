@@ -85,3 +85,11 @@
   margin: 0 auto;
   cursor: pointer;
 }
+
+
+@media (min-width: 64rem) {
+  .status_pedido {
+    width: max-content;
+    padding: 0 8px;
+  }
+}

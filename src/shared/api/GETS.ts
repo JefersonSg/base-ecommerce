@@ -253,10 +253,10 @@ export const getSubcategoryById = async (subcategoryId: string) => {
 };
 
 // no revalidate
-export const getOrderById = async (userId: string) => {
+export const getOrderById = async (orderId: string) => {
   try {
     const response = await fetch(
-      `${API}order/get-by-order-id/${userId}`,
+      `${API}order/get-order-by-id/${orderId}`,
       config
     );
 
@@ -364,7 +364,7 @@ export const getAllItemsCartByUserId = async (userId: string) => {
 export const getOrderByUserId = async (userId: string) => {
   try {
     const response = await axios.get(
-      `${API}order/get-by-user-id/${userId}`,
+      `${API}order/get-order-by-user-id/${userId}`,
       config
     );
 

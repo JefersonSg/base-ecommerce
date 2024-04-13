@@ -1,10 +1,9 @@
 import React from 'react';
-import styles from './TabelaProdutos.module.css';
-import ProdutoInfos from './produtos/ProdutoInfos';
-import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import styles from './Tabela.module.css';
 import { type OrderInterface } from '@/src/shared/helpers/interfaces';
+import ProdutoInfos from './ProdutoInfos';
 
-const TabelaProdutos = ({ data }: { data: OrderInterface }) => {
+const Tabela = ({ data }: { data: OrderInterface }) => {
   return (
     <div className={styles.tabela}>
       <p className={styles.texto}>Detalhes do pedido </p>
@@ -32,22 +31,8 @@ const TabelaProdutos = ({ data }: { data: OrderInterface }) => {
           })}
         </tbody>
       </table>
-      <div className={styles.valores_pedido}>
-        <p>
-          Subtotal: <span>R$ {convertNumberInReal(data?.totalPayment)}</span>
-        </p>
-        <p>
-          Desconto: <span>R$ {convertNumberInReal(data?.discount)}</span>
-        </p>
-        <p>
-          Taxa de entrega: <span>?</span>
-        </p>
-        <p>
-          Total: <span>{convertNumberInReal(data?.totalPayment)}</span>
-        </p>
-      </div>
     </div>
   );
 };
 
-export default TabelaProdutos;
+export default Tabela;

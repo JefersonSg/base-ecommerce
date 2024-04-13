@@ -5,6 +5,7 @@ import styles from './pedido.module.css';
 import { type OrderInterface } from '@/src/shared/helpers/interfaces';
 import ProdutoInfos from './item/ProdutoInfos';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import Link from 'next/link';
 
 const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
   const [dataTime, setDataTime] = React.useState('');
@@ -45,7 +46,7 @@ const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
           (productId, index) =>
             index < 3 && (
               <ProdutoInfos
-                key={productId}
+                key={index}
                 productId={productId}
                 quantidade={orderData.productAmounts[index]}
                 valorPago={orderData.valueProducts[index]}
@@ -53,7 +54,11 @@ const PedidoCard = ({ orderData }: { orderData: OrderInterface }) => {
             )
         )}
       </div>
-      <button className={styles.botao_ver_mais}>Ver detalhes do pedido</button>
+      <Link href={`/minha-conta/pedidos/${orderData._id}`}>
+        <button className={styles.botao_ver_mais}>
+          Ver detalhes do pedido
+        </button>
+      </Link>
     </div>
   );
 };

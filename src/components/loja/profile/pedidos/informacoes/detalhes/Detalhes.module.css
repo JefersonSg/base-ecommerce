@@ -1,0 +1,28 @@
+.detalhes_pedido {
+    display: flex;
+    gap:  16px;
+    margin: 1rem 0;
+    flex-direction: column;
+}
+.detalhes_pedido article {
+    width: 100%;
+    border: .125rem solid #f2f4f5;
+    float: left;
+}
+.detalhes_pedido article section{
+    padding: 1rem;
+    height: 13rem;
+    overflow-y: scroll;
+    color: #666;
+}
+
+@media (min-width: 48rem) {
+    .detalhes_pedido article {
+        width: 33.33333%;
+        border: .125rem solid #f2f4f5;
+        float: left;
+    }
+    .detalhes_pedido {
+        flex-direction: row;
+    }
+}

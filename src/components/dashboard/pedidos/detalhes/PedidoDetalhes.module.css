@@ -61,6 +61,11 @@
     gap: 8px;
     margin-top: 32px;
   }
+  .status_pagamento {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
   @media (min-width: 48rem) {
     .status_pedido {
       flex-direction: row;

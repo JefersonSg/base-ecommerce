@@ -49,23 +49,20 @@ const PedidoDetalhesContainer = ({ orderId }: { orderId: string }) => {
       <div className={styles.container_pedido}>
         <div className={styles.status_pedido}>
           <h3 className={styles.id_pedido}>Pedido #{data?.pedido?._id}</h3>
-          <p className={styles[data?.pedido?.status]}>
-            {data?.pedido?.status !== 'pendente' &&
-            data?.pedido?.status !== 'cancelado'
-              ? 'PAGO'
-              : data?.pedido?.status?.toLocaleUpperCase()}
-          </p>
+          <div className={styles.status_pagamento}>
+            <span>PAGAMENTO: </span>
+            <p className={styles[data?.pedido?.status]}>
+              {data?.pedido?.status !== 'pendente' &&
+              data?.pedido?.status !== 'cancelado'
+                ? 'PAGO'
+                : data?.pedido?.status?.toLocaleUpperCase()}
+            </p>
+          </div>
           <p className={styles[data?.pedido?.status]}>
             {data?.pedido?.status?.toLocaleUpperCase()}
           </p>
         </div>
         <div className={styles.data}>{dataTime}</div>
-        {/* <div className={styles.botoes}>
-          <SepararPedido />
-          <EnviarPedido />
-          <ConfirmarPedido />
-          <CancelarPedido />
-        </div> */}
         <TabelaProdutos data={data?.pedido} />
         <UsuarioInfos
           userId={data?.pedido?.userId}
