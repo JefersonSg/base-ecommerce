@@ -10,7 +10,7 @@ const PedidosContainer = ({
 }) => {
   return (
     <div className={styles.order_table}>
-      {data.pedidos.map((item) => {
+      {data?.pedidos?.map((item) => {
         return <PedidoCard key={item._id} orderData={item} />;
       })}
     </div>
