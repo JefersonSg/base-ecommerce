@@ -10,9 +10,13 @@ const PedidosContainer = ({
 }) => {
   return (
     <div className={styles.order_table}>
-      {data?.pedidos?.map((item) => {
-        return <PedidoCard key={item._id} orderData={item} />;
-      })}
+      {data.pedidos ? (
+        data?.pedidos?.map((item) => {
+          return <PedidoCard key={item._id} orderData={item} />;
+        })
+      ) : (
+        <h1>Nenhum pedido realizado</h1>
+      )}
     </div>
   );
 };
