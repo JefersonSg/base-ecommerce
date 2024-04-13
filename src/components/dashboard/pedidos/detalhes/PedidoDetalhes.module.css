@@ -5,6 +5,7 @@
 
 .status_pedido {
     display: flex;
+    flex-direction: column;
     gap: 16px;
     align-items: center;
     grid-column: 1;
@@ -14,7 +15,6 @@
     font-size: 18px;
     color: #566a7f;
     grid-column: 1;
-
 }
 .data {
     font-size: 15px;
@@ -23,7 +23,8 @@
     grid-column: 1;
 
 }
-.confirmado {
+.confirmado,
+.concluido {
     background-color: #e8fadf !important;
     color: #54b71f !important;
     padding: 8px;
@@ -59,6 +60,11 @@
     display: flex;
     gap: 8px;
     margin-top: 32px;
+  }
+  @media (min-width: 48rem) {
+    .status_pedido {
+      flex-direction: row;
+    }
   }
   @media (min-width: 1200px) {
     .container_pedido {

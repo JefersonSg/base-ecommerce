@@ -41,7 +41,9 @@ const PopupInfos = ({
     const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: '2-digit',
-      day: '2-digit'
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
     };
 
     const dataFormatada = newData.toLocaleString('pt-BR', options);
@@ -154,7 +156,7 @@ const PopupInfos = ({
             styles.texto_estilo_1
           } ${styles[data.status]}`}
         >
-          <div>
+          <div className={styles.status_pagamento}>
             <span className={`${styles.bolinha} ${styles[data.status]}`}></span>
             {data.status === 'pendente'
               ? 'Pendente'
@@ -189,6 +191,7 @@ const PopupInfos = ({
           <>
             {data.status === 'pendente' && (
               <button
+                className={styles.botao_confirm}
                 onClick={() => {
                   setConfirmOrder(true);
                   setConfirmDispatched(false);
@@ -203,6 +206,7 @@ const PopupInfos = ({
 
             {data.status === 'confirmado' && (
               <button
+                className={styles.botao_enviado}
                 onClick={() => {
                   setConfirmDispatched(true);
                   setConfirmCancel(false);
@@ -216,6 +220,7 @@ const PopupInfos = ({
             )}
             {data.status === 'confirmado' || data.status === 'enviado' ? (
               <button
+                className={styles.botao_concluido}
                 onClick={() => {
                   setConfirmConcluded(true);
                   setConfirmDispatched(false);
@@ -229,8 +234,9 @@ const PopupInfos = ({
             ) : (
               ''
             )}
-            {data.status !== 'concluido' && (
+            {data.status !== 'concluido' && data.status !== 'enviado' && (
               <button
+                className={styles.botao_cancel}
                 onClick={() => {
                   setConfirmCancel(true);
                   setConfirmDispatched(false);
@@ -241,8 +247,9 @@ const PopupInfos = ({
                 Cancelar Pedido
               </button>
             )}
-            {data.status !== 'pendente' && (
+            {data.status === 'enviado' || data.status === 'concluido' ? (
               <button
+                className={styles.botao_devolucao}
                 onClick={() => {
                   setConfirmEstorno(true);
                   setConfirmCancel(false);
@@ -253,6 +260,8 @@ const PopupInfos = ({
               >
                 Estornar Pedido
               </button>
+            ) : (
+              ''
             )}
           </>
         )}
@@ -260,7 +269,7 @@ const PopupInfos = ({
       {confirmCancel && (
         <div className={styles.confirm_cancelar}>
           <p>Deseja cancelar o pedido?</p>
-          <div>
+          <div className={styles.buttons_confirm}>
             <button
               onClick={() => {
                 setConfirmCancel(false);
@@ -280,15 +289,17 @@ const PopupInfos = ({
       )}
       {confirmDispatched && (
         <div>
-          <label htmlFor="codigo">Código de rastreio</label>
-          <input
-            value={orderTracking}
-            onChange={(e) => {
-              setOrderTracking(e?.target?.value);
-            }}
-            name="codigo"
-            placeholder="Codigo de rastreio"
-          />
+          <div className={styles.input_rastreio}>
+            <label htmlFor="codigo">Código de rastreio</label>
+            <input
+              value={orderTracking}
+              onChange={(e) => {
+                setOrderTracking(e?.target?.value);
+              }}
+              name="codigo"
+              placeholder="Codigo de rastreio"
+            />
+          </div>
           <button
             onClick={() => {
               void dispatchOrderNow();
@@ -301,7 +312,7 @@ const PopupInfos = ({
       {confirmOrderState && (
         <div className={styles.confirm_cancelar}>
           <p>Deseja aceitar o pedido?</p>
-          <div>
+          <div className={styles.buttons_confirm}>
             <button
               onClick={() => {
                 setConfirmOrder(false);
@@ -322,7 +333,7 @@ const PopupInfos = ({
       {confirmConcluded && (
         <div className={styles.confirm_cancelar}>
           <p>O pedido ja foi realmente entregue / concluído ?</p>
-          <div>
+          <div className={styles.buttons_confirm}>
             <button
               onClick={() => {
                 setConfirmConcluded(false);
@@ -343,7 +354,7 @@ const PopupInfos = ({
       {confirmEstorno && (
         <div className={styles.confirm_cancelar}>
           <p>Deseja confirmar a devolução do pedido?</p>
-          <div>
+          <div className={styles.buttons_confirm}>
             <button
               onClick={() => {
                 setConfirmEstorno(false);

@@ -86,12 +86,13 @@ function Detalhes({ data }: { data: ProductApi }) {
     }
   }
 
+  // No Stock
   React.useEffect(() => {
     const stockIndex = data.colors.findIndex(
       (color) => color === colorSelected
     );
     console.log(data.stock.amount[stockIndex]);
-    if (!data.stock.amount[stockIndex]) {
+    if (!data.stock.amount[stockIndex] || !data.active) {
       setHaveStock(false);
       return;
     }

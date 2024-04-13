@@ -58,13 +58,12 @@
   border-radius: 50%;
 }
 
-.status_pagamento_pedido div {
+.status_pagamento {
   display: grid;
-  grid-template-columns: 10px 100px;
+  grid-template-columns: 10px max-content;
   text-align: start;
   align-items: center;
   gap: 8px;
-  
 }
 
 .bolinha {
@@ -82,32 +81,34 @@
   color: #697a8d;
 }
 
-.bolinha.confirmado {
+.bolinha {
   background-color: #71dd37;
-  
-}
-.bolinha.concluido {
-  background-color: #71dd37;
-}
-.bolinha.pendente {
-  background-color: #ffab00;
-}
-.bolinha.cancelado {
-  background-color: #ff3e1d;
 }
 
-.status_pagamento_pedido.confirmado {
+.bolinha.pendente {
+  background-color: #ffab00 !important;
+}
+.bolinha.cancelado {
+  background-color: #ff3e1d !important;
+}
+.bolinha.devolvido {
+  background-color: #ADD8E6 !important;
+}
+
+.status_pagamento {
   color: #71dd37 !important;
 }
-.status_pagamento_pedido.concluido {
-  color: #71dd37 !important;
-}
-.status_pagamento_pedido.pendente {
+
+.status_pagamento.pendente {
   color: #ffab00 !important;
 }
-.status_pagamento_pedido.cancelado {
+.status_pagamento.cancelado {
   color: #ff3e1d !important;
 }
+.status_pagamento.devolvido {
+  color: #ADD8E6 !important;
+}
+
 .status_pedido {
   display: flex;
   width: 92px;
@@ -122,10 +123,17 @@
   font-weight: 600;
   text-transform: uppercase;
 }
+
+.status_pedido.pendente {
+  background-color: #fff2d6 !important;
+  color: #d89000 !important;
+}
+
 .status_pedido.confirmado {
   background-color: #39c5f8 !important;
   color: #ffffff !important;
 }
+
 .status_pedido.cancelado {
   background-color: #ffd6d6;
   color: #d80e0e !important;
@@ -134,7 +142,10 @@
   background-color: #e7e7ff !important;
   color: #696cff !important;
 }
-
+.status_pedido.concluido {
+  background-color: #e8fadf !important;
+  color: #54b71f !important;
+}
 .texto_estilo_1 {
   font-size: 15px;
   font-weight: 500;
@@ -153,6 +164,104 @@
   display: flex;
   gap: 8px;
 }
+.buttons_confirm {
+  display: flex;
+  gap: 16px;
+}
+
+.input_rastreio {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input_rastreio input {
+  height: 28px;
+}
+
+/* Botões */
+.botao_confirm {
+  background-color: #39c5f8;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+  font-weight: 600;
+}
+.botao_confirm:hover {
+  transform: translateY(-2px);
+}
+
+.botao_enviado {
+  background-color: #e7e7ff;
+  color: #696cff;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.botao_enviado:hover {
+  background-color: #9292dd;
+  transform: translateY(-2px);
+}
+
+.botao_concluido {
+  background-color: #def9d1 ;
+  color: #54b71f !important;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.botao_concluido:hover {
+  background-color: #b0d89c ;
+  transform: translateY(-2px);
+}
+.botao_devolucao {
+  color: #3e4af3 ;
+  background-color: #ADD8E6 ;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.botao_devolucao:hover {
+  background-color: #799fac ;
+  transform: translateY(-2px);
+}
+
+.botao_cancel {
+  background-color: #FF6347;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+  font-weight: 600;
+}
+.botao_cancel:hover {
+  background-color: #B22222;
+  transform: translateY(-2px);
+}
+
+
+
+
 
 @media (max-width: 460px) {
   .email {

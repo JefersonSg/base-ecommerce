@@ -26,13 +26,13 @@
 }
 .botaoColorido.loading {
   cursor: progress;
-  opacity: 0.5;
+  background-color: #9f877e;
   animation: afundarSubir 0.5s forwards ease-in-out;
   transform-style: preserve-3d;
 }
 .botaoColorido.disabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  background-color: #9f877e;
 }
 
 @keyframes afundarSubir {

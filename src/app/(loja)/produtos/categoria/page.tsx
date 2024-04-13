@@ -1,5 +1,5 @@
 import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
-import styles from './page.module.css';
+import styles from './categoria.module.css';
 import {
   getCategoryById,
   getProductsByCategory,

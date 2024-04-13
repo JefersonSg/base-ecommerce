@@ -85,30 +85,32 @@
   border-radius: 50%;
 }
 
-.bolinha.confirmado {
+.bolinha {
   background-color: #71dd37;
-}
-.bolinha.concluido {
-  background-color: #71dd37;
-}
-.bolinha.pendente {
-  background-color: #ffab00;
-}
-.bolinha.cancelado {
-  background-color: #ff3e1d;
 }
 
-.status_pagamento_pedido.confirmado {
+.bolinha.pendente {
+  background-color: #ffab00 !important;
+}
+.bolinha.cancelado {
+  background-color: #ff3e1d !important;
+}
+.bolinha.devolvido {
+  background-color: #ADD8E6 !important;
+}
+
+.status_pagamento_pedido {
   color: #71dd37 !important;
 }
-.status_pagamento_pedido.concluido {
-  color: #71dd37 !important;
-}
+
 .status_pagamento_pedido.pendente {
   color: #ffab00 !important;
 }
 .status_pagamento_pedido.cancelado {
   color: #ff3e1d !important;
+}
+.status_pagamento_pedido.devolvido {
+  color: #ADD8E6 !important;
 }
 
 .status_pedido {
@@ -172,7 +174,12 @@
     border-radius: 50%;
     margin: 0 auto;
   }
+
+  
   .status_pedido.confirmado {
+    background-color: #2cb3e4 !important;
+  }  
+  .status_pedido.concluido {
     background-color: #54b71f !important;
   }
   .status_pedido.cancelado {

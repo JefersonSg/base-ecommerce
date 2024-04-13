@@ -57,3 +57,13 @@
     left: 0;
     background-color: var(--color-border);
 }
+
+.total,
+.preco {
+    display: none;
+}
+@media (min-width:48rem) {
+    .total,.preco {
+        display: table-cell;
+    }
+}

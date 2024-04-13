@@ -28,7 +28,7 @@ const ProdutoInfos = ({
   });
   return (
     <tr className={styles.produto}>
-      <td>
+      <td className={styles.td_informacoes}>
         <div className={styles.informacoes_produto}>
           <div className={styles.imagem_produto}>
             {data?.product?.images[0] && (

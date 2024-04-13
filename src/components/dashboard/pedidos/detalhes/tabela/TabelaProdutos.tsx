@@ -11,10 +11,10 @@ const TabelaProdutos = ({ data }: { data: OrderInterface }) => {
       <table>
         <thead className={styles.cabeçalho}>
           <tr>
-            <th>PRODUTOS</th>
-            <th>PREÇO</th>
-            <th>QUANTIDADE</th>
-            <th>TOTAL</th>
+            <th className={styles.produto}>PRODUTOS</th>
+            <th className={styles.preco}>PREÇO</th>
+            <th className={styles.quantidade}>QUANTIDADE</th>
+            <th className={styles.total}>TOTAL</th>
           </tr>
         </thead>
 
