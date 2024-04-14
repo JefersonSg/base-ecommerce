@@ -222,6 +222,14 @@ const FormCreateProduct = () => {
                 error={errors.characteristic}
                 register={register}
               />
+              <InputFormulario
+                type=""
+                label="Modo de uso (Opicional)"
+                name="howToUse"
+                placeholder=""
+                error={errors.howToUse}
+                register={register}
+              />
             </div>
             <div className="div_container">
               <InputFormulario

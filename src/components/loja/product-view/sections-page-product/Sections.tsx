@@ -4,6 +4,7 @@ import Composicao from './Composicao';
 import Descricao from './Descricao';
 import Entrega from './Entrega';
 import styles from './Sections.module.css';
+import ModoDeUso from './ModoDeUso';
 
 function Sections({ data }: { data: ProductApi }) {
   return (
@@ -16,6 +17,7 @@ function Sections({ data }: { data: ProductApi }) {
       {data?.characteristic && (
         <Caracteristicas characteristic={data.characteristic} />
       )}
+      {data?.howToUse && <ModoDeUso howToUse={data.howToUse} />}
     </div>
   );
 }

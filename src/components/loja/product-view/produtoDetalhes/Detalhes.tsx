@@ -144,11 +144,11 @@ function Detalhes({ data }: { data: ProductApi }) {
       >
         <BotaoColorido
           texto={`${
-            !haveColor
-              ? 'Produto sem estoque nesta cor'
-              : data.active
-                ? 'Adicionar ao carrinho'
-                : 'Sem estoque'
+            !data.active
+              ? 'Sem estoque'
+              : !haveColor
+                ? 'Produto sem estoque nesta cor'
+                : 'Adicionar ao carrinho'
           } `}
           img="carrinho.svg"
           alt="Imagem do carrinho"

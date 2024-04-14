@@ -19,6 +19,7 @@ export const validationProduct = yup.object({
   promotionalPrice: yup.number(),
   composition: yup.string(),
   characteristic: yup.string(),
+  howToUse: yup.string(),
   active: yup.boolean().required(),
   images: yup
     .mixed()

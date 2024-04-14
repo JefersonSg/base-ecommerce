@@ -64,6 +64,7 @@ export interface ProductApi {
   description: string;
   composition?: string;
   characteristic?: string;
+  howToUse?: string;
   active: boolean;
   images: string[];
   colors: string[];

@@ -64,6 +64,7 @@ const FormUpdateProduct = ({
     name,
     price,
     promotion,
+    howToUse,
     images,
     size,
     stock,
@@ -90,6 +91,7 @@ const FormUpdateProduct = ({
       composition,
       price,
       promotion,
+      howToUse,
       promotionalPrice: promotionalPrice ?? 0,
       brand,
       characteristic,
@@ -269,6 +271,14 @@ const FormUpdateProduct = ({
                 type=""
                 label="Caracteristicas (Opicional)"
                 name="characteristic"
+                placeholder=""
+                error={errors.characteristic}
+                register={register}
+              />
+              <InputFormulario
+                type=""
+                label="Modo de uso (Opicional)"
+                name="howToUse"
                 placeholder=""
                 error={errors.characteristic}
                 register={register}
