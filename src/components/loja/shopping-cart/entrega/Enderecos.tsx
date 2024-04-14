@@ -13,7 +13,7 @@ const Enderecos = () => {
           width={24}
           height={24}
         />
-        <span>Endereço cadastrado</span>
+        <span>Endereço de entrega</span>
       </div>
       <Formulario />
     </>

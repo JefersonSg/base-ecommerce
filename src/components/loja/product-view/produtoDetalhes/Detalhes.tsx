@@ -27,7 +27,7 @@ function Detalhes({ data }: { data: ProductApi }) {
 
   const [textPopUp, setTextPopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
-  const [haveStock, setHaveStock] = React.useState<boolean>();
+  const [haveColor, setHaveColor] = React.useState<boolean>();
 
   async function addCartItem() {
     setTextPopUp('');
@@ -91,12 +91,12 @@ function Detalhes({ data }: { data: ProductApi }) {
     const stockIndex = data.colors.findIndex(
       (color) => color === colorSelected
     );
-    console.log(data.stock.amount[stockIndex]);
-    if (!data.stock.amount[stockIndex] || !data.active) {
-      setHaveStock(false);
+
+    if (!data.stock.amount[stockIndex]) {
+      setHaveColor(false);
       return;
     }
-    setHaveStock(true);
+    setHaveColor(true);
   }, [colorSelected, data]);
 
   return (
@@ -143,11 +143,17 @@ function Detalhes({ data }: { data: ProductApi }) {
         }}
       >
         <BotaoColorido
-          texto={`${haveStock ? 'Adicionar ao carrinho' : 'Sem estoque'} `}
+          texto={`${
+            !haveColor
+              ? 'Produto sem estoque nesta cor'
+              : data.active
+                ? 'Adicionar ao carrinho'
+                : 'Sem estoque'
+          } `}
           img="carrinho.svg"
           alt="Imagem do carrinho"
           isLoading={isLoading}
-          disabled={!haveStock}
+          disabled={!haveColor || !data.active}
         />
       </div>
       {textPopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
