@@ -1,25 +1,31 @@
 'use client';
 
 import React from 'react';
-import styles from './Section.module.css';
+import styles from './sectionFavorites.module.css';
 import { type FavoriteInterface } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import Produto from '../card-product/Produto';
 import {
   getFavoriteByUserId,
-  getFavoritesProducts
+  getFavoritesProducts,
+  getUserByToken
 } from '@/src/shared/api/GETS';
 import { usePathname } from 'next/navigation';
 import { Titulo } from '../../compartilhado/textos/Titulo';
+import Cookies from 'js-cookie';
 
 const SectionFavorites = () => {
   const pathname = usePathname();
+  const token = Cookies.get('auth_token');
   const userData: any = useQuery({
-    queryKey: ['user']
+    queryKey: ['user'],
+    queryFn: async () => {
+      return await getUserByToken(token);
+    }
   });
 
   const favorites = useQuery<{ favorites: FavoriteInterface[] }>({
-    queryKey: ['favorites', userData?.data?.user?._id ?? 0],
+    queryKey: ['favorites' + userData?.data?.user?._id ?? 0],
     queryFn: async () => {
       if (userData?.data?.user?.name) {
         return await getFavoriteByUserId(userData?.data?.user?._id);
@@ -29,7 +35,7 @@ const SectionFavorites = () => {
   });
 
   const { data, refetch } = useQuery({
-    queryKey: ['products-favorites', favorites?.data?.favorites?.[0]?.userId],
+    queryKey: ['products-favorites' + favorites?.data?.favorites?.[0]?.userId],
     queryFn: async () => {
       return await getFavoritesProducts(favorites?.data?.favorites);
     }
@@ -46,11 +52,10 @@ const SectionFavorites = () => {
     <div className={styles.section}>
       <Titulo titulo="Seus favoritos" />
 
-      <div className={`styles.gallery_layout_container ${styles.favorites}`}>
-        {data?.map(
-          (product, index) =>
-            index <= 3 && <Produto key={product._id} productData={product} />
-        )}
+      <div className={`${styles.favorites}`}>
+        {data?.map((product, index) => (
+          <Produto key={product._id} productData={product} />
+        ))}
       </div>
     </div>
   );

@@ -107,6 +107,6 @@
     flex-basis: 25%;
     max-height: 480px;
     max-width: 280px;
-    padding: 0;
+    box-sizing: border-box;
   }
 }

@@ -1,0 +1,53 @@
+.section {
+    padding: 0px 16px 64px 16px;
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+  .section h2 {
+    margin-bottom: 16px;
+  }
+.favorites {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    align-items: stretch;
+    justify-items: center;
+    max-width: 100%;
+    margin: 0;
+    gap: 32px 0;
+}
+  @media (min-width: 48rem) {
+    .produtos_wraper {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 290px));
+    }
+    .section {
+      margin-top: 32px;
+      text-align: center;
+    }
+  
+    .home {
+      display: none !important;
+    }
+    .favorites a {
+      padding: 6px;
+    }
+  
+    .botao_sessao {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (min-width: 64rem) {
+    .favorites a {
+      flex-basis: 33%;
+      padding: 0;
+    }
+    .favorites {
+      gap: 16px;
+      justify-content: center;
+      width: 1100px;
+      margin: 0 auto;
+    }
+  }
+  

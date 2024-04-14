@@ -2,6 +2,8 @@
   padding-bottom: 64px;
   margin-top: 32px;
   border-top: 1px solid #e6e6e6;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .informacoes {
@@ -14,6 +16,8 @@
   justify-content: space-between;
   margin-top: 8px;
   box-sizing: border-box;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 .total_pesquisa {
   font-size: 14px;
@@ -33,3 +37,4 @@
 .botao {
   margin-top: 32px;
 }
+

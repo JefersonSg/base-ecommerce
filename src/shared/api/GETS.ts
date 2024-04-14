@@ -219,6 +219,9 @@ export const getProductById = async (productId: string) => {
 
 export const getFavoritesProducts = async (favorites: any) => {
   try {
+    if (!favorites) {
+      return;
+    }
     const products = await favorites?.map(
       async (favorite: FavoriteInterface) => {
         const response = await axios.get(
