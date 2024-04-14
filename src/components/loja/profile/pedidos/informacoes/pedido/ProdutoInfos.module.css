@@ -49,12 +49,15 @@
   text-overflow: ellipsis;
   width: 120px;
 }
+.valorPago2,
 .tamanho,
 .cor {
   font-size: 13px;
   font-weight: 400;
   color: #828b96;
 }
+
+
 .informacoes_produto {
   display: flex;
   text-align: start;
@@ -82,5 +85,8 @@
   }
     .total,.preco {
         display: table-cell;
+    }
+    .valorPago2 {
+      display: none;
     }
 }

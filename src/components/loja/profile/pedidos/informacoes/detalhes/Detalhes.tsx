@@ -20,7 +20,7 @@ const Detalhes = ({
         <section>
           <h3>Endereço</h3>
           <div>
-            <p className={styles.nome}>{address?.nome}</p>
+            <strong className={styles.nome}>{address?.nome}</strong>
             <p>{address?.rua}</p>
             <p>{address?.complemento}</p>
             <p>

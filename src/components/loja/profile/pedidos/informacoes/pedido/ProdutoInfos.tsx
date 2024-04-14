@@ -49,6 +49,9 @@ const ProdutoInfos = ({
             </Link>
             <p className={styles.cor}>Cor: {corEscolhida}</p>
             <p className={styles.tamanho}>Tamanho: {data?.product.size}</p>
+            <p className={styles.valorPago2}>
+              Valor: R$ {convertNumberInReal(valorPago)}
+            </p>
           </div>
         </div>
       </td>

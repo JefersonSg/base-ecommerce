@@ -15,7 +15,34 @@
     overflow-y: scroll;
     color: #666;
 }
+.detalhes_pedido article section div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
+.detalhes_pedido article section h3 {
+    font-size: .875rem;
+    font-weight: 700;
+    color: #3f3f40;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: .25em;
+}
+.detalhes_pedido article section div p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.detalhes_pedido article section div span{
+    font-size: 14px;
+    font-weight: 400;
+    color: #3f3f40;
+}
 @media (min-width: 48rem) {
     .detalhes_pedido article {
         width: 33.33333%;

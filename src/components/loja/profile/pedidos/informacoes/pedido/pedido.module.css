@@ -1,7 +1,15 @@
 .produto {
     position: relative;
   }
-  
+  .pedido_container h3 {
+    font-size: .875rem;
+    font-weight: 700;
+    color: #3f3f40;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: .25em;
+}
   .produto td {
     padding: 8px;
     text-align: center;

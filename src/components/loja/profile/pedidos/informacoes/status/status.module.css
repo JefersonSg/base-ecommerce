@@ -1,5 +1,11 @@
-.status_pedido {
-
+.status_pedido h3 {
+    font-size: .875rem;
+    font-weight: 700;
+    color: #3f3f40;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: .25em;
 }
 .progresso {
     display: flex;
@@ -9,7 +15,7 @@
     width: 100%;
 }
 
-.progresso span {
+.progresso .barra_progresso {
     width: calc(100% - 64px);
     left: 64px;
     height: 2px;
@@ -77,18 +83,51 @@
         box-shadow: 0 0 0 1px #8cc356;
     }
     
-
+    .noConfirm .barra_progresso {
+        width: 0%;
+    }
+    .progress1 .barra_progresso {
+        width: 44%;
+    }
+    .progress2 .barra_progresso {
+        width: 68%;
+    }
+    .progress3 .barra_progresso {
+        width: 90%;
+    }
     @media (max-width: 48rem) {
+        .pendente,
+        .confirmado,
+        .separado,
+        .enviado,
+        .entregue {
+            font-size: 10px !important;
+        }
         
         .progress3 .pendente, 
         .progress3 .confirmado ,
         .progress3 .separado ,
-        .progress3 .enviado ,
-        .progress3 .entregue {
-            font-size: 12px;
+        .progress3 .enviado  {
+            color: rgba(0, 0, 0, 0);
         }
-        .progress3 span {
-            left: 0;
+
+        .progress2 .pendente, 
+        .progress2 .confirmado ,
+        .progress2 .separado  {
+            color: rgba(0, 0, 0, 0);
+        }
+        .progress1 .pendente, 
+        .progress1 .confirmado  {
+            color: rgba(0, 0, 0, 0);
+        }
+        .progress1 .barra_progresso,
+        .progress2 .barra_progresso,
+        .progress3 .barra_progresso {
+            left: 24px;
+        }
+
+        .progress3 .barra_progresso {
+            width: 85%;
         }
     }
 
