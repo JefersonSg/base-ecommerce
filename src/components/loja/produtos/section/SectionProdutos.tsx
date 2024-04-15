@@ -37,7 +37,7 @@ const SectionProdutos = ({
     return () => {
       window.removeEventListener('scroll', infiniteScroll);
     };
-  }, [data.products.length, totalProdutos]);
+  }, [data?.products?.length, totalProdutos]);
 
   return (
     <div className={styles.section_produtos}>

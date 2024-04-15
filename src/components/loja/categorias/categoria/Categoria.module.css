@@ -55,7 +55,8 @@
 @media (min-width: 64rem) {
   .categoria {
     max-width: 160px;
-    height: max-content;
+    height: auto;
+    min-height: 180px;
   }
   .imagemCategoria {
     width: 160px;

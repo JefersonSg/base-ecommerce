@@ -71,6 +71,7 @@
 }
 @media (min-width: 64rem) {
   .slide-categoria {
-    height: 252px;
+    min-height: 252px;
+    height: max-content;
   }
 }

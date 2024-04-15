@@ -25,4 +25,8 @@
   .div_filtro {
     display: none;
   }
+  .subcategorias {
+    height: auto;
+    min-height: 250px;
+  }
 }
