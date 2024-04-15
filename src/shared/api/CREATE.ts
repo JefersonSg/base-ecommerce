@@ -157,13 +157,19 @@ export async function duplicateProduct(
   formData.append('active', `${data.active}`);
   formData.append('brand', data.brand);
   formData.append('category', data.category);
-  formData.append('subcategory', data.subcategory);
+  if (data?.subcategory) {
+    formData.append('subcategory', data?.subcategory);
+  }
   formData.append('characteristic', `${data.characteristic}`);
   formData.append('composition', `${data.composition}`);
 
   formData.append('amount', data.stock.amount.toString());
-  formData.append('colors', data.colors.join(','));
-  formData.append('codeColors', data.codeColors.join(','));
+  if (data?.colors) {
+    formData.append('colors', data?.colors.join(','));
+  }
+  if (data.codeColors) {
+    formData.append('codeColors', data.codeColors.join(','));
+  }
 
   if (data.images) {
     const imageArray = Array.from(data.images);

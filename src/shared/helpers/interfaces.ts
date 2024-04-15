@@ -17,7 +17,7 @@ export interface ProductInputs {
   promotion: boolean;
   promotionalPrice?: number;
   category: string;
-  subcategory: string;
+  subcategory?: string;
   description: string;
   composition?: string;
   characteristic?: string;
@@ -60,15 +60,15 @@ export interface ProductApi {
   promotion: boolean;
   promotionalPrice?: number;
   category: string;
-  subcategory: string;
+  subcategory?: string;
   description: string;
   composition?: string;
   characteristic?: string;
   howToUse?: string;
   active: boolean;
   images: string[];
-  colors: string[];
-  codeColors: string[];
+  colors?: string[];
+  codeColors?: string[];
   stock: {
     amount: number[];
   };

@@ -12,7 +12,7 @@ export const validationProduct = yup.object({
     .min(6, 'É necessario ao menos 2 caracteres'),
   brand: yup.string().required(),
   category: yup.string().required(),
-  subcategory: yup.string().required(),
+  subcategory: yup.string(),
   size: yup.string().required(),
   price: yup.number().required(),
   promotion: yup.boolean().required(),

@@ -352,7 +352,7 @@ const FormCreateProduct = () => {
               </div>
               <div className={styles.selects_container}>
                 <div className={styles.select_div}>
-                  <label htmlFor="subcategory">Subcategoria</label>
+                  <label htmlFor="subcategory">Subcategoria (Opcional)</label>
                   <p
                     className={styles.click}
                     onClick={() => {
@@ -367,11 +367,7 @@ const FormCreateProduct = () => {
                   className={styles.category}
                   {...register('subcategory')}
                 >
-                  <option
-                    value={''}
-                    disabled
-                    style={{ display: 'none' }}
-                  ></option>
+                  <option value={''}>Nenhuma</option>
                   {subcategoriesList?.map((subcategory) => {
                     return (
                       <option key={subcategory._id} value={subcategory._id}>

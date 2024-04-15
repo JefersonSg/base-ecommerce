@@ -21,7 +21,7 @@ const SelectColor = ({
 }) => {
   return (
     <div className={`div_container ${styles.variaveis_colors}`}>
-      <p className={styles.subtitulo}>Escolha a variação de cores</p>
+      <p className={styles.subtitulo}>Escolha a variação de cores (opcional)</p>
 
       {schemeColor?.map((color, index) => {
         return (
@@ -83,7 +83,7 @@ const SelectColor = ({
         <div
           onClick={(e) => {
             e.preventDefault();
-            if (schemeColor.length < 2) {
+            if (schemeColor.length < 1) {
               return;
             }
             const schema = [...schemeColor];
