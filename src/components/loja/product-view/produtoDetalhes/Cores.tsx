@@ -10,9 +10,9 @@ function Cores({
   colorSelected,
   setColorSelected
 }: {
-  colorSelected: string;
-  colors: string[];
-  codeColors: string[];
+  colorSelected?: string;
+  colors?: string[] | undefined;
+  codeColors?: string[] | undefined;
   setColorSelected: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [ativo, setAtivo] = React.useState(false);
@@ -47,26 +47,26 @@ function Cores({
         Cor: <span>{colorSelected}</span>
       </p>
       <div className={`${styles.selectColors} ${ativo ? styles.ativo : ''}`}>
-        {colors.map((color, index) => {
+        {colors?.map((color, index) => {
           return (
             <div
               key={index}
               className={styles.cores_disponiveis}
               onClick={() => {
                 setColorSelected(colors[index]);
-                setCodeColorSelected(codeColors[index]);
+                setCodeColorSelected(codeColors?.[index] ?? '');
                 setAtivo(false);
               }}
             >
               {color}
               <div
                 className={`${styles.cor_selecionada} ${
-                  codeColorSelected === codeColors[index] ? styles.ativo : ''
+                  codeColorSelected === codeColors?.[index] ? styles.ativo : ''
                 }`}
                 style={{
-                  background: codeColors[index],
+                  background: codeColors?.[index],
                   border: `${
-                    codeColorSelected === codeColors[index]
+                    codeColorSelected === codeColors?.[index]
                       ? '1.5px solid' + codeColors[index]
                       : ''
                   }`

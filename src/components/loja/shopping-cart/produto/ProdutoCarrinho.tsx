@@ -94,7 +94,7 @@ const ProdutoCarrinho = ({
     }
   }
   React.useEffect(() => {
-    data?.product.colors.filter((cor) => cor === color);
+    data?.product?.colors?.filter((cor) => cor === color);
 
     if (!data) {
       setStock(false);

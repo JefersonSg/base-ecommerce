@@ -23,7 +23,7 @@ function SlideSubcategorias({
 }) {
   return (
     <>
-      {subcategorieDataSlide?.subcategories[0] ||
+      {subcategorieDataSlide?.subcategories[0] ??
       categorieDataSlide?.categories[0] ? (
         <Swiper
           className={`slide-subcategorias`}

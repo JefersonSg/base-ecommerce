@@ -21,8 +21,11 @@ export default async function ContainerFetchs({
   const commentData: { comments: CommentInterface[] } = await getAllComments(
     productData._id
   );
-  const categoryName = await getCategoryById(productData?.category);
-  const subcategoryName = await getSubcategoryById(productData?.subcategory);
+  const categoryName =
+    productData.category && (await getCategoryById(productData?.category));
+  const subcategoryName =
+    productData.subcategory &&
+    (await getSubcategoryById(productData?.subcategory));
 
   return (
     <main className={styles.section_produtos}>

@@ -26,17 +26,22 @@ function Produtos({
 }) {
   const [ativo, setAtivo] = React.useState(false);
 
-  console.log(subcategorieDataSlide);
+  console.log(categoryId);
+  console.log(subcategorieDataSlide?.subcategories);
 
   return (
     <div className={styles.produtos_container}>
       <Titulo
-        titulo={`${pesquisa ?? ''} ${
-          categoryId && subcategorieDataSlide?.subcategories[0]
-            ? 'Subcategorias'
-            : ''
-        } 
-          ${categorieDataSlide ? 'Categorias' : 'Produtos'}`}
+        titulo={`${pesquisa ?? ''} 
+        ${
+          categorieDataSlide?.categories[0]
+            ? 'Categorias'
+            : subcategorieDataSlide?.subcategories[0]
+              ? 'Subcategorias'
+              : pesquisa
+                ? ''
+                : 'Produtos'
+        }`}
       />
       <div className={styles.div_titulo}>
         <div className={styles.div_filtro}>

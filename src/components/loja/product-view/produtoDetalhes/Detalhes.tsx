@@ -21,7 +21,7 @@ function Detalhes({ data }: { data: ProductApi }) {
   });
 
   const [colorSelected, setColorSelected] = React.useState(
-    data.colors[0] ?? ''
+    data?.colors?.[0] ?? ''
   );
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -88,15 +88,17 @@ function Detalhes({ data }: { data: ProductApi }) {
 
   // No Stock
   React.useEffect(() => {
-    const stockIndex = data.colors.findIndex(
-      (color) => color === colorSelected
-    );
+    if (data?.colors?.[0]) {
+      const stockIndex = data?.colors.findIndex(
+        (color) => color === colorSelected
+      );
 
-    if (!data.stock.amount[stockIndex]) {
-      setHaveColor(false);
-      return;
+      if (!data.stock.amount[stockIndex]) {
+        setHaveColor(false);
+        return;
+      }
+      setHaveColor(true);
     }
-    setHaveColor(true);
   }, [colorSelected, data]);
 
   return (
