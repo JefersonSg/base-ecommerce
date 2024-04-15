@@ -40,7 +40,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
-import SelectSizes from './sizes/SelectSizes';
 
 const schema = validationProduct;
 
@@ -94,8 +93,6 @@ const FormCreateProduct = () => {
     subcategoryInterface[] | undefined
   >([]);
   const [corAtiva, setCorAtiva] = React.useState(true);
-  const [sizes, setSizes] = React.useState(['']);
-
   const router = useRouter();
 
   const dataCategory = useQuery<CategoriesResponse>({
