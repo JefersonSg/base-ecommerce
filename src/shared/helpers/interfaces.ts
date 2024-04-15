@@ -12,7 +12,6 @@ export interface UserInterface {
 export interface ProductInputs {
   name: string;
   brand: string;
-  size: string;
   price: number;
   promotion: boolean;
   promotionalPrice?: number;

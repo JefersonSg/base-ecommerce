@@ -24,7 +24,7 @@ const SelectColor = ({
 }) => {
   return (
     <div className={`div_container ${styles.variaveis_colors}`}>
-      <p className={styles.subtitulo}>Escolha a variação de cores (opcional)</p>
+      <p className={styles.subtitulo}>cores E quantidade do estoque</p>
       <div className={styles.checkbox_color}>
         <label htmlFor="corAtiva">Item sem cor?</label>
         <input
@@ -36,40 +36,39 @@ const SelectColor = ({
           }}
         />
       </div>
-      {schemeColor?.map((color, index) => {
+      {schemeColor?.map((color, i) => {
         return (
-          <div key={index} className={styles.colors_amount_div}>
+          <div key={i} className={styles.colors_amount_div}>
             {corAtiva && (
               <>
                 <div>
-                  <label htmlFor={`color${index + 1}`}>{`Cor ${
-                    index + 1
-                  }`}</label>
+                  <label htmlFor={`color${i + 1}`}>{`Cor ${i + 1}`}</label>
                   <input
                     type="text"
-                    id={`color${index + 1}`}
+                    id={`color${i + 1}`}
                     placeholder="Digite o nome da cor"
                     value={color}
                     onChange={(e) => {
                       const valueAll = [...schemeColor];
-                      valueAll[index] = e.target.value;
+                      valueAll[i] = e.target.value;
 
+                      console.log(i);
                       setSchemeColor(valueAll);
                     }}
                   />
                 </div>
                 <div>
-                  <label htmlFor={`codeColor${index + 1}`}>
+                  <label htmlFor={`codeColor${i + 1}`}>
                     Selecione o tom da cor
                   </label>
                   <input
                     type="color"
-                    id={`codeColor${index + 1}`}
-                    value={schemeCodeColor[index] ?? '#000000'}
+                    id={`codeColor${i + 1}`}
+                    value={schemeCodeColor[i] ?? '#000000'}
                     onChange={(e) => {
                       e.preventDefault();
                       const schemeCode = [...schemeCodeColor];
-                      schemeCode[index] = e.currentTarget.value;
+                      schemeCode[i] = e.currentTarget.value;
                       setSchemeCodeColor(schemeCode);
                     }}
                   />
@@ -79,7 +78,7 @@ const SelectColor = ({
             <SelectAmount
               corAtiva={corAtiva}
               color={color}
-              index={index}
+              index={i}
               setAmount={setAmount}
               amount={amount}
             />
@@ -93,8 +92,10 @@ const SelectColor = ({
               e.preventDefault();
               const schema = [...schemeColor];
               const codeColor = [...schemeCodeColor];
-              schema.push(`${''}`);
-              codeColor[schemeColor.length] = '#000000';
+              schema?.push(`${''}`);
+              codeColor[schemeColor.length] = '#FFFFFF';
+
+              console.log(codeColor);
               setSchemeColor(schema);
               setSchemeCodeColor(codeColor);
             }}

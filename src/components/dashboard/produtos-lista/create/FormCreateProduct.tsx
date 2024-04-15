@@ -40,6 +40,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
+import SelectSizes from './sizes/SelectSizes';
 
 const schema = validationProduct;
 
@@ -81,8 +82,10 @@ const FormCreateProduct = () => {
 
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
-  const [schemeColor, setSchemeColor] = React.useState(['']);
-  const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
+  const [schemeColor, setSchemeColor] = React.useState<string[]>(['']);
+  const [schemeCodeColor, setSchemeCodeColor] = React.useState<string[]>([
+    '#000000'
+  ]);
   const [amount, setAmount] = React.useState<number[]>([]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
   const [ativoNewSubcategory, setAtivoNewSubcategory] = React.useState(false);
@@ -91,6 +94,7 @@ const FormCreateProduct = () => {
     subcategoryInterface[] | undefined
   >([]);
   const [corAtiva, setCorAtiva] = React.useState(true);
+  const [sizes, setSizes] = React.useState(['']);
 
   const router = useRouter();
 

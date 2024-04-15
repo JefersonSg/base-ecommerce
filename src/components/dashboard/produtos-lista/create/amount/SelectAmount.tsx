@@ -27,6 +27,7 @@ const SelectAmount = ({
         value={amount?.[index] ?? ''}
         onChange={(e) => {
           const valueAll = [...amount];
+
           valueAll[index] = +e.target.value;
 
           setAmount(valueAll);
