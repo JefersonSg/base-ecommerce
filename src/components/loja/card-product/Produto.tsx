@@ -46,7 +46,7 @@ function Produto({ productData }: Props) {
             src={images[0]}
             width={185}
             height={243}
-            quality={65}
+            quality={75}
             placeholder="empty"
             sizes="(max-width: 1024px) 25vw, 50vw"
             property="true"
