@@ -4,16 +4,20 @@ const SelectAmount = ({
   color,
   index,
   amount,
-  setAmount
+  setAmount,
+  corAtiva
 }: {
   color: string;
   index: number;
   amount: number[];
   setAmount: React.Dispatch<React.SetStateAction<number[]>>;
+  corAtiva: boolean;
 }) => {
   return (
     <div>
-      <label htmlFor={color}>Estoque da cor {color}</label>
+      <label htmlFor={color}>
+        {corAtiva ? `Estoque da cor ${color}` : 'Estoque do produto'}
+      </label>
       <input
         name={color}
         id={color}

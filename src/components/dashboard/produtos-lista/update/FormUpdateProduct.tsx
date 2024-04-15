@@ -108,6 +108,9 @@ const FormUpdateProduct = ({
   const [amount, setAmount] = React.useState<number[]>([]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
   const [ativoNewSubcategory, setAtivoNewSubcategory] = React.useState(false);
+  const [corAtiva, setCorAtiva] = React.useState(
+    !!dataProduct?.product?.colors?.[0].length
+  );
 
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
   const [subcategoriesList, setSubcategoriesList] = React.useState<
@@ -142,7 +145,8 @@ const FormUpdateProduct = ({
         schemeCodeColor,
         schemeColor,
         amount,
-        setAtivoPopUp
+        setAtivoPopUp,
+        corAtiva
       );
       setIsLoading(false);
 
@@ -342,6 +346,8 @@ const FormUpdateProduct = ({
             </div>
 
             <SelectColor
+              corAtiva={corAtiva}
+              setCorAtiva={setCorAtiva}
               amount={amount}
               schemeCodeColor={schemeCodeColor}
               schemeColor={schemeColor}

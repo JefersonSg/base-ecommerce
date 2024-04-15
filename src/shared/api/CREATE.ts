@@ -79,13 +79,14 @@ export async function createProduct(
   codeColors: string[],
   colors: string[],
   amount: number[],
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>
+  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>,
+  corAtiva: boolean
 ) {
   const formData = new FormData();
 
   let ok = false;
 
-  if (colors) {
+  if (colors && corAtiva) {
     colors.forEach((color, index) => {
       if (color.length < 1) {
         setAtivoPopUp('Preencha todos os campos de cores');
@@ -98,6 +99,10 @@ export async function createProduct(
         ok = true;
       }
     });
+  }
+  if (!amount[0]) {
+    setAtivoPopUp('Preencha todos os campos de quantidade');
+    return;
   }
 
   if (ok) return;

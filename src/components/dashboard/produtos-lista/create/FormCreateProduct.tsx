@@ -90,6 +90,7 @@ const FormCreateProduct = () => {
   const [subcategoriesList, setSubcategoriesList] = React.useState<
     subcategoryInterface[] | undefined
   >([]);
+  const [corAtiva, setCorAtiva] = React.useState(true);
 
   const router = useRouter();
 
@@ -138,10 +139,11 @@ const FormCreateProduct = () => {
       setIsLoading(true);
       const response = await createProduct(
         data,
-        schemeCodeColor,
-        schemeColor,
-        amount,
-        setAtivoPopUp
+        corAtiva ? schemeCodeColor : [''],
+        corAtiva ? schemeColor : [''],
+        corAtiva ? amount : [amount[0]],
+        setAtivoPopUp,
+        corAtiva
       );
       setIsLoading(false);
       if (response) {
@@ -169,7 +171,6 @@ const FormCreateProduct = () => {
     <>
       <div className={styles.container_form_create}>
         <form
-          action=""
           className={styles.form_create_product}
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -265,6 +266,8 @@ const FormCreateProduct = () => {
             </div>
 
             <SelectColor
+              corAtiva={corAtiva}
+              setCorAtiva={setCorAtiva}
               amount={amount}
               schemeCodeColor={schemeCodeColor}
               schemeColor={schemeColor}
