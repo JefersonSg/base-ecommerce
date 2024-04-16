@@ -55,7 +55,7 @@ const ModalDelete = ({
             setState(false);
           }}
         >
-          <ButtonAdd text="Não deletar" setAtivo={setState} />
+          <ButtonAdd text="Não" setAtivo={setState} />
         </div>
       </div>
     </div>

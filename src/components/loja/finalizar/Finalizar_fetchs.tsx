@@ -34,7 +34,7 @@ const Finalizarfetchs = ({ userData }: { userData: UserInterface }) => {
             <th className="item-remove"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={styles.corpo_tabela}>
           {data?.itemsCart?.map((item, index) => (
             <ProdutosFinalizar
               key={item._id}

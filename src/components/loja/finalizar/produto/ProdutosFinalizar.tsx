@@ -141,22 +141,20 @@ const ProdutosFinalizar = ({
             functionUpdate={updateItem}
           />
         </td>
-        <td className={styles.total_table}>
-          <td className={styles.valor_total_produto}>
-            <p
-              className={`${styles.valor} ${
-                data?.product?.promotion && data?.product?.promotionalPrice
-                  ? styles.promotion
-                  : ''
-              }`}
-            >
-              <span>
-                {' '}
-                de R$ {(Number(data?.product?.price) * amount).toFixed(2)}
-              </span>
-              por R$ {total?.toFixed(2)}
-            </p>
-          </td>
+        <td className={styles.valor_total_produto}>
+          <p
+            className={`${styles.valor} ${
+              data?.product?.promotion && data?.product?.promotionalPrice
+                ? styles.promotion
+                : ''
+            }`}
+          >
+            <span>
+              {' '}
+              de R$ {(Number(data?.product?.price) * amount).toFixed(2)}
+            </span>
+            por R$ {total?.toFixed(2)}
+          </p>
         </td>
       </tr>
       {modalDeleteActive && <BackgoundClick setState1={setModalDeleteActive} />}

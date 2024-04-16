@@ -121,7 +121,7 @@ const ProdutoCarrinho = ({
         <div className={styles.informacoes}>
           <Link
             className={styles.titulo}
-            href={{ pathname: '/produto', query: { _id: productId } }}
+            href={`/produtos/produto/${productId}`}
           >
             {data?.product?.name ?? 'carregando...'}
           </Link>
