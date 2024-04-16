@@ -22,7 +22,7 @@ function Cores({
   );
   return (
     <>
-      {colors?.[0].length > 0 ? (
+      {colors?.[0] && colors?.[0]?.length > 0 ? (
         <div className={styles.selectColor_container}>
           <div
             className={styles.cores}

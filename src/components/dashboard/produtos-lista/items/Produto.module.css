@@ -90,7 +90,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
 }
 @media (min-width: 768px) {
   .total_products_register {
@@ -101,7 +100,6 @@
   }
   .name,
   .description {
-
     max-width: 200px;
   }
 }
@@ -109,7 +107,6 @@
 @media (min-width: 1000px) {
   .name,
   .description {
-
     max-width: 250px;
   }
   .total_products_value h3,
@@ -122,6 +119,4 @@
   .total_products_value {
     display: table-cell;
   }
-
-
 }

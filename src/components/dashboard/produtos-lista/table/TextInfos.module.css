@@ -30,9 +30,7 @@
   .total_products_register {
     display: table-cell;
   }
-
 }
-
 
 @media (min-width: 1100px) {
   .total_products_value {

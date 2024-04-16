@@ -86,7 +86,6 @@
   cursor: pointer;
 }
 
-
 @media (min-width: 64rem) {
   .status_pedido {
     width: max-content;

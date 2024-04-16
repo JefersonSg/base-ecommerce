@@ -96,7 +96,7 @@
   background-color: #ff3e1d !important;
 }
 .bolinha.devolvido {
-  background-color: #ADD8E6 !important;
+  background-color: #add8e6 !important;
 }
 
 .status_pagamento_pedido {
@@ -110,7 +110,7 @@
   color: #ff3e1d !important;
 }
 .status_pagamento_pedido.devolvido {
-  color: #ADD8E6 !important;
+  color: #add8e6 !important;
 }
 
 .status_pedido {
@@ -175,10 +175,9 @@
     margin: 0 auto;
   }
 
-  
   .status_pedido.confirmado {
     background-color: #2cb3e4 !important;
-  }  
+  }
   .status_pedido.concluido {
     background-color: #54b71f !important;
   }

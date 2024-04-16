@@ -4,74 +4,74 @@
 }
 
 .cliente_pedido {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-  }
-  .imagemPerfil {
-    position: relative;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-  }
-  .imagemPerfil img {
-    border-radius: 50%;
-  }
-
-  .texto_estilo_1 {
-    font-size: 15px;
-    font-weight: 500;
-    color: #697a8d !important;
-    --bs-text-opacity: 1;
-  }
-  
-  .texto_estilo_2 {
-    font-size: 13px;
-    font-weight: 400;
-    color: #a1acb8 !important;
-    --bs-text-opacity: 1;
-  }
-
-  .numero_pedidos {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 32px;
-  }
-  .imagem_carrinho {
-    width: 2.5rem;
-    height: 2.5rem;
-    background:#e8fadf ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
-  .texto {
-    font-size: 18px;
-    font-weight: 500;
-    color: #566a7f;
-    padding-bottom: 16px;
-    padding-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
 }
-  .endereco {
-    margin-top: 32px;
-  }
-  .endereco p {
-    font-size: 15px;
-    font-weight: 400;
-    color: #697a8d;
-  }
-  .pessoa {
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .entrega {
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+.imagemPerfil {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+.imagemPerfil img {
+  border-radius: 50%;
+}
+
+.texto_estilo_1 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #697a8d !important;
+  --bs-text-opacity: 1;
+}
+
+.texto_estilo_2 {
+  font-size: 13px;
+  font-weight: 400;
+  color: #a1acb8 !important;
+  --bs-text-opacity: 1;
+}
+
+.numero_pedidos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+.imagem_carrinho {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #e8fadf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.texto {
+  font-size: 18px;
+  font-weight: 500;
+  color: #566a7f;
+  padding-bottom: 16px;
+  padding-top: 0;
+}
+.endereco {
+  margin-top: 32px;
+}
+.endereco p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #697a8d;
+}
+.pessoa {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.entrega {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
