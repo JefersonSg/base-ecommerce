@@ -7,7 +7,7 @@ import Categoria from './categoria/Categoria';
 import './styles.css';
 import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
 import useMedia from '@/src/shared/hooks/useMedia';
-import { Navigation, Autoplay, Pagination } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 
 function SlideCategoria({
   data
@@ -21,7 +21,7 @@ function SlideCategoria({
       className={`${styles.mySwiper} slide-categoria`}
       slidesPerView={5.5}
       navigation={!mobile}
-      modules={[Navigation, Autoplay, Pagination]}
+      modules={[Navigation, Pagination]}
       breakpoints={{
         0: {
           slidesPerView: 2.5
@@ -35,11 +35,6 @@ function SlideCategoria({
         1024: {
           slidesPerView: 5.5
         }
-      }}
-      autoplay={{
-        delay: 2500,
-        pauseOnMouseEnter: true,
-        disableOnInteraction: false
       }}
       pagination={false}
     >

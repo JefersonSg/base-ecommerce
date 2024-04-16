@@ -85,7 +85,7 @@ const CategoriaItem = ({
       </td>
       <td>
         <div className={styles.actions}>
-          <Image
+          <img
             alt="Lixeira para deletar a categoria"
             src={'/dashboard/lixeira.svg'}
             width={16}

@@ -88,6 +88,10 @@ function Detalhes({ data }: { data: ProductApi }) {
 
   // No Stock
   React.useEffect(() => {
+    if (data.colors?.[0].length === 0 && data.stock.amount[0]) {
+      setHaveColor(true);
+      return;
+    }
     if (data?.colors?.[0]) {
       const stockIndex = data?.colors.findIndex(
         (color) => color === colorSelected

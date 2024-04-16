@@ -18,13 +18,10 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
         Valor do desconto
         <span>R$ 0,00</span>
       </p>
-      {/* <input placeholder="Cupom de desconto" value={''} name="cupom" /> */}
 
       <p className={styles.valor_final}>
         o valor total do pedido
-        <span>
-          R$ {(valorProdutos + 10)?.toFixed(2)?.replace('.', ',') ?? '0,00'}
-        </span>
+        <span>R$ {valorProdutos?.toFixed(2)?.replace('.', ',') ?? '0,00'}</span>
       </p>
       <Link href={'/carrinho/finalizar'} className={styles.botao}>
         <BotaoColorido texto="FINALIZAR PEDIDO" />
