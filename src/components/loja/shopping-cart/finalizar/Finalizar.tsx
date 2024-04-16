@@ -18,6 +18,7 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
         Valor do desconto
         <span>R$ 0,00</span>
       </p>
+      {/* <input placeholder="Cupom de desconto" value={''} name="cupom" /> */}
 
       <p className={styles.valor_final}>
         o valor total do pedido

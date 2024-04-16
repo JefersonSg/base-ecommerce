@@ -1,16 +1,18 @@
-.cancelar{
-    background-color: #FF6347;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.2s;
-    cursor: pointer;
-    font-weight: 600;
+.cancelar {
+  background-color: #ff6347;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .cancelar:hover {
-    background-color: #B22222;
-    transform: translateY(-2px);
+  background-color: #b22222;
+  transform: translateY(-2px);
 }

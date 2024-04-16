@@ -1,16 +1,18 @@
 .separado {
-    background-color: #39c5f8;
-    color: #ffffff;
-    font-weight: 600;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.2s;
-    cursor: pointer;
+  background-color: #39c5f8;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  cursor: pointer;
 }
 
 .separado:hover {
-    background-color: #1569C7;
-    transform: translateY(-2px);
+  background-color: #1569c7;
+  transform: translateY(-2px);
 }

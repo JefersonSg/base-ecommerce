@@ -1,11 +1,9 @@
-
-
 .produto_finalizar {
   width: 100%;
   margin: 0 auto;
   position: relative;
   height: 70px;
-  padding:  8px 0;
+  padding: 8px 0;
 }
 
 .informacoes_produto {
@@ -78,9 +76,8 @@
   line-height: 150%;
   min-width: 120px;
   text-align: center;
-
 }
-.valor_total_produto{
+.valor_total_produto {
   grid-row: 2;
   grid-column: 1;
 }

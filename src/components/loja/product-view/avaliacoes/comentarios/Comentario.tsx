@@ -56,7 +56,6 @@ function Comentario({
   setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) {
-
   const pathname = useParams() as unknown as PageParams;
 
   const { data } = useQuery<User>({
@@ -76,7 +75,7 @@ function Comentario({
   const isAdmin = Cookies.get('isAdmin');
   const myComment = commentData?.userId === data?.user?._id;
 
-  const {refetch} = useQuery<{ comments: CommentInterface[] }>({
+  const { refetch } = useQuery<{ comments: CommentInterface[] }>({
     queryKey: ['comments-id-' + pathname.id],
     queryFn: async () => {
       return await getAllComments(pathname.id);
