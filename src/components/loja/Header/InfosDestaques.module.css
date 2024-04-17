@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--cor-secundaria);
+  background-color: white;
 }
 
 .infos a {
@@ -12,14 +12,14 @@
   gap: 4px;
 }
 .texto {
-  color: white;
+  color: black;
   font-size: 12px;
   font-weight: 700;
   font-family: var(--fonte-primaria);
 }
 .texto span {
   font-weight: 500;
-  color: white;
+  color: black;
 }
 
 @media (min-width: 64rem) {
