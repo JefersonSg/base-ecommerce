@@ -104,7 +104,7 @@
     color: black;
   }
   .input_pesquisa::placeholder {
-    color: rgba(150, 150, 150, 1);
+    color: rgba(150, 150, 150, 0.95);
   }
   .lupaInput {
     height: 100%;
