@@ -56,7 +56,7 @@ export function Header({
           <Pesquisa />
         </div>
         <Link href={'/'} className={styles.logo}>
-          <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
+          <Image alt="Logo" src={'/header/Logo.svg'} width={100} height={83} />
         </Link>
         <div className={styles.container2}>
           <Link
