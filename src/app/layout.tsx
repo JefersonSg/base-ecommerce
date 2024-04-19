@@ -20,8 +20,7 @@ export const metadata: Metadata = {
     'conjuntos sexy',
     'loja de sexy shop barata'
   ],
-  icons:
-    'https://i.pinimg.com/280x280_RS/20/bf/15/20bf15f77c6b9f85b6198a1538a683ca.jpg',
+  icons: '/icone.svg',
   verification: {
     google: 'oZIkI3bhEnXdKiOZst7zIkgD4BW4RLVtYB8jS518PiE'
   },

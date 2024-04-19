@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     'Maquiagens de qualidade',
     'Make Beauty'
   ],
-  icons: '../../../public/icone.svg',
+  icons: '/icone.svg',
 
   robots: "'index', 'follow'"
 };
