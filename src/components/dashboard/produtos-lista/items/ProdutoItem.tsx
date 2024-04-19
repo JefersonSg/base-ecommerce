@@ -96,7 +96,7 @@ const ProdutoItem = ({
               height={18}
             />
           </Link>
-          <Link href={`/dashboard/produtos/${data?._id}`}>
+          <Link href={`/dashboard/produtos/copiar/${data?._id}`}>
             <Image
               alt="Imagem de um laps para editar a categoria"
               src={'/dashboard/copiar.svg'}

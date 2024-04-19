@@ -5,7 +5,7 @@ const page = () => {
   return (
     <main className="dashboard_container">
       <div className={`container_dashboard `}>
-        <BreadcrumbDashboard text="Update" />
+        <BreadcrumbDashboard text="Copiar" />
       </div>
     </main>
   );

@@ -11,12 +11,16 @@ import BotaoColorido from '../../compartilhado/botoes/BotaoColorido';
 import styles from './FinalizarFetchs.module.css';
 import { useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
-import { type UserInterface } from '@/src/shared/helpers/interfaces';
+import {
+  type OrderInterface,
+  type UserInterface
+} from '@/src/shared/helpers/interfaces';
 import { getUserByToken } from '@/src/shared/api/GETS';
 import { createNewOrder } from '@/src/shared/api/CREATE';
 import Confirm from './confirmation/Confirm';
 import BackgoundClick from '../../compartilhado/backgrounds/BackgoundClick';
 import { useRouter } from 'next/navigation';
+import sendPurchasedEmail from '@/src/actions/purchaseEmail';
 
 const FinalizarContainer = () => {
   const [selectPayment, setSelectPayment] = React.useState('card');
@@ -35,9 +39,17 @@ const FinalizarContainer = () => {
     if (data && !isLoading) {
       try {
         setIsLoading(true);
-        const response = await createNewOrder(data?.user._id, selectPayment);
+        const response = (await createNewOrder(
+          data?.user._id,
+          selectPayment
+        )) as { createOrder: OrderInterface };
 
         if (response) {
+          await sendPurchasedEmail(
+            data?.user?.name,
+            response.createOrder._id,
+            response.createOrder.address[0].telefone
+          );
           setAtivoConfirm(true);
           setIsLoading(false);
         }
