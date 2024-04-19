@@ -10,7 +10,8 @@ const InputClean = ({
   defaultValue,
   error,
   multiple,
-  maxLength
+  maxLength,
+  disabled
 }: {
   label: string;
   name: string;
@@ -21,6 +22,7 @@ const InputClean = ({
   error?: string | any;
   multiple?: boolean;
   maxLength?: number;
+  disabled?: boolean;
 }) => {
   return (
     <div className={`${styles.divInput}`}>
@@ -36,6 +38,7 @@ const InputClean = ({
           step="0.01"
           placeholder={placeholder}
           defaultValue={defaultValue ?? ''}
+          disabled={disabled}
           {...register(name)}
         />
       ) : (

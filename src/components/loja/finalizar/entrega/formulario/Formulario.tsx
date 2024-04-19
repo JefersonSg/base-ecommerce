@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputClean from '@/src/components/compartilhado/formulario/InputClean';
 import { useQuery } from '@tanstack/react-query';
-import { getAddress } from '@/src/shared/api/GETS';
+import { getAddress, getCep } from '@/src/shared/api/GETS';
 import { type AddressInterface } from '@/src/shared/helpers/interfaces';
 import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import { updateAddress } from '@/src/shared/api/UPDATES';
@@ -52,6 +52,7 @@ const Formulario = () => {
     }
   }, [data, setValue]);
 
+  // arrumar formato do telefone
   React.useEffect(() => {
     function formatPhoneNumber() {
       // Remove todos os caracteres que não sejam dígitos
@@ -108,6 +109,7 @@ const Formulario = () => {
     formatPhoneNumber();
   }, [setValue, telefoneWatch]);
 
+  // arrumar formato do CPF
   React.useEffect(() => {
     function formatCPF() {
       // Remove todos os caracteres que não sejam dígitos
@@ -134,14 +136,15 @@ const Formulario = () => {
   React.useEffect(() => {
     async function fetchApi() {
       try {
-        const responseApiCep = await fetch(
-          `https://viacep.com.br/ws/${CEPWatch}/json/`
-        );
-        const data: { localidade: string; uf: string } =
-          await responseApiCep.json();
+        const responseApiCep =
+          CEPWatch.length > 7 &&
+          CEPWatch.length < 10 &&
+          (await getCep(CEPWatch));
+        const data: { consulta: { localidade: string; uf: string } } =
+          responseApiCep;
 
-        setValue('cidade', data?.localidade);
-        setValue('uf', data?.uf);
+        setValue('cidade', data?.consulta?.localidade);
+        setValue('uf', data?.consulta?.uf);
       } catch (error) {
         console.error('Erro ao buscar dados da API:', error);
       }
@@ -176,7 +179,7 @@ const Formulario = () => {
   return (
     <>
       {data?.address && <EnderecoSalvo data={data} />}
-      {ativoEdit ? (
+      {ativoEdit || !data?.address ? (
         <form
           className={styles.formulario_enderecos}
           onSubmit={handleSubmit(onSubmit)}
@@ -220,6 +223,7 @@ const Formulario = () => {
             placeholder="CEP"
             type="text"
             error={errors.cep}
+            maxLength={9}
             register={register}
           />
           <div className={styles.div_uf}>
@@ -230,6 +234,7 @@ const Formulario = () => {
               type="text"
               error={errors.cidade}
               register={register}
+              disabled={true}
             />
             <InputClean
               label="UF"
@@ -238,6 +243,7 @@ const Formulario = () => {
               type="text"
               error={errors.uf}
               register={register}
+              disabled={true}
             />
           </div>
           <InputClean

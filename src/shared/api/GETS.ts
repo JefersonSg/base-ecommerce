@@ -390,6 +390,22 @@ export const getAddress = async () => {
   }
 };
 
+export const getCep = async (cep: string) => {
+  try {
+    const response = await axios.post(
+      `${API}delivery/consult-cep/`,
+      { cep },
+      config
+    );
+
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
 // getByName
 export const getProductByName = async (name: string) => {
   try {
