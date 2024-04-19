@@ -21,7 +21,6 @@ export const metadata: Metadata = {
     'Make Beauty'
   ],
   icons: '/icone.svg',
-
   robots: "'index', 'follow'"
 };
 
