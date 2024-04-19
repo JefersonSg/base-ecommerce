@@ -12,7 +12,6 @@ import * as yup from 'yup';
 import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import Link from 'next/link';
 import InputFormulario from '@/src/components/compartilhado/formulario/InputForm';
-import sendPurchasedEmail from '@/src/actions/purchaseEmail';
 
 interface InputsRegister {
   name: string;
@@ -166,15 +165,6 @@ const Registro = () => {
       >
         {errorMessage}
       </span>
-      <button
-        onClick={async (e) => {
-          e.preventDefault();
-
-          await sendPurchasedEmail('Jeferson', '1548875', '5522981193154');
-        }}
-      >
-        Enviar email
-      </button>
     </div>
   );
 };
