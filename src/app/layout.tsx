@@ -4,7 +4,6 @@ import './globals.css';
 import { GoogleTagManager } from '@next/third-parties/google';
 
 import Providers from '@/src/shared/providers/providers';
-import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Loja Mayse | Moda intima - Compre e Receba em Casa',
