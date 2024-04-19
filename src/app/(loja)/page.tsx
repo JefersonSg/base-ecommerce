@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   ],
   icons:
     'https://i.pinimg.com/280x280_RS/20/bf/15/20bf15f77c6b9f85b6198a1538a683ca.jpg',
-
   robots: "'index', 'follow'"
 };
 

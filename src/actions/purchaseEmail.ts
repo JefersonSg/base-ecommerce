@@ -10,6 +10,8 @@ const sendPurchasedEmail = async (
   id: string,
   cellphone: string
 ) => {
+  await resend.domains.create({ name: `${process.env.DOMAIN_MAIL}` });
+
   try {
     await resend.emails.send({
       from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_EMAIL}>`,

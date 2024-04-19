@@ -28,7 +28,6 @@ const useAuth = () => {
 
     Cookie.set('auth_token', data.token, { expires: 2 });
     setToken(data.token);
-    router.push('/');
 
     window.location.reload();
   }
