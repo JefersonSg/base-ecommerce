@@ -130,6 +130,49 @@ export interface AddressInterface {
   referencia: string;
   numero: string;
 }
+export interface delivery {
+  id: number;
+  name: string;
+  price: string;
+  custom_price: string;
+  discount: string;
+  currency: string;
+  delivery_time: number;
+  delivery_range: {
+    min: number;
+    max: number;
+  };
+  custom_delivery_time: number;
+  custom_delivery_range: {
+    min: number;
+    max: number;
+  };
+  packages: [
+    {
+      price: string;
+      discount: string;
+      format: string;
+      weight: string;
+      insurance_value: string;
+      products: [
+        {
+          id: string;
+          quantity: number;
+        }
+      ];
+      dimensions: {
+        height: number;
+        width: number;
+        length: number;
+      };
+    }
+  ];
+  company: {
+    id: number;
+    name: string;
+    picture: string;
+  };
+}
 
 export interface OrderInterface {
   _id: string;
