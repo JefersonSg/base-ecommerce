@@ -5,34 +5,56 @@ import TituloSection from './TituloSection';
 import React from 'react';
 import { calculateDelivery } from '@/src/shared/api/GETS';
 import { type delivery } from '@/src/shared/helpers/interfaces';
+import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import useMedia from '@/src/shared/hooks/useMedia';
 
 function Entrega() {
   const [ativo, setAtivo] = React.useState(true);
 
   const [infosEntrega, setInfosEntrega] = React.useState<delivery[]>();
   const [CEPWatch, setCEPWatch] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    async function fetchApi() {
+  async function fetchApi() {
+    if (!isLoading) {
       try {
+        setIsLoading(true);
         const responseApiCep =
           CEPWatch.length > 7 &&
           CEPWatch.length < 10 &&
           (await calculateDelivery(CEPWatch));
         const data: { response: delivery[] } = responseApiCep;
-
+        setIsLoading(false);
         if (data.response) {
           setInfosEntrega(data?.response);
         }
       } catch (error) {
+        setIsLoading(false);
         console.error('Erro ao buscar dados da API:', error);
       }
     }
+  }
 
-    if (CEPWatch?.length >= 8) {
-      void fetchApi();
+  React.useEffect(() => {
+    function formatCEP() {
+      // Remove todos os caracteres que não sejam dígitos
+      const cleaned = CEPWatch?.replace(/\D/g, '');
+
+      if (CEPWatch?.length > 0 && CEPWatch.length < 10) {
+        let formatted = '';
+        for (let i = 0; i < cleaned.length; i++) {
+          if (i === 5) {
+            formatted += '-';
+          }
+          formatted += cleaned[i];
+        }
+        setCEPWatch(formatted);
+      }
     }
+    formatCEP();
   }, [CEPWatch]);
+
+  const mobile = useMedia('(max-width:64rem)');
 
   return (
     <div className={styles.entrega}>
@@ -41,18 +63,33 @@ function Entrega() {
           setAtivo(!ativo);
         }}
       >
-        <TituloSection texto="Entrega" ativo={ativo} />
+        <div className={styles.titulo}>
+          <TituloSection texto="Entrega" ativo={ativo} />
+        </div>
       </div>
       {ativo && (
         <>
-          <input
-            type="text"
-            placeholder="CEP"
-            value={CEPWatch}
-            onChange={(e) => {
-              setCEPWatch(e.target.value);
-            }}
-          />
+          <div>
+            <input
+              type="text"
+              placeholder="CEP"
+              value={CEPWatch}
+              maxLength={9}
+              onChange={(e) => {
+                setCEPWatch(e.target.value);
+              }}
+            />
+            <button
+              className={styles.buttonOk}
+              onClick={() => {
+                if (CEPWatch.length >= 8) {
+                  void fetchApi();
+                }
+              }}
+            >
+              OK
+            </button>
+          </div>
           <div className={styles.textos}>
             <div>
               <Image
@@ -78,27 +115,51 @@ function Entrega() {
                 partir de R$250,00
               </p>
             </div>
-            <div className={styles.entregas_metodos}>
-              {infosEntrega?.map((info) => {
-                return (
-                  <div key={info.id} className={styles.entrega_calculo}>
-                    <div className={styles.image_entrega}>
-                      <Image
-                        alt="imagem da empresa"
-                        src={info?.company?.picture}
-                        width={64}
-                        height={25}
-                      />
-                    </div>
-                    <p>{info.name}</p>
-                    <p>
-                      {info.currency} {info.custom_price}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+            {(isLoading && !mobile) || (infosEntrega?.[0] && !mobile) ? (
+              <div className={styles.entregas_metodos}>
+                {isLoading && (
+                  <>
+                    <div className={styles.loading}>Loading...</div>
+                  </>
+                )}
+                {infosEntrega?.[0] &&
+                  infosEntrega?.map((info) => {
+                    return (
+                      <div key={info.id} className={styles.entrega_calculo}>
+                        <div className={styles.image_entrega}>
+                          <Image
+                            alt="imagem da empresa"
+                            src={info?.company?.picture}
+                            width={94}
+                            height={20}
+                          />
+                        </div>
+                        <p>{info.name}</p>
+                        <p>
+                          {info.error?.length
+                            ? info.error
+                            : 'entre ' +
+                              info?.delivery_range?.min +
+                              ' e ' +
+                              info?.delivery_range?.max +
+                              ' dias'}
+                        </p>
+                        <p>
+                          {info.currency} {info.custom_price}
+                        </p>
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              ''
+            )}
           </div>
+          {(isLoading && !mobile) || (infosEntrega?.[0] && !mobile) ? (
+            <BackgoundClick setState1={setInfosEntrega} />
+          ) : (
+            ''
+          )}
         </>
       )}
     </div>

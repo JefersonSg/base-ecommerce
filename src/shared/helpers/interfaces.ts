@@ -172,6 +172,7 @@ export interface delivery {
     name: string;
     picture: string;
   };
+  error?: string;
 }
 
 export interface OrderInterface {

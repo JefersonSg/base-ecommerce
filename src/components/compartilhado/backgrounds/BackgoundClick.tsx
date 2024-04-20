@@ -6,7 +6,7 @@ const BackgoundClick = ({
   setState2,
   setState3
 }: {
-  setState1?: React.Dispatch<React.SetStateAction<boolean>>;
+  setState1?: React.Dispatch<React.SetStateAction<any>>;
   setState2?: React.Dispatch<React.SetStateAction<boolean>>;
   setState3?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
