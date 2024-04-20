@@ -14,10 +14,12 @@ function Entrega() {
   const [infosEntrega, setInfosEntrega] = React.useState<delivery[]>();
   const [CEPWatch, setCEPWatch] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
 
   async function fetchApi() {
     if (!isLoading) {
       try {
+        setOpenModal(true);
         setIsLoading(true);
         const responseApiCep =
           CEPWatch.length > 7 &&
@@ -115,7 +117,7 @@ function Entrega() {
                 partir de R$250,00
               </p>
             </div>
-            {(isLoading && !mobile) || (infosEntrega?.[0] && !mobile) ? (
+            {openModal ? (
               <div className={styles.entregas_metodos}>
                 {isLoading && (
                   <>
@@ -155,8 +157,8 @@ function Entrega() {
               ''
             )}
           </div>
-          {(isLoading && !mobile) || (infosEntrega?.[0] && !mobile) ? (
-            <BackgoundClick setState1={setInfosEntrega} />
+          {(isLoading && !mobile) || (openModal && !mobile) ? (
+            <BackgoundClick setState1={setOpenModal} />
           ) : (
             ''
           )}
