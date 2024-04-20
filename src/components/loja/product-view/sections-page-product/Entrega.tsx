@@ -16,17 +16,6 @@ function Entrega() {
   const [isLoading, setIsLoading] = React.useState(false);
 
   async function fetchApi() {
-<<<<<<< HEAD
-    try {
-      const responseApiCep =
-        CEPWatch.length > 7 &&
-        CEPWatch.length < 10 &&
-        (await calculateDelivery(CEPWatch));
-      const data: { response: delivery[] } = responseApiCep;
-
-      if (data.response) {
-        setInfosEntrega(data?.response);
-=======
     if (!isLoading) {
       try {
         setIsLoading(true);
@@ -42,14 +31,9 @@ function Entrega() {
       } catch (error) {
         setIsLoading(false);
         console.error('Erro ao buscar dados da API:', error);
->>>>>>> main
       }
-    } catch (error) {
-      console.error('Erro ao buscar dados da API:', error);
     }
   }
-<<<<<<< HEAD
-=======
 
   React.useEffect(() => {
     function formatCEP() {
@@ -69,7 +53,6 @@ function Entrega() {
     }
     formatCEP();
   }, [CEPWatch]);
->>>>>>> main
 
   const mobile = useMedia('(max-width:64rem)');
 
@@ -91,10 +74,7 @@ function Entrega() {
               type="text"
               placeholder="CEP"
               value={CEPWatch}
-<<<<<<< HEAD
-=======
               maxLength={9}
->>>>>>> main
               onChange={(e) => {
                 setCEPWatch(e.target.value);
               }}
@@ -102,14 +82,8 @@ function Entrega() {
             <button
               className={styles.buttonOk}
               onClick={() => {
-<<<<<<< HEAD
-                console.log(CEPWatch);
-                if (CEPWatch.length >= 8) {
-                  void fetchApi;
-=======
                 if (CEPWatch.length >= 8) {
                   void fetchApi();
->>>>>>> main
                 }
               }}
             >
