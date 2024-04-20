@@ -12,27 +12,21 @@ function Entrega() {
   const [infosEntrega, setInfosEntrega] = React.useState<delivery[]>();
   const [CEPWatch, setCEPWatch] = React.useState('');
 
-  React.useEffect(() => {
-    async function fetchApi() {
-      try {
-        const responseApiCep =
-          CEPWatch.length > 7 &&
-          CEPWatch.length < 10 &&
-          (await calculateDelivery(CEPWatch));
-        const data: { response: delivery[] } = responseApiCep;
+  async function fetchApi() {
+    try {
+      const responseApiCep =
+        CEPWatch.length > 7 &&
+        CEPWatch.length < 10 &&
+        (await calculateDelivery(CEPWatch));
+      const data: { response: delivery[] } = responseApiCep;
 
-        if (data.response) {
-          setInfosEntrega(data?.response);
-        }
-      } catch (error) {
-        console.error('Erro ao buscar dados da API:', error);
+      if (data.response) {
+        setInfosEntrega(data?.response);
       }
+    } catch (error) {
+      console.error('Erro ao buscar dados da API:', error);
     }
-
-    if (CEPWatch?.length >= 8) {
-      void fetchApi();
-    }
-  }, [CEPWatch]);
+  }
 
   return (
     <div className={styles.entrega}>
@@ -45,14 +39,27 @@ function Entrega() {
       </div>
       {ativo && (
         <>
-          <input
-            type="text"
-            placeholder="CEP"
-            value={CEPWatch}
-            onChange={(e) => {
-              setCEPWatch(e.target.value);
-            }}
-          />
+          <div>
+            <input
+              type="text"
+              placeholder="CEP"
+              value={CEPWatch}
+              onChange={(e) => {
+                setCEPWatch(e.target.value);
+              }}
+            />
+            <button
+              className={styles.buttonOk}
+              onClick={() => {
+                console.log(CEPWatch);
+                if (CEPWatch.length >= 8) {
+                  void fetchApi;
+                }
+              }}
+            >
+              OK
+            </button>
+          </div>
           <div className={styles.textos}>
             <div>
               <Image
