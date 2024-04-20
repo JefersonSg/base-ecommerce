@@ -13,7 +13,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { addNewItemCart } from '@/src/shared/api/CREATE';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
-import Image from 'next/image';
+import Entrega from '../sections-page-product/Entrega';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
@@ -122,24 +122,7 @@ function Detalhes({ data }: { data: ProductApi }) {
         price={data?.price}
       />
       <div className={styles.entrega}>
-        <p>
-          <Image
-            alt="imagem de caminhão"
-            src={'/produto/caminhao.svg'}
-            width={33}
-            height={20}
-          />
-          Entregas por correio e transportadora
-        </p>
-        <p>
-          <Image
-            alt="imagem de caixa"
-            src={'/produto/box.svg'}
-            width={27}
-            height={24}
-          />
-          Entrega grátis comprando acima de R$ 250,00
-        </p>
+        <Entrega />
       </div>
       <div
         className={styles.botao_carrinho}
