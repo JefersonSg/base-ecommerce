@@ -14,7 +14,12 @@ function LinksCategorias({
 
       <ul className={styles.links}>
         <BotaoLi texto="Banners" setAtivo={setAtivo} />
-        <button className={styles.button_sair_dashboard} onClick={logout}>
+        <button
+          className={styles.button_sair_dashboard}
+          onClick={() => {
+            void logout;
+          }}
+        >
           Sair
         </button>
       </ul>
