@@ -8,7 +8,7 @@ import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 import { createComment } from '@/src/shared/api/CREATE';
 import { validationComment } from './ValidationComment';
@@ -19,17 +19,22 @@ interface User {
     _id: string;
   };
 }
+interface params {
+  id: string;
+}
 
 const FormComment = ({
   setModalForm,
   dataUser,
   setTextPopUp,
-  setTypePopUp
+  setTypePopUp,
+  refetch
 }: {
   dataUser: User;
   setModalForm: React.Dispatch<React.SetStateAction<boolean>>;
   setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  refetch: any;
 }) => {
   const router = useRouter();
   const [stars, setStars] = React.useState(1);
@@ -41,7 +46,7 @@ const FormComment = ({
   } = useForm({
     resolver: yupResolver(validationComment)
   });
-  const idProduct = useSearchParams().get('_id');
+  const idProduct = useParams() as unknown as params;
 
   const [isLoading, setIsloading] = React.useState(false);
   const [imageUrl, setImageUrl] = React.useState<string | ArrayBuffer | null>();
@@ -64,8 +69,7 @@ const FormComment = ({
   }, [handleChange, watchImage]);
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
-    if (!idProduct) {
-      console.log('sem id do produto');
+    if (!idProduct.id) {
       setTextPopUp('Não foi possivel encontrar o id do produto');
       setTypePopUp('error');
       return;
@@ -80,16 +84,14 @@ const FormComment = ({
         image: watchImage
       };
       try {
-        const response = await createComment(dataComment, idProduct);
-
-        router.refresh();
-        // await refetch();
+        const response = await createComment(dataComment, idProduct.id);
 
         if (response) {
           setModalForm(false);
           setTextPopUp('Comentario postado');
-
           setTypePopUp('');
+          router.refresh();
+          await refetch();
         }
         setIsloading(false);
       } catch (error) {

@@ -27,6 +27,7 @@ const useAuth = () => {
     setAuthenticated(true);
 
     Cookie.set('auth_token', data.token, { expires: 2 });
+    Cookie.remove('isAdmin');
     setToken(data.token);
 
     window.location.reload();
@@ -40,12 +41,11 @@ const useAuth = () => {
     }
   }, [token]);
 
-  function logout() {
+  async function logout() {
     setAuthenticated(false);
     Cookie.remove('auth_token');
     Cookie.remove('isAdmin');
 
-    router.push('/');
     window.location.reload();
   }
 
