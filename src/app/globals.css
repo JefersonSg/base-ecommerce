@@ -48,14 +48,14 @@ img {
 :root {
   --cor-de-indicacao: rgb(36, 36, 36);
 
-  --cor-primaria: #471703;
-  --cor-secundaria: #996557;
-  --cor-terciaria: #3a292f;
-  --cor-quarta: #6b4024;
-  --cor-quinta: #441700;
+  --cor-primaria: #000000;
+  --cor-secundaria: #000000;
+  --cor-terciaria: #000000;
+  --cor-quarta: #000000;
+  --cor-quinta: #000000;
 
   --cor-contraste: #ef3c3c;
-  --cor-contraste2: #9d4112;
+  --cor-contraste2: #cc1f0f;
 
   --color-border: #d9dee3;
 }

@@ -49,12 +49,15 @@
     align-items: center;
     gap: 8px;
   }
+  .login img {
+    border: 1px solid white;
+  }
   .login p {
     font-family: var(--fonte-primaria);
-    font-weight: 300;
+    font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    color: var(--cor-quinta);
+    color: white;
   }
 
   .logo {
