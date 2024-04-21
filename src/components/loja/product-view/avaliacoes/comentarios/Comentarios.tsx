@@ -63,6 +63,7 @@ function Comentarios() {
             {modalForm && data && (
               <FormComment
                 dataUser={data}
+                refetch={dataComments.refetch}
                 setModalForm={setModalForm}
                 setTextPopUp={setTextPopUp}
                 setTypePopUp={setTypePopUp}

@@ -14,7 +14,7 @@ interface dataUserRegister {
 }
 interface UserContextType {
   authenticated: boolean;
-  logout: () => void;
+  logout: () => Promise<void>;
   login: (
     dataUser: dataUserLogin,
     setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>,
@@ -30,7 +30,7 @@ interface UserContextType {
 const UserContext = React.createContext<UserContextType>({
   authenticated: false,
   registerUser: async () => {},
-  logout: () => {},
+  logout: async () => {},
   login: async () => {}
 });
 

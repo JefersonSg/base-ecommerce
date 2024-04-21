@@ -1,13 +1,16 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import verifyToken from './shared/functions/verify-token';
 
-export default function middleware(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
   const token = req.cookies.get('auth_token')?.value;
-  const admin = req.cookies.get('isAdmin')?.value;
+  const admin = req.cookies.get('isAdmin')?.value === process.env.ADMIN_ID;
+
+  const authenticated = token ? await verifyToken(token) : false;
 
   const signInURL = new URL('/', req.url);
   const urlLogin = new URL('/login', req.url);
 
-  if (token) {
+  if (authenticated) {
     if (
       req.nextUrl.pathname.includes('login') ||
       req.nextUrl.pathname.includes('registrar')
@@ -19,7 +22,7 @@ export default function middleware(req: NextRequest) {
     }
     return NextResponse.next();
   }
-  if (!token) {
+  if (!authenticated) {
     if (req.nextUrl.pathname === '/minha-conta') {
       return NextResponse.redirect(urlLogin);
     }

@@ -43,9 +43,9 @@ export function Header({
 
   React.useEffect(() => {
     if (userData.isAdmin) {
-      void isAdmin();
+      void isAdmin(userData?.user?._id);
     }
-  }, [userData.isAdmin]);
+  }, [userData]);
 
   return (
     <div className={styles.container_header}>
