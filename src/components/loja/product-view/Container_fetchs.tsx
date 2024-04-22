@@ -12,10 +12,8 @@ import { Titulo } from '../../compartilhado/textos/Titulo';
 import styles from './Produto.module.css';
 
 export default async function ContainerFetchs({
-  productId,
   productData
 }: {
-  productId: string;
   productData: ProductApi;
 }) {
   const commentData: { comments: CommentInterface[] } = await getAllComments(
