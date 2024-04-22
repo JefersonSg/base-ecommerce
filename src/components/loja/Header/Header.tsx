@@ -28,6 +28,7 @@ export function Header({
   subcategoriesList: subcategoriesListByCategory;
 }) {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
+  const [admin] = React.useState(userData?.isAdmin);
 
   React.useEffect(() => {
     if (estaAtivo) {
@@ -42,10 +43,10 @@ export function Header({
   }, [estaAtivo]);
 
   React.useEffect(() => {
-    if (userData.isAdmin) {
+    if (admin) {
       void isAdmin(userData?.user?._id);
     }
-  }, [userData]);
+  }, [admin, userData?.user?._id]);
 
   return (
     <div className={styles.container_header}>
@@ -88,7 +89,7 @@ export function Header({
             <Link href={'/dashboard'} className={styles.button_dashboard}>
               <Image
                 alt="Imagem do dashboard"
-                src={'/header/Menu/dashboard.svg'}
+                src={'/header/icons/dashboard.svg'}
                 width={24}
                 height={24}
               />
