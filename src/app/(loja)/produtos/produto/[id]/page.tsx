@@ -28,7 +28,7 @@ const page = async ({ params }: PageParams) => {
   }
   return (
     <Suspense fallback={<Loading />}>
-      <ContainerFetchs productData={product.product} productId={params.id} />
+      <ContainerFetchs productData={product.product} />
     </Suspense>
   );
 };
