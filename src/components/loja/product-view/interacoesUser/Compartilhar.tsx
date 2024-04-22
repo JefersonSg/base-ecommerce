@@ -11,7 +11,7 @@ function Compartilhar() {
   const productId = useParams() as unknown as { id: string };
 
   const { data } = useQuery<{ product: ProductApi }>({
-    queryKey: ['product-by-id', productId?.id],
+    queryKey: ['product-by-id' + productId?.id],
     queryFn: async () => {
       if (productId.id) {
         return await getProductById(productId.id);
@@ -27,7 +27,7 @@ function Compartilhar() {
         if (navigator.share) {
           void navigator.share({
             title: data?.product.name,
-            text: data?.product.description,
+            text: data?.product.description.slice(0, 40) + '...',
             url: window.location.href
           });
         }
