@@ -13,7 +13,7 @@ const configJson = {
   }
 };
 
-const configFormdata = {
+const configFormData = {
   headers: {
     Authorization: `Bearer ${token}`,
     'Content-Type': 'multipart/form-data'
@@ -72,7 +72,7 @@ export async function addViews(
   }
 }
 
-// Revalidations
+// Revalidation
 
 export async function createProduct(
   data: any,
@@ -126,7 +126,7 @@ export async function createProduct(
     const response = await axios.post(
       `${API}products/create`,
       formData,
-      configFormdata
+      configFormData
     );
 
     await revalidateTagAction('all-products');
@@ -187,7 +187,7 @@ export async function duplicateProduct(
     const response = await axios.post(
       `${API}products/create`,
       formData,
-      configFormdata
+      configFormData
     );
 
     await revalidateTagAction('all-products');
@@ -244,7 +244,7 @@ export async function createBanner(data: BannerTypeCreate) {
     const response = await axios.post(
       `${API}banners/create`,
       formData,
-      configFormdata
+      configFormData
     );
 
     await revalidateTagAction('all-active-banners');
@@ -276,7 +276,7 @@ export async function createCategory(data: any) {
     const response = await axios.post(
       `${API}categories/create`,
       formData,
-      configFormdata
+      configFormData
     );
 
     await revalidateTagAction('all-categories');
@@ -314,7 +314,7 @@ export async function createSubcategory(data: {
     const response = await axios.post(
       `${API}subcategories/create`,
       formData,
-      configFormdata
+      configFormData
     );
 
     await revalidateTagAction('all-subcategories');
@@ -347,7 +347,7 @@ export async function createComment(data: any, productId: string) {
     const response = await axios.post(
       `${API}products/create/comment/`,
       formData,
-      configFormdata
+      configFormData
     );
 
     if (response) {
