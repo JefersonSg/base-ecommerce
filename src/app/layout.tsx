@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { typeFirst, typeFirstDashboard } from '../shared/functions/fonts';
 import './globals.css';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 import Providers from '@/src/shared/providers/providers';
 
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body className={`${typeFirst.variable} ${typeFirstDashboard.variable}`}>
         <Providers>{children}</Providers>
       </body>
+      <GoogleTagManager gtmId="" />
     </html>
   );
 }
