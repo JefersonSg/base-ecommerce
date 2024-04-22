@@ -26,15 +26,29 @@ export const generateMetadata = async ({
 }: PageParams): Promise<Metadata> => {
   const product: { product: ProductApi } = await getProductById(params.id);
   return {
-    title: `Abayomi Make | ${product?.product?.name}`,
-    description: product.product.description.slice(0, 45) + '...',
-    keywords: [product.product.name],
+    title: `Abayomi Make | ${
+      product?.product?.name ? product?.product?.name : ''
+    }`,
+    description: `${
+      product?.product?.description
+        ? product.product.description?.slice(0, 45) + '...'
+        : ''
+    }`,
+    keywords: [`${product?.product?.name ? product?.product?.name : ''}`],
     openGraph: {
       url: `https://abayomimake.com/produtos/produto/${product?.product?._id}`,
       siteName: `Abayomi Make Beauty`,
       title: `Abayomi Make | ${product?.product?.name}`,
-      description: product.product.description.slice(0, 45) + '...',
-      images: product?.product?.images?.[0]
+      description: `${
+        product?.product?.description
+          ? product.product.description?.slice(0, 45) + '...'
+          : ''
+      }`,
+      images: `${
+        product?.product?.images?.[0]
+          ? product?.product?.images?.[0]
+          : 'https://i.pinimg.com/280x280_RS/20/bf/15/20bf15f77c6b9f85b6198a1538a683ca.jpg'
+      }`
     }
   };
 };
