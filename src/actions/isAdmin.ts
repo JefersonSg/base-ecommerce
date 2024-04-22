@@ -4,7 +4,8 @@ import { cookies } from 'next/headers';
 
 export async function isAdmin(id: string) {
   if (!id) {
-    return null;
+    return;
   }
   cookies().set('isAdmin', id);
+  return true;
 }
