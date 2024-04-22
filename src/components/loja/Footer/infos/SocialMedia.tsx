@@ -12,13 +12,13 @@ export function SocialMedia({ img }: { img: string[] }) {
                 <Link
                   href={`${
                     (image === 'Facebook.svg' &&
-                      'https://www.facebook.com/profile.php?id=61550563994853') ||
+                      'https://www.facebook.com/profile.php?id=100087962664815') ||
                     (image === 'Instagram.svg' &&
-                      'https://www.instagram.com/abayomimakebeauty/') ||
+                      'https://www.instagram.com/lojamayse/') ||
                     (image === 'Tiktok.svg' &&
-                      'https://www.tiktok.com/@abayomimakebeauty') ||
+                      'https://www.tiktok.com/@loja.mayse') ||
                     (image === 'Whatsapp.svg' &&
-                      'https://api.whatsapp.com/send/?phone=5521969871826&text=Ol%C3%A1%2C+gostaria+de+tirar+uma+duvida&type=phone_number&app_absent=0')
+                      'https://api.whatsapp.com/send/?phone=5522998092154&text=Ol%C3%A1%2C+gostaria+de+tirar+uma+duvida&type=phone_number&app_absent=0')
                   }`}
                 >
                   <Image

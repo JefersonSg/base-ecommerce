@@ -15,12 +15,12 @@ const page = () => {
       </p>
 
       <p className="texto">
-        - O envio pode ser realizado através dos Correios via PAC ou Sedex ou IS
-        Entregas (Transportadora).
+        - O envio pode ser realizado através dos Correios via PAC ou Sedex ou
+        Jadlog (Transportadora).
       </p>
       <p className="texto">
-        - Para a região de Campinas - SP e algumas regiões metropolitanas, o
-        envio pode ser realizado via motoboy.
+        - Para a região de Santo Antônio de Pádua - RJ e algumas regiões
+        proximas, o envio pode ser realizado via motoboy.
       </p>
       <p className="texto">
         - Caso o cliente opte pelo frete mais rápido, o valor do envio será
@@ -46,7 +46,7 @@ const page = () => {
         </li>
       </ul>
       <p className={styles.agradecimento}>
-        A Abayomi make Beauty agradece a visita e Boas Compras !
+        A Loja Mayse agradece a visita e Boas Compras !
       </p>
     </div>
   );

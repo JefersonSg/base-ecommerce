@@ -26,13 +26,13 @@ export const generateMetadata = async ({
 }: PageParams): Promise<Metadata> => {
   const product: { product: ProductApi } = await getProductById(params.id);
   return {
-    title: `Abayomi Make | ${product?.product?.name}`,
+    title: `Loja Mayse | ${product?.product?.name}`,
     description: product.product.description.slice(0, 45) + '...',
     keywords: [product.product.name],
     openGraph: {
-      url: `https://abayomimake.com/produtos/produto/${product?.product?._id}`,
-      siteName: `Abayomi Make Beauty`,
-      title: `Abayomi Make | ${product?.product?.name}`,
+      url: `https://lojamayse.com/produtos/produto/${product?.product?._id}`,
+      siteName: `Loja Mayse`,
+      title: `Loja Mayse | ${product?.product?.name}`,
       description: product.product.description.slice(0, 45) + '...',
       images: product?.product?.images?.[0]
     }
