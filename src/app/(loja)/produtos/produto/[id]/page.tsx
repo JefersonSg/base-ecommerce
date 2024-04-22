@@ -4,6 +4,7 @@ import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import Loading from './loading';
+import { type Metadata } from 'next';
 
 interface PageParams {
   params: { id: string };
@@ -19,6 +20,24 @@ export async function generateStaticParams() {
 
   return produtos;
 }
+
+export const generateMetadata = async ({
+  params
+}: PageParams): Promise<Metadata> => {
+  const product: { product: ProductApi } = await getProductById(params.id);
+  return {
+    title: `Abayomi Make | ${product?.product?.name}`,
+    description: product.product.description.slice(0, 45) + '...',
+    keywords: [product.product.name],
+    openGraph: {
+      url: `https://abayomimake.com/produtos/produto/${product?.product?._id}`,
+      siteName: `Abayomi Make Beauty`,
+      title: `Abayomi Make | ${product?.product?.name}`,
+      description: product.product.description.slice(0, 45) + '...',
+      images: product?.product?.images?.[0]
+    }
+  };
+};
 
 const page = async ({ params }: PageParams) => {
   const product: { product: ProductApi } = await getProductById(params.id);
