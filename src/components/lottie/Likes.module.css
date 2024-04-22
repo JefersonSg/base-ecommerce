@@ -8,5 +8,5 @@
   pointer-events: none;
 }
 .like div svg g g path {
-  fill: #6b4020 !important;
+  fill: var(--cor-contraste) !important;
 }

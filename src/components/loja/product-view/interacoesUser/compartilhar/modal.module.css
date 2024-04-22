@@ -1,0 +1,10 @@
+.compartilhar_container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 300px;
+    background-color: rgb(183, 180, 180);
+    padding: 16px;
+    box-sizing: border-box;
+    z-index: 1004;
+}
