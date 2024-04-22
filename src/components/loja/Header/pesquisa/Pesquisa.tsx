@@ -66,7 +66,7 @@ const Pesquisa = () => {
             <Image
               alt="Lupa"
               className={styles.lupaInput}
-              src={'/header/icons/lupa.svg'}
+              src={'/header/icons/lupa-color-2.svg'}
               width={24}
               height={24}
               onClick={() => {
