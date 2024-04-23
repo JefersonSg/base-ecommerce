@@ -15,6 +15,17 @@
   text-align: center;
   position: relative;
 }
+
+.empresa_entrega {
+  background-color: #727273;
+  width: max-content;
+  padding: 4px .5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  color: white;
+  font-size: .75rem;
+  margin-bottom: 4px;
+}
 .produto::after {
   content: '';
   display: block;

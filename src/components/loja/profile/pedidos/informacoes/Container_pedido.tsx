@@ -71,7 +71,10 @@ const ContainerPedido = ({ orderId }: { orderId: string }) => {
         address={data?.pedido?.address?.[0]}
         discount={data?.pedido?.discount}
         formaPagamento={data?.pedido?.methodPayment}
-        valorTotal={data?.pedido?.totalPayment}
+        valorTotal={data?.pedido?.totalPayment ? data?.pedido?.totalPayment : 0}
+        valorEntrega={
+          data?.pedido?.shippingValue ? data?.pedido?.shippingValue : 0
+        }
       />
       <StatusPedido status={data?.pedido ? data?.pedido?.status : ''} />
       {data?.pedido && <Pedido orderData={data?.pedido} />}
