@@ -348,16 +348,15 @@ export const getFavoriteByUserId = async (id: string) => {
   }
 };
 
-export const getAllItemsCartByUserId = async (userId: string) => {
+export const getAllItemsCartByUserId = async (userId: string, cep?: string) => {
   try {
-    const response = await fetch(`${API}shopping/get-all/${userId}`, {
-      next: {
-        revalidate: 0,
-        tags: ['item-cart-id-' + userId]
-      }
-    });
+    const response = await axios.post(
+      `${API}shopping/get-all/${userId}`,
+      { cep },
+      config
+    );
 
-    return await response.json();
+    return response.data;
   } catch (error) {
     console.log(error);
     return [];

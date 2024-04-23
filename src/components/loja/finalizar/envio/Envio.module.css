@@ -34,9 +34,15 @@
   width: 100%;
   position: relative;
   cursor: pointer;
+  font-size: 14px;
 }
 .escolha_entrega .entrega_calculo:last-child {
   border: 1px solid transparent;
+}
+.preco {
+  position: absolute;
+  right: 28px;
+  font-weight: 600;
 }
 .select {
   border: 1px solid var(--cor-primaria);

@@ -2,25 +2,16 @@
 
 import styles from './FinalizarFetchs.module.css';
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getAllItemsCartByUserId } from '@/src/shared/api/GETS';
-import {
-  type CartInterface,
-  type UserInterface
-} from '@/src/shared/helpers/interfaces';
+import { type CartInterface } from '@/src/shared/helpers/interfaces';
 import ProdutosFinalizar from './produto/ProdutosFinalizar';
 
-const Finalizarfetchs = ({ userData }: { userData: UserInterface }) => {
-  const { data, refetch } = useQuery<CartInterface>({
-    queryKey: ['shopping-cart', userData?.user?._id],
-    queryFn: async () => {
-      if (userData?.user?._id) {
-        return await getAllItemsCartByUserId(userData?.user?._id);
-      }
-      return [];
-    }
-  });
-
+const Finalizarfetchs = ({
+  data,
+  refetch
+}: {
+  data: CartInterface;
+  refetch: any;
+}) => {
   return (
     <div className={styles.produtos_checkout}>
       <p className={styles.titulo_table}>Resumo do pedido</p>
