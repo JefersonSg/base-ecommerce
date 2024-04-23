@@ -96,16 +96,16 @@
 }
 
 .status_pagamento {
-  color: #71dd37 !important;
+  color: #71dd37;
 }
 
-.status_pagamento.pendente {
+.status_pagamento .pendente {
   color: #ffab00 !important;
 }
-.status_pagamento.cancelado {
+.status_pagamento .cancelado {
   color: #ff3e1d !important;
 }
-.status_pagamento.devolvido {
+.status_pagamento .devolvido {
   color: #add8e6 !important;
 }
 
