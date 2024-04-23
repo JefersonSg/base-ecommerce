@@ -12,10 +12,16 @@ import styles from './FinalizarFetchs.module.css';
 import { useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 import {
+  type AddressInterface,
+  type CartInterface,
   type OrderInterface,
   type UserInterface
 } from '@/src/shared/helpers/interfaces';
-import { getUserByToken } from '@/src/shared/api/GETS';
+import {
+  getAddress,
+  getAllItemsCartByUserId,
+  getUserByToken
+} from '@/src/shared/api/GETS';
 import { createNewOrder } from '@/src/shared/api/CREATE';
 import Confirm from './confirmation/Confirm';
 import BackgoundClick from '../../compartilhado/backgrounds/BackgoundClick';
@@ -31,6 +37,26 @@ const FinalizarContainer = () => {
       return (await getUserByToken(token)) as UserInterface;
     }
   });
+  const address = useQuery<{ address: AddressInterface }>({
+    queryKey: ['address' + data?.user._id],
+    queryFn: async () => {
+      return await getAddress();
+    }
+  });
+  const itemsCart = useQuery<CartInterface>({
+    queryKey: ['shopping-cart' + data?.user?._id + address?.data?.address?.cep],
+    queryFn: async () => {
+      if (data?.user?._id) {
+        return await getAllItemsCartByUserId(
+          data?.user?._id,
+          address?.data?.address?.cep
+        );
+      }
+      return [];
+    }
+  });
+
+  console.log(itemsCart.data);
   const [ativoConfirm, setAtivoConfirm] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectDelivery, setSelectDelivery] = React.useState('');
@@ -73,8 +99,11 @@ const FinalizarContainer = () => {
   return (
     <div>
       <EntregaFinalizar />
-      {data && <Finalizarfetchs userData={data} />}
+      {data && itemsCart?.data && (
+        <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
+      )}
       <Envio
+        shippingOption={itemsCart.data?.shippingOptions}
         selectDelivery={selectDelivery}
         setPriceDelivery={setPriceDelivery}
         setSelectDelivery={setSelectDelivery}

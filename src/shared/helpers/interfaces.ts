@@ -109,11 +109,7 @@ export interface ItemsCartInterface {
   size: string;
   color: string;
 }
-export interface CartInterface {
-  itemsCart: ItemsCartInterface[];
-  prices: number[];
-  totalValue: number;
-}
+
 export interface AddressInterface {
   _id: string;
   nome: string;
@@ -173,6 +169,13 @@ export interface delivery {
     picture: string;
   };
   error?: string;
+}
+
+export interface CartInterface {
+  itemsCart: ItemsCartInterface[];
+  prices: number[];
+  totalValue: number;
+  shippingOptions: delivery[];
 }
 
 export interface OrderInterface {
