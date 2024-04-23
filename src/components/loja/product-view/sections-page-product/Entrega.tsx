@@ -7,6 +7,7 @@ import { calculateDelivery } from '@/src/shared/api/GETS';
 import { type delivery } from '@/src/shared/helpers/interfaces';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import useMedia from '@/src/shared/hooks/useMedia';
+import Loading from '@/src/components/compartilhado/loading/Loading';
 
 function Entrega() {
   const [ativo, setAtivo] = React.useState(true);
@@ -101,7 +102,7 @@ function Entrega() {
                 height={14}
               />
               <p className="texto">
-                Por correio - a partir de R$20,00 ou de graça a partir de
+                Por correio - a partir de R$15,00 ou de graça a partir de
                 R$250,00
               </p>
             </div>
@@ -113,7 +114,7 @@ function Entrega() {
                 height={14}
               />
               <p className="texto">
-                Transportadora - a partir de R$25,00 de graça ou de graça a
+                Transportadora - a partir de R$15,00 de graça ou de graça a
                 partir de R$250,00
               </p>
             </div>
@@ -121,7 +122,7 @@ function Entrega() {
               <div className={styles.entregas_metodos}>
                 {isLoading && (
                   <>
-                    <div className={styles.loading}>Loading...</div>
+                    <Loading />
                   </>
                 )}
                 {infosEntrega?.[0] &&
@@ -139,7 +140,7 @@ function Entrega() {
                         <p>{info.name}</p>
                         <p>
                           {info.error?.length
-                            ? info.error
+                            ? 'Não disponivel'
                             : 'entre ' +
                               info?.delivery_range?.min +
                               ' e ' +

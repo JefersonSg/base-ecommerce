@@ -398,7 +398,6 @@ export const getCep = async (cep: string) => {
       config
     );
 
-    console.log(response);
     return response.data;
   } catch (error) {
     console.log(error);

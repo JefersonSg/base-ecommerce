@@ -9,7 +9,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import styles from './Total.module.css';
 
-const TotalFinal = () => {
+const TotalFinal = ({ priceDelivery }: { priceDelivery: number }) => {
   const token = Cookies.get('auth_token');
   const userData = useQuery<UserInterface>({
     queryKey: ['user'],
@@ -32,7 +32,9 @@ const TotalFinal = () => {
   React.useEffect(() => {
     async function setValorCategory() {
       if (data?.totalValue) {
-        const totalValor = +data.totalValue;
+        const totalValor = priceDelivery
+          ? +data.totalValue + priceDelivery
+          : +data.totalValue;
 
         const formatoNumero = new Intl.NumberFormat('pt-BR');
         const numeroFormatado = formatoNumero.format(totalValor);
@@ -41,7 +43,7 @@ const TotalFinal = () => {
       }
     }
     void setValorCategory();
-  }, [data]);
+  }, [data, priceDelivery]);
   return (
     <div className={styles.total_container}>
       <p>Total:</p>{' '}
