@@ -33,6 +33,8 @@ const FinalizarContainer = () => {
   });
   const [ativoConfirm, setAtivoConfirm] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [selectDelivery, setSelectDelivery] = React.useState('');
+  const [priceDelivery, setPriceDelivery] = React.useState(NaN);
   const router = useRouter();
 
   const onSubmit = async () => {
@@ -72,8 +74,12 @@ const FinalizarContainer = () => {
     <div>
       <EntregaFinalizar />
       {data && <Finalizarfetchs userData={data} />}
-      <Envio />
-      <TotalFinal />
+      <Envio
+        selectDelivery={selectDelivery}
+        setPriceDelivery={setPriceDelivery}
+        setSelectDelivery={setSelectDelivery}
+      />
+      <TotalFinal priceDelivery={priceDelivery} />
       <Pagamento
         selectPayment={selectPayment}
         setSelectPayment={setSelectPayment}

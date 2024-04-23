@@ -10,10 +10,7 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
         Custo dos produtos
         <span>R$ {valorProdutos?.toFixed(2)?.replace('.', ',') ?? '0,00'}</span>
       </p>
-      <p>
-        Entrega
-        <span>A ser calculado</span>
-      </p>
+
       <p>
         Valor do desconto
         <span>R$ 0,00</span>
