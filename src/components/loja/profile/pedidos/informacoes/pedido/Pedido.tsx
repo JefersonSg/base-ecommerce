@@ -11,7 +11,9 @@ const Pedido = ({ orderData }: { orderData: OrderInterface }) => {
     <div className={styles.pedido_container}>
       <div className={styles.cabeçalho}>
         <h3>Pacote</h3>
-        <p className={styles.empresa_entrega}>{orderData.shippingCompany}</p>
+        <p className={styles.empresa_entrega}>
+          {orderData.shippingCompany}: {orderData.shippingMethod}
+        </p>
         <Link
           href={orderData.orderTracking}
           onClick={(e) => {
