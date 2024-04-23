@@ -364,14 +364,30 @@ export async function createComment(data: any, productId: string) {
 export async function createNewOrder(
   userId: string,
   methodPayment: string,
+  serviceShippingId: number,
+  setPopUpMessage: React.Dispatch<React.SetStateAction<string>>,
   cupom?: string
 ) {
+  if (!userId) {
+    setPopUpMessage('você não está logado');
+    return;
+  }
+  if (!methodPayment) {
+    setPopUpMessage('Selecione um método de pagamento');
+    return;
+  }
+  if (!serviceShippingId) {
+    setPopUpMessage('Selecione um método de envio');
+    return;
+  }
+
   try {
     const response = await axios.post(
       `${API}order/create/${userId}`,
       {
         cupom,
-        methodPayment
+        methodPayment,
+        serviceShippingId
       },
       configJson
     );

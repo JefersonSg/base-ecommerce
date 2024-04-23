@@ -152,17 +152,18 @@ const PopupInfos = ({
       <div>
         <p>Pagamento:</p>
         <div
-          className={`${styles.status_pagamento_pedido} ${
-            styles.texto_estilo_1
-          } ${styles[data.status]}`}
+          className={`${styles.status_pagamento_pedido} ${styles[data.status]}
+             ${styles.texto_estilo_1} `}
         >
           <div className={styles.status_pagamento}>
             <span className={`${styles.bolinha} ${styles[data.status]}`}></span>
-            {data.status === 'pendente'
-              ? 'Pendente'
-              : data.status === 'cancelado'
-                ? 'Cancelado'
-                : 'Confirmado'}
+            <p className={`${styles[data.status]}`}>
+              {data.status === 'pendente'
+                ? 'Pendente'
+                : data.status === 'cancelado'
+                  ? 'Cancelado'
+                  : 'Confirmado'}
+            </p>
           </div>
         </div>
       </div>

@@ -11,7 +11,17 @@ const Pedido = ({ orderData }: { orderData: OrderInterface }) => {
     <div className={styles.pedido_container}>
       <div className={styles.cabeçalho}>
         <h3>Pacote</h3>
-        <Link href={orderData.orderTracking}>Link de rastreio</Link>
+        <p className={styles.empresa_entrega}>{orderData.shippingCompany}</p>
+        <Link
+          href={orderData.orderTracking}
+          onClick={(e) => {
+            if (!orderData.orderTracking) {
+              e.preventDefault();
+            }
+          }}
+        >
+          Link de rastreio
+        </Link>
       </div>
       <Tabela data={orderData} />
     </div>

@@ -7,6 +7,7 @@ import React from 'react';
 import styles from './PedidoDetalhes.module.css';
 import TabelaProdutos from './tabela/TabelaProdutos';
 import UsuarioInfos from './usuario/UsuarioInfos';
+import EnvioInfos from './envio/EnvioInfos';
 
 const PedidoDetalhesContainer = ({ orderId }: { orderId: string }) => {
   const { data } = useQuery<{ pedido: OrderInterface }>({
@@ -64,6 +65,7 @@ const PedidoDetalhesContainer = ({ orderId }: { orderId: string }) => {
         </div>
         <div className={styles.data}>{dataTime}</div>
         <TabelaProdutos data={data?.pedido} />
+        <EnvioInfos pedido={data?.pedido} />
         <UsuarioInfos
           userId={data?.pedido?.userId}
           address={data?.pedido?.address?.[0]}

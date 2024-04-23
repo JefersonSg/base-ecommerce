@@ -4,11 +4,11 @@ import styles from './Pagamento.module.css';
 import Image from 'next/image';
 
 const Pagamento = ({
-  selectPayment,
-  setSelectPayment
+  methodPayment,
+  setMethodPayment
 }: {
-  selectPayment: string;
-  setSelectPayment: React.Dispatch<React.SetStateAction<string>>;
+  methodPayment: string;
+  setMethodPayment: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
     <div className={styles.pagamento_container}>
@@ -17,7 +17,7 @@ const Pagamento = ({
         <div
           className={styles.metodo_pagamento}
           onClick={() => {
-            setSelectPayment('card');
+            setMethodPayment('card');
           }}
         >
           <div className={styles.info}>
@@ -33,14 +33,14 @@ const Pagamento = ({
           </div>
           <span
             className={`${styles.select} ${
-              selectPayment === 'card' ? styles.selected : ''
+              methodPayment === 'card' ? styles.selected : ''
             }`}
           ></span>
         </div>
         <div
           className={styles.metodo_pagamento}
           onClick={() => {
-            setSelectPayment('pix');
+            setMethodPayment('pix');
           }}
         >
           <div className={styles.info}>
@@ -56,7 +56,7 @@ const Pagamento = ({
           </div>
           <span
             className={`${styles.select} ${
-              selectPayment === 'pix' ? styles.selected : ''
+              methodPayment === 'pix' ? styles.selected : ''
             }`}
           ></span>
         </div>

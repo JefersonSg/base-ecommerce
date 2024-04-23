@@ -27,9 +27,13 @@ import Confirm from './confirmation/Confirm';
 import BackgoundClick from '../../compartilhado/backgrounds/BackgoundClick';
 import { useRouter } from 'next/navigation';
 import sendPurchasedEmail from '@/src/actions/purchaseEmail';
+import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 
 const FinalizarContainer = () => {
-  const [selectPayment, setSelectPayment] = React.useState('card');
+  const [methodPayment, setMethodPayment] = React.useState('card');
+  const [serviceShippingId, setServiceShippingId] = React.useState(0);
+  const [popUpMessage, setPopUpMessage] = React.useState('');
+
   const token = Cookies.get('auth_token');
   const { data } = useQuery<UserInterface>({
     queryKey: ['user'],
@@ -56,7 +60,6 @@ const FinalizarContainer = () => {
     }
   });
 
-  console.log(itemsCart.data);
   const [ativoConfirm, setAtivoConfirm] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectDelivery, setSelectDelivery] = React.useState('');
@@ -69,7 +72,9 @@ const FinalizarContainer = () => {
         setIsLoading(true);
         const response = (await createNewOrder(
           data?.user._id,
-          selectPayment
+          methodPayment,
+          serviceShippingId,
+          setPopUpMessage
         )) as { createOrder: OrderInterface };
 
         if (response) {
@@ -96,30 +101,44 @@ const FinalizarContainer = () => {
       }, 3000);
     }
   }, [ativoConfirm, router]);
-  return (
-    <div>
-      <EntregaFinalizar />
-      {data && itemsCart?.data && (
-        <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
-      )}
-      <Envio
-        shippingOption={itemsCart.data?.shippingOptions}
-        selectDelivery={selectDelivery}
-        setPriceDelivery={setPriceDelivery}
-        setSelectDelivery={setSelectDelivery}
-      />
-      <TotalFinal priceDelivery={priceDelivery} />
-      <Pagamento
-        selectPayment={selectPayment}
-        setSelectPayment={setSelectPayment}
-      />
-      <div className={styles.botao_comprar} onClick={onSubmit}>
-        <BotaoColorido texto="Comprar" isLoading={isLoading} />
-      </div>
 
-      {ativoConfirm && <BackgoundClick />}
-      {ativoConfirm && <Confirm />}
-    </div>
+  React.useEffect(() => {
+    const temporizador = setTimeout(function closeError() {
+      setPopUpMessage('');
+    }, 5000);
+
+    return () => {
+      clearTimeout(temporizador);
+    };
+  }, [popUpMessage]);
+  return (
+    <>
+      <div>
+        <EntregaFinalizar />
+        {data && itemsCart?.data && (
+          <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
+        )}
+        <Envio
+          shippingOption={itemsCart.data?.shippingOptions}
+          selectDelivery={selectDelivery}
+          setPriceDelivery={setPriceDelivery}
+          setSelectDelivery={setSelectDelivery}
+          setServiceShippingId={setServiceShippingId}
+        />
+        <TotalFinal priceDelivery={priceDelivery} />
+        <Pagamento
+          methodPayment={methodPayment}
+          setMethodPayment={setMethodPayment}
+        />
+        <div className={styles.botao_comprar} onClick={onSubmit}>
+          <BotaoColorido texto="Comprar" isLoading={isLoading} />
+        </div>
+
+        {ativoConfirm && <BackgoundClick />}
+        {ativoConfirm && <Confirm />}
+      </div>
+      {popUpMessage && <PopUpMessage text={popUpMessage} />}
+    </>
   );
 };
 

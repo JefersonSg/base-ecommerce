@@ -192,4 +192,7 @@ export interface OrderInterface {
   discount: number;
   orderTracking: string;
   createdAt: string;
+  shippingMethod: string;
+  shippingValue: number;
+  shippingCompany: string;
 }

@@ -7,12 +7,14 @@ const Detalhes = ({
   address,
   formaPagamento,
   discount,
-  valorTotal
+  valorTotal,
+  valorEntrega
 }: {
   address?: AddressInterface;
   formaPagamento?: string;
   discount?: number;
-  valorTotal?: number;
+  valorTotal: number;
+  valorEntrega: number;
 }) => {
   return (
     <section className={styles.detalhes_pedido}>
@@ -45,10 +47,14 @@ const Detalhes = ({
           <h3>Resumo</h3>
           <div>
             <p>
-              Subtotal: <span>R$ {convertNumberInReal(valorTotal ?? 0)}</span>
+              Subtotal:{' '}
+              <span>R$ {convertNumberInReal(valorTotal - valorEntrega)}</span>
             </p>
             <p>
               Desconto: <span>-R$ {convertNumberInReal(discount ?? 0)}</span>
+            </p>
+            <p>
+              Entrega: <span>R$ {convertNumberInReal(valorEntrega ?? 0)}</span>
             </p>
             <p>
               Total:{' '}
