@@ -61,7 +61,7 @@ const ResultadoPesquisa = ({
       ) : (
         <>
           {pesquisa.length > 0 && (
-            <div className={styles.produco_pesquisa}>
+            <div className={styles.produto_pesquisa}>
               <p>Nenhum produto encontrado</p>
             </div>
           )}
