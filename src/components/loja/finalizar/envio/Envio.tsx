@@ -10,12 +10,14 @@ const Envio = ({
   shippingOption,
   selectDelivery,
   setSelectDelivery,
-  setPriceDelivery
+  setPriceDelivery,
+  setServiceShippingId
 }: {
   shippingOption?: delivery[];
   selectDelivery: string;
   setSelectDelivery: React.Dispatch<React.SetStateAction<string>>;
   setPriceDelivery: React.Dispatch<React.SetStateAction<number>>;
+  setServiceShippingId: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   console.log(shippingOption);
   return (
@@ -33,6 +35,7 @@ const Envio = ({
                   if (!info.error) {
                     setSelectDelivery(info.name);
                     setPriceDelivery(+info.custom_price);
+                    setServiceShippingId(info.id);
                   }
                 }}
               >
