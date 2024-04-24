@@ -68,18 +68,21 @@ function FotosProduto({ img }: { img: string[] }) {
                       setImagemPrincipal(image);
                     }}
                   >
-                    <Image
-                      className={styles.fotoPrincipal}
-                      alt="Foto do produto"
-                      id={imagemId}
-                      src={image}
-                      quality={70}
-                      fill
-                      placeholder="blur"
-                      blurDataURL={image}
-                      sizes="(max-width: 1024px) 550px, 100vw"
-                      priority={index < 2}
-                    />
+                    <div className="swiper-zoom-container">
+                      <Image
+                        className={styles.fotoPrincipal}
+                        alt="Foto do produto"
+                        id={imagemId}
+                        src={image}
+                        quality={70}
+                        loading={index > 2 ? 'lazy' : undefined}
+                        fill
+                        placeholder="blur"
+                        blurDataURL={image}
+                        sizes="(max-width: 1024px) 550px, 100vw"
+                        priority={index < 2}
+                      />
+                    </div>
                   </SwiperSlide>
                 );
               })}
