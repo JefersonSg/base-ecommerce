@@ -6,8 +6,8 @@ import ContainerSlideBanner from '@/src/components/loja/slide-banners-home/Conta
 
 import { Suspense } from 'react';
 import HomeFetchs from '@/src/components/loja/sections-home/Home-fetchs';
-import Loading from './loading';
 import LoadingBanners from '@/src/components/loja/slide-banners-home/LoadingBanners';
+import LoadingCategories from './loading-categories';
 // import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default async function Home() {
       <Suspense>
         <SlideVantagens />
       </Suspense>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<LoadingCategories />}>
         <HomeFetchs />
       </Suspense>
       {/* <SectionColecoes /> */}
