@@ -3,6 +3,7 @@ import { getAllActiveProducts, getProductById } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
+import styles from './Produto.module.css';
 
 interface PageParams {
   params: { id: string };
@@ -57,7 +58,11 @@ const page = async ({ params }: PageParams) => {
   if (!product.product) {
     return notFound();
   }
-  return <ContainerFetchs productData={product.product} />;
+  return (
+    <div className={styles.section_produtos}>
+      <ContainerFetchs productData={product.product} />
+    </div>
+  );
 };
 
 export default page;
