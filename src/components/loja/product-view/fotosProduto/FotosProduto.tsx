@@ -57,6 +57,7 @@ function FotosProduto({ img }: { img: string[] }) {
             <Swiper
               slidesPerView={1}
               thumbs={{ swiper: thumbsSwiper }}
+              zoom={true}
               modules={[Controller, Thumbs, FreeMode]}
             >
               {img?.map((image, index) => {
