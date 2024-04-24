@@ -1,7 +1,7 @@
 import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 import styles from './loading.module.css';
 
-export default function Loading() {
+export default function LoadingProduct() {
   return (
     <div className={styles.produto_container}>
       <Titulo titulo="carregando..." />

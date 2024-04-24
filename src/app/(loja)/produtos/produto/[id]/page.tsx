@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 import styles from './Produto.module.css';
 import { Suspense } from 'react';
-import Loading from './loading';
+import LoadingProduct from './loading-product';
 
 interface PageParams {
   params: { id: string };
@@ -62,7 +62,7 @@ const page = async ({ params }: PageParams) => {
   }
   return (
     <div className={styles.produtos_container}>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<LoadingProduct />}>
         <ContainerFetchs productData={product.product} />
       </Suspense>
     </div>
