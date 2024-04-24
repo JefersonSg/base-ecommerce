@@ -4,6 +4,8 @@ import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 import styles from './Produto.module.css';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 interface PageParams {
   params: { id: string };
@@ -59,8 +61,10 @@ const page = async ({ params }: PageParams) => {
     return notFound();
   }
   return (
-    <div className={styles.section_produtos}>
-      <ContainerFetchs productData={product.product} />
+    <div className={styles.produtos_container}>
+      <Suspense fallback={<Loading />}>
+        <ContainerFetchs productData={product.product} />
+      </Suspense>
     </div>
   );
 };
