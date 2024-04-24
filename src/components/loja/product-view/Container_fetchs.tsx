@@ -10,8 +10,6 @@ import {
 import ContainerProduct from './Container_product';
 import { Titulo } from '../../compartilhado/textos/Titulo';
 import styles from './Produto.module.css';
-import { Suspense } from 'react';
-import Loading from '@/src/app/(loja)/produtos/produto/[id]/loading';
 
 export default async function ContainerFetchs({
   productData
@@ -29,20 +27,18 @@ export default async function ContainerFetchs({
 
   return (
     <main className={styles.section_produtos}>
-      <Suspense fallback={<Loading />}>
-        {productData ? (
-          <ContainerProduct
-            commentData={commentData}
-            productData={productData}
-            categoryName={categoryName?.category?.name}
-            subcategoryName={subcategoryName?.subcategory?.name}
-          />
-        ) : (
-          <div className={styles.not_found}>
-            <Titulo titulo="Nenhum produto encontrado" />
-          </div>
-        )}
-      </Suspense>
+      {productData ? (
+        <ContainerProduct
+          commentData={commentData}
+          productData={productData}
+          categoryName={categoryName?.category?.name}
+          subcategoryName={subcategoryName?.subcategory?.name}
+        />
+      ) : (
+        <div className={styles.not_found}>
+          <Titulo titulo="Nenhum produto encontrado" />
+        </div>
+      )}
     </main>
   );
 }
