@@ -7,7 +7,7 @@ import { calculateDelivery } from '@/src/shared/api/GETS';
 import { type delivery } from '@/src/shared/helpers/interfaces';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import useMedia from '@/src/shared/hooks/useMedia';
-import Loading from '@/src/components/compartilhado/loading/Loading';
+import Loading from '@/src/components/compartilhado/loading/LoadingSpinner';
 
 function Entrega() {
   const [ativo, setAtivo] = React.useState(true);

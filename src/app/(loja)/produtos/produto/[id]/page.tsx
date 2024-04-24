@@ -2,8 +2,6 @@ import ContainerFetchs from '@/src/components/loja/product-view/Container_fetchs
 import { getAllActiveProducts, getProductById } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import Loading from './loading';
 import { type Metadata } from 'next';
 
 interface PageParams {
@@ -59,11 +57,7 @@ const page = async ({ params }: PageParams) => {
   if (!product.product) {
     return notFound();
   }
-  return (
-    <Suspense fallback={<Loading />}>
-      <ContainerFetchs productData={product.product} />
-    </Suspense>
-  );
+  return <ContainerFetchs productData={product.product} />;
 };
 
 export default page;
