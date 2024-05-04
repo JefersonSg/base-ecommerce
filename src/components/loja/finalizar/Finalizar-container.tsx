@@ -48,7 +48,7 @@ const FinalizarContainer = () => {
     }
   });
   const itemsCart = useQuery<CartInterface>({
-    queryKey: ['shopping-cart' + data?.user?._id + address?.data?.address?.cep],
+    queryKey: ['shopping-cart', data?.user?._id],
     queryFn: async () => {
       if (data?.user?._id) {
         return await getAllItemsCartByUserId(
