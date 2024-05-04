@@ -42,13 +42,13 @@ const FinalizarContainer = () => {
     }
   });
   const address = useQuery<{ address: AddressInterface }>({
-    queryKey: ['address' + data?.user._id],
+    queryKey: ['address' + data?.user?._id],
     queryFn: async () => {
       return await getAddress();
     }
   });
   const itemsCart = useQuery<CartInterface>({
-    queryKey: ['shopping-cart', data?.user?._id],
+    queryKey: ['shopping-cart', data?.user?._id, address?.data?.address?.cep],
     queryFn: async () => {
       if (data?.user?._id) {
         return await getAllItemsCartByUserId(
@@ -129,7 +129,10 @@ const FinalizarContainer = () => {
           setSelectDelivery={setSelectDelivery}
           setServiceShippingId={setServiceShippingId}
         />
-        <TotalFinal priceDelivery={priceDelivery} />
+        <TotalFinal
+          priceDelivery={priceDelivery}
+          cepRefetch={address?.data?.address?.cep ?? ''}
+        />
         <Pagamento
           methodPayment={methodPayment}
           setMethodPayment={setMethodPayment}
