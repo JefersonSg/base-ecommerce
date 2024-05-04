@@ -10,6 +10,7 @@ function UlLinksUteis() {
   React.useEffect(() => {
     setIsAdmin(Cookies.get('isAdmin'));
   }, []);
+
   React.useEffect(() => {
     setAuth(Cookies.get('auth_token'));
   }, []);

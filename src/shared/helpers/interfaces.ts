@@ -181,6 +181,8 @@ export interface CartInterface {
 export interface OrderInterface {
   _id: string;
   userId: string;
+  paymentLink: string;
+  paymentId: string;
   address: [AddressInterface];
   status: string;
   productIds: string[];

@@ -21,6 +21,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.melhorenvio.com.br',
         port: ''
+      },
+      {
+        protocol: 'https',
+        hostname: 'melhorenvio.com.br',
+        port: ''
       }
     ]
   }
