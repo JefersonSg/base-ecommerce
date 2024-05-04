@@ -47,6 +47,7 @@ const FinalizarContainer = () => {
       return await getAddress();
     }
   });
+
   const itemsCart = useQuery<CartInterface>({
     queryKey: ['shopping-cart', data?.user?._id, address?.data?.address?.cep],
     queryFn: async () => {
@@ -115,6 +116,9 @@ const FinalizarContainer = () => {
     };
   }, [popUpMessage]);
 
+  React.useEffect(() => {
+    void itemsCart.refetch();
+  }, [itemsCart, address?.data]);
   return (
     <>
       <div>
