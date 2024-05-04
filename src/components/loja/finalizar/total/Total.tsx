@@ -9,7 +9,13 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import styles from './Total.module.css';
 
-const TotalFinal = ({ priceDelivery }: { priceDelivery: number }) => {
+const TotalFinal = ({
+  priceDelivery,
+  cepRefetch
+}: {
+  priceDelivery: number;
+  cepRefetch: string;
+}) => {
   const token = Cookies.get('auth_token');
   const userData = useQuery<UserInterface>({
     queryKey: ['user'],
@@ -20,7 +26,7 @@ const TotalFinal = ({ priceDelivery }: { priceDelivery: number }) => {
   const [valorTotal, setValorTotal] = React.useState<string>();
 
   const { data } = useQuery<CartInterface>({
-    queryKey: ['shopping-cart', userData?.data?.user?._id],
+    queryKey: ['shopping-cart', userData?.data?.user?._id, cepRefetch],
     queryFn: async () => {
       if (userData?.data?.user?._id) {
         return await getAllItemsCartByUserId(userData?.data?.user?._id);
