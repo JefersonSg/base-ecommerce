@@ -19,7 +19,6 @@ const Envio = ({
   setPriceDelivery: React.Dispatch<React.SetStateAction<number>>;
   setServiceShippingId: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-  console.log(shippingOption);
   return (
     <div className={styles.envio_container}>
       <h3>Envio:</h3>

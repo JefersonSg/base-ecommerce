@@ -48,7 +48,7 @@ const FinalizarContainer = () => {
     }
   });
   const itemsCart = useQuery<CartInterface>({
-    queryKey: ['shopping-cart' + data?.user?._id + address?.data?.address?.cep],
+    queryKey: ['shopping-cart', data?.user?._id],
     queryFn: async () => {
       if (data?.user?._id) {
         return await getAllItemsCartByUserId(
@@ -64,6 +64,7 @@ const FinalizarContainer = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectDelivery, setSelectDelivery] = React.useState('');
   const [priceDelivery, setPriceDelivery] = React.useState(NaN);
+  const [paymentLink, setPaymentLink] = React.useState('');
   const router = useRouter();
 
   const onSubmit = async () => {
@@ -83,6 +84,8 @@ const FinalizarContainer = () => {
             response.createOrder._id,
             response.createOrder.address[0].telefone
           );
+          console.log(response.createOrder.paymentLink);
+          setPaymentLink(response.createOrder.paymentLink);
           setAtivoConfirm(true);
           setIsLoading(false);
         }
@@ -97,10 +100,10 @@ const FinalizarContainer = () => {
   React.useEffect(() => {
     if (ativoConfirm) {
       setTimeout(() => {
-        router.push('/minha-conta/pedidos');
-      }, 3000);
+        router.push(paymentLink);
+      }, 3500);
     }
-  }, [ativoConfirm, router]);
+  }, [ativoConfirm, paymentLink, router]);
 
   React.useEffect(() => {
     const temporizador = setTimeout(function closeError() {
@@ -111,6 +114,7 @@ const FinalizarContainer = () => {
       clearTimeout(temporizador);
     };
   }, [popUpMessage]);
+
   return (
     <>
       <div>

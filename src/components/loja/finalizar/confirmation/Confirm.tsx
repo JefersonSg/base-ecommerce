@@ -7,7 +7,7 @@ const Confirm = () => {
     <div className={styles.confirm_container}>
       <ConfirmLottie />
       <h1>Pedido concluido!</h1>
-      <p>O pagamento sera concluido pelo whatsapp</p>
+      <p>O pagamento sera concluido pelo Mercado Pago</p>
     </div>
   );
 };

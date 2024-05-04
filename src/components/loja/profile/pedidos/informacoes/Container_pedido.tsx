@@ -9,6 +9,7 @@ import { getOrderById } from '@/src/shared/api/GETS';
 import { type OrderInterface } from '@/src/shared/helpers/interfaces';
 import Breadcrumb from '../../../breadcrumb/Breadcrumb';
 import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
+import Link from 'next/link';
 
 const ContainerPedido = ({ orderId }: { orderId: string }) => {
   const { data } = useQuery<{ pedido: OrderInterface }>({
@@ -65,6 +66,11 @@ const ContainerPedido = ({ orderId }: { orderId: string }) => {
           >
             Pedido {data?.pedido?.status}
           </p>
+          {data?.pedido?.status === 'pendente' ? (
+            <Link href={data.pedido.paymentLink}>Retomar pagamento</Link>
+          ) : (
+            ''
+          )}
         </div>
       </time>
       <Detalhes

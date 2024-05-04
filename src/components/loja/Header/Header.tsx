@@ -74,7 +74,7 @@ export function Header({
             <p>
               {userData?.user
                 ? 'Olá ' +
-                  userData?.user?.name +
+                  userData?.user?.name?.split(' ')?.[0] +
                   ' ' +
                   userData?.user?.surname?.split(' ')?.[0] +
                   ` ${
