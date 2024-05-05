@@ -25,8 +25,6 @@ export default async function LojaLayout({
       <BtnZap />
       <Footer />
       <GoogleTagManager gtmId="G-NYKP51D935" />
-      <GoogleAnalytics />
-      <GoogleTagManager gtmId="GTM-KDWLFGQ4" />
     </>
   );
 }
