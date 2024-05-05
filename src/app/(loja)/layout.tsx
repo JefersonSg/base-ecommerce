@@ -5,7 +5,7 @@ import { BtnZap } from '@/src/components/compartilhado/botoes/btnZap/BtnZap';
 import { type subcategoryInterface } from '@/src/shared/helpers/interfaces';
 import HeaderContainer from '@/src/components/loja/Header/header-container';
 import './globalsLoja.css';
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 
 export type subcategoriesListByCategory = Record<
   number,
@@ -25,6 +25,8 @@ export default async function LojaLayout({
       <BtnZap />
       <Footer />
       <GoogleTagManager gtmId="G-NYKP51D935" />
+      <GoogleAnalytics />
+      <GoogleTagManager gtmId="GTM-KDWLFGQ4" />
     </>
   );
 }

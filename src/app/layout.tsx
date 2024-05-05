@@ -4,6 +4,7 @@ import './globals.css';
 import { GoogleTagManager } from '@next/third-parties/google';
 
 import Providers from '@/src/shared/providers/providers';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Loja Mayse | Moda intima - Compre e Receba em Casa',
@@ -55,10 +56,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-KDWLFGQ4" />
+      <GoogleTagManager gtmId="G-NYKP51D935" />
       <body className={`${typeFirst.variable} ${typeFirstDashboard.variable}`}>
+        <Script>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-KDWLFGQ4"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            ></iframe>
+          </noscript>
+        </Script>
         <Providers>{children}</Providers>
       </body>
-      <GoogleTagManager gtmId="G-NYKP51D935" />
     </html>
   );
 }
