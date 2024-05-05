@@ -119,6 +119,7 @@ const FinalizarContainer = () => {
   React.useEffect(() => {
     void itemsCart.refetch();
   }, [itemsCart, address?.data]);
+
   return (
     <>
       <div>
