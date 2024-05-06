@@ -21,13 +21,17 @@ function UlLinksUteis() {
         <BotaoLi texto="Dashboard" image="dashboard" pathname="/dashboard" />
       )}
 
-      <BotaoLi texto="Atendimento" image="chat" pathname="/atendimento" />
-      <BotaoLi
+      {/* <BotaoLi texto="Atendimento" image="chat" pathname="/atendimento" /> */}
+      {/* <BotaoLi
         texto="Rastrear pedido"
         image="caminhao"
-        pathname="/rastrear-pedido"
+        pathname="/minha-conta/pedidos"
+      /> */}
+      <BotaoLi
+        texto="Meus Pedidos"
+        image="caixa"
+        pathname="/minha-conta/pedidos"
       />
-      <BotaoLi texto="Meus Pedidos" image="caixa" pathname="meus-pedidos" />
       <BotaoLi
         texto="Minha conta"
         image="usuario"
