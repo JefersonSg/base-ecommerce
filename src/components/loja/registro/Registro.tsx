@@ -12,6 +12,7 @@ import * as yup from 'yup';
 import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import Link from 'next/link';
 import InputFormulario from '@/src/components/compartilhado/formulario/InputForm';
+import sendRegisterEmail from '@/src/actions/register';
 
 interface InputsRegister {
   name: string;
@@ -100,6 +101,7 @@ const Registro = () => {
     };
 
     setLoading(true);
+    await sendRegisterEmail(data.name, data.email);
     await registerUser(dataUser, setErrorMessage, setLoading);
     setLoading(false);
   };

@@ -18,7 +18,7 @@ interface VercelInviteUserEmailProps {
   cellphone: string;
 }
 
-export const WelcomeEmail = ({
+export const PurchaseEmail = ({
   name = '',
   id = '',
   cellphone = ''
@@ -59,4 +59,4 @@ export const WelcomeEmail = ({
   );
 };
 
-export default WelcomeEmail;
+export default PurchaseEmail;
