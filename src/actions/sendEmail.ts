@@ -1,6 +1,6 @@
 'use server';
 
-import WelcomeEmail from '@/src/email-templates/welcome-email';
+import WelcomeEmail from '@/src/email-templates/purshased-email';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
