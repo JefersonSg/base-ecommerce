@@ -11,15 +11,10 @@ import LoadingCategories from './loading-categories';
 // import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 
 export const metadata: Metadata = {
-  title: 'Loja Mayse | Home',
+  title: 'Loja Mayse | Moda intima - Compre e Receba em Casa',
   description:
     'Bem-vindas à Loja Mayse, seu destino para moda íntima que realça sua feminilidade e desperta seus desejos. Oferecemos uma variedade de lingeries cuidadosamente selecionadas, além de produtos sensuais imperdíveis. Explore sua sensualidade na Loja Mayse.',
-  keywords: [
-    'Abayomi Make Beauty',
-    'Maquiagem',
-    'Maquiagens de qualidade',
-    'Make Beauty'
-  ],
+  keywords: ['Loja Mayse', 'Sexy shop', 'Mayse', 'Mayse sexy shop'],
   icons: '/icone.svg',
   robots: "'index', 'follow'"
 };
