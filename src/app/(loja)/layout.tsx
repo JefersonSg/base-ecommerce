@@ -20,11 +20,11 @@ export default async function LojaLayout({
 }) {
   return (
     <>
+      <GoogleTagManager gtmId="G-NYKP51D935" />
       <HeaderContainer />
       {children}
       <BtnZap />
       <Footer />
-      <GoogleTagManager gtmId="G-NYKP51D935" />
     </>
   );
 }
