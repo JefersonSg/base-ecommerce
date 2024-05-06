@@ -50,6 +50,21 @@ export const getProductBySales = async () => {
     return [];
   }
 };
+export const getProductByPromotion = async () => {
+  try {
+    const response = await fetch(`${API}products/promotion/get-all`, {
+      next: {
+        revalidate: timeRevalidate,
+        tags: ['all-products-by-promotion']
+      }
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 export const getAllActiveProducts = async () => {
   try {
     const response = await fetch(`${API}products/actives`, {
