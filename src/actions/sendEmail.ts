@@ -1,6 +1,6 @@
 'use server';
 
-import WelcomeEmail from '@/src/email-templates/purshased-email';
+import PurchaseEmail from '../email-templates/purshase-email';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -12,7 +12,7 @@ const sendEmail = async () => {
       from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_EMAIL}>`,
       to: ['jefersongabri@gmail.com'],
       subject: 'Bem vindo ao novo teste',
-      react: WelcomeEmail({
+      react: PurchaseEmail({
         name: 'Jeferson',
         cellphone: '5522981193154',
         id: '154781sds114522'
