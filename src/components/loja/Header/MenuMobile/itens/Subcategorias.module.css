@@ -4,7 +4,7 @@
 .subcategorias_lista ul {
   display: flex;
   flex-direction: column;
-  padding: 16px 0;
+  padding: 8px 0;
 }
 .subcategorias_lista ul li p {
   font-weight: 700;
@@ -28,6 +28,7 @@
   font-weight: 400;
   line-height: normal;
   cursor: pointer;
+  letter-spacing: .02em;
 }
 
 .subcategorias_lista ul li a:hover {
