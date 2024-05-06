@@ -63,11 +63,15 @@ export default async function HomeFetchs() {
             />
           </Suspense>
           <Suspense>
-            <Section
-              data={promocoes}
-              nomeSessao="Promoções"
-              link={'promocoes'}
-            />
+            {promocoes.products.length > 1 ? (
+              <Section
+                data={promocoes}
+                nomeSessao="Promoções"
+                link={'promocoes'}
+              />
+            ) : (
+              ''
+            )}
           </Suspense>
         </>
       )}
