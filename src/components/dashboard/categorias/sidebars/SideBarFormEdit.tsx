@@ -54,8 +54,6 @@ const SideBarFormEdit = ({
   const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data.description);
-
     setIsLoading(true);
     await updateCategory(data, idCategory);
     await refetch();

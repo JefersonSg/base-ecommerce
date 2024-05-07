@@ -85,7 +85,6 @@ const FinalizarContainer = () => {
             response.createOrder._id,
             response.createOrder.address[0].telefone
           );
-          console.log(response.createOrder.paymentLink);
           setPaymentLink(response.createOrder.paymentLink);
           setAtivoConfirm(true);
           setIsLoading(false);
