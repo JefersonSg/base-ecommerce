@@ -12,8 +12,9 @@
   gap: 32px;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width:  max-content;
   height: 150px;
+  overflow-x: auto;
 }
 .categorias span {
   display: block;
