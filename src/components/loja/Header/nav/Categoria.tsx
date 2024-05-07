@@ -13,7 +13,7 @@ const Categoria = ({
   subcategoriesList
 }: {
   category: CategoryInterface;
-  subcategoriesList: { subcategories: subcategoryInterface[] };
+  subcategoriesList?: { subcategories: subcategoryInterface[] };
 }) => {
   const [viewActive, setViewActive] = React.useState(false);
 
@@ -37,14 +37,14 @@ const Categoria = ({
       >
         {category.name}
       </Link>
-      {subcategoriesList.subcategories?.[0] && <SvgSetaBaixo />}
+      {subcategoriesList?.subcategories?.[0] && <SvgSetaBaixo />}
       {subcategoriesList?.subcategories?.[0] && viewActive && (
         <Subcategorias
           data={subcategoriesList.subcategories}
           category={category}
         />
       )}
-      {viewActive && subcategoriesList.subcategories?.[0] && (
+      {viewActive && subcategoriesList?.subcategories?.[0] && (
         <div
           className={styles.background}
           onMouseEnter={() => {

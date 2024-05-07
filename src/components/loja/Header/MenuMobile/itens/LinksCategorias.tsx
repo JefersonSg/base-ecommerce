@@ -1,30 +1,39 @@
 import styles from './LinksCategorias.module.css';
-import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
+import {
+  type subcategoryInterface,
+  type CategoryInterface
+} from '@/src/shared/helpers/interfaces';
 import BotaoCategoria from './BotaoCategoria';
 import React from 'react';
-import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
+import { useQuery } from '@tanstack/react-query';
+import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
 
 function LinksCategorias({
-  setAtivo,
-  categories,
-  subcategoriesList
+  setAtivo
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  categories: {
-    categories: CategoryInterface[];
-  };
-  subcategoriesList: subcategoriesListByCategory;
 }) {
   const [ativoLista, setAtivoLista] = React.useState<string>('');
+
+  const { data } = useQuery<{ categories: CategoryInterface[] }>({
+    queryKey: ['categories'],
+    queryFn: getAllCategories
+  });
+  const subcategoriesList = useQuery<{
+    subcategories: subcategoryInterface[];
+  }>({
+    queryKey: ['subcategories'],
+    queryFn: getAllSubcategories
+  });
   return (
     <ul className={styles.links}>
-      {categories?.categories?.map((category, index) => {
+      {data?.categories?.map((category, index) => {
         return (
           <BotaoCategoria
             key={category._id}
             category={category}
             setAtivoLista={setAtivoLista}
-            subcategories={subcategoriesList[index]}
+            subcategories={subcategoriesList.data}
             ativoLista={ativoLista}
             setAtivo={setAtivo}
           />

@@ -51,10 +51,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="" />
       <body className={`${typeFirst.variable} ${typeFirstDashboard.variable}`}>
         <Providers>{children}</Providers>
       </body>
-      <GoogleTagManager gtmId="" />
     </html>
   );
 }
