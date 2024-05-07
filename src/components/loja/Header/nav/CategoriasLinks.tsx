@@ -1,26 +1,34 @@
 import styles from './Links.module.css';
-import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
+import {
+  type subcategoryInterface,
+  type CategoryInterface
+} from '@/src/shared/helpers/interfaces';
 import Categoria from './Categoria';
-import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
+import { useQuery } from '@tanstack/react-query';
+import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
 
-const CategoriasLinks = ({
-  categories,
-  subcategoriesList
-}: {
-  categories: {
-    categories: CategoryInterface[];
-  };
-  subcategoriesList: subcategoriesListByCategory;
-}) => {
+const CategoriasLinks = () => {
+  const { data } = useQuery<{ categories: CategoryInterface[] }>({
+    queryKey: ['categories'],
+    queryFn: getAllCategories
+  });
+  const subcategoriesList = useQuery<{
+    subcategories: subcategoryInterface[];
+  }>({
+    queryKey: ['subcategories'],
+    queryFn: getAllSubcategories
+  });
+
+  console.log(subcategoriesList.data);
   return (
     <nav className={styles.container_nav}>
       <ul className={styles.categorias_lista}>
-        {categories?.categories?.map((category, index) => {
+        {data?.categories?.map((category, index) => {
           return (
             <Categoria
               key={category?._id}
               category={category}
-              subcategoriesList={subcategoriesList[index]}
+              subcategoriesList={subcategoriesList?.data}
             />
           );
         })}

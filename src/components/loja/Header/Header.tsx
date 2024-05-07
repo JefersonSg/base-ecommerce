@@ -9,24 +9,10 @@ import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
 import CategoriasLinks from './nav/CategoriasLinks';
-import {
-  type CategoryInterface,
-  type UserInterface
-} from '@/src/shared/helpers/interfaces';
-import { type subcategoriesListByCategory } from '@/src/app/(loja)/layout';
+import { type UserInterface } from '@/src/shared/helpers/interfaces';
 import { isAdmin } from '@/src/actions/isAdmin';
 
-export function Header({
-  userData,
-  categories,
-  subcategoriesList
-}: {
-  userData: UserInterface;
-  categories: {
-    categories: CategoryInterface[];
-  };
-  subcategoriesList: subcategoriesListByCategory;
-}) {
+export function Header({ userData }: { userData: UserInterface }) {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
   const [admin] = React.useState(userData?.isAdmin);
 
@@ -114,10 +100,7 @@ export function Header({
         </div>
       </header>
       <Suspense>
-        <CategoriasLinks
-          categories={categories}
-          subcategoriesList={subcategoriesList}
-        />
+        <CategoriasLinks />
       </Suspense>
       {estaAtivo && (
         <Suspense>
@@ -125,8 +108,6 @@ export function Header({
             userData={userData}
             ativo={estaAtivo}
             setAtivo={setAtivo}
-            categories={categories}
-            subcategoriesList={subcategoriesList}
           />
         </Suspense>
       )}

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import useAuth from '../hooks/useAuth';
 
 interface dataUserLogin {
@@ -37,13 +37,11 @@ const UserContext = React.createContext<UserContextType>({
 function UserProvider({ children }: { children: React.ReactNode }) {
   const { authenticated, logout, login, registerUser } = useAuth();
   return (
-    <Suspense>
-      <UserContext.Provider
-        value={{ authenticated, logout, login, registerUser }}
-      >
-        {children}
-      </UserContext.Provider>
-    </Suspense>
+    <UserContext.Provider
+      value={{ authenticated, logout, login, registerUser }}
+    >
+      {children}
+    </UserContext.Provider>
   );
 }
 

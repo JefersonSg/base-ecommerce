@@ -17,7 +17,7 @@ function BotaoCategoria({
   subcategories
 }: {
   category: CategoryInterface;
-  subcategories: { subcategories: subcategoryInterface[] };
+  subcategories?: { subcategories: subcategoryInterface[] };
   ativoLista: string;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoLista: React.Dispatch<React.SetStateAction<string>>;
@@ -43,7 +43,7 @@ function BotaoCategoria({
           <Image alt="seta" src={'/setaBaixoW1.svg'} width={10} height={10} />
         </div>
       </div>
-      {ativoLista === category._id && (
+      {ativoLista === category._id && subcategories?.subcategories && (
         <Subcategorias
           category={category}
           subcategories={subcategories}
