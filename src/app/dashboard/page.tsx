@@ -4,7 +4,7 @@ import ProdutosMaisVendidos from '@/src/components/dashboard/Home/Cards/Produtos
 import PedidosRecentes from '@/src/components/dashboard/Home/PedidosRecentes';
 import Clientes from '@/src/components/dashboard/Home/Clientes';
 
-const page = () => {
+const page = async () => {
   return (
     <div className={`container_dashboard`}>
       <div>
