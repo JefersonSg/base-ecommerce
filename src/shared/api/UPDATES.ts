@@ -223,7 +223,6 @@ export async function updateBanner(
 ) {
   const formData = new FormData();
 
-  console.log();
   formData.append('name', data.name);
   formData.append('link', data.link);
   formData.append('mobile', data.imageMobile[0] ? 'true' : data.imageMobile[0]);
@@ -279,7 +278,6 @@ export async function updateComment(data: {
   formData.append('comment', data.comment);
   formData.append('stars', `${data.stars}`);
 
-  console.log(data);
   if (data.image) {
     formData.append('image', data.image[0]);
   }
@@ -371,7 +369,6 @@ export async function updateAddress(addressId: string, data: any) {
 
 export async function confirmOrder(orderId: string) {
   try {
-    console.log(token);
     const response = await axios.patch(
       `${API}order/confirm/${orderId}`,
       [],
@@ -385,7 +382,6 @@ export async function confirmOrder(orderId: string) {
 }
 export async function cancelOrder(orderId: string) {
   try {
-    console.log(token);
     const response = await axios.patch(
       `${API}order/cancel/${orderId}`,
       [],
@@ -412,7 +408,6 @@ export async function dispatchedOrder(orderId: string, orderTracking: string) {
 }
 export async function concludedOrder(orderId: string) {
   try {
-    console.log(token);
     const response = await axios.patch(
       `${API}order/concluded/${orderId}`,
       [],
@@ -426,7 +421,6 @@ export async function concludedOrder(orderId: string) {
 }
 export async function reversalOrder(orderId: string) {
   try {
-    console.log(token);
     const response = await axios.patch(
       `${API}order/reversal/${orderId}`,
       [],
