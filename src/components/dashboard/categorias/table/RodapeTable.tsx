@@ -26,6 +26,7 @@ const RodapeTable = ({
       <div className={styles.botoes}>
         <div
           onClick={() => {
+            console.log(currentPage);
             if (currentPage === 1) {
               setNextPage([1, 7]);
               return;
