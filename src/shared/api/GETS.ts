@@ -449,3 +449,19 @@ export const getProductByName = async (name: string) => {
     return [];
   }
 };
+
+//
+export const getViews = async () => {
+  try {
+    const response = await axios.get(
+      `${API}products/views/get-all`,
+
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
