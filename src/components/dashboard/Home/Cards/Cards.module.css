@@ -1,5 +1,5 @@
 .cards_container {
-    width: calc(100% - 380px);
+    width: calc(100vw - 100px);
     margin-left: 16px;
     display: flex;
     flex-direction: column;
@@ -40,4 +40,10 @@
 .comparacao p {
     font-size: 14px;
     color: #7C7C7C;
+}
+
+@media (max-width: 48rem) {
+    .cards_container {
+        width: calc(100vw - 80px);
+    }
 }
