@@ -23,15 +23,16 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
   if (!authenticated) {
-    if (req.nextUrl.pathname === '/minha-conta') {
+    if (
+      req.nextUrl.pathname === '/minha-conta' ||
+      req.nextUrl.pathname === '/favoritos' ||
+      req.nextUrl.pathname.includes('dashboard') ||
+      req.nextUrl.pathname.includes('carrinho') ||
+      req.nextUrl.pathname.includes('finalizar')
+    ) {
       return NextResponse.redirect(urlLogin);
     }
-    if (req.nextUrl.pathname === '/favoritos') {
-      return NextResponse.redirect(urlLogin);
-    }
-    if (req.nextUrl.pathname.includes('dashboard')) {
-      return NextResponse.redirect(urlLogin);
-    }
+
     return NextResponse.next();
   }
   return NextResponse.next();
@@ -39,9 +40,11 @@ export default async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     '/login/:path*',
-    '/registrar/',
+    '/registrar/:path*',
     '/minha-conta/:path*',
-    '/favoritos',
-    '/dashboard/:path*'
+    '/favoritos/:path*',
+    '/dashboard/:path*',
+    '/carrinho/:path*',
+    '/finalizar/:path*'
   ]
 };
