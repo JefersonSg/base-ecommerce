@@ -20,8 +20,6 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
     }
   }, [views]);
 
-  console.log(totalViews);
-
   return (
     <section className={styles.container_card}>
       <h3>Numero de visitas</h3>

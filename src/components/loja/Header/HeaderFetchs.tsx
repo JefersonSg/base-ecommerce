@@ -7,9 +7,5 @@ export default async function HeaderFetchs() {
   const token = cookies().get('auth_token')?.value;
   const userData = (await getUserByToken(token)) as UserInterface;
 
-  return (
-    <>
-      <Header userData={userData} />
-    </>
-  );
+  return <Header userData={userData} />;
 }
