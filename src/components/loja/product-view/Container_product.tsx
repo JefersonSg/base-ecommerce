@@ -35,8 +35,11 @@ const ContainerProduct = async ({
       totalStars?.length ?? 1;
 
   const token = cookies().get('auth_token')?.value;
+  const isAdmin = cookies().get('isAdmin')?.value;
 
-  await addViews(productData._id, token);
+  if (!isAdmin) {
+    addViews(productData._id, token);
+  }
 
   return (
     <>
