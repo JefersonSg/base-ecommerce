@@ -30,6 +30,10 @@
   left: -40px;
   top: -1px;
 }
+.foto_logo {
+  height: 42px !important;
+  width: 60 !important;
+}
 @media (min-width: 64rem) {
   .button_dashboard {
     position: relative;
@@ -62,9 +66,9 @@
     grid-column: 1;
     grid-row: 1;
   }
-  .logo img {
-    height: 60px;
-    width: 90px;
+  .foto_logo {
+    height: 60px !important;
+    width: 90px !important;
   }
 
   .container1 {
