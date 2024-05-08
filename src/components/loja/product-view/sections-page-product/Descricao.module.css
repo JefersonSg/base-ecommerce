@@ -8,6 +8,7 @@
   text-align: start;
   width: 80%;
   margin-top: 16px;
+  white-space: pre-wrap;
 }
 .texto {
   padding-left: 16px;
