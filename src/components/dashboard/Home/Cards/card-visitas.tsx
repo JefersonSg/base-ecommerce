@@ -46,18 +46,20 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
             />
           )
       )}
-      <button
-        className={styles.botao_mostrar_mais}
-        onClick={() => {
-          if (mostrarMais === 3) {
-            setMostrarMais(views.totalViews.length);
-          } else {
-            setMostrarMais(3);
-          }
-        }}
-      >
-        {mostrarMais === 3 ? 'mostrar mais' : 'mostrar menos'}
-      </button>
+      {views.totalViews.length > 4 && (
+        <button
+          className={styles.botao_mostrar_mais}
+          onClick={() => {
+            if (mostrarMais === 3) {
+              setMostrarMais(views.totalViews.length);
+            } else {
+              setMostrarMais(3);
+            }
+          }}
+        >
+          {mostrarMais === 3 ? 'mostrar mais' : 'mostrar menos'}
+        </button>
+      )}
     </section>
   );
 };
