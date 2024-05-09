@@ -26,8 +26,6 @@ const SideBarFormCreate = ({
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const [typeDiscount, setTypeDiscount] = React.useState('porcentagem');
-
   const { refetch } = useQuery({
     queryKey: ['cupons-dashboard'],
     queryFn: getAllCupons
@@ -38,14 +36,13 @@ const SideBarFormCreate = ({
     handleSubmit,
     watch,
     formState: { errors }
-  } = useForm<cuponsInterface>({
+  } = useForm<any>({
     resolver: yupResolver(schema),
     defaultValues: {
       active: true,
       limitUses: null,
       minimumValue: null,
-      percentageDiscount: null,
-      valueFixDiscount: null
+      percentageDiscount: null
     }
   });
 
@@ -85,52 +82,14 @@ const SideBarFormCreate = ({
           type="text"
           error={errors?.code?.message}
         />
-        <div
-          style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}
-        >
-          <label htmlFor="descontoPorcentagem">Desconto por porcentagem</label>
-          <input
-            type="radio"
-            name="tipoDesconto"
-            id="descontoPorcentagem"
-            value={'porcentagem'}
-            checked={typeDiscount === 'porcentagem'}
-            onChange={(e) => {
-              setTypeDiscount(e.target.value);
-            }}
-          />
-        </div>
-        <div
-          style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}
-        >
-          <label htmlFor="descontoFixo">Desconto por valor Fixo</label>
-          <input
-            type="radio"
-            name="tipoDesconto"
-            id="descontoFixo"
-            value={'fixo'}
-            checked={typeDiscount === 'fixo'}
-            onChange={(e) => {
-              setTypeDiscount(e.target.value);
-            }}
-          />
-        </div>
+
         <InputFormulario
-          name={
-            typeDiscount === 'fixo' ? 'valueFixDiscount' : 'percentageDiscount'
-          }
-          label={
-            typeDiscount === 'fixo'
-              ? 'valor do desconto em real'
-              : 'valor do desconto em porcentagem'
-          }
+          name="percentageDiscount"
+          label={'Porcentagem de desconto'}
           placeholder="10"
           register={register}
           type="number"
-          error={
-            errors?.valueFixDiscount?.message ??
-            errors?.percentageDiscount?.message
-          }
+          error={errors?.percentageDiscount?.message}
         />
         <InputFormulario
           name="limitUses"
