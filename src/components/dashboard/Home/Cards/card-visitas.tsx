@@ -10,6 +10,7 @@ export interface TotalViews {
 
 const CardVisitas = ({ views }: { views: TotalViews }) => {
   const [totalViews, setTotalViews] = React.useState(0);
+  const [mostrarMais, setMostrarMais] = React.useState(3);
 
   React.useEffect(() => {
     if (views?.totalViews) {
@@ -35,15 +36,28 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
         <div className={styles.container_graph}>GRAFICO</div>
       </div>
       <p className={styles.texto_produtos}>Produtos visualizados</p>
-      {views.totalViews.map((productView) => {
-        return (
-          <ProdutosVisitados
-            key={productView._id}
-            views={productView.viewsCount}
-            productId={productView._id}
-          />
-        );
-      })}
+      {views.totalViews.map(
+        (productView, index) =>
+          index <= mostrarMais && (
+            <ProdutosVisitados
+              key={productView._id}
+              views={productView.viewsCount}
+              productId={productView._id}
+            />
+          )
+      )}
+      <button
+        className={styles.botao_mostrar_mais}
+        onClick={() => {
+          if (mostrarMais === 3) {
+            setMostrarMais(views.totalViews.length);
+          } else {
+            setMostrarMais(3);
+          }
+        }}
+      >
+        {mostrarMais === 3 ? 'mostrar mais' : 'mostrar menos'}
+      </button>
     </section>
   );
 };

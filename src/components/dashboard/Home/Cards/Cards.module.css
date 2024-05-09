@@ -47,6 +47,16 @@
     font-size:20px ;
     margin-bottom: 16px;
 }
+
+.botao_mostrar_mais {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: blue;
+    width: 100%;
+    height: 28px;
+    cursor: pointer;
+}
 @media (max-width: 48rem) {
     .cards_container {
         width: calc(100vw - 80px);
