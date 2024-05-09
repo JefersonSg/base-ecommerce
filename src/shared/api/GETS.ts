@@ -150,7 +150,16 @@ export const getAllOrders = async () => {
     return [];
   }
 };
+export const getConfirmedOrders = async () => {
+  try {
+    const response = await axios.get(`${API}order/get-confirmed`, config);
 
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 // No revalidate
 export const getUserByToken = async (token2?: string) => {
   if (!token && !token2) {
