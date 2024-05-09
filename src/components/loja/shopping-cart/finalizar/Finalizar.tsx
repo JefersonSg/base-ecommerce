@@ -82,10 +82,13 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
             {valorDesconto?.cupom?._id
               ? valorDesconto?.cupom?.percentageDiscount
                 ? '-R$ ' +
-                  valorProdutos *
-                    (valorDesconto?.cupom?.percentageDiscount / 100)
+                  convertNumberInReal(
+                    valorProdutos *
+                      (valorDesconto?.cupom?.percentageDiscount / 100)
+                  )
                 : valorDesconto?.cupom?.valueFixDiscount
-                  ? '-R$ ' + valorDesconto?.cupom?.valueFixDiscount
+                  ? '-R$ ' +
+                    convertNumberInReal(valorDesconto?.cupom?.valueFixDiscount)
                   : 'R$ 0,00'
               : 'R$ 0,00'}
           </span>
@@ -97,11 +100,15 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
             R${' '}
             {valorDesconto?.cupom?._id
               ? valorDesconto?.cupom?.percentageDiscount
-                ? valorProdutos -
-                  valorProdutos *
-                    (valorDesconto?.cupom?.percentageDiscount / 100)
+                ? convertNumberInReal(
+                    valorProdutos -
+                      valorProdutos *
+                        (valorDesconto?.cupom?.percentageDiscount / 100)
+                  )
                 : valorDesconto?.cupom?.valueFixDiscount
-                  ? valorProdutos - valorDesconto?.cupom?.valueFixDiscount
+                  ? convertNumberInReal(
+                      valorProdutos - valorDesconto?.cupom?.valueFixDiscount
+                    )
                   : convertNumberInReal(valorProdutos)
               : convertNumberInReal(valorProdutos)}
           </span>

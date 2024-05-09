@@ -88,6 +88,7 @@ const FinalizarContainer = () => {
             response.createOrder._id,
             response.createOrder.address[0].telefone
           );
+          window.localStorage.removeItem('cupom');
           setPaymentLink(response.createOrder.paymentLink);
           setAtivoConfirm(true);
           setIsLoading(false);
