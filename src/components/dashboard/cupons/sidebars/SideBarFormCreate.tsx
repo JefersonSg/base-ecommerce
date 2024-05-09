@@ -11,7 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createNewCupom } from '@/src/shared/api/POST';
-import { getAllActiveBanners, getAllBanners } from '@/src/shared/api/GETS';
+import { getAllCupons } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationCupom } from './validationCupom';
 import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
@@ -29,12 +29,8 @@ const SideBarFormCreate = ({
   const [typeDiscount, setTypeDiscount] = React.useState('porcentagem');
 
   const { refetch } = useQuery({
-    queryKey: ['banners-dashboard'],
-    queryFn: getAllBanners
-  });
-  const bannerHome = useQuery({
-    queryKey: ['banners-home'],
-    queryFn: getAllActiveBanners
+    queryKey: ['cupons-dashboard'],
+    queryFn: getAllCupons
   });
 
   const {
@@ -67,7 +63,6 @@ const SideBarFormCreate = ({
         setAtivo(false);
         setAtivoPopUp('Cupom criado com sucesso');
         await refetch();
-        await bannerHome.refetch();
       }
       if (response?.response?.data?.erro) {
         setAtivoPopUp(response?.response?.data?.erro);
