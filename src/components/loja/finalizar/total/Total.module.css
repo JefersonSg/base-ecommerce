@@ -15,6 +15,14 @@
 .valor_desconto  {
   text-decoration: line-through;
   font-weight: 300;
-  font-size: 13px;
+  font-size: 12px;
   text-align: end;
+}
+.valor_desconto_aplicado {
+  font-size: 13px;
+  color: red;
+}
+.valor_desconto_novo {
+  font-size: 12px;
+  color: red;
 }
