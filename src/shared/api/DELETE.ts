@@ -24,6 +24,15 @@ export async function deleteBanner(id: string) {
     console.log(error);
   }
 }
+export async function deleteCupom(id: string) {
+  try {
+    const response = await axios.delete(`${API}cupons/delete/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export async function deleteProduct(productId: string) {
   const response = await axios.delete(

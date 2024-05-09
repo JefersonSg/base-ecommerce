@@ -7,7 +7,7 @@ import styles from './Likes.module.css';
 
 // Arquivos Lottie
 import Likes from '../../../public/lottie/like/Like2.json';
-import { addFavorite } from '@/src/shared/api/CREATE';
+import { addFavorite } from '@/src/shared/api/POST';
 import { type FavoriteInterface } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import { deleteFavorite } from '@/src/shared/api/DELETE';

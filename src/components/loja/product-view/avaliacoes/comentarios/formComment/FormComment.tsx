@@ -10,7 +10,7 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useParams, useRouter } from 'next/navigation';
 
-import { createComment } from '@/src/shared/api/CREATE';
+import { createComment } from '@/src/shared/api/POST';
 import { validationComment } from './ValidationComment';
 import Image from 'next/image';
 

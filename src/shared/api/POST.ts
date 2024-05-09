@@ -1,6 +1,10 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { type ProductApi, type BannerTypeCreate } from '../helpers/interfaces';
+import {
+  type ProductApi,
+  type BannerTypeCreate,
+  type cuponsInterface
+} from '../helpers/interfaces';
 import { revalidateTagAction } from '@/src/actions/revalidates';
 
 const API = process.env.NEXT_PUBLIC_API_URL;
@@ -390,5 +394,32 @@ export async function createNewOrder(
     return response.data;
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function createNewCupom(data: cuponsInterface) {
+  try {
+    const response = await axios.post(`${API}cupons/create`, data, configJson);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+}
+
+export async function redeemCoupon(code: string, valorDaCompra: number) {
+  try {
+    const response = await axios.post(
+      `${API}cupons/redeem`,
+      {
+        code,
+        valorDaCompra
+      },
+      configJson
+    );
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    return error;
   }
 }

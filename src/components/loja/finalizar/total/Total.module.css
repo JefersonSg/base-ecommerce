@@ -11,3 +11,10 @@
   color: var(--cor-primaria);
   font-size: 16px;
 }
+
+.valor_desconto  {
+  text-decoration: line-through;
+  font-weight: 300;
+  font-size: 13px;
+  text-align: end;
+}

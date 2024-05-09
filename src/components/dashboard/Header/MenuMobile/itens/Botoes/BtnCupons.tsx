@@ -2,9 +2,9 @@ import styles from './BotaoLi.module.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import SvgEstatisticas from '../svgs/SvgEstatisticas';
+import { SvgCupom } from '../svgs/SvgCupom';
 
-function BtnEstatistica({
+function BtnCupons({
   texto,
   link,
   setAtivo
@@ -28,11 +28,11 @@ function BtnEstatistica({
       }}
     >
       <Link href={`${linkClean}`} className={`${isActive ? styles.ativo : ''}`}>
-        <SvgEstatisticas isActive={isActive} />
+        <SvgCupom isActive={isActive} />
         {texto}
       </Link>
     </li>
   );
 }
 
-export default BtnEstatistica;
+export default BtnCupons;

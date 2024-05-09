@@ -465,3 +465,17 @@ export const getViews = async () => {
     return [];
   }
 };
+export const getAllCupons = async () => {
+  try {
+    const response = await axios.get(
+      `${API}cupons/get-all`,
+
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

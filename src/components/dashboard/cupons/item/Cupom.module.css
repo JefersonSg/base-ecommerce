@@ -1,0 +1,39 @@
+.cupom_item {
+  display: table-row;
+    width: 90vw;
+    margin: 0 auto;
+    font-family: var(--fonte-primaria);
+    position: relative;
+    height: 60px;
+
+}
+.infos {
+  width: 100px;
+}
+.cupom_item h3 {
+  font-size: 15px;
+  font-weight: 400;
+  color: #697a8d;
+  line-height: 23px;
+}
+
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.actions img {
+  padding: 4px;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .total_products_register {
+    display: block;
+  }
+  .infos {
+    width: 180px;
+  }
+}

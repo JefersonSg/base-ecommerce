@@ -12,7 +12,7 @@ import {
   type CommentInterface,
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
-import { addViews } from '@/src/shared/api/CREATE';
+import { addViews } from '@/src/shared/api/POST';
 import { cookies } from 'next/headers';
 
 const ContainerProduct = async ({

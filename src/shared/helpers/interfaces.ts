@@ -198,3 +198,15 @@ export interface OrderInterface {
   shippingValue: number;
   shippingCompany: string;
 }
+export interface cuponsInterface {
+  _id?: string;
+  code: string;
+  userId?: string[];
+  expiration?: Date;
+  limitUses?: number | null;
+  uses?: number;
+  percentageDiscount?: number | null;
+  valueFixDiscount?: number | null;
+  minimumValue?: number | null;
+  active: boolean;
+}

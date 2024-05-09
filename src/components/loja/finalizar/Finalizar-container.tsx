@@ -22,12 +22,13 @@ import {
   getAllItemsCartByUserId,
   getUserByToken
 } from '@/src/shared/api/GETS';
-import { createNewOrder } from '@/src/shared/api/CREATE';
+
 import Confirm from './confirmation/Confirm';
 import BackgoundClick from '../../compartilhado/backgrounds/BackgoundClick';
 import { useRouter } from 'next/navigation';
 import sendPurchasedEmail from '@/src/actions/purchaseEmail';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
+import { createNewOrder } from '@/src/shared/api/POST';
 
 const FinalizarContainer = () => {
   const [methodPayment, setMethodPayment] = React.useState('card');
@@ -66,6 +67,7 @@ const FinalizarContainer = () => {
   const [selectDelivery, setSelectDelivery] = React.useState('');
   const [priceDelivery, setPriceDelivery] = React.useState(NaN);
   const [paymentLink, setPaymentLink] = React.useState('');
+  const [cupom, setCupom] = React.useState('');
   const router = useRouter();
 
   const onSubmit = async () => {
@@ -76,7 +78,8 @@ const FinalizarContainer = () => {
           data?.user._id,
           methodPayment,
           serviceShippingId,
-          setPopUpMessage
+          setPopUpMessage,
+          cupom
         )) as { createOrder: OrderInterface };
 
         if (response) {
@@ -97,6 +100,13 @@ const FinalizarContainer = () => {
     }
   };
 
+  React.useEffect(() => {
+    const cupomStorage = window.localStorage.getItem('cupom');
+
+    if (cupomStorage) {
+      setCupom(cupomStorage);
+    }
+  }, []);
   React.useEffect(() => {
     if (ativoConfirm) {
       setTimeout(() => {
