@@ -36,12 +36,17 @@
     display: flex;
     gap: 12px;
     margin-top: 4px;
+    flex-wrap: wrap;
 }
 .comparacao p {
     font-size: 14px;
     color: #7C7C7C;
 }
-
+.texto_produtos {
+    margin-top: 32px;
+    font-size:20px ;
+    margin-bottom: 16px;
+}
 @media (max-width: 48rem) {
     .cards_container {
         width: calc(100vw - 80px);

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from './Cards.module.css';
+import ProdutosVisitados from './visitas/produtos-visitados';
 
 export interface TotalViews {
   totalViews: Array<{ _id: string; viewsCount: number }>;
@@ -31,8 +32,18 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
             {/* <p>7 a mais que ontem</p> */}
           </div>
         </div>
-        {/* <div className={styles.container_graph}>GRAFICO</div> */}
+        <div className={styles.container_graph}>GRAFICO</div>
       </div>
+      <p className={styles.texto_produtos}>Produtos visualizados</p>
+      {views.totalViews.map((productView) => {
+        return (
+          <ProdutosVisitados
+            key={productView._id}
+            views={productView.viewsCount}
+            productId={productView._id}
+          />
+        );
+      })}
     </section>
   );
 };
