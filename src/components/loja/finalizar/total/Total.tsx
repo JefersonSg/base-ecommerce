@@ -58,7 +58,6 @@ const TotalFinal = ({
           setDiscontoFixo(response?.cupom?.valueFixDiscount);
         }
       }
-      console.log(response?.response?.data?.erro);
       if (response?.response?.data?.erro) {
         window.localStorage.removeItem('cupom');
       }
@@ -102,9 +101,7 @@ const TotalFinal = ({
             ? discontoPorcentagem
               ? 'Desconto -R$ ' +
                 convertNumberInReal(data?.totalValue * discontoPorcentagem)
-              : cupomResponse?.cupom?.valueFixDiscount
-                ? 'Desconto -R$ ' + cupomResponse?.cupom?.valueFixDiscount
-                : 'Desconto R$ 0,00'
+              : 'Desconto R$ 0,00'
             : ''}
         </p>
 

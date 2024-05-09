@@ -6,7 +6,6 @@ import { type cuponsInterface } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCupons } from '@/src/shared/api/GETS';
 import { revalidateTagAction } from '@/src/actions/revalidates';
-import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 const CupomItem = ({
   cupomData,
@@ -36,11 +35,7 @@ const CupomItem = ({
           <p className={`description ${styles.link}`}>
             {cupomData?.percentageDiscount
               ? `${cupomData.percentageDiscount}% de desconto`
-              : cupomData.valueFixDiscount
-                ? 'R$ ' +
-                  convertNumberInReal(cupomData.valueFixDiscount) +
-                  ' de desconto'
-                : ''}
+              : ''}
           </p>
         </div>
       </td>

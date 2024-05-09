@@ -79,17 +79,12 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
         <p>
           Valor do desconto
           <span>
-            {valorDesconto?.cupom?._id
-              ? valorDesconto?.cupom?.percentageDiscount
-                ? '-R$ ' +
-                  convertNumberInReal(
-                    valorProdutos *
-                      (valorDesconto?.cupom?.percentageDiscount / 100)
-                  )
-                : valorDesconto?.cupom?.valueFixDiscount
-                  ? '-R$ ' +
-                    convertNumberInReal(valorDesconto?.cupom?.valueFixDiscount)
-                  : 'R$ 0,00'
+            {valorDesconto?.cupom?.percentageDiscount
+              ? '-R$ ' +
+                convertNumberInReal(
+                  valorProdutos *
+                    (valorDesconto?.cupom?.percentageDiscount / 100)
+                )
               : 'R$ 0,00'}
           </span>
         </p>
@@ -98,18 +93,12 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
           Valor final do pedido
           <span>
             R${' '}
-            {valorDesconto?.cupom?._id
-              ? valorDesconto?.cupom?.percentageDiscount
-                ? convertNumberInReal(
-                    valorProdutos -
-                      valorProdutos *
-                        (valorDesconto?.cupom?.percentageDiscount / 100)
-                  )
-                : valorDesconto?.cupom?.valueFixDiscount
-                  ? convertNumberInReal(
-                      valorProdutos - valorDesconto?.cupom?.valueFixDiscount
-                    )
-                  : convertNumberInReal(valorProdutos)
+            {valorDesconto?.cupom?.percentageDiscount
+              ? convertNumberInReal(
+                  valorProdutos -
+                    valorProdutos *
+                      (valorDesconto?.cupom?.percentageDiscount / 100)
+                )
               : convertNumberInReal(valorProdutos)}
           </span>
         </p>

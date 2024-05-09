@@ -202,11 +202,10 @@ export interface cuponsInterface {
   _id?: string;
   code: string;
   userId?: string[];
-  expiration?: Date;
-  limitUses?: number | null;
+  expiration?: Date | any;
+  limitUses?: number | null | any;
   uses?: number;
-  percentageDiscount?: number | null;
-  valueFixDiscount?: number | null;
-  minimumValue?: number | null;
+  percentageDiscount?: number | null | any;
+  minimumValue?: number | null | any;
   active: boolean;
 }
