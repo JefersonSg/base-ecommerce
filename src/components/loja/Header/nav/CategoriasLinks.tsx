@@ -19,7 +19,6 @@ const CategoriasLinks = () => {
     queryFn: getAllSubcategories
   });
 
-  console.log(subcategoriesList.data);
   return (
     <nav className={styles.container_nav}>
       <ul className={styles.categorias_lista}>

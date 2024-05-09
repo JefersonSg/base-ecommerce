@@ -11,7 +11,7 @@ import { getAddress, getCep } from '@/src/shared/api/GETS';
 import { type AddressInterface } from '@/src/shared/helpers/interfaces';
 import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import { updateAddress } from '@/src/shared/api/UPDATES';
-import { createAddress } from '@/src/shared/api/CREATE';
+import { createAddress } from '@/src/shared/api/POST';
 import { validationFormAddress } from './validationFormAddress';
 import EnderecoSalvo from '../EnderecoSalvo';
 

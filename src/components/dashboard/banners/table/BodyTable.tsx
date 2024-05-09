@@ -6,7 +6,7 @@ import TextInfos from './TextInfos';
 import BannerItem from '../item/BannerItem';
 import { type BannerType } from '@/src/shared/helpers/interfaces';
 
-interface GetAllCategoriesResponse {
+interface getAllBanners {
   banners: BannerType[];
 }
 
@@ -16,7 +16,7 @@ const BodyTable = ({
   setAtivoDelete,
   setBannerData
 }: {
-  data: GetAllCategoriesResponse;
+  data: getAllBanners;
   ativoDelete: boolean;
   setAtivoEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;

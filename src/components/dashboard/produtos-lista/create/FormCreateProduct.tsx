@@ -14,7 +14,7 @@ import styles from './FormCreateProduct.module.css';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createProduct } from '@/src/shared/api/CREATE';
+import { createProduct } from '@/src/shared/api/POST';
 import { validationProduct } from './ValidationProduct';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';

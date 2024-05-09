@@ -10,7 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
-import { createBanner } from '@/src/shared/api/CREATE';
+import { createBanner } from '@/src/shared/api/POST';
 import { getAllActiveBanners, getAllBanners } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationBanner } from './validationBanner';

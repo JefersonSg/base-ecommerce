@@ -165,7 +165,7 @@ export async function toggleStock(data: any, pathnameUrl: string) {
   });
 
   if (data?.stock?.amount) {
-    formData.append('amount', data.stock.amount);
+    formData.append('amount', data?.stock?.amount);
   }
 
   try {
@@ -175,11 +175,11 @@ export async function toggleStock(data: any, pathnameUrl: string) {
       configFormdata
     );
 
-    if (data.stock.amount) {
+    if (data?.stock?.amount) {
       await revalidateTagAction('all-products');
       await revalidateTagAction('all-active-products');
       await revalidateTagAction('all-products-by-sales');
-      await revalidateTagAction(data._id);
+      await revalidateTagAction(data?._id);
     }
 
     return response.data;
@@ -210,7 +210,15 @@ export async function toggleBanner(data: any) {
     console.log(error);
   }
 }
+export async function toggleCupom(id: string) {
+  try {
+    const response = await axios.patch(`${API}cupons/toggle/${id}`, configJson);
 
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 export async function updateBanner(
   id: string,
   data: {

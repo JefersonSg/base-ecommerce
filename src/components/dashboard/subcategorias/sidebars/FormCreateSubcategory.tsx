@@ -10,7 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
-import { createSubcategory } from '@/src/shared/api/CREATE';
+import { createSubcategory } from '@/src/shared/api/POST';
 import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationSubcategory } from './validationSubcategory';

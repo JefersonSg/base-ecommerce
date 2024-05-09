@@ -11,7 +11,7 @@ import {
 } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { addNewItemCart } from '@/src/shared/api/CREATE';
+import { addNewItemCart } from '@/src/shared/api/POST';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import Entrega from '../sections-page-product/Entrega';
 

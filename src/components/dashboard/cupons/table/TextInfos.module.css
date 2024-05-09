@@ -1,0 +1,30 @@
+.textInfos_container {
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box;
+}
+
+.textInfos_container {
+  font-family: var(--fonte-secundaria);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #566a7f;
+  cursor: pointer;
+}
+.textInfos_container th {
+  text-align: start;
+}
+
+
+.actions {
+  text-align: center !important;
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1100px) {
+
+}

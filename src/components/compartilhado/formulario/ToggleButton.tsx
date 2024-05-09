@@ -37,6 +37,8 @@ const ToggleButton = ({
           newData.active = !newData.active;
 
           const response = await toggleStock(newData, pathnameUrl);
+
+          console.log(response);
           if (refetch) {
             await refetch();
           }

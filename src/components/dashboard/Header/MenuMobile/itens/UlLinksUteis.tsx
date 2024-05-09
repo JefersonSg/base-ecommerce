@@ -8,7 +8,7 @@ import BtnPedidos from './Botoes/BtnPedidos';
 import BtnProdutos from './Botoes/BtnProdutos';
 import BtnSubcategoria from './Botoes/BtnSubcategoria';
 import BtnHome from './Botoes/BtnHome';
-import BtnEstatistica from './Botoes/BtnEstatistica';
+import BtnCupons from './Botoes/BtnCupons';
 
 function UlLinksUteis({
   setAtivo
@@ -45,11 +45,7 @@ function UlLinksUteis({
         link="/dashboard/subcategorias"
         setAtivo={setAtivo}
       />
-      <BtnEstatistica
-        texto="Estatísticas"
-        link="/dashboard/estatisticas"
-        setAtivo={setAtivo}
-      />
+      <BtnCupons texto="Cupons" link="/dashboard/cupons" setAtivo={setAtivo} />
     </ul>
   );
 }
