@@ -1,5 +1,5 @@
 .area_textos_container {
-  padding-bottom: 32px;
+  padding-bottom: 16px;
   border-bottom: 1px solid #f2f2f2;
 }
 
@@ -7,7 +7,7 @@
   width: 327px;
   margin: 0 auto;
   height: max-content;
-  margin-top: 32px;
+  margin-top: 16px;
 }
 
 .texto_indicativo {
@@ -18,8 +18,8 @@
   margin-top: 16px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding-bottom: 32px;
+  gap: 16px;
+  padding-bottom: 16px;
 }
 
 .finalizar_container {

@@ -36,12 +36,18 @@
 .botao {
   margin-top: 32px;
 }
+.botao.disabled {
+  pointer-events:  none;
+}
+.botao.disabled button{
+  background-color: #999 ;
+}
 .div_cupom {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   width: 327px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 .div_cupom label {
   display: flex;
