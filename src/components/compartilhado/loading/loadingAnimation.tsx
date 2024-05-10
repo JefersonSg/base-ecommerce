@@ -5,7 +5,9 @@ import LoadingAnimationLottie from '../../lottie/loadingAnimationLottie';
 const LoadingAnimation = () => {
   return (
     <div className={styles.loading}>
-      <LoadingAnimationLottie />
+      <div>
+        <LoadingAnimationLottie />
+      </div>
     </div>
   );
 };

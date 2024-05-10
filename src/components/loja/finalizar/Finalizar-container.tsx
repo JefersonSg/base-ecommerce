@@ -29,7 +29,6 @@ import { useRouter } from 'next/navigation';
 import sendPurchasedEmail from '@/src/actions/purchaseEmail';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import { createNewOrder } from '@/src/shared/api/POST';
-import LoadingAnimationLottie from '../../lottie/loadingAnimationLottie';
 
 const FinalizarContainer = () => {
   const [methodPayment, setMethodPayment] = React.useState('card');
@@ -161,7 +160,6 @@ const FinalizarContainer = () => {
         {ativoConfirm && <Confirm />}
       </div>
       {popUpMessage && <PopUpMessage text={popUpMessage} />}
-      <LoadingAnimationLottie />
     </>
   );
 };

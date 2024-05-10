@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import styles from './Total.module.css';
 import { redeemCoupon } from '@/src/shared/api/POST';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 
 const TotalFinal = ({
   priceDelivery,
@@ -31,8 +32,8 @@ const TotalFinal = ({
   const [cupomResponse, setCupomResponse] = React.useState<{
     cupom: cuponsInterface;
   }>();
-  const [discontoPorcentagem, setDiscontoPorcentagem] = React.useState(0);
-  const [discontoFixo, setDiscontoFixo] = React.useState(0);
+  const [descontoPorcentagem, setDescontoPorcentagem] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const { data } = useQuery<CartInterface>({
     queryKey: ['shopping-cart', userData?.data?.user?._id, cepRefetch],
@@ -48,17 +49,17 @@ const TotalFinal = ({
     if (cupom && valorTotal) {
       const response =
         data?.totalValue && (await redeemCoupon(cupom, +data?.totalValue));
+      setIsLoading(false);
 
       if (response) {
         setCupomResponse(response);
         if (response?.cupom?.percentageDiscount) {
-          setDiscontoPorcentagem(response.cupom.percentageDiscount / 100);
-        }
-        if (response?.cupom?.valueFixDiscount) {
-          setDiscontoFixo(response?.cupom?.valueFixDiscount);
+          setDescontoPorcentagem(response.cupom.percentageDiscount / 100);
         }
       }
       if (response?.response?.data?.erro) {
+        setIsLoading(false);
+
         window.localStorage.removeItem('cupom');
       }
     }
@@ -68,6 +69,7 @@ const TotalFinal = ({
     const cupomUsed = window.localStorage.getItem('cupom');
 
     if (cupomUsed && valorTotal) {
+      setIsLoading(true);
       setCupom(cupomUsed);
       void redeemCode();
     }
@@ -76,6 +78,7 @@ const TotalFinal = ({
   React.useEffect(() => {
     async function setValorCategory() {
       if (data?.totalValue) {
+        setIsLoading(false);
         const totalValor = priceDelivery
           ? +data.totalValue + priceDelivery
           : +data.totalValue;
@@ -90,76 +93,69 @@ const TotalFinal = ({
   }, [data, priceDelivery]);
 
   return (
-    <div className={styles.total_container}>
-      <p>Total:</p>{' '}
-      <div style={{ textAlign: 'end' }}>
-        {cupomResponse?.cupom?._id && (
-          <p style={{ fontSize: '11px' }}>cupom aplicado </p>
-        )}
-        <p className={styles.valor_desconto_aplicado}>
-          {data?.totalValue
-            ? discontoPorcentagem
-              ? 'Desconto -R$ ' +
-                convertNumberInReal(data?.totalValue * discontoPorcentagem)
-              : 'Desconto R$ 0,00'
-            : ''}
-        </p>
+    <>
+      {isLoading && <LoadingAnimation />}
+      <div className={styles.total_container}>
+        <p>Total:</p>{' '}
+        <div style={{ textAlign: 'end' }}>
+          {cupomResponse?.cupom?._id && (
+            <p style={{ fontSize: '11px' }}>cupom aplicado </p>
+          )}
+          <p className={styles.valor_desconto_aplicado}>
+            {data?.totalValue
+              ? descontoPorcentagem
+                ? 'Desconto -R$ ' +
+                  convertNumberInReal(data?.totalValue * descontoPorcentagem)
+                : 'Desconto R$ 0,00'
+              : ''}
+          </p>
 
-        <p
-          className={`${
-            cupomResponse?.cupom?._id ? styles.valor_desconto : ''
-          }`}
-        >
-          Produtos R${' '}
-          {data?.totalValue ? convertNumberInReal(+data?.totalValue) : '0,00'}
-        </p>
-        <p
-          style={{ display: `${cupomResponse?.cupom?._id ? 'block' : 'none'}` }}
-          className={`${
-            cupomResponse?.cupom?._id ? styles.valor_desconto_novo : ''
-          }`}
-        >
-          Produtos R${' '}
-          {discontoPorcentagem && data?.totalValue
-            ? convertNumberInReal(
-                (discontoPorcentagem
-                  ? -data.totalValue * discontoPorcentagem
-                  : 0) + +data.totalValue
-              )
-            : discontoFixo && data
+          <p
+            className={`${
+              cupomResponse?.cupom?._id ? styles.valor_desconto : ''
+            }`}
+          >
+            Produtos R${' '}
+            {data?.totalValue ? convertNumberInReal(+data?.totalValue) : '0,00'}
+          </p>
+          <p
+            style={{
+              display: `${cupomResponse?.cupom?._id ? 'block' : 'none'}`
+            }}
+            className={`${
+              cupomResponse?.cupom?._id ? styles.valor_desconto_novo : ''
+            }`}
+          >
+            Produtos R${' '}
+            {descontoPorcentagem && data?.totalValue
               ? convertNumberInReal(
-                  +data.totalValue - discontoFixo
-                    ? -discontoFixo + +data.totalValue
-                    : 0
+                  (descontoPorcentagem
+                    ? -data.totalValue * descontoPorcentagem
+                    : 0) + +data.totalValue
                 )
               : data && convertNumberInReal(+data.totalValue)}
-        </p>
+          </p>
 
-        <p className={styles.frete}>
-          Frete: R${' '}
-          {priceDelivery ? convertNumberInReal(priceDelivery) : '0,00'}
-        </p>
+          <p className={styles.frete}>
+            Frete: R${' '}
+            {priceDelivery ? convertNumberInReal(priceDelivery) : '0,00'}
+          </p>
 
-        {valorTotal && (
-          <p>
-            Total: R${' '}
-            {discontoPorcentagem && data?.totalValue
-              ? convertNumberInReal(
-                  (discontoPorcentagem
-                    ? -data.totalValue * discontoPorcentagem
-                    : 0) + +valorTotal?.replace(',', '.')
-                )
-              : discontoFixo
+          {valorTotal && (
+            <p>
+              Total: R${' '}
+              {descontoPorcentagem && data?.totalValue
                 ? convertNumberInReal(
-                    +valorTotal?.replace(',', '.') - discontoFixo
-                      ? -discontoFixo + +valorTotal?.replace(',', '.')
-                      : 0
+                    (descontoPorcentagem
+                      ? -data.totalValue * descontoPorcentagem
+                      : 0) + +valorTotal?.replace(',', '.')
                   )
                 : convertNumberInReal(+valorTotal.replace(',', '.'))}
-          </p>
-        )}
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
