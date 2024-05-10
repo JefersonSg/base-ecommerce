@@ -4,8 +4,14 @@ import TituloSection from './TituloSection';
 import styles from './Descricao.module.css';
 import React from 'react';
 
-function Descricao({ description }: { description: string }) {
-  const [ativo, setAtivo] = React.useState(true);
+function Descricao({
+  description,
+  title
+}: {
+  description: string;
+  title: string;
+}) {
+  const [ativo, setAtivo] = React.useState(title === 'Descrição');
 
   return (
     <div className={styles.descricao}>
@@ -14,7 +20,7 @@ function Descricao({ description }: { description: string }) {
           setAtivo(!ativo);
         }}
       >
-        <TituloSection texto="Descrição" ativo={ativo} />
+        <TituloSection texto={title} ativo={ativo} />
       </div>
       {ativo && (
         <div className={styles.texto}>
