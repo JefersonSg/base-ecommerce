@@ -11,10 +11,22 @@ import LoadingCategories from './loading-categories';
 // import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 
 export const metadata: Metadata = {
-  title: 'Loja Mayse | Moda intima - Compre e Receba em Casa',
+  title: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
   description:
     'Bem-vindas à Loja Mayse, seu destino para moda íntima que realça sua feminilidade e desperta seus desejos. Oferecemos uma variedade de lingeries cuidadosamente selecionadas, além de produtos sensuais imperdíveis. Explore sua sensualidade na Loja Mayse.',
-  keywords: ['Loja Mayse', 'Sexy shop', 'Mayse', 'Mayse sexy shop'],
+  keywords: [
+    'Loja',
+    'Mayse',
+    'Loja Mayse',
+    'sexy shop',
+    'moda intima',
+    'sexy shop',
+    'lingerie',
+    'calcinha',
+    'sutiã',
+    'conjuntos sexy',
+    'loja de sexy shop barata'
+  ],
   icons: '/icone.svg',
   robots: "'index', 'follow'"
 };

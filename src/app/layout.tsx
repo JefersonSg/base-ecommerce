@@ -6,13 +6,15 @@ import { GoogleTagManager } from '@next/third-parties/google';
 import Providers from '@/src/shared/providers/providers';
 
 export const metadata: Metadata = {
-  title: 'Loja Mayse | Moda intima - Compre e Receba em Casa',
+  title: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
   description:
     'Bem-vindas à Loja Mayse, seu destino para moda íntima que realça sua feminilidade e desperta seus desejos. Oferecemos uma variedade de lingeries cuidadosamente selecionadas, além de produtos sensuais imperdíveis. Explore sua sensualidade na Loja Mayse.',
   keywords: [
     'Loja',
     'Mayse',
     'Loja Mayse',
+    'sexy shop',
+    'moda intima',
     'sexy shop',
     'lingerie',
     'calcinha',

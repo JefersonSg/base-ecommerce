@@ -488,3 +488,17 @@ export const getAllCupons = async () => {
     return [];
   }
 };
+export const getAllUsers = async () => {
+  try {
+    const response = await axios.get(
+      `${API}user/get-all-users`,
+
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
