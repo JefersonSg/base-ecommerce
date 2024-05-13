@@ -27,7 +27,7 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
       <h3>Numero de visualizações</h3>
       <div className={styles.infos_card}>
         <div className={styles.container1}>
-          <p className={styles.valor_principal}>{totalViews}views hoje</p>
+          <p className={styles.valor_principal}>{totalViews} views hoje</p>
           <div className={styles.comparacao}>
             {/* <span>Graph</span> */}
             {/* <p>7 a mais que ontem</p> */}
