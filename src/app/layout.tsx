@@ -51,7 +51,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId="" />
+      <GoogleTagManager gtmId="G-Z48YP9QPE1" />
       <body className={`${typeFirst.variable} ${typeFirstDashboard.variable}`}>
         <Providers>{children}</Providers>
       </body>
