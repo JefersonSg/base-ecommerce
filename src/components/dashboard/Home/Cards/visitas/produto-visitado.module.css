@@ -18,7 +18,11 @@
 
     box-sizing: border-box;
 }
-
+.info_produto a {
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+}
 .info_produto p {
     font-size: 14px;
     font-weight: 400;

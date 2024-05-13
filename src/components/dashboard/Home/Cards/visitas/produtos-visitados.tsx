@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import { getProductById } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import Link from 'next/link';
 
 const ProdutosVisitados = ({
   productId,
@@ -29,7 +30,9 @@ const ProdutosVisitados = ({
             height={56}
           />
           <div className={styles.info_produto}>
-            <p>{data?.product.name}</p>
+            <Link href={`/produtos/produto/${data.product._id}`}>
+              {data?.product.name}
+            </Link>
           </div>
           {views ?? 0} views
         </div>
