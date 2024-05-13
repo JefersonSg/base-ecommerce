@@ -136,7 +136,7 @@ const SideBarFormCreate = ({
         />
         <div className={styles.view_banners_div}>
           <div>
-            <label htmlFor="any">Mobile: 340 x 530</label>
+            <label htmlFor="any">Mobile: 420 x 490</label>
             {imageUrl1 && (
               <Image
                 alt="imagem mobile"
