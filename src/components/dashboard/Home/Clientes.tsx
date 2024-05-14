@@ -6,12 +6,19 @@ import { type AllUserInterface } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import styles from './clientes.module.css';
+import addNewView from '@/src/actions/addViews';
 
 const Clientes = () => {
   const { data } = useQuery<{ users: AllUserInterface[] }>({
     queryKey: ['all_users'],
     queryFn: getAllUsers
   });
+
+  React.useEffect(() => {
+    const teste = addNewView();
+
+    console.log(teste);
+  }, []);
 
   return (
     <div className={styles.container_clientes}>
@@ -34,9 +41,9 @@ const Clientes = () => {
                   {user?.name} {user.surname}
                 </p>
                 <p>
-                  {user?.updatedAt.slice(0, 10).split('-')?.[2]}/
-                  {user?.updatedAt.slice(0, 10).split('-')?.[1]}/
-                  {user?.updatedAt.slice(0, 10).split('-')?.[0]}
+                  {user?.createdAt?.slice(0, 10)?.split('-')?.[2]}/
+                  {user?.createdAt?.slice(0, 10)?.split('-')?.[1]}/
+                  {user?.createdAt?.slice(0, 10)?.split('-')?.[0]}
                 </p>
               </div>
             </div>
