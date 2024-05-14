@@ -34,9 +34,9 @@ const Clientes = () => {
                   {user?.name} {user.surname}
                 </p>
                 <p>
-                  {user?.createdAt.slice(0, 10).split('-')?.[2]}/
-                  {user?.createdAt.slice(0, 10).split('-')?.[1]}/
-                  {user?.createdAt.slice(0, 10).split('-')?.[0]}
+                  {user?.updatedAt.slice(0, 10).split('-')?.[2]}/
+                  {user?.updatedAt.slice(0, 10).split('-')?.[1]}/
+                  {user?.updatedAt.slice(0, 10).split('-')?.[0]}
                 </p>
               </div>
             </div>
