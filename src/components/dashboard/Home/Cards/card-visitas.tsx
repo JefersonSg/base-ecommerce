@@ -29,7 +29,7 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
       <div className={styles.infos_card}>
         <div className={styles.container1}>
           <p className={styles.valor_principal}>
-            {views.ips.length} visitantes unicos
+            {views?.ips?.length} visitantes unicos
           </p>
           <p className={styles.valor_principal}>{totalViews} views hoje</p>
           <div className={styles.comparacao}>
