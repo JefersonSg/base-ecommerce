@@ -19,60 +19,34 @@ export default async function HomeFetchs() {
 
   return (
     <>
-      <Suspense>
-        <Categorias categorias={categorias} />
-      </Suspense>
+      <Categorias categorias={categorias} />
       {promocoes?.products?.length > 3 ? (
         <>
-          <Suspense>
+          <Section data={promocoes} nomeSessao="Promoções" link={'promocoes'} />
+          <Section data={novidades} nomeSessao="Novidades" link={'novidades'} />
+          <Section
+            data={maisVendidos}
+            nomeSessao="Mais vendidos"
+            link={'mais-vendidos'}
+          />
+        </>
+      ) : (
+        <>
+          <Section data={novidades} nomeSessao="Novidades" link={'novidades'} />
+          <Section
+            data={maisVendidos}
+            nomeSessao="Mais vendidos"
+            link={'mais-vendidos'}
+          />
+          {promocoes?.products?.length > 1 ? (
             <Section
               data={promocoes}
               nomeSessao="Promoções"
               link={'promocoes'}
             />
-          </Suspense>
-          <Suspense>
-            <Section
-              data={novidades}
-              nomeSessao="Novidades"
-              link={'novidades'}
-            />
-          </Suspense>
-          <Suspense>
-            <Section
-              data={maisVendidos}
-              nomeSessao="Mais vendidos"
-              link={'mais-vendidos'}
-            />
-          </Suspense>
-        </>
-      ) : (
-        <>
-          <Suspense>
-            <Section
-              data={novidades}
-              nomeSessao="Novidades"
-              link={'novidades'}
-            />
-          </Suspense>
-          <Suspense>
-            <Section
-              data={maisVendidos}
-              nomeSessao="Mais vendidos"
-              link={'mais-vendidos'}
-            />
-          </Suspense>
-          <Suspense>
-            {promocoes?.products?.length > 1 ? (
-              <Section
-                data={promocoes}
-                nomeSessao="Promoções"
-                link={'promocoes'}
-              />
-            ) : (
-              ''
-            )}
-          </Suspense>
+          ) : (
+            ''
+          )}
         </>
       )}
     </>
