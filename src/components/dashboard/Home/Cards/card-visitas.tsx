@@ -16,7 +16,7 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
   React.useEffect(() => {
     if (views?.totalViews) {
       const total = views?.totalViews?.reduce((count, totalProduto) => {
-        return count + +totalProduto.viewsCount;
+        return count + +totalProduto?.viewsCount;
       }, 0);
 
       setTotalViews(total);
@@ -29,7 +29,7 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
       <div className={styles.infos_card}>
         <div className={styles.container1}>
           <p className={styles.valor_principal}>
-            {views.ips.length} visitantes unicos
+            {views?.ips?.length} visitantes unicos
           </p>
           <p className={styles.valor_principal}>{totalViews} views hoje</p>
           <div className={styles.comparacao}>
@@ -44,18 +44,18 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
         (productView, index) =>
           index <= mostrarMais && (
             <ProdutosVisitados
-              key={productView._id}
-              views={productView.viewsCount}
-              productId={productView._id}
+              key={productView?._id}
+              views={productView?.viewsCount}
+              productId={productView?._id}
             />
           )
       )}
-      {views.totalViews.length > 4 && (
+      {views?.totalViews?.length > 4 && (
         <button
           className={styles.botao_mostrar_mais}
           onClick={() => {
             if (mostrarMais === 3) {
-              setMostrarMais(views.totalViews.length);
+              setMostrarMais(views?.totalViews?.length);
             } else {
               setMostrarMais(3);
             }
