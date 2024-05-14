@@ -62,8 +62,8 @@ const PedidoCard = ({
         <VerMais />
       </td>
       <td className={`${styles.id_pedido}`}>
-        <Link href={`/dashboard/pedidos/${orderData._id}`}>
-          #{orderData._id}
+        <Link href={`/dashboard/pedidos/${orderData?._id}`}>
+          #{orderData?._id}
         </Link>
       </td>
       <td className={`${styles.data_pedido} ${styles.texto_estilo_2}`}>
@@ -74,7 +74,7 @@ const PedidoCard = ({
           <div className={styles.imagemPerfil}>
             <Image
               alt="Foto de perfil do clente"
-              src={`${data?.user.image ?? '/profile/profile.svg'}`}
+              src={`${data?.user?.image ?? '/profile/profile.svg'}`}
               fill={true}
             />
           </div>
@@ -113,7 +113,7 @@ const PedidoCard = ({
         </div>
       </td>
       <td className={styles.metodo_pagamento_pedido}>
-        {orderData.methodPayment}
+        {orderData?.methodPayment}
       </td>
     </tr>
   );
