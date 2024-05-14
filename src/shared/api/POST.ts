@@ -58,12 +58,17 @@ export async function createAddress(data: any) {
   }
 }
 
-export function addViews(productId: string, userToken: string | undefined) {
+export async function addViews(
+  ip: string,
+  productId?: string,
+  userToken?: string | undefined
+) {
   try {
     void axios.post(
       `${API}products/views/add/${productId}`,
       {
-        userToken
+        userToken,
+        userIp: ip
       },
       configJson
     );
