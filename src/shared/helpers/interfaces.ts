@@ -8,6 +8,15 @@ export interface UserInterface {
   };
   isAdmin: boolean;
 }
+export interface AllUserInterface {
+  _id: string;
+  admin?: boolean;
+  name: string;
+  surname: string;
+  email: string;
+  image?: any;
+  createdAt: string;
+}
 
 export interface ProductInputs {
   name: string;
