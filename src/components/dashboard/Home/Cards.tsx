@@ -6,6 +6,7 @@ import { getViews } from '@/src/shared/api/GETS';
 
 const Cards = async () => {
   const views = await getViews();
+  console.log(views);
 
   return (
     <div className={styles.cards_container}>

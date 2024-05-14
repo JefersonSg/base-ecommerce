@@ -6,6 +6,7 @@ import ProdutosVisitados from './visitas/produtos-visitados';
 
 export interface TotalViews {
   totalViews: Array<{ _id: string; viewsCount: number }>;
+  ips: Array<{ _id: string; numberVisit: number }>;
 }
 
 const CardVisitas = ({ views }: { views: TotalViews }) => {
@@ -27,6 +28,9 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
       <h3>Numero de visualizações</h3>
       <div className={styles.infos_card}>
         <div className={styles.container1}>
+          <p className={styles.valor_principal}>
+            {views.ips.length} visitantes unicos
+          </p>
           <p className={styles.valor_principal}>{totalViews} views hoje</p>
           <div className={styles.comparacao}>
             {/* <span>Graph</span> */}

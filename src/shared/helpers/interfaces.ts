@@ -16,6 +16,7 @@ export interface AllUserInterface {
   email: string;
   image?: any;
   createdAt: string;
+  updatedAt: string;
 }
 
 export interface ProductInputs {
