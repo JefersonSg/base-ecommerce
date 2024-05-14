@@ -19,7 +19,11 @@
   border-radius: 8px;
   color: white;
   cursor: pointer;
+<<<<<<< HEAD
 }
+=======
+} 
+>>>>>>> main
 .links button:hover {
   outline: 2px solid rgba(100, 100, 100, 0.5);
 }
