@@ -12,8 +12,7 @@ import {
   type CommentInterface,
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
-import { addViews } from '@/src/shared/api/POST';
-import { cookies } from 'next/headers';
+import AddViewFunc from '../../compartilhado/AddViewFunc';
 
 const ContainerProduct = async ({
   productData,
@@ -34,13 +33,6 @@ const ContainerProduct = async ({
     totalStars?.reduce((acumulador, numero) => acumulador + numero, 0) /
       totalStars?.length ?? 1;
 
-  const token = cookies().get('auth_token')?.value;
-  const isAdmin = cookies().get('isAdmin')?.value;
-
-  if (!isAdmin) {
-    addViews(productData._id, token);
-  }
-
   return (
     <>
       <Breadcrumb
@@ -60,6 +52,9 @@ const ContainerProduct = async ({
       <Sections data={productData} />
       <Suspense>
         <Avaliacoes />
+      </Suspense>
+      <Suspense>
+        <AddViewFunc productId={productData._id} />
       </Suspense>
     </>
   );
