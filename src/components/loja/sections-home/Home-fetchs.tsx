@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import Section from '@/src/components/loja/sections-home/Section';
 import Categorias from '@/src/components/loja/categorias/Categorias';
 import {
