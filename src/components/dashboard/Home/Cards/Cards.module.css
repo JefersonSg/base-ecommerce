@@ -21,14 +21,14 @@
 }
 
 .container_card h3 {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     color: black;
 }
 
 .valor_principal {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 700;
     color: black;
 }
@@ -44,7 +44,7 @@
     color: #7C7C7C;
 }
 .texto_produtos {
-    margin-top: 32px;
+    margin-top: 16px;
     font-size:20px ;
     margin-bottom: 16px;
 }
