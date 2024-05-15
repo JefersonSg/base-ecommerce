@@ -11,18 +11,7 @@ export interface TotalViews {
 }
 
 const CardViews = ({ views }: { views: TotalViews }) => {
-  const [totalViews, setTotalViews] = React.useState(0);
   const [mostrarMais, setMostrarMais] = React.useState(3);
-
-  React.useEffect(() => {
-    if (views?.totalViews) {
-      const total = views?.totalViews?.reduce((count, totalProduto) => {
-        return count + +totalProduto?.viewsCount;
-      }, 0);
-
-      setTotalViews(total);
-    }
-  }, [views]);
 
   return (
     <section className={styles.container_card}>
