@@ -141,9 +141,9 @@ function Entrega() {
                         <p>
                           {info.error?.length
                             ? 'Não disponivel'
-                            : 'entre ' +
+                            : 'de ' +
                               info?.delivery_range?.min +
-                              ' e ' +
+                              ' a ' +
                               info?.delivery_range?.max +
                               ' dias'}
                         </p>

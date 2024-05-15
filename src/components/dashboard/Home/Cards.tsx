@@ -3,6 +3,7 @@ import CardVendas from './Cards/card-vendas';
 import CardVisitas from './Cards/card-visitas';
 import styles from './Cards/Cards.module.css';
 import { getViews } from '@/src/shared/api/GETS';
+import CardViews from './Cards/card-visualizações';
 
 const Cards = async () => {
   const views = await getViews();
@@ -11,6 +12,7 @@ const Cards = async () => {
     <div className={styles.cards_container}>
       <CardVendas />
       <CardVisitas views={views} />
+      <CardViews views={views} />
     </div>
   );
 };

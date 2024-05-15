@@ -24,8 +24,8 @@ const Clientes = () => {
                 <Image
                   className={styles.foto_perfil}
                   src={user.image ?? '/profile/profile.svg'}
-                  width={50}
-                  height={50}
+                  width={40}
+                  height={40}
                   alt="imagem do usuário"
                 />
               </div>
