@@ -21,10 +21,13 @@
 }
 
 .clientes_container h3 {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 0px;
-    color: black;
+    margin-bottom: 16px;
+    color: #696CFF;
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 .profile_container {
     display: flex;
@@ -40,11 +43,13 @@
     flex-direction: column;
     gap: 4px;
 }
-.data p:nth-child(1) {
-    font-size: 18px;
-    font-weight: 600;
+
+.nome {
+    color: #697A8D;
+    font-size: 14px;
 }
 .data p:nth-child(2) {
+    font-size: 14px;
     color: #7987a1!important;
 }
 @media (min-width:48rem) {

@@ -24,10 +24,9 @@ const CardViews = ({ views }: { views: TotalViews }) => {
           height={14}
         />
       </h3>
-      <div className={styles.infos_card}>
-        <div className={styles.container1}></div>
-      </div>
-      <p className={styles.texto_produtos}>Produtos visualizados</p>
+      <p className={styles.texto_produtos}>
+        Produtos visualizados {views.totalViews.length}
+      </p>
       {views?.totalViews?.map(
         (productView, index) =>
           index <= mostrarMais && (

@@ -1,12 +1,13 @@
 .visitante_container {
     padding: 8px;
-    border-radius: 8px;
     cursor: pointer;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .visitante_container.ativo {
     background-color: #F9F9F9;
     box-shadow: 0 4px 4px 0 #00000030;
+    border-radius: 8px;
 }
 
 .container1 {

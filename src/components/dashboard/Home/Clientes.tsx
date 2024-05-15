@@ -30,7 +30,7 @@ const Clientes = () => {
                 />
               </div>
               <div className={styles.data}>
-                <p>
+                <p className={styles.nome}>
                   {user?.name} {user.surname}
                 </p>
                 <p>
