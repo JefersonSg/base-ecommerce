@@ -18,7 +18,7 @@
     /* margin: 0 auto; */
     background-color: white;
     border: 1px solid #D1D1D1;
-    padding: 16px 16px 12px 16px ;
+    padding:12px 16px 12px 16px ;
     border-radius: 12px;
     position: relative;
 }
@@ -26,7 +26,7 @@
     content: '';
     display: block;
     position: absolute;
-    top: 40px;
+    top: 38px;
     left: 0;
     width: 100%;
     height: 1px;
@@ -58,9 +58,10 @@
     font-weight: 600;
     color: #697A8D;
     font-size: 14px;
+}
+.p1 {
     border-right: 1px solid var(--color-border);
 }
-
 .comparacao {
     display: flex;
     gap: 12px;

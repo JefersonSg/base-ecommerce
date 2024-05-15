@@ -15,7 +15,7 @@ const VisitantesViews = ({
   ip: string;
   user: Array<string | null>;
   views: number;
-  products: string[];
+  products: Array<{ productId: string; count: number }>;
 }) => {
   const [ativo, setAtivo] = React.useState(false);
 
@@ -51,11 +51,16 @@ const VisitantesViews = ({
         <div className={styles.informacao_user}>
           <Image
             className={styles.foto_perfil}
-            src={data?.user?.image ?? '/dashboard/home/anonimo.svg'}
-            width={40}
-            height={40}
+            src={
+              data?.user
+                ? data?.user?.image ?? '/profile/profile.svg'
+                : '/dashboard/home/anonimo.svg'
+            }
+            width={data?.user ? 40 : 30}
+            height={data?.user ? 40 : 30}
             alt="imagem do usuário"
           />
+
           <div>
             <p className={styles.nome}>
               {data?.user?.name?.split(' ')?.[0] ?? 'Anonimo'}
@@ -78,7 +83,11 @@ const VisitantesViews = ({
         <div className={styles.produtos_view_container}>
           {products?.map((product) => {
             return (
-              <ProdutosVisitados key={product} productId={product} views={0} />
+              <ProdutosVisitados
+                key={product.productId}
+                productId={product.productId}
+                views={product.count}
+              />
             );
           })}
         </div>

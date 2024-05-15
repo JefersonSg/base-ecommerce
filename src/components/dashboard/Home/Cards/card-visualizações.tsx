@@ -28,7 +28,7 @@ const CardViews = ({ views }: { views: TotalViews }) => {
         <div className={styles.container1}></div>
       </div>
       <p className={styles.texto_produtos}>Produtos visualizados</p>
-      {views.totalViews.map(
+      {views?.totalViews?.map(
         (productView, index) =>
           index <= mostrarMais && (
             <ProdutosVisitados

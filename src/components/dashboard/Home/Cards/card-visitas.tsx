@@ -11,7 +11,7 @@ export interface TotalViews {
     _id: string;
     user: Array<string | null>;
     numberVisit: number;
-    products: string[];
+    products: Array<{ productId: string; count: number }>;
   }>;
 }
 
@@ -42,14 +42,14 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
       </h3>
       <div className={styles.infos_card}>
         <div className={styles.container1}>
-          <p className={styles.valor_principal}>
+          <p className={`${styles.valor_principal} ${styles.p1}`}>
             {views?.ips?.length} visitantes unicos
           </p>
           <p className={styles.valor_principal}>{totalViews} views hoje</p>
         </div>
       </div>
       <p className={styles.texto_produtos}>Visualização por visitante</p>
-      {views.ips.map((userView) => {
+      {views?.ips?.map((userView) => {
         return (
           <VisitantesViews
             key={userView._id}
