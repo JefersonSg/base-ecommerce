@@ -32,7 +32,12 @@ export function Header() {
           </div>
 
           <Link href={'/'} className={`${styles.logo} ${styles.mobile}`}>
-            <Image alt="Logo" src={'/header/Logo.svg'} width={60} height={42} />
+            <Image
+              alt="Logo"
+              src={'/header/dashboard/logo.svg'}
+              width={60}
+              height={42}
+            />
           </Link>
         </>
         <div className={styles.container2}>

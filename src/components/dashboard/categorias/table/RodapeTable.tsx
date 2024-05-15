@@ -26,7 +26,6 @@ const RodapeTable = ({
       <div className={styles.botoes}>
         <div
           onClick={() => {
-            console.log(currentPage);
             if (currentPage === 1) {
               setNextPage([1, 7]);
               return;
@@ -44,7 +43,6 @@ const RodapeTable = ({
           onClick={() => {
             const prev = nextPage[1] + 1;
             const next = prev + 7 - 1;
-            console.log(currentPage);
 
             const totalPages = data?.categories?.length / 7;
 

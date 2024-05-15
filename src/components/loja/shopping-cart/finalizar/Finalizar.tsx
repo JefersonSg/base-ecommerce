@@ -31,7 +31,6 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
       }
 
       if (response) {
-        console.log(response);
         setValorDesconto(response);
         setIsLoading(false);
         window.localStorage.setItem('cupom', cupom);

@@ -52,7 +52,6 @@ const SelectColor = ({
                       const valueAll = [...schemeColor];
                       valueAll[i] = e.target.value;
 
-                      console.log(i);
                       setSchemeColor(valueAll);
                     }}
                   />
@@ -95,7 +94,6 @@ const SelectColor = ({
               schema?.push(`${''}`);
               codeColor[schemeColor.length] = '#FFFFFF';
 
-              console.log(codeColor);
               setSchemeColor(schema);
               setSchemeCodeColor(codeColor);
             }}
