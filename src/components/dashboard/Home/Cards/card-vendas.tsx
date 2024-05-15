@@ -23,7 +23,6 @@ const CardVendas = () => {
     return cont + +pedido.totalPayment;
   }, 0);
 
-  console.log(pedidos.data);
   return (
     <Link href={'/dashboard/pedidos'} className={styles.container_card}>
       <h3>
