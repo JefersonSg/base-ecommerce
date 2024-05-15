@@ -32,7 +32,7 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
   return (
     <section className={styles.container_card}>
       <h3>
-        Numero de Visualizações <span>(Hoje)</span>{' '}
+        Numero de Visitantes <span>(Hoje)</span>{' '}
         <Image
           alt="imagem ilustrativa"
           src={'/dashboard/home/titulos/views.svg'}
@@ -45,22 +45,23 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
           <p className={`${styles.valor_principal} ${styles.p1}`}>
             {views?.ips?.length} visitantes unicos
           </p>
-          <p className={styles.valor_principal}>{totalViews} views hoje</p>
+          <p className={styles.valor_principal}>{totalViews} clicks hoje</p>
         </div>
       </div>
       <p className={styles.texto_produtos}>Visualização por visitante</p>
-      {views?.ips?.map((userView) => {
-        return (
-          <VisitantesViews
-            key={userView._id}
-            ip={userView._id}
-            user={userView.user}
-            views={userView.numberVisit}
-            products={userView.products}
-          />
-        );
-      })}
-      {views?.totalViews?.length > 4 && (
+      {views?.ips?.map(
+        (userView, index) =>
+          index <= mostrarMais && (
+            <VisitantesViews
+              key={userView._id}
+              ip={userView._id}
+              user={userView.user}
+              views={userView.numberVisit}
+              products={userView.products}
+            />
+          )
+      )}
+      {views?.ips?.length > 4 && (
         <button
           className={styles.botao_mostrar_mais}
           onClick={() => {
