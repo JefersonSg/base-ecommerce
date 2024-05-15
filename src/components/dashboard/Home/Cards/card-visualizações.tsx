@@ -25,7 +25,7 @@ const CardViews = ({ views }: { views: TotalViews }) => {
         />
       </h3>
       <p className={styles.texto_produtos}>
-        Produtos visualizados {views.totalViews.length}
+        Produtos visualizados {views?.totalViews?.length}
       </p>
       {views?.totalViews?.map(
         (productView, index) =>

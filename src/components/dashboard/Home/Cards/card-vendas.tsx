@@ -44,7 +44,7 @@ const CardVendas = () => {
         <div className={styles.container1}>
           <p>Pedidos</p>
           <p className={styles.valor_principal}>
-            {pedidos.data?.pedidos ? pedidos.data.pedidos.length : 0}
+            {pedidos.data?.pedidos ? pedidos?.data?.pedidos?.length : 0}
           </p>
         </div>
       </div>
