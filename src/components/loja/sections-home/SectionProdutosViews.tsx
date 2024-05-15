@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styles from './SectionProdutos.module.css';
-import Image from 'next/image';
 import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 import ProductsById from '../produtos/section/ProductsById';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
