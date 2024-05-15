@@ -7,7 +7,9 @@
     height: 68px;
     border-bottom: 1px solid #D1D1D1;
 }
-
+.foto_produto {
+    border-radius: 4px;
+}
 .info_produto {
     display: flex;
     flex-direction: column;

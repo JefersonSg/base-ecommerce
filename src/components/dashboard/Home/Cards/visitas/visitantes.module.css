@@ -1,0 +1,44 @@
+.visitante_container {
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.visitante_container.ativo {
+    background-color: #F9F9F9;
+}
+
+.container1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.foto_perfil {
+    border-radius: 50%;
+}
+
+.informacao_user {
+    display: flex;
+    gap: 8px;
+}
+
+.views p {
+    font-size: 14px;
+    font-weight: 300;
+    color: #697A8D;
+}
+
+.produtos_view_container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    flex-basis: 100%;
+    margin-top: 16px;
+}
+
+.seta {
+    cursor: pointer;
+    position: relative;
+    top: 10px;
+}

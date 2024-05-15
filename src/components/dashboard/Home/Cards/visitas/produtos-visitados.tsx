@@ -19,15 +19,17 @@ const ProdutosVisitados = ({
       return await getProductById(productId);
     }
   });
+
   return (
     <>
       {data?.product && (
         <div className={styles.produto_view}>
           <Image
             alt="Foto do produto"
+            className={styles.foto_produto}
             src={data?.product.images?.[0] ?? ''}
-            width={56}
-            height={56}
+            width={40}
+            height={40}
           />
           <div className={styles.info_produto}>
             <Link href={`/produtos/produto/${data.product._id}`}>

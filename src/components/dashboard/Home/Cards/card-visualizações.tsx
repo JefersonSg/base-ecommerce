@@ -2,20 +2,15 @@
 
 import React from 'react';
 import styles from './Cards.module.css';
+import ProdutosVisitados from './visitas/produtos-visitados';
 import Image from 'next/image';
-import VisitantesViews from './visitas/visitantes-views';
 
 export interface TotalViews {
   totalViews: Array<{ _id: string; viewsCount: number }>;
-  ips: Array<{
-    _id: string;
-    user: Array<string | null>;
-    numberVisit: number;
-    products: string[];
-  }>;
+  ips: Array<{ _id: string; numberVisit: number }>;
 }
 
-const CardVisitas = ({ views }: { views: TotalViews }) => {
+const CardViews = ({ views }: { views: TotalViews }) => {
   const [totalViews, setTotalViews] = React.useState(0);
   const [mostrarMais, setMostrarMais] = React.useState(3);
 
@@ -32,7 +27,7 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
   return (
     <section className={styles.container_card}>
       <h3>
-        Numero de Visualizações <span>(Hoje)</span>{' '}
+        Numero de visualizações{' '}
         <Image
           alt="imagem ilustrativa"
           src={'/dashboard/home/titulos/views.svg'}
@@ -41,25 +36,19 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
         />
       </h3>
       <div className={styles.infos_card}>
-        <div className={styles.container1}>
-          <p className={styles.valor_principal}>
-            {views?.ips?.length} visitantes unicos
-          </p>
-          <p className={styles.valor_principal}>{totalViews} views hoje</p>
-        </div>
+        <div className={styles.container1}></div>
       </div>
-      <p className={styles.texto_produtos}>Visualização por visitante</p>
-      {views.ips.map((userView) => {
-        return (
-          <VisitantesViews
-            key={userView._id}
-            ip={userView._id}
-            user={userView.user}
-            views={userView.numberVisit}
-            products={userView.products}
-          />
-        );
-      })}
+      <p className={styles.texto_produtos}>Produtos visualizados</p>
+      {views.totalViews.map(
+        (productView, index) =>
+          index <= mostrarMais && (
+            <ProdutosVisitados
+              key={productView?._id}
+              views={productView?.viewsCount}
+              productId={productView?._id}
+            />
+          )
+      )}
       {views?.totalViews?.length > 4 && (
         <button
           className={styles.botao_mostrar_mais}
@@ -78,4 +67,4 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
   );
 };
 
-export default CardVisitas;
+export default CardViews;
