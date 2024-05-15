@@ -6,6 +6,7 @@
 
 .visitante_container.ativo {
     background-color: #F9F9F9;
+    box-shadow: 0 4px 4px 0 #00000030;
 }
 
 .container1 {
@@ -16,7 +17,9 @@
 .foto_perfil {
     border-radius: 50%;
 }
-
+.nome {
+    color: #697A8D;
+}
 .informacao_user {
     display: flex;
     gap: 8px;
