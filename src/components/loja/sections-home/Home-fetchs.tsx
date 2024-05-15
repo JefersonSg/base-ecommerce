@@ -4,17 +4,24 @@ import {
   getAllActiveProducts,
   getAllCategories,
   getProductByPromotion,
-  getProductBySales
+  getProductBySales,
+  getProductsByViews
 } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import SectionProdutosViews from './SectionProdutosViews';
 
 export default async function HomeFetchs() {
   const novidades = await getAllActiveProducts();
   const maisVendidos = await getProductBySales();
+  const maisVistos = (await getProductsByViews()) as {
+    products: ProductApi[];
+  };
   const promocoes = (await getProductByPromotion()) as {
     products: ProductApi[];
   };
   const categorias = await getAllCategories();
+
+  console.log(maisVistos);
 
   return (
     <>
@@ -28,6 +35,11 @@ export default async function HomeFetchs() {
             nomeSessao="Mais vendidos"
             link={'mais-vendidos'}
           />
+          {maisVistos?.products?.length > 1 ? (
+            <SectionProdutosViews data={maisVistos} />
+          ) : (
+            ''
+          )}
         </>
       ) : (
         <>
@@ -43,6 +55,11 @@ export default async function HomeFetchs() {
               nomeSessao="Promoções"
               link={'promocoes'}
             />
+          ) : (
+            ''
+          )}
+          {maisVistos?.products?.length > 1 ? (
+            <SectionProdutosViews data={maisVistos} />
           ) : (
             ''
           )}

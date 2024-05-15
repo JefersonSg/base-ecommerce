@@ -1,0 +1,46 @@
+.section_produtos {
+  padding-bottom: 64px;
+  margin-top: 32px;
+  border-top: 1px solid #e6e6e6;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.informacoes {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 8px;
+  box-sizing: border-box;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+.informacoes img {
+  display: none;
+}
+.informacoes div {
+  padding: 0;
+  gap: 0;
+}
+.total_pesquisa {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: var(--fonte-primaria);
+}
+
+.select_view {
+  display: flex;
+  gap: 8px;
+}
+.select_view img {
+  padding: 4px;
+  cursor: pointer;
+}
+
+.botao {
+  margin-top: 32px;
+}
