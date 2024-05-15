@@ -43,9 +43,9 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
       <div className={styles.infos_card}>
         <div className={styles.container1}>
           <p className={`${styles.valor_principal} ${styles.p1}`}>
-            {views?.ips?.length} visitantes unicos
+            {views?.ips?.length} visitantes
           </p>
-          <p className={styles.valor_principal}>{totalViews} clicks hoje</p>
+          <p className={styles.valor_principal}>{totalViews} clicks</p>
         </div>
       </div>
       <p className={styles.texto_produtos}>Visualização por visitante</p>
