@@ -33,7 +33,7 @@ const ProdutosVisitados = ({
           />
           <div className={styles.info_produto}>
             <Link href={`/produtos/produto/${data.product._id}`}>
-              {data?.product.name}
+              {data?.product?.name?.slice(0, 18)}
             </Link>
           </div>
           {views ?? 0} views
