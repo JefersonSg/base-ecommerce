@@ -21,7 +21,7 @@ const Envio = ({
 }) => {
   return (
     <div className={styles.envio_container}>
-      <h3>Envio:</h3>
+      <h3 className={styles.envio_texto}>Envio:</h3>
       <div className={styles.escolha_entrega}>
         {!shippingOption?.[0] && <Loading />}
         {shippingOption?.[0] &&
@@ -47,10 +47,10 @@ const Envio = ({
                   />
                 </div>
                 <p>{info.name}</p>
-                <p>
+                <p className={styles.tempo_envio}>
                   {info.error?.length
                     ? 'Não disponivel'
-                    : info?.delivery_range?.max + ' dias'}
+                    : 'até ' + info?.delivery_range?.max + ' dias'}
                 </p>
                 <p className={styles.preco}>
                   {info.currency} {info.custom_price}

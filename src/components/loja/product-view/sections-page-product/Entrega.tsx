@@ -141,11 +141,7 @@ function Entrega() {
                         <p>
                           {info.error?.length
                             ? 'Não disponivel'
-                            : 'de ' +
-                              info?.delivery_range?.min +
-                              ' a ' +
-                              info?.delivery_range?.max +
-                              ' dias'}
+                            : ' até ' + info?.delivery_range?.max + ' dias'}
                         </p>
                         <p>
                           {info.currency} {info.custom_price}
