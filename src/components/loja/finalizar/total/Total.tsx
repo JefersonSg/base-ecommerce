@@ -96,64 +96,58 @@ const TotalFinal = ({
     <>
       {isLoading && <LoadingAnimation />}
       <div className={styles.total_container}>
-        <p>Total:</p>{' '}
-        <div style={{ textAlign: 'end' }}>
-          {cupomResponse?.cupom?._id && (
-            <p style={{ fontSize: '11px' }}>cupom aplicado </p>
-          )}
-          <p className={styles.valor_desconto_aplicado}>
+        {cupomResponse?.cupom?._id && (
+          <p className={styles.cupom_aplicado}>cupom aplicado </p>
+        )}
+
+        <div>
+          <p>Produtos </p>
+          <p>
+            {data?.totalValue
+              ? 'R$ ' + convertNumberInReal(+data?.totalValue)
+              : 'R$ 0,00'}
+          </p>
+        </div>
+        <div>
+          <p>Desconto</p>
+          <p
+            className={`${
+              descontoPorcentagem ? styles.valor_desconto_aplicado : ''
+            }`}
+          >
             {data?.totalValue
               ? descontoPorcentagem
-                ? 'Desconto -R$ ' +
+                ? '-R$ ' +
                   convertNumberInReal(data?.totalValue * descontoPorcentagem)
-                : 'Desconto R$ 0,00'
+                : 'R$ 0,00'
               : ''}
           </p>
+        </div>
 
-          <p
-            className={`${
-              cupomResponse?.cupom?._id ? styles.valor_desconto : ''
-            }`}
-          >
-            Produtos R${' '}
-            {data?.totalValue ? convertNumberInReal(+data?.totalValue) : '0,00'}
-          </p>
-          <p
-            style={{
-              display: `${cupomResponse?.cupom?._id ? 'block' : 'none'}`
-            }}
-            className={`${
-              cupomResponse?.cupom?._id ? styles.valor_desconto_novo : ''
-            }`}
-          >
-            Produtos R${' '}
-            {descontoPorcentagem && data?.totalValue
-              ? convertNumberInReal(
-                  (descontoPorcentagem
-                    ? -data.totalValue * descontoPorcentagem
-                    : 0) + +data.totalValue
-                )
-              : data && convertNumberInReal(+data.totalValue)}
-          </p>
-
+        <div>
+          <p>Entrega</p>
           <p className={styles.frete}>
-            Frete: R${' '}
-            {priceDelivery ? convertNumberInReal(priceDelivery) : '0,00'}
+            {priceDelivery
+              ? 'R$ ' + convertNumberInReal(priceDelivery)
+              : 'R$ 0,00'}
           </p>
+        </div>
 
-          {valorTotal && (
+        {valorTotal && (
+          <div>
+            <p>Valor total do pedido</p>
             <p>
-              Total: R${' '}
               {descontoPorcentagem && data?.totalValue
-                ? convertNumberInReal(
+                ? 'R$ ' +
+                  convertNumberInReal(
                     (descontoPorcentagem
                       ? -data.totalValue * descontoPorcentagem
                       : 0) + +valorTotal?.replace(',', '.')
                   )
-                : convertNumberInReal(+valorTotal.replace(',', '.'))}
+                : 'R$ ' + convertNumberInReal(+valorTotal.replace(',', '.'))}
             </p>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );
