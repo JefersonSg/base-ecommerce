@@ -29,6 +29,7 @@ import { useRouter } from 'next/navigation';
 import sendPurchasedEmail from '@/src/actions/purchaseEmail';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import { createNewOrder } from '@/src/shared/api/POST';
+import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 
 const FinalizarContainer = () => {
   const [methodPayment, setMethodPayment] = React.useState('card');
@@ -158,6 +159,7 @@ const FinalizarContainer = () => {
         {ativoConfirm && <BackgoundClick />}
         {ativoConfirm && <Confirm />}
       </div>
+      {isLoading && <LoadingAnimation />}
       {popUpMessage && <PopUpMessage text={popUpMessage} />}
     </>
   );

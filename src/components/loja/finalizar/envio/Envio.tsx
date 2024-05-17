@@ -50,11 +50,7 @@ const Envio = ({
                 <p>
                   {info.error?.length
                     ? 'Não disponivel'
-                    : 'entre ' +
-                      info?.delivery_range?.min +
-                      ' e ' +
-                      info?.delivery_range?.max +
-                      ' dias'}
+                    : info?.delivery_range?.max + ' dias'}
                 </p>
                 <p className={styles.preco}>
                   {info.currency} {info.custom_price}
