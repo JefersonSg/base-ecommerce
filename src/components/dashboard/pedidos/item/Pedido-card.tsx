@@ -80,7 +80,7 @@ const PedidoCard = ({
           </div>
           <div>
             <p className={`${styles.name} ${styles.texto_estilo_1}`}>
-              {`${data?.user.name?.split(' ')?.[0]} ${data?.user?.surname}`}
+              {`${data?.user?.name?.split(' ')?.[0]} ${data?.user?.surname}`}
             </p>
             <p className={`${styles.email} ${styles.texto_estilo_2}`}>
               {data?.user?.email}

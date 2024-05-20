@@ -38,13 +38,13 @@ const UsuarioInfos = ({
         <div className={styles.imagemPerfil}>
           <Image
             alt="Foto de perfil do clente"
-            src={`${data?.user.image ?? '/profile/profile.svg'}`}
+            src={`${data?.user?.image ?? '/profile/profile.svg'}`}
             fill={true}
           />
         </div>
         <div>
           <p className={`${styles.name} ${styles.texto_estilo_1}`}>
-            {data?.user?.name}
+            {data?.user?.name ?? 'Não encontrado'}
           </p>
           <p className={`${styles.email} ${styles.texto_estilo_2}`}>
             {data?.user?.email}
