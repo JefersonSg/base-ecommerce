@@ -8,6 +8,7 @@ import { type delivery } from '@/src/shared/helpers/interfaces';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import useMedia from '@/src/shared/hooks/useMedia';
 import Loading from '@/src/components/compartilhado/loading/LoadingSpinner';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 function Entrega() {
   const [ativo, setAtivo] = React.useState(true);
@@ -127,24 +128,24 @@ function Entrega() {
                 )}
                 {infosEntrega?.[0] &&
                   infosEntrega?.map((info) => {
+                    if (info.error) {
+                      return <></>;
+                    }
                     return (
                       <div key={info.id} className={styles.entrega_calculo}>
-                        <div className={styles.image_entrega}>
-                          <Image
-                            alt="imagem da empresa"
-                            src={info?.company?.picture}
-                            width={94}
-                            height={20}
-                          />
-                        </div>
                         <p>{info.name}</p>
                         <p>
                           {info.error?.length
                             ? 'Não disponivel'
-                            : ' até ' + info?.delivery_range?.max + ' dias'}
+                            : info.name === 'Motoboy'
+                              ? 'Até 2 horas'
+                              : info.name === 'Retirada na loja'
+                                ? 'Combinar'
+                                : ' até ' + info?.delivery_range?.max + ' dias'}
                         </p>
                         <p>
-                          {info.currency} {info.custom_price}
+                          {info.currency}{' '}
+                          {convertNumberInReal(Number(info.custom_price))}
                         </p>
                       </div>
                     );

@@ -3,8 +3,8 @@
 import React from 'react';
 import styles from './Envio.module.css';
 import { type delivery } from '@/src/shared/helpers/interfaces';
-import Image from 'next/image';
 import Loading from '@/src/components/compartilhado/loading/LoadingSpinner';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 const Envio = ({
   shippingOption,
@@ -26,6 +26,9 @@ const Envio = ({
         {!shippingOption?.[0] && <Loading />}
         {shippingOption?.[0] &&
           shippingOption?.map((info) => {
+            if (info.error?.length) {
+              return <></>;
+            }
             return (
               <div
                 key={info.id}
@@ -38,22 +41,19 @@ const Envio = ({
                   }
                 }}
               >
-                <div className={styles.image_entrega}>
-                  <Image
-                    alt="imagem da empresa"
-                    src={info?.company?.picture}
-                    width={55}
-                    height={15}
-                  />
-                </div>
                 <p>{info.name}</p>
                 <p className={styles.tempo_envio}>
                   {info.error?.length
                     ? 'Não disponivel'
-                    : 'até ' + info?.delivery_range?.max + ' dias'}
+                    : info.name === 'Motoboy'
+                      ? 'Até 2 horas'
+                      : info.name === 'Retirada na loja'
+                        ? 'Combinar'
+                        : ' até ' + info?.delivery_range?.max + ' dias'}
                 </p>
                 <p className={styles.preco}>
-                  {info.currency} {info.custom_price}
+                  {info.currency}{' '}
+                  {convertNumberInReal(Number(info.custom_price))}
                 </p>
                 {!info.error && (
                   <span
