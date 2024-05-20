@@ -65,7 +65,7 @@ export async function addViews(
 ) {
   try {
     void axios.post(
-      `${API}products/views/add/${productId}`,
+      `${API}views/add/${productId}`,
       {
         userToken,
         userIp: ip
