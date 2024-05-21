@@ -1,7 +1,6 @@
 .section_produtos {
   padding-bottom: 64px;
   margin-top: 32px;
-  border-top: 1px solid #e6e6e6;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 16px;
@@ -43,4 +42,13 @@
 
 .botao {
   margin-top: 32px;
+}
+
+
+@media (min-width:48rem) {
+  .informacoes > div {
+    justify-content: center;
+    text-align: center !important;
+  }
+
 }
