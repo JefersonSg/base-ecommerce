@@ -5,7 +5,7 @@ import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 import styles from './Produtos.module.css';
 import SectionProdutos from './section/SectionProdutos';
 import SlideSubcategorias from './slide/SlideSubcategorias';
-import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
+// import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
 import {
   type CategoryInterface,
   type subcategoryInterface
@@ -24,7 +24,7 @@ function Produtos({
   subcategorieDataSlide?: { subcategories: subcategoryInterface[] };
   categorieDataSlide?: { categories: CategoryInterface[] };
 }) {
-  const [ativo, setAtivo] = React.useState(false);
+  // const [ativo, setAtivo] = React.useState(false);
 
   return (
     <div className={styles.produtos_container}>
@@ -41,9 +41,9 @@ function Produtos({
         }`}
       />
       <div className={styles.div_titulo}>
-        <div className={styles.div_filtro}>
+        {/* <div className={styles.div_filtro}>
           <BotaoFiltro ativo={ativo} setAtivo={setAtivo} />
-        </div>
+        </div> */}
       </div>
       {!pesquisa && subcategorieDataSlide && (
         <div className={styles.subcategorias}>

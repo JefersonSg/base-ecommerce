@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styles from './SectionProdutos.module.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 import ProductsById from './ProductsById';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
@@ -46,7 +46,7 @@ const SectionProdutos = ({
           data?.products?.length ?? 0
         } ${data?.products?.length > 1 ? 'produtos' : 'produto'}`}</span>
 
-        <div className={styles.select_view}>
+        {/* <div className={styles.select_view}>
           <Image
             alt="imagem de quadrados para mudar a vizualização dos produtos"
             src={'/produtos/multi_view.svg'}
@@ -60,7 +60,7 @@ const SectionProdutos = ({
             width={17}
             height={17}
           />
-        </div>
+        </div> */}
       </div>
       {data && <ProductsById data={data} totalProdutos={totalProdutos} />}
       {data?.products?.length > 9 && data.products.length > totalProdutos && (
