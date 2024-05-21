@@ -36,7 +36,7 @@ function SlideVantagens() {
             loop: true
           },
           1024: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 32,
             autoplay: false,
             loop: false
