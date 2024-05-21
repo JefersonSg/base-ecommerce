@@ -82,7 +82,7 @@ export const getAllActiveProducts = async () => {
 };
 export const getProductsByViews = async () => {
   try {
-    const response = await fetch(`${API}views/get-all`, {
+    const response = await fetch(`${API}products/views/get-all`, {
       next: {
         revalidate: 0
       }
