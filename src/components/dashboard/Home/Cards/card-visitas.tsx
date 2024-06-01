@@ -15,9 +15,18 @@ export interface TotalViews {
   }>;
 }
 
-const CardVisitas = ({ views }: { views: TotalViews }) => {
+const CardVisitas = ({
+  views,
+  setDaysAgo,
+  daysAgo
+}: {
+  views: TotalViews;
+  setDaysAgo: React.Dispatch<React.SetStateAction<number>>;
+  daysAgo: number;
+}) => {
   const [totalViews, setTotalViews] = React.useState(0);
   const [mostrarMais, setMostrarMais] = React.useState(3);
+  const [active, setActive] = React.useState(false);
 
   React.useEffect(() => {
     if (views?.totalViews) {
@@ -29,10 +38,22 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
     }
   }, [views]);
 
+  const wrapperRef = React.useRef<any>(null);
+
   return (
-    <section className={styles.container_card}>
+    <section
+      className={styles.container_card}
+      onClick={(e) => {
+        if (active && e.target && !wrapperRef?.current?.contains(e.target)) {
+          setActive(false);
+        }
+      }}
+    >
       <h3>
-        Numero de Visitantes <span>(Hoje)</span>{' '}
+        Numero de Visitantes{' '}
+        <span>
+          {daysAgo === 0 ? `( Hoje )` : `( Últimos ${daysAgo} Dias )`}
+        </span>{' '}
         <Image
           alt="imagem ilustrativa"
           src={'/dashboard/home/titulos/views.svg'}
@@ -75,6 +96,55 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
           {mostrarMais === 3 ? 'mostrar mais' : 'mostrar menos'}
         </button>
       )}
+
+      <div className={styles.modal_select_days}>
+        <div
+          className={styles.botao}
+          onClick={() => {
+            setActive(!active);
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        {active && (
+          <div className={styles.opcoes} ref={wrapperRef}>
+            <p
+              onClick={() => {
+                setDaysAgo(0);
+                setActive(false);
+              }}
+            >
+              Hoje
+            </p>
+            <p
+              onClick={() => {
+                setDaysAgo(7);
+                setActive(false);
+              }}
+            >
+              7 dias atrás
+            </p>
+            <p
+              onClick={() => {
+                setDaysAgo(15);
+                setActive(false);
+              }}
+            >
+              15 dias atrás
+            </p>
+            <p
+              onClick={() => {
+                setDaysAgo(30);
+                setActive(false);
+              }}
+            >
+              30 dias atrás
+            </p>
+          </div>
+        )}
+      </div>
     </section>
   );
 };
