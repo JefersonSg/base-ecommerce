@@ -3,23 +3,33 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import { addViews } from '@/src/shared/api/POST';
+import { usePathname } from 'next/navigation';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddViewFunc = ({ productId }: { productId?: string }) => {
-  const teste = React.useCallback(async () => {
-    const teste = await fetch('/api/ip');
+  const pathname = usePathname();
+  const SetNewView = React.useCallback(async () => {
+    const response = await fetch('/api/ip');
     const userToken = Cookies.get('auth_token');
     const isAdmin = Cookies.get('isAdmin');
+    let sessionId = Cookies.get('sessionId');
+    const userIp = await response.json();
 
-    const userIp = await teste.json();
-
-    if (!isAdmin) {
-      void addViews(userIp, productId, userToken);
+    if (!sessionId) {
+      Cookies.set('sessioId', uuidv4());
+      sessionId = Cookies.get('sessioId');
     }
-  }, [productId]);
+
+    const pageView = !productId ? pathname : '';
+
+    if (!isAdmin && sessionId) {
+      void addViews(userIp, sessionId, productId ?? '', pageView, userToken);
+    }
+  }, [pathname, productId]);
 
   React.useEffect(() => {
-    void teste();
-  }, [teste]);
+    void SetNewView();
+  }, [SetNewView]);
 
   return <div></div>;
 };

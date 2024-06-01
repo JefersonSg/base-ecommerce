@@ -54,7 +54,7 @@ const ContainerProduct = async ({
         <Avaliacoes />
       </Suspense>
       <Suspense>
-        <AddViewFunc productId={productData._id} />
+        <AddViewFunc productId={productData?._id} />
       </Suspense>
     </>
   );
