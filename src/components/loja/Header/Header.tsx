@@ -11,6 +11,8 @@ import Pesquisa from './pesquisa/Pesquisa';
 import CategoriasLinks from './nav/CategoriasLinks';
 import { type UserInterface } from '@/src/shared/helpers/interfaces';
 import { isAdmin } from '@/src/actions/isAdmin';
+import setNewCookieSession from '@/src/actions/setCookieSession';
+// import AddViewFunc from '../../compartilhado/AddViewFunc';
 
 export function Header({ userData }: { userData: UserInterface }) {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
@@ -33,6 +35,8 @@ export function Header({ userData }: { userData: UserInterface }) {
       void isAdmin(userData?.user?._id);
     }
   }, [admin, userData?.user?._id]);
+
+  setNewCookieSession();
 
   return (
     <div className={styles.container_header}>

@@ -7,7 +7,7 @@ import VisitantesViews from './visitas/visitantes-views';
 
 export interface TotalViews {
   totalViews: Array<{ _id: string; viewsCount: number }>;
-  ips: Array<{
+  sessions: Array<{
     _id: string;
     user: Array<string | null>;
     numberVisit: number;
@@ -43,13 +43,13 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
       <div className={styles.infos_card}>
         <div className={styles.container1}>
           <p className={`${styles.valor_principal} ${styles.p1}`}>
-            {views?.ips?.length} visitantes
+            {views?.sessions?.length} visitantes
           </p>
           <p className={styles.valor_principal}>{totalViews} clicks</p>
         </div>
       </div>
       <p className={styles.texto_produtos}>Visualização por visitante</p>
-      {views?.ips?.map(
+      {views?.sessions?.map(
         (userView, index) =>
           index <= mostrarMais && (
             <VisitantesViews
@@ -61,7 +61,7 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
             />
           )
       )}
-      {views?.ips?.length > 4 && (
+      {views?.sessions?.length > 4 && (
         <button
           className={styles.botao_mostrar_mais}
           onClick={() => {

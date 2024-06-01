@@ -107,13 +107,15 @@ function FotosProduto({ img }: { img: string[] }) {
           </div>
         )}
         {img[0] && (
-          <Slide
-            setImagem={setImagemPrincipal}
-            setImagemId={setImagemId}
-            setThumbsSwiper={setThumbsSwiper}
-            imagemId={imagemId}
-            imagens={img}
-          />
+          <Suspense>
+            <Slide
+              setImagem={setImagemPrincipal}
+              setImagemId={setImagemId}
+              setThumbsSwiper={setThumbsSwiper}
+              imagemId={imagemId}
+              imagens={img}
+            />
+          </Suspense>
         )}
       </div>
     </>
