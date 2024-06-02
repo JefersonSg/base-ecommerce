@@ -1,0 +1,57 @@
+.modal_select_days {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    z-index: 1004;
+}
+.modal_select_days span{
+ width: 4px;
+ margin-bottom: 3px;
+ height: 4px;
+ background-color: #7C7C7C;
+ display: block;
+ border-radius: 999px;
+}
+.botao {
+    cursor: pointer;
+}
+.opcoes {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-top: 8px;
+    background-color: white;
+    box-shadow: 0 0 5px 0 #00000060;
+    opacity: 0;
+    animation: aparecer .1s ease-in forwards;
+    position: relative;
+}
+
+.opcoes p {
+    cursor: pointer;
+    padding: 8px 16px;
+}
+.opcoes P:first-child {
+    border-radius: 8px 8px 0 0;
+}
+.opcoes P:last-child {
+    border-radius: 0 0 8px 8px ;
+}
+.opcoes p:hover {
+    background-color: #696CFF;
+    color: white;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        top: -10px;
+    }
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}

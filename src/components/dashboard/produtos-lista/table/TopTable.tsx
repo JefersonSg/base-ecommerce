@@ -4,8 +4,12 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import Link from 'next/link';
 
 const TopTable = ({
-  setAtivo
+  setAtivo,
+  setPesquisa,
+  pesquisa
 }: {
+  pesquisa: string;
+  setPesquisa: React.Dispatch<React.SetStateAction<string>>;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
@@ -15,6 +19,10 @@ const TopTable = ({
         type="text"
         placeholder="Procurar produto"
         alt="Input para pesquisar produtos"
+        value={pesquisa}
+        onChange={(e) => {
+          setPesquisa(e.target.value);
+        }}
       />
       <div className={styles.itens}>
         <Link href={'/dashboard/produtos/create'}>

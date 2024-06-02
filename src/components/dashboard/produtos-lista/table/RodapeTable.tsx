@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './RodapeTable.module.css';
 import ButtonPrevNext from '../../Botoes/ButtonPrevNext';
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
 const RodapeTable = ({
   data,
@@ -9,7 +10,7 @@ const RodapeTable = ({
   setNextPage,
   setCurrentPage
 }: {
-  data: any;
+  data: { products: ProductApi[] };
   nextPage: number[];
   currentPage: number;
   setNextPage: React.Dispatch<React.SetStateAction<number[]>>;
@@ -18,8 +19,8 @@ const RodapeTable = ({
   return (
     <div className={styles.container_rodape}>
       <p>
-        Mostrando {nextPage[0] > 0 ? nextPage[0] : 1} a{' '}
-        {nextPage[1] < 7 ? 7 : nextPage[1]} de um total de{' '}
+        Mostrando de {nextPage[0] > 0 ? nextPage[0] : 1} a{' '}
+        {nextPage[1] <= 7 ? data?.products?.length : nextPage[1]} | total de{' '}
         {data?.products?.length} produtos
       </p>
       <div className={styles.botoes}>

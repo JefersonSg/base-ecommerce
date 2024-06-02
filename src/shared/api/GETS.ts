@@ -80,6 +80,20 @@ export const getAllActiveProducts = async () => {
     return [];
   }
 };
+export const getNoActiveProducts = async () => {
+  try {
+    const response = await fetch(`${API}products/no-actives`, {
+      next: {
+        revalidate: 0
+      }
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 export const getProductsByViews = async () => {
   try {
     const response = await fetch(`${API}products/get-by-views`, {

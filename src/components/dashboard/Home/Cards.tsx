@@ -9,7 +9,7 @@ import CardViews from './Cards/card-visualizações';
 import { useQuery } from '@tanstack/react-query';
 
 const Cards = () => {
-  const [daysAgo, setDaysAgo] = React.useState(0);
+  const [daysAgo, setDaysAgo] = React.useState(7);
 
   const { data } = useQuery({
     queryKey: ['getAllViews', daysAgo],
@@ -22,7 +22,7 @@ const Cards = () => {
     <div className={styles.cards_container}>
       <CardVendas />
       <CardVisitas views={data} setDaysAgo={setDaysAgo} daysAgo={daysAgo} />
-      <CardViews views={data} />
+      <CardViews views={data} setDaysAgo={setDaysAgo} daysAgo={daysAgo} />
     </div>
   );
 };
