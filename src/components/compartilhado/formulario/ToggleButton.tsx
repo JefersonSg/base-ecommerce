@@ -7,7 +7,6 @@ import {
   type RefetchOptions,
   type UseQueryResult
 } from '@tanstack/react-query';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
 const ToggleButton = ({
   data,
@@ -19,16 +18,16 @@ const ToggleButton = ({
   setPopUpMessage,
   status
 }: {
-  data: ProductApi;
+  data: any;
   pathnameUrl: string;
   refetch?: (
     options?: RefetchOptions | undefined
   ) => Promise<QueryObserverResult<any, Error>>;
   refetch2?: UseQueryResult<any, Error>;
   revalidate: () => any;
-  type: string;
-  setPopUpMessage: React.Dispatch<React.SetStateAction<string>>;
-  status: boolean;
+  type?: string;
+  setPopUpMessage?: React.Dispatch<React.SetStateAction<string>>;
+  status?: boolean;
 }) => {
   const [active, setActive] = React.useState(status);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -58,7 +57,12 @@ const ToggleButton = ({
             await revalidate();
           }
         }
-        if (type === 'promoção' && !data?.promotionalPrice && !data.promotion) {
+        if (
+          type === 'promoção' &&
+          !data?.promotionalPrice &&
+          !data.promotion &&
+          setPopUpMessage
+        ) {
           setPopUpMessage('É necessário informar o valor da promoção');
           setActive(false);
           setIsLoading(false);

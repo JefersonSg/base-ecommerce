@@ -13,9 +13,9 @@ interface PageParams {
 export async function generateStaticParams() {
   const products: { products: ProductApi[] } = await getAllActiveProducts();
 
-  const produtos = await Promise.all(
-    products.products.map((product) => ({
-      id: product._id
+  const produtos = await Promise?.all(
+    products?.products?.map((product) => ({
+      id: product?._id
     }))
   );
 
@@ -32,7 +32,7 @@ export const generateMetadata = async ({
     }`,
     description: `${
       product?.product?.description
-        ? product.product.description?.slice(0, 45) + '...'
+        ? product?.product?.description?.slice(0, 45) + '...'
         : ''
     }`,
     keywords: [`${product?.product?.name ? product?.product?.name : ''}`],
@@ -42,7 +42,7 @@ export const generateMetadata = async ({
       title: `Abayomi Make | ${product?.product?.name}`,
       description: `${
         product?.product?.description
-          ? product.product.description?.slice(0, 45) + '...'
+          ? product?.product?.description?.slice(0, 45) + '...'
           : ''
       }`,
       images: `${
