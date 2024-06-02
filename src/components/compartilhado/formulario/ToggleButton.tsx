@@ -13,7 +13,10 @@ const ToggleButton = ({
   pathnameUrl,
   refetch,
   refetch2,
-  revalidate
+  revalidate,
+  type,
+  setPopUpMessage,
+  status
 }: {
   data: any;
   pathnameUrl: string;
@@ -22,8 +25,11 @@ const ToggleButton = ({
   ) => Promise<QueryObserverResult<any, Error>>;
   refetch2?: UseQueryResult<any, Error>;
   revalidate: () => any;
+  type?: string;
+  setPopUpMessage?: React.Dispatch<React.SetStateAction<string>>;
+  status?: boolean;
 }) => {
-  const [active, setActive] = React.useState(data?.active ?? data ?? false);
+  const [active, setActive] = React.useState(status);
   const [isLoading, setIsLoading] = React.useState(false);
 
   async function toggleStockParam() {
@@ -33,8 +39,37 @@ const ToggleButton = ({
       setIsLoading(true);
 
       try {
-        if (newData?.active !== undefined) {
+        if (newData?.active !== undefined && type === 'estoque') {
           newData.active = !newData.active;
+
+          const response = await toggleStock(newData, pathnameUrl);
+
+          if (refetch) {
+            await refetch();
+          }
+          if (refetch2) {
+            await refetch2.refetch();
+          }
+          if (response) {
+            setActive(!active);
+          }
+          if (revalidate) {
+            await revalidate();
+          }
+        }
+        if (
+          type === 'promoção' &&
+          !data?.promotionalPrice &&
+          !data.promotion &&
+          setPopUpMessage
+        ) {
+          setPopUpMessage('É necessário informar o valor da promoção');
+          setActive(false);
+          setIsLoading(false);
+          return;
+        }
+        if (newData?.promotion !== undefined && type === 'promoção') {
+          newData.promotion = !newData.promotion;
 
           const response = await toggleStock(newData, pathnameUrl);
 
@@ -54,10 +89,10 @@ const ToggleButton = ({
       } catch (error) {
         console.log(error);
         setIsLoading(false);
+        setActive(false);
       }
     }
     setIsLoading(false);
-    setActive(!active);
   }
 
   return (

@@ -12,17 +12,30 @@ const BodyTable = ({
   data,
   setAtivoDelete,
   setIdDelete,
-  nextPage
+  nextPage,
+  setNoActivesProducts,
+  noActivesProducts,
+  setPromotionProducts,
+  promotionProducts
 }: {
   data: GetAllProductsResponse;
   nextPage: number[];
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setIdDelete: React.Dispatch<React.SetStateAction<string>>;
+  setNoActivesProducts: React.Dispatch<React.SetStateAction<boolean>>;
+  noActivesProducts: boolean;
+  setPromotionProducts: React.Dispatch<React.SetStateAction<boolean>>;
+  promotionProducts: boolean;
 }) => {
   return (
     <table className={styles.BodyTable}>
       <thead>
-        <TextInfos />
+        <TextInfos
+          promotionProducts={promotionProducts}
+          setPromotionProducts={setPromotionProducts}
+          setNoActivesProducts={setNoActivesProducts}
+          noActivesProducts={noActivesProducts}
+        />
       </thead>
 
       <tbody>

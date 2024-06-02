@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './Cards.module.css';
 import Image from 'next/image';
 import VisitantesViews from './visitas/visitantes-views';
+import MenuDropDown from '@/src/components/compartilhado/modals/MenuDropDown';
 
 export interface TotalViews {
   totalViews: Array<{ _id: string; viewsCount: number }>;
@@ -97,54 +98,12 @@ const CardVisitas = ({
         </button>
       )}
 
-      <div className={styles.modal_select_days}>
-        <div
-          className={styles.botao}
-          onClick={() => {
-            setActive(!active);
-          }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        {active && (
-          <div className={styles.opcoes} ref={wrapperRef}>
-            <p
-              onClick={() => {
-                setDaysAgo(0);
-                setActive(false);
-              }}
-            >
-              Hoje
-            </p>
-            <p
-              onClick={() => {
-                setDaysAgo(7);
-                setActive(false);
-              }}
-            >
-              7 dias atrás
-            </p>
-            <p
-              onClick={() => {
-                setDaysAgo(15);
-                setActive(false);
-              }}
-            >
-              15 dias atrás
-            </p>
-            <p
-              onClick={() => {
-                setDaysAgo(30);
-                setActive(false);
-              }}
-            >
-              30 dias atrás
-            </p>
-          </div>
-        )}
-      </div>
+      <MenuDropDown
+        active={active}
+        setActive={setActive}
+        setDaysAgo={setDaysAgo}
+        wrapperRef={wrapperRef}
+      />
     </section>
   );
 };

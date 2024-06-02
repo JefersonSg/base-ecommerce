@@ -14,6 +14,7 @@
 }
 .textInfos_container th {
   text-align: center;
+  position: relative;
 }
 .total_products_value,
 .total_products_amount,
@@ -24,7 +25,10 @@
 .actions {
   text-align: start;
 }
-
+.textInfos_container th.ativo {
+  color: #696cff;
+  font-size: 13px;
+}
 @media (min-width: 768px) {
   .total_products_amount,
   .total_products_register {
