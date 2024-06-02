@@ -47,6 +47,14 @@ const DataTable = () => {
     queryKey: ['get-products-by-promotion'],
     queryFn: getProductByPromotion
   });
+
+  React.useEffect(() => {
+    if (pesquisa) {
+      setPromotionProducts(false);
+      setNoActivesProducts(false);
+    }
+  }, [pesquisa]);
+
   return (
     <>
       <div className={styles.data_table}>
@@ -77,9 +85,11 @@ const DataTable = () => {
           data={
             noActivesProducts
               ? noActives?.data
-              : pesquisa
-                ? dataPesquisa?.data
-                : data
+              : promotionProducts
+                ? promotions.data
+                : pesquisa
+                  ? dataPesquisa?.data
+                  : data
           }
           setCurrentPage={setCurrentPage}
           nextPage={nextPage}
