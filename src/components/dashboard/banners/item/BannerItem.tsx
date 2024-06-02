@@ -47,6 +47,7 @@ const BannerItem = ({
         <ToggleButton
           data={bannerData}
           type="estoque"
+          status={bannerData.active}
           pathnameUrl="banners/update/"
           revalidate={bannerHomeRevalidate}
           refetch={refetch}
