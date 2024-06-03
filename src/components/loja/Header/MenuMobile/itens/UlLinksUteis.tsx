@@ -35,7 +35,7 @@ function UlLinksUteis() {
       <BotaoLi
         texto="Minha conta"
         image="usuario"
-        pathname={auth ? 'minha-conta' : 'login'}
+        pathname={auth ? '/minha-conta' : '/login'}
       />
     </ul>
   );

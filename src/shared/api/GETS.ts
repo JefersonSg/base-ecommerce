@@ -80,9 +80,23 @@ export const getAllActiveProducts = async () => {
     return [];
   }
 };
+export const getNoActiveProducts = async () => {
+  try {
+    const response = await fetch(`${API}products/no-actives`, {
+      next: {
+        revalidate: 0
+      }
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 export const getProductsByViews = async () => {
   try {
-    const response = await fetch(`${API}products/views/get-all`, {
+    const response = await fetch(`${API}products/get-by-views`, {
       next: {
         revalidate: 0
       }
@@ -474,10 +488,10 @@ export const getProductByName = async (name: string) => {
 };
 
 //
-export const getViews = async () => {
+export const getViews = async (daysAgo?: number) => {
   try {
     const response = await axios.get(
-      `${API}views/get-all`,
+      `${API}views/get-all-views/${daysAgo ?? 0}`,
 
       config
     );

@@ -28,51 +28,55 @@ const BannerItem = ({
   };
 
   return (
-    <div className={styles.banner_item}>
-      <Image
-        alt="Imagem da categoria"
-        src={bannerData.imageMobile}
-        width={40}
-        height={40}
-        quality={40}
-        placeholder="empty"
-      />
-
-      <div className={styles.infos}>
-        <h3 className={`name ${styles.name}`}>{bannerData?.name}</h3>
-
-        <p className={`description ${styles.link}`}>{bannerData?.link}</p>
-      </div>
-      <ToggleButton
-        data={bannerData}
-        pathnameUrl="banners/update/"
-        revalidate={bannerHomeRevalidate}
-        refetch={refetch}
-      />
-
-      <div className={styles.actions}>
+    <>
+      <div className={styles.banner_item}>
         <Image
-          alt="Lixeira para deletar a categoria"
-          src={'/dashboard/lixeira.svg'}
-          width={16}
-          height={18}
-          onClick={() => {
-            setAtivoDelete(true);
-            setBannerData(bannerData);
-          }}
+          alt="Imagem da categoria"
+          src={bannerData.imageMobile}
+          width={40}
+          height={40}
+          quality={40}
+          placeholder="empty"
         />
-        <Image
-          alt="Imagem de um laps para editar a categoria"
-          src={'/dashboard/edit.svg'}
-          width={16}
-          height={18}
-          onClick={() => {
-            setAtivoEdit(true);
-            setBannerData(bannerData);
-          }}
+
+        <div className={styles.infos}>
+          <h3 className={`name ${styles.name}`}>{bannerData?.name}</h3>
+
+          <p className={`description ${styles.link}`}>{bannerData?.link}</p>
+        </div>
+        <ToggleButton
+          data={bannerData}
+          type="estoque"
+          status={bannerData.active}
+          pathnameUrl="banners/update/"
+          revalidate={bannerHomeRevalidate}
+          refetch={refetch}
         />
+
+        <div className={styles.actions}>
+          <Image
+            alt="Lixeira para deletar a categoria"
+            src={'/dashboard/lixeira.svg'}
+            width={16}
+            height={18}
+            onClick={() => {
+              setAtivoDelete(true);
+              setBannerData(bannerData);
+            }}
+          />
+          <Image
+            alt="Imagem de um laps para editar a categoria"
+            src={'/dashboard/edit.svg'}
+            width={16}
+            height={18}
+            onClick={() => {
+              setAtivoEdit(true);
+              setBannerData(bannerData);
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

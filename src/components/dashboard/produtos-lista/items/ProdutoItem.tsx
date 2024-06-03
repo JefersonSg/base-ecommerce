@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { revalidateTagAction } from '@/src/actions/revalidates';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 
 const ProdutoItem = ({
   data,
@@ -23,6 +24,7 @@ const ProdutoItem = ({
   };
 
   const [totalProducts, setTotalProducts] = React.useState<any>(0);
+  const [popUpMessage, setPopUpMessage] = React.useState('');
 
   React.useEffect(() => {
     async function totalProducts() {
@@ -34,79 +36,89 @@ const ProdutoItem = ({
     void totalProducts();
   }, [data]);
   return (
-    <tr className={styles.produto_item}>
-      <td className={styles.produto_info}>
-        <div>
-          <Link
-            href={`/produtos/produto/${data._id}`}
-            className={styles.div_img}
-          >
-            <Image
-              alt="Imagem da categoria"
-              src={data.images?.[0]}
-              width={40}
-              height={40}
-              quality={30}
-              placeholder="empty"
-            />
-          </Link>
-
-          <div className={styles.infos}>
-            <Link href={`/produtos/produto/${data._id}`}>
-              <h3 className={`name ${styles.name}`}>{data?.name}</h3>
+    <>
+      <tr className={styles.produto_item}>
+        <td className={styles.produto_info}>
+          <div>
+            <Link
+              href={`/produtos/produto/${data._id}`}
+              className={styles.div_img}
+            >
+              <Image
+                alt="Imagem da categoria"
+                src={data.images?.[0]}
+                width={40}
+                height={40}
+                quality={30}
+                placeholder="empty"
+              />
             </Link>
-            <p className={`description ${styles.description}`}>
-              {data?.description}
-            </p>
+
+            <div className={styles.infos}>
+              <Link href={`/produtos/produto/${data._id}`}>
+                <h3 className={`name ${styles.name}`}>{data?.name}</h3>
+              </Link>
+              <p className={`description ${styles.description}`}>
+                {data?.description}
+              </p>
+            </div>
           </div>
-        </div>
-      </td>
-      <td>
-        <div className={styles.estoque}>
-          <ToggleButton
-            data={data}
-            pathnameUrl="products/edit/"
-            revalidate={revalidate}
-          />
-        </div>
-      </td>
-      <td className={styles.total_products_register}>
-        <h3>{totalProducts}</h3>
-      </td>
-      <td className={styles.total_products_value}>
-        <h3>R$ {convertNumberInReal(data.price)}</h3>
-      </td>
-      <td>
-        <div className={styles.actions}>
-          <Image
-            alt="Lixeira para deletar a categoria"
-            src={'/dashboard/lixeira.svg'}
-            width={16}
-            height={18}
-            onClick={() => {
-              setAtivoDelete(true);
-              setIdDelete(data._id);
-            }}
-          />
-          <Link href={`/dashboard/produtos/${data?._id}`}>
+        </td>
+        <td>
+          <div className={styles.estoque}>
+            <ToggleButton
+              type="promoção"
+              data={data}
+              pathnameUrl="products/edit/"
+              revalidate={revalidate}
+              setPopUpMessage={setPopUpMessage}
+              status={data.promotion}
+            />
+          </div>
+        </td>
+        <td>
+          <div className={styles.estoque}>
+            <ToggleButton
+              setPopUpMessage={setPopUpMessage}
+              type="estoque"
+              data={data}
+              pathnameUrl="products/edit/"
+              revalidate={revalidate}
+              status={data.active}
+            />
+          </div>
+        </td>
+        <td className={styles.total_products_register}>
+          <h3>{totalProducts}</h3>
+        </td>
+        <td className={styles.total_products_value}>
+          <h3>R$ {convertNumberInReal(data.price)}</h3>
+        </td>
+        <td>
+          <div className={styles.actions}>
             <Image
-              alt="Imagem de um laps para editar a categoria"
-              src={'/dashboard/edit.svg'}
+              alt="Lixeira para deletar a categoria"
+              src={'/dashboard/lixeira.svg'}
               width={16}
               height={18}
+              onClick={() => {
+                setAtivoDelete(true);
+                setIdDelete(data._id);
+              }}
             />
-          </Link>
-          <Link href={`/dashboard/produtos/copiar/${data?._id}`}>
-            <Image
-              alt="Imagem de um laps para editar a categoria"
-              src={'/dashboard/copiar.svg'}
-              width={16}
-              height={18}
-            />
-          </Link>
-        </div>
-      </td>
-    </tr>
+            <Link href={`/dashboard/produtos/${data?._id}`}>
+              <Image
+                alt="Imagem de um laps para editar a categoria"
+                src={'/dashboard/edit.svg'}
+                width={16}
+                height={18}
+              />
+            </Link>
+          </div>
+        </td>
+      </tr>
+      {popUpMessage && <PopUpMessage text={popUpMessage} />}
+    </>
   );
 };
 

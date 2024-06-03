@@ -4,10 +4,11 @@ import React from 'react';
 import styles from './Cards.module.css';
 import Image from 'next/image';
 import VisitantesViews from './visitas/visitantes-views';
+import MenuDropDown from '@/src/components/compartilhado/modals/MenuDropDown';
 
 export interface TotalViews {
   totalViews: Array<{ _id: string; viewsCount: number }>;
-  ips: Array<{
+  sessions: Array<{
     _id: string;
     user: Array<string | null>;
     numberVisit: number;
@@ -15,9 +16,18 @@ export interface TotalViews {
   }>;
 }
 
-const CardVisitas = ({ views }: { views: TotalViews }) => {
+const CardVisitas = ({
+  views,
+  setDaysAgo,
+  daysAgo
+}: {
+  views: TotalViews;
+  setDaysAgo: React.Dispatch<React.SetStateAction<number>>;
+  daysAgo: number;
+}) => {
   const [totalViews, setTotalViews] = React.useState(0);
   const [mostrarMais, setMostrarMais] = React.useState(3);
+  const [active, setActive] = React.useState(false);
 
   React.useEffect(() => {
     if (views?.totalViews) {
@@ -29,10 +39,22 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
     }
   }, [views]);
 
+  const wrapperRef = React.useRef<any>(null);
+
   return (
-    <section className={styles.container_card}>
+    <section
+      className={styles.container_card}
+      onClick={(e) => {
+        if (active && e.target && !wrapperRef?.current?.contains(e.target)) {
+          setActive(false);
+        }
+      }}
+    >
       <h3>
-        Numero de Visitantes <span>(Hoje)</span>{' '}
+        Numero de Visitantes{' '}
+        <span>
+          {daysAgo === 0 ? `( Hoje )` : `( Últimos ${daysAgo} Dias )`}
+        </span>{' '}
         <Image
           alt="imagem ilustrativa"
           src={'/dashboard/home/titulos/views.svg'}
@@ -43,13 +65,13 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
       <div className={styles.infos_card}>
         <div className={styles.container1}>
           <p className={`${styles.valor_principal} ${styles.p1}`}>
-            {views?.ips?.length} visitantes
+            {views?.sessions?.length} visitantes
           </p>
           <p className={styles.valor_principal}>{totalViews} clicks</p>
         </div>
       </div>
       <p className={styles.texto_produtos}>Visualização por visitante</p>
-      {views?.ips?.map(
+      {views?.sessions?.map(
         (userView, index) =>
           index <= mostrarMais && (
             <VisitantesViews
@@ -61,7 +83,7 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
             />
           )
       )}
-      {views?.ips?.length > 4 && (
+      {views?.sessions?.length > 4 && (
         <button
           className={styles.botao_mostrar_mais}
           onClick={() => {
@@ -75,6 +97,13 @@ const CardVisitas = ({ views }: { views: TotalViews }) => {
           {mostrarMais === 3 ? 'mostrar mais' : 'mostrar menos'}
         </button>
       )}
+
+      <MenuDropDown
+        active={active}
+        setActive={setActive}
+        setDaysAgo={setDaysAgo}
+        wrapperRef={wrapperRef}
+      />
     </section>
   );
 };

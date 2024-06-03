@@ -60,7 +60,9 @@ export async function createAddress(data: any) {
 
 export async function addViews(
   ip: string,
-  productId?: string,
+  sessionId: string,
+  productId?: string | undefined,
+  pageView?: string | undefined,
   userToken?: string | undefined
 ) {
   try {
@@ -68,7 +70,9 @@ export async function addViews(
       `${API}views/add/${productId}`,
       {
         userToken,
-        userIp: ip
+        userIp: ip,
+        sessionId,
+        pageView
       },
       configJson
     );

@@ -102,6 +102,7 @@
     height: 28px;
     cursor: pointer;
 }
+
 @media (max-width: 48rem) {
     .cards_container {
         padding: 0 16px;
