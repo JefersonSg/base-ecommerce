@@ -27,7 +27,7 @@ const ToggleButton = ({
   revalidate: () => any;
   type?: string;
   setPopUpMessage?: React.Dispatch<React.SetStateAction<string>>;
-  status?: boolean;
+  status: boolean;
 }) => {
   const [active, setActive] = React.useState(status);
   const [isLoading, setIsLoading] = React.useState(false);

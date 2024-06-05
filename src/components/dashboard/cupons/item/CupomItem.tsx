@@ -44,6 +44,8 @@ const CupomItem = ({
       </td>
       <td>
         <ToggleButton
+          status={cupomData.active}
+          type="estoque"
           data={cupomData}
           pathnameUrl="cupons/toggle/"
           revalidate={CuponsRevalidate}
