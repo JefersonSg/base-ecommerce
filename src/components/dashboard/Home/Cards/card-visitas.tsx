@@ -75,11 +75,11 @@ const CardVisitas = ({
         (userView, index) =>
           index <= mostrarMais && (
             <VisitantesViews
-              key={userView._id}
-              ip={userView._id}
-              user={userView.user}
-              views={userView.numberVisit}
-              products={userView.products}
+              key={userView?._id}
+              ip={userView?._id}
+              user={userView?.user}
+              views={userView?.numberVisit}
+              products={userView?.products}
             />
           )
       )}
