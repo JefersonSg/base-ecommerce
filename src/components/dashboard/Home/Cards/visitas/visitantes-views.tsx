@@ -69,7 +69,9 @@ const VisitantesViews = ({
         </div>
         <div className={styles.views}>
           <p>{views} clicks</p>
-          <p>{products?.length} produtos diferentes</p>
+          <p>
+            {products?.[0]?.productId ? products.length : 0} produtos visitados
+          </p>
         </div>
         <Image
           className={styles.seta}

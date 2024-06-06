@@ -16,8 +16,8 @@ const AddViewFunc = ({ productId }: { productId?: string }) => {
     const userIp = await response.json();
 
     if (!sessionId) {
-      Cookies.set('sessioId', uuidv4());
-      sessionId = Cookies.get('sessioId');
+      Cookies.set('sessionId', uuidv4());
+      sessionId = Cookies.get('sessionId');
     }
 
     const pageView = !productId ? pathname : '';
@@ -31,7 +31,7 @@ const AddViewFunc = ({ productId }: { productId?: string }) => {
     void SetNewView();
   }, [SetNewView]);
 
-  return <div></div>;
+  return <></>;
 };
 
 export default AddViewFunc;
