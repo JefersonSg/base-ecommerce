@@ -28,6 +28,7 @@ function Tamanhos({
     setIndexColorSelected(colors?.indexOf(colorSelected) ?? 0);
   }, [colorSelected, colors, indexColorSelected]);
 
+  console.log(sizes);
   return (
     <div className={styles.tamanhos_container}>
       <span className={styles.span_tamanho}>Tamanhos:</span>
@@ -37,7 +38,7 @@ function Tamanhos({
           setAtivo(!ativo);
         }}
       >
-        {sizeSelected}{' '}
+        {sizeSelected.length ? sizeSelected : sizes[0]}{' '}
         <Image
           className={`${ativo ? styles.ativo : ''} ${styles.seta}`}
           alt="Seta"
@@ -46,6 +47,7 @@ function Tamanhos({
           height={9}
         />
       </p>
+      <span className={styles.indicação}>Escolha o tamanho</span>
       <div
         className={`${styles.tamanhos_valor}  ${styles.selectSizes} ${
           ativo ? styles.ativo : ''
