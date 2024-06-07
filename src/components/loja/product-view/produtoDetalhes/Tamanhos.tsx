@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from './Tamanhos.module.css';
+import Image from 'next/image';
 
 function Tamanhos({
   colorSelected,
@@ -21,6 +22,8 @@ function Tamanhos({
   setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [indexColorSelected, setIndexColorSelected] = React.useState(0);
+  const [ativo, setAtivo] = React.useState(false);
+
   React.useEffect(() => {
     setIndexColorSelected(colors?.indexOf(colorSelected) ?? 0);
   }, [colorSelected, colors, indexColorSelected]);
@@ -28,7 +31,26 @@ function Tamanhos({
   return (
     <div className={styles.tamanhos_container}>
       <span className={styles.span_tamanho}>Tamanhos:</span>
-      <div className={styles.tamanhos_valor}>
+      <p
+        className={styles.size_selected}
+        onClick={() => {
+          setAtivo(!ativo);
+        }}
+      >
+        {sizeSelected}{' '}
+        <Image
+          className={`${ativo ? styles.ativo : ''} ${styles.seta}`}
+          alt="Seta"
+          src={'/setaBaixo.svg'}
+          width={9}
+          height={9}
+        />
+      </p>
+      <div
+        className={`${styles.tamanhos_valor}  ${styles.selectSizes} ${
+          ativo ? styles.ativo : ''
+        }`}
+      >
         {sizes.map((size, index) => {
           return (
             <div
@@ -42,6 +64,7 @@ function Tamanhos({
               } `}
               onClick={() => {
                 setSizeSelected(size);
+                setAtivo(false);
                 if (amount?.[indexColorSelected]?.[index] === 0) {
                   setTextPopUp('Sem estoque disponível neste tamanho');
                 }

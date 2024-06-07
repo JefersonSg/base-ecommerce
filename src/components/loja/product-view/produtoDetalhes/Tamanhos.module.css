@@ -1,15 +1,17 @@
-.tamanhos {
-  width: max-content;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  border: 1px solid rgba(220, 220, 220, 0.6);
-  border-radius: 48px;
-  box-sizing: border-box;
-  background-color: white;
-  justify-content: center;
+.tamanhos_container {
   position: relative;
-  padding: 0 24px;
+}
+
+.tamanhos {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: var(--fonte-primaria);
+  padding:  8px 16px;
+  border-bottom: 1px solid #B7B9B7;
+  cursor: pointer;
+}
+.tamanhos:hover {
+  background-color: #DBDCDB;
 }
 .tamanhos p {
   font-weight: 500;
@@ -25,13 +27,71 @@
 .selected p {
   color: white;
 }
-
+.size_selected {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: var(--fonte-primaria);
+  width: max-content;
+  min-width: 100px;
+  height: 50px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(220, 220, 220, 0.6);
+  border-radius: 48px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  justify-content: space-between;
+  background-color: white;
+}
 .noStock {
   border: 1px solid #B7B9B7;
   opacity: 0.4 !important;
   pointer-events: none !important;
 }
+.selectSizes {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  min-height: 40px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 6px 0 rgba(67, 89, 113, 0.12);
+  box-sizing: border-box;
+}
+.selectSizes.ativo {
+  display: flex;
+}
+.seta {
+  width: 9px;
+  height: 9px;
+  transition: 0.2s ease-in;
+}
+.seta.ativo {
+  rotate: 180deg;
+}
 @media (min-width: 64rem) {
+  .size_selected {
+    display: none;
+  }
+  .selectSizes {
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: auto;
+    background-color: none;
+    min-height: none;
+    border-radius: 0;
+    border: none;
+    box-shadow:none;
+    box-sizing: border-box;
+  }
   .tamanhos_valor {
     display: flex;
     gap: 8px;
@@ -50,6 +110,19 @@
     font-weight: 600;
     color: #471703;
     font-size: 20px;
+  }
+  .tamanhos {
+    width: max-content;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(220, 220, 220, 0.6);
+    border-radius: 48px;
+    box-sizing: border-box;
+    background-color: white;
+    justify-content: center;
+    position: relative;
+    padding: 0 24px;
   }
   .tamanhos {
     width: 94px;
