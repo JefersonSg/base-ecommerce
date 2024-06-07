@@ -23,6 +23,7 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [colorSelected, setColorSelected] = React.useState(
     data?.colors?.[0] ?? ''
   );
+  const [sizeSelected, setSizeSelected] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
 
   const [textPopUp, setTextPopUp] = React.useState('');
@@ -50,7 +51,7 @@ function Detalhes({ data }: { data: ProductApi }) {
     const infosCartItem = {
       productId: data._id,
       userId: userData.data.user._id,
-      size: data.size,
+      size: sizeSelected,
       color: colorSelected,
       amount: 1
     };
@@ -109,12 +110,25 @@ function Detalhes({ data }: { data: ProductApi }) {
     <div className={styles.detalhes}>
       <div className={styles.informacoes}>
         <Cores
+          sizes={data.size}
+          sizeSelected={sizeSelected}
+          setSizeSelected={setSizeSelected}
           colors={data?.colors}
           codeColors={data?.codeColors}
           colorSelected={colorSelected}
           setColorSelected={setColorSelected}
+          amount={data.stock.amount}
+          setTextPopUp={setTextPopUp}
         />
-        <Tamanhos size={data?.size} />
+        <Tamanhos
+          colorSelected={colorSelected}
+          colors={data.colors}
+          amount={data.stock.amount}
+          sizes={data?.size}
+          sizeSelected={sizeSelected}
+          setSizeSelected={setSizeSelected}
+          setTextPopUp={setTextPopUp}
+        />
       </div>
       <Preco
         promotion={data.promotion}

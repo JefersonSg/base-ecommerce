@@ -1,6 +1,7 @@
 .variaveis_colors {
   display: flex;
   flex-direction: column;
+
   width: 100%;
 }
 .variaveis_colors p {
@@ -8,11 +9,12 @@
 }
 .colors_amount_div {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 16px;
   width: 100%;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--color-border);
+  padding-top: 8px;
 }
 .checkbox_color {
   display: flex;

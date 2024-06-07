@@ -11,16 +11,18 @@ const SelectColor = ({
   setSchemeCodeColor,
   setAmount,
   corAtiva,
-  setCorAtiva
+  setCorAtiva,
+  sizes
 }: {
   schemeColor: string[];
   schemeCodeColor: string[];
-  amount: number[];
+  amount: number[][];
   setSchemeColor: React.Dispatch<React.SetStateAction<string[]>>;
-  setAmount: React.Dispatch<React.SetStateAction<number[]>>;
+  setAmount: React.Dispatch<React.SetStateAction<number[][]>>;
   setSchemeCodeColor: React.Dispatch<React.SetStateAction<string[]>>;
   corAtiva: boolean;
   setCorAtiva: React.Dispatch<React.SetStateAction<boolean>>;
+  sizes: string[];
 }) => {
   return (
     <div className={`div_container ${styles.variaveis_colors}`}>
@@ -72,15 +74,26 @@ const SelectColor = ({
                     }}
                   />
                 </div>
+                <SelectAmount
+                  corAtiva={corAtiva}
+                  color={color}
+                  indexColor={i}
+                  setAmount={setAmount}
+                  amount={amount}
+                  sizes={sizes}
+                />
               </>
             )}
-            <SelectAmount
-              corAtiva={corAtiva}
-              color={color}
-              index={i}
-              setAmount={setAmount}
-              amount={amount}
-            />
+            {!corAtiva && i === 0 && (
+              <SelectAmount
+                corAtiva={corAtiva}
+                color={color}
+                indexColor={i}
+                setAmount={setAmount}
+                amount={amount}
+                sizes={sizes}
+              />
+            )}
           </div>
         );
       })}
@@ -93,7 +106,10 @@ const SelectColor = ({
               const codeColor = [...schemeCodeColor];
               schema?.push(`${''}`);
               codeColor[schemeColor.length] = '#FFFFFF';
+              const newAmount = [...amount];
+              newAmount.push([]);
 
+              setAmount(newAmount);
               setSchemeColor(schema);
               setSchemeCodeColor(codeColor);
             }}

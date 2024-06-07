@@ -11,16 +11,18 @@ const SelectColor = ({
   setSchemeCodeColor,
   setAmount,
   corAtiva,
-  setCorAtiva
+  setCorAtiva,
+  sizes
 }: {
   schemeColor: string[];
   schemeCodeColor: string[];
-  amount: number[];
+  amount: number[][];
   setSchemeColor: React.Dispatch<React.SetStateAction<string[]>>;
-  setAmount: React.Dispatch<React.SetStateAction<number[]>>;
+  setAmount: React.Dispatch<React.SetStateAction<number[][]>>;
   setSchemeCodeColor: React.Dispatch<React.SetStateAction<string[]>>;
   corAtiva: boolean;
   setCorAtiva: React.Dispatch<React.SetStateAction<boolean>>;
+  sizes: string[];
 }) => {
   return (
     <div className={`div_container ${styles.variaveis_colors}`}>
@@ -74,18 +76,31 @@ const SelectColor = ({
                     }}
                   />
                 </div>
+                <SelectAmount
+                  corAtiva={corAtiva}
+                  color={color}
+                  indexColor={index}
+                  sizes={sizes}
+                  setAmount={setAmount}
+                  amount={amount}
+                />
               </>
             )}
-            <SelectAmount
-              corAtiva={corAtiva}
-              color={color}
-              index={index}
-              setAmount={setAmount}
-              amount={amount}
-            />
+
+            {!corAtiva && index === 0 && (
+              <SelectAmount
+                corAtiva={corAtiva}
+                color={color}
+                indexColor={index}
+                setAmount={setAmount}
+                amount={amount}
+                sizes={sizes}
+              />
+            )}
           </div>
         );
       })}
+
       {corAtiva && (
         <div className={styles.botoes}>
           <div
@@ -95,6 +110,10 @@ const SelectColor = ({
               const codeColor = [...schemeCodeColor];
               schema.push(`${''}`);
               codeColor[schemeColor.length] = '#000000';
+              const newAmount = [...amount];
+              newAmount.push([]);
+
+              setAmount(newAmount);
               setSchemeColor(schema);
               setSchemeCodeColor(codeColor);
             }}

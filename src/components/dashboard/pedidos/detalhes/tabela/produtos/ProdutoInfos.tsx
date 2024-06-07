@@ -13,12 +13,14 @@ const ProdutoInfos = ({
   productId,
   valorPago,
   quantidade,
-  corEscolhida
+  corEscolhida,
+  tamanhoEscolhido
 }: {
   productId: string;
   valorPago: number;
   quantidade: number;
   corEscolhida: string;
+  tamanhoEscolhido: string;
 }) => {
   const { data } = useQuery({
     queryKey: ['product-by-id-' + productId],
@@ -48,7 +50,7 @@ const ProdutoInfos = ({
               {data?.product?.name}
             </Link>
             <p className={styles.cor}>Cor: {corEscolhida}</p>
-            <p className={styles.tamanho}>Tamanho: {data?.product.size}</p>
+            <p className={styles.tamanho}>Tamanho: {tamanhoEscolhido}</p>
           </div>
         </div>
       </td>

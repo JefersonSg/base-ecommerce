@@ -1,38 +1,50 @@
 import React from 'react';
+import styles from './selectAmount.module.css';
 
 const SelectAmount = ({
   color,
-  index,
+  indexColor,
   amount,
   setAmount,
-  corAtiva
+  corAtiva,
+  sizes
 }: {
   color: string;
-  index: number;
-  amount: number[];
-  setAmount: React.Dispatch<React.SetStateAction<number[]>>;
+  indexColor: number;
+  amount: number[][];
+  setAmount: React.Dispatch<React.SetStateAction<number[][]>>;
   corAtiva: boolean;
+  sizes: string[];
 }) => {
+  console.log(amount);
   return (
-    <div>
-      <label htmlFor={color}>
+    <div className={styles.amount_container}>
+      <p className={styles.texto_titulo}>
         {corAtiva ? `Estoque da cor ${color}` : 'Estoque do produto'}
-      </label>
-      <input
-        name={color}
-        id={color}
-        placeholder="insira a quantidade"
-        type="number"
-        min={0}
-        value={amount?.[index] ?? ''}
-        onChange={(e) => {
-          const valueAll = [...amount];
+      </p>
+      {sizes?.map((size, index) => {
+        return (
+          <div key={index} className={styles.input_amount}>
+            <label htmlFor={`${size + color}`}>{size}</label>
+            <input
+              className={`${!size ? styles.error : ''}`}
+              name={`${size + color}`}
+              id={`${size + color}`}
+              placeholder="insira a quantidade"
+              type="number"
+              min={0}
+              value={amount?.[indexColor]?.[index] ?? ''}
+              onChange={(e) => {
+                const valueAll = [...amount];
 
-          valueAll[index] = +e.target.value;
+                valueAll[indexColor][index] = +e.target.value;
 
-          setAmount(valueAll);
-        }}
-      />
+                setAmount(valueAll);
+              }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };

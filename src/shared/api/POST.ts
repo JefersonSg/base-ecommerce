@@ -85,9 +85,10 @@ export async function addViews(
 
 export async function createProduct(
   data: any,
+  sizes: string[],
   codeColors: string[],
   colors: string[],
-  amount: number[],
+  amount: number[][],
   setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>,
   corAtiva: boolean
 ) {
@@ -96,23 +97,32 @@ export async function createProduct(
   let ok = false;
 
   if (colors && corAtiva) {
-    colors.forEach((color, index) => {
-      if (color.length < 1) {
-        setAtivoPopUp('Preencha todos os campos de cores');
-        ok = true;
-      }
-      if (amount[index] >= 0) {
-        console.log(ok);
-      } else {
-        setAtivoPopUp('Preencha todos os campos de quantidade');
-        ok = true;
-      }
+    colors.forEach((color, indexColor) => {
+      sizes.forEach((size, i) => {
+        if (color.length < 1) {
+          setAtivoPopUp('Preencha todos os campos de cores');
+          ok = true;
+        }
+        if (size.length < 1) {
+          setAtivoPopUp('Preencha todos os campos de tamanho');
+          ok = true;
+        }
+        if (amount[indexColor][i] >= 0) {
+          console.log(ok);
+        } else {
+          setAtivoPopUp('Preencha todos os campos de quantidade');
+          ok = true;
+        }
+      });
     });
   }
-  if (!amount[0]) {
-    setAtivoPopUp('Preencha todos os campos de quantidade');
-    return;
-  }
+
+  amount[0].forEach((amountChild) => {
+    if (amountChild.toString().length < 1) {
+      setAtivoPopUp('Preencha todos os campos de quantidade');
+      ok = true;
+    }
+  });
 
   if (ok) return;
 
@@ -120,7 +130,8 @@ export async function createProduct(
     formData.append(key, data[key]);
   });
 
-  formData.append('amount', amount.toString());
+  formData.append('amount', JSON.stringify(amount));
+  formData.append('size', sizes.toString());
   formData.append('colors', colors.join(','));
   formData.append('codeColors', codeColors.join(','));
 

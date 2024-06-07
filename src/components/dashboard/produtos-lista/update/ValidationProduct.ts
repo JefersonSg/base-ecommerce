@@ -13,7 +13,6 @@ export const validationProduct = yup.object({
   brand: yup.string().required(),
   category: yup.string().required(),
   subcategory: yup.string(),
-  size: yup.string().required(),
   price: yup.number().required(),
   promotion: yup.boolean().required(),
   promotionalPrice: yup.number(),
