@@ -17,7 +17,25 @@
 .span_tamanho {
   display: none;
 }
+
+.selected {
+  background-color: var(--cor-secundaria);
+  border: none;
+}
+.selected p {
+  color: white;
+}
+
+.noStock {
+  border: 1px solid #B7B9B7;
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+}
 @media (min-width: 64rem) {
+  .tamanhos_valor {
+    display: flex;
+    gap: 8px;
+  }
   .tamanhos_container {
     display: flex;
     flex-direction: column;

@@ -12,7 +12,6 @@ export const validationProduct = yup.object({
     .min(6, 'É necessario ao menos 6 caracteres'),
   brand: yup.string().required(),
   price: yup.number().required(),
-  size: yup.string().required(),
   promotion: yup.boolean().required(),
   promotionalPrice: yup.number(),
   category: yup.string().required(),

@@ -40,6 +40,7 @@ import { useRouter } from 'next/navigation';
 import ToggleButtonCreate from '../../../compartilhado/formulario/ToggleButtonCreate';
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
+import SelectSizes from './sizes/SelectSizes';
 
 const schema = validationProduct;
 
@@ -85,7 +86,6 @@ const FormUpdateProduct = ({
     defaultValues: {
       name,
       description,
-      size,
       category,
       subcategory,
       composition,
@@ -105,12 +105,13 @@ const FormUpdateProduct = ({
   const [isLoading, setIsLoading] = React.useState(false);
   const [schemeColor, setSchemeColor] = React.useState(['']);
   const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
-  const [amount, setAmount] = React.useState<number[]>([]);
+  const [amount, setAmount] = React.useState<number[][]>([[]]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
   const [ativoNewSubcategory, setAtivoNewSubcategory] = React.useState(false);
   const [corAtiva, setCorAtiva] = React.useState(
     !!dataProduct?.product?.colors?.[0].length
   );
+  const [sizes, setSizes] = React.useState<string[]>(['1']);
 
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
   const [subcategoriesList, setSubcategoriesList] = React.useState<
@@ -142,6 +143,7 @@ const FormUpdateProduct = ({
       const response = await updateProduct(
         dataProduct.product._id,
         data,
+        sizes,
         schemeCodeColor,
         schemeColor,
         amount,
@@ -181,8 +183,12 @@ const FormUpdateProduct = ({
     if (colors?.[0]) {
       setSchemeColor(colors);
     }
-    if (stock?.amount) {
-      setAmount(stock?.amount);
+
+    if (size) {
+      setSizes(size);
+    }
+    if (amount[0]) {
+      setAmount(stock.amount);
     }
     if (codeColors?.[0]) {
       setSchemeCodeColor(codeColors?.join(',')?.split(','));
@@ -193,7 +199,7 @@ const FormUpdateProduct = ({
         reset();
       }, 100);
     }
-  }, [codeColors, colors, dataProduct, reset, stock?.amount]);
+  }, [amount, codeColors, colors, dataProduct, reset, size, stock.amount]);
 
   React.useEffect(() => {
     const subcategories = dataSubCategories.data?.subcategories.filter(
@@ -251,14 +257,7 @@ const FormUpdateProduct = ({
                 error={errors.description}
                 register={register}
               />
-              <InputFormulario
-                label="Tamanho"
-                name="size"
-                placeholder="ex: 300ml | 25g | 1kg"
-                type="text"
-                error={errors.size}
-                register={register}
-              />
+              <SelectSizes setSizes={setSizes} sizes={sizes} />
             </div>
             <div className={`div_container ${styles.opicional_items}`}>
               <p className={styles.subtitulo}>Informações opcionais</p>
@@ -348,6 +347,7 @@ const FormUpdateProduct = ({
             <SelectColor
               corAtiva={corAtiva}
               setCorAtiva={setCorAtiva}
+              sizes={sizes}
               amount={amount}
               schemeCodeColor={schemeCodeColor}
               schemeColor={schemeColor}

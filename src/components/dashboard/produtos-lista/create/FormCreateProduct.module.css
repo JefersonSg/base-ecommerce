@@ -18,7 +18,9 @@
   grid-column: 1/-1;
   grid-row: 1;
 }
-
+.tamanhos {
+  margin-bottom: 8px;
+}
 .botoes {
   display: flex;
   gap: 16px;

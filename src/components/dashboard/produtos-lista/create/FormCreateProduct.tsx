@@ -40,6 +40,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
+import SelectSizes from './sizes/SelectSizes';
 
 const schema = validationProduct;
 
@@ -61,11 +62,12 @@ const FormCreateProduct = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: '',
+      name: 'teste',
       promotion: false,
-      description: '',
-      brand: '',
+      description: 'aaaaaaaaa',
+      brand: 'Adidas',
       category: '',
+      price: 15.0,
       promotionalPrice: 0,
       subcategory: '',
       characteristic: '',
@@ -85,7 +87,7 @@ const FormCreateProduct = () => {
   const [schemeCodeColor, setSchemeCodeColor] = React.useState<string[]>([
     '#000000'
   ]);
-  const [amount, setAmount] = React.useState<number[]>([]);
+  const [amount, setAmount] = React.useState<number[][]>([[]]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
   const [ativoNewSubcategory, setAtivoNewSubcategory] = React.useState(false);
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
@@ -93,6 +95,7 @@ const FormCreateProduct = () => {
     subcategoryInterface[] | undefined
   >([]);
   const [corAtiva, setCorAtiva] = React.useState(true);
+  const [sizes, setSizes] = React.useState<string[]>(['']);
   const router = useRouter();
 
   const dataCategory = useQuery<CategoriesResponse>({
@@ -140,9 +143,10 @@ const FormCreateProduct = () => {
       setIsLoading(true);
       const response = await createProduct(
         data,
+        sizes,
         corAtiva ? schemeCodeColor : [''],
         corAtiva ? schemeColor : [''],
-        corAtiva ? amount : [amount[0]],
+        amount,
         setAtivoPopUp,
         corAtiva
       );
@@ -154,6 +158,7 @@ const FormCreateProduct = () => {
       }
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
       setAtivoPopUp(`Erro ao criar o produto`);
     }
   };
@@ -196,14 +201,9 @@ const FormCreateProduct = () => {
                 error={errors.description}
                 register={register}
               />
-              <InputFormulario
-                label="Tamanho"
-                name="size"
-                placeholder="ex: 300ml | 25g | 1kg"
-                type="text"
-                error={errors.size}
-                register={register}
-              />
+              <div>
+                <SelectSizes setSizes={setSizes} sizes={sizes} />
+              </div>
             </div>
             <div className={`div_container ${styles.opicional_items}`}>
               <p className={styles.subtitulo}>Informações opcionais</p>
@@ -275,6 +275,7 @@ const FormCreateProduct = () => {
               setSchemeCodeColor={setSchemeCodeColor}
               setSchemeColor={setSchemeColor}
               setAmount={setAmount}
+              sizes={sizes}
             />
           </div>
           <div className={styles.div_colum2}>

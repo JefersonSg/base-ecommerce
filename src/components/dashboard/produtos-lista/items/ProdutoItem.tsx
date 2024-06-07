@@ -28,7 +28,7 @@ const ProdutoItem = ({
 
   React.useEffect(() => {
     async function totalProducts() {
-      const total = data.stock.amount.reduce((cont, amount) => {
+      const total = data?.stock?.amount?.[0]?.reduce?.((cont, amount) => {
         return cont + amount;
       }, 0);
       setTotalProducts(total);

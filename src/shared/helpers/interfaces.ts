@@ -64,7 +64,7 @@ export interface ProductApi {
   _id: string;
   name: string;
   brand: string;
-  size: string;
+  size: string[];
   price: number;
   promotion: boolean;
   promotionalPrice?: number;
@@ -79,7 +79,7 @@ export interface ProductApi {
   colors?: string[];
   codeColors?: string[];
   stock: {
-    amount: number[];
+    amount: number[][];
   };
 }
 
@@ -198,6 +198,7 @@ export interface OrderInterface {
   productIds: string[];
   valueProducts: number[];
   productAmounts: number[];
+  productSizes: string[];
   productColors: string[];
   totalPayment: number;
   methodPayment: string;

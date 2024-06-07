@@ -31,6 +31,7 @@ const PopupInfos = ({
   const [confirmDispatched, setConfirmDispatched] = React.useState(false);
   const [confirmConcluded, setConfirmConcluded] = React.useState(false);
   const [confirmEstorno, setConfirmEstorno] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const [orderTracking, setOrderTracking] = React.useState('');
 
@@ -52,14 +53,19 @@ const PopupInfos = ({
   }, [data]);
 
   const confirmOrderNow = async () => {
+    setIsLoading(true);
     try {
-      const response = await confirmOrder(data._id);
+      if (isLoading) {
+        const response = await confirmOrder(data._id);
 
-      if (response) {
-        await refetchData();
-        setAtivoPopUp(false);
+        if (response) {
+          await refetchData();
+          setAtivoPopUp(false);
+          setIsLoading(false);
+        }
       }
     } catch (error) {
+      setIsLoading(false);
       console.log('Erro ao confirmar o pedido', error);
     }
   };
@@ -79,7 +85,7 @@ const PopupInfos = ({
   };
   const reversalOrderNow = async () => {
     try {
-      if (orderTracking) {
+      if (confirmEstorno) {
         const response = await reversalOrder(data._id);
 
         if (response) {
@@ -93,11 +99,13 @@ const PopupInfos = ({
   };
   const cancelOrderNow = async () => {
     try {
-      const response = await cancelOrder(data._id);
+      if (confirmCancel) {
+        const response = await cancelOrder(data._id);
 
-      if (response) {
-        await refetchData();
-        setAtivoPopUp(false);
+        if (response) {
+          await refetchData();
+          setAtivoPopUp(false);
+        }
       }
     } catch (error) {
       console.log('Erro ao cancelar o pedido', error);
