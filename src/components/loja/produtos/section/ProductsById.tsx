@@ -16,7 +16,7 @@ const ProductsById = ({
       {data?.products?.map(
         (product, index) =>
           index <= totalProdutos && (
-            <Produto key={product._id} productData={product} />
+            <Produto key={product?._id} productData={product} />
           )
       )}
     </div>
