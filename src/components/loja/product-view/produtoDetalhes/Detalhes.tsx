@@ -89,22 +89,23 @@ function Detalhes({ data }: { data: ProductApi }) {
 
   // No Stock
   React.useEffect(() => {
-    if (data.colors?.[0].length === 0 && data.stock.amount[0]) {
-      setHaveColor(true);
-      return;
-    }
     if (data?.colors?.[0]) {
-      const stockIndex = data?.colors.findIndex(
-        (color) => color === colorSelected
-      );
+      const colorIndex = data?.colors.indexOf(colorSelected);
+      const sizeIndex = data?.size.indexOf(sizeSelected);
 
-      if (!data.stock.amount[stockIndex]) {
+      if (!data.stock.amount[colorIndex][sizeIndex]) {
         setHaveColor(false);
+
+        data.size.forEach((size, i) => {
+          if (data.stock.amount[colorIndex][i]) {
+            setSizeSelected(size);
+          }
+        });
         return;
       }
       setHaveColor(true);
     }
-  }, [colorSelected, data]);
+  }, [colorSelected, data, sizeSelected]);
 
   return (
     <div className={styles.detalhes}>

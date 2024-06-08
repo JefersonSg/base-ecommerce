@@ -28,7 +28,6 @@ function Tamanhos({
     setIndexColorSelected(colors?.indexOf(colorSelected) ?? 0);
   }, [colorSelected, colors, indexColorSelected]);
 
-  console.log(sizes);
   return (
     <div className={styles.tamanhos_container}>
       <span className={styles.span_tamanho}>Tamanhos:</span>
