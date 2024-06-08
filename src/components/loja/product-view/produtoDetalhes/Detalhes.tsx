@@ -23,7 +23,7 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [colorSelected, setColorSelected] = React.useState(
     data?.colors?.[0] ?? ''
   );
-  const [sizeSelected, setSizeSelected] = React.useState('');
+  const [sizeSelected, setSizeSelected] = React.useState(data.size[0]);
   const [isLoading, setIsLoading] = React.useState(false);
 
   const [textPopUp, setTextPopUp] = React.useState('');
