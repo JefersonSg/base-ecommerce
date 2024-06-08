@@ -16,7 +16,6 @@ const SelectAmount = ({
   corAtiva: boolean;
   sizes: string[];
 }) => {
-  console.log(amount);
   return (
     <div className={styles.amount_container}>
       <p className={styles.texto_titulo}>

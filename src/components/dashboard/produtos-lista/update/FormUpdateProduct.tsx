@@ -59,15 +59,12 @@ const FormUpdateProduct = ({
     active,
     brand,
     category,
-    codeColors,
-    colors,
     description,
     name,
     price,
     promotion,
     howToUse,
     images,
-    size,
     stock,
     subcategory,
     characteristic,
@@ -162,6 +159,7 @@ const FormUpdateProduct = ({
     }
   };
 
+  // Reset pop up
   React.useEffect(() => {
     const temporizador = setTimeout(function closeError() {
       setAtivoPopUp('');
@@ -172,6 +170,7 @@ const FormUpdateProduct = ({
     };
   }, [ativoPopUp]);
 
+  // Go to product page
   React.useEffect(() => {
     if (!dataProduct?.product) {
       router.push('/dashboard/produtos');
@@ -180,18 +179,22 @@ const FormUpdateProduct = ({
 
   // setando Valores dos arrays
   React.useEffect(() => {
-    if (colors?.[0]) {
-      setSchemeColor(colors);
-    }
+    if (dataProduct.product) {
+      if (dataProduct.product.colors) {
+        setSchemeColor(dataProduct.product.colors);
+      }
 
-    if (size) {
-      setSizes(size);
-    }
-    if (amount[0]) {
-      setAmount(stock.amount);
-    }
-    if (codeColors?.[0]) {
-      setSchemeCodeColor(codeColors?.join(',')?.split(','));
+      if (dataProduct.product.size) {
+        setSizes(dataProduct.product.size);
+      }
+      if (dataProduct.product.stock.amount) {
+        setAmount(stock.amount);
+      }
+      if (dataProduct.product.codeColors) {
+        setSchemeCodeColor(
+          dataProduct.product.codeColors?.join(',')?.split(',')
+        );
+      }
     }
 
     if (dataProduct?.product) {
@@ -199,7 +202,7 @@ const FormUpdateProduct = ({
         reset();
       }, 100);
     }
-  }, [amount, codeColors, colors, dataProduct, reset, size, stock.amount]);
+  }, [dataProduct, reset, stock.amount]);
 
   React.useEffect(() => {
     const subcategories = dataSubCategories.data?.subcategories.filter(
