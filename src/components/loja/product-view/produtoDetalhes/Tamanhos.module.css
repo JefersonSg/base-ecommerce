@@ -21,8 +21,8 @@
 }
 
 .selected {
-  background-color: var(--cor-secundaria);
-  border: none;
+  background-color: var(--cor-secundaria) !important;
+  border: none !important;
 }
 .selected p {
   color: white;

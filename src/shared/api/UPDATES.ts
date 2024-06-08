@@ -176,7 +176,7 @@ export async function toggleStock(data: any, pathnameUrl: string) {
   });
 
   if (data?.stock?.amount) {
-    formData.append('amount', data?.stock?.amount);
+    formData.append('amount', JSON.stringify(data.stock.amount));
   }
 
   try {
