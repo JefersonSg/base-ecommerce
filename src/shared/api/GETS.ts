@@ -96,7 +96,7 @@ export const getNoActiveProducts = async () => {
 };
 export const getProductsByViews = async () => {
   try {
-    const response = await fetch(`${API}products/get-by-views`, {
+    const response = await fetch(`${API}products/views/get-by-views`, {
       next: {
         revalidate: 0
       }

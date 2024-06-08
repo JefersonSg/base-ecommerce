@@ -67,8 +67,6 @@ const SelectSizes = ({
 
             setAmount(newAmount);
 
-            console.log(sizes.length);
-
             schema.pop();
             setSizes(schema);
           }}
