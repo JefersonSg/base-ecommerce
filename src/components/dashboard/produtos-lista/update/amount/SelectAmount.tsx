@@ -36,6 +36,8 @@ const SelectAmount = ({
               onChange={(e) => {
                 const valueAll = [...amount];
 
+                console.log(valueAll);
+
                 valueAll[indexColor][index] = +e.target.value;
 
                 setAmount(valueAll);

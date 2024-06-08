@@ -112,7 +112,7 @@ const SelectColor = ({
               codeColor[schemeColor.length] = '#000000';
               const newAmount = [...amount];
               newAmount.push([]);
-
+              console.log(schema);
               setAmount(newAmount);
               setSchemeColor(schema);
               setSchemeCodeColor(codeColor);
