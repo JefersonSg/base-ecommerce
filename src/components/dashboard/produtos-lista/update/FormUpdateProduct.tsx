@@ -260,7 +260,12 @@ const FormUpdateProduct = ({
                 error={errors.description}
                 register={register}
               />
-              <SelectSizes setSizes={setSizes} sizes={sizes} />
+              <SelectSizes
+                amount={amount}
+                setAmount={setAmount}
+                setSizes={setSizes}
+                sizes={sizes}
+              />
             </div>
             <div className={`div_container ${styles.opicional_items}`}>
               <p className={styles.subtitulo}>Informações opcionais</p>

@@ -4,10 +4,14 @@ import ButtonDelete from '../../../Botoes/ButtonDelete';
 
 const SelectSizes = ({
   sizes,
-  setSizes
+  setSizes,
+  setAmount,
+  amount
 }: {
   sizes: string[];
   setSizes: React.Dispatch<React.SetStateAction<string[]>>;
+  amount: number[][];
+  setAmount: React.Dispatch<React.SetStateAction<number[][]>>;
 }) => {
   return (
     <div className={`div_container ${styles.variaveis_sizes}`}>
@@ -41,6 +45,8 @@ const SelectSizes = ({
             const schema = [...sizes];
             schema.push(`${''}`);
             setSizes(schema);
+
+            console.log(amount);
           }}
         >
           <button className={styles.btn_add}>adicionar tamanho</button>
@@ -52,6 +58,15 @@ const SelectSizes = ({
               return;
             }
             const schema = [...sizes];
+            const newAmount = [...amount];
+
+            newAmount.forEach((item: any) => {
+              item[sizes.length - 1] = '';
+            });
+
+            setAmount(newAmount);
+
+            console.log(sizes.length);
 
             schema.pop();
             setSizes(schema);
