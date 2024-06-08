@@ -61,12 +61,11 @@ const SelectSizes = ({
             const newAmount = [...amount];
 
             newAmount.forEach((item: any) => {
-              item[sizes.length - 1] = '';
+              const indexRemove = sizes.length - 1;
+              item.splice(indexRemove);
             });
 
             setAmount(newAmount);
-
-            console.log(sizes.length);
 
             schema.pop();
             setSizes(schema);

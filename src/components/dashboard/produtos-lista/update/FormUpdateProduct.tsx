@@ -262,9 +262,9 @@ const FormUpdateProduct = ({
               />
               <SelectSizes
                 amount={amount}
+                setAmount={setAmount}
                 setSizes={setSizes}
                 sizes={sizes}
-                setAmount={setAmount}
               />
             </div>
             <div className={`div_container ${styles.opicional_items}`}>
