@@ -21,8 +21,6 @@ export default async function HomeFetchs() {
   };
   const categorias = await getAllCategories();
 
-  console.log(maisVistos);
-
   return (
     <>
       <Categorias categorias={categorias} />

@@ -57,7 +57,6 @@ export async function updateProduct(
   }
 
   amount[0].forEach((amountChild) => {
-    console.log(amountChild.toString().length);
     if (amountChild.toString().length < 1) {
       setAtivoPopUp('Preencha todos os campos de quantidade');
       ok = true;
@@ -70,10 +69,13 @@ export async function updateProduct(
     formData.append(key, data[key]);
   });
 
-  formData.append('amount', JSON.stringify(amount));
   formData.append('size', sizes.join(','));
-  formData.append('colors', colors.join(','));
-  formData.append('codeColors', codeColors.join(','));
+  formData.append('colors', corAtiva ? colors.join(',') : '');
+  formData.append('codeColors', corAtiva ? codeColors.join(',') : '');
+  formData.append(
+    'amount',
+    corAtiva ? JSON.stringify(amount) : JSON.stringify([amount[0]])
+  );
 
   if (data.images[0]) {
     const imageArray = Array.from(data.images);

@@ -130,10 +130,13 @@ export async function createProduct(
     formData.append(key, data[key]);
   });
 
-  formData.append('amount', JSON.stringify(amount));
   formData.append('size', sizes.toString());
-  formData.append('colors', colors.join(','));
-  formData.append('codeColors', codeColors.join(','));
+  formData.append('colors', corAtiva ? colors.join(',') : '');
+  formData.append('codeColors', corAtiva ? codeColors.join(',') : '');
+  formData.append(
+    'amount',
+    corAtiva ? JSON.stringify(amount) : JSON.stringify([amount[0]])
+  );
 
   if (data.images) {
     const imageArray = Array.from(data.images);
