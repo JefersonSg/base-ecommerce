@@ -38,68 +38,70 @@ const SelectColor = ({
           }}
         />
       </div>
-      {schemeColor?.map((color, index) => {
-        return (
-          <div key={index} className={styles.colors_amount_div}>
-            {corAtiva && (
-              <>
-                <div>
-                  <label htmlFor={`color${index + 1}`}>{`Cor ${
-                    index + 1
-                  }`}</label>
-                  <input
-                    type="text"
-                    id={`color${index + 1}`}
-                    placeholder="Digite o nome da cor"
-                    value={color}
-                    onChange={(e) => {
-                      const valueAll = [...schemeColor];
-                      valueAll[index] = e.target.value;
+      {corAtiva &&
+        schemeColor?.map((color, index) => {
+          return (
+            <div key={index} className={styles.colors_amount_div}>
+              {corAtiva && (
+                <>
+                  <div>
+                    <label htmlFor={`color${index + 1}`}>{`Cor ${
+                      index + 1
+                    }`}</label>
+                    <input
+                      type="text"
+                      id={`color${index + 1}`}
+                      placeholder="Digite o nome da cor"
+                      value={color}
+                      onChange={(e) => {
+                        const valueAll = [...schemeColor];
+                        valueAll[index] = e.target.value;
 
-                      setSchemeColor(valueAll);
-                    }}
+                        setSchemeColor(valueAll);
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor={`codeColor${index + 1}`}>
+                      Selecione o tom da cor
+                    </label>
+                    <input
+                      type="color"
+                      id={`codeColor${index + 1}`}
+                      value={schemeCodeColor[index] ?? '#000000'}
+                      onChange={(e) => {
+                        e.preventDefault();
+                        const schemeCode = [...schemeCodeColor];
+                        schemeCode[index] = e.currentTarget.value;
+                        setSchemeCodeColor(schemeCode);
+                      }}
+                    />
+                  </div>
+                  <SelectAmount
+                    corAtiva={corAtiva}
+                    color={color}
+                    indexColor={index}
+                    sizes={sizes}
+                    setAmount={setAmount}
+                    amount={amount}
                   />
-                </div>
-                <div>
-                  <label htmlFor={`codeColor${index + 1}`}>
-                    Selecione o tom da cor
-                  </label>
-                  <input
-                    type="color"
-                    id={`codeColor${index + 1}`}
-                    value={schemeCodeColor[index] ?? '#000000'}
-                    onChange={(e) => {
-                      e.preventDefault();
-                      const schemeCode = [...schemeCodeColor];
-                      schemeCode[index] = e.currentTarget.value;
-                      setSchemeCodeColor(schemeCode);
-                    }}
-                  />
-                </div>
-                <SelectAmount
-                  corAtiva={corAtiva}
-                  color={color}
-                  indexColor={index}
-                  sizes={sizes}
-                  setAmount={setAmount}
-                  amount={amount}
-                />
-              </>
-            )}
-
-            {!corAtiva && index === 0 && (
-              <SelectAmount
-                corAtiva={corAtiva}
-                color={color}
-                indexColor={index}
-                setAmount={setAmount}
-                amount={amount}
-                sizes={sizes}
-              />
-            )}
-          </div>
-        );
-      })}
+                </>
+              )}
+            </div>
+          );
+        })}
+      {!corAtiva && (
+        <div className={styles.colors_amount_div}>
+          <SelectAmount
+            corAtiva={corAtiva}
+            color={''}
+            indexColor={0}
+            setAmount={setAmount}
+            amount={amount}
+            sizes={sizes}
+          />
+        </div>
+      )}
 
       {corAtiva && (
         <div className={styles.botoes}>
