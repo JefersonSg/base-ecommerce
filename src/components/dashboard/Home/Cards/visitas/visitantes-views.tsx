@@ -68,7 +68,7 @@ const VisitantesViews = ({
           </div>
         </div>
         <div className={styles.views}>
-          <p>{views} clicks</p>
+          <p>{views} paginas visitadas</p>
           <p>
             {products?.[0]?.productId ? products.length : 0} produtos visitados
           </p>
