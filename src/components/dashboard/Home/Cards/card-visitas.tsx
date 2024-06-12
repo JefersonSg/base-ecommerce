@@ -67,7 +67,9 @@ const CardVisitas = ({
           <p className={`${styles.valor_principal} ${styles.p1}`}>
             {views?.sessions?.length} visitantes
           </p>
-          <p className={styles.valor_principal}>{totalViews} clicks</p>
+          <p className={styles.valor_principal}>
+            {totalViews} clicks em produtos
+          </p>
         </div>
       </div>
       <p className={styles.texto_produtos}>Visualização por visitante</p>
