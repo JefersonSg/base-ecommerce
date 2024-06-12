@@ -36,7 +36,7 @@ const ProdutosVisitados = ({
               {data?.product?.name?.slice(0, 18)}
             </Link>
           </div>
-          {views ?? 0} views
+          {views ?? 0} visitas
         </div>
       )}
     </>
