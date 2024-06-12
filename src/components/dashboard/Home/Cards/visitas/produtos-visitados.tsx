@@ -22,16 +22,6 @@ const ProdutosVisitados = ({
 
   return (
     <>
-      {!data?.product && productId && (
-        <div>
-          <p>Produto não encontrado</p>
-        </div>
-      )}
-      {!data?.product && !productId && (
-        <div>
-          <p>Nenhum produto visitado</p>
-        </div>
-      )}
       {data?.product && (
         <div className={styles.produto_view}>
           <Image

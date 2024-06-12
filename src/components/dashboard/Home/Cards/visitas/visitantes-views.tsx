@@ -29,6 +29,7 @@ const VisitantesViews = ({
       return [];
     }
   });
+  const [totalProductViews, setTotalProductViews] = React.useState(0);
 
   React.useEffect(() => {
     if (user) {
@@ -39,6 +40,17 @@ const VisitantesViews = ({
       });
     }
   }, [user]);
+
+  React.useEffect(() => {
+    for (let i = 0; i < products.length; i++) {
+      const product = products[i];
+
+      if (product !== null) {
+        console.log(product);
+        setTotalProductViews(i);
+      }
+    }
+  }, [products]);
 
   return (
     <div
@@ -69,9 +81,7 @@ const VisitantesViews = ({
         </div>
         <div className={styles.views}>
           <p>{views} paginas visitadas</p>
-          <p>
-            {products?.[0]?.productId ? products.length : 0} produtos visitados
-          </p>
+          <p>{totalProductViews} produtos visitados</p>
         </div>
         <Image
           className={styles.seta}
