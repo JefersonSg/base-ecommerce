@@ -90,7 +90,7 @@ const CardVisitas = ({
           className={styles.botao_mostrar_mais}
           onClick={() => {
             if (mostrarMais === 3) {
-              setMostrarMais(views?.totalViews?.length);
+              setMostrarMais(views?.sessions?.length);
             } else {
               setMostrarMais(3);
             }

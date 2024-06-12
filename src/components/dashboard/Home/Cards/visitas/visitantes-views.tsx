@@ -30,6 +30,7 @@ const VisitantesViews = ({
     }
   });
   const [totalProductViews, setTotalProductViews] = React.useState(0);
+  // const [totalClicksInProducts, setTotalClicksInProducts] = React.useState(0);
 
   React.useEffect(() => {
     if (user) {
@@ -42,13 +43,15 @@ const VisitantesViews = ({
   }, [user]);
 
   React.useEffect(() => {
-    for (let i = 0; i < products.length; i++) {
-      const product = products[i];
-
-      if (product !== null) {
-        console.log(product);
-        setTotalProductViews(i);
-      }
+    if (products) {
+      let i = 0;
+      products.forEach((product) => {
+        if (product.productId) {
+          i++;
+          setTotalProductViews(i);
+          console.log(product.productId);
+        }
+      });
     }
   }, [products]);
 
