@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { typeFirst, typeFirstDashboard } from '../shared/functions/fonts';
 import './globals.css';
+import './fonts.css';
+import './colors.css';
 import { GoogleTagManager } from '@next/third-parties/google';
 
 import Providers from '@/src/shared/providers/providers';
