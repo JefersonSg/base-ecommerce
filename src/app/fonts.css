@@ -5,7 +5,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
-    font-variant: small-caps;
   }
   
 .titulo_area {
@@ -40,11 +39,13 @@
   }
   
   .title_bold_24px {
+    font-family: var(--fonte-primaria);
     font-size: 24px;
     font-weight: 700;
   }
 
   .text_medium_18px {
+    font-family: var(--fonte-primaria);
     font-size: 18px;
     font-weight: 400;
   }

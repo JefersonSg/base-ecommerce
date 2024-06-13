@@ -42,7 +42,7 @@ const ContainerProduct = async ({
         link2={`/produtos/subcategoria?_id=${productData.subcategory}`}
         texto3={productData.name}
       />
-      <div className={styles.titulo}>
+      <div className={`title_bold_24px ${styles.titulo}`}>
         <Titulo titulo={productData?.name} />
       </div>
       <div className={styles.navegação}></div>

@@ -155,8 +155,7 @@ const FormCreateProduct = () => {
         await refetch();
         setAtivoPopUp('Produto criado com sucesso');
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
       setIsLoading(false);
       setAtivoPopUp(`Erro ao criar o produto`);
     }

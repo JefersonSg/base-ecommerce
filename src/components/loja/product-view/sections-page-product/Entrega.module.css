@@ -7,6 +7,7 @@
   margin-top: 32px;
   padding-left: 16px;
   box-sizing: border-box;
+  font-family: var(--fonte-primaria);
 }
 
 .textos {
@@ -53,11 +54,11 @@
   height: 48px;
   width: 48px;
   padding: 0;
-  background-color: transparent;
+  background-color: #B7B9B7;
   font-weight: 700;
   outline: none;
-  color: #00000070;
-  border: 1px solid #00000070;
+  color: #ffffff;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.1s;
@@ -88,13 +89,30 @@
   align-items: center;
 }
 
+.texto_indicativo_input {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 8px;
+}
 
 @media (min-width: 64rem) {
+
+  .texto_indicativo_input label {
+    font-size: 16px;
+  }
+  .input_entrega {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  .textos
   .entrega {
-    background-color: #d9d9d950;
     width: 100%;
     max-width: 350px;
-    height: 184px;
+    height: max-content;
     justify-content: center;
     padding-left: 24px;
     box-sizing: content-box;
@@ -104,15 +122,14 @@
     gap: 0px;
     border-radius: 12px;
     margin-top: 0;
-    padding: 16px;
-    padding-bottom: 16px;
+    padding:0px;
   }
   .entrega input {
-    margin-bottom: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #F5F5F5;
   }
-  .textos {
-    max-width: 100%;
-  }
+
   .entrega p {
     display: flex;
     gap: 16px;

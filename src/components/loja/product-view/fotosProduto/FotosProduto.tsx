@@ -57,7 +57,6 @@ function FotosProduto({ img }: { img: string[] }) {
             <Swiper
               slidesPerView={1}
               thumbs={{ swiper: thumbsSwiper }}
-              zoom={true}
               modules={[Controller, Thumbs, FreeMode]}
             >
               {img?.map((image, index) => {
@@ -69,21 +68,19 @@ function FotosProduto({ img }: { img: string[] }) {
                       setImagemPrincipal(image);
                     }}
                   >
-                    <div className="swiper-zoom-container">
-                      <Image
-                        className={styles.fotoPrincipal}
-                        alt="Foto do produto"
-                        id={imagemId}
-                        src={image}
-                        quality={70}
-                        loading={index > 2 ? 'lazy' : undefined}
-                        fill
-                        placeholder="blur"
-                        blurDataURL={image}
-                        sizes="(max-width: 1024px) 550px, 100vw"
-                        priority={index < 2}
-                      />
-                    </div>
+                    <Image
+                      className={styles.fotoPrincipal}
+                      alt="Foto do produto"
+                      id={imagemId}
+                      src={image}
+                      quality={70}
+                      loading={index > 2 ? 'lazy' : undefined}
+                      fill
+                      placeholder="blur"
+                      blurDataURL={image}
+                      sizes="(max-width: 1024px) 550px, 100vw"
+                      priority={index < 2}
+                    />
                   </SwiperSlide>
                 );
               })}

@@ -29,17 +29,19 @@
 }
 @media (min-width: 64rem) {
   .preco {
-    grid-row: 3;
+    grid-row: 1;
+    grid-column: 1;
     margin: 0px;
     text-align: start;
-    margin-top: 16px;
+    margin-top: 0px;
   }
   .preco h2 {
-    font-size: 40px;
+    font-size: 24px;
   }
 
   .dividido,
   .dividido span {
-    font-size: 20px;
+    font-size: 14px;
+    color: #878787;
   }
 }

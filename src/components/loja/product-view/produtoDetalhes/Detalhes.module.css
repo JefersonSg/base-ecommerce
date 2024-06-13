@@ -21,18 +21,17 @@
 }
 @media (min-width: 64rem) {
   .detalhes {
+    display: grid;
     grid-column: 2;
     grid-row: 4/5;
     background-color: white;
-    max-width: 350px;
-    display: grid;
-    gap: 32px;
-    grid-template-rows: minmax(30px, max-content) max-content max-content 50px;
+    max-width: max-content;
+    gap: 24px;
+    grid-template-rows: minmax(30px, max-content) max-content max-content auto;
     margin: 0px;
     margin-left: 32px;
     padding: 0;
-    padding-top: 32px;
-    border-top: 1px solid #99655750;
+    margin-top: 24px;
   }
   .entrega {
     width: 100%;
@@ -47,15 +46,15 @@
     width: max-content;
     max-width: none;
     grid-column: 1;
-    grid-row: 4;
+    grid-row: 3;
   }
 
   .informacoes {
     flex-direction: column;
     min-height: none;
     grid-column: 1;
-    grid-row: 1;
-    gap: 16px;
+    grid-row: 2;
+    gap: 24px;
   }
 }
 @media (min-width: 1400px) {
@@ -63,10 +62,9 @@
     width: max-content;
     grid-column: 2/4;
     max-width: 800px;
-    grid-template-columns: 311px 400px;
   }
   .entrega {
-    grid-row: 1;
-    grid-column: 2;
+    grid-row: 4;
+    grid-column: 1;
   }
 }

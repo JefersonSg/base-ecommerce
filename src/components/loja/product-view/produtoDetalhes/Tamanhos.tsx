@@ -46,7 +46,6 @@ function Tamanhos({
           height={9}
         />
       </p>
-      <span className={styles.indicação}>Escolha o tamanho</span>
       <div
         className={`${styles.tamanhos_valor}  ${styles.selectSizes} ${
           ativo ? styles.ativo : ''
@@ -76,6 +75,7 @@ function Tamanhos({
           );
         })}
       </div>
+      <span className={styles.indicação}>Escolha o tamanho</span>
     </div>
   );
 }
