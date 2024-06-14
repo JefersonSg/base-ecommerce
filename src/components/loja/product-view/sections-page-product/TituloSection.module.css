@@ -7,7 +7,11 @@
   cursor: pointer;
   box-sizing: border-box;
 }
-
+.titulo_h2 {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--fonte-primaria);
+}
 .seta {
   transition: 0.1s ease-in;
 }

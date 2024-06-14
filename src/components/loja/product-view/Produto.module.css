@@ -2,6 +2,7 @@
   min-height: 100vh;
   padding: 32px 0px 0 0px;
   margin-bottom: 128px;
+  padding-bottom: 64px;
 }
 .navegação {
   display: none;
@@ -39,6 +40,8 @@
     max-width: 1200px;
     padding: 32px 0px 0 0px;
     align-items: start;
+    margin-bottom: 128px;
+    padding-bottom: 64px;
   }
 }
 
