@@ -1,15 +1,16 @@
 .sections {
   grid-column: 1 / -1;
   font-family: var(--fonte-primaria);
-  padding-bottom: 64px;
+  border-bottom: 1px solid black;
+  padding-bottom: 32px;
 }
 .select_view {
   display: flex;
-  width: calc(100vw - 14px);
+  width: calc(100%);
   position: relative;
-  left: -34px;
   justify-content: center;
   border-bottom: 1px solid black;
+  padding-top: 16px;
 }
 .select_view p {
   position: relative;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Breadcrumb from '../breadcrumb/Breadcrumb';
 import { Titulo } from '../../compartilhado/textos/Titulo';
 import Interacoes from './interacoesUser/Interacoes';
@@ -12,8 +12,7 @@ import {
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
 import AddViewFunc from '../../compartilhado/AddViewFunc';
-import { getProductsByCategory } from '@/src/shared/api/GETS';
-import SectionProdutosViews from '../sections-home/SectionProdutosViews';
+import ProdutosSugeridos from './sections-page-product/Produtos_sugeridos';
 
 const ContainerProduct = async ({
   productData,
@@ -29,10 +28,6 @@ const ContainerProduct = async ({
   const totalStars = commentData?.comments?.map(
     (comment) => +comment?.stars
   ) ?? [1];
-
-  const productsCategory =
-    productData?.category &&
-    (await getProductsByCategory(productData?.category));
 
   const media =
     totalStars?.reduce((acumulador, numero) => acumulador + numero, 0) /
@@ -58,14 +53,9 @@ const ContainerProduct = async ({
 
       <AddViewFunc productId={productData?._id} />
 
-      {productsCategory?.products?.length > 1 ? (
-        <SectionProdutosViews
-          texto={'Produtos Similares'}
-          data={productsCategory}
-        />
-      ) : (
-        ''
-      )}
+      <Suspense>
+        <ProdutosSugeridos category={productData?.category} />
+      </Suspense>
     </>
   );
 };
