@@ -1,13 +1,13 @@
 :root {
-    --cor-de-indicacao: rgb(36, 36, 36);
-    --cor-primaria: #471703;
-    --cor-secundaria: #996557;
-    --cor-terciaria: #3a292f;
-    --cor-quarta: #6b4024;
-    --cor-quinta: #441700;
-    --cor-contraste: #ef3c3c;
-    --cor-contraste2: #9d4112;
-    --color-border: #d9dee3;
+  --cor-de-indicacao: #242424;
+  --cor-primaria: #000;
+  --cor-secundaria: #000;
+  --cor-terciaria: #000;
+  --cor-quarta: #000;
+  --cor-quinta: #000;
+  --cor-contraste: #ef3c3c;
+  --cor-contraste2: #cc1f0f;
+  --color-border: #d9dee3;
     --blue-bg-500: #696CFF;
     --blue-bg-100: #DDE3F1;
     --green-sucess-500: #71DD37;
