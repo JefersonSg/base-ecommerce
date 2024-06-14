@@ -33,7 +33,7 @@
     grid-template-columns: 1fr 1fr;
     box-sizing: border-box;
     grid-template-rows:
-      46px max-content max-content calc(800px - 50px - 26px - 16px)
+      46px max-content max-content auto
       auto;
     margin: 0 auto;
     width: max-content;

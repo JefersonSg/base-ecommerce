@@ -5,7 +5,7 @@ import Descricao from './Descricao';
 import Entrega from './Entrega';
 import styles from './Sections.module.css';
 import Avaliacoes from '../avaliacoes/Avaliacoes';
-import React, { Suspense } from 'react';
+import React from 'react';
 
 function Sections({ data }: { data: ProductApi }) {
   const [ativoDescription, setAtivoDescription] = React.useState(true);
@@ -64,9 +64,7 @@ function Sections({ data }: { data: ProductApi }) {
           !ativoDescription ? styles.ativo : ''
         }`}
       >
-        <Suspense>
-          <Avaliacoes />
-        </Suspense>
+        <Avaliacoes />
       </div>
     </div>
   );
