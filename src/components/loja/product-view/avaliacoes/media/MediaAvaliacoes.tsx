@@ -17,9 +17,9 @@ function MediaAvaliacoes() {
   const pathname = useParams() as unknown as PageParams;
 
   const { data } = useQuery<{ comments: CommentInterface[] }>({
-    queryKey: ['comments-id-' + pathname.id],
+    queryKey: ['comments-id-' + pathname?.id],
     queryFn: async () => {
-      return await getAllComments(pathname.id);
+      return await getAllComments(pathname?.id);
     }
   });
 

@@ -5,7 +5,7 @@ import Descricao from './Descricao';
 import Entrega from './Entrega';
 import styles from './Sections.module.css';
 import Avaliacoes from '../avaliacoes/Avaliacoes';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 function Sections({ data }: { data: ProductApi }) {
   const [ativoDescription, setAtivoDescription] = React.useState(true);
@@ -64,7 +64,15 @@ function Sections({ data }: { data: ProductApi }) {
           !ativoDescription ? styles.ativo : ''
         }`}
       >
-        <Avaliacoes />
+        <Suspense
+          fallback={
+            <>
+              <div className={styles.espaco_branco}></div>
+            </>
+          }
+        >
+          <Avaliacoes />
+        </Suspense>
       </div>
     </div>
   );

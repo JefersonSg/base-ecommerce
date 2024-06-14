@@ -4,6 +4,7 @@
   margin: 0 auto;
   margin-top: 64px;
   box-sizing: border-box;
+  padding-top: 32px;
 }
 
 @media (min-width: 64rem) {
