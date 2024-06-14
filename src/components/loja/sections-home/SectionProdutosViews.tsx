@@ -9,10 +9,12 @@ import { Titulo } from '../../compartilhado/textos/Titulo';
 
 const SectionProdutosViews = ({
   pesquisa,
-  data
+  data,
+  texto
 }: {
   pesquisa?: string;
   data: { products: ProductApi[] };
+  texto?: string;
 }) => {
   const [totalProdutos, setTotalProdutos] = React.useState(9);
 
@@ -42,7 +44,7 @@ const SectionProdutosViews = ({
   return (
     <div className={styles.section_produtos}>
       <div className={styles.informacoes}>
-        <Titulo titulo="Populares" />
+        <Titulo titulo={texto ?? 'Populares'} />
       </div>
       {data && <ProductsById data={data} totalProdutos={totalProdutos} />}
       {data?.products?.length > 9 && data.products.length > totalProdutos && (
