@@ -44,8 +44,8 @@
     border-radius: 999px;
   }
   .header {
-    padding: 0px 120px;
-    height: 84px;
+    padding: 0px 74px;
+    height: 64px;
     display: grid;
     grid-template-columns: max-content max-content max-content;
   }
@@ -66,16 +66,16 @@
   }
 
   .logo {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1;
   }
   .foto_logo {
-    height: 60px !important;
-    width: 90px !important;
+    height: 50px !important;
+    width: auto !important;
   }
 
   .container1 {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
     height: auto;
   }

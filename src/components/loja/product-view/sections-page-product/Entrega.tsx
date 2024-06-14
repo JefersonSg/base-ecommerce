@@ -74,51 +74,40 @@ function Entrega() {
       {ativo && (
         <>
           <div>
-            <input
-              type="text"
-              placeholder="CEP"
-              value={CEPWatch}
-              maxLength={9}
-              onChange={(e) => {
-                setCEPWatch(e.target.value);
-              }}
-            />
-            <button
-              className={styles.buttonOk}
-              onClick={() => {
-                if (CEPWatch.length >= 8) {
-                  void fetchApi();
-                }
-              }}
-            >
-              OK
-            </button>
+            <div className={styles.texto_indicativo_input}>
+              <Image
+                alt="Imagem de caminhão de frete"
+                src={'/produto/caminhao.svg'}
+                width={24}
+                height={24}
+              />
+              <label htmlFor="cep">Consulte o frete</label>
+            </div>
+            <div className={styles.input_entrega}>
+              <input
+                name="cep"
+                id="cep"
+                type="text"
+                placeholder="Digite seu CEP"
+                value={CEPWatch}
+                maxLength={9}
+                onChange={(e) => {
+                  setCEPWatch(e.target.value);
+                }}
+              />
+              <button
+                className={styles.buttonOk}
+                onClick={() => {
+                  if (CEPWatch.length >= 8) {
+                    void fetchApi();
+                  }
+                }}
+              >
+                OK
+              </button>
+            </div>
           </div>
           <div className={styles.textos}>
-            <div>
-              <Image
-                alt="Caminhão"
-                src={'/produto/caminhao.svg'}
-                width={22}
-                height={14}
-              />
-              <p className="texto">
-                Por correio - a partir de R$15,00 ou de graça a partir de
-                R$250,00
-              </p>
-            </div>
-            <div>
-              <Image
-                alt="Caixa"
-                src={'/produto/box.svg'}
-                width={22}
-                height={14}
-              />
-              <p className="texto">
-                Transportadora - a partir de R$15,00 de graça ou de graça a
-                partir de R$250,00
-              </p>
-            </div>
             {openModal ? (
               <div className={styles.entregas_metodos}>
                 {isLoading && (

@@ -82,6 +82,11 @@
   color: #808080;
 }
 @media (min-width: 64rem) {
+  .indicação {
+    position: relative;
+    top: -8px;
+    color: #878787;
+  }
   .size_selected {
     display: none;
   }
@@ -115,7 +120,8 @@
     height: max-content;
     font-weight: 600;
     color: #471703;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 300;
   }
   .tamanhos {
     width: max-content;

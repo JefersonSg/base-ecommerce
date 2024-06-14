@@ -1,6 +1,7 @@
 .container_nav {
   position: relative;
   background-color: white;
+  font-family: var(--fonte-primaria);
 }
 
 .categorias_lista {
@@ -30,13 +31,14 @@
 
 @media (min-width: 64rem) {
   .container_nav {
-    border-top: 1px solid #996557;
     border-bottom: 1px solid #996557;
+    height: 45px;
   }
   .link {
     display: flex;
     align-items: center;
     width: max-content;
+    height: 40px;
     padding: 0 8px;
     gap: 4px;
     font-weight: 500;

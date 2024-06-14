@@ -159,7 +159,10 @@ export async function createProduct(
     return response.data;
   } catch (error: any) {
     console.log(error);
-
+    if (error?.response?.data?.error) {
+      setAtivoPopUp(error?.response?.data?.error);
+      return;
+    }
     if (error.response.data.errorsResult.body) {
       Object.keys(error.response.data.errorsResult.body).forEach((key) => {
         setAtivoPopUp(error.response.data.errorsResult.body[key]);

@@ -43,7 +43,7 @@ const ResultadoPesquisa = ({
                     setPesquisa('');
                   }}
                   href={`/produtos/produto/${product._id}`}
-                  className={styles.produco_pesquisa}
+                  className={styles.produto_pesquisa}
                   key={product?._id}
                 >
                   <Image
