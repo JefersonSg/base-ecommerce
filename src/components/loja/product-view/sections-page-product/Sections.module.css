@@ -40,6 +40,24 @@
 .div_avaliacao.ativo {
   display: block;
 }
+
+.espaco_branco {
+  width: 100%;
+  height: 280px;
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: #f0f0f0; /* Cinza claro */
+  }
+  50% {
+    background-color: #e0e0e0; /* Cinza médio */
+  }
+  100% {
+    background-color: #f0f0f0; /* Cinza claro */
+  }
+}
 @media (min-width: 1024px) {
   .entrega {
     display: none;
