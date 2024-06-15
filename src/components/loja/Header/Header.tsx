@@ -34,9 +34,8 @@ export function Header({ userData }: { userData: UserInterface }) {
     if (admin) {
       void isAdmin(userData?.user?._id);
     }
+    setNewCookieSession();
   }, [admin, userData?.user?._id]);
-
-  setNewCookieSession();
 
   return (
     <div className={styles.container_header}>
