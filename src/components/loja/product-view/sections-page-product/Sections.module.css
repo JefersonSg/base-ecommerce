@@ -25,6 +25,8 @@
   cursor: pointer;
   padding-left: 32px;
   padding-right: 32px;
+  width: 150px;
+  box-sizing: border-box;
 }
 .select_avaliacoes.ativo,
 .select_description.ativo {

@@ -145,6 +145,15 @@ export async function createProduct(
       formData.append('images', image);
     });
   }
+
+  if (data.coverPhoto1) {
+    formData.append('coverPhoto1', data.coverPhoto1[0]);
+  }
+
+  if (data.coverPhoto2) {
+    formData.append('coverPhoto2', data.coverPhoto2[0]);
+  }
+
   try {
     const response = await axios.post(
       `${API}products/create`,

@@ -76,6 +76,13 @@ export async function updateProduct(
     'amount',
     corAtiva ? JSON.stringify(amount) : JSON.stringify([amount[0]])
   );
+  if (data.coverPhoto1) {
+    formData.append('coverPhoto1', data.coverPhoto1[0]);
+  }
+
+  if (data.coverPhoto2) {
+    formData.append('coverPhoto2', data.coverPhoto2[0]);
+  }
 
   if (data.images[0]) {
     const imageArray = Array.from(data.images);
