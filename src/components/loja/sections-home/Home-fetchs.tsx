@@ -26,12 +26,23 @@ export default async function HomeFetchs() {
       <Categorias categorias={categorias} />
       {promocoes?.products?.length > 3 ? (
         <>
-          <Section data={promocoes} nomeSessao="Promoções" link={'promocoes'} />
-          <Section data={novidades} nomeSessao="Novidades" link={'novidades'} />
+          <Section
+            data={promocoes}
+            nomeSessao="Promoções"
+            link={'promocoes'}
+            textoBotao="Todas as promoções"
+          />
+          <Section
+            data={novidades}
+            nomeSessao="Novidades"
+            link={'novidades'}
+            textoBotao="Todas as novidades"
+          />
           <Section
             data={maisVendidos}
             nomeSessao="Mais vendidos"
             link={'mais-vendidos'}
+            textoBotao="ver mais vendidos"
           />
           {maisVistos?.products?.length > 1 ? (
             <SectionProdutosViews data={maisVistos} />

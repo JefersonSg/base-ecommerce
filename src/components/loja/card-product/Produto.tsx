@@ -44,7 +44,7 @@ function Produto({ productData }: Props) {
           <Image
             className={styles.imagem}
             alt="Imagem do produto"
-            src={coverPhoto1 ?? images[0]}
+            src={coverPhoto1?.length ? coverPhoto1 : images[0]}
             width={185}
             height={243}
             quality={75}

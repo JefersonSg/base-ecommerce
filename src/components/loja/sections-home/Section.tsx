@@ -9,11 +9,13 @@ import SlideProduct from './slide-produto';
 async function Section({
   data,
   nomeSessao,
-  link
+  link,
+  textoBotao
 }: {
   data: { products: ProductApi[] };
   nomeSessao: string;
   link: string;
+  textoBotao?: string;
 }) {
   return (
     <div className={styles.section}>
@@ -27,7 +29,7 @@ async function Section({
       </div>
       <SlideProduct data={data} />
       <div className={styles.botao_sessao}>
-        <BotaoSessao texto="Todos os produtos" link={link} />
+        <BotaoSessao texto={textoBotao ?? 'Todos os produtos'} link={link} />
       </div>
     </div>
   );
