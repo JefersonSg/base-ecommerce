@@ -5,7 +5,8 @@ export const validationProduct = yup.object({
   name: yup
     .string()
     .required('É necessário preencher o campo de Nome')
-    .min(2, 'É necessario ao menos 2 caracteres no nome'),
+    .min(2, 'É necessario ao menos 2 caracteres no nome')
+    .max(50, 'O máximo para o nome são 50 characters'),
   description: yup
     .string()
     .required()

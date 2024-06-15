@@ -65,13 +65,24 @@ function Produto({ productData }: Props) {
           <span className={`${styles.preco}`}>
             R$ {convertNumberInReal(price)}
           </span>
+
           {promotionPorcent() ? (
             <p>R$ {convertNumberInReal(promotionalPrice ?? 0)}</p>
           ) : (
             ''
           )}
+          <p className={styles.preco_parcelado}>
+            ou <span>10x</span> de{' '}
+            <span>
+              R${' '}
+              {convertNumberInReal(
+                promotionalPrice ? promotionalPrice / 10 : price / 10
+              )}
+            </span>
+          </p>
         </div>
       </div>
+      <button className={styles.botao_adicionar}>Adicionar ao carrinho</button>
     </Link>
   );
 }

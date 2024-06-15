@@ -41,6 +41,8 @@ import ToggleButtonCreate from '../../../compartilhado/formulario/ToggleButtonCr
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
 import SelectSizes from './sizes/SelectSizes';
+import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import DicaImagem from '../dicas/DicaImagem';
 
 const schema = validationProduct;
 
@@ -102,6 +104,7 @@ const FormUpdateProduct = ({
   });
 
   const router = useRouter();
+  const [openDica, setOpenDica] = React.useState(false);
   const [ativoPopUp, setAtivoPopUp] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
   const [schemeColor, setSchemeColor] = React.useState(['']);
@@ -126,6 +129,7 @@ const FormUpdateProduct = ({
     subcategoryInterface[] | undefined
   >([]);
 
+  const nameWatch = watch('name');
   const promotionCheck = watch('promotion');
   const promotionPriceCheck = watch('promotionalPrice');
   const activeCheck = watch('active');
@@ -288,14 +292,19 @@ const FormUpdateProduct = ({
             <div className={`div_container ${styles.core_items}`}>
               <p className={styles.subtitulo}>Informação do produto</p>
 
-              <InputFormulario
-                label="Nome"
-                name="name"
-                placeholder="Nome do produto"
-                type="text"
-                error={errors.name}
-                register={register}
-              />
+              <div className={styles.div_name}>
+                <span className={styles.contador_nome}>
+                  {nameWatch.length} / 50
+                </span>
+                <InputFormulario
+                  label="Nome"
+                  name="name"
+                  placeholder="Nome do produto"
+                  type="text"
+                  error={errors.name}
+                  register={register}
+                />
+              </div>
 
               <InputFormulario
                 type=""
@@ -340,7 +349,15 @@ const FormUpdateProduct = ({
                 register={register}
               />
             </div>
-            <div className="div_container">
+            <div className={`div_container ${styles.images_produto_container}`}>
+              <p
+                className={styles.dicas_image}
+                onClick={() => {
+                  setOpenDica(true);
+                }}
+              >
+                Ver dicas
+              </p>
               <InputFormulario
                 label="Carregue as imagens do produto"
                 name="images"
@@ -643,6 +660,8 @@ const FormUpdateProduct = ({
         />
       )}
       {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {openDica && <BackgoundClick setState1={setOpenDica} />}
+      {openDica && <DicaImagem />}
     </>
   );
 };
