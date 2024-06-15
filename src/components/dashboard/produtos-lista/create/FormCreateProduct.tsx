@@ -41,7 +41,7 @@ import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
 import SelectSizes from './sizes/SelectSizes';
-import DicaImagem from './dicas/DicaImagem';
+import DicaImagem from '../dicas/DicaImagem';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 
 const schema = validationProduct;
