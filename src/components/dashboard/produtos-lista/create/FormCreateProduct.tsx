@@ -41,6 +41,8 @@ import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
 import SelectSizes from './sizes/SelectSizes';
+import DicaImagem from './dicas/DicaImagem';
+import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 
 const schema = validationProduct;
 
@@ -76,6 +78,7 @@ const FormCreateProduct = () => {
     }
   });
 
+  const nameWatch = watch('name');
   const promotionWatch = watch('promotion');
   const activeWatch = watch('active');
   const imagesWatch: any = watch('images');
@@ -96,6 +99,7 @@ const FormCreateProduct = () => {
   const [coverPhoto1WatchUrl, setCoverPhoto1WatchUrl] = React.useState<any[]>(
     []
   );
+  const [openDica, setOpenDica] = React.useState(false);
   const [coverPhoto2WatchUrl, setCoverPhoto2WatchUrl] = React.useState<any[]>(
     []
   );
@@ -222,15 +226,19 @@ const FormCreateProduct = () => {
           <div className={styles.div_colum1}>
             <div className={`div_container ${styles.core_items}`}>
               <p className={styles.subtitulo}>Informação do produto</p>
-
-              <InputFormulario
-                label="Nome"
-                name="name"
-                placeholder="Nome do produto"
-                type="text"
-                error={errors.name}
-                register={register}
-              />
+              <div className={styles.div_name}>
+                <span className={styles.contador_nome}>
+                  {nameWatch.length} / 50
+                </span>
+                <InputFormulario
+                  label="Nome"
+                  name="name"
+                  placeholder="Nome do produto"
+                  type="text"
+                  error={errors.name}
+                  register={register}
+                />
+              </div>
 
               <InputFormulario
                 type=""
@@ -272,7 +280,15 @@ const FormCreateProduct = () => {
                 register={register}
               />
             </div>
-            <div className="div_container">
+            <div className={`div_container ${styles.images_produto_container}`}>
+              <p
+                className={styles.dicas_image}
+                onClick={() => {
+                  setOpenDica(true);
+                }}
+              >
+                Ver dicas
+              </p>
               <InputFormulario
                 label="Carregue as imagens do produto"
                 name="images"
@@ -527,6 +543,8 @@ const FormCreateProduct = () => {
         />
       )}
       {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {openDica && <BackgoundClick setState1={setOpenDica} />}
+      {openDica && <DicaImagem />}
     </>
   );
 };
