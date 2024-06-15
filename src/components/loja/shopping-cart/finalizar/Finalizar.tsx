@@ -44,12 +44,12 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
     <>
       <div className={styles.div_cupom}>
         <label htmlFor="desconto">Cupom de desconto</label>
-        <div>
+        <div className={styles.div_input_desconto}>
           <input
             type="text"
             name="desconto"
             id="desconto"
-            placeholder="código"
+            placeholder="Insira o código "
             className={styles.desconto}
             value={cupom}
             onChange={(e) => {
@@ -66,7 +66,11 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
           </button>
         </div>
         {isLoading && <Loading />}
-        {error && <p>{error}</p>}
+        {error && (
+          <p className="error" style={{ marginTop: '4px' }}>
+            {error}
+          </p>
+        )}
         {valorDesconto?.cupom._id && <p>Cupom aplicado</p>}
       </div>
       <div className={styles.finalizar_pedido}>
@@ -101,11 +105,8 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
               : convertNumberInReal(valorProdutos)}
           </span>
         </p>
-        <Link
-          href={`${valorProdutos ? '/carrinho/finalizar' : '/carrinho'}`}
-          className={`${styles.botao} ${valorProdutos ? '' : styles.disabled}`}
-        >
-          <BotaoColorido texto="FINALIZAR PEDIDO" />
+        <Link href={'/carrinho/finalizar'} className={styles.botao}>
+          <BotaoColorido texto="IR PARA PAGAMENTO" />
         </Link>
       </div>
     </>

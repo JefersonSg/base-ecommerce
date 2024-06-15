@@ -46,7 +46,7 @@ const ContainerCart = () => {
   }, [pathname, refetch]);
 
   return (
-    <div>
+    <div className={styles.container_items_cart}>
       <div className={styles.area_textos_container}>
         <div className={styles.area_textos}>
           <Breadcrumb texto1="Carrinho" />
