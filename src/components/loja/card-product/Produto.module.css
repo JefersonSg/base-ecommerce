@@ -17,6 +17,7 @@
 }
 .promotion_active {
   height: calc(70vw + 20px);
+  height: 440px;
 }
 
 .like {
