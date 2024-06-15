@@ -65,6 +65,8 @@ const FormUpdateProduct = ({
     promotion,
     howToUse,
     images,
+    coverPhoto1,
+    coverPhoto2,
     stock,
     subcategory,
     characteristic,
@@ -93,6 +95,8 @@ const FormUpdateProduct = ({
       brand,
       characteristic,
       images: {},
+      coverPhoto1: {},
+      coverPhoto2: {},
       active
     }
   });
@@ -111,6 +115,13 @@ const FormUpdateProduct = ({
   const [sizes, setSizes] = React.useState<string[]>(['1']);
 
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
+  const [coverPhoto1WatchUrl, setCoverPhoto1WatchUrl] = React.useState<any[]>(
+    []
+  );
+  const [coverPhoto2WatchUrl, setCoverPhoto2WatchUrl] = React.useState<any[]>(
+    []
+  );
+
   const [subcategoriesList, setSubcategoriesList] = React.useState<
     subcategoryInterface[] | undefined
   >([]);
@@ -119,6 +130,8 @@ const FormUpdateProduct = ({
   const promotionPriceCheck = watch('promotionalPrice');
   const activeCheck = watch('active');
   const imagesWatch: any = watch('images');
+  const coverPhoto1Watch: any = watch('coverPhoto1');
+  const coverPhoto2Watch: any = watch('coverPhoto2');
   const categoryWatch: any = watch('category');
 
   const dataCategory = useQuery<CategoriesResponse>({
@@ -227,9 +240,41 @@ const FormUpdateProduct = ({
     setImageUrl1(imageUrlArray);
   }, [imagesWatch]);
 
+  const handleChangeCover1 = React.useCallback(() => {
+    const imageUrlArray: any[] = [];
+    if (coverPhoto1Watch?.[0]) {
+      const arrayImages = [...coverPhoto1Watch];
+      arrayImages?.forEach((image: any) => {
+        const imageURL = URL?.createObjectURL(image);
+        imageUrlArray.push(imageURL);
+      });
+    }
+    setCoverPhoto1WatchUrl(imageUrlArray);
+  }, [coverPhoto1Watch]);
+
+  const handleChangeCover2 = React.useCallback(() => {
+    const imageUrlArray: any[] = [];
+    if (coverPhoto2Watch?.[0]) {
+      const arrayImages = [...coverPhoto2Watch];
+      arrayImages?.forEach((image: any) => {
+        const imageURL = URL?.createObjectURL(image);
+        imageUrlArray.push(imageURL);
+      });
+    }
+    setCoverPhoto2WatchUrl(imageUrlArray);
+  }, [coverPhoto2Watch]);
+
   React.useEffect(() => {
     handleChange();
   }, [handleChange]);
+
+  React.useEffect(() => {
+    handleChangeCover1();
+  }, [handleChangeCover1]);
+
+  React.useEffect(() => {
+    handleChangeCover2();
+  }, [handleChangeCover2]);
 
   return (
     <>
@@ -347,9 +392,100 @@ const FormUpdateProduct = ({
                 })}
               </Swiper>
 
-              {/* <div className={styles.exibicao_div}>
-                <p>Deseja alterar a ordem de exibicao?</p>
-              </div> */}
+              <InputFormulario
+                label="Carregue a foto de capa 1 (opicional)"
+                name="coverPhoto1"
+                placeholder=""
+                register={register}
+                type="file"
+                error={errors.coverPhoto1}
+              />
+              <Swiper
+                className={`${styles.mySwiper} slide-images`}
+                slidesPerView={5}
+                navigation={true}
+                spaceBetween={32}
+                pagination={false}
+                modules={[Navigation]}
+              >
+                {coverPhoto1 && !coverPhoto1WatchUrl[0] ? (
+                  <>
+                    {
+                      <SwiperSlide>
+                        <p>{1}</p>
+                        <Image
+                          alt="imagens do produto"
+                          src={coverPhoto1}
+                          width={50}
+                          height={50}
+                        />
+                      </SwiperSlide>
+                    }
+                  </>
+                ) : (
+                  ''
+                )}
+                {coverPhoto1WatchUrl?.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <p>{index + 1}</p>
+                      <Image
+                        alt="imagens do produto"
+                        src={image}
+                        width={50}
+                        height={50}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+              <InputFormulario
+                label="Carregue a foto de capa 2 (opicional)"
+                name="coverPhoto2"
+                placeholder=""
+                register={register}
+                type="file"
+                error={errors.coverPhoto2}
+              />
+              <Swiper
+                className={`${styles.mySwiper} slide-images`}
+                slidesPerView={5}
+                navigation={true}
+                spaceBetween={32}
+                pagination={false}
+                modules={[Navigation]}
+              >
+                {coverPhoto2 && !coverPhoto2WatchUrl[0] ? (
+                  <>
+                    {
+                      <SwiperSlide>
+                        <p>{1}</p>
+                        <Image
+                          alt="imagens do produto"
+                          src={coverPhoto2}
+                          width={50}
+                          height={50}
+                        />
+                      </SwiperSlide>
+                    }
+                  </>
+                ) : (
+                  ''
+                )}
+                {coverPhoto2WatchUrl?.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <p>{index + 1}</p>
+                      <Image
+                        alt="imagens do produto"
+                        src={image}
+                        width={50}
+                        height={50}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
             </div>
 
             <SelectColor

@@ -30,6 +30,8 @@ export interface ProductInputs {
   description: string;
   composition?: string;
   characteristic?: string;
+  coverPhoto1?: object;
+  coverPhoto2?: object;
   active: boolean;
   images: object;
 }
@@ -76,6 +78,8 @@ export interface ProductApi {
   howToUse?: string;
   active: boolean;
   images: string[];
+  coverPhoto1?: string;
+  coverPhoto2?: string;
   colors?: string[];
   codeColors?: string[];
   stock: {

@@ -12,7 +12,8 @@ interface Props {
 }
 
 function Produto({ productData }: Props) {
-  const { _id, images, name, price, promotion, promotionalPrice } = productData;
+  const { _id, images, name, price, coverPhoto1, promotion, promotionalPrice } =
+    productData;
 
   const promotionPorcent = () => {
     if (promotionalPrice && promotion) {
@@ -43,7 +44,7 @@ function Produto({ productData }: Props) {
           <Image
             className={styles.imagem}
             alt="Imagem do produto"
-            src={images[0]}
+            src={coverPhoto1 ?? images[0]}
             width={185}
             height={243}
             quality={75}

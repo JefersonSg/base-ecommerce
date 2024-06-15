@@ -89,6 +89,7 @@ function Detalhes({ data }: { data: ProductApi }) {
 
   // No Stock
   React.useEffect(() => {
+    console.log(data.colors);
     if (data?.colors?.[0]) {
       const colorIndex = data?.colors.indexOf(colorSelected);
       const sizeIndex = data?.size.indexOf(sizeSelected);
@@ -103,6 +104,8 @@ function Detalhes({ data }: { data: ProductApi }) {
         });
         return;
       }
+      setHaveColor(true);
+    } else {
       setHaveColor(true);
     }
   }, [colorSelected, data, sizeSelected]);

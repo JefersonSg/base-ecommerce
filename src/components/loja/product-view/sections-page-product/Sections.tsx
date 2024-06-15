@@ -20,7 +20,7 @@ function Sections({ data }: { data: ProductApi }) {
             setAtivoDescription(true);
           }}
         >
-          Descrição Geral
+          Descrições
         </p>
         <p
           className={`${styles.select_avaliacoes} ${
