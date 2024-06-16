@@ -29,16 +29,6 @@ const DataTable = () => {
     queryFn: getAllCupons
   });
 
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setAtivoPopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [ativoPopUp]);
-
   return (
     <>
       {ativoCreate && (
@@ -79,7 +69,9 @@ const DataTable = () => {
         <></>
       )}
 
-      {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {ativoPopUp && (
+        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      )}
     </>
   );
 };

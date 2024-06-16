@@ -9,14 +9,29 @@ import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
 import CategoriasLinks from './nav/CategoriasLinks';
-import { type UserInterface } from '@/src/shared/helpers/interfaces';
+import {
+  type CartInterface,
+  type UserInterface
+} from '@/src/shared/helpers/interfaces';
 import { isAdmin } from '@/src/actions/isAdmin';
 import setNewCookieSession from '@/src/actions/setCookieSession';
+import { useQuery } from '@tanstack/react-query';
+import { getAllItemsCartByUserId } from '@/src/shared/api/GETS';
 // import AddViewFunc from '../../compartilhado/AddViewFunc';
 
 export function Header({ userData }: { userData: UserInterface }) {
   const [estaAtivo, setAtivo] = React.useState<boolean>(false);
   const [admin] = React.useState(userData?.isAdmin);
+
+  const { data } = useQuery<CartInterface>({
+    queryKey: ['shopping-cart', userData?.user?._id],
+    queryFn: async () => {
+      if (userData?.user?._id) {
+        return await getAllItemsCartByUserId(userData.user._id);
+      }
+      return [];
+    }
+  });
 
   React.useEffect(() => {
     if (estaAtivo) {
@@ -98,7 +113,12 @@ export function Header({ userData }: { userData: UserInterface }) {
               height={24}
             />
           </Link>
-          <Link href={'/carrinho'}>
+          <Link href={'/carrinho'} className={styles.link_carrinho}>
+            {data?.itemsCart && data?.itemsCart?.length > 0 && (
+              <span className={styles.total_itens_carrinho}>
+                {data?.itemsCart.length}
+              </span>
+            )}
             <Image
               alt="Imagem de carrinho"
               src={'/header/icons/carrinho.svg'}

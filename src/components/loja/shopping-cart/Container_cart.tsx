@@ -21,7 +21,7 @@ const ContainerCart = () => {
   const pathname = usePathname();
   const token = Cookies.get('auth_token');
   const userData = useQuery<UserInterface>({
-    queryKey: ['user'],
+    queryKey: ['user', token],
     queryFn: async () => {
       return (await getUserByToken(token)) as UserInterface;
     }
@@ -31,7 +31,9 @@ const ContainerCart = () => {
     queryKey: ['shopping-cart', userData?.data?.user?._id],
     queryFn: async () => {
       if (userData?.data?.user?._id) {
-        return await getAllItemsCartByUserId(userData?.data?.user?._id);
+        return await getAllItemsCartByUserId(
+          userData?.data?.user?._id.toString()
+        );
       }
       return [];
     }
