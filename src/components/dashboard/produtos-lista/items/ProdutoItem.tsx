@@ -24,7 +24,7 @@ const ProdutoItem = ({
   };
 
   const [totalProducts, setTotalProducts] = React.useState<any>(0);
-  const [popUpMessage, setPopUpMessage] = React.useState('');
+  const [ativoPopUp, setAtivoPopUp] = React.useState('');
 
   React.useEffect(() => {
     async function totalProducts() {
@@ -35,6 +35,7 @@ const ProdutoItem = ({
     }
     void totalProducts();
   }, [data]);
+
   return (
     <>
       <tr className={styles.produto_item}>
@@ -71,7 +72,7 @@ const ProdutoItem = ({
               data={data}
               pathnameUrl="products/edit/"
               revalidate={revalidate}
-              setPopUpMessage={setPopUpMessage}
+              setPopUpMessage={setAtivoPopUp}
               status={data.promotion}
             />
           </div>
@@ -79,7 +80,7 @@ const ProdutoItem = ({
         <td>
           <div className={styles.estoque}>
             <ToggleButton
-              setPopUpMessage={setPopUpMessage}
+              setPopUpMessage={setAtivoPopUp}
               type="estoque"
               data={data}
               pathnameUrl="products/edit/"
@@ -117,7 +118,9 @@ const ProdutoItem = ({
           </div>
         </td>
       </tr>
-      {popUpMessage && <PopUpMessage text={popUpMessage} />}
+      {ativoPopUp && (
+        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      )}
     </>
   );
 };

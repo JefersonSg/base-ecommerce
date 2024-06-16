@@ -206,16 +206,6 @@ const FormCreateProduct = () => {
     }
   };
 
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setAtivoPopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [ativoPopUp]);
-
   return (
     <>
       <div className={styles.container_form_create}>
@@ -542,7 +532,9 @@ const FormCreateProduct = () => {
           setAtivoPopUp={setAtivoPopUp}
         />
       )}
-      {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {ativoPopUp && (
+        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      )}
       {openDica && <BackgoundClick setState1={setOpenDica} />}
       {openDica && <DicaImagem />}
     </>

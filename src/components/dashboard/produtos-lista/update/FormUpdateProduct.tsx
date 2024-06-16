@@ -659,7 +659,9 @@ const FormUpdateProduct = ({
           setAtivoPopUp={setAtivoPopUp}
         />
       )}
-      {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {ativoPopUp && (
+        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      )}
       {openDica && <BackgoundClick setState1={setOpenDica} />}
       {openDica && <DicaImagem />}
     </>

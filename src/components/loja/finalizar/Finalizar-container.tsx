@@ -34,7 +34,7 @@ import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 const FinalizarContainer = () => {
   const [methodPayment, setMethodPayment] = React.useState('card');
   const [serviceShippingId, setServiceShippingId] = React.useState(0);
-  const [popUpMessage, setPopUpMessage] = React.useState('');
+  const [ativoPopUp, setAtivoPopUp] = React.useState('');
 
   const token = Cookies.get('auth_token');
   const { data } = useQuery<UserInterface>({
@@ -79,7 +79,7 @@ const FinalizarContainer = () => {
           data?.user._id,
           methodPayment,
           serviceShippingId,
-          setPopUpMessage,
+          setAtivoPopUp,
           cupom
         )) as { createOrder: OrderInterface };
 
@@ -118,16 +118,6 @@ const FinalizarContainer = () => {
   }, [ativoConfirm, paymentLink, router]);
 
   React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setPopUpMessage('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [popUpMessage]);
-
-  React.useEffect(() => {
     void itemsCart.refetch();
   }, [itemsCart, address?.data]);
   return (
@@ -160,7 +150,9 @@ const FinalizarContainer = () => {
         {ativoConfirm && <Confirm />}
       </div>
       {isLoading && <LoadingAnimation />}
-      {popUpMessage && <PopUpMessage text={popUpMessage} />}
+      {ativoPopUp && (
+        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      )}
     </>
   );
 };

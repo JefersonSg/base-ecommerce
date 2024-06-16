@@ -162,7 +162,13 @@ function Detalhes({ data }: { data: ProductApi }) {
           disabled={!haveColor || !data.active}
         />
       </div>
-      {textPopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
+      {textPopUp && (
+        <PopUpMessage
+          text={textPopUp}
+          type={typePopUp}
+          setTextPopUp={setTextPopUp}
+        />
+      )}
     </div>
   );
 }

@@ -122,7 +122,9 @@ const DataTable = () => {
           ></div>
         ))}
 
-      {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {ativoPopUp && (
+        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      )}
     </>
   );
 };
