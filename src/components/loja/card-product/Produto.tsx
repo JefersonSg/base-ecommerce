@@ -18,6 +18,7 @@ import Cookies from 'js-cookie';
 import React from 'react';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
+import CreateAccount from '../../compartilhado/modals/CreateAccount';
 
 interface Props {
   productData: ProductApi;
@@ -27,6 +28,7 @@ function Produto({ productData }: Props) {
   const { _id, images, name, price, coverPhoto1, promotion, promotionalPrice } =
     productData;
   const token = Cookies.get('auth_token');
+  const [modalLogin, setModalLogin] = React.useState(false);
   const userData = useQuery<UserInterface>({
     queryKey: ['user', token],
     queryFn: async () => {
@@ -55,15 +57,8 @@ function Produto({ productData }: Props) {
     if (!userData?.data?.user?._id) {
       setTextPopUp('Faça login para adicionar ao carrinho');
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setTextPopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setModalLogin(true);
+      return;
     }
 
     const infosCartItem = {
@@ -200,6 +195,7 @@ function Produto({ productData }: Props) {
         />
       )}
       {isLoading && <LoadingAnimation />}
+      {modalLogin && <CreateAccount setState={setModalLogin} />}
     </>
   );
 }
