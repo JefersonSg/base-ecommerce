@@ -16,19 +16,23 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllItemsCartByUserId, getUserByToken } from '@/src/shared/api/GETS';
 import Cookies from 'js-cookie';
 import React from 'react';
-import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
-import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
-import CreateAccount from '../../compartilhado/modals/CreateAccount';
 
-interface Props {
+function Produto({
+  productData,
+  setIsLoading,
+  setModalLogin,
+  setMessagePopUp,
+  setTypePopUp
+}: {
   productData: ProductApi;
-}
-
-function Produto({ productData }: Props) {
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalLogin: React.Dispatch<React.SetStateAction<boolean>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const { _id, images, name, price, coverPhoto1, promotion, promotionalPrice } =
     productData;
   const token = Cookies.get('auth_token');
-  const [modalLogin, setModalLogin] = React.useState(false);
   const userData = useQuery<UserInterface>({
     queryKey: ['user', token],
     queryFn: async () => {
@@ -44,11 +48,6 @@ function Produto({ productData }: Props) {
       return [];
     }
   });
-
-  const [isLoading, setIsLoading] = React.useState(false);
-
-  const [textPopUp, setMessagePopUp] = React.useState('');
-  const [typePopUp, setTypePopUp] = React.useState('');
 
   async function addCartItem() {
     setMessagePopUp('');
@@ -167,6 +166,11 @@ function Produto({ productData }: Props) {
         <button
           className={styles.botao_adicionar}
           onClick={(e) => {
+            if (!userData?.data?.user?._id) {
+              e.preventDefault();
+              setModalLogin(true);
+              return;
+            }
             if (
               (productData?.colors && productData?.colors?.length <= 1) ??
               productData.size.length === 1
@@ -179,17 +183,6 @@ function Produto({ productData }: Props) {
           Adicionar ao carrinho
         </button>
       </Link>
-      {textPopUp && (
-        <PopUpMessage
-          text={textPopUp}
-          setTypePopUp={setTypePopUp}
-          typePopUp={typePopUp}
-          img={productData.images[0]}
-          setMessagePopUp={setMessagePopUp}
-        />
-      )}
-      {isLoading && <LoadingAnimation />}
-      {modalLogin && <CreateAccount setState={setModalLogin} />}
     </>
   );
 }

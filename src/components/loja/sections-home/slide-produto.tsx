@@ -9,8 +9,16 @@ import './styles.css';
 import styles from './slide-product.module.css';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import Produto from '../card-product/Produto';
+import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
+import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
+import CreateAccount from '../../compartilhado/modals/CreateAccount';
 
 function SlideProduct({ data }: { data: { products: ProductApi[] } }) {
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [modalLogin, setModalLogin] = React.useState(false);
+  const [textPopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
+
   return (
     <>
       <Swiper
@@ -35,11 +43,28 @@ function SlideProduct({ data }: { data: { products: ProductApi[] } }) {
         {data?.products?.map((product) => {
           return (
             <SwiperSlide key={product._id}>
-              <Produto productData={product} />
+              <Produto
+                setMessagePopUp={setMessagePopUp}
+                setTypePopUp={setTypePopUp}
+                key={product._id}
+                productData={product}
+                setIsLoading={setIsLoading}
+                setModalLogin={setModalLogin}
+              />
             </SwiperSlide>
           );
         })}
       </Swiper>
+      {textPopUp && (
+        <PopUpMessage
+          text={textPopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+          setMessagePopUp={setMessagePopUp}
+        />
+      )}
+      {isLoading && <LoadingAnimation />}
+      {modalLogin && <CreateAccount setState={setModalLogin} />}
     </>
   );
 }
