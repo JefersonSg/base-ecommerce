@@ -35,17 +35,9 @@ function Detalhes({ data }: { data: ProductApi }) {
     setTypePopUp('');
 
     if (!userData?.data?.user?._id) {
-      setMessagePopUp('Faça login para adicionar ao carrinho');
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setMessagePopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp('Faça login para adicionar ao carrinho');
+      return;
     }
 
     const infosCartItem = {
@@ -68,21 +60,15 @@ function Detalhes({ data }: { data: ProductApi }) {
         setMessagePopUp('Produdo adicionado ao carrinho');
         setTypePopUp('');
       } else {
-        setMessagePopUp('Erro ao adicionar ao carrinho');
         setTypePopUp('error');
+        setMessagePopUp('Erro ao adicionar ao carrinho');
       }
 
-      const timeout = setTimeout(() => {
-        setMessagePopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      clearTimeout(timeout);
       return response;
     } catch (error) {
       console.log(error);
-      setTypePopUp('Erro ao adicionar ao carrinho');
       setTypePopUp('error');
+      setTypePopUp('Erro ao adicionar ao carrinho');
       setIsLoading(false);
     }
   }
@@ -122,6 +108,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           setColorSelected={setColorSelected}
           amount={data.stock.amount}
           setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
         <Tamanhos
           colorSelected={colorSelected}
@@ -131,6 +118,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           sizeSelected={sizeSelected}
           setSizeSelected={setSizeSelected}
           setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       </div>
       <Preco

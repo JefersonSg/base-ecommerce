@@ -93,38 +93,20 @@ const FormEditComment = ({
       } catch (error) {
         setIsloading(false);
         console.log(error);
-        setMessagePopUp('Erro ao atualizar o comentario');
         setTypePopUp('error');
+        setMessagePopUp('Erro ao atualizar o comentario');
       }
     }
   };
 
   React.useEffect(() => {
     if (errors.comment?.message) {
-      setMessagePopUp(errors?.comment?.message);
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setMessagePopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp(errors?.comment?.message);
     }
     if (errors?.images?.message) {
-      setMessagePopUp(errors?.images?.message);
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setMessagePopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp(errors?.images?.message);
     }
   }, [errors, setMessagePopUp, setTypePopUp]);
 

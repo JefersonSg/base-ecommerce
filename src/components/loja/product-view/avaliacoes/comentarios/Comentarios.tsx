@@ -88,7 +88,8 @@ function Comentarios() {
       {messagePopUp && (
         <PopUpMessage
           text={messagePopUp}
-          type={typePopUp}
+          typePopUp={typePopUp}
+          setTypePopUp={setTypePopUp}
           setMessagePopUp={setMessagePopUp}
         />
       )}

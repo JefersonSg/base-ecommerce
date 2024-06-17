@@ -15,12 +15,12 @@ import VerMais from '@/src/components/compartilhado/botoes/VerMais';
 
 const PedidoCard = ({
   orderData,
-  setMessagePopUp,
+  setAtivoPopUp,
   setInfosPopUp,
   setImageUser
 }: {
   orderData: OrderInterface;
-  setMessagePopUp: React.Dispatch<React.SetStateAction<boolean>>;
+  setAtivoPopUp: React.Dispatch<React.SetStateAction<boolean>>;
   setImageUser: React.Dispatch<React.SetStateAction<string>>;
   setInfosPopUp: React.Dispatch<
     React.SetStateAction<OrderInterface | undefined>
@@ -54,7 +54,7 @@ const PedidoCard = ({
       <td
         className={styles.ver_mais}
         onClick={() => {
-          setMessagePopUp(true);
+          setAtivoPopUp(true);
           setInfosPopUp(orderData);
           setImageUser(data?.user?.image);
         }}

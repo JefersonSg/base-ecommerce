@@ -70,8 +70,8 @@ const FormComment = ({
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
     if (!idProduct.id) {
-      setMessagePopUp('Não foi possivel encontrar o id do produto');
       setTypePopUp('error');
+      setMessagePopUp('Não foi possivel encontrar o id do produto');
       return;
     }
 
@@ -103,30 +103,12 @@ const FormComment = ({
 
   React.useEffect(() => {
     if (errors.comment?.message) {
-      setMessagePopUp(errors.comment?.message);
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setMessagePopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp(errors.comment?.message);
     }
     if (errors.images?.message) {
-      setMessagePopUp(errors.images?.message);
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setMessagePopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp(errors.images?.message);
     }
   }, [errors, setMessagePopUp, setTypePopUp]);
 

@@ -36,6 +36,7 @@ const DataTable = () => {
         <SideBarFormCreate
           setAtivo={setAtivoCreate}
           setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
 

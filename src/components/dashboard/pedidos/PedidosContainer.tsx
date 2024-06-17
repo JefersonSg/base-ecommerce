@@ -13,7 +13,7 @@ const PedidosContainer = ({
   data: { pedidos: OrderInterface[] };
   refetchData: any;
 }) => {
-  const [messagePopUp, setMessagePopUp] = React.useState(false);
+  const [ativoPopUp, setAtivoPopUp] = React.useState(false);
   const [infosPopUp, setInfosPopUp] = React.useState<OrderInterface>();
   const [imageUser, setImageUser] = React.useState<string>('');
   return (
@@ -37,7 +37,7 @@ const PedidosContainer = ({
               <PedidoCard
                 key={item._id}
                 orderData={item}
-                setMessagePopUp={setMessagePopUp}
+                setAtivoPopUp={setAtivoPopUp}
                 setInfosPopUp={setInfosPopUp}
                 setImageUser={setImageUser}
               />
@@ -45,10 +45,10 @@ const PedidosContainer = ({
           })}
         </tbody>
       </table>
-      {messagePopUp && <BackgoundClick setState1={setMessagePopUp} />}
-      {messagePopUp && infosPopUp && (
+      {ativoPopUp && <BackgoundClick setState1={setAtivoPopUp} />}
+      {ativoPopUp && infosPopUp && (
         <PopupInfos
-          setMessagePopUp={setMessagePopUp}
+          setAtivoPopUp={setAtivoPopUp}
           data={infosPopUp}
           imageUser={imageUser}
           refetchData={refetchData}

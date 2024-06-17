@@ -37,8 +37,11 @@ const PopUpMessage = ({
         width={44}
         height={44}
         src={
-          img ??
-          (typePopUp === 'error' ? '/error_popup.svg' : '/confirm_popup.svg')
+          typePopUp === 'error'
+            ? '/error_popup.svg'
+            : img?.length
+              ? img
+              : '/confirm_popup.svg'
         }
       />
 

@@ -34,16 +34,6 @@ const DataTable = () => {
     queryFn: getAllSubcategories
   });
 
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setMessagePopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [messagePopUp]);
-
   async function handleDelete(id: string) {
     await deleteSubcategory(id);
     await refetch();
@@ -53,6 +43,7 @@ const DataTable = () => {
     <>
       {ativoCreate && (
         <SideBarFormCreate
+          setTypePopUp={setTypePopUp}
           setAtivo={setAtivoCreate}
           setMessagePopUp={setMessagePopUp}
         />

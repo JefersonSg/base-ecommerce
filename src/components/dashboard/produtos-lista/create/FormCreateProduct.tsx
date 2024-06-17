@@ -204,6 +204,7 @@ const FormCreateProduct = () => {
       }
     } catch (error: any) {
       setIsLoading(false);
+      setMessagePopUp('error');
       setMessagePopUp(`Erro ao criar o produto`);
     }
   };
@@ -530,6 +531,7 @@ const FormCreateProduct = () => {
       )}
       {ativoNewSubcategory && (
         <SideBarFormCreateSubcategory
+          setTypePopUp={setTypePopUp}
           setAtivo={setAtivoNewSubcategory}
           setMessagePopUp={setMessagePopUp}
         />

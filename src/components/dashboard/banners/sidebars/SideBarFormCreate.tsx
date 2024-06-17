@@ -87,6 +87,7 @@ const SideBarFormCreate = ({
         await bannerHome.refetch();
       }
     } catch (error: any) {
+      setTypePopUp('error');
       setMessagePopUp(error?.data?.message);
       console.log(error);
     }

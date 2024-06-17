@@ -32,10 +32,12 @@ const schema = validationSubcategory;
 
 const SideBarFormCreateSubcategory = ({
   setAtivo,
-  setMessagePopUp
+  setMessagePopUp,
+  setTypePopUp
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   //
   const { data } = useQuery<{ categories: Category[] }>({
@@ -67,6 +69,8 @@ const SideBarFormCreateSubcategory = ({
       setMessagePopUp('Subcategoria criada com sucesso');
       await refetch();
     }
+    setTypePopUp('error');
+    setMessagePopUp('erro ao criar Subcategoria');
   };
 
   return (

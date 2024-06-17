@@ -15,10 +15,6 @@
   text-align: center;
   font-family: var(--fonte-primaria);
 }
-.promotion_active {
-  height: calc(70vw + 20px);
-  height: 440px;
-}
 
 .like {
   position: absolute;
@@ -141,7 +137,6 @@
     font-size: 16px;
   }
   .produto {
-    height: 35vw;
     flex-basis: 25%;
     max-height: 480px;
     max-width: 280px;

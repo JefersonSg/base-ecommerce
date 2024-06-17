@@ -53,22 +53,14 @@ function Produto({ productData }: Props) {
     setTypePopUp('');
 
     if (!userData?.data?.user?._id) {
-      setMessagePopUp('Faça login para adicionar ao carrinho');
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setMessagePopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp('Faça login para adicionar ao carrinho');
+      return;
     }
 
     const infosCartItem = {
       productId: _id,
-      userId: userData.data.user._id,
+      userId: userData?.data?.user?._id,
       size: productData?.size[0],
       color: productData?.colors?.[0] ?? '',
       amount: 1
@@ -87,21 +79,15 @@ function Produto({ productData }: Props) {
         setMessagePopUp('Produdo adicionado ao carrinho');
         setTypePopUp('');
       } else {
-        setMessagePopUp('Erro ao adicionar ao carrinho');
         setTypePopUp('error');
+        setMessagePopUp('Erro ao adicionar ao carrinho');
       }
 
-      const timeout = setTimeout(() => {
-        setMessagePopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      clearTimeout(timeout);
       return response;
     } catch (error) {
       console.log(error);
-      setTypePopUp('Erro ao adicionar ao carrinho');
       setTypePopUp('error');
+      setTypePopUp('Erro ao adicionar ao carrinho');
       setIsLoading(false);
     }
   }
@@ -194,7 +180,8 @@ function Produto({ productData }: Props) {
       {textPopUp && (
         <PopUpMessage
           text={textPopUp}
-          type={typePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
           img={productData.images[0]}
           setMessagePopUp={setMessagePopUp}
         />

@@ -11,7 +11,8 @@ function Tamanhos({
   sizeSelected,
   sizes,
   setSizeSelected,
-  setMessagePopUp
+  setMessagePopUp,
+  setTypePopUp
 }: {
   colorSelected: string;
   colors: string[] | undefined;
@@ -20,6 +21,7 @@ function Tamanhos({
   sizes: string[];
   setSizeSelected: React.Dispatch<React.SetStateAction<string>>;
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [indexColorSelected, setIndexColorSelected] = React.useState(0);
   const [ativo, setAtivo] = React.useState(false);
@@ -66,6 +68,7 @@ function Tamanhos({
                 setSizeSelected(size);
                 setAtivo(false);
                 if (amount?.[indexColorSelected]?.[index] === 0) {
+                  setTypePopUp('error');
                   setMessagePopUp('Sem estoque disponível neste tamanho');
                 }
               }}

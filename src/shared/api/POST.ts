@@ -90,6 +90,7 @@ export async function createProduct(
   colors: string[],
   amount: number[][],
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>,
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>,
   corAtiva: boolean
 ) {
   const formData = new FormData();
@@ -100,16 +101,19 @@ export async function createProduct(
     colors.forEach((color, indexColor) => {
       sizes.forEach((size, i) => {
         if (color.length < 1) {
+          setTypePopUp('error');
           setMessagePopUp('Preencha todos os campos de cores');
           ok = true;
         }
         if (size.length < 1) {
+          setTypePopUp('error');
           setMessagePopUp('Preencha todos os campos de tamanho');
           ok = true;
         }
         if (amount[indexColor][i] >= 0) {
           console.log(ok);
         } else {
+          setTypePopUp('error');
           setMessagePopUp('Preencha todos os campos de quantidade');
           ok = true;
         }
@@ -119,6 +123,7 @@ export async function createProduct(
 
   amount[0].forEach((amountChild) => {
     if (amountChild.toString().length < 1) {
+      setTypePopUp('error');
       setMessagePopUp('Preencha todos os campos de quantidade');
       ok = true;
     }
@@ -169,11 +174,13 @@ export async function createProduct(
   } catch (error: any) {
     console.log(error);
     if (error?.response?.data?.error) {
+      setTypePopUp('error');
       setMessagePopUp(error?.response?.data?.error);
       return;
     }
     if (error.response.data.errorsResult.body) {
       Object.keys(error.response.data.errorsResult.body).forEach((key) => {
+        setTypePopUp('error');
         setMessagePopUp(error.response.data.errorsResult.body[key]);
       });
     }

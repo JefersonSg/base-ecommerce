@@ -165,6 +165,7 @@ const FormUpdateProduct = ({
         schemeColor,
         amount,
         setMessagePopUp,
+        setTypePopUp,
         corAtiva
       );
       setIsLoading(false);
@@ -178,17 +179,6 @@ const FormUpdateProduct = ({
       setIsLoading(false);
     }
   };
-
-  // Reset pop up
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setMessagePopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [messagePopUp]);
 
   // Go to product page
   React.useEffect(() => {
@@ -660,6 +650,7 @@ const FormUpdateProduct = ({
         <SideBarFormCreateSubcategory
           setAtivo={setAtivoNewSubcategory}
           setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
       {messagePopUp && (

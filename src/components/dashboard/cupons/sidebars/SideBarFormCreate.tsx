@@ -21,10 +21,12 @@ const schema = validationCupom;
 
 const SideBarFormCreate = ({
   setAtivo,
-  setMessagePopUp
+  setMessagePopUp,
+  setTypePopUp
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { refetch } = useQuery({
     queryKey: ['cupons-dashboard'],
@@ -62,9 +64,11 @@ const SideBarFormCreate = ({
         await refetch();
       }
       if (response?.response?.data?.erro) {
+        setTypePopUp('error');
         setMessagePopUp(response?.response?.data?.erro);
       }
     } catch (error: any) {
+      setTypePopUp('error');
       setMessagePopUp(error?.data?.message);
       console.log(error);
     }
