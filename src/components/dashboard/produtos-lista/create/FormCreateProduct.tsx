@@ -194,6 +194,7 @@ const FormCreateProduct = () => {
         corAtiva ? schemeColor : [''],
         amount,
         setMessagePopUp,
+        setTypePopUp,
         corAtiva
       );
       setIsLoading(false);
