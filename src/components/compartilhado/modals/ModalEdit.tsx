@@ -8,13 +8,13 @@ import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 const ModalEdit = ({
   commentData,
   setState,
-  setTextPopUp,
+  setMessagePopUp,
   setTypePopUp,
   refetch
 }: {
   commentData: CommentInterface;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
-  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
   refetch: any;
 }) => {
@@ -23,7 +23,7 @@ const ModalEdit = ({
       <FormEditComment
         setModalForm={setState}
         commentData={commentData}
-        setTextPopUp={setTextPopUp}
+        setMessagePopUp={setMessagePopUp}
         setTypePopUp={setTypePopUp}
         refetch={refetch}
       />

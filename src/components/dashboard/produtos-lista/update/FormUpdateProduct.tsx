@@ -105,7 +105,10 @@ const FormUpdateProduct = ({
 
   const router = useRouter();
   const [openDica, setOpenDica] = React.useState(false);
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [schemeColor, setSchemeColor] = React.useState(['']);
   const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
@@ -161,13 +164,14 @@ const FormUpdateProduct = ({
         schemeCodeColor,
         schemeColor,
         amount,
-        setAtivoPopUp,
+        setMessagePopUp,
+        setTypePopUp,
         corAtiva
       );
       setIsLoading(false);
 
       if (response) {
-        setAtivoPopUp('Produto atualizado com sucesso');
+        setMessagePopUp('Produto atualizado com sucesso');
         await refetch();
         router.push('/dashboard/produtos');
       }
@@ -175,17 +179,6 @@ const FormUpdateProduct = ({
       setIsLoading(false);
     }
   };
-
-  // Reset pop up
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setAtivoPopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [ativoPopUp]);
 
   // Go to product page
   React.useEffect(() => {
@@ -650,17 +643,23 @@ const FormUpdateProduct = ({
       {ativoNewCategory && (
         <SideBarFormCreate
           setAtivo={setAtivoNewCategory}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
       {ativoNewSubcategory && (
         <SideBarFormCreateSubcategory
           setAtivo={setAtivoNewSubcategory}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
-      {ativoPopUp && (
-        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
       )}
       {openDica && <BackgoundClick setState1={setOpenDica} />}
       {openDica && <DicaImagem />}

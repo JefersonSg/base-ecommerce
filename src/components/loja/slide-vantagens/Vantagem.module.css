@@ -10,7 +10,7 @@
   background-color: white;
 }
 .vantagem h2 {
-  color: #471703;
+  color: var(--cor-primaria);
   font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;

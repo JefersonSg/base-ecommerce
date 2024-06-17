@@ -120,10 +120,10 @@
     width: 100%;
     border: none;
     background: none;
-    color: #6b4020;
+    color: black;
   }
   .input_pesquisa::placeholder {
-    color: #6b4020;
+    color: rgba(150, 150, 150, 0.95);
   }
   .lupaInput {
     height: 100%;

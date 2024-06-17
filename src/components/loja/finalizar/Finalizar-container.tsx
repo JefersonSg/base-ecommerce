@@ -34,7 +34,9 @@ import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 const FinalizarContainer = () => {
   const [methodPayment, setMethodPayment] = React.useState('card');
   const [serviceShippingId, setServiceShippingId] = React.useState(0);
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   const token = Cookies.get('auth_token');
   const { data } = useQuery<UserInterface>({
@@ -79,7 +81,7 @@ const FinalizarContainer = () => {
           data?.user._id,
           methodPayment,
           serviceShippingId,
-          setAtivoPopUp,
+          setMessagePopUp,
           cupom
         )) as { createOrder: OrderInterface };
 
@@ -120,6 +122,7 @@ const FinalizarContainer = () => {
   React.useEffect(() => {
     void itemsCart.refetch();
   }, [itemsCart, address?.data]);
+
   return (
     <>
       <div>
@@ -150,8 +153,13 @@ const FinalizarContainer = () => {
         {ativoConfirm && <Confirm />}
       </div>
       {isLoading && <LoadingAnimation />}
-      {ativoPopUp && (
-        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
       )}
     </>
   );

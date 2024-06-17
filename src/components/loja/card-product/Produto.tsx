@@ -47,15 +47,14 @@ function Produto({ productData }: Props) {
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const [textPopUp, setTextPopUp] = React.useState('');
+  const [textPopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
   async function addCartItem() {
-    setTextPopUp('');
+    setMessagePopUp('');
     setTypePopUp('');
 
     if (!userData?.data?.user?._id) {
-      setTextPopUp('Faça login para adicionar ao carrinho');
       setTypePopUp('error');
       setModalLogin(true);
       return;
@@ -63,7 +62,7 @@ function Produto({ productData }: Props) {
 
     const infosCartItem = {
       productId: _id,
-      userId: userData.data.user._id,
+      userId: userData?.data?.user?._id,
       size: productData?.size[0],
       color: productData?.colors?.[0] ?? '',
       amount: 1
@@ -79,24 +78,18 @@ function Produto({ productData }: Props) {
       }, 700);
 
       if (response) {
-        setTextPopUp('Produdo adicionado ao carrinho');
+        setMessagePopUp('Produdo adicionado ao carrinho');
         setTypePopUp('');
       } else {
-        setTextPopUp('Erro ao adicionar ao carrinho');
         setTypePopUp('error');
+        setMessagePopUp('Erro ao adicionar ao carrinho');
       }
 
-      const timeout = setTimeout(() => {
-        setTextPopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      clearTimeout(timeout);
       return response;
     } catch (error) {
       console.log(error);
-      setTypePopUp('Erro ao adicionar ao carrinho');
       setTypePopUp('error');
+      setTypePopUp('Erro ao adicionar ao carrinho');
       setIsLoading(false);
     }
   }
@@ -189,9 +182,10 @@ function Produto({ productData }: Props) {
       {textPopUp && (
         <PopUpMessage
           text={textPopUp}
-          type={typePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
           img={productData.images[0]}
-          setTextPopUp={setTextPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
       {isLoading && <LoadingAnimation />}

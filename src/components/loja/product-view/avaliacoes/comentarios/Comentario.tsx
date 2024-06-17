@@ -49,11 +49,11 @@ function ModalDeleteSearsh({
 
 function Comentario({
   commentData,
-  setTextPopUp,
+  setMessagePopUp,
   setTypePopUp
 }: {
   commentData: CommentInterface;
-  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const pathname = useParams() as unknown as PageParams;
@@ -133,7 +133,7 @@ function Comentario({
           <ModalEdit
             setState={setModalEdit}
             commentData={commentData}
-            setTextPopUp={setTextPopUp}
+            setMessagePopUp={setMessagePopUp}
             setTypePopUp={setTypePopUp}
             refetch={refetch}
           />

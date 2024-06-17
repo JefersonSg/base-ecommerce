@@ -21,10 +21,12 @@ const schema = validationCupom;
 
 const SideBarFormCreate = ({
   setAtivo,
-  setAtivoPopUp
+  setMessagePopUp,
+  setTypePopUp
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { refetch } = useQuery({
     queryKey: ['cupons-dashboard'],
@@ -58,14 +60,16 @@ const SideBarFormCreate = ({
 
       if (response && !response?.response?.data?.erro) {
         setAtivo(false);
-        setAtivoPopUp('Cupom criado com sucesso');
+        setMessagePopUp('Cupom criado com sucesso');
         await refetch();
       }
       if (response?.response?.data?.erro) {
-        setAtivoPopUp(response?.response?.data?.erro);
+        setTypePopUp('error');
+        setMessagePopUp(response?.response?.data?.erro);
       }
     } catch (error: any) {
-      setAtivoPopUp(error?.data?.message);
+      setTypePopUp('error');
+      setMessagePopUp(error?.data?.message);
       console.log(error);
     }
   };

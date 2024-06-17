@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   height: 64px;
-  background: white;
+  background: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,7 +15,7 @@
 }
 
 .container_header {
-  background-color: white;
+  background-color: black;
   box-shadow: 0 7px 26px rgba(154, 154, 204, 0.2);
 }
 .container1,
@@ -76,12 +76,15 @@
     align-items: center;
     gap: 8px;
   }
+  .login img {
+    border: 1px solid white;
+  }
   .login p {
     font-family: var(--fonte-primaria);
-    font-weight: 300;
+    font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    color: var(--cor-quinta);
+    color: white;
   }
 
   .logo {
@@ -89,8 +92,8 @@
     grid-row: 1;
   }
   .foto_logo {
-    height: 50px !important;
-    width: auto !important;
+    height: 65px !important;
+    width: 95px !important;
   }
 
   .container1 {

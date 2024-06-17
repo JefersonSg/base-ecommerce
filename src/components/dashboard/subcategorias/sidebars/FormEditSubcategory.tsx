@@ -66,9 +66,6 @@ const SideBarFormEdit = ({
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setIsLoading(true);
-    // if (data.category === 'Outros') {
-    //   data.category = category;
-    // }
 
     const response = await updateSubcategory(data, idSubcategory);
     if (response) {

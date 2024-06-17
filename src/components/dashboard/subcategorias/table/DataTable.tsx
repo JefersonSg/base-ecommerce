@@ -20,7 +20,8 @@ const DataTable = () => {
   const [ativoDelete, setAtivoDelete] = React.useState(false);
   const [idSubcategory, setIdSubcategory] = React.useState('');
   const [categoryId, setIdCategory] = React.useState('');
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   const [defaultTitle, setDefaultTitle] = React.useState('');
   const [defaultDescription, setDefaultDescription] = React.useState('');
@@ -33,16 +34,6 @@ const DataTable = () => {
     queryFn: getAllSubcategories
   });
 
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setAtivoPopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [ativoPopUp]);
-
   async function handleDelete(id: string) {
     await deleteSubcategory(id);
     await refetch();
@@ -52,8 +43,9 @@ const DataTable = () => {
     <>
       {ativoCreate && (
         <SideBarFormCreate
+          setTypePopUp={setTypePopUp}
           setAtivo={setAtivoCreate}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
       {ativoEdit && (
@@ -122,8 +114,13 @@ const DataTable = () => {
           ></div>
         ))}
 
-      {ativoPopUp && (
-        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
       )}
     </>
   );

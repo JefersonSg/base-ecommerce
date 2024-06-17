@@ -36,7 +36,7 @@ function Comentarios() {
   });
 
   const [Commented, setCommented] = React.useState(true);
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
   React.useEffect(() => {
@@ -65,7 +65,7 @@ function Comentarios() {
                 dataUser={data}
                 refetch={dataComments.refetch}
                 setModalForm={setModalForm}
-                setTextPopUp={setAtivoPopUp}
+                setMessagePopUp={setMessagePopUp}
                 setTypePopUp={setTypePopUp}
               />
             )}
@@ -79,17 +79,18 @@ function Comentarios() {
             <Comentario
               key={index}
               commentData={comment}
-              setTextPopUp={setAtivoPopUp}
+              setMessagePopUp={setMessagePopUp}
               setTypePopUp={setTypePopUp}
             />
           );
         })}
       </div>
-      {ativoPopUp && (
+      {messagePopUp && (
         <PopUpMessage
-          text={ativoPopUp}
-          type={typePopUp}
-          setTextPopUp={setAtivoPopUp}
+          text={messagePopUp}
+          typePopUp={typePopUp}
+          setTypePopUp={setTypePopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
     </>

@@ -28,7 +28,8 @@ export async function updateProduct(
   codeColors: string[],
   colors: string[],
   amount: number[][],
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>,
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>,
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>,
   corAtiva: boolean
 ) {
   const formData = new FormData();
@@ -39,17 +40,21 @@ export async function updateProduct(
     colors.forEach((color, indexColor) => {
       sizes.forEach((size, i) => {
         if (color.length < 1) {
-          setAtivoPopUp('Preencha todos os campos de cores');
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de cores');
           ok = true;
         }
         if (size.length < 1) {
-          setAtivoPopUp('Preencha todos os campos de tamanho');
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de tamanho');
+
           ok = true;
         }
         if (amount[indexColor][i] >= 0) {
           console.log(ok);
         } else {
-          setAtivoPopUp('Preencha todos os campos de quantidade');
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de quantidade');
           ok = true;
         }
       });
@@ -58,7 +63,8 @@ export async function updateProduct(
 
   amount[0].forEach((amountChild) => {
     if (amountChild.toString().length < 1) {
-      setAtivoPopUp('Preencha todos os campos de quantidade');
+      setTypePopUp('error');
+      setMessagePopUp('Preencha todos os campos de quantidade');
       ok = true;
     }
   });
@@ -106,11 +112,13 @@ export async function updateProduct(
     return response.data;
   } catch (error: any) {
     if (error?.response?.data?.message) {
-      setAtivoPopUp(error?.response?.data?.message);
+      setTypePopUp('error');
+      setMessagePopUp(error?.response?.data?.message);
     }
     if (error.response.data.errorsResult.body) {
       Object.keys(error.response.data.errorsResult.body).forEach((key) => {
-        setAtivoPopUp(error.response.data.errorsResult.body[key]);
+        setTypePopUp('error');
+        setMessagePopUp(error.response.data.errorsResult.body[key]);
       });
     }
   }

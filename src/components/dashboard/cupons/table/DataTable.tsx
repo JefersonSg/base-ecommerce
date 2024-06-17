@@ -17,7 +17,8 @@ import { type cuponsInterface } from '@/src/shared/helpers/interfaces';
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   const [cupomData, setCupomData] = React.useState<cuponsInterface>();
 
@@ -34,7 +35,8 @@ const DataTable = () => {
       {ativoCreate && (
         <SideBarFormCreate
           setAtivo={setAtivoCreate}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
 
@@ -69,8 +71,13 @@ const DataTable = () => {
         <></>
       )}
 
-      {ativoPopUp && (
-        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
       )}
     </>
   );

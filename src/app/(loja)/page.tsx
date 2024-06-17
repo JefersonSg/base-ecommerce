@@ -11,17 +11,23 @@ import LoadingCategories from './loading-categories';
 // import SectionColecoes from '@/src/components/loja/colecoes/SectionColecoes';
 
 export const metadata: Metadata = {
-  title: 'Abayomi Make Beauty | Home',
+  title: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
   description:
-    'Aqui na Abayomi Make Beauty você encontra uma variedade enorme de produtos selecionados com a melhor qualidade do mercado',
+    'Bem-vindas à Loja Mayse, seu destino para moda íntima que realça sua feminilidade e desperta seus desejos. Oferecemos uma variedade de lingeries cuidadosamente selecionadas, além de produtos sensuais imperdíveis. Explore sua sensualidade na Loja Mayse.',
   keywords: [
-    'Abayomi Make Beauty',
-    'Maquiagem',
-    'Maquiagens de qualidade',
-    'Make Beauty'
+    'Loja',
+    'Mayse',
+    'Loja Mayse',
+    'sexy shop',
+    'moda intima',
+    'sexy shop',
+    'lingerie',
+    'calcinha',
+    'sutiã',
+    'conjuntos sexy',
+    'loja de sexy shop barata'
   ],
-  icons:
-    'https://i.pinimg.com/280x280_RS/20/bf/15/20bf15f77c6b9f85b6198a1538a683ca.jpg',
+  icons: '/icone.svg',
   robots: "'index', 'follow'"
 };
 

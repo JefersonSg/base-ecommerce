@@ -16,10 +16,10 @@
 
 .mobile_button::after {
   width: 26px;
-  background: var(--cor-quinta);
+  background: white;
   box-shadow:
-    0 8px var(--cor-quinta),
-    0 -8px var(--cor-quinta);
+    0 8px white,
+    0 -8px white;
 }
 .mobile_button::after {
   content: '';
