@@ -22,10 +22,12 @@ const schema = validationBanner;
 
 const SideBarFormCreate = ({
   setAtivo,
-  setAtivoPopUp
+  setMessagePopUp,
+  setTypePopUp
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const [imageUrl1, setImageUrl1] = React.useState<any>();
   const [imageUrl2, setImageUrl2] = React.useState<any>();
@@ -80,12 +82,12 @@ const SideBarFormCreate = ({
 
       if (response) {
         setAtivo(false);
-        setAtivoPopUp('Banner criado com sucesso');
+        setMessagePopUp('Banner criado com sucesso');
         await refetch();
         await bannerHome.refetch();
       }
     } catch (error: any) {
-      setAtivoPopUp(error?.data?.message);
+      setMessagePopUp(error?.data?.message);
       console.log(error);
     }
   };

@@ -18,7 +18,8 @@ const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   const [bannerData, setBannerData] = React.useState<any>();
 
@@ -35,7 +36,8 @@ const DataTable = () => {
       {ativoCreate && (
         <SideBarFormCreate
           setAtivo={setAtivoCreate}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
       {ativoEdit && (
@@ -77,8 +79,13 @@ const DataTable = () => {
         <></>
       )}
 
-      {ativoPopUp && (
-        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          typePopUp={typePopUp}
+          setTypePopUp={setTypePopUp}
+        />
       )}
     </>
   );

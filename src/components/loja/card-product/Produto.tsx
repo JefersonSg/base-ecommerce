@@ -45,19 +45,19 @@ function Produto({ productData }: Props) {
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const [textPopUp, setTextPopUp] = React.useState('');
+  const [textPopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
   async function addCartItem() {
-    setTextPopUp('');
+    setMessagePopUp('');
     setTypePopUp('');
 
     if (!userData?.data?.user?._id) {
-      setTextPopUp('Faça login para adicionar ao carrinho');
+      setMessagePopUp('Faça login para adicionar ao carrinho');
       setTypePopUp('error');
 
       const timeout = setTimeout(() => {
-        setTextPopUp('');
+        setMessagePopUp('');
         setTypePopUp('');
       }, 3000);
 
@@ -84,15 +84,15 @@ function Produto({ productData }: Props) {
       }, 700);
 
       if (response) {
-        setTextPopUp('Produdo adicionado ao carrinho');
+        setMessagePopUp('Produdo adicionado ao carrinho');
         setTypePopUp('');
       } else {
-        setTextPopUp('Erro ao adicionar ao carrinho');
+        setMessagePopUp('Erro ao adicionar ao carrinho');
         setTypePopUp('error');
       }
 
       const timeout = setTimeout(() => {
-        setTextPopUp('');
+        setMessagePopUp('');
         setTypePopUp('');
       }, 3000);
 
@@ -196,7 +196,7 @@ function Produto({ productData }: Props) {
           text={textPopUp}
           type={typePopUp}
           img={productData.images[0]}
-          setTextPopUp={setTextPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
       {isLoading && <LoadingAnimation />}

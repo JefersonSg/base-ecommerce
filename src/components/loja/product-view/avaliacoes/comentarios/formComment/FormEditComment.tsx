@@ -20,13 +20,13 @@ import { revalidatePathAction } from '@/src/actions/revalidates';
 const FormEditComment = ({
   setModalForm,
   commentData,
-  setTextPopUp,
+  setMessagePopUp,
   setTypePopUp,
   refetch
 }: {
   commentData: CommentInterface;
   setModalForm: React.Dispatch<React.SetStateAction<boolean>>;
-  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
   refetch: any;
 }) => {
@@ -86,14 +86,14 @@ const FormEditComment = ({
           router.refresh();
           await refetch();
           setModalForm(false);
-          setTextPopUp('Comentario Editado');
+          setMessagePopUp('Comentario Editado');
           setTypePopUp('');
         }
         setIsloading(false);
       } catch (error) {
         setIsloading(false);
         console.log(error);
-        setTextPopUp('Erro ao atualizar o comentario');
+        setMessagePopUp('Erro ao atualizar o comentario');
         setTypePopUp('error');
       }
     }
@@ -101,11 +101,11 @@ const FormEditComment = ({
 
   React.useEffect(() => {
     if (errors.comment?.message) {
-      setTextPopUp(errors?.comment?.message);
+      setMessagePopUp(errors?.comment?.message);
       setTypePopUp('error');
 
       const timeout = setTimeout(() => {
-        setTextPopUp('');
+        setMessagePopUp('');
         setTypePopUp('');
       }, 3000);
 
@@ -114,11 +114,11 @@ const FormEditComment = ({
       };
     }
     if (errors?.images?.message) {
-      setTextPopUp(errors?.images?.message);
+      setMessagePopUp(errors?.images?.message);
       setTypePopUp('error');
 
       const timeout = setTimeout(() => {
-        setTextPopUp('');
+        setMessagePopUp('');
         setTypePopUp('');
       }, 3000);
 
@@ -126,7 +126,7 @@ const FormEditComment = ({
         clearTimeout(timeout);
       };
     }
-  }, [errors, setTextPopUp, setTypePopUp]);
+  }, [errors, setMessagePopUp, setTypePopUp]);
 
   return (
     <div className={styles.form_comment_container}>

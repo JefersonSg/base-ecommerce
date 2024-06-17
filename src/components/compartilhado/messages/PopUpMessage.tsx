@@ -4,29 +4,32 @@ import Image from 'next/image';
 
 const PopUpMessage = ({
   text,
-  type,
+  typePopUp,
   img,
-  setTextPopUp
+  setMessagePopUp,
+  setTypePopUp
 }: {
   text: string;
-  type?: string;
+  typePopUp: string;
   img?: string;
-  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   React.useEffect(() => {
     const temporizador = setTimeout(function closeError() {
-      setTextPopUp('');
+      setMessagePopUp('');
+      setTypePopUp('');
     }, 5000);
 
     return () => {
       clearTimeout(temporizador);
     };
-  }, [setTextPopUp, text]);
+  }, [setMessagePopUp, setTypePopUp, text]);
 
   return (
     <span
       className={`${styles.popUp} ${
-        type === 'error' ? styles.error : styles.confirmation
+        typePopUp === 'error' ? styles.error : styles.confirmation
       }`}
     >
       <Image
@@ -34,7 +37,8 @@ const PopUpMessage = ({
         width={44}
         height={44}
         src={
-          img ?? (type === 'error' ? '/error_popup.svg' : '/confirm_popup.svg')
+          img ??
+          (typePopUp === 'error' ? '/error_popup.svg' : '/confirm_popup.svg')
         }
       />
 
@@ -43,7 +47,7 @@ const PopUpMessage = ({
       <div className={styles.timer_div}>
         <span
           className={`${styles.timer_span} ${
-            type === 'error' ? styles.error_span : ''
+            typePopUp === 'error' ? styles.error_span : ''
           }`}
         ></span>
       </div>

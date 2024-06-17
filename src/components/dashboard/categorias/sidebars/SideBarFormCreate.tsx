@@ -25,10 +25,10 @@ const schema = validationCategory;
 
 const SideBarFormCreate = ({
   setAtivo,
-  setAtivoPopUp
+  setMessagePopUp
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   //
   const { refetch } = useQuery({
@@ -53,7 +53,7 @@ const SideBarFormCreate = ({
 
     if (response) {
       setAtivo(false);
-      setAtivoPopUp('Categoria criada com sucesso');
+      setMessagePopUp('Categoria criada com sucesso');
       await refetch();
     }
   };

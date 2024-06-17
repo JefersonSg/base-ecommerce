@@ -26,20 +26,20 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [sizeSelected, setSizeSelected] = React.useState(data.size[0]);
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const [textPopUp, setTextPopUp] = React.useState('');
+  const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
   const [haveColor, setHaveColor] = React.useState<boolean>();
 
   async function addCartItem() {
-    setTextPopUp('');
+    setMessagePopUp('');
     setTypePopUp('');
 
     if (!userData?.data?.user?._id) {
-      setTextPopUp('Faça login para adicionar ao carrinho');
+      setMessagePopUp('Faça login para adicionar ao carrinho');
       setTypePopUp('error');
 
       const timeout = setTimeout(() => {
-        setTextPopUp('');
+        setMessagePopUp('');
         setTypePopUp('');
       }, 3000);
 
@@ -65,15 +65,15 @@ function Detalhes({ data }: { data: ProductApi }) {
       }, 700);
 
       if (response) {
-        setTextPopUp('Produdo adicionado ao carrinho');
+        setMessagePopUp('Produdo adicionado ao carrinho');
         setTypePopUp('');
       } else {
-        setTextPopUp('Erro ao adicionar ao carrinho');
+        setMessagePopUp('Erro ao adicionar ao carrinho');
         setTypePopUp('error');
       }
 
       const timeout = setTimeout(() => {
-        setTextPopUp('');
+        setMessagePopUp('');
         setTypePopUp('');
       }, 3000);
 
@@ -121,7 +121,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           colorSelected={colorSelected}
           setColorSelected={setColorSelected}
           amount={data.stock.amount}
-          setTextPopUp={setTextPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
         <Tamanhos
           colorSelected={colorSelected}
@@ -130,7 +130,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           sizes={data?.size}
           sizeSelected={sizeSelected}
           setSizeSelected={setSizeSelected}
-          setTextPopUp={setTextPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       </div>
       <Preco
@@ -162,11 +162,12 @@ function Detalhes({ data }: { data: ProductApi }) {
           disabled={!haveColor || !data.active}
         />
       </div>
-      {textPopUp && (
+      {messagePopUp && (
         <PopUpMessage
-          text={textPopUp}
-          type={typePopUp}
-          setTextPopUp={setTextPopUp}
+          text={messagePopUp}
+          typePopUp={typePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
     </div>

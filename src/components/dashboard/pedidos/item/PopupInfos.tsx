@@ -16,12 +16,12 @@ import {
 
 const PopupInfos = ({
   imageUser,
-  setAtivoPopUp,
+  setMessagePopUp,
   data,
   refetchData
 }: {
   imageUser: string;
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<boolean>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<boolean>>;
   data: OrderInterface;
   refetchData: any;
 }) => {
@@ -60,7 +60,7 @@ const PopupInfos = ({
 
         if (response) {
           await refetchData();
-          setAtivoPopUp(false);
+          setMessagePopUp(false);
           setIsLoading(false);
         }
       }
@@ -76,7 +76,7 @@ const PopupInfos = ({
 
         if (response) {
           await refetchData();
-          setAtivoPopUp(false);
+          setMessagePopUp(false);
         }
       }
     } catch (error) {
@@ -90,7 +90,7 @@ const PopupInfos = ({
 
         if (response) {
           await refetchData();
-          setAtivoPopUp(false);
+          setMessagePopUp(false);
         }
       }
     } catch (error) {
@@ -104,7 +104,7 @@ const PopupInfos = ({
 
         if (response) {
           await refetchData();
-          setAtivoPopUp(false);
+          setMessagePopUp(false);
         }
       }
     } catch (error) {
@@ -117,7 +117,7 @@ const PopupInfos = ({
 
       if (response) {
         await refetchData();
-        setAtivoPopUp(false);
+        setMessagePopUp(false);
       }
     } catch (error) {
       console.log('Erro ao concluir o pedido', error);

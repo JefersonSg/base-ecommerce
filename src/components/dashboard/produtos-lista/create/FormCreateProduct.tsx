@@ -86,7 +86,9 @@ const FormCreateProduct = () => {
   const coverPhoto2Watch: any = watch('coverPhoto2');
   const categoryWatch: any = watch('category');
 
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [schemeColor, setSchemeColor] = React.useState<string[]>(['']);
   const [schemeCodeColor, setSchemeCodeColor] = React.useState<string[]>([
@@ -191,18 +193,18 @@ const FormCreateProduct = () => {
         corAtiva ? schemeCodeColor : [''],
         corAtiva ? schemeColor : [''],
         amount,
-        setAtivoPopUp,
+        setMessagePopUp,
         corAtiva
       );
       setIsLoading(false);
       if (response) {
         router.push('/dashboard/produtos');
         await refetch();
-        setAtivoPopUp('Produto criado com sucesso');
+        setMessagePopUp('Produto criado com sucesso');
       }
     } catch (error: any) {
       setIsLoading(false);
-      setAtivoPopUp(`Erro ao criar o produto`);
+      setMessagePopUp(`Erro ao criar o produto`);
     }
   };
 
@@ -523,17 +525,22 @@ const FormCreateProduct = () => {
       {ativoNewCategory && (
         <SideBarFormCreate
           setAtivo={setAtivoNewCategory}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
       {ativoNewSubcategory && (
         <SideBarFormCreateSubcategory
           setAtivo={setAtivoNewSubcategory}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
-      {ativoPopUp && (
-        <PopUpMessage text={ativoPopUp} setTextPopUp={setAtivoPopUp} />
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
       )}
       {openDica && <BackgoundClick setState1={setOpenDica} />}
       {openDica && <DicaImagem />}
