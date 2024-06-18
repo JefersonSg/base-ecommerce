@@ -11,7 +11,6 @@ import {
   type CommentInterface,
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
-import AddViewFunc from '../../compartilhado/AddViewFunc';
 import ProdutosSugeridos from './sections-page-product/Produtos_sugeridos';
 
 const ContainerProduct = async ({
@@ -54,7 +53,6 @@ const ContainerProduct = async ({
       </Suspense>
 
       <Suspense>
-        <AddViewFunc productId={productData?._id} />
         <ProdutosSugeridos category={productData?.category} />
       </Suspense>
     </>
