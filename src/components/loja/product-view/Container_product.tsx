@@ -7,20 +7,15 @@ import Detalhes from './produtoDetalhes/Detalhes';
 import Sections from './sections-page-product/Sections';
 import styles from './Produto.module.css';
 
-import {
-  type CommentInterface,
-  type ProductApi
-} from '@/src/shared/helpers/interfaces';
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import ProdutosSugeridos from './sections-page-product/Produtos_sugeridos';
 
 const ContainerProduct = async ({
   productData,
-  commentData,
   categoryName,
   subcategoryName
 }: {
   productData: ProductApi;
-  commentData: { comments: CommentInterface[] };
   categoryName: string;
   subcategoryName: string;
 }) => {
