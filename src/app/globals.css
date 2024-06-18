@@ -59,4 +59,5 @@ img {
   max-width: 100%;
   margin: 0;
   gap: 32px 0;
+  position: relative;
 }

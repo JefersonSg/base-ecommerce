@@ -24,28 +24,7 @@ export const Header = async () => {
             height={83}
           />
         </Link>
-        <Suspense
-          fallback={
-            <>
-              <div className={styles.fallback_container}>
-                <Image
-                  alt="Imagem de coração"
-                  src={'/header/icons/coracao.svg'}
-                  width={24}
-                  height={24}
-                />
-                <Image
-                  alt="Imagem de carrinho"
-                  src={'/header/icons/carrinho.svg'}
-                  width={24}
-                  height={24}
-                />
-              </div>
-            </>
-          }
-        >
-          <UserInfo />
-        </Suspense>
+        <UserInfo />
       </header>
       <Suspense>
         <CategoriasLinks />

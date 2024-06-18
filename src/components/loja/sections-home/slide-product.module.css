@@ -1,7 +1,12 @@
 .mySwiper {
   display: none !important;
 }
-
+.loading {
+  display: none;
+}
+.loading.ativo {
+  display: block;
+}
 @media (min-width: 48rem) {
   .mySwiper {
     display: flex !important;

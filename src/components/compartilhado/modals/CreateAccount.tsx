@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import React from 'react';
 import styles from './createAccount.module.css';
@@ -5,15 +7,15 @@ import Link from 'next/link';
 import BtnFechar from '../botoes/BtnFechar';
 
 const CreateAccount = ({
-  setState
+  setModalLogin
 }: {
-  setState: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <div
       className={styles.container_aviso}
       onClick={() => {
-        setState(false);
+        setModalLogin(false);
       }}
     >
       <Link className={styles.desktop} href={'/registrar'}>
@@ -32,7 +34,7 @@ const CreateAccount = ({
           src={'/modal/addCartNoAccount-mobile.png'}
         />
       </Link>
-      <BtnFechar setAtivo={setState} />
+      <BtnFechar setAtivo={setModalLogin} />
     </div>
   );
 };

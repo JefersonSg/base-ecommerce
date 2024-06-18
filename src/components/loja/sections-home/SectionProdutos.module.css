@@ -31,7 +31,12 @@
   font-weight: 300;
   font-family: var(--fonte-primaria);
 }
-
+.loading {
+  display: none;
+}
+.loading.ativo {
+  display: block;
+}
 .select_view {
   display: flex;
   gap: 8px;

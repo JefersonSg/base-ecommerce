@@ -1,11 +1,18 @@
 import React from 'react';
 import { getProductBySales } from '@/src/shared/api/GETS';
-import SectionProdutosViews from '../SectionProdutosViews';
+import Section from '../Section';
 
 const MaisVendidos = async () => {
   const data = await getProductBySales();
 
-  return <>{data.products ? <SectionProdutosViews data={data} /> : ''}</>;
+  return (
+    <Section
+      data={data}
+      nomeSessao="Mais Vendidos"
+      link={'mais-vendidos'}
+      textoBotao="Ver mais vendidos"
+    />
+  );
 };
 
 export default MaisVendidos;

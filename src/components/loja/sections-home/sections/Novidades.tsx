@@ -6,18 +6,12 @@ const Novidades = async () => {
   const data = await getAllActiveProducts();
 
   return (
-    <>
-      {data.products ? (
-        <Section
-          data={data}
-          nomeSessao="Novidades"
-          link={'novidades'}
-          textoBotao="Todas as novidades"
-        />
-      ) : (
-        ''
-      )}
-    </>
+    <Section
+      data={data}
+      nomeSessao="Novidades"
+      link={'novidades'}
+      textoBotao="Todas as novidades"
+    />
   );
 };
 

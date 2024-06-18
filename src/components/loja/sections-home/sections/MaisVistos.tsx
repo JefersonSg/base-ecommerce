@@ -1,27 +1,10 @@
 import { getProductsByViews } from '@/src/shared/api/GETS';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import React from 'react';
-import Section from '../Section';
+import SectionProdutosViews from '../SectionProdutosViews';
 
 const MaisVistos = async () => {
-  const data = (await getProductsByViews()) as {
-    products: ProductApi[];
-  };
+  const data = await getProductsByViews();
 
-  return (
-    <>
-      {data.products ? (
-        <Section
-          data={data}
-          nomeSessao="Promoções"
-          link={'promocoes'}
-          textoBotao="Todas as promoções"
-        />
-      ) : (
-        ''
-      )}
-    </>
-  );
+  return <SectionProdutosViews data={data} />;
 };
-
 export default MaisVistos;

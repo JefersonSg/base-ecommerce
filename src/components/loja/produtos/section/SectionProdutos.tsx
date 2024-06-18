@@ -102,7 +102,7 @@ const SectionProdutos = ({
         />
       )}
       {isLoading && <LoadingAnimation />}
-      {modalLogin && <CreateAccount setState={setModalLogin} />}
+      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </>
   );
 };

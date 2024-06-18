@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
+
 import Image from 'next/image';
 import styles from './Produto.module.css';
 
@@ -40,10 +40,10 @@ function Produto({
     }
   });
   const { refetch } = useQuery<CartInterface>({
-    queryKey: ['shopping-cart', userData.data?.user?._id],
+    queryKey: ['shopping-cart', userData?.data?.user?._id],
     queryFn: async () => {
       if (userData.data?.user?._id) {
-        return await getAllItemsCartByUserId(userData.data?.user?._id);
+        return await getAllItemsCartByUserId(userData?.data?.user?._id);
       }
       return [];
     }
@@ -55,6 +55,7 @@ function Produto({
 
     if (!userData?.data?.user?._id) {
       setTypePopUp('error');
+      setIsLoading(false);
       setModalLogin(true);
       return;
     }
@@ -103,87 +104,82 @@ function Produto({
   };
 
   return (
-    <>
-      <Link
-        href={`/produtos/produto/${_id}`}
-        className={`${styles.produto} ${
-          promotionPorcent() ? styles.promotion_active : ''
-        }`}
-      >
-        <div className={styles.like}>
-          <Like productId={_id} />
-        </div>
-        <div className={styles.imagem_div}>
+    <Link
+      href={`/produtos/produto/${_id}`}
+      className={`${styles.produto} ${
+        promotionPorcent() ? styles.promotion_active : ''
+      }`}
+    >
+      <div className={styles.like}>
+        <Like productId={_id} />
+      </div>
+      <div className={styles.imagem_div}>
+        {promotionPorcent() ? (
+          <span className={styles.promotion}>{`-${promotionPorcent()}%`}</span>
+        ) : (
+          ''
+        )}
+        {images && (
+          <Image
+            className={styles.imagem}
+            alt="Imagem do produto"
+            src={coverPhoto1?.length ? coverPhoto1 : images[0]}
+            width={185}
+            height={243}
+            quality={75}
+            placeholder="empty"
+            sizes="(max-width: 1024px) 25vw, 50vw"
+            property="true"
+          />
+        )}
+      </div>
+      <div className={styles.infos}>
+        <p className={styles.nome_produto}>{name}</p>
+
+        <div
+          className={`${styles.div_preco} ${
+            promotionPorcent() ? styles.promocao_preco : ''
+          }`}
+        >
+          <span className={`${styles.preco}`}>
+            R$ {convertNumberInReal(price)}
+          </span>
+
           {promotionPorcent() ? (
-            <span
-              className={styles.promotion}
-            >{`-${promotionPorcent()}%`}</span>
+            <p>R$ {convertNumberInReal(promotionalPrice ?? 0)}</p>
           ) : (
             ''
           )}
-          {images && (
-            <Image
-              className={styles.imagem}
-              alt="Imagem do produto"
-              src={coverPhoto1?.length ? coverPhoto1 : images[0]}
-              width={185}
-              height={243}
-              quality={75}
-              placeholder="empty"
-              sizes="(max-width: 1024px) 25vw, 50vw"
-              property="true"
-            />
-          )}
-        </div>
-        <div className={styles.infos}>
-          <p className={styles.nome_produto}>{name}</p>
-
-          <div
-            className={`${styles.div_preco} ${
-              promotionPorcent() ? styles.promocao_preco : ''
-            }`}
-          >
-            <span className={`${styles.preco}`}>
-              R$ {convertNumberInReal(price)}
+          <p className={styles.preco_parcelado}>
+            ou <span>10x</span> de{' '}
+            <span>
+              R${' '}
+              {convertNumberInReal(
+                promotionalPrice ? promotionalPrice / 10 : price / 10
+              )}
             </span>
-
-            {promotionPorcent() ? (
-              <p>R$ {convertNumberInReal(promotionalPrice ?? 0)}</p>
-            ) : (
-              ''
-            )}
-            <p className={styles.preco_parcelado}>
-              ou <span>10x</span> de{' '}
-              <span>
-                R${' '}
-                {convertNumberInReal(
-                  promotionalPrice ? promotionalPrice / 10 : price / 10
-                )}
-              </span>
-            </p>
-          </div>
+          </p>
         </div>
-        <button
-          className={styles.botao_adicionar}
-          onClick={(e) => {
-            if (!userData?.data?.user?._id) {
-              e.preventDefault();
-              setModalLogin(true);
-              return;
-            }
-            if (
-              (productData?.colors && productData?.colors?.length <= 1) ??
-              productData.size.length === 1
-            ) {
-              e.preventDefault();
-              void addCartItem();
-            }
-          }}
-        >
-          Adicionar ao carrinho
-        </button>
-      </Link>
-    </>
+      </div>
+      <button
+        className={styles.botao_adicionar}
+        onClick={(e) => {
+          if (!userData?.data?.user?._id) {
+            e.preventDefault();
+            setModalLogin(true);
+          }
+          if (
+            (productData?.colors && productData?.colors?.length <= 1) ??
+            productData?.size?.length === 1
+          ) {
+            e.preventDefault();
+            void addCartItem();
+          }
+        }}
+      >
+        Adicionar ao carrinho
+      </button>
+    </Link>
   );
 }
 

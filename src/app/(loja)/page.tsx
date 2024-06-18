@@ -44,8 +44,6 @@ export default async function Home() {
     <main className={styles.main}>
       <Suspense fallback={<LoadingBanners />}>
         <ContainerSlideBanner />
-      </Suspense>
-      <Suspense>
         <SlideVantagens />
       </Suspense>
       <Suspense fallback={<LoadingCategories />}>

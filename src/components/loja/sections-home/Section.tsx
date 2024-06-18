@@ -3,7 +3,7 @@
 import BotaoSessao from '@/src/components/compartilhado/botoes/BotaoSessao';
 import styles from './Section.module.css';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
-import React from 'react';
+import React, { Suspense } from 'react';
 import Produto from '@/src/components/loja/card-product/Produto';
 
 import SlideProduct from './slide-produto';
@@ -11,13 +11,13 @@ import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 import CreateAccount from '../../compartilhado/modals/CreateAccount';
 
-async function Section({
+function Section({
   data,
   nomeSessao,
   link,
   textoBotao
 }: {
-  data: { products: ProductApi[] };
+  data?: { products: ProductApi[] };
   nomeSessao: string;
   link: string;
   textoBotao?: string;
@@ -26,6 +26,10 @@ async function Section({
   const [modalLogin, setModalLogin] = React.useState(false);
   const [textPopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
+
+  if (!data) {
+    return;
+  }
 
   return (
     <>
@@ -47,7 +51,9 @@ async function Section({
               )
           )}
         </div>
-        <SlideProduct data={data} />
+        <Suspense>
+          <SlideProduct data={data} />
+        </Suspense>
         <div className={styles.botao_sessao}>
           <BotaoSessao texto={textoBotao ?? 'Todos os produtos'} link={link} />
         </div>
@@ -60,8 +66,10 @@ async function Section({
           setMessagePopUp={setMessagePopUp}
         />
       )}
-      {isLoading && <LoadingAnimation />}
-      {modalLogin && <CreateAccount setState={setModalLogin} />}
+      <div className={`${styles.loading} ${isLoading ? styles.ativo : ''}`}>
+        <LoadingAnimation />
+      </div>
+      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </>
   );
 }

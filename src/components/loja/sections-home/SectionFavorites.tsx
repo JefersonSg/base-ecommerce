@@ -81,8 +81,10 @@ const SectionFavorites = () => {
           setMessagePopUp={setMessagePopUp}
         />
       )}
-      {isLoading && <LoadingAnimation />}
-      {modalLogin && <CreateAccount setState={setModalLogin} />}
+      <div className={`${styles.loading} ${isLoading ? styles.ativo : ''}`}>
+        <LoadingAnimation />
+      </div>
+      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </>
   );
 };
