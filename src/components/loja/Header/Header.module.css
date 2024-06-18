@@ -97,6 +97,9 @@
   }
 
   .logo {
+    position: relative;
+    left: 0;
+    transform: none;
     grid-column: 2;
     grid-row: 1;
   }
