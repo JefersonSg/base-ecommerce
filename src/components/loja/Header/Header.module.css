@@ -21,7 +21,7 @@
 .container1,
 .container2 {
   display: flex;
-  gap: 24px;
+  gap: 16px;
 }
 .container2 {
   position: relative;
@@ -31,11 +31,20 @@
   left: -40px;
   top: -1px;
 }
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+}
 .foto_logo {
   height: 42px !important;
   width: 60 !important;
 }
-
+.fallback_container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
 .link_carrinho {
   position: relative;
 }
