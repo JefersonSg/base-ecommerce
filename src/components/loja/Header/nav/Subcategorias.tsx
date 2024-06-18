@@ -1,3 +1,4 @@
+'use client';
 import {
   type CategoryInterface,
   type subcategoryInterface

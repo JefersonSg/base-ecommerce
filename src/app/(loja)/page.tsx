@@ -28,7 +28,16 @@ export const metadata: Metadata = {
     'loja de sexy shop barata'
   ],
   icons: '/icone.svg',
-  robots: "'index', 'follow'"
+  robots: "'index', 'follow'",
+  openGraph: {
+    url: 'https://lojamayse.com/',
+    siteName: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
+    title: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
+    description:
+      'Bem-vindas à Loja Mayse, seu destino para moda íntima que realça sua feminilidade e desperta seus desejos. Oferecemos uma variedade de lingeries cuidadosamente selecionadas, além de produtos sensuais imperdíveis. Explore sua sensualidade na Loja Mayse.',
+    images:
+      'https://drive.google.com/uc?export=view&id=1RD-W1nNYdiYwvYj_4vdM3QE5Qf2Xe1t7'
+  }
 };
 
 export default async function Home() {

@@ -12,6 +12,8 @@
   transition: 0.1s;
   cursor: pointer;
   font-size: 0px;
+  position: absolute;
+  left: 24px;
 }
 
 .mobile_button::after {

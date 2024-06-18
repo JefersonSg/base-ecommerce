@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './Links.module.css';
 import {
   type subcategoryInterface,

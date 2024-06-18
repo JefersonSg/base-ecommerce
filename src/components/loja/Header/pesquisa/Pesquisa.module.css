@@ -23,6 +23,9 @@
 .lupa {
   cursor: pointer;
 }
+.lupa {
+  margin-left: 40px;
+}
 .input_pesquisa {
   border: none;
   height: 30px;
@@ -83,6 +86,7 @@
     max-width: 100%;
     box-sizing: border-box;
     left: 0;
+    top: 60px;
     justify-content: flex-start;
     justify-content: center;
   }

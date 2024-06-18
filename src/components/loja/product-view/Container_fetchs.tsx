@@ -1,6 +1,7 @@
 import {
   getAllComments,
   getCategoryById,
+  getProductById,
   getSubcategoryById
 } from '@/src/shared/api/GETS';
 import {
@@ -11,26 +12,25 @@ import ContainerProduct from './Container_product';
 import { Titulo } from '../../compartilhado/textos/Titulo';
 import styles from './Produto.module.css';
 
-export default async function ContainerFetchs({
-  productData
-}: {
-  productData: ProductApi;
-}) {
+export default async function ContainerFetchs({ id }: { id: string }) {
+  const productData: { product: ProductApi } = await getProductById(id);
+
   const commentData: { comments: CommentInterface[] } = await getAllComments(
-    productData._id
+    productData?.product._id
   );
   const categoryName =
-    productData.category && (await getCategoryById(productData?.category));
+    productData?.product.category &&
+    (await getCategoryById(productData?.product?.category));
   const subcategoryName =
-    productData.subcategory &&
-    (await getSubcategoryById(productData?.subcategory));
+    productData?.product.subcategory &&
+    (await getSubcategoryById(productData?.product?.subcategory));
 
   return (
     <main className={styles.section_produtos}>
-      {productData ? (
+      {productData?.product ? (
         <ContainerProduct
           commentData={commentData}
-          productData={productData}
+          productData={productData?.product}
           categoryName={categoryName?.category?.name}
           subcategoryName={subcategoryName?.subcategory?.name}
         />

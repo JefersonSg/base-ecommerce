@@ -1,7 +1,6 @@
 import ContainerFetchs from '@/src/components/loja/product-view/Container_fetchs';
 import { getAllActiveProducts, getProductById } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
-import { notFound } from 'next/navigation';
 import { type Metadata } from 'next';
 import styles from './Produto.module.css';
 import { Suspense } from 'react';
@@ -40,30 +39,27 @@ export const generateMetadata = async ({
       url: `https://lojamayse.com/produtos/produto/${product?.product?._id}`,
       siteName: `Loja Mayse | Moda intima - Compre e Receba em Casa`,
       title: `Loja Mayse | ${product?.product?.name}`,
-      description: `${
+      description: `valor: ${product?.product?.price} - descrição:${
         product?.product?.description
           ? product?.product?.description?.slice(0, 45) + '...'
           : ''
       }`,
       images: `${
-        product?.product?.images?.[0]
-          ? product?.product?.images?.[0]
-          : 'https://drive.google.com/uc?export=view&id=1RD-W1nNYdiYwvYj_4vdM3QE5Qf2Xe1t7'
+        product?.product?.coverPhoto1?.[0]
+          ? product?.product?.coverPhoto1?.[0]
+          : product?.product?.images?.[0]
+            ? product?.product?.images?.[0]
+            : 'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/capaSite.jpg'
       }`
     }
   };
 };
 
 const page = async ({ params }: PageParams) => {
-  const product: { product: ProductApi } = await getProductById(params.id);
-
-  if (!product.product) {
-    return notFound();
-  }
   return (
     <div className={styles.produtos_container}>
       <Suspense fallback={<LoadingProduct />}>
-        <ContainerFetchs productData={product.product} />
+        <ContainerFetchs id={params?.id} />
       </Suspense>
     </div>
   );

@@ -1,63 +1,18 @@
-'use client';
-
 import React, { Suspense } from 'react';
 import styles from './Header.module.css';
-import { ButtonMenu } from './ButtonMenu/ButtonMenu';
 import { InfosDestaques } from './InfosDestaques';
 import Image from 'next/image';
-import MenuMobile from './MenuMobile/MenuMobile';
 import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
 import CategoriasLinks from './nav/CategoriasLinks';
-import {
-  type CartInterface,
-  type UserInterface
-} from '@/src/shared/helpers/interfaces';
-import { isAdmin } from '@/src/actions/isAdmin';
-import setNewCookieSession from '@/src/actions/setCookieSession';
-import { useQuery } from '@tanstack/react-query';
-import { getAllItemsCartByUserId } from '@/src/shared/api/GETS';
-// import AddViewFunc from '../../compartilhado/AddViewFunc';
+import UserInfo from './UserInfo';
 
-export function Header({ userData }: { userData: UserInterface }) {
-  const [estaAtivo, setAtivo] = React.useState<boolean>(false);
-  const [admin] = React.useState(userData?.isAdmin);
-
-  const { data } = useQuery<CartInterface>({
-    queryKey: ['shopping-cart', userData?.user?._id],
-    queryFn: async () => {
-      if (userData?.user?._id) {
-        return await getAllItemsCartByUserId(userData.user._id);
-      }
-      return [];
-    }
-  });
-
-  React.useEffect(() => {
-    if (estaAtivo) {
-      document.body.classList.add('scroll-lock');
-    } else {
-      document.body.classList.remove('scroll-lock');
-    }
-
-    return () => {
-      document.body.classList.remove('scroll-lock');
-    };
-  }, [estaAtivo]);
-
-  React.useEffect(() => {
-    if (admin) {
-      void isAdmin(userData?.user?._id);
-    }
-    setNewCookieSession();
-  }, [admin, userData?.user?._id]);
-
+export const Header = async () => {
   return (
     <div className={styles.container_header}>
       <InfosDestaques />
       <header className={styles.header}>
         <div className={styles.container1}>
-          <ButtonMenu setAtivo={setAtivo} />
           <Pesquisa />
         </div>
         <Link href={'/'} className={styles.logo}>
@@ -69,77 +24,13 @@ export function Header({ userData }: { userData: UserInterface }) {
             height={83}
           />
         </Link>
-        <div className={styles.container2}>
-          <Link
-            href={`${userData?.user ? '/minha-conta' : '/login'}`}
-            className={styles.login}
-          >
-            <Image
-              className={styles.imagem_user}
-              alt="account image"
-              src={userData.user?.image ?? '/header/account.svg'}
-              width={24}
-              height={24}
-            />
-            <p>
-              {userData?.user
-                ? 'Olá ' +
-                  userData?.user?.name?.split(' ')?.[0] +
-                  ' ' +
-                  userData?.user?.surname?.split(' ')?.[0] +
-                  ` ${
-                    userData?.user?.surname?.split(' ')?.[1]?.length > 2
-                      ? userData?.user?.surname?.split(' ')?.[1]
-                      : ''
-                  }`
-                : 'Olá, faça seu login ou cadastre-se.'}
-            </p>
-          </Link>
-          {userData?.isAdmin && (
-            <Link href={'/dashboard'} className={styles.button_dashboard}>
-              <Image
-                alt="Imagem do dashboard"
-                src={'/header/icons/dashboard.svg'}
-                width={24}
-                height={24}
-              />
-            </Link>
-          )}
-          <Link href={'/favoritos'}>
-            <Image
-              alt="Imagem de coração"
-              src={'/header/icons/coracao.svg'}
-              width={24}
-              height={24}
-            />
-          </Link>
-          <Link href={'/carrinho'} className={styles.link_carrinho}>
-            {data?.itemsCart && data?.itemsCart?.length > 0 && (
-              <span className={styles.total_itens_carrinho}>
-                {data?.itemsCart.length}
-              </span>
-            )}
-            <Image
-              alt="Imagem de carrinho"
-              src={'/header/icons/carrinho.svg'}
-              width={24}
-              height={24}
-            />
-          </Link>
-        </div>
+        <Suspense>
+          <UserInfo />
+        </Suspense>
       </header>
       <Suspense>
         <CategoriasLinks />
       </Suspense>
-      {estaAtivo && (
-        <Suspense>
-          <MenuMobile
-            userData={userData}
-            ativo={estaAtivo}
-            setAtivo={setAtivo}
-          />
-        </Suspense>
-      )}
     </div>
   );
-}
+};

@@ -15,12 +15,7 @@ export default async function HomeFetchs() {
       <Novidades />
       <Suspense>
         <Promocoes />
-      </Suspense>
-      <Suspense>
         <MaisVendidos />
-      </Suspense>
-
-      <Suspense>
         <MaisVistos />
       </Suspense>
     </>

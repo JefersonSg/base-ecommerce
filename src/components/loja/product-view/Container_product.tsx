@@ -48,8 +48,10 @@ const ContainerProduct = async ({
       <div className={styles.navegação}></div>
       <Interacoes id={productData?._id} stars={media} />
       <FotosProduto img={productData?.images} />
-      <Detalhes data={productData} />
-      <Sections data={productData} />
+      <Suspense>
+        <Detalhes data={productData} />
+        <Sections data={productData} />
+      </Suspense>
 
       <Suspense>
         <AddViewFunc productId={productData?._id} />

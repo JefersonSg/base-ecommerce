@@ -5,16 +5,20 @@
   min-width: 290px;
   max-width: 290px;
   background-color: white;
-  position: absolute;
-  top: -23px;
-  left: 0;
+  position: fixed;
+  top: 0;
+  left: -300px;
   z-index: 1000;
   animation: openMenu ease-in forwards 0.3s;
   overflow-y: auto;
   overflow-x: hidden;
   object-fit: cover;
-}
 
+  transition: all .3s;
+}
+.menuMobile.ativo {
+  left: 0px;
+}
 @keyframes openMenu {
   from {
     transform: translateX(-300px);
