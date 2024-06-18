@@ -24,14 +24,6 @@ const ContainerProduct = async ({
   categoryName: string;
   subcategoryName: string;
 }) => {
-  const totalStars = commentData?.comments?.map(
-    (comment) => +comment?.stars
-  ) ?? [1];
-
-  const media =
-    totalStars?.reduce((acumulador, numero) => acumulador + numero, 0) /
-      totalStars?.length ?? 1;
-
   return (
     <>
       <Breadcrumb
@@ -45,7 +37,7 @@ const ContainerProduct = async ({
         <Titulo titulo={productData?.name} />
       </div>
       <div className={styles.navegação}></div>
-      <Interacoes id={productData?._id} stars={media} />
+      <Interacoes id={productData._id} />
       <FotosProduto img={productData?.images} />
       <Suspense>
         <Detalhes data={productData} />

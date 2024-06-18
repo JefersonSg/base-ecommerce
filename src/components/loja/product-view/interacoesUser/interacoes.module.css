@@ -14,7 +14,11 @@
   gap: 16px;
   align-items: center;
 }
-
+.start_loading {
+  width: 95px;
+  height: 16px;
+  background-color: rgb(198, 200, 200);
+}
 .interacao div div svg g path {
   stroke: var(--cor-secundaria);
 }
