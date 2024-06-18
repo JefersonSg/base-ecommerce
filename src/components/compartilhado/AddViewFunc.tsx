@@ -6,7 +6,7 @@ import { addViews } from '@/src/shared/api/POST';
 import { usePathname } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 
-const AddViewFunc = ({ productId }: { productId?: string }) => {
+const AddViewFunc = () => {
   const pathname = usePathname();
   const SetNewView = React.useCallback(async () => {
     const response = await fetch('/api/ip');
@@ -20,12 +20,12 @@ const AddViewFunc = ({ productId }: { productId?: string }) => {
       sessionId = Cookies.get('sessionId');
     }
 
-    const pageView = !productId ? pathname : '';
+    const pageView = pathname;
 
     if (!isAdmin && sessionId) {
-      void addViews(userIp, sessionId, productId ?? '', pageView, userToken);
+      void addViews(userIp, sessionId, '', pageView, userToken);
     }
-  }, [pathname, productId]);
+  }, [pathname]);
 
   React.useEffect(() => {
     void SetNewView();
