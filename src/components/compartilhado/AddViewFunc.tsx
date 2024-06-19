@@ -13,7 +13,6 @@ const AddViewFunc = () => {
     const userToken = Cookies.get('auth_token');
     let sessionId = Cookies.get('sessionId');
     const userIp = await response.json();
-
     if (!sessionId) {
       Cookies.set('sessionId', uuidv4());
       sessionId = Cookies.get('sessionId');
