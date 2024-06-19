@@ -11,7 +11,6 @@ const AddViewFunc = () => {
   const SetNewView = React.useCallback(async () => {
     const response = await fetch('/api/ip');
     const userToken = Cookies.get('auth_token');
-    const isAdmin = Cookies.get('isAdmin');
     let sessionId = Cookies.get('sessionId');
     const userIp = await response.json();
 
@@ -22,7 +21,7 @@ const AddViewFunc = () => {
 
     const pageView = pathname;
 
-    if (!isAdmin && sessionId) {
+    if (sessionId) {
       void addViews(userIp, sessionId, '', pageView, userToken);
     }
   }, [pathname]);
