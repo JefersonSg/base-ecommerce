@@ -526,6 +526,9 @@ const FormCreateProduct = () => {
       </div>
       {ativoNewCategory && (
         <SideBarFormCreate
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          setTypePopUp={setTypePopUp}
           setAtivo={setAtivoNewCategory}
           setMessagePopUp={setMessagePopUp}
         />
@@ -545,7 +548,15 @@ const FormCreateProduct = () => {
           typePopUp={typePopUp}
         />
       )}
-      {openDica && <BackgoundClick setState1={setOpenDica} />}
+      {openDica || ativoNewSubcategory || ativoNewCategory ? (
+        <BackgoundClick
+          setState1={setOpenDica}
+          setState2={setAtivoNewCategory}
+          setState3={setAtivoNewSubcategory}
+        />
+      ) : (
+        <></>
+      )}
       {openDica && <DicaImagem />}
     </>
   );

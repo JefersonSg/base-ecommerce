@@ -13,14 +13,17 @@ import { useQuery } from '@tanstack/react-query';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import { type cuponsInterface } from '@/src/shared/helpers/interfaces';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [messagePopUp, setMessagePopUp] = React.useState('');
-  const [typePopUp, setTypePopUp] = React.useState('');
 
   const [cupomData, setCupomData] = React.useState<cuponsInterface>();
+
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [nextPage, setNextPage] = React.useState([1, 7]);
@@ -59,8 +62,13 @@ const DataTable = () => {
       {ativoDelete && cupomData?._id && (
         <ModalDelete
           id1={cupomData?._id}
-          setState={setAtivoDelete}
           text="Deseja mesmo deletar esse Cupom?"
+          messageToErrorPopUp="Erro ao remover o cupom"
+          messageToPopUp="Cupom removido"
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setIsLoading={setIsLoading}
+          setState={setAtivoDelete}
           funcDelete={deleteCupom}
           refetch={refetch}
         />
@@ -79,6 +87,7 @@ const DataTable = () => {
           typePopUp={typePopUp}
         />
       )}
+      {isLoading && <LoadingAnimation />}
     </>
   );
 };

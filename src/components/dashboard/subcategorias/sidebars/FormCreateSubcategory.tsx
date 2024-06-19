@@ -68,6 +68,7 @@ const SideBarFormCreateSubcategory = ({
       setAtivo(false);
       setMessagePopUp('Subcategoria criada com sucesso');
       await refetch();
+      return;
     }
     setTypePopUp('error');
     setMessagePopUp('erro ao criar Subcategoria');

@@ -16,10 +16,15 @@ import {
 } from '@/src/shared/helpers/interfaces';
 import { usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
+import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 
 const ContainerCart = () => {
   const pathname = usePathname();
   const token = Cookies.get('auth_token');
+
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
+
   const userData = useQuery<UserInterface>({
     queryKey: ['user', token],
     queryFn: async () => {
@@ -48,44 +53,56 @@ const ContainerCart = () => {
   }, [pathname, refetch]);
 
   return (
-    <div className={styles.container_items_cart}>
-      <div className={styles.area_textos_container}>
-        <div className={styles.area_textos}>
-          <Breadcrumb texto1="Carrinho" />
-          <Titulo titulo="Carrinho" />
-          <p className={`${styles.texto_indicativo} texto_indicativo`}>
-            Você tem {data?.itemsCart?.length ?? 0} itens no seu carrinho
-          </p>
+    <>
+      <div className={styles.container_items_cart}>
+        <div className={styles.area_textos_container}>
+          <div className={styles.area_textos}>
+            <Breadcrumb texto1="Carrinho" />
+            <Titulo titulo="Carrinho" />
+            <p className={`${styles.texto_indicativo} texto_indicativo`}>
+              Você tem {data?.itemsCart?.length ?? 0} itens no seu carrinho
+            </p>
+          </div>
         </div>
-      </div>
-      <div className={styles.produtos}>
-        {data?.itemsCart?.map((itemCart, index) => {
-          return (
-            <ProdutoCarrinho
-              refetchData={refetch}
-              ItemCartId={itemCart._id}
-              amount={itemCart.amount}
-              key={itemCart?._id}
-              productId={itemCart?.productId}
-              color={itemCart?.color}
-              size={itemCart?.size}
-              total={data?.prices[index]}
-            />
-          );
-        })}
-      </div>
-      {data?.itemsCart && (
-        <div className={styles.entregas}>
-          <EntregaCarrinho />
+        <div className={styles.produtos}>
+          {data?.itemsCart?.map((itemCart, index) => {
+            return (
+              <ProdutoCarrinho
+                setMessagePopUp={setMessagePopUp}
+                setTypePopUp={setTypePopUp}
+                refetchData={refetch}
+                ItemCartId={itemCart._id}
+                amount={itemCart.amount}
+                key={itemCart?._id}
+                productId={itemCart?.productId}
+                color={itemCart?.color}
+                size={itemCart?.size}
+                total={data?.prices[index]}
+              />
+            );
+          })}
         </div>
-      )}
+        {data?.itemsCart && (
+          <div className={styles.entregas}>
+            <EntregaCarrinho />
+          </div>
+        )}
 
-      {data?.itemsCart && (
-        <div className={styles.finalizar_container}>
-          <Finalizar valorProdutos={data.totalValue} />
-        </div>
+        {data?.itemsCart && (
+          <div className={styles.finalizar_container}>
+            <Finalizar valorProdutos={data.totalValue} />
+          </div>
+        )}
+      </div>
+      {messagePopUp && (
+        <PopUpMessage
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          text={messagePopUp}
+          typePopUp={typePopUp}
+        />
       )}
-    </div>
+    </>
   );
 };
 

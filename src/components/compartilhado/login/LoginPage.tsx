@@ -32,9 +32,7 @@ const schema = yup.object({
 
 const LoginPage = () => {
   const { login } = useUserContext();
-  const [errorMessage, setErrorMessage] = React.useState<string | boolean>(
-    false
-  );
+  const [errorMessage, setErrorMessage] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
 
   const {
@@ -47,22 +45,13 @@ const LoginPage = () => {
 
   // Função de resetar e setar o span de erros
   React.useEffect(() => {
-    setErrorMessage(false);
-    setTimeout(() => {
-      if (errors?.password?.message) {
-        setErrorMessage(errors?.password?.message);
-      }
-      if (errors?.email?.message) {
-        setErrorMessage(errors?.email?.message);
-      }
-    }, 100);
-    const temporizador = setTimeout(function closeError() {
-      setErrorMessage(false);
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
+    setErrorMessage('');
+    if (errors?.password?.message) {
+      setErrorMessage(errors?.password?.message);
+    }
+    if (errors?.email?.message) {
+      setErrorMessage(errors?.email?.message);
+    }
   }, [errors]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {

@@ -13,12 +13,15 @@ import { getAllCategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
   const [idCategory, setIdCategory] = React.useState('');
+
+  const [isLoading, setIsLoading] = React.useState(false);
   const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
@@ -37,8 +40,11 @@ const DataTable = () => {
     <>
       {ativoCreate && (
         <SideBarFormCreate
+          isLoading={isLoading}
           setAtivo={setAtivoCreate}
           setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setIsLoading={setIsLoading}
         />
       )}
       {ativoEdit && (
@@ -73,8 +79,13 @@ const DataTable = () => {
       {ativoDelete && (
         <ModalDelete
           id1={idCategory}
-          setState={setAtivoDelete}
           text="Deseja mesmo deletar essa categoria?"
+          messageToErrorPopUp="Erro ao remover a categoria"
+          messageToPopUp="Categoria removida"
+          setIsLoading={setIsLoading}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setState={setAtivoDelete}
           funcDelete={deleteCategory}
           refetch={refetch}
         />
@@ -97,6 +108,7 @@ const DataTable = () => {
           setTypePopUp={setTypePopUp}
         />
       )}
+      {isLoading && <LoadingAnimation />}
     </>
   );
 };

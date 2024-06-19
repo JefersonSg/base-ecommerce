@@ -12,6 +12,7 @@ import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 import { useParams } from 'next/navigation';
 import { getAllComments } from '@/src/shared/api/GETS';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 
 interface User {
   user: {
@@ -36,6 +37,7 @@ function Comentarios() {
   });
 
   const [Commented, setCommented] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
@@ -77,6 +79,7 @@ function Comentarios() {
         {dataComments?.data?.comments?.map((comment, index) => {
           return (
             <Comentario
+              setIsLoading={setIsLoading}
               key={index}
               commentData={comment}
               setMessagePopUp={setMessagePopUp}
@@ -93,6 +96,7 @@ function Comentarios() {
           setMessagePopUp={setMessagePopUp}
         />
       )}
+      {isLoading && <LoadingAnimation />}
     </>
   );
 }

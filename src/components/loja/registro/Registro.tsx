@@ -14,6 +14,7 @@ import Link from 'next/link';
 import InputFormulario from '@/src/components/compartilhado/formulario/InputForm';
 import sendRegisterEmail from '@/src/actions/register';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
+import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 
 interface InputsRegister {
   name: string;
@@ -50,9 +51,8 @@ const schema = yup.object({
 const Registro = () => {
   const { registerUser } = useUserContext();
 
-  const [errorMessage, setErrorMessage] = React.useState<string | boolean>(
-    false
-  );
+  const [messagePopUp, setMessagePopUp] = React.useState<string>('');
+  const [typePopUp, setTypePopUp] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
 
   const {
@@ -65,31 +65,26 @@ const Registro = () => {
 
   // Função de resetar e setar o span de erros
   React.useEffect(() => {
-    setErrorMessage(false);
-    setTimeout(() => {
-      if (errors?.name?.message) {
-        setErrorMessage(errors?.name?.message);
-      }
-      if (errors?.surname?.message) {
-        setErrorMessage(errors?.surname?.message);
-      }
-      if (errors?.email?.message) {
-        setErrorMessage(errors?.email?.message);
-      }
-      if (errors?.password?.message) {
-        setErrorMessage(errors?.password?.message);
-      }
-      if (errors?.confirmpassword?.message) {
-        setErrorMessage(errors?.confirmpassword?.message);
-      }
-    }, 100);
-    const temporizador = setTimeout(function closeError() {
-      setErrorMessage(false);
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
+    if (errors?.name?.message) {
+      setMessagePopUp(errors?.name?.message);
+      setTypePopUp('error');
+    }
+    if (errors?.surname?.message) {
+      setMessagePopUp(errors?.surname?.message);
+      setTypePopUp('error');
+    }
+    if (errors?.email?.message) {
+      setMessagePopUp(errors?.email?.message);
+      setTypePopUp('error');
+    }
+    if (errors?.password?.message) {
+      setMessagePopUp(errors?.password?.message);
+      setTypePopUp('error');
+    }
+    if (errors?.confirmpassword?.message) {
+      setMessagePopUp(errors?.confirmpassword?.message);
+      setTypePopUp('error');
+    }
   }, [errors]);
 
   const onSubmit: SubmitHandler<InputsRegister> = async (data) => {
@@ -103,7 +98,7 @@ const Registro = () => {
 
     setLoading(true);
     await sendRegisterEmail(data.name, data.email);
-    await registerUser(dataUser, setErrorMessage, setLoading);
+    await registerUser(dataUser, setMessagePopUp, setLoading);
     setLoading(false);
   };
 
@@ -166,9 +161,16 @@ const Registro = () => {
           <BotaoRedondo texto="Entrar" disabled={loading} />
         </form>
         <span
-          className={`${styles.error_span} ${errorMessage ? styles.ativo : ''}`}
+          className={`${styles.error_span} ${messagePopUp ? styles.ativo : ''}`}
         >
-          {errorMessage}
+          {messagePopUp && (
+            <PopUpMessage
+              setMessagePopUp={setMessagePopUp}
+              setTypePopUp={setTypePopUp}
+              text={messagePopUp}
+              typePopUp={typePopUp}
+            />
+          )}
         </span>
       </div>
     </>

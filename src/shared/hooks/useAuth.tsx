@@ -51,14 +51,14 @@ const useAuth = () => {
 
   async function login(
     dataUser: dataUserLogin,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>
   ) {
     try {
       const data = await axios.post(`${API_URL}user/login`, dataUser);
 
       await authUser(data.data);
     } catch (error: any) {
-      setErrorMessage(false);
+      setErrorMessage('');
       console.log(error);
       setTimeout(() => {
         setErrorMessage(
@@ -71,7 +71,7 @@ const useAuth = () => {
 
   async function registerUser(
     dataUser: dataUserRegister,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>
   ) {
     try {
       const data = await axios.post(`${API_URL}user/register`, dataUser);
@@ -79,7 +79,7 @@ const useAuth = () => {
       await authUser(data.data);
       router.push('/');
     } catch (err: any) {
-      setErrorMessage(false);
+      setErrorMessage('');
       setTimeout(() => {
         setErrorMessage(
           err?.response?.data?.errorsResult?.body[0] ||

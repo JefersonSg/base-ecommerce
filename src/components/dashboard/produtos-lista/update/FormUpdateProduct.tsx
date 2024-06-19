@@ -642,8 +642,11 @@ const FormUpdateProduct = ({
       </div>
       {ativoNewCategory && (
         <SideBarFormCreate
+          isLoading={isLoading}
           setAtivo={setAtivoNewCategory}
           setMessagePopUp={setMessagePopUp}
+          setIsLoading={setIsLoading}
+          setTypePopUp={setTypePopUp}
         />
       )}
       {ativoNewSubcategory && (
@@ -661,7 +664,15 @@ const FormUpdateProduct = ({
           typePopUp={typePopUp}
         />
       )}
-      {openDica && <BackgoundClick setState1={setOpenDica} />}
+      {openDica || ativoNewCategory || ativoNewSubcategory ? (
+        <BackgoundClick
+          setState1={setOpenDica}
+          setState2={setAtivoNewSubcategory}
+          setState3={setAtivoNewCategory}
+        />
+      ) : (
+        <></>
+      )}
       {openDica && <DicaImagem />}
     </>
   );

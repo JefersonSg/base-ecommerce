@@ -16,6 +16,8 @@ import {
 } from '@/src/shared/api/GETS';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
@@ -26,6 +28,10 @@ const DataTable = () => {
   const [pesquisa, setPesquisa] = React.useState('');
   const [promotionProducts, setPromotionProducts] = React.useState(false);
   const [noActivesProducts, setNoActivesProducts] = React.useState(false);
+
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   const { data, refetch } = useQuery({
     queryKey: ['products'],
@@ -54,6 +60,10 @@ const DataTable = () => {
       setNoActivesProducts(false);
     }
   }, [pesquisa]);
+
+  async function removeProduct() {
+    await deleteProduct(idDelete);
+  }
 
   return (
     <>
@@ -104,13 +114,27 @@ const DataTable = () => {
       )}
       {ativoDelete && (
         <ModalDelete
-          text="Deseja mesmo deletar esse produto?"
           id1={idDelete}
+          text="Deseja mesmo deletar esse produto?"
+          messageToErrorPopUp="Erro ao remover o produto"
+          messageToPopUp="Produto removido"
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setIsLoading={setIsLoading}
           setState={setAtivoDelete}
-          funcDelete={deleteProduct}
+          funcDelete={removeProduct}
           refetch={refetch}
         />
       )}
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
+      {isLoading && <LoadingAnimation />}
     </>
   );
 };
