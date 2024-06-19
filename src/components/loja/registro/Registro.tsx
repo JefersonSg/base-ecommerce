@@ -63,7 +63,7 @@ const Registro = () => {
     resolver: yupResolver(schema)
   });
 
-  // Função de resetar e setar o span de erros
+  // Função de setar o span de erros
   React.useEffect(() => {
     if (errors?.name?.message) {
       setMessagePopUp(errors?.name?.message);
@@ -100,6 +100,8 @@ const Registro = () => {
     await sendRegisterEmail(data.name, data.email);
     await registerUser(dataUser, setMessagePopUp, setLoading);
     setLoading(false);
+    setMessagePopUp('Registro concluido');
+    setTypePopUp('');
   };
 
   return (
