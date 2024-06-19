@@ -6,7 +6,7 @@
   position: absolute;
   top: 70px;
   left: 0;
-  z-index: 1000;
+  z-index: 1004;
   animation: openMenu ease-in forwards 0.3s;
   overflow-x: hidden;
   object-fit: cover;

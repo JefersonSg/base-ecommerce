@@ -24,7 +24,9 @@ const ProdutoCarrinho = ({
   amount,
   ItemCartId,
   total,
-  refetchData
+  refetchData,
+  setTypePopUp,
+  setMessagePopUp
 }: {
   productId: string;
   color: string;
@@ -32,6 +34,8 @@ const ProdutoCarrinho = ({
   amount: number;
   total: number;
   ItemCartId: string;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   refetchData?: (
     options?: RefetchOptions | undefined
   ) => Promise<QueryObserverResult<any, Error>>;
@@ -166,10 +170,15 @@ const ProdutoCarrinho = ({
       {modalDeleteActive && <BackgoundClick setState1={setModalDeleteActive} />}
       {modalDeleteActive && (
         <ModalDelete
-          funcDelete={deleteItem}
           id1={ItemCartId}
-          setState={setModalDeleteActive}
           text="Deseja mesmo remover o produto?"
+          messageToErrorPopUp="Erro ao remover produto"
+          messageToPopUp="Produto removido"
+          setIsLoading={setIsloading}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setState={setModalDeleteActive}
+          funcDelete={deleteItem}
         />
       )}
     </div>

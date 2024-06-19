@@ -13,12 +13,22 @@ const ModalDelete = ({
   id1,
   setState,
   id2,
+  setIsLoading,
   funcDelete,
-  refetch
+  refetch,
+  messageToErrorPopUp,
+  messageToPopUp,
+  setMessagePopUp,
+  setTypePopUp
 }: {
   text: string;
   id1: string;
+  messageToErrorPopUp: string;
+  messageToPopUp: string;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   id2?: string;
   funcDelete?: (id: string, id2?: string) => Promise<any>;
   refetch?: (
@@ -29,6 +39,8 @@ const ModalDelete = ({
     try {
       if (!funcDelete) return;
 
+      setIsLoading(true);
+
       if (id1 && !id2) {
         await funcDelete(id1);
       }
@@ -38,7 +50,13 @@ const ModalDelete = ({
       if (refetch) {
         await refetch();
       }
+      setIsLoading(false);
+      setMessagePopUp(messageToPopUp);
+      setTypePopUp('');
     } catch (error) {
+      setIsLoading(false);
+      setMessagePopUp(messageToErrorPopUp);
+      setTypePopUp('error');
       console.log(error);
     }
   }

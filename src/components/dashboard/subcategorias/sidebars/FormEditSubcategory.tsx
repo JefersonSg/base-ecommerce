@@ -29,14 +29,12 @@ const SideBarFormEdit = ({
   name,
   category,
   description,
-  image,
   setAtivo
 }: {
   idSubcategory: string;
   name: string;
   description: string;
   category: string;
-  image: string[];
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const {

@@ -24,11 +24,17 @@ interface Inputs {
 const schema = validationCategory;
 
 const SideBarFormCreate = ({
+  isLoading,
   setAtivo,
-  setMessagePopUp
+  setMessagePopUp,
+  setTypePopUp,
+  setIsLoading
 }: {
+  isLoading: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   //
   const { refetch } = useQuery({
@@ -44,8 +50,6 @@ const SideBarFormCreate = ({
     resolver: yupResolver(schema)
   });
 
-  const [isLoading, setIsLoading] = React.useState(false);
-
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setIsLoading(true);
     const response = await createCategory(data);
@@ -54,8 +58,13 @@ const SideBarFormCreate = ({
     if (response) {
       setAtivo(false);
       setMessagePopUp('Categoria criada com sucesso');
+      setTypePopUp('');
       await refetch();
+      return;
     }
+
+    setMessagePopUp('Erro ao criar categoria');
+    setTypePopUp('error');
   };
 
   return (

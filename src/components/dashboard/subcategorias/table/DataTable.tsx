@@ -8,11 +8,11 @@ import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/FormEditSubcategory';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
-import ButtonDelete from '../../Botoes/ButtonDelete';
-import ButtonAdd from '../../Botoes/ButtonAdd';
 import { deleteSubcategory } from '@/src/shared/api/DELETE';
 import { getAllSubcategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
+import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
@@ -20,6 +20,8 @@ const DataTable = () => {
   const [ativoDelete, setAtivoDelete] = React.useState(false);
   const [idSubcategory, setIdSubcategory] = React.useState('');
   const [categoryId, setIdCategory] = React.useState('');
+
+  const [isLoading, setIsLoading] = React.useState(false);
   const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
@@ -35,8 +37,16 @@ const DataTable = () => {
   });
 
   async function handleDelete(id: string) {
-    await deleteSubcategory(id);
-    await refetch();
+    try {
+      setIsLoading(true);
+      await deleteSubcategory(id);
+      await refetch();
+      setIsLoading(false);
+      setMessagePopUp('Subcategoria removida');
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
   }
 
   return (
@@ -55,7 +65,6 @@ const DataTable = () => {
           setAtivo={setAtivoEdit}
           name={defaultTitle}
           description={defaultDescription}
-          image={['']}
         />
       )}
       <div className={styles.data_table}>
@@ -81,38 +90,31 @@ const DataTable = () => {
         />
       </div>
       {ativoDelete && (
-        <div className={styles.delete_categoria}>
-          <h2>Deseja mesmo deletar essa categoria?</h2>
-          <div className={styles.botoes}>
-            <div
-              onClick={() => {
-                void handleDelete(idSubcategory);
-              }}
-            >
-              <ButtonDelete text="Deletar" setAtivo={setAtivoDelete} />
-            </div>
-            <div
-              onClick={() => {
-                setAtivoDelete(false);
-              }}
-            >
-              <ButtonAdd text="Não deletar" setAtivo={setAtivoDelete} />
-            </div>
-          </div>
-        </div>
+        <ModalDelete
+          id1={idSubcategory}
+          text="Deseja mesmo deletar essa subcategoria?"
+          messageToErrorPopUp="Erro ao remover subcategoria"
+          messageToPopUp="Subcategoria removida"
+          setIsLoading={setIsLoading}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setState={setAtivoDelete}
+          funcDelete={handleDelete}
+          refetch={refetch}
+        />
       )}
-      {ativoCreate ||
-        ativoEdit ||
-        (ativoDelete && (
-          <div
-            className={styles.background}
-            onClick={() => {
-              setAtivoCreate(false);
-              setAtivoEdit(false);
-              setAtivoDelete(false);
-            }}
-          ></div>
-        ))}
+      {!!ativoCreate || !!ativoEdit || !!ativoDelete ? (
+        <div
+          className={styles.background}
+          onClick={() => {
+            setAtivoCreate(false);
+            setAtivoEdit(false);
+            setAtivoDelete(false);
+          }}
+        ></div>
+      ) : (
+        <></>
+      )}
 
       {messagePopUp && (
         <PopUpMessage
@@ -122,6 +124,7 @@ const DataTable = () => {
           typePopUp={typePopUp}
         />
       )}
+      {isLoading && <LoadingAnimation />}
     </>
   );
 };
