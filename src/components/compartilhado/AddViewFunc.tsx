@@ -12,6 +12,11 @@ const AddViewFunc = () => {
     const response = await fetch('/api/ip');
     const userToken = Cookies.get('auth_token');
     let sessionId = Cookies.get('sessionId');
+
+    const productId =
+      pathname.split('/')[2] === 'produto' &&
+      pathname.split('/')[3].length > 20 &&
+      pathname.split('/')[3];
     const userIp = await response.json();
     if (!sessionId) {
       Cookies.set('sessionId', uuidv4());
@@ -21,7 +26,7 @@ const AddViewFunc = () => {
     const pageView = pathname;
 
     if (sessionId) {
-      void addViews(userIp, sessionId, '', pageView, userToken);
+      void addViews(userIp, sessionId, productId || '', pageView, userToken);
     }
   }, [pathname]);
 
