@@ -28,6 +28,10 @@
 .titulo {
   display: block;
   margin-bottom: 32px;
+  width: 150px;
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .informacoes p {

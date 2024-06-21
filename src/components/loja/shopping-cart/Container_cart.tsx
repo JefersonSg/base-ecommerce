@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Breadcrumb from '../breadcrumb/Breadcrumb';
 import { Titulo } from '../../compartilhado/textos/Titulo';
 import ProdutoCarrinho from './produto/ProdutoCarrinho';
 
@@ -57,7 +56,6 @@ const ContainerCart = () => {
       <div className={styles.container_items_cart}>
         <div className={styles.area_textos_container}>
           <div className={styles.area_textos}>
-            <Breadcrumb texto1="Carrinho" />
             <Titulo titulo="Carrinho" />
             <p className={`${styles.texto_indicativo} texto_indicativo`}>
               Você tem {data?.itemsCart?.length ?? 0} itens no seu carrinho

@@ -40,7 +40,6 @@
   top: 25px;
   left: 0;
 }
-
 .corpo_tabela tr::after {
   border-top: 1px dashed #ddd;
   display: block;
@@ -51,6 +50,7 @@
   top: -1px;
   left: 0;
 }
+
 
 .product {
   text-align: start;
@@ -69,4 +69,9 @@
   .produtos_checkout thead {
     display: none;
   }
+
+  .corpo_tabela tr::after {
+    width: calc(100% - 32px);
+  }
+  
 }

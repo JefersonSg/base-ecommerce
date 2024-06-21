@@ -104,6 +104,7 @@ const ProdutoCarrinho = ({
       setStock(false);
     }
   }, [color, data]);
+
   return (
     <div
       className={`${styles.produto_Carrinho} ${stock ? '' : styles.no_stock}`}
@@ -113,7 +114,11 @@ const ProdutoCarrinho = ({
           <Link href={`/produtos/produto/${productId}`}>
             <Image
               alt="Imagem do produto"
-              src={data?.product?.images?.[0]}
+              src={
+                data?.product?.coverPhoto1?.[0]
+                  ? data?.product?.coverPhoto1
+                  : data?.product?.images?.[0]
+              }
               placeholder="blur"
               blurDataURL={data?.product?.images?.[0]}
               width={104}
