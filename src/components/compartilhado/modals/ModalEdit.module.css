@@ -11,5 +11,5 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1004;
-  font-family: var(--fonte-primaria);
+  font-family: inherit;
 }
