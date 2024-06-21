@@ -18,13 +18,16 @@
   z-index: 1004;
   font-family: var(--fonte-primaria);
 }
+.delete_categoria h2 {
+  font-family: var(--fonte-primaria);
+}
 .delete_categoria .botoes {
   display: flex;
   gap: 16px;
 }
 
 .delete_categoria h2 {
-  font-family: 'Public Sans';
+  font-family: 'Public Sans', sans-serif;
   color: #697a8d;
   font-size: 16px;
   text-align: center;

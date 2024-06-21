@@ -19,7 +19,7 @@ const ModalEdit = ({
   refetch: any;
 }) => {
   return (
-    <div className={styles.delete_categoria}>
+    <div className={` ${styles.delete_categoria}`}>
       <FormEditComment
         setModalForm={setState}
         commentData={commentData}
