@@ -64,7 +64,7 @@
 }
 @media (min-width: 1024px) {
   .div_descricoes.ativo,
-.div_avaliacao.ativo {
+  .div_avaliacao.ativo {
   display: flex;
   flex-direction: column;
   gap: 0px;
