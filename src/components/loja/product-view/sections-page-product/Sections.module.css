@@ -40,7 +40,9 @@
   }
 .div_descricoes.ativo,
 .div_avaliacao.ativo {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .espaco_branco {
@@ -61,6 +63,12 @@
   }
 }
 @media (min-width: 1024px) {
+  .div_descricoes.ativo,
+.div_avaliacao.ativo {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
   .entrega {
     display: none;
   }

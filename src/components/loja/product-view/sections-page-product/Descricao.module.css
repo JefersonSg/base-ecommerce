@@ -5,7 +5,7 @@
 .texto {
   text-align: start;
   width: 80%;
-  margin-top: 16px;
+  margin-top: 8px;
   white-space: pre-wrap;
   padding-left: 4px;
   font-size: 16px;
@@ -16,5 +16,8 @@
   .descricao {
     padding: 0;
     padding-top: 44px;
+  }
+  .texto {
+    margin-top: 16px;
   }
 }

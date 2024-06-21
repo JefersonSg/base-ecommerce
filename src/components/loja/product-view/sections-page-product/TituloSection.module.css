@@ -18,3 +18,9 @@
 .seta.ativo {
   rotate: 180deg;
 }
+
+@media (max-width: 64rem) {
+  .titulo_h2 {
+    font-weight: 600;
+  }
+}
