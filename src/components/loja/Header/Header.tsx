@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
 import CategoriasLinks from './nav/CategoriasLinks';
 import UserInfo from './UserInfo';
+import LoadingUserInfos from './LoadingUserInfos';
 
 export const Header = async () => {
   return (
@@ -24,7 +25,10 @@ export const Header = async () => {
             height={83}
           />
         </Link>
-        <UserInfo />
+
+        <Suspense fallback={<LoadingUserInfos />}>
+          <UserInfo />
+        </Suspense>
       </header>
       <Suspense>
         <CategoriasLinks />
