@@ -118,20 +118,33 @@ const ProdutosFinalizar = ({
               />
             </Link>
           )}
-          <td className={styles.informacoes}>
+
+          <div>
             <Link
               className={styles.titulo}
               href={`/produtos/produto/${productId}`}
             >
               {data?.product?.name ?? 'carregando...'}
             </Link>
-            <p>
-              <span>Cor: </span> {color}
-            </p>
-            <p>
-              <span>Tamanho: </span> {size}
-            </p>
-          </td>
+            <p className={styles.marca}>marca: {data?.product?.brand}</p>
+
+            <div className={styles.informacoes_compra_2}>
+              <p>
+                <span>Cor: </span> {color}
+              </p>
+              <p>
+                <span>Tamanho: </span> {size}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td className={styles.informacoes_compra}>
+          <p>
+            <span>Cor: </span> {color}
+          </p>
+          <p>
+            <span>Tamanho: </span> {size}
+          </p>
         </td>
         <td className={styles.valor_produto}>
           <p
@@ -164,7 +177,10 @@ const ProdutosFinalizar = ({
               {' '}
               de R$ {(Number(data?.product?.price) * amount).toFixed(2)}
             </span>
-            por R$ {total?.toFixed(2)}
+            {data?.product?.promotion && data?.product?.promotionalPrice
+              ? 'por '
+              : ''}
+            R$ {total?.toFixed(2)}
           </p>
         </td>
       </tr>

@@ -3,8 +3,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 400px;
-  align-self: flex-start;
+  align-self: flex-end;
   padding: 0 16px;
   box-sizing: border-box;
   padding-bottom: 32px;
@@ -17,4 +16,10 @@
 }
 .tituloArea {
   margin-bottom: 16px;
+}
+
+@media (min-width: 64rem) {
+  .entrega_container {
+    padding: 0px;
+  }
 }

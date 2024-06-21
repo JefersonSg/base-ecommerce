@@ -14,15 +14,25 @@ const Finalizarfetchs = ({
 }) => {
   return (
     <div className={styles.produtos_checkout}>
-      <p className={styles.titulo_table}>Resumo do pedido</p>
-      <table>
+      <table className={styles.table_body}>
         <thead>
           <tr>
-            <th className="product">Produto</th>
-            <th className="product-price">Preço</th>
-            <th className="quantity">Quantidade</th>
-            <th className="quantity-price">Total</th>
-            <th className="item-remove"></th>
+            <th className={styles.product}>
+              <p>Produtos</p>
+            </th>
+            <th className={styles.information}>
+              <p>informacoes</p>
+            </th>
+            <th className={styles.product_price}>
+              <p>Preço</p>
+            </th>
+            <th className={styles.quantity}>
+              <p>Quantidade</p>
+            </th>
+            <th className={styles.quantity_price}>
+              <p>Total</p>
+            </th>
+            <th className={styles.item_remove}></th>
           </tr>
         </thead>
         <tbody className={styles.corpo_tabela}>

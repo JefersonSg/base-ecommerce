@@ -126,10 +126,11 @@ const FinalizarContainer = () => {
   return (
     <>
       <div>
-        <EntregaFinalizar />
         {data && itemsCart?.data && (
           <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
         )}
+        <EntregaFinalizar />
+
         <Envio
           shippingOption={itemsCart.data?.shippingOptions}
           selectDelivery={selectDelivery}
