@@ -13,7 +13,9 @@
   margin: 0 auto;
   font-family: var(--fonte-primaria);
 }
-
+.dropdownMenu {
+  position: absolute;
+}
 .container_header {
   background-color: black;
   box-shadow: 0 7px 26px rgba(154, 154, 204, 0.2);

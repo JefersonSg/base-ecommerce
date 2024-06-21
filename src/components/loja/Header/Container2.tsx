@@ -12,9 +12,11 @@ import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
+import DropdownMenu from './DropdownMenu';
 
 const Container2 = ({ userData }: { userData: UserInterface }) => {
   const [admin] = React.useState(userData?.isAdmin);
+  const [ativo, setAtivo] = React.useState(false);
 
   React.useEffect(() => {
     if (admin) {
@@ -46,7 +48,11 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
           width={24}
           height={24}
         />
-        <p>
+        <p
+          onMouseEnter={() => {
+            setAtivo(true);
+          }}
+        >
           {userData?.user
             ? 'Olá ' +
               userData?.user?.name?.split(' ')?.[0] +
@@ -91,6 +97,18 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
           height={24}
         />
       </Link>
+      {userData?.user?.name && ativo ? (
+        <div
+          className={styles.dropdownMenu}
+          onMouseLeave={() => {
+            setAtivo(false);
+          }}
+        >
+          <DropdownMenu nomeUser={userData.user.name} />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

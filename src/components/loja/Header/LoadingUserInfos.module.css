@@ -1,0 +1,60 @@
+.container2 {
+  display: flex;
+  gap: 16px;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.container2 a p{
+    color: white;
+}
+
+
+.mobile_button {
+    width: 26px;
+    height: 24px;
+    background-color: transparent;
+    border-radius: 0.2rem;
+    height: 20px;
+    width: 25px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    transition: 0.1s;
+    cursor: pointer;
+    font-size: 0px;
+    position: absolute;
+    left: 24px;
+  }
+  
+  .mobile_button::after {
+    width: 26px;
+    background: white;
+    box-shadow:
+      0 8px white,
+      0 -8px white;
+  }
+  .mobile_button::after {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 2px;
+    border-radius: 2px;
+    transition: 0.2s;
+  }
+  
+  @media (min-width: 64rem) {
+    .mobile_button {
+      display: none;
+    }
+  }
+  
+@media (max-width: 64rem) {
+    .login {
+        display: none;
+    }
+}
