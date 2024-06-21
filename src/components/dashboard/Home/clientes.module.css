@@ -4,10 +4,10 @@
     gap: 32px;
     margin: 0 auto;
     width: 100%;
-    padding: 0 16px;
     box-sizing: border-box;
     margin-bottom: 32px;
     margin-top: 16px;
+    padding: 0 16px;
 }
 
 .clientes_container {
@@ -52,8 +52,9 @@
     font-size: 14px;
     color: #7987a1!important;
 }
-@media (min-width:48rem) {
+@media (min-width:64rem) {
     .container_clientes{
-        padding: 0 32px;
+        padding: 0 54px 0 16px;
+
     }
 }
