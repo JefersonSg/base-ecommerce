@@ -62,7 +62,7 @@ const ModalDelete = ({
   }
 
   return (
-    <div className={styles.delete_categoria}>
+    <div className={` ${styles.delete_categoria}`}>
       <h2>{text}</h2>
       <div className={styles.botoes}>
         <div onClick={handleDelete}>

@@ -10,7 +10,7 @@ import {
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { addNewItemCart } from '@/src/shared/api/POST';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import Entrega from '../sections-page-product/Entrega';
@@ -127,7 +127,9 @@ function Detalhes({ data }: { data: ProductApi }) {
         price={data?.price}
       />
       <div className={styles.entrega}>
-        <Entrega />
+        <Suspense>
+          <Entrega />
+        </Suspense>
       </div>
       <div
         className={styles.botao_carrinho}

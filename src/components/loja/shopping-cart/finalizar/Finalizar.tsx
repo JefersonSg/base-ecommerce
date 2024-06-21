@@ -105,8 +105,8 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
               : convertNumberInReal(valorProdutos)}
           </span>
         </p>
-        <Link href={'/carrinho/finalizar'} className={styles.botao}>
-          <BotaoColorido texto="IR PARA PAGAMENTO" />
+        <Link href={'/pagamento/finalizar'} className={styles.botao}>
+          <BotaoColorido texto="Finalizar pedido" />
         </Link>
       </div>
     </>

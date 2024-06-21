@@ -40,7 +40,9 @@ function Sections({ data }: { data: ProductApi }) {
         }`}
       >
         <div className={styles.entrega}>
-          <Entrega />
+          <Suspense>
+            <Entrega />
+          </Suspense>
         </div>
         {data?.description && (
           <Descricao description={data.description} title="Descrição" />
