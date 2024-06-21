@@ -74,3 +74,9 @@
     font-family: var(--fonte-primaria);
   }
   
+
+  @media (max-width: 64rem) {
+    .titulo_sessao {
+      font-weight: 600;
+    }
+  }
