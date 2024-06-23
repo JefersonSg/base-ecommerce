@@ -1,22 +1,24 @@
 .container_nav {
   position: relative;
-  background-color: white;
+  background-color: black;
   font-family: var(--fonte-primaria);
 }
 
 .categorias_lista {
   display: flex;
-  background-color: white;
+  background-color: black;
   width: max-content;
   max-width: 1220px;
   justify-content: space-between;
   margin: 0 auto;
+  color: white;
 }
 
 .link {
   height: 50px;
-  background-color: white;
+  background-color: black;
   display: none;
+  color: white !important;
 }
 .background {
   position: absolute;
@@ -46,9 +48,10 @@
     justify-content: center;
     cursor: pointer;
     border-top: 2px solid transparent;
+    color: white !important;
   }
   .category_name {
-    color: var(--cor-quinta);
+    color: white;
     transition: all 0.2s;
     font-size: 13px;
     font-weight: 400;
@@ -58,7 +61,7 @@
   }
 
   .link svg path {
-    stroke: var(--cor-quinta);
+    stroke: white;
     transition: all 0.2s;
   }
 
