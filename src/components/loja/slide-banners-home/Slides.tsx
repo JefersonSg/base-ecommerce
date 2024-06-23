@@ -11,6 +11,7 @@ import Image from 'next/image';
 import './styles.css';
 import Link from 'next/link';
 import { type BannerType } from '@/src/shared/helpers/interfaces';
+import LoadingBanners from './LoadingBanners';
 
 function Slide({ data }: { data: { banners: BannerType[] } }) {
   const [isMobile, setIsMobile] = React.useState(0);
@@ -23,9 +24,13 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
     window.addEventListener('resize', resise);
   }, []);
 
-  console.log(isMobile);
+  React.useEffect(() => {
+    setIsMobile(window.innerWidth);
+  }, []);
+
   return (
     <div className={styles.container_banner}>
+      {!isMobile && <LoadingBanners />}
       <Swiper
         className={`${'slide-banner'} mySwiper`}
         centeredSlides={true}
