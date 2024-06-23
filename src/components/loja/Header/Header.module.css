@@ -86,6 +86,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    height: 64px;
   }
   .login img {
     border: 1px solid white;
@@ -119,6 +120,7 @@
     grid-column: 3;
     grid-row: 1;
     margin-right: 24px;
+    align-items: center;
   }
 }
 @media (max-width: 1023px) {

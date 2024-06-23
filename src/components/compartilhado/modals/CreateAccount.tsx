@@ -23,7 +23,7 @@ const CreateAccount = ({
           alt="Imagem ilustrativa"
           width={1200}
           height={722}
-          src={'/modal/addCartNoAccount.png'}
+          src={'/modal/addCartNoAccount.jpg'}
         />
       </Link>
       <Link className={styles.mobile} href={'/registrar'}>
@@ -31,7 +31,7 @@ const CreateAccount = ({
           alt="Imagem ilustrativa"
           width={667}
           height={722}
-          src={'/modal/addCartNoAccount-mobile.png'}
+          src={'/modal/addCartNoAccount-mobile.jpg'}
         />
       </Link>
       <BtnFechar setAtivo={setModalLogin} />

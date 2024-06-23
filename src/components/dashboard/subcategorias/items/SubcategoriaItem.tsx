@@ -3,16 +3,14 @@
 import Image from 'next/image';
 import React from 'react';
 import styles from './subcategoriaItem.module.css';
-import {
-  getCategoryById,
-  getProductsBySubcategory
-} from '@/src/shared/api/GETS';
+import { getCategoryById } from '@/src/shared/api/GETS';
 import {
   type ProductApi,
   type CategoryInterface
 } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import productsBySubcategoryGet from '@/src/actions/products-by-subcategory-get ';
 // import { getCategoryById } from '@/src/shared/api/GETS';
 
 const SubcategoriaItem = ({
@@ -56,7 +54,10 @@ const SubcategoriaItem = ({
   const { data } = useQuery({
     queryKey: ['productBySubcategory', subcategoryId],
     queryFn: async () => {
-      return (await getProductsBySubcategory(subcategoryId)) as {
+      return (await productsBySubcategoryGet({
+        id: subcategoryId,
+        total: 1000
+      })) as {
         products: ProductApi[];
       };
     }
@@ -67,7 +68,9 @@ const SubcategoriaItem = ({
     async function setValorCategory() {
       const valorTotalArray = data?.products?.reduce((i, product) => {
         const totalProducts = product.stock.amount.reduce((count, amount) => {
-          return count + +amount;
+          const newAmount = amount.reduce((count, amount) => count + amount, 0);
+
+          return count + +newAmount;
         }, 0);
 
         const totalValor = +product.price * +totalProducts;

@@ -37,35 +37,49 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
 
   return (
     <div className={styles.container2}>
-      <Link
-        href={`${userData?.user ? '/minha-conta' : '/login'}`}
+      <div
         className={styles.login}
+        onMouseEnter={() => {
+          setAtivo(true);
+        }}
+        onMouseLeave={(e) => {
+          setAtivo(false);
+        }}
       >
-        <Image
-          className={styles.imagem_user}
-          alt="account image"
-          src={userData.user?.image ?? '/header/account.svg'}
-          width={24}
-          height={24}
-        />
-        <p
-          onMouseEnter={() => {
-            setAtivo(true);
-          }}
+        <Link
+          className={styles.login}
+          href={`${userData?.user ? '/minha-conta' : '/login'}`}
         >
-          {userData?.user
-            ? 'Olá ' +
-              userData?.user?.name?.split(' ')?.[0] +
-              ' ' +
-              userData?.user?.surname?.split(' ')?.[0] +
-              ` ${
-                userData?.user?.surname?.split(' ')?.[1]?.length > 2
-                  ? userData?.user?.surname?.split(' ')?.[1]
-                  : ''
-              }`
-            : 'Olá, faça seu login ou cadastre-se.'}
-        </p>
-      </Link>
+          <Image
+            className={styles.imagem_user}
+            alt="account image"
+            src={userData.user?.image ?? '/header/account.svg'}
+            width={24}
+            height={24}
+          />
+          <p>
+            {userData?.user
+              ? 'Olá ' +
+                userData?.user?.name?.split(' ')?.[0] +
+                ' ' +
+                userData?.user?.surname?.split(' ')?.[0] +
+                ` ${
+                  userData?.user?.surname?.split(' ')?.[1]?.length > 2
+                    ? userData?.user?.surname?.split(' ')?.[1]
+                    : ''
+                }`
+              : 'Olá, faça seu login ou cadastre-se.'}
+          </p>
+        </Link>
+        {userData?.user?.name && ativo ? (
+          <div className={styles.dropdownMenu}>
+            <DropdownMenu nomeUser={userData.user.name} />
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+
       {userData?.isAdmin && (
         <Link href={'/dashboard'} className={styles.button_dashboard}>
           <Image
@@ -97,18 +111,6 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
           height={24}
         />
       </Link>
-      {userData?.user?.name && ativo ? (
-        <div
-          className={styles.dropdownMenu}
-          onMouseLeave={() => {
-            setAtivo(false);
-          }}
-        >
-          <DropdownMenu nomeUser={userData.user.name} />
-        </div>
-      ) : (
-        <></>
-      )}
     </div>
   );
 };

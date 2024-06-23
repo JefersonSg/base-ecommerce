@@ -91,6 +91,21 @@ export const CATEGORIES = () => {
     url: API_URL + `categories`
   };
 };
+export const CATEGORY_BY_ID = ({ id }: { id: string }) => {
+  return {
+    url: API_URL + `categories/${id}`
+  };
+};
+
+export const PRODUCTS_BY_CATEGORY_ID = ({
+  categoryId
+}: {
+  categoryId: string;
+}) => {
+  return {
+    url: API_URL + `products/category/${categoryId}`
+  };
+};
 export const SUBCATEGORIES = () => {
   return {
     url: API_URL + `subcategories`
