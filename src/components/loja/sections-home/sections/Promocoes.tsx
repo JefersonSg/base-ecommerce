@@ -1,9 +1,9 @@
-import { getProductByPromotion } from '@/src/shared/api/GETS';
 import React from 'react';
 import Section from '../Section';
+import productsByPromotionsGet from '@/src/actions/products-by-promotions-get';
 
 const Promocoes = async () => {
-  const data = await getProductByPromotion();
+  const data = await productsByPromotionsGet();
 
   return (
     <Section

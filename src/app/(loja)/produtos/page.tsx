@@ -2,13 +2,18 @@ import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
 import styles from './page.module.css';
 import Produtos from '@/src/components/loja/produtos/Produtos';
 import { Suspense } from 'react';
+import productsActiveGet from '@/src/actions/products-active-get';
 
-function page() {
+async function page() {
+  const data = await productsActiveGet();
   return (
     <div className={styles.produtos_container}>
       <Breadcrumb texto1="Produtos" />
       <Suspense>
-        <Produtos />
+        <Produtos
+          data={data?.products}
+          functionGetProduct={productsActiveGet}
+        />
       </Suspense>
     </div>
   );

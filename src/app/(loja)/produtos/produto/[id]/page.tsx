@@ -1,5 +1,5 @@
 import ContainerFetchs from '@/src/components/loja/product-view/Container_fetchs';
-import { getAllActiveProducts, getProductById } from '@/src/shared/api/GETS';
+import { getProductById } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { type Metadata } from 'next';
 import styles from './Produto.module.css';
@@ -9,17 +9,17 @@ import LoadingProduct from './loading-product';
 interface PageParams {
   params: { id: string };
 }
-export async function generateStaticParams() {
-  const products: { products: ProductApi[] } = await getAllActiveProducts();
+// export async function generateStaticParams() {
+//   const products: { products: ProductApi[] } = await getAllActiveProducts();
 
-  const produtos = await Promise?.all(
-    products?.products?.map((product) => ({
-      id: product?._id
-    }))
-  );
+//   const produtos = await Promise?.all(
+//     products?.products?.map((product) => ({
+//       id: product?._id
+//     }))
+//   );
 
-  return produtos;
-}
+//   return produtos;
+// }
 
 export const generateMetadata = async ({
   params

@@ -11,13 +11,13 @@ import { useQuery } from '@tanstack/react-query';
 import {
   getAllProducts,
   getNoActiveProducts,
-  getProductByName,
-  getProductByPromotion
+  getProductByName
 } from '@/src/shared/api/GETS';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
+import productsByPromotionsGet from '@/src/actions/products-by-promotions-get';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
@@ -51,7 +51,9 @@ const DataTable = () => {
   });
   const promotions = useQuery({
     queryKey: ['get-products-by-promotion'],
-    queryFn: getProductByPromotion
+    queryFn: async () => {
+      return await productsByPromotionsGet();
+    }
   });
 
   React.useEffect(() => {

@@ -2,51 +2,90 @@
 
 import React from 'react';
 import styles from './SectionProdutos.module.css';
-import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 import ProductsById from '../produtos/section/ProductsById';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { Titulo } from '../../compartilhado/textos/Titulo';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 import CreateAccount from '../../compartilhado/modals/CreateAccount';
+import { type ProductGetParams } from '@/src/actions/products-active-get';
 
 const SectionProdutosViews = ({
   pesquisa,
   data,
-  texto
+  texto,
+  functionGetProduct
 }: {
   pesquisa?: string;
-  data: { products: ProductApi[] };
+  data: ProductApi[];
   texto?: string;
+  functionGetProduct: ({ id, page, total }: ProductGetParams) => Promise<
+    | {
+        products: ProductApi[];
+      }
+    | undefined
+  >;
 }) => {
-  const [totalProdutos, setTotalProdutos] = React.useState(9);
   const [isLoading, setIsLoading] = React.useState(false);
   const [modalLogin, setModalLogin] = React.useState(false);
   const [textPopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
-  // Scrolls
-  React.useEffect(() => {
-    function infiniteScroll() {
-      const scroll = Math.floor(window.scrollY);
-      const heigth = document.body.offsetHeight - window.innerHeight;
-      const scrollagem = scroll > heigth * 0.6;
+  const [page, setPage] = React.useState(1);
+  const [dataProducts, setDataProducts] = React.useState<ProductApi[]>(data);
+  const [infinite, setInfinite] = React.useState(!(data.length < 6));
+  const [loading, setLoading] = React.useState(false);
 
-      if (
-        scrollagem &&
-        data?.products?.length > 9 &&
-        data.products.length > totalProdutos
-      ) {
-        setTotalProdutos(totalProdutos + 8);
+  const fetching = React.useRef(false);
+
+  // Scrolls
+  function infiniteScroll() {
+    if (fetching.current) return;
+    fetching.current = true;
+    setLoading(true);
+
+    setTimeout(() => {
+      setPage((currentPage) => currentPage + 1);
+      fetching.current = false;
+      setLoading(false);
+    }, 1000);
+  }
+
+  React.useEffect(() => {
+    if (page === 1) return;
+
+    async function getProducts(page: number) {
+      const actionData = await functionGetProduct({ id: '', page, total: 9 });
+
+      if (actionData?.products) {
+        const { products } = actionData;
+
+        setDataProducts((currentProducts) => [...currentProducts, ...products]);
+      }
+      if (actionData?.products && actionData?.products?.length < 9)
+        setInfinite(false);
+
+      if (actionData === undefined) {
+        setInfinite(false);
       }
     }
-    infiniteScroll();
 
-    window.addEventListener('scroll', infiniteScroll);
+    void getProducts(page);
+  }, [functionGetProduct, page]);
+
+  React.useEffect(() => {
+    if (infinite) {
+      window.addEventListener('scroll', infiniteScroll);
+      window.addEventListener('wheel', infiniteScroll);
+    } else {
+      window.removeEventListener('scroll', infiniteScroll);
+      window.removeEventListener('wheel', infiniteScroll);
+    }
     return () => {
       window.removeEventListener('scroll', infiniteScroll);
+      window.removeEventListener('wheel', infiniteScroll);
     };
-  }, [data?.products?.length, totalProdutos]);
+  }, [infinite]);
 
   return (
     <>
@@ -54,26 +93,14 @@ const SectionProdutosViews = ({
         <div className={styles.informacoes}>
           <Titulo titulo={texto ?? 'Populares'} />
         </div>
-        {data && (
+        {dataProducts && (
           <ProductsById
-            data={data}
-            totalProdutos={totalProdutos}
+            data={dataProducts}
             setIsLoading={setIsLoading}
             setMessagePopUp={setMessagePopUp}
             setTypePopUp={setTypePopUp}
             setModalLogin={setModalLogin}
           />
-        )}
-        {data?.products?.length > 9 && data.products.length > totalProdutos && (
-          <div className={styles.botao}>
-            <div
-              onClick={() => {
-                setTotalProdutos(totalProdutos + 8);
-              }}
-            >
-              <BotaoColorido texto="Mostrar mais" />
-            </div>
-          </div>
         )}
       </div>
       {textPopUp && (
@@ -87,6 +114,7 @@ const SectionProdutosViews = ({
       <div className={`${styles.loading} ${isLoading ? styles.ativo : ''}`}>
         <LoadingAnimation />
       </div>
+      {loading && <p>carregando...</p>}
       {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </>
   );

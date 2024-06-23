@@ -2,22 +2,21 @@ import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
 import styles from './page.module.css';
 import {
   getCategoryById,
-  getProductsBySubcategory,
   getSubcategoryByCategory,
   getSubcategoryById
 } from '@/src/shared/api/GETS';
 import Produtos from '@/src/components/loja/produtos/Produtos';
 import {
   type subcategoryInterface,
-  type ProductApi,
   type CategoryInterface
 } from '@/src/shared/helpers/interfaces';
 import { Suspense } from 'react';
+import productsBySubcategoryGet from '@/src/actions/products-by-subcategory-get ';
 
 async function page({ searchParams }: { searchParams: { _id: string } }) {
-  const data: { products: ProductApi[] } = await getProductsBySubcategory(
-    searchParams?._id
-  );
+  const data = await productsBySubcategoryGet({
+    id: searchParams?._id
+  });
   const subcategoria: { subcategory: subcategoryInterface } =
     await getSubcategoryById(searchParams._id);
   const category: { category: CategoryInterface } = await getCategoryById(
@@ -36,7 +35,11 @@ async function page({ searchParams }: { searchParams: { _id: string } }) {
         texto2={subcategoria?.subcategory?.name}
       />
       <Suspense>
-        <Produtos data={data} subcategorieDataSlide={subcategories} />
+        <Produtos
+          functionGetProduct={productsBySubcategoryGet}
+          data={data?.products}
+          subcategorieDataSlide={subcategories}
+        />
       </Suspense>
     </div>
   );

@@ -8,35 +8,47 @@ import SlideSubcategorias from './slide/SlideSubcategorias';
 
 // import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
 import {
+  type ProductApi,
   type CategoryInterface,
   type subcategoryInterface
 } from '@/src/shared/helpers/interfaces';
+import { type ProductGetParams } from '@/src/actions/products-active-get';
 
 function Produtos({
+  titulo,
   pesquisa,
   data,
   categoryId,
   subcategorieDataSlide,
-  categorieDataSlide
+  categorieDataSlide,
+  functionGetProduct
 }: {
+  titulo?: string;
   pesquisa?: string;
-  data?: any;
+  data?: ProductApi[];
   categoryId?: string;
   subcategorieDataSlide?: { subcategories: subcategoryInterface[] };
   categorieDataSlide?: { categories: CategoryInterface[] };
+  functionGetProduct: ({ id, page, total }: ProductGetParams) => Promise<
+    | {
+        products: ProductApi[];
+      }
+    | undefined
+  >;
 }) {
   return (
     <div className={styles.produtos_container}>
       <Titulo
         titulo={`${pesquisa ?? ''} 
         ${
-          categorieDataSlide?.categories[0]
+          titulo ??
+          (categorieDataSlide?.categories[0]
             ? 'Categorias'
             : subcategorieDataSlide?.subcategories[0]
               ? 'Subcategorias'
               : pesquisa
                 ? ''
-                : 'Produtos'
+                : 'Produtos')
         }`}
       />
       <div className={styles.div_titulo}>
@@ -54,7 +66,14 @@ function Produtos({
           <SlideSubcategorias categorieDataSlide={categorieDataSlide} />
         </div>
       )}
-      <SectionProdutos pesquisa={pesquisa} data={data} />
+      {data && (
+        <SectionProdutos
+          categoryId={categoryId}
+          pesquisa={pesquisa}
+          data={data}
+          functionGetProduct={functionGetProduct}
+        />
+      )}
     </div>
   );
 }

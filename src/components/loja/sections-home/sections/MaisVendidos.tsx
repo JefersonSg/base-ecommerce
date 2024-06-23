@@ -1,9 +1,9 @@
 import React from 'react';
-import { getProductBySales } from '@/src/shared/api/GETS';
 import Section from '../Section';
+import productsBySalesGet from '@/src/actions/products-by-sales-get';
 
 const MaisVendidos = async () => {
-  const data = await getProductBySales();
+  const data = await productsBySalesGet();
 
   return (
     <Section

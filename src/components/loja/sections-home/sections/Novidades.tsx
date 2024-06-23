@@ -1,9 +1,9 @@
 import React from 'react';
 import Section from '../Section';
-import { getAllActiveProducts } from '@/src/shared/api/GETS';
+import productsActiveGet from '@/src/actions/products-active-get';
 
 const Novidades = async () => {
-  const data = await getAllActiveProducts();
+  const data = await productsActiveGet();
 
   return (
     <Section

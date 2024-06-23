@@ -1,10 +1,19 @@
-import { getProductsByViews } from '@/src/shared/api/GETS';
 import React from 'react';
 import SectionProdutosViews from '../SectionProdutosViews';
+import productsByViewsGet from '@/src/actions/products-by-views-get';
 
 const MaisVistos = async () => {
-  const data = await getProductsByViews();
+  const data = await productsByViewsGet();
 
-  return <SectionProdutosViews data={data} />;
+  return (
+    <>
+      {data?.products && (
+        <SectionProdutosViews
+          data={data?.products}
+          functionGetProduct={productsByViewsGet}
+        />
+      )}
+    </>
+  );
 };
 export default MaisVistos;

@@ -1,26 +1,21 @@
-'use client';
-
-import { getProductByName } from '@/src/shared/api/GETS';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Produtos from './Produtos';
+import productsByNameGet from '@/src/actions/products-by-name-get';
 
-const ProdutosContainer = ({ stringDecoded }: { stringDecoded: string }) => {
-  const { data, refetch } = useQuery<{ products: ProductApi[] }>({
-    queryKey: ['product_name_page'],
-    queryFn: async () => {
-      return await getProductByName(stringDecoded);
-    }
-  });
-
-  React.useEffect(() => {
-    void refetch();
-  }, [refetch]);
+const ProdutosContainer = async ({
+  stringDecoded
+}: {
+  stringDecoded: string;
+}) => {
+  const data = await productsByNameGet({ id: stringDecoded });
 
   return (
     <div>
-      <Produtos pesquisa={stringDecoded} data={data} />
+      <Produtos
+        pesquisa={stringDecoded}
+        data={data?.products}
+        functionGetProduct={productsByNameGet}
+      />
     </div>
   );
 };
