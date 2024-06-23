@@ -11,12 +11,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createBanner } from '@/src/shared/api/POST';
-import { getAllActiveBanners, getAllBanners } from '@/src/shared/api/GETS';
+import { getAllBanners } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationBanner } from './validationBanner';
 import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
 import { type BannerTypeCreate } from '@/src/shared/helpers/interfaces';
 import Image from 'next/image';
+import bannersActiveGet from '@/src/actions/banners-active-get';
 
 const schema = validationBanner;
 
@@ -38,7 +39,7 @@ const SideBarFormCreate = ({
   });
   const bannerHome = useQuery({
     queryKey: ['banners-home'],
-    queryFn: getAllActiveBanners
+    queryFn: bannersActiveGet
   });
 
   const {
