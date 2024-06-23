@@ -1,6 +1,5 @@
 'use client';
 
-import { getProductByName } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import styles from './ResultadoPesquisa.module.css';
 import React from 'react';
@@ -8,6 +7,7 @@ import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import productsByNameGet from '@/src/actions/products-by-name-get';
 
 const ResultadoPesquisa = ({
   pesquisa,
@@ -22,9 +22,11 @@ const ResultadoPesquisa = ({
     queryKey: ['product-name', pesquisa],
     queryFn: async () => {
       if (pesquisa) {
-        return await getProductByName(pesquisa);
+        const response = await productsByNameGet({ id: pesquisa });
+
+        return response;
       }
-      return [];
+      return { products: [] };
     }
   });
 

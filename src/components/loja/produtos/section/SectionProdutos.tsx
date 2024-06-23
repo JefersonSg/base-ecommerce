@@ -57,7 +57,7 @@ const SectionProdutos = ({
 
     async function getProducts(page: number) {
       const actionData = await functionGetProduct({
-        id: categoryId,
+        id: categoryId ?? pesquisa,
         page,
         total: 9
       });
@@ -91,10 +91,6 @@ const SectionProdutos = ({
     <>
       <div className={styles.section_produtos}>
         <div className={styles.informacoes}>
-          <span className={styles.total_pesquisa}>{`Total de ${
-            data?.length ?? 0
-          } ${data?.length > 1 ? 'produtos' : 'produto'}`}</span>
-
           {/* <div className={styles.select_view}>
           <Image
           alt="imagem de quadrados para mudar a vizualização dos produtos"

@@ -86,3 +86,13 @@ export const PRODUCT_BY_SUBCATEGORY = ({
     url: API_URL + `products/subcategory/${id}/${page}/${total}`
   };
 };
+export const CATEGORIES = () => {
+  return {
+    url: API_URL + `categories`
+  };
+};
+export const BANNERS_ACTIVE = () => {
+  return {
+    url: API_URL + `banners/actives`
+  };
+};

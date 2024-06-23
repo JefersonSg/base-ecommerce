@@ -26,5 +26,6 @@ export default async function productsByNameGet({
     return data;
   } catch (error) {
     console.log('erro no fetch dos produtos por name,', error);
+    return { products: [] };
   }
 }

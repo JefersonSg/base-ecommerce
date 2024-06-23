@@ -13,6 +13,17 @@ import Link from 'next/link';
 import { type BannerType } from '@/src/shared/helpers/interfaces';
 
 function Slide({ data }: { data: { banners: BannerType[] } }) {
+  const [isMobile, setIsMobile] = React.useState(0);
+
+  React.useEffect(() => {
+    function resise() {
+      setIsMobile(window.innerWidth);
+    }
+
+    window.addEventListener('resize', resise);
+  }, []);
+
+  console.log(isMobile);
   return (
     <div className={styles.container_banner}>
       <Swiper
@@ -36,28 +47,31 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
               {' '}
               <div className={styles.imagem}>
                 <Link href={banner.link}>
-                  <Image
-                    className={styles.imagem_mobile}
-                    alt="imagem banner mobile"
-                    src={banner.imageMobile}
-                    placeholder="empty"
-                    quality={80}
-                    width={750}
-                    height={878}
-                    sizes="100vw"
-                    priority={index < 2}
-                  />
-                  <Image
-                    className={styles.imagem_desktop}
-                    alt="imagem banner desktop"
-                    src={banner.imageDesktop}
-                    placeholder="empty"
-                    quality={80}
-                    width={1920}
-                    height={600}
-                    sizes="100vw"
-                    priority={index < 2}
-                  />
+                  {isMobile < 768 ? (
+                    <Image
+                      className={styles.imagem_mobile}
+                      alt="imagem banner mobile"
+                      src={banner.imageMobile}
+                      placeholder="empty"
+                      quality={80}
+                      width={750}
+                      height={878}
+                      sizes="100vw"
+                      priority={index < 2}
+                    />
+                  ) : (
+                    <Image
+                      className={styles.imagem_desktop}
+                      alt="imagem banner desktop"
+                      src={banner.imageDesktop}
+                      placeholder="empty"
+                      quality={80}
+                      width={1920}
+                      height={600}
+                      sizes="100vw"
+                      priority={index < 2}
+                    />
+                  )}
                 </Link>
               </div>
             </SwiperSlide>

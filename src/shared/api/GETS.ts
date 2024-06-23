@@ -138,21 +138,6 @@ export const getAllBanners = async () => {
     return [];
   }
 };
-export const getAllActiveBanners = async () => {
-  try {
-    const response = await fetch(`${API_URL}banners/actives`, {
-      next: {
-        revalidate: 3600,
-        tags: ['all-active-banners']
-      }
-    });
-
-    return await response.json();
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
 
 export const getAllOrders = async () => {
   try {
