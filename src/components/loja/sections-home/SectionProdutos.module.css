@@ -19,7 +19,7 @@
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
-.informacoes img {
+.informacoes a {
   display: none;
 }
 .informacoes div {

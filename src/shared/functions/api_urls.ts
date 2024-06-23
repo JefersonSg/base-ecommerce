@@ -91,6 +91,11 @@ export const CATEGORIES = () => {
     url: API_URL + `categories`
   };
 };
+export const SUBCATEGORIES = () => {
+  return {
+    url: API_URL + `subcategories`
+  };
+};
 export const BANNERS_ACTIVE = () => {
   return {
     url: API_URL + `banners/actives`

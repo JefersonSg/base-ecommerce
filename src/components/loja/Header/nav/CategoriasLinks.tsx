@@ -1,25 +1,11 @@
-'use client';
-
 import styles from './Links.module.css';
-import {
-  type subcategoryInterface,
-  type CategoryInterface
-} from '@/src/shared/helpers/interfaces';
 import Categoria from './Categoria';
-import { useQuery } from '@tanstack/react-query';
-import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all copy';
 
-const CategoriasLinks = () => {
-  const { data } = useQuery<{ categories: CategoryInterface[] }>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
-  });
-  const subcategoriesList = useQuery<{
-    subcategories: subcategoryInterface[];
-  }>({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
-  });
+const CategoriasLinks = async () => {
+  const data = await categoriesGetAll();
+  const subcategoriesList = await subcategoriesGetAll();
 
   return (
     <nav className={styles.container_nav}>
@@ -29,7 +15,7 @@ const CategoriasLinks = () => {
             <Categoria
               key={category?._id}
               category={category}
-              subcategoriesList={subcategoriesList?.data}
+              subcategoriesList={subcategoriesList}
             />
           );
         })}

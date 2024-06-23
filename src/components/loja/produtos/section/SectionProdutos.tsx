@@ -57,7 +57,7 @@ const SectionProdutos = ({
 
     async function getProducts(page: number) {
       const actionData = await functionGetProduct({
-        id: categoryId ?? pesquisa,
+        id: categoryId ?? pesquisa ?? '',
         page,
         total: 9
       });
@@ -71,7 +71,7 @@ const SectionProdutos = ({
         setInfinite(false);
     }
     void getProducts(page);
-  }, [categoryId, functionGetProduct, page]);
+  }, [categoryId, functionGetProduct, page, pesquisa]);
 
   React.useEffect(() => {
     if (infinite) {

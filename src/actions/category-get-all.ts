@@ -9,7 +9,7 @@ export default async function categoriesGetAll() {
 
     const response = await fetch(url, {
       next: {
-        revalidate: 0,
+        revalidate: 3600,
         tags: ['categories']
       }
     });
