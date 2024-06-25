@@ -14,6 +14,7 @@ async function page() {
       <Breadcrumb texto1="Novidades" />
       <Suspense>
         <Produtos
+          titulo="Novidades"
           data={data?.products}
           categorieDataSlide={categories}
           functionGetProduct={productsActiveGet}
