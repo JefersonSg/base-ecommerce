@@ -14,6 +14,7 @@ import React, { Suspense } from 'react';
 import { addNewItemCart } from '@/src/shared/api/POST';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import Entrega from '../sections-page-product/Entrega';
+import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
@@ -29,6 +30,7 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
   const [haveColor, setHaveColor] = React.useState<boolean>();
+  const [modalLogin, setModalLogin] = React.useState(false);
 
   async function addCartItem() {
     setMessagePopUp('');
@@ -37,6 +39,7 @@ function Detalhes({ data }: { data: ProductApi }) {
     if (!userData?.data?.user?._id) {
       setTypePopUp('error');
       setMessagePopUp('Faça login para adicionar ao carrinho');
+      setModalLogin(true);
       return;
     }
 
@@ -160,6 +163,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           setTypePopUp={setTypePopUp}
         />
       )}
+      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </div>
   );
 }

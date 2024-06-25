@@ -66,6 +66,7 @@ function Produtos({
           <SlideSubcategorias categorieDataSlide={categorieDataSlide} />
         </div>
       )}
+
       {data && (
         <SectionProdutos
           categoryId={categoryId}

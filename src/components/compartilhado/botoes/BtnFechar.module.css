@@ -9,10 +9,10 @@
   cursor: pointer;
   color: white;
   z-index: 1001;
-  border: 1px solid white;
   width: 30px;
   height: 30px;
   border-radius: 6px;
   z-index: 1004;
-  background-color: #00000060;
+  background-color: #00000020;
+  font-family: var(--fonte-primaria);
 }
