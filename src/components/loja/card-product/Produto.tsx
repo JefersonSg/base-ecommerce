@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import styles from './Produto.module.css';
+import './produto.css';
 
 import Link from 'next/link';
 import Like from '../../lottie/Like';
@@ -16,6 +17,8 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllItemsCartByUserId, getUserByToken } from '@/src/shared/api/GETS';
 import Cookies from 'js-cookie';
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 
 function Produto({
   productData,
@@ -121,34 +124,90 @@ function Produto({
           ''
         )}
         {images && (
-          <Image
-            onMouseEnter={() => {
-              setAtivoHover(true);
-            }}
-            onMouseLeave={() => {
-              setAtivoHover(false);
-            }}
-            className={styles.imagem}
-            alt="Imagem do produto"
-            src={
-              ativoHover
-                ? coverPhoto1?.length
-                  ? coverPhoto1
-                  : images[0]
-                : productData?.coverPhoto2?.length
-                  ? productData.coverPhoto2
-                  : images[1]
-                    ? images[1]
+          <>
+            <Image
+              onMouseEnter={() => {
+                setAtivoHover(true);
+              }}
+              onMouseLeave={() => {
+                setAtivoHover(false);
+              }}
+              className={styles.imagem}
+              alt="Imagem do produto"
+              src={
+                ativoHover
+                  ? coverPhoto1?.length
+                    ? coverPhoto1
                     : images[0]
-            }
-            width={185}
-            height={243}
-            quality={75}
-            placeholder="empty"
-            sizes="(max-width: 1024px) 25vw, 50vw"
-            property="true"
-            priority={true}
-          />
+                  : productData?.coverPhoto2?.length
+                    ? productData.coverPhoto2
+                    : images[1]
+                      ? images[1]
+                      : images[0]
+              }
+              width={185}
+              height={243}
+              quality={75}
+              placeholder="empty"
+              sizes="(max-width: 1024px) 25vw, 50vw"
+              property="true"
+              priority={true}
+            />
+            <Swiper
+              className={`${styles.mySwiper} slide_photos`}
+              navigation={true}
+              pagination={false}
+              centerInsufficientSlides={true}
+              loop={true}
+              modules={[Navigation]}
+              speed={0}
+            >
+              {coverPhoto1 && (
+                <SwiperSlide
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
+                  <Image
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                    className={styles.imagem_slide}
+                    alt="Imagem do produto"
+                    src={coverPhoto1}
+                    width={185}
+                    height={243}
+                    quality={75}
+                    placeholder="empty"
+                    sizes="(max-width: 1024px) 25vw, 50vw"
+                    property="true"
+                    priority={true}
+                  />
+                </SwiperSlide>
+              )}
+              {images?.map((image, index) => {
+                return (
+                  <SwiperSlide key={image}>
+                    <Image
+                      onClick={(e) => {
+                        e.preventDefault();
+                      }}
+                      className={styles.imagem_slide}
+                      alt="Imagem do produto"
+                      src={image}
+                      width={185}
+                      height={243}
+                      quality={75}
+                      placeholder="empty"
+                      sizes="(max-width: 1024px) 25vw, 50vw"
+                      property="true"
+                      priority={index === 0}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </>
         )}
       </div>
       <div className={styles.infos}>

@@ -40,12 +40,16 @@
   min-height: 200px;
 }
 
+.imagem_slide,
 .imagem {
   object-fit: cover;
   width: 100%;
   min-height: 100%;
   overflow: hidden;
   /* border-radius: 12px;; */
+}
+.imagem {
+  display: none;
 }
 .infos {
   display: flex;
@@ -172,6 +176,9 @@
   color: #EF3C3C;
 }
 @media (min-width: 48rem) {
+  .imagem {
+    display: block;
+  }
   .texto_buton {
     display: block;
   }
