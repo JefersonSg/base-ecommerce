@@ -1,0 +1,35 @@
+.imagem_div {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background-color: #e7e7e7;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: auto;
+    max-height: 390px;
+    overflow: hidden;
+    min-height: 200px;
+  }
+  
+  .imagem_slide,
+  .imagem {
+    object-fit: cover;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .imagem {
+    display: none;
+  }
+
+
+  @media (min-width: 48rem) {
+    .imagem_div {
+      min-height: 243px;
+    }
+    .imagem {
+        display: block;
+      }
+}

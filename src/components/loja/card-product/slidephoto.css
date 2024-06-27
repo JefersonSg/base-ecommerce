@@ -1,9 +1,9 @@
 .slide_photos .swiper-button-next,
 .slide_photos .swiper-button-prev {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50px;
-  background-color: var(--cor-primaria);
+  background-color: rgba(0, 0, 0, .7);
   opacity: 0.8;
   margin-top: calc(-10px - (var(--swiper-navigation-size) / 2));
   color: white;
@@ -11,7 +11,7 @@
   --swiper-navigation-size: 22px;
   --swiper-navigation-top-offset: 55%;
   --swiper-navigation-sides-offset: 10px;
-  --swiper-navigation-color: #00000020 !important;
+  --swiper-navigation-color: #e80f0f20 !important;
 
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */

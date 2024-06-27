@@ -11,12 +11,10 @@ import CreateAccount from '../../compartilhado/modals/CreateAccount';
 import { type ProductGetParams } from '@/src/actions/products-active-get';
 
 const SectionProdutosViews = ({
-  pesquisa,
   data,
   texto,
   functionGetProduct
 }: {
-  pesquisa?: string;
   data: ProductApi[];
   texto?: string;
   functionGetProduct: ({ id, page, total }: ProductGetParams) => Promise<

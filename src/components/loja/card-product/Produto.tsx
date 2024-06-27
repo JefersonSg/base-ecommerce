@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import styles from './Produto.module.css';
-import './produto.css';
 
 import Link from 'next/link';
 import Like from '../../lottie/Like';
@@ -17,8 +16,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllItemsCartByUserId, getUserByToken } from '@/src/shared/api/GETS';
 import Cookies from 'js-cookie';
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import ImagemProduto from './ImagemProduto';
 
 function Produto({
   productData,
@@ -36,7 +34,6 @@ function Produto({
   const { _id, images, name, price, coverPhoto1, promotion, promotionalPrice } =
     productData;
   const token = Cookies.get('auth_token');
-  const [ativoHover, setAtivoHover] = React.useState(false);
   const userData = useQuery<UserInterface>({
     queryKey: ['user', token],
     queryFn: async () => {
@@ -123,85 +120,11 @@ function Produto({
         ) : (
           ''
         )}
-        {images && (
-          <>
-            <Image
-              onMouseEnter={() => {
-                setAtivoHover(true);
-              }}
-              onMouseLeave={() => {
-                setAtivoHover(false);
-              }}
-              className={styles.imagem}
-              alt="Imagem do produto"
-              src={
-                ativoHover
-                  ? coverPhoto1?.length
-                    ? coverPhoto1
-                    : images[0]
-                  : productData?.coverPhoto2?.length
-                    ? productData.coverPhoto2
-                    : images[1]
-                      ? images[1]
-                      : images[0]
-              }
-              width={185}
-              height={243}
-              quality={75}
-              placeholder="empty"
-              sizes="(max-width: 1024px) 0vw, 25vw"
-              property="true"
-              priority={true}
-            />
-            <Swiper
-              className={`${styles.mySwiper} slide_photos`}
-              navigation={true}
-              pagination={false}
-              centerInsufficientSlides={true}
-              loop={true}
-              modules={[Navigation]}
-              speed={300}
-            >
-              {coverPhoto1 && (
-                <SwiperSlide>
-                  <Image
-                    className={styles.imagem_slide}
-                    alt="Imagem do produto"
-                    src={coverPhoto1}
-                    width={185}
-                    height={243}
-                    quality={75}
-                    placeholder="empty"
-                    sizes="(max-width: 1024px) 50vw, 0vw"
-                    property="true"
-                    priority={true}
-                  />
-                </SwiperSlide>
-              )}
-              {images?.map((image, index) => {
-                return (
-                  <SwiperSlide key={image}>
-                    <Image
-                      onClick={(e) => {
-                        e.preventDefault();
-                      }}
-                      className={styles.imagem_slide}
-                      alt="Imagem do produto"
-                      src={image}
-                      width={185}
-                      height={243}
-                      quality={75}
-                      placeholder="empty"
-                      sizes="(max-width: 1024px) 50vw, 0vw"
-                      property="true"
-                      priority={index === 0}
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </>
-        )}
+        <ImagemProduto
+          images={images}
+          coverPhoto1={coverPhoto1}
+          coverPhoto2={productData?.coverPhoto2}
+        />
       </div>
       <div className={styles.infos}>
         <p className={styles.nome_produto}>{name}</p>
@@ -250,7 +173,7 @@ function Produto({
         >
           COMPRAR
         </button>
-        <button className={styles.botao_ver}>
+        <div className={styles.botao_ver}>
           <Image
             alt="Imagem ilustrativa de olho"
             src={'/card_produto/olho_icone.svg'}
@@ -258,7 +181,7 @@ function Produto({
             height={9}
           />
           <span className={styles.texto_buton}>ESPIAR</span>
-        </button>
+        </div>
       </div>
     </Link>
   );
