@@ -20,6 +20,7 @@ const AddViewFunc = () => {
     const data = (await response.json()) as unknown as Response;
     const userToken = Cookies.get('auth_token');
     let sessionId = Cookies.get('sessionId');
+    const userIp = data.ip;
 
     const productId =
       pathname.split('/')[2] === 'produto' &&
@@ -34,7 +35,7 @@ const AddViewFunc = () => {
     const pageView = pathname;
 
     if (sessionId && !data.isBot) {
-      void addViews(data.ip, sessionId, productId || '', pageView, userToken);
+      void addViews(userIp, sessionId, productId || '', pageView, userToken);
     }
   }, [pathname]);
 

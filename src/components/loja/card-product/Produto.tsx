@@ -33,6 +33,7 @@ function Produto({
   const { _id, images, name, price, coverPhoto1, promotion, promotionalPrice } =
     productData;
   const token = Cookies.get('auth_token');
+  const [ativoHover, setAtivoHover] = React.useState(false);
   const userData = useQuery<UserInterface>({
     queryKey: ['user', token],
     queryFn: async () => {
@@ -121,15 +122,32 @@ function Produto({
         )}
         {images && (
           <Image
+            onMouseEnter={() => {
+              setAtivoHover(true);
+            }}
+            onMouseLeave={() => {
+              setAtivoHover(false);
+            }}
             className={styles.imagem}
             alt="Imagem do produto"
-            src={coverPhoto1?.length ? coverPhoto1 : images[0]}
+            src={
+              ativoHover
+                ? coverPhoto1?.length
+                  ? coverPhoto1
+                  : images[0]
+                : productData?.coverPhoto2?.length
+                  ? productData.coverPhoto2
+                  : images[1]
+                    ? images[1]
+                    : images[0]
+            }
             width={185}
             height={243}
             quality={75}
             placeholder="empty"
             sizes="(max-width: 1024px) 25vw, 50vw"
             property="true"
+            priority={true}
           />
         )}
       </div>
@@ -161,24 +179,35 @@ function Produto({
           </p>
         </div>
       </div>
-      <button
-        className={styles.botao_adicionar}
-        onClick={(e) => {
-          if (!userData?.data?.user?._id) {
-            e.preventDefault();
-            setModalLogin(true);
-          }
-          if (
-            (productData?.colors && productData?.colors?.length <= 1) ??
-            productData?.size?.length === 1
-          ) {
-            e.preventDefault();
-            void addCartItem();
-          }
-        }}
-      >
-        Adicionar ao carrinho
-      </button>
+      <div className={styles.botoes_card}>
+        <button
+          className={styles.botao_adicionar}
+          onClick={(e) => {
+            if (!userData?.data?.user?._id) {
+              e.preventDefault();
+              setModalLogin(true);
+            }
+            if (
+              (productData?.colors && productData?.colors?.length <= 1) ??
+              productData?.size?.length === 1
+            ) {
+              e.preventDefault();
+              void addCartItem();
+            }
+          }}
+        >
+          COMPRAR
+        </button>
+        <button className={styles.botao_ver}>
+          <Image
+            alt="Imagem ilustrativa de olho"
+            src={'/card_produto/olho_icone.svg'}
+            width={12}
+            height={9}
+          />
+          <span className={styles.texto_buton}>ESPIAR</span>
+        </button>
+      </div>
     </Link>
   );
 }
