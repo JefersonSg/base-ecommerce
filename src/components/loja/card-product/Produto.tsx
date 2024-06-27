@@ -149,7 +149,7 @@ function Produto({
               height={243}
               quality={75}
               placeholder="empty"
-              sizes="(max-width: 1024px) 25vw, 50vw"
+              sizes="(max-width: 1024px) 0vw, 25vw"
               property="true"
               priority={true}
             />
@@ -179,7 +179,7 @@ function Produto({
                     height={243}
                     quality={75}
                     placeholder="empty"
-                    sizes="(max-width: 1024px) 25vw, 50vw"
+                    sizes="(max-width: 1024px) 50vw, 0vw"
                     property="true"
                     priority={true}
                   />
@@ -199,7 +199,7 @@ function Produto({
                       height={243}
                       quality={75}
                       placeholder="empty"
-                      sizes="(max-width: 1024px) 25vw, 50vw"
+                      sizes="(max-width: 1024px) 50vw, 0vw"
                       property="true"
                       priority={index === 0}
                     />
