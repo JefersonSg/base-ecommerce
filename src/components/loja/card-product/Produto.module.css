@@ -176,6 +176,9 @@
   color: #EF3C3C;
 }
 @media (min-width: 48rem) {
+  .imagem_div {
+    min-height: 243px;
+  }
   .imagem {
     display: block;
   }
@@ -186,22 +189,34 @@
     flex-basis: 25%;
     max-width: 280px;
     box-sizing: border-box;
+    max-height: 440px;
+    overflow: visible;
     margin-bottom: 40px;
-    height: calc(100% - 40px) !important;
+    position: relative;
   }
 
   .botoes_card {
-  transition: all .4s;
-  opacity: 0;
-  height: 0px;
+    transition: all .4s;
+    opacity: 0;
+    height: 0px;
+    bottom: 0;
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    width: calc(100% - 20px);
+    transform: translate(-50%,0);
   }
+
   .produto:hover {
     box-shadow: 0 6px 6px rgba(52, 73, 94, .2);
     margin-bottom: 0px;
+    padding-bottom: 56px;
   }
+
   .produto:hover > .botoes_card{
     opacity: 1;
     height: 40px;
+    bottom: 16px;
   }
 
   .produto:hover > .imagem {

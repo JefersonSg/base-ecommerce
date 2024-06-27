@@ -160,18 +160,11 @@ function Produto({
               centerInsufficientSlides={true}
               loop={true}
               modules={[Navigation]}
-              speed={0}
+              speed={300}
             >
               {coverPhoto1 && (
-                <SwiperSlide
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
+                <SwiperSlide>
                   <Image
-                    onClick={(e) => {
-                      e.preventDefault();
-                    }}
                     className={styles.imagem_slide}
                     alt="Imagem do produto"
                     src={coverPhoto1}
