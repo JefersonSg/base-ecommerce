@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './ImagemProduto.module.css';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -48,55 +48,53 @@ const ImagemProduto = ({
         property="true"
         priority={true}
       />
-      <Suspense>
-        <Swiper
-          className={`${styles.mySwiper} slide_photos`}
-          navigation={true}
-          pagination={true}
-          centerInsufficientSlides={true}
-          loop={true}
-          modules={[Navigation, Pagination]}
-          speed={300}
-        >
-          {coverPhoto1 && (
-            <SwiperSlide>
+      <Swiper
+        className={`${styles.mySwiper} slide_photos`}
+        navigation={true}
+        pagination={true}
+        centerInsufficientSlides={true}
+        loop={false}
+        modules={[Navigation, Pagination]}
+        speed={300}
+      >
+        {coverPhoto1 && (
+          <SwiperSlide>
+            <Image
+              className={styles.imagem_slide}
+              alt="Imagem do produto"
+              src={coverPhoto1}
+              width={185}
+              height={243}
+              quality={75}
+              placeholder="empty"
+              sizes="(max-width: 769px) 50vw, 0vw"
+              property="true"
+              priority={true}
+            />
+          </SwiperSlide>
+        )}
+        {images?.map((image, index) => {
+          return (
+            <SwiperSlide key={image}>
               <Image
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
                 className={styles.imagem_slide}
                 alt="Imagem do produto"
-                src={coverPhoto1}
+                src={image}
                 width={185}
                 height={243}
                 quality={75}
                 placeholder="empty"
                 sizes="(max-width: 769px) 50vw, 0vw"
                 property="true"
-                priority={true}
+                priority={index === 0}
               />
             </SwiperSlide>
-          )}
-          {images?.map((image, index) => {
-            return (
-              <SwiperSlide key={image}>
-                <Image
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                  className={styles.imagem_slide}
-                  alt="Imagem do produto"
-                  src={image}
-                  width={185}
-                  height={243}
-                  quality={75}
-                  placeholder="empty"
-                  sizes="(max-width: 769px) 50vw, 0vw"
-                  property="true"
-                  priority={index === 0}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </Suspense>
+          );
+        })}
+      </Swiper>
     </>
   );
 };

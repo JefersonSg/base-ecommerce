@@ -16,6 +16,7 @@ import Cookies from 'js-cookie';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 import CreateAccount from '../../compartilhado/modals/CreateAccount';
+import MessageFloating from '../../compartilhado/messages/message-floating-cart';
 
 const SectionFavorites = () => {
   const pathname = usePathname();
@@ -30,6 +31,9 @@ const SectionFavorites = () => {
   const [modalLogin, setModalLogin] = React.useState(false);
   const [textPopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
+  const [nameProduct, setNameProduct] = React.useState('');
+  const [priceProduct, setPriceProduct] = React.useState<number>(0);
+  const [imageProduct, setImageProduct] = React.useState('');
 
   const favorites = useQuery<{ favorites: FavoriteInterface[] }>({
     queryKey: ['favorites' + userData?.data?.user?._id ?? 0],
@@ -69,16 +73,30 @@ const SectionFavorites = () => {
               productData={product}
               setIsLoading={setIsLoading}
               setModalLogin={setModalLogin}
+              setImageProduct={setImageProduct}
+              setNameProduct={setNameProduct}
+              setPriceProduct={setPriceProduct}
             />
           ))}
         </div>
       </div>
-      {textPopUp && (
+      {textPopUp && typePopUp === 'error' && (
         <PopUpMessage
           text={textPopUp}
           setTypePopUp={setTypePopUp}
           typePopUp={typePopUp}
           setMessagePopUp={setMessagePopUp}
+        />
+      )}
+      {textPopUp && typePopUp !== 'error' && (
+        <MessageFloating
+          amount={1}
+          img={imageProduct}
+          nameProduct={nameProduct}
+          priceProduct={priceProduct}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
         />
       )}
       <div className={`${styles.loading} ${isLoading ? styles.ativo : ''}`}>

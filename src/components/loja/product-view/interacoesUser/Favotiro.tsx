@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './Favorito.module.css';
 import Like from '@/src/components/lottie/Like';
 

@@ -13,7 +13,9 @@ async function Interacoes({ id }: { id: string }) {
       </Suspense>
       <div className={styles.interacao}>
         <Update id={id} />
-        <Favotiro productId={id} />
+        <Suspense>
+          <Favotiro productId={id} />
+        </Suspense>
         <Compartilhar />
       </div>
     </div>

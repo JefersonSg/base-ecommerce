@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
@@ -12,12 +12,16 @@ import Produto from '../card-product/Produto';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 import CreateAccount from '../../compartilhado/modals/CreateAccount';
+import MessageFloating from '../../compartilhado/messages/message-floating-cart';
 
 function SlideProduct({ data }: { data: { products: ProductApi[] } }) {
   const [isLoading, setIsLoading] = React.useState(false);
   const [modalLogin, setModalLogin] = React.useState(false);
   const [textPopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
+  const [nameProduct, setNameProduct] = React.useState('');
+  const [priceProduct, setPriceProduct] = React.useState<number>(0);
+  const [imageProduct, setImageProduct] = React.useState('');
 
   return (
     <>
@@ -50,12 +54,15 @@ function SlideProduct({ data }: { data: { products: ProductApi[] } }) {
                 productData={product}
                 setIsLoading={setIsLoading}
                 setModalLogin={setModalLogin}
+                setImageProduct={setImageProduct}
+                setNameProduct={setNameProduct}
+                setPriceProduct={setPriceProduct}
               />
             </SwiperSlide>
           );
         })}
       </Swiper>
-      {textPopUp && (
+      {textPopUp && typePopUp === 'error' && (
         <PopUpMessage
           text={textPopUp}
           setTypePopUp={setTypePopUp}
@@ -64,9 +71,22 @@ function SlideProduct({ data }: { data: { products: ProductApi[] } }) {
         />
       )}
       <div className={`${styles.loading} ${isLoading ? styles.ativo : ''}`}>
-        <LoadingAnimation />
+        <Suspense>
+          <LoadingAnimation />
+        </Suspense>
       </div>
       {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
+      {textPopUp && typePopUp !== 'error' && (
+        <MessageFloating
+          amount={1}
+          img={imageProduct}
+          nameProduct={nameProduct}
+          priceProduct={priceProduct}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
     </>
   );
 }

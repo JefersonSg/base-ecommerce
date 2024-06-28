@@ -39,8 +39,8 @@
   transform: translate(-50%,0);
 }
 .foto_logo {
-  height: 42px !important;
-  width: 60 !important;
+  height: auto;
+  width: 100px;
 }
 .fallback_container {
   display: flex;
@@ -107,8 +107,7 @@
     grid-row: 1;
   }
   .foto_logo {
-    height: 65px !important;
-    width: 95px !important;
+    width: 95px ;
   }
 
   .container1 {

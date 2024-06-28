@@ -15,7 +15,7 @@ import { addNewItemCart } from '@/src/shared/api/POST';
 import { useQuery } from '@tanstack/react-query';
 import { getAllItemsCartByUserId, getUserByToken } from '@/src/shared/api/GETS';
 import Cookies from 'js-cookie';
-import React from 'react';
+import React, { Suspense } from 'react';
 import ImagemProduto from './ImagemProduto';
 
 function Produto({
@@ -23,13 +23,19 @@ function Produto({
   setIsLoading,
   setModalLogin,
   setMessagePopUp,
-  setTypePopUp
+  setTypePopUp,
+  setNameProduct,
+  setPriceProduct,
+  setImageProduct
 }: {
   productData: ProductApi;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setModalLogin: React.Dispatch<React.SetStateAction<boolean>>;
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setNameProduct: React.Dispatch<React.SetStateAction<string>>;
+  setPriceProduct: React.Dispatch<React.SetStateAction<number>>;
+  setImageProduct: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const { _id, images, name, price, coverPhoto1, promotion, promotionalPrice } =
     productData;
@@ -80,6 +86,13 @@ function Produto({
 
       if (response) {
         setMessagePopUp('Produdo adicionado ao carrinho');
+        setNameProduct(productData.name);
+        setPriceProduct(productData.price);
+        setImageProduct(
+          productData?.coverPhoto1?.length
+            ? productData.coverPhoto1
+            : productData.images[0]
+        );
         setTypePopUp('');
       } else {
         setTypePopUp('error');
@@ -112,7 +125,9 @@ function Produto({
       }`}
     >
       <div className={styles.like}>
-        <Like productId={_id} />
+        <Suspense>
+          <Like productId={_id} />
+        </Suspense>
       </div>
       <div className={styles.imagem_div}>
         {promotionPorcent() ? (

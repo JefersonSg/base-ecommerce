@@ -108,6 +108,8 @@ export async function updateProduct(
     await revalidateTagAction('all-products');
     await revalidateTagAction(`product-by-id-${productId}`);
     await revalidateTagAction('all-products-by-sales');
+    await revalidateTagAction('products-actives');
+    await revalidateTagAction('products-by-promotions');
 
     return response.data;
   } catch (error: any) {

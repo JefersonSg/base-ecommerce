@@ -15,6 +15,7 @@ import { addNewItemCart } from '@/src/shared/api/POST';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import Entrega from '../sections-page-product/Entrega';
 import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
+import MessageFloating from '@/src/components/compartilhado/messages/message-floating-cart';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
@@ -31,6 +32,9 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [typePopUp, setTypePopUp] = React.useState('');
   const [haveColor, setHaveColor] = React.useState<boolean>();
   const [modalLogin, setModalLogin] = React.useState(false);
+  const [nameProduct, setNameProduct] = React.useState('');
+  const [priceProduct, setPriceProduct] = React.useState<number>(0);
+  const [imageProduct, setImageProduct] = React.useState('');
 
   async function addCartItem() {
     setMessagePopUp('');
@@ -62,6 +66,11 @@ function Detalhes({ data }: { data: ProductApi }) {
       if (response) {
         setMessagePopUp('Produdo adicionado ao carrinho');
         setTypePopUp('');
+        setNameProduct(data.name);
+        setPriceProduct(data.price);
+        setImageProduct(
+          data?.coverPhoto1?.length ? data.coverPhoto1 : data.images[0]
+        );
       } else {
         setTypePopUp('error');
         setMessagePopUp('Erro ao adicionar ao carrinho');
@@ -155,12 +164,23 @@ function Detalhes({ data }: { data: ProductApi }) {
           disabled={!haveColor || !data.active}
         />
       </div>
-      {messagePopUp && (
+      {messagePopUp && typePopUp === 'error' && (
         <PopUpMessage
           text={messagePopUp}
+          setTypePopUp={setTypePopUp}
           typePopUp={typePopUp}
           setMessagePopUp={setMessagePopUp}
+        />
+      )}
+      {messagePopUp && typePopUp !== 'error' && (
+        <MessageFloating
+          amount={1}
+          img={imageProduct}
+          nameProduct={nameProduct}
+          priceProduct={priceProduct}
+          setMessagePopUp={setMessagePopUp}
           setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
         />
       )}
       {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}

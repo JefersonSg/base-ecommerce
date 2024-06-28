@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 'use client';
-import React from 'react';
+import React, { Suspense } from 'react';
 import EntregaFinalizar from './entrega/EntregaFinalizar';
 import Finalizarfetchs from './Finalizar_fetchs';
 import Envio from './envio/Envio';
@@ -153,7 +153,7 @@ const FinalizarContainer = () => {
         {ativoConfirm && <BackgoundClick />}
         {ativoConfirm && <Confirm />}
       </div>
-      {isLoading && <LoadingAnimation />}
+      <Suspense>{isLoading && <LoadingAnimation />}</Suspense>
       {messagePopUp && (
         <PopUpMessage
           text={messagePopUp}

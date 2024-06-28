@@ -7,9 +7,10 @@ import React, { Suspense } from 'react';
 import Produto from '@/src/components/loja/card-product/Produto';
 
 import SlideProduct from './slide-produto';
-import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 import CreateAccount from '../../compartilhado/modals/CreateAccount';
+import MessageFloating from '../../compartilhado/messages/message-floating-cart';
+import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 
 function Section({
   data,
@@ -26,6 +27,9 @@ function Section({
   const [modalLogin, setModalLogin] = React.useState(false);
   const [textPopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
+  const [nameProduct, setNameProduct] = React.useState('');
+  const [priceProduct, setPriceProduct] = React.useState<number>(0);
+  const [imageProduct, setImageProduct] = React.useState('');
 
   if (!data) {
     return;
@@ -47,6 +51,9 @@ function Section({
                   productData={product}
                   setIsLoading={setIsLoading}
                   setModalLogin={setModalLogin}
+                  setNameProduct={setNameProduct}
+                  setPriceProduct={setPriceProduct}
+                  setImageProduct={setImageProduct}
                 />
               )
           )}
@@ -58,7 +65,7 @@ function Section({
           <BotaoSessao texto={textoBotao ?? 'Todos os produtos'} link={link} />
         </div>
       </div>
-      {textPopUp && (
+      {textPopUp && typePopUp === 'error' && (
         <PopUpMessage
           text={textPopUp}
           setTypePopUp={setTypePopUp}
@@ -66,10 +73,27 @@ function Section({
           setMessagePopUp={setMessagePopUp}
         />
       )}
+      {textPopUp && typePopUp !== 'error' && (
+        <MessageFloating
+          amount={1}
+          img={imageProduct}
+          nameProduct={nameProduct}
+          priceProduct={priceProduct}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
       <div className={`${styles.loading} ${isLoading ? styles.ativo : ''}`}>
-        <LoadingAnimation />
+        <Suspense>
+          <LoadingAnimation />
+        </Suspense>
       </div>
-      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
+      {modalLogin && (
+        <Suspense>
+          <CreateAccount setModalLogin={setModalLogin} />
+        </Suspense>
+      )}
     </>
   );
 }
