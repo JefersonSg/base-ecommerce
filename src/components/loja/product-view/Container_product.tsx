@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import Breadcrumb from '../breadcrumb/Breadcrumb';
 import { Titulo } from '../../compartilhado/textos/Titulo';
 import Interacoes from './interacoesUser/Interacoes';
 import FotosProduto from './fotosProduto/FotosProduto';
@@ -9,25 +8,23 @@ import styles from './Produto.module.css';
 
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import ProdutosSugeridos from './sections-page-product/Produtos_sugeridos';
+import BreadcrumbProduct from './breadcrumb-product';
 
 const ContainerProduct = async ({
-  productData,
-  categoryName,
-  subcategoryName
+  productData
 }: {
   productData: ProductApi;
-  categoryName: string;
-  subcategoryName: string;
 }) => {
   return (
     <>
-      <Breadcrumb
-        texto1={categoryName}
-        link1={`/produtos/categoria?_id=${productData.category}`}
-        texto2={subcategoryName}
-        link2={`/produtos/subcategoria?_id=${productData.subcategory}`}
-        texto3={productData.name}
-      />
+      <Suspense fallback={<div className={styles.start_loading}></div>}>
+        <BreadcrumbProduct
+          categoryId={productData?.category}
+          subcategoryId={productData?.subcategory}
+          productName={productData?.name}
+        />
+      </Suspense>
+
       <div className={`title_bold_24px ${styles.titulo}`}>
         <Titulo titulo={productData?.name} />
       </div>

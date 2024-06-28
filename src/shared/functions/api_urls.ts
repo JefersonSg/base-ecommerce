@@ -11,7 +11,11 @@ export const PRODUCT_ACTIVES = ({
     url: API_URL + `products/actives/${page}/${total}`
   };
 };
-
+export const PRODUCT_BY_ID = ({ id }: { id: string }) => {
+  return {
+    url: API_URL + `products/${id}`
+  };
+};
 export const PRODUCT_BY_SALES = ({
   page,
   total
@@ -94,6 +98,11 @@ export const CATEGORIES = () => {
 export const CATEGORY_BY_ID = ({ id }: { id: string }) => {
   return {
     url: API_URL + `categories/${id}`
+  };
+};
+export const SUBCATEGORY_BY_ID = ({ id }: { id: string }) => {
+  return {
+    url: API_URL + `subcategories/${id}`
   };
 };
 

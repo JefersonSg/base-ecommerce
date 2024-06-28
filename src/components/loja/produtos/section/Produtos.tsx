@@ -9,12 +9,18 @@ const Produtos = ({
   setIsLoading,
   setModalLogin,
   setMessagePopUp,
-  setTypePopUp
+  setTypePopUp,
+  setNameProduct,
+  setPriceProduct,
+  setImageProduct
 }: {
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setModalLogin: React.Dispatch<React.SetStateAction<boolean>>;
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setNameProduct: React.Dispatch<React.SetStateAction<string>>;
+  setPriceProduct: React.Dispatch<React.SetStateAction<number>>;
+  setImageProduct: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { data } = useQuery<{ products: ProductApi[] }>({
     queryKey: ['products'],
@@ -31,6 +37,9 @@ const Produtos = ({
           setTypePopUp={setTypePopUp}
           setIsLoading={setIsLoading}
           setModalLogin={setModalLogin}
+          setImageProduct={setImageProduct}
+          setNameProduct={setNameProduct}
+          setPriceProduct={setPriceProduct}
         />
       ))}
     </div>

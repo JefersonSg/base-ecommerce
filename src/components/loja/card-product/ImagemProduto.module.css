@@ -8,17 +8,17 @@
     height: auto;
     max-height: 390px;
     overflow: hidden;
-    min-height: 200px;
+    min-height: 210px;
   }
   
   .imagem_slide,
   .imagem {
     object-fit: cover;
-    width: 100%;
     min-width: 100%;
-    min-height: 100%;
+    width: auto;
+    height: 200px;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
   }
   .imagem {
     display: none;

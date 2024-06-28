@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -112,7 +112,7 @@ const LoginPage = () => {
           />
         )}
       </div>
-      {loading && <LoadingAnimation />}
+      <Suspense>{loading && <LoadingAnimation />}</Suspense>
     </>
   );
 };

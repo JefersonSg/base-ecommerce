@@ -1,8 +1,8 @@
 .section {
   padding: 0px 5px 64px 5px;
-  max-width: 1220px;
   margin: 0 auto;
   text-align: center;
+  max-width: calc(230px + 230px + 20px);
 }
 .section h2 {
   margin-bottom: 16px;
@@ -20,6 +20,7 @@
   .section {
     margin-top: 32px;
     text-align: center;
+    max-width: 1220px;
   }
 
   .home {

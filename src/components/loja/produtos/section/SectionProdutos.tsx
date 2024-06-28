@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './SectionProdutos.module.css';
 // import Image from 'next/image';
 import ProductsById from './ProductsById';
@@ -10,6 +10,7 @@ import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnim
 import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
 import { type ProductGetParams } from '@/src/actions/products-active-get';
 import Filter from '../filter/Filter';
+import MessageFloating from '@/src/components/compartilhado/messages/message-floating-cart';
 
 const SectionProdutos = ({
   data,
@@ -31,6 +32,9 @@ const SectionProdutos = ({
   const [modalLogin, setModalLogin] = React.useState(false);
   const [textPopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
+  const [nameProduct, setNameProduct] = React.useState('');
+  const [priceProduct, setPriceProduct] = React.useState<number>(0);
+  const [imageProduct, setImageProduct] = React.useState('');
 
   const [page, setPage] = React.useState(1);
   const [dataProducts, setDataProducts] = React.useState<ProductApi[]>(data);
@@ -117,10 +121,13 @@ const SectionProdutos = ({
             setTypePopUp={setTypePopUp}
             setIsLoading={setIsLoading}
             setModalLogin={setModalLogin}
+            setImageProduct={setImageProduct}
+            setNameProduct={setNameProduct}
+            setPriceProduct={setPriceProduct}
           />
         )}
       </div>
-      {textPopUp && (
+      {textPopUp && typePopUp === 'error' && (
         <PopUpMessage
           text={textPopUp}
           setTypePopUp={setTypePopUp}
@@ -128,8 +135,19 @@ const SectionProdutos = ({
           setMessagePopUp={setMessagePopUp}
         />
       )}
+      {textPopUp && typePopUp !== 'error' && (
+        <MessageFloating
+          amount={1}
+          img={imageProduct}
+          nameProduct={nameProduct}
+          priceProduct={priceProduct}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
       {loading && <p>carregando...</p>}
-      {isLoading && <LoadingAnimation />}
+      <Suspense>{isLoading && <LoadingAnimation />}</Suspense>
       {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </>
   );

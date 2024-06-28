@@ -124,7 +124,7 @@ const SideBarFormCreate = ({
         </div>
         <InputFormulario
           name="imageMobile"
-          label="Imagem Mobile"
+          label="Imagem Mobile: 420 x 490"
           placeholder=""
           register={register}
           type="file"
@@ -132,7 +132,7 @@ const SideBarFormCreate = ({
         />
         <InputFormulario
           name="imageDesktop"
-          label="Imagem Desktop"
+          label="Imagem Desktop: 1920 x 600"
           placeholder=""
           register={register}
           type="file"

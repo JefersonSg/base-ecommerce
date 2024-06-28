@@ -7,7 +7,11 @@
 .navegação {
   display: none;
 }
-
+.start_loading {
+  width: 150px;
+  height: 16px;
+  background-color: rgb(198, 200, 200);
+}
 @media (min-width: 64rem) {
   .titulo {
     grid-column: 2;

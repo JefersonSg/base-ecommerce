@@ -112,7 +112,7 @@ const SideBarFormEdit = ({
         </div>
         <InputFormulario
           name="image"
-          label="Imagem"
+          label="Imagem: 1080 x 1080"
           placeholder=""
           register={register}
           type="file"

@@ -1,20 +1,56 @@
-import React from 'react';
-import styles from './PopUpMessage.module.css';
-import Image from 'next/image';
+'use client';
 
-const PopUpMessage = ({
-  text,
+import React from 'react';
+import styles from './MessageFloatingCart.module.css';
+import Image from 'next/image';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import { useQuery } from '@tanstack/react-query';
+import {
+  type CartInterface,
+  type UserInterface
+} from '@/src/shared/helpers/interfaces';
+import Cookies from 'js-cookie';
+import { getAllItemsCartByUserId, getUserByToken } from '@/src/shared/api/GETS';
+import Link from 'next/link';
+
+const MessageFloating = ({
+  nameProduct,
+  priceProduct,
+  amount,
   typePopUp,
   img,
   setMessagePopUp,
   setTypePopUp
 }: {
-  text: string;
+  nameProduct: string;
+  priceProduct: number;
+  amount: number;
   typePopUp: string;
-  img?: string;
+  img: string;
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  const token = Cookies.get('auth_token');
+
+  const userData = useQuery<UserInterface>({
+    queryKey: ['user', token],
+    queryFn: async () => {
+      return (await getUserByToken(token)) as UserInterface;
+    }
+  });
+
+  const { data } = useQuery<CartInterface>({
+    queryKey: ['shopping-cart', userData?.data?.user?._id],
+    queryFn: async () => {
+      if (userData?.data?.user?._id) {
+        return await getAllItemsCartByUserId(
+          userData?.data?.user?._id.toString()
+        );
+      }
+      return [];
+    }
+  });
+
   function closeMessage() {
     setMessagePopUp('');
     setTypePopUp('');
@@ -26,25 +62,52 @@ const PopUpMessage = ({
         typePopUp === 'error' ? styles.error : styles.confirmation
       }`}
     >
-      <Image
-        alt="imagem simbolizando confirmação da ação"
-        width={44}
-        height={44}
-        src={
-          typePopUp === 'error'
-            ? '/error_popup.svg'
-            : img?.length
-              ? img
-              : '/confirm_popup.svg'
-        }
-      />
-
-      {text}
+      <div className={styles.informacao_produto}>
+        <div className={styles.imagem_produto}>
+          <Image
+            alt="imagem simbolizando confirmação da ação"
+            width={80}
+            height={80}
+            src={img?.length ? img : '/confirm_popup.svg'}
+          />
+          <Image
+            alt="Imagem de confirmação da adição"
+            src={'/mensagem_flutuante/confirmação.svg'}
+            width={14}
+            height={14}
+            className={styles.confirmacao_image}
+          />
+        </div>
+        <div className={styles.informacoes_carrinho}>
+          <p className={styles.nome_produto}>{nameProduct}</p>
+          <p className={styles.quantidade_valor}>
+            {amount}x R${convertNumberInReal(priceProduct)}
+          </p>
+          <p className={styles.confirmacao}>
+            Adicionado ao carrinho com sucesso!
+          </p>
+        </div>
+      </div>
+      <div className={styles.informacao_carrinho}>
+        <p>
+          Total <span>({data?.itemsCart.length} produto)</span>
+        </p>
+        <p>R${convertNumberInReal(data?.totalValue ?? 0)}</p>
+      </div>
+      <Link href={'/carrinho'} className={styles.botao_carrinho}>
+        Ver meu carrinho
+      </Link>
       <span className={styles.fechar} onClick={closeMessage}>
-        X
+        <Image
+          className={styles.fechar}
+          alt="X para fechar o pop up"
+          src={'/mensagem_flutuante/fechar.svg'}
+          width={19}
+          height={19}
+        />
       </span>
     </div>
   );
 };
 
-export default PopUpMessage;
+export default MessageFloating;

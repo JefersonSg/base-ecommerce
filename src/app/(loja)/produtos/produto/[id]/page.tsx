@@ -1,10 +1,10 @@
 import ContainerFetchs from '@/src/components/loja/product-view/Container_fetchs';
-import { getProductById } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { type Metadata } from 'next';
 import styles from './Produto.module.css';
 import { Suspense } from 'react';
 import LoadingProduct from './loading-product';
+import productByIdGet from '@/src/actions/product-by-id-get';
 
 interface PageParams {
   params: { id: string };
@@ -24,7 +24,9 @@ interface PageParams {
 export const generateMetadata = async ({
   params
 }: PageParams): Promise<Metadata> => {
-  const product: { product: ProductApi } = await getProductById(params.id);
+  const product: { product: ProductApi } | undefined = await productByIdGet({
+    id: params.id
+  });
   return {
     title: `Loja Mayse | ${
       product?.product?.name ? product?.product?.name : ''
