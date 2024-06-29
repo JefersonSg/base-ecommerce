@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import Cookies from 'js-cookie';
-import { addViews } from '@/src/shared/api/POST';
 import { usePathname } from 'next/navigation';
 import setNewCookieSession from '@/src/actions/setCookieSession';
+import { AddNewView } from '@/src/actions/add-new-view';
+import getCookie from '@/src/actions/getCookie';
 
 interface Response {
   isBot: boolean;
@@ -17,9 +17,9 @@ const AddViewFunc = () => {
   const pathname = usePathname();
   const SetNewView = React.useCallback(async () => {
     const response = await fetch('/api/ip');
+
     const data = (await response.json()) as unknown as Response;
-    const userToken = Cookies.get('auth_token');
-    let sessionId = Cookies.get('sessionId');
+    let sessionId = await getCookie({ nameCookie: 'sessionId' });
     const userIp = data.ip;
 
     const productId =
@@ -27,15 +27,19 @@ const AddViewFunc = () => {
       pathname.split('/')[3].length > 20 &&
       pathname.split('/')[3];
 
-    if (!sessionId) {
+    if (!sessionId?.value) {
       setNewCookieSession();
-      sessionId = Cookies.get('sessionId');
+      sessionId = await getCookie({ nameCookie: 'sessionId' });
     }
 
     const pageView = pathname;
 
-    if (sessionId && !data.isBot) {
-      void addViews(userIp, sessionId, productId || '', pageView, userToken);
+    if (sessionId?.value && !data.isBot) {
+      void AddNewView({
+        ipUser: userIp,
+        pageView,
+        productId: productId || ''
+      });
     }
   }, [pathname]);
 

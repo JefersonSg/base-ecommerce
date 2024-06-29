@@ -58,29 +58,6 @@ export async function createAddress(data: any) {
   }
 }
 
-export async function addViews(
-  ip: string,
-  sessionId: string,
-  productId?: string | undefined,
-  pageView?: string | undefined,
-  userToken?: string | undefined
-) {
-  try {
-    void axios.post(
-      `${API}views/add/${productId}`,
-      {
-        userToken,
-        userIp: ip,
-        sessionId,
-        pageView
-      },
-      configJson
-    );
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 // Revalidation
 
 export async function createProduct(

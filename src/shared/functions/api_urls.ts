@@ -125,3 +125,8 @@ export const BANNERS_ACTIVE = () => {
     url: API_URL + `banners/actives`
   };
 };
+export const ADD_NEW_VIEW = ({ productId }: { productId: string }) => {
+  return {
+    url: API_URL + `views/add/${productId}`
+  };
+};
