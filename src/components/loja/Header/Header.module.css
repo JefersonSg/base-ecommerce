@@ -68,6 +68,9 @@
   right: -10px;
 }
 @media (min-width: 64rem) {
+  .pesquisa_mobile {
+    display: none !important;
+  }
   .button_dashboard {
     position: relative;
     left: 0px;
@@ -123,6 +126,16 @@
   }
 }
 @media (max-width: 1023px) {
+  .header {
+    /* padding-top: 32px;
+    padding-bottom: 16px;
+    height: max-content;
+    align-items: flex-start; */
+  }
+  .container1 {
+    opacity: 0;
+    pointer-events: none;
+  }
   .login {
     display: none;
   }

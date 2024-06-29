@@ -30,6 +30,9 @@ export const Header = async () => {
           <UserInfo />
         </Suspense>
       </header>
+      <div className={styles.pesquisa_mobile}>
+        <Pesquisa />
+      </div>
       <Suspense>
         <CategoriasLinks />
       </Suspense>

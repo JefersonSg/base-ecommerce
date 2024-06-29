@@ -65,10 +65,11 @@ const MessageFloating = ({
       <div className={styles.informacao_produto}>
         <div className={styles.imagem_produto}>
           <Image
-            alt="imagem simbolizando confirmação da ação"
+            alt="imagem do produto"
             width={80}
             height={80}
             src={img?.length ? img : '/confirm_popup.svg'}
+            className={styles.foto_produto}
           />
           <Image
             alt="Imagem de confirmação da adição"

@@ -12,6 +12,7 @@
   justify-content: center;
   z-index: 1000;
   font-family: var(--fonte-primaria);
+  padding: 0 10px;
 }
 
 .seta_voltar {
@@ -40,7 +41,8 @@
 }
 
 .input_pesquisa::placeholder {
-  color: rgba(200, 200, 200, 1);
+  color: rgb(137, 135, 135);
+  font-weight: 600;
 }
 .input_pesquisa:focus {
   outline: none;
@@ -80,16 +82,38 @@
   }
 }
 @media (max-width: 64rem) {
-  .pesquisa.ativo {
+  .lupa {
+    display: none;
+  }
+  .seta_voltar {
+    margin-right: 8px;
+    display: none;
+  }
+  .pesquisa {
+    position: relative;
     display: flex;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     left: 0;
-    top: 60px;
     justify-content: flex-start;
     justify-content: center;
+    background-color: var(--cor-quarta);
+    padding-bottom: 8px;
   }
+  .button_pesquisa,
+  .input_pesquisa {
+    height: 42px !important;
+    border: none;
+  }
+  .input_pesquisa {
+    width: 90%;
+    border-radius: 10px 0 0 10px;
+  }   
+  .button_pesquisa {
+    border-radius: 0 10px 10px 0;
+  }
+
 }
 @media (min-width: 64rem) {
   .lupa {

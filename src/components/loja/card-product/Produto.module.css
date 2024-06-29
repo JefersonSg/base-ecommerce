@@ -166,14 +166,13 @@
     overflow: visible;
     margin-bottom: 40px;
     position: relative;
+    transition: all .4s ease;
   }
   .botoes_card {
-    transition: all .4s;
     opacity: 0;
     height: 0px;
-    bottom: 0;
     position: absolute;
-    bottom: 16px;
+    bottom: 56px;
     left: 50%;
     width: calc(100% - 20px);
     transform: translate(-50%,0);
@@ -186,6 +185,7 @@
   }
 
   .produto:hover > .botoes_card{
+    transition: all .4s;
     opacity: 1;
     height: 40px;
     bottom: 16px;
