@@ -110,14 +110,14 @@
   }
 
   100% {
-    top: 60px;
+    top: 40px;
     opacity: 1;
   }
 }
 
 @media (max-width: 48rem) {
   .popUp {
-    top: 30px;
+    top: 40px;
     left: 50% ;
     transform: translate(-50%, 0);
   }

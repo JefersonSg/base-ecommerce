@@ -56,6 +56,17 @@ const MessageFloating = ({
     setTypePopUp('');
   }
 
+  React.useEffect(() => {
+    const temporizador = setTimeout(function closeError() {
+      setMessagePopUp('');
+      setTypePopUp('');
+    }, 6000);
+
+    return () => {
+      clearTimeout(temporizador);
+    };
+  }, [setMessagePopUp, setTypePopUp, nameProduct]);
+
   return (
     <div
       className={`${styles.popUp} ${
