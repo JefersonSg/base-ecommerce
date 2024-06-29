@@ -4,7 +4,6 @@ import React from 'react';
 import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 import styles from './Produtos.module.css';
 import SectionProdutos from './section/SectionProdutos';
-import SlideSubcategorias from './slide/SlideSubcategorias';
 
 // import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
 import {
@@ -51,21 +50,6 @@ function Produtos({
                 : 'Produtos')
         }`}
       />
-      <div className={styles.div_titulo}>
-        {/* <div className={styles.div_filtro}>
-          <BotaoFiltro ativo={ativo} setAtivo={setAtivo} />
-        </div> */}
-      </div>
-      {!pesquisa && subcategorieDataSlide && (
-        <div className={styles.subcategorias}>
-          <SlideSubcategorias subcategorieDataSlide={subcategorieDataSlide} />
-        </div>
-      )}
-      {!pesquisa && categorieDataSlide && (
-        <div className={styles.subcategorias}>
-          <SlideSubcategorias categorieDataSlide={categorieDataSlide} />
-        </div>
-      )}
 
       {data && (
         <SectionProdutos

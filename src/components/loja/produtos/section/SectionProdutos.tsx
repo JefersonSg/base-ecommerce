@@ -9,7 +9,6 @@ import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
 import { type ProductGetParams } from '@/src/actions/products-active-get';
-import Filter from '../filter/Filter';
 import MessageFloating from '@/src/components/compartilhado/messages/message-floating-cart';
 
 const SectionProdutos = ({
@@ -95,7 +94,7 @@ const SectionProdutos = ({
   return (
     <>
       <div className={styles.section_produtos}>
-        <Filter />
+        {/* <Filter /> */}
 
         <div className={styles.informacoes}>
           {/* <div className={styles.select_view}>
