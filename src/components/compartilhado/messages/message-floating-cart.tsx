@@ -63,7 +63,7 @@ const MessageFloating = ({
       }`}
     >
       <div className={styles.informacao_produto}>
-        <div className={styles.imagem_produto}>
+        <div className={styles.imagem_produto_div}>
           <Image
             alt="imagem do produto"
             width={80}

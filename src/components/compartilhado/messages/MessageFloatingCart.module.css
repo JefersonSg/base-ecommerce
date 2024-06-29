@@ -26,7 +26,6 @@
   gap: 8px;
   border-bottom: 1px solid rgba(52, 73, 94, .1);
   padding-bottom: 16px;
-  min-width: 370px;
 }
 
 .fechar {
@@ -35,7 +34,7 @@
   top: 8px;
   cursor: pointer;
 }
-.imagem_produto {
+.imagem_produto_div {
   position: relative;
 }
 .confirmacao_image {
@@ -121,6 +120,14 @@
     top: 30px;
     left: 50% ;
     transform: translate(-50%, 0);
+  }
+  .imagem_produto_div {
+    width: 16%;
+    height: auto;
+  }
+  .foto_produto {
+    width: 100%;
+    height: auto;
   }
 }
 @media (min-width: 48rem) {
