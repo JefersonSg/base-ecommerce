@@ -47,7 +47,6 @@
     text-align: center;
     justify-content: center;
     cursor: pointer;
-    border-top: 2px solid transparent;
     color: white !important;
   }
   .category_name {
@@ -58,6 +57,18 @@
     line-height: 20px;
     text-transform: uppercase;
     font-family: var(--fonte-primaria);
+    position: relative;
+  }
+
+  .linha {
+    position: absolute;
+    display: block;
+    width: calc(0% + 20px);
+    height: 2px;
+    background-color: transparent;
+    top: -10px;
+    left: -3px;
+    transition: all .3s ease;
   }
 
   .link svg path {
@@ -66,9 +77,11 @@
   }
 
   /* hovers */
-  .link:hover {
-    border-top: 2px solid var(--cor-contraste);
+  .link:hover .linha {
+    background-color: var(--cor-contraste);
+    width: calc(100% + 20px);
   }
+
   .link:hover .category_name {
     color: var(--cor-contraste);
   }

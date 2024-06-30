@@ -54,7 +54,23 @@ const ResultadoPesquisa = ({
                     width={40}
                     height={40}
                   />
-                  <p>{product?.name}</p>
+                  <div>
+                    <p>{product?.name}</p>
+                    <div className={styles.preços}>
+                      {product.promotion &&
+                      product?.promotionalPrice &&
+                      product?.promotionalPrice < product.price ? (
+                        <>
+                          <span className={styles.riscado}>
+                            R${product.price}{' '}
+                          </span>
+                          R${product.promotionalPrice}
+                        </>
+                      ) : (
+                        'R$' + product.price
+                      )}
+                    </div>
+                  </div>
                 </Link>
               )}
             </>

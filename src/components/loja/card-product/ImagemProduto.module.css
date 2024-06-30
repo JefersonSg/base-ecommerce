@@ -1,15 +1,4 @@
-.imagem_div {
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-    background-color: #e7e7e7;
-    border-radius: 20px 20px 0 0;
-    width: 100%;
-    height: auto;
-    max-height: 390px;
-    overflow: hidden;
-    min-height: 210px;
-  }
+
   
   .imagem_slide,
   .imagem {
@@ -19,6 +8,7 @@
     height: 200px;
     overflow: hidden;
     border-radius: 20px 20px 0 0;
+    min-height: 100%;
   }
   .imagem {
     display: none;
@@ -26,11 +16,36 @@
   .mySwiper {
     border-radius: 20px 20px 0 0 !important;
   }
+
+
   @media (min-width: 48rem) {
-    .imagem_div {
-      min-height: 243px;
+    .imagem_wrap {
+      overflow: hidden;
+      min-height: 100%;
+      width: 100%;
     }
     .imagem {
         display: block;
+        min-height: 100%;
+        min-width: 100%;
+      }
+
+    .imagem:hover {
+      transform: scale(1.1);
+      overflow: hidden;
+    }
+      .imagem_hover {
+        animation: aparecer .2s ease-in forwards;
+        transition: all 1.4s;
+        width: 100%;
+      }
+
+      @keyframes aparecer {
+        from {
+          opacity: .3;
+        }
+        to {
+          opacity: 1;
+        }
       }
 }

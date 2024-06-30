@@ -20,34 +20,48 @@ const ImagemProduto = ({
 
   return (
     <>
-      <Image
-        onMouseEnter={() => {
-          setAtivoHover(true);
-        }}
-        onMouseLeave={() => {
-          setAtivoHover(false);
-        }}
-        className={styles.imagem}
-        alt="Imagem do produto"
-        src={
-          ativoHover
-            ? coverPhoto1?.length
-              ? coverPhoto1
-              : images[0]
-            : coverPhoto2?.length
-              ? coverPhoto2
-              : images[1]
-                ? images[1]
-                : images[0]
-        }
-        width={185}
-        height={243}
-        quality={75}
-        placeholder="empty"
-        sizes="(max-width: 769px) 0vw, 25vw"
-        property="true"
-        priority={true}
-      />
+      {!ativoHover && (
+        <Image
+          onMouseEnter={() => {
+            setAtivoHover(true);
+          }}
+          onMouseLeave={() => {
+            setAtivoHover(false);
+          }}
+          className={styles.imagem}
+          alt="Imagem do produto"
+          src={coverPhoto1?.length ? coverPhoto1 : images[0]}
+          width={185}
+          height={243}
+          quality={75}
+          placeholder="empty"
+          sizes="(max-width: 769px) 0vw, 25vw"
+          property="true"
+          priority={true}
+        />
+      )}
+      {ativoHover && (
+        <div className={styles.imagem_wrap}>
+          <Image
+            onMouseEnter={() => {
+              setAtivoHover(true);
+            }}
+            onMouseLeave={() => {
+              setAtivoHover(false);
+            }}
+            className={`${styles.imagem} ${styles.imagem_hover}`}
+            alt="Imagem do produto"
+            src={coverPhoto2?.length ? coverPhoto2 : images[1]}
+            width={185}
+            height={243}
+            quality={75}
+            placeholder="empty"
+            sizes="(max-width: 769px) 0vw, 25vw"
+            property="true"
+            priority={true}
+          />
+        </div>
+      )}
       <Swiper
         className={`${styles.mySwiper} slide_photos`}
         navigation={true}

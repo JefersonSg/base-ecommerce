@@ -124,17 +124,17 @@ function Produto({
         promotionPorcent() ? styles.promotion_active : ''
       }`}
     >
+      {promotionPorcent() ? (
+        <span className={styles.promotion}>{`-${promotionPorcent()}%`}</span>
+      ) : (
+        ''
+      )}
       <div className={styles.like}>
         <Suspense>
           <Like productId={_id} />
         </Suspense>
       </div>
       <div className={styles.imagem_div}>
-        {promotionPorcent() ? (
-          <span className={styles.promotion}>{`-${promotionPorcent()}%`}</span>
-        ) : (
-          ''
-        )}
         <ImagemProduto
           images={images}
           coverPhoto1={coverPhoto1}

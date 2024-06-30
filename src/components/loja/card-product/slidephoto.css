@@ -1,3 +1,7 @@
+.slide_photos {
+  width: 100%;
+}
+
 .slide_photos .swiper-button-next,
 .slide_photos .swiper-button-prev {
   width: 28px;

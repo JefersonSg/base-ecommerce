@@ -39,7 +39,18 @@
   border-radius: 6px;
   margin-right: 8px;
 }
-
+.preços {
+  font-size: 12px ;
+  display: flex;
+  gap: 8px;
+  color: black;
+  font-weight: 500;
+}
+.riscado {
+  font-size: 12px;
+  text-decoration: line-through;
+  font-weight: 300;
+}
 @media (min-width: 64rem) {
   .resultado_container {
     top: 38px;
