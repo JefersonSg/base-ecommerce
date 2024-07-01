@@ -5,21 +5,25 @@ import styles from './Produto.module.css';
 import { Suspense } from 'react';
 import LoadingProduct from './loading-product';
 import productByIdGet from '@/src/actions/product-by-id-get';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 interface PageParams {
   params: { id: string };
 }
-// export async function generateStaticParams() {
-//   const products: { products: ProductApi[] } = await getAllActiveProducts();
+export async function generateStaticParams() {
+  const products = await productsFilterGet({
+    active: true,
+    total: 1000
+  });
 
-//   const produtos = await Promise?.all(
-//     products?.products?.map((product) => ({
-//       id: product?._id
-//     }))
-//   );
+  const produtos = await Promise?.all(
+    products?.products?.map((product) => ({
+      id: product?._id
+    }))
+  );
 
-//   return produtos;
-// }
+  return produtos;
+}
 
 export const generateMetadata = async ({
   params

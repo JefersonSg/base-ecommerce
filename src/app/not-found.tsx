@@ -12,17 +12,21 @@ const NotFound = async () => {
   const subcategoriesList: subcategoryInterface[] = [];
 
   const getSubcategoriesList = async () => {
-    let i = 0;
-    if (!categories.categories) return;
-    for (const category of categories.categories) {
-      const subcategory = await getSubcategoryByCategory(category._id);
+    if (categories?.categories[0]) {
+      let i = 0;
 
-      subcategoriesList[i] = subcategory;
-      i++;
+      for (const category of categories.categories) {
+        const subcategory = await getSubcategoryByCategory(category._id);
+
+        subcategoriesList[i] = subcategory[i];
+        i++;
+      }
     }
   };
 
-  await getSubcategoriesList();
+  if (categories.categories) {
+    await getSubcategoriesList();
+  }
   return (
     <>
       <Header />

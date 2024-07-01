@@ -61,13 +61,13 @@ export default async function productsFilterGet({
         tags: [`products-filter`]
       }
     });
-    if (!response.ok)
-      throw new Error('Erro ao pegar os produtos products-filter.');
 
     const data = (await response.json()) as { products: ProductApi[] };
 
     return data;
   } catch (error) {
     console.log('erro no fetch dos produtos products-filter,', error);
+
+    return { products: [] };
   }
 }

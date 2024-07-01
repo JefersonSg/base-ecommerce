@@ -133,11 +133,11 @@ const FormUpdateProduct = ({
   const categoryWatch: any = watch('category');
 
   const dataCategory = useQuery({
-    queryKey: ['categories'],
+    queryKey: ['categories-get-all'],
     queryFn: async () => await categoriesGetAll()
   });
   const dataSubCategories = useQuery({
-    queryKey: ['subcategories'],
+    queryKey: ['subcategories-get-all'],
     queryFn: async () => await subcategoriesGetAll()
   });
   const { refetch } = useQuery({

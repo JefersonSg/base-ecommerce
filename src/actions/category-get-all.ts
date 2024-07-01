@@ -14,12 +14,11 @@ export default async function categoriesGetAll() {
       }
     });
 
-    if (!response.ok) throw new Error('Erro ao pegar as categorias.');
-
     const data = (await response.json()) as { categories: CategoryInterface[] };
 
     return data;
   } catch (error) {
     console.log('Erro ao pegar as categorias,', error);
+    return { categories: [] };
   }
 }
