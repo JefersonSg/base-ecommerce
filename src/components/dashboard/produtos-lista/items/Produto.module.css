@@ -19,7 +19,7 @@
 }
 .produto_info div {
   display: flex;
-  width: max-content;
+  width: 150px;
 }
 .name,
 .description {
@@ -105,6 +105,9 @@
 }
 
 @media (min-width: 1000px) {
+  .produto_info div {
+    width: 350px;
+  }
   .name,
   .description {
     max-width: 250px;

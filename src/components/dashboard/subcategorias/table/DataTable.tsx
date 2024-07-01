@@ -9,10 +9,10 @@ import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/FormEditSubcategory';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import { deleteSubcategory } from '@/src/shared/api/DELETE';
-import { getAllSubcategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
@@ -32,8 +32,8 @@ const DataTable = () => {
   const [nextPage, setNextPage] = React.useState([1, 7]);
 
   const { data, refetch } = useQuery({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
+    queryKey: ['subcategories-get-all'],
+    queryFn: async () => await subcategoriesGetAll()
   });
 
   async function handleDelete(id: string) {
@@ -70,7 +70,7 @@ const DataTable = () => {
       <div className={styles.data_table}>
         <TopTable setAtivo={setAtivoCreate} />
         <BodyTable
-          data={data}
+          data={data?.subcategories}
           nextPage={nextPage}
           setIdCategory={setIdCategory}
           idSubcategory={idSubcategory}
@@ -82,7 +82,7 @@ const DataTable = () => {
           setDefaultDescription={setDefaultDescription}
         />
         <RodapeTable
-          data={data}
+          data={data?.subcategories}
           setCurrentPage={setCurrentPage}
           nextPage={nextPage}
           currentPage={currentPage}

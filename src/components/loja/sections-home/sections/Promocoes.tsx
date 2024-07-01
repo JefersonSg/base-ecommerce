@@ -1,9 +1,9 @@
 import React from 'react';
 import Section from '../Section';
-import productsByPromotionsGet from '@/src/actions/products-by-promotions-get';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const Promocoes = async () => {
-  const data = await productsByPromotionsGet();
+  const data = await productsFilterGet({ active: true, promotion: true });
 
   return (
     <Section

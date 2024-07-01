@@ -4,7 +4,7 @@ import styles from './CategoriaItem.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
-import productsByCategoryGet from '@/src/actions/products-by-category-get ';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const CategoriaItem = ({
   idCategory,
@@ -30,7 +30,10 @@ const CategoriaItem = ({
   const { data } = useQuery({
     queryKey: ['productByCategory', idCategory],
     queryFn: async () => {
-      return (await productsByCategoryGet({ id: idCategory, total: 1000 })) as {
+      return (await productsFilterGet({
+        category: idCategory,
+        total: 1000
+      })) as {
         products: ProductApi[];
       };
     }

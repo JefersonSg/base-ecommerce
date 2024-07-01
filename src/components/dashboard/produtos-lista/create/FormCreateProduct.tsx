@@ -21,15 +21,9 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import SelectColor from './color/SelectColor-amount';
 import { useQuery } from '@tanstack/react-query';
-import {
-  getAllCategories,
-  getAllProducts,
-  getAllSubcategories
-} from '@/src/shared/api/GETS';
 
 import {
   type ProductInputs,
-  type CategoryInterface,
   type subcategoryInterface
 } from '@/src/shared/helpers/interfaces';
 import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
@@ -43,15 +37,11 @@ import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreat
 import SelectSizes from './sizes/SelectSizes';
 import DicaImagem from '../dicas/DicaImagem';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const schema = validationProduct;
-
-interface CategoriesResponse {
-  categories: CategoryInterface[];
-}
-interface subcategoriesResponse {
-  subcategories: subcategoryInterface[];
-}
 
 const FormCreateProduct = () => {
   const {
@@ -112,17 +102,17 @@ const FormCreateProduct = () => {
   const [sizes, setSizes] = React.useState<string[]>(['']);
   const router = useRouter();
 
-  const dataCategory = useQuery<CategoriesResponse>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+  const dataCategory = useQuery({
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
-  const dataSubCategories = useQuery<subcategoriesResponse>({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
+  const dataSubCategories = useQuery({
+    queryKey: ['subcategories-get-all'],
+    queryFn: async () => await subcategoriesGetAll()
   });
-  const { refetch } = useQuery<CategoriesResponse>({
+  const { refetch } = useQuery({
     queryKey: ['products'],
-    queryFn: getAllProducts
+    queryFn: async () => await productsFilterGet({ total: 1000 })
   });
 
   const handleChange = React.useCallback(() => {

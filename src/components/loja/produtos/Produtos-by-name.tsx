@@ -1,20 +1,20 @@
 import React from 'react';
 import Produtos from './Produtos';
-import productsByNameGet from '@/src/actions/products-by-name-get';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const ProdutosContainer = async ({
   stringDecoded
 }: {
   stringDecoded: string;
 }) => {
-  const data = await productsByNameGet({ id: stringDecoded });
+  const data = await productsFilterGet({ name: stringDecoded });
 
   return (
     <div>
       <Produtos
         pesquisa={stringDecoded}
         data={data?.products}
-        functionGetProduct={productsByNameGet}
+        functionGetProduct={productsFilterGet}
       />
     </div>
   );

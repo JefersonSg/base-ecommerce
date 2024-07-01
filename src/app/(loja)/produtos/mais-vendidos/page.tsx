@@ -1,13 +1,13 @@
 import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
 import styles from './page.module.css';
-import { getAllCategories } from '@/src/shared/api/GETS';
 import Produtos from '@/src/components/loja/produtos/Produtos';
 import { Suspense } from 'react';
-import productsBySalesGet from '@/src/actions/products-by-sales-get';
+import productsFilterGet from '@/src/actions/products-filters-get';
+import categoriesGetAll from '@/src/actions/category-get-all';
 
 async function page() {
-  const data = await productsBySalesGet();
-  const categories = await getAllCategories();
+  const data = await productsFilterGet({ orderBy: 'sales' });
+  const categories = await categoriesGetAll();
 
   return (
     <div className={styles.produtos_container}>
@@ -16,8 +16,10 @@ async function page() {
         <Produtos
           titulo="Mais vendidos"
           data={data?.products}
-          functionGetProduct={productsBySalesGet}
+          functionGetProduct={productsFilterGet}
           categorieDataSlide={categories}
+          orderBy="sales"
+          orderDirection=""
         />
       </Suspense>
     </div>

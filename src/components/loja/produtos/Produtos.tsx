@@ -11,29 +11,44 @@ import {
   type CategoryInterface,
   type subcategoryInterface
 } from '@/src/shared/helpers/interfaces';
-import { type ProductGetParams } from '@/src/actions/products-active-get';
+import { type ProductGetParams } from '@/src/actions/products-filters-get';
 
 function Produtos({
   titulo,
   pesquisa,
   data,
-  categoryId,
   subcategorieDataSlide,
   categorieDataSlide,
-  functionGetProduct
+  functionGetProduct,
+  active,
+  promotion,
+  categoryId,
+  subcategoryId,
+  orderBy,
+  orderDirection
 }: {
   titulo?: string;
   pesquisa?: string;
   data?: ProductApi[];
   categoryId?: string;
+  subcategoryId?: string;
   subcategorieDataSlide?: { subcategories: subcategoryInterface[] };
   categorieDataSlide?: { categories: CategoryInterface[] };
-  functionGetProduct: ({ id, page, total }: ProductGetParams) => Promise<
+  functionGetProduct: ({
+    id,
+    category,
+    page,
+    total
+  }: ProductGetParams) => Promise<
     | {
         products: ProductApi[];
       }
     | undefined
   >;
+  active?: boolean;
+  promotion?: boolean;
+  orderBy?: string;
+  orderDirection?: string;
 }) {
   return (
     <div className={styles.produtos_container}>
@@ -41,9 +56,9 @@ function Produtos({
         titulo={`${pesquisa ?? ''} 
         ${
           titulo ??
-          (categorieDataSlide?.categories[0]
+          (categorieDataSlide?.categories?.[0]
             ? 'Categorias'
-            : subcategorieDataSlide?.subcategories[0]
+            : subcategorieDataSlide?.subcategories?.[0]
               ? 'Subcategorias'
               : pesquisa
                 ? ''
@@ -53,10 +68,15 @@ function Produtos({
 
       {data && (
         <SectionProdutos
-          categoryId={categoryId}
           pesquisa={pesquisa}
           data={data}
           functionGetProduct={functionGetProduct}
+          active={active}
+          categoryId={categoryId}
+          subcategoryId={subcategoryId}
+          promotion={promotion ?? false}
+          orderBy={orderBy}
+          orderDirection={orderDirection}
         />
       )}
     </div>

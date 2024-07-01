@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Filtes.module.css';
 import { useQuery } from '@tanstack/react-query';
 import categoriesGetAll from '@/src/actions/category-get-all';
-import subcategoriesGetAll from '@/src/actions/subcategory-get-all copy';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
 
 const Filter = () => {
   const categories = useQuery({

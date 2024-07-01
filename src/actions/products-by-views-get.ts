@@ -2,7 +2,7 @@
 
 import { PRODUCT_BY_VIEWS } from '../shared/functions/api_urls';
 import { type ProductApi } from '../shared/helpers/interfaces';
-import { type ProductGetParams } from './products-active-get';
+import { type ProductGetParams } from './products-filters-get';
 
 export default async function productsByViewsGet({
   page = 1,

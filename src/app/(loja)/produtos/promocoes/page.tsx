@@ -1,13 +1,13 @@
 import Breadcrumb from '@/src/components/loja/breadcrumb/Breadcrumb';
 import styles from './page.module.css';
-import { getAllCategories } from '@/src/shared/api/GETS';
 import Produtos from '@/src/components/loja/produtos/Produtos';
 import { Suspense } from 'react';
-import productsByPromotionsGet from '@/src/actions/products-by-promotions-get';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 async function page() {
-  const data = await productsByPromotionsGet();
-  const categories = await getAllCategories();
+  const data = await productsFilterGet({ active: true, promotion: true });
+  const categories = await categoriesGetAll();
 
   return (
     <div className={styles.produtos_container}>
@@ -17,7 +17,9 @@ async function page() {
           titulo="Promoções"
           data={data?.products}
           categorieDataSlide={categories}
-          functionGetProduct={productsByPromotionsGet}
+          functionGetProduct={productsFilterGet}
+          active={true}
+          promotion={true}
         />
       </Suspense>
     </div>

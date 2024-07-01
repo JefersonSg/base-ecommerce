@@ -1,12 +1,13 @@
 import styles from './NotFound.module.css';
 import { Footer } from '../components/loja/Footer/Footer';
 import { Header } from '../components/loja/Header/Header';
-import { getAllCategories, getSubcategoryByCategory } from '../shared/api/GETS';
 import { type subcategoryInterface } from '../shared/helpers/interfaces';
 import Link from 'next/link';
+import categoriesGetAll from '../actions/category-get-all';
+import { getSubcategoryByCategory } from '../shared/api/GETS';
 
 const NotFound = async () => {
-  const categories = await getAllCategories();
+  const categories = await categoriesGetAll();
 
   const subcategoriesList: subcategoryInterface[] = [];
 

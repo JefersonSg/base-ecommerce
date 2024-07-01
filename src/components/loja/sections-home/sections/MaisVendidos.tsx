@@ -1,9 +1,9 @@
 import React from 'react';
 import Section from '../Section';
-import productsBySalesGet from '@/src/actions/products-by-sales-get';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const MaisVendidos = async () => {
-  const data = await productsBySalesGet();
+  const data = await productsFilterGet({ active: true, orderBy: 'sales' });
 
   return (
     <Section

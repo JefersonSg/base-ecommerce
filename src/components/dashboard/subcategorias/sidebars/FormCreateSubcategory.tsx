@@ -11,21 +11,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createSubcategory } from '@/src/shared/api/POST';
-import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationSubcategory } from './validationSubcategory';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
 
 interface Inputs {
   name: string;
   description: string;
   category: string;
   image: any;
-}
-interface Category {
-  _id: string;
-  name: string;
-  description: string;
-  image: string;
 }
 
 const schema = validationSubcategory;
@@ -40,13 +35,13 @@ const SideBarFormCreateSubcategory = ({
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   //
-  const { data } = useQuery<{ categories: Category[] }>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+  const { data } = useQuery({
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
   const { refetch } = useQuery({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
+    queryKey: ['subcategories-get-all'],
+    queryFn: async () => await subcategoriesGetAll()
   });
 
   const {

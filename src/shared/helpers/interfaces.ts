@@ -59,6 +59,7 @@ export interface CommentInterface {
 export interface subcategoryInterface {
   _id: string;
   name: string;
+  image: string;
   category: string;
   description: string;
 }

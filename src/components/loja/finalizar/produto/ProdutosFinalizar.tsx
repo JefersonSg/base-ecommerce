@@ -1,5 +1,3 @@
-import { getProductById } from '@/src/shared/api/GETS';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import {
   type QueryObserverResult,
   type RefetchOptions,
@@ -16,6 +14,7 @@ import BackgoundClick from '../../../compartilhado/backgrounds/BackgoundClick';
 import { deleteCartItem } from '@/src/shared/api/DELETE';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
+import productByIdGet from '@/src/actions/product-by-id-get';
 
 const ProdutosFinalizar = ({
   productId,
@@ -36,10 +35,10 @@ const ProdutosFinalizar = ({
     options?: RefetchOptions | undefined
   ) => Promise<QueryObserverResult<any, Error>>;
 }) => {
-  const { data, refetch } = useQuery<{ product: ProductApi }>({
+  const { data, refetch } = useQuery({
     queryKey: ['product', productId],
     queryFn: async () => {
-      return await getProductById(productId);
+      return await productByIdGet({ id: productId });
     }
   });
   const [modalDeleteActive, setModalDeleteActive] = React.useState(false);

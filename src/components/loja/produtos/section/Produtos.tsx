@@ -2,8 +2,7 @@ import React from 'react';
 import Produto from '@/src/components/loja/card-product/Produto';
 
 import { useQuery } from '@tanstack/react-query';
-import { getAllActiveProducts } from '@/src/shared/api/GETS';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const Produtos = ({
   setIsLoading,
@@ -22,9 +21,9 @@ const Produtos = ({
   setPriceProduct: React.Dispatch<React.SetStateAction<number>>;
   setImageProduct: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { data } = useQuery<{ products: ProductApi[] }>({
+  const { data } = useQuery({
     queryKey: ['products'],
-    queryFn: getAllActiveProducts
+    queryFn: async () => await productsFilterGet({ active: true })
   });
 
   return (

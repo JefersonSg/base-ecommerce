@@ -1,12 +1,10 @@
 import styles from './LinksCategorias.module.css';
-import {
-  type subcategoryInterface,
-  type CategoryInterface
-} from '@/src/shared/helpers/interfaces';
+import { type subcategoryInterface } from '@/src/shared/helpers/interfaces';
 import BotaoCategoria from './BotaoCategoria';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
 
 function LinksCategorias({
   setAtivo
@@ -15,16 +13,17 @@ function LinksCategorias({
 }) {
   const [ativoLista, setAtivoLista] = React.useState<string>('');
 
-  const { data } = useQuery<{ categories: CategoryInterface[] }>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+  const { data } = useQuery({
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
   const subcategoriesList = useQuery<{
     subcategories: subcategoryInterface[];
   }>({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
+    queryKey: ['subcategories-get-all'],
+    queryFn: async () => await subcategoriesGetAll()
   });
+
   return (
     <ul className={styles.links}>
       {data?.categories?.map((category, index) => {

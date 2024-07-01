@@ -5,9 +5,8 @@ import styles from './ProdutoInfos.module.css';
 import React from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { getProductById } from '@/src/shared/api/GETS';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import productByIdGet from '@/src/actions/product-by-id-get';
 
 const ProdutoInfos = ({
   productId,
@@ -23,7 +22,7 @@ const ProdutoInfos = ({
   const { data } = useQuery({
     queryKey: ['product-by-id-' + productId],
     queryFn: async () => {
-      return (await getProductById(productId)) as { product: ProductApi };
+      return await productByIdGet({ id: productId });
     }
   });
   return (

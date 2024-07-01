@@ -8,13 +8,14 @@ import { Titulo } from '../../compartilhado/textos/Titulo';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 import CreateAccount from '../../compartilhado/modals/CreateAccount';
-import { type ProductGetParams } from '@/src/actions/products-active-get';
 import MessageFloating from '../../compartilhado/messages/message-floating-cart';
+import { type ProductGetParams } from '@/src/actions/products-filters-get';
 
 const SectionProdutosViews = ({
   data,
   texto,
-  functionGetProduct
+  functionGetProduct,
+  categoryId
 }: {
   data: ProductApi[];
   texto?: string;
@@ -24,6 +25,7 @@ const SectionProdutosViews = ({
       }
     | undefined
   >;
+  categoryId?: string;
 }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [modalLogin, setModalLogin] = React.useState(false);
@@ -57,7 +59,12 @@ const SectionProdutosViews = ({
     if (page === 1) return;
 
     async function getProducts(page: number) {
-      const actionData = await functionGetProduct({ id: '', page, total: 9 });
+      const actionData = await functionGetProduct({
+        id: '',
+        category: categoryId,
+        page,
+        total: 9
+      });
 
       if (actionData?.products) {
         const { products } = actionData;
@@ -73,7 +80,7 @@ const SectionProdutosViews = ({
     }
 
     void getProducts(page);
-  }, [functionGetProduct, page]);
+  }, [categoryId, functionGetProduct, page]);
 
   React.useEffect(() => {
     if (infinite) {

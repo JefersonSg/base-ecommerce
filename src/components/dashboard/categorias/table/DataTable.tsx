@@ -9,11 +9,11 @@ import RodapeTable from './RodapeTable';
 import SideBarFormEdit from '../sidebars/SideBarFormEdit';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import { deleteCategory } from '@/src/shared/api/DELETE';
-import { getAllCategories } from '@/src/shared/api/GETS';
-import { useQuery } from '@tanstack/react-query';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import { useQuery } from '@tanstack/react-query';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
@@ -32,8 +32,8 @@ const DataTable = () => {
   const [nextPage, setNextPage] = React.useState([1, 7]);
 
   const { data, refetch } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
 
   return (

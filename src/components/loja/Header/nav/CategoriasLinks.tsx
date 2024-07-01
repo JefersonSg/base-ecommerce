@@ -1,7 +1,7 @@
 import styles from './Links.module.css';
 import Categoria from './Categoria';
 import categoriesGetAll from '@/src/actions/category-get-all';
-import subcategoriesGetAll from '@/src/actions/subcategory-get-all copy';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
 
 const CategoriasLinks = async () => {
   const data = await categoriesGetAll();

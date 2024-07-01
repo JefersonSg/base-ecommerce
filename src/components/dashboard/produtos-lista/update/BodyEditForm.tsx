@@ -4,7 +4,7 @@ import React from 'react';
 import FormUpdateProduct from './FormUpdateProduct';
 import { useParams } from 'next/navigation';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
-import { getProductById } from '@/src/shared/api/GETS';
+import productByIdGet from '@/src/actions/product-by-id-get';
 
 const BodyEditForm = () => {
   const [dataProduct, setDataProduct] = React.useState<{
@@ -15,7 +15,7 @@ const BodyEditForm = () => {
   React.useEffect(() => {
     const response = async () => {
       try {
-        const responseData = await getProductById(update);
+        const responseData = await productByIdGet({ id: update });
         setDataProduct(responseData);
       } catch (error) {
         console.log(error);

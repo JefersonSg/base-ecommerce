@@ -3,11 +3,10 @@
 import { useQuery } from '@tanstack/react-query';
 import styles from './ResultadoPesquisa.module.css';
 import React from 'react';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import productsByNameGet from '@/src/actions/products-by-name-get';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const ResultadoPesquisa = ({
   pesquisa,
@@ -18,15 +17,12 @@ const ResultadoPesquisa = ({
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   setPesquisa: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { data } = useQuery<{ products: ProductApi[] }>({
+  const { data } = useQuery({
     queryKey: ['product-name', pesquisa],
     queryFn: async () => {
       if (pesquisa) {
-        const response = await productsByNameGet({ id: pesquisa });
-
-        return response;
+        return await productsFilterGet({ name: pesquisa, total: 8 });
       }
-      return { products: [] };
     }
   });
 

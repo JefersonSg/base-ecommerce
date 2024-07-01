@@ -1,16 +1,21 @@
 'use server';
 
-import { PRODUCT_BY_SUBCATEGORY } from '../shared/functions/api_urls';
+import { PRODUCTS_FAVORITES } from '../shared/functions/api_urls';
 import { type ProductApi } from '../shared/helpers/interfaces';
-import { type ProductGetParams } from './products-active-get';
+
+interface ProductGetParams {
+  userId?: string;
+  page?: number;
+  total?: number;
+}
 
 export default async function productsFavoritesGet({
-  id = '',
+  userId = '',
   page = 1,
   total = 9
 }: ProductGetParams = {}) {
   try {
-    const { url } = PRODUCT_BY_SUBCATEGORY({ id, page, total });
+    const { url } = PRODUCTS_FAVORITES({ userId, page, total });
 
     const response = await fetch(url, {
       next: {

@@ -1,9 +1,9 @@
 import React from 'react';
 import Section from '../Section';
-import productsActiveGet from '@/src/actions/products-active-get';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const Novidades = async () => {
-  const data = await productsActiveGet();
+  const data = await productsFilterGet({ active: true });
 
   return (
     <Section

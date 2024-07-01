@@ -2,9 +2,8 @@ import React from 'react';
 import styles from './produto-visitado.module.css';
 import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
-import { getProductById } from '@/src/shared/api/GETS';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import Link from 'next/link';
+import productByIdGet from '@/src/actions/product-by-id-get';
 
 const ProdutosVisitados = ({
   productId,
@@ -13,10 +12,10 @@ const ProdutosVisitados = ({
   productId: string;
   views: number;
 }) => {
-  const { data } = useQuery<{ product: ProductApi }>({
+  const { data } = useQuery({
     queryKey: ['get-product-by-id-', productId],
     queryFn: async () => {
-      return await getProductById(productId);
+      return await productByIdGet({ id: productId });
     }
   });
 

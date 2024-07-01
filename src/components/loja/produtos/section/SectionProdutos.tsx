@@ -8,24 +8,35 @@ import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
-import { type ProductGetParams } from '@/src/actions/products-active-get';
 import MessageFloating from '@/src/components/compartilhado/messages/message-floating-cart';
+import { type ProductGetParams } from '@/src/actions/products-filters-get';
 
 const SectionProdutos = ({
   data,
   pesquisa,
   functionGetProduct,
-  categoryId
+  active,
+  promotion,
+  categoryId,
+  subcategoryId,
+  orderBy,
+  orderDirection
 }: {
   data: ProductApi[];
   pesquisa?: string;
-  categoryId?: string;
+
   functionGetProduct: ({ id, page, total }: ProductGetParams) => Promise<
     | {
         products: ProductApi[];
       }
     | undefined
   >;
+  active?: boolean;
+  promotion?: boolean;
+  categoryId?: string;
+  subcategoryId?: string;
+  orderBy?: string;
+  orderDirection?: string;
 }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [modalLogin, setModalLogin] = React.useState(false);
@@ -61,9 +72,15 @@ const SectionProdutos = ({
 
     async function getProducts(page: number) {
       const actionData = await functionGetProduct({
-        id: categoryId ?? pesquisa ?? '',
+        category: categoryId,
+        subcategory: subcategoryId,
+        name: pesquisa,
         page,
-        total: 9
+        total: 9,
+        active,
+        promotion,
+        orderBy,
+        orderDirection
       });
 
       if (actionData?.products) {
@@ -75,7 +92,17 @@ const SectionProdutos = ({
         setInfinite(false);
     }
     void getProducts(page);
-  }, [categoryId, functionGetProduct, page, pesquisa]);
+  }, [
+    active,
+    functionGetProduct,
+    orderBy,
+    orderDirection,
+    page,
+    pesquisa,
+    promotion,
+    categoryId,
+    subcategoryId
+  ]);
 
   React.useEffect(() => {
     if (infinite) {

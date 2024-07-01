@@ -10,12 +10,15 @@ const RodapeTable = ({
   setNextPage,
   setCurrentPage
 }: {
-  data: { categories: CategoryInterface[] };
+  data?: { categories: CategoryInterface[] };
   nextPage: number[];
   currentPage: number;
   setNextPage: React.Dispatch<React.SetStateAction<number[]>>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }) => {
+  if (!data?.categories) {
+    return;
+  }
   return (
     <div className={styles.container_rodape}>
       <p>

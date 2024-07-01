@@ -6,7 +6,6 @@ import './colors.css';
 import { GoogleTagManager } from '@next/third-parties/google';
 
 import Providers from '@/src/shared/providers/providers';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
@@ -59,9 +58,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Suspense>
-        <GoogleTagManager gtmId="G-NYKP51D935" />
-      </Suspense>
+      <GoogleTagManager gtmId="G-NYKP51D935" />
       <body className={`${typeFirst.variable} ${typeFirstDashboard.variable}`}>
         <Providers>{children}</Providers>
       </body>

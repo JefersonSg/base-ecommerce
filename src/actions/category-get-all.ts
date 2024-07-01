@@ -1,16 +1,16 @@
 'use server';
 
-import { CATEGORIES } from '../shared/functions/api_urls';
+import { CATEGORIES_ALL } from '../shared/functions/api_urls';
 import { type CategoryInterface } from '../shared/helpers/interfaces';
 
 export default async function categoriesGetAll() {
   try {
-    const { url } = CATEGORIES();
+    const { url } = CATEGORIES_ALL();
 
     const response = await fetch(url, {
       next: {
-        revalidate: 3600,
-        tags: ['categories']
+        revalidate: 0,
+        tags: ['categories-get-all']
       }
     });
 
@@ -21,6 +21,5 @@ export default async function categoriesGetAll() {
     return data;
   } catch (error) {
     console.log('Erro ao pegar as categorias,', error);
-    return { categories: [] };
   }
 }
