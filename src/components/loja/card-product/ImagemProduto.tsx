@@ -23,7 +23,9 @@ const ImagemProduto = ({
       {!ativoHover && (
         <Image
           onMouseEnter={() => {
-            setAtivoHover(true);
+            if (images.length >= 1 || coverPhoto2?.length) {
+              setAtivoHover(true);
+            }
           }}
           onMouseLeave={() => {
             setAtivoHover(false);
@@ -51,7 +53,17 @@ const ImagemProduto = ({
             }}
             className={`${styles.imagem} ${styles.imagem_hover}`}
             alt="Imagem do produto"
-            src={coverPhoto2?.length ? coverPhoto2 : images[1]}
+            src={
+              coverPhoto2?.length
+                ? coverPhoto2
+                : images[1]?.length
+                  ? images[1]
+                  : coverPhoto1?.length
+                    ? coverPhoto1
+                    : images[0]?.length
+                      ? images[0]
+                      : images[0]
+            }
             width={185}
             height={243}
             quality={75}
