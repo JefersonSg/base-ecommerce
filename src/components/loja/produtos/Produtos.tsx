@@ -68,9 +68,9 @@ function Produtos({
 
       {data && (
         <SectionProdutos
-          pesquisa={pesquisa}
           data={data}
           functionGetProduct={functionGetProduct}
+          pesquisa={pesquisa}
           active={active}
           categoryId={categoryId}
           subcategoryId={subcategoryId}

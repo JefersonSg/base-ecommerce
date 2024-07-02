@@ -10,6 +10,7 @@ import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnim
 import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
 import MessageFloating from '@/src/components/compartilhado/messages/message-floating-cart';
 import { type ProductGetParams } from '@/src/actions/products-filters-get';
+import Filter from '../filter/Filter';
 
 const SectionProdutos = ({
   data,
@@ -23,14 +24,13 @@ const SectionProdutos = ({
   orderDirection
 }: {
   data: ProductApi[];
-  pesquisa?: string;
-
   functionGetProduct: ({ id, page, total }: ProductGetParams) => Promise<
     | {
         products: ProductApi[];
       }
     | undefined
   >;
+  pesquisa?: string;
   active?: boolean;
   promotion?: boolean;
   categoryId?: string;
@@ -121,25 +121,18 @@ const SectionProdutos = ({
   return (
     <>
       <div className={styles.section_produtos}>
-        {/* <Filter /> */}
+        <Filter
+          functionGetProduct={functionGetProduct}
+          pesquisa={pesquisa}
+          active={active}
+          categoryId={categoryId}
+          subcategoryId={subcategoryId}
+          promotion={promotion ?? false}
+          orderBy={orderBy}
+          orderDirection={orderDirection}
+        />
 
-        <div className={styles.informacoes}>
-          {/* <div className={styles.select_view}>
-          <Image
-          alt="imagem de quadrados para mudar a vizualização dos produtos"
-          src={'/produtos/multi_view.svg'}
-          width={17}
-          height={17}
-          />
-          
-          <Image
-          alt="imagem de quadrados para mudar a vizualização dos produtos"
-          src={'/produtos/single_view.svg'}
-          width={17}
-          height={17}
-          />
-          </div> */}
-        </div>
+        <div className={styles.informacoes}></div>
         {data && (
           <ProductsById
             data={dataProducts}

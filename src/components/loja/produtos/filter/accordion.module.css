@@ -1,0 +1,53 @@
+.header {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #242424;
+}
+
+.box {
+    display: block;
+    width: 19px;
+    height: 19px;
+    border: 1px solid black;
+}
+.accordion_container nav {
+    margin-top: 1rem;
+}
+.accordion_container nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.accordion_container label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.accordion_container label p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+    color: #242424;
+}
+.accordion_container label input {
+    border: 1px solid #9fa3a6;
+    appearance: none;
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: .25rem;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+.accordion_container label input:checked {
+    background-color: var(--cor-contraste);
+    background-image: url('../../../../../public/filtro/seta_confirm.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
