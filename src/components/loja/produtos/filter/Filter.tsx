@@ -13,6 +13,7 @@ import { type ProductGetParams } from '@/src/actions/products-filters-get';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { getFilters } from '@/src/shared/functions/getFilters';
 import ColorFilter from './ColorFilter';
+import BtnFechar from '@/src/components/compartilhado/botoes/BtnFechar';
 
 export interface ColorFilterInterface {
   color: string;
@@ -90,12 +91,25 @@ const Filter = ({
     void get();
   }, [getFiltersFunc]);
 
+  React.useEffect(() => {
+    if (ativo) {
+      document.body.classList.add('scroll-lock');
+    } else {
+      document.body.classList.remove('scroll-lock');
+    }
+
+    return () => {
+      document.body.classList.remove('scroll-lock');
+    };
+  }, [ativo]);
+
   return (
     <>
       <ButtonsFilterContainer ativo={ativo} setAtivo={setAtivo} />
       <div
         className={`${styles.filter_container} ${ativo ? styles.ativo : ''}`}
       >
+        {ativo && <BtnFechar setAtivo={setAtivo} />}
         <div className={styles.side_nav}>
           <h3 className={styles.title}>Filtar</h3>
           <div className={styles.divisor}></div>
