@@ -4,9 +4,13 @@ import { type ColorFilterInterface } from './Filter';
 import styles from './ColorFilter.module.css';
 
 const ColorFilter = ({
-  filterColors
+  filterColors,
+  color,
+  setColor
 }: {
   filterColors: ColorFilterInterface[];
+  color: string;
+  setColor: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
     <nav>
@@ -16,6 +20,9 @@ const ColorFilter = ({
           return (
             <li key={color.codeColor} className={styles.li_color}>
               <input
+                onClick={() => {
+                  setColor(color.color);
+                }}
                 type="checkbox"
                 style={{ backgroundColor: `${color.codeColor}` }}
               />

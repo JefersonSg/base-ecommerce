@@ -74,7 +74,7 @@ function Produtos({
           active={active}
           categoryId={categoryId}
           subcategoryId={subcategoryId}
-          promotion={promotion ?? false}
+          promotion={promotion}
           orderBy={orderBy}
           orderDirection={orderDirection}
         />

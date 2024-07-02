@@ -50,6 +50,9 @@ const SectionProdutos = ({
   const [dataProducts, setDataProducts] = React.useState<ProductApi[]>(data);
   const [infinite, setInfinite] = React.useState(!(data.length < 6));
   const [loading, setLoading] = React.useState(false);
+  const [color, setColor] = React.useState('');
+  const [brand, setBrand] = React.useState('');
+  const [size, setSize] = React.useState('');
 
   const fetching = React.useRef(false);
 
@@ -77,6 +80,9 @@ const SectionProdutos = ({
         name: pesquisa,
         page,
         total: 9,
+        brand,
+        color,
+        size,
         active,
         promotion,
         orderBy,
@@ -101,7 +107,10 @@ const SectionProdutos = ({
     pesquisa,
     promotion,
     categoryId,
-    subcategoryId
+    subcategoryId,
+    brand,
+    color,
+    size
   ]);
 
   React.useEffect(() => {
@@ -118,6 +127,54 @@ const SectionProdutos = ({
     };
   }, [infinite]);
 
+  // Set FIlters
+  React.useEffect(() => {
+    async function getProducts(page: number) {
+      const actionData = await functionGetProduct({
+        category: categoryId,
+        subcategory: subcategoryId,
+        name: pesquisa,
+        page,
+        total: 9,
+        brand,
+        color,
+        size,
+        active,
+        promotion,
+        orderBy,
+        orderDirection
+      });
+
+      if (actionData?.products) {
+        const { products } = actionData;
+
+        console.log(actionData);
+
+        setDataProducts([...products]);
+      }
+      if (actionData?.products && actionData?.products?.length < 9)
+        setInfinite(false);
+    }
+    if (color || size || brand) {
+      setPage(1);
+
+      void getProducts(page);
+    }
+  }, [
+    active,
+    brand,
+    categoryId,
+    color,
+    functionGetProduct,
+    orderBy,
+    orderDirection,
+    page,
+    pesquisa,
+    promotion,
+    size,
+    subcategoryId
+  ]);
+
   return (
     <>
       <div className={styles.section_produtos}>
@@ -127,9 +184,15 @@ const SectionProdutos = ({
           active={active}
           categoryId={categoryId}
           subcategoryId={subcategoryId}
-          promotion={promotion ?? false}
+          promotion={promotion}
           orderBy={orderBy}
           orderDirection={orderDirection}
+          color={color}
+          setColor={setColor}
+          size={size}
+          setSize={setSize}
+          brand={brand}
+          setBrand={setBrand}
         />
 
         <div className={styles.informacoes}></div>

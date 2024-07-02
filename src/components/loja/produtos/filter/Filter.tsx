@@ -28,7 +28,13 @@ const Filter = ({
   categoryId,
   subcategoryId,
   orderBy,
-  orderDirection
+  orderDirection,
+  color,
+  setColor,
+  size,
+  setSize,
+  brand,
+  setBrand
 }: {
   functionGetProduct: ({ id, page, total }: ProductGetParams) => Promise<
     | {
@@ -43,6 +49,12 @@ const Filter = ({
   subcategoryId?: string;
   orderBy?: string;
   orderDirection?: string;
+  color: string;
+  setColor: React.Dispatch<React.SetStateAction<string>>;
+  size: string;
+  setSize: React.Dispatch<React.SetStateAction<string>>;
+  brand: string;
+  setBrand: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const [ativo, setAtivo] = React.useState(false);
   const categories = useQuery({
@@ -118,7 +130,11 @@ const Filter = ({
           <AccordionSubcategories content={subcategories.data?.subcategories} />
           <div className={styles.divisor}></div>
 
-          <ColorFilter filterColors={filterColors} />
+          <ColorFilter
+            filterColors={filterColors}
+            setColor={setColor}
+            color={color}
+          />
         </div>
 
         <div className={styles.botoes}>
