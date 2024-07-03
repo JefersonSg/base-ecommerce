@@ -61,7 +61,7 @@ export async function getFilters({
     });
   });
 
-  const uniqueSizes = Array.from(sizeSet);
+  const uniqueSizes = Array.from(sizeSet) as string[];
 
   // Marcas
 

@@ -53,8 +53,11 @@ const SectionProdutos = ({
   const [color, setColor] = React.useState('');
   const [brand, setBrand] = React.useState('');
   const [size, setSize] = React.useState('');
+  const [category, setCategory] = React.useState('');
+  const [subcategory, setSubcategory] = React.useState('');
 
   const fetching = React.useRef(false);
+  const [apliFilters, setApliFilters] = React.useState(false);
 
   // Scrolls
 
@@ -73,7 +76,7 @@ const SectionProdutos = ({
   React.useEffect(() => {
     if (page === 1) return;
 
-    async function getProducts(page: number) {
+    async function getProducts() {
       const actionData = await functionGetProduct({
         category: categoryId,
         subcategory: subcategoryId,
@@ -97,7 +100,9 @@ const SectionProdutos = ({
       if (actionData?.products && actionData?.products?.length < 9)
         setInfinite(false);
     }
-    void getProducts(page);
+    if (!size && !color && !brand) {
+      void getProducts();
+    }
   }, [
     active,
     functionGetProduct,
@@ -129,10 +134,10 @@ const SectionProdutos = ({
 
   // Set FIlters
   React.useEffect(() => {
-    async function getProducts(page: number) {
+    async function getProducts() {
       const actionData = await functionGetProduct({
-        category: categoryId,
-        subcategory: subcategoryId,
+        category: categoryId ?? category,
+        subcategory: subcategoryId ?? subcategory,
         name: pesquisa,
         page,
         total: 9,
@@ -144,30 +149,34 @@ const SectionProdutos = ({
         orderBy,
         orderDirection
       });
-
+      setApliFilters(false);
       if (actionData?.products) {
         const { products } = actionData;
-
-        console.log(actionData);
 
         setDataProducts([...products]);
       }
       if (actionData?.products && actionData?.products?.length < 9)
         setInfinite(false);
     }
-    if (color || size || brand) {
+    if (apliFilters) {
       setPage(1);
-
-      void getProducts(page);
+      setInfinite(true);
+      window.scrollTo({
+        top: 0
+      });
+      void getProducts();
     }
   }, [
     active,
+    apliFilters,
     brand,
     categoryId,
     color,
     functionGetProduct,
     orderBy,
     orderDirection,
+    category,
+    subcategory,
     page,
     pesquisa,
     promotion,
@@ -193,6 +202,11 @@ const SectionProdutos = ({
           setSize={setSize}
           brand={brand}
           setBrand={setBrand}
+          category={category}
+          setCategory={setCategory}
+          subcategory={subcategory}
+          setSubcategory={setSubcategory}
+          setApliFilters={setApliFilters}
         />
 
         <div className={styles.informacoes}></div>

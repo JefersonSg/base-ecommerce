@@ -12,25 +12,28 @@ const ColorFilter = ({
   color: string;
   setColor: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  const [ativo, setAtivo] = React.useState(false);
   return (
-    <nav>
-      <TituloAccordeon title="Cores" />
-      <ul className={styles.lista_cores}>
-        {filterColors.map((color) => {
-          return (
-            <li key={color.codeColor} className={styles.li_color}>
-              <input
-                onClick={() => {
-                  setColor(color.color);
-                }}
-                type="checkbox"
-                style={{ backgroundColor: `${color.codeColor}` }}
-              />
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <div className={styles.accordion_container}>
+      <TituloAccordeon title={'Cores'} setAtivo={setAtivo} ativo={ativo} />
+      <nav className={`${ativo ? styles.ativo : ''}`}>
+        <ul className={styles.lista_cores}>
+          {filterColors.map((color) => {
+            return (
+              <li key={color.codeColor} className={styles.li_color}>
+                <input
+                  onClick={() => {
+                    setColor(color.color);
+                  }}
+                  type="checkbox"
+                  style={{ backgroundColor: `${color.codeColor}` }}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </div>
   );
 };
 
