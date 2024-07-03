@@ -75,7 +75,7 @@
   line-height: 150%;
 }
 .promotion {
-  z-index: 1000;
+  z-index: 998;
   position: absolute;
   left: 16px;
   top: 16px;

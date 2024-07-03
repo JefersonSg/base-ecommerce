@@ -39,7 +39,8 @@
     max-width: 400px;
     display: flex;
     justify-content: space-between;
-    padding: 0 16px;
+    padding: 0 3rem;
+    gap: 16px;
     box-sizing: border-box;
 }
 .botoes button {
@@ -47,7 +48,8 @@
  font-size: 16px;
  font-weight: 500;
  line-height: 24px;
- width: 180px;
+ flex: 40%;
+ max-width: 180px;
  box-sizing: border-box;
  margin-bottom: 16px;
  cursor: pointer;

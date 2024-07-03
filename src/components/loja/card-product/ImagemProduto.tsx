@@ -79,7 +79,6 @@ const ImagemProduto = ({
         className={`${styles.mySwiper} slide_photos`}
         navigation={true}
         pagination={true}
-        centerInsufficientSlides={true}
         loop={false}
         modules={[Navigation, Pagination]}
         speed={300}

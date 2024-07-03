@@ -181,10 +181,11 @@ const Filter = ({
           <button
             className={styles.btn_limpar}
             onClick={() => {
-              setApliFilters(false);
               setBrand('');
               setSize('');
               setColor('');
+              setApliFilters(true);
+              setAtivo(false);
             }}
           >
             LIMPAR
