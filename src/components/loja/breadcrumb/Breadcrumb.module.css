@@ -28,9 +28,14 @@
   font-style: normal;
   font-weight: 400;
   white-space: nowrap;
+  width: max-content;
+
 }
 .breadcrumb p {
   white-space: nowrap;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (min-width: 64rem) {
