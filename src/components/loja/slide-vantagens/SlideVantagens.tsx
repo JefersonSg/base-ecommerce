@@ -46,7 +46,7 @@ function SlideVantagens() {
         <SwiperSlide>
           <Vantagem
             titulo="Envio Rápido"
-            texto="e 100% seguro!"
+            texto="100% seguro!"
             image="Caminhao"
             link="frete-gratis"
           />
