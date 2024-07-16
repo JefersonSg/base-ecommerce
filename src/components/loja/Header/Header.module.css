@@ -1,7 +1,7 @@
 .header {
   width: 100%;
-  height: 64px;
-  background: black;
+  height: 84px;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,7 +17,7 @@
   position: absolute;
 }
 .container_header {
-  background-color: black;
+  background-color: white;
   box-shadow: 0 7px 26px rgba(154, 154, 204, 0.2);
 }
 .container1,
@@ -127,11 +127,9 @@
 }
 @media (max-width: 1023px) {
 
-  /* .container_header {
-    position: sticky;
-    top: 0px;
-    z-index: 999;
-  } */
+  .container_header {
+    padding-bottom: 8px;
+  }
   .container1 {
     opacity: 0;
     pointer-events: none;

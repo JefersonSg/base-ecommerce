@@ -1,6 +1,6 @@
 .container_nav {
   position: relative;
-  background-color: black;
+  background-color: white;
   font-family: var(--fonte-primaria);
 }
 
@@ -16,7 +16,7 @@
 
 .link {
   height: 50px;
-  background-color: black;
+  background-color: white;
   display: none;
   color: white !important;
 }

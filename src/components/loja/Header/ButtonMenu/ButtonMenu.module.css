@@ -18,10 +18,10 @@
 
 .mobile_button::after {
   width: 26px;
-  background: white;
+  background: var(--cor-quarta);
   box-shadow:
-    0 8px white,
-    0 -8px white;
+    0 8px var(--cor-quarta),
+    0 -8px var(--cor-quarta);
 }
 .mobile_button::after {
   content: '';

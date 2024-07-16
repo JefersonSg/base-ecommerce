@@ -22,8 +22,8 @@ export const Header = async () => {
               className={styles.foto_logo}
               alt="Logo"
               src={'/header/Logo.svg'}
-              width={100}
-              height={83}
+              width={150}
+              height={113}
             />
           </Link>
 
