@@ -67,7 +67,9 @@ const CardVisitas = ({
           <p className={`${styles.valor_principal} ${styles.p1}`}>
             {views?.sessions?.length} visitantes
           </p>
-          <p className={styles.valor_principal}>{totalViews} clicks</p>
+          <p className={styles.valor_principal}>
+            {totalViews} clicks em produtos
+          </p>
         </div>
       </div>
       <p className={styles.texto_produtos}>Visualização por visitante</p>
@@ -75,11 +77,11 @@ const CardVisitas = ({
         (userView, index) =>
           index <= mostrarMais && (
             <VisitantesViews
-              key={userView._id}
-              ip={userView._id}
-              user={userView.user}
-              views={userView.numberVisit}
-              products={userView.products}
+              key={userView?._id}
+              ip={userView?._id}
+              user={userView?.user}
+              views={userView?.numberVisit}
+              products={userView?.products}
             />
           )
       )}
@@ -88,7 +90,7 @@ const CardVisitas = ({
           className={styles.botao_mostrar_mais}
           onClick={() => {
             if (mostrarMais === 3) {
-              setMostrarMais(views?.totalViews?.length);
+              setMostrarMais(views?.sessions?.length);
             } else {
               setMostrarMais(3);
             }

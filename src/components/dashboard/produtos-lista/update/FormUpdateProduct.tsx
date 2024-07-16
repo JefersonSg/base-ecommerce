@@ -22,15 +22,9 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import SelectColor from './color/SelectColor-amount';
 import { useQuery } from '@tanstack/react-query';
-import {
-  getAllCategories,
-  getAllProducts,
-  getAllSubcategories
-} from '@/src/shared/api/GETS';
 
 import {
   type subcategoryInterface,
-  type CategoryInterface,
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
 import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
@@ -40,15 +34,15 @@ import { useRouter } from 'next/navigation';
 import ToggleButtonCreate from '../../../compartilhado/formulario/ToggleButtonCreate';
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
+import SelectSizes from './sizes/SelectSizes';
+import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import DicaImagem from '../dicas/DicaImagem';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const schema = validationProduct;
 
-interface CategoriesResponse {
-  categories: CategoryInterface[];
-}
-interface subcategoriesResponse {
-  subcategories: subcategoryInterface[];
-}
 const FormUpdateProduct = ({
   dataProduct
 }: {
@@ -58,15 +52,14 @@ const FormUpdateProduct = ({
     active,
     brand,
     category,
-    codeColors,
-    colors,
     description,
     name,
     price,
     promotion,
     howToUse,
     images,
-    size,
+    coverPhoto1,
+    coverPhoto2,
     stock,
     subcategory,
     characteristic,
@@ -85,7 +78,6 @@ const FormUpdateProduct = ({
     defaultValues: {
       name,
       description,
-      size,
       category,
       subcategory,
       composition,
@@ -96,44 +88,61 @@ const FormUpdateProduct = ({
       brand,
       characteristic,
       images: {},
+      coverPhoto1: {},
+      coverPhoto2: {},
       active
     }
   });
 
   const router = useRouter();
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [openDica, setOpenDica] = React.useState(false);
+
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [schemeColor, setSchemeColor] = React.useState(['']);
   const [schemeCodeColor, setSchemeCodeColor] = React.useState(['#000000']);
-  const [amount, setAmount] = React.useState<number[]>([]);
+  const [amount, setAmount] = React.useState<number[][]>([[]]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
   const [ativoNewSubcategory, setAtivoNewSubcategory] = React.useState(false);
   const [corAtiva, setCorAtiva] = React.useState(
     !!dataProduct?.product?.colors?.[0].length
   );
+  const [sizes, setSizes] = React.useState<string[]>(['1']);
 
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
+  const [coverPhoto1WatchUrl, setCoverPhoto1WatchUrl] = React.useState<any[]>(
+    []
+  );
+  const [coverPhoto2WatchUrl, setCoverPhoto2WatchUrl] = React.useState<any[]>(
+    []
+  );
+
   const [subcategoriesList, setSubcategoriesList] = React.useState<
     subcategoryInterface[] | undefined
   >([]);
 
+  const nameWatch = watch('name');
   const promotionCheck = watch('promotion');
   const promotionPriceCheck = watch('promotionalPrice');
   const activeCheck = watch('active');
   const imagesWatch: any = watch('images');
+  const coverPhoto1Watch: any = watch('coverPhoto1');
+  const coverPhoto2Watch: any = watch('coverPhoto2');
   const categoryWatch: any = watch('category');
 
-  const dataCategory = useQuery<CategoriesResponse>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+  const dataCategory = useQuery({
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
-  const dataSubCategories = useQuery<subcategoriesResponse>({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
+  const dataSubCategories = useQuery({
+    queryKey: ['subcategories-get-all'],
+    queryFn: async () => await subcategoriesGetAll()
   });
-  const { refetch } = useQuery<CategoriesResponse>({
+  const { refetch } = useQuery({
     queryKey: ['products'],
-    queryFn: getAllProducts
+    queryFn: async () => await productsFilterGet({ total: 1000 })
   });
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
@@ -142,16 +151,18 @@ const FormUpdateProduct = ({
       const response = await updateProduct(
         dataProduct.product._id,
         data,
+        sizes,
         schemeCodeColor,
         schemeColor,
         amount,
-        setAtivoPopUp,
+        setMessagePopUp,
+        setTypePopUp,
         corAtiva
       );
       setIsLoading(false);
 
       if (response) {
-        setAtivoPopUp('Produto atualizado com sucesso');
+        setMessagePopUp('Produto atualizado com sucesso');
         await refetch();
         router.push('/dashboard/produtos');
       }
@@ -160,16 +171,7 @@ const FormUpdateProduct = ({
     }
   };
 
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setAtivoPopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [ativoPopUp]);
-
+  // Go to product page
   React.useEffect(() => {
     if (!dataProduct?.product) {
       router.push('/dashboard/produtos');
@@ -178,14 +180,22 @@ const FormUpdateProduct = ({
 
   // setando Valores dos arrays
   React.useEffect(() => {
-    if (colors?.[0]) {
-      setSchemeColor(colors);
-    }
-    if (stock?.amount) {
-      setAmount(stock?.amount);
-    }
-    if (codeColors?.[0]) {
-      setSchemeCodeColor(codeColors?.join(',')?.split(','));
+    if (dataProduct.product) {
+      if (dataProduct.product.colors) {
+        setSchemeColor(dataProduct.product.colors);
+      }
+
+      if (dataProduct.product.size) {
+        setSizes(dataProduct.product.size);
+      }
+      if (dataProduct.product.stock.amount) {
+        setAmount(stock.amount);
+      }
+      if (dataProduct.product.codeColors) {
+        setSchemeCodeColor(
+          dataProduct.product.codeColors?.join(',')?.split(',')
+        );
+      }
     }
 
     if (dataProduct?.product) {
@@ -193,11 +203,11 @@ const FormUpdateProduct = ({
         reset();
       }, 100);
     }
-  }, [codeColors, colors, dataProduct, reset, stock?.amount]);
+  }, [dataProduct, reset, stock.amount]);
 
   React.useEffect(() => {
     const subcategories = dataSubCategories.data?.subcategories.filter(
-      (subcategorie) => subcategorie.category === categoryWatch
+      (subcategorie) => subcategorie?.category === categoryWatch
     );
 
     setSubcategoriesList(subcategories);
@@ -218,9 +228,41 @@ const FormUpdateProduct = ({
     setImageUrl1(imageUrlArray);
   }, [imagesWatch]);
 
+  const handleChangeCover1 = React.useCallback(() => {
+    const imageUrlArray: any[] = [];
+    if (coverPhoto1Watch?.[0]) {
+      const arrayImages = [...coverPhoto1Watch];
+      arrayImages?.forEach((image: any) => {
+        const imageURL = URL?.createObjectURL(image);
+        imageUrlArray.push(imageURL);
+      });
+    }
+    setCoverPhoto1WatchUrl(imageUrlArray);
+  }, [coverPhoto1Watch]);
+
+  const handleChangeCover2 = React.useCallback(() => {
+    const imageUrlArray: any[] = [];
+    if (coverPhoto2Watch?.[0]) {
+      const arrayImages = [...coverPhoto2Watch];
+      arrayImages?.forEach((image: any) => {
+        const imageURL = URL?.createObjectURL(image);
+        imageUrlArray.push(imageURL);
+      });
+    }
+    setCoverPhoto2WatchUrl(imageUrlArray);
+  }, [coverPhoto2Watch]);
+
   React.useEffect(() => {
     handleChange();
   }, [handleChange]);
+
+  React.useEffect(() => {
+    handleChangeCover1();
+  }, [handleChangeCover1]);
+
+  React.useEffect(() => {
+    handleChangeCover2();
+  }, [handleChangeCover2]);
 
   return (
     <>
@@ -234,14 +276,19 @@ const FormUpdateProduct = ({
             <div className={`div_container ${styles.core_items}`}>
               <p className={styles.subtitulo}>Informação do produto</p>
 
-              <InputFormulario
-                label="Nome"
-                name="name"
-                placeholder="Nome do produto"
-                type="text"
-                error={errors.name}
-                register={register}
-              />
+              <div className={styles.div_name}>
+                <span className={styles.contador_nome}>
+                  {nameWatch.length} / 50
+                </span>
+                <InputFormulario
+                  label="Nome"
+                  name="name"
+                  placeholder="Nome do produto"
+                  type="text"
+                  error={errors.name}
+                  register={register}
+                />
+              </div>
 
               <InputFormulario
                 type=""
@@ -251,13 +298,11 @@ const FormUpdateProduct = ({
                 error={errors.description}
                 register={register}
               />
-              <InputFormulario
-                label="Tamanho"
-                name="size"
-                placeholder="ex: 300ml | 25g | 1kg"
-                type="text"
-                error={errors.size}
-                register={register}
+              <SelectSizes
+                amount={amount}
+                setAmount={setAmount}
+                setSizes={setSizes}
+                sizes={sizes}
               />
             </div>
             <div className={`div_container ${styles.opicional_items}`}>
@@ -288,7 +333,15 @@ const FormUpdateProduct = ({
                 register={register}
               />
             </div>
-            <div className="div_container">
+            <div className={`div_container ${styles.images_produto_container}`}>
+              <p
+                className={styles.dicas_image}
+                onClick={() => {
+                  setOpenDica(true);
+                }}
+              >
+                Ver dicas
+              </p>
               <InputFormulario
                 label="Carregue as imagens do produto"
                 name="images"
@@ -340,14 +393,106 @@ const FormUpdateProduct = ({
                 })}
               </Swiper>
 
-              {/* <div className={styles.exibicao_div}>
-                <p>Deseja alterar a ordem de exibicao?</p>
-              </div> */}
+              <InputFormulario
+                label="Carregue a foto de capa 1 (opicional)"
+                name="coverPhoto1"
+                placeholder=""
+                register={register}
+                type="file"
+                error={errors.coverPhoto1}
+              />
+              <Swiper
+                className={`${styles.mySwiper} slide-images`}
+                slidesPerView={5}
+                navigation={true}
+                spaceBetween={32}
+                pagination={false}
+                modules={[Navigation]}
+              >
+                {coverPhoto1 && !coverPhoto1WatchUrl[0] ? (
+                  <>
+                    {
+                      <SwiperSlide>
+                        <p>{1}</p>
+                        <Image
+                          alt="imagens do produto"
+                          src={coverPhoto1}
+                          width={50}
+                          height={50}
+                        />
+                      </SwiperSlide>
+                    }
+                  </>
+                ) : (
+                  ''
+                )}
+                {coverPhoto1WatchUrl?.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <p>{index + 1}</p>
+                      <Image
+                        alt="imagens do produto"
+                        src={image}
+                        width={50}
+                        height={50}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+              <InputFormulario
+                label="Carregue a foto de capa 2 (opicional)"
+                name="coverPhoto2"
+                placeholder=""
+                register={register}
+                type="file"
+                error={errors.coverPhoto2}
+              />
+              <Swiper
+                className={`${styles.mySwiper} slide-images`}
+                slidesPerView={5}
+                navigation={true}
+                spaceBetween={32}
+                pagination={false}
+                modules={[Navigation]}
+              >
+                {coverPhoto2 && !coverPhoto2WatchUrl[0] ? (
+                  <>
+                    {
+                      <SwiperSlide>
+                        <p>{1}</p>
+                        <Image
+                          alt="imagens do produto"
+                          src={coverPhoto2}
+                          width={50}
+                          height={50}
+                        />
+                      </SwiperSlide>
+                    }
+                  </>
+                ) : (
+                  ''
+                )}
+                {coverPhoto2WatchUrl?.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <p>{index + 1}</p>
+                      <Image
+                        alt="imagens do produto"
+                        src={image}
+                        width={50}
+                        height={50}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
             </div>
 
             <SelectColor
               corAtiva={corAtiva}
               setCorAtiva={setCorAtiva}
+              sizes={sizes}
               amount={amount}
               schemeCodeColor={schemeCodeColor}
               schemeColor={schemeColor}
@@ -488,17 +633,38 @@ const FormUpdateProduct = ({
       </div>
       {ativoNewCategory && (
         <SideBarFormCreate
+          isLoading={isLoading}
           setAtivo={setAtivoNewCategory}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
+          setIsLoading={setIsLoading}
+          setTypePopUp={setTypePopUp}
         />
       )}
       {ativoNewSubcategory && (
         <SideBarFormCreateSubcategory
           setAtivo={setAtivoNewSubcategory}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
-      {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
+      {openDica || ativoNewCategory || ativoNewSubcategory ? (
+        <BackgoundClick
+          setState1={setOpenDica}
+          setState2={setAtivoNewSubcategory}
+          setState3={setAtivoNewCategory}
+        />
+      ) : (
+        <></>
+      )}
+      {openDica && <DicaImagem />}
     </>
   );
 };

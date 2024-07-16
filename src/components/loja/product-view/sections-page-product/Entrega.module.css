@@ -7,6 +7,7 @@
   margin-top: 32px;
   padding-left: 16px;
   box-sizing: border-box;
+  font-family: var(--fonte-primaria);
 }
 
 .textos {
@@ -34,7 +35,10 @@
   font-weight: 400;
   line-height: 150%;
 }
-
+.textos {
+  width: calc(100% - 10px);
+  box-sizing: border-box;
+}
 .textos > div {
   display: flex;
   gap: 8px;
@@ -44,20 +48,17 @@
   align-self: center;
   width: 100%;
 }
-.textos p {
-  width: 256px;
-}
 
 .buttonOk {
   margin-left: 16px;
   height: 48px;
   width: 48px;
   padding: 0;
-  background-color: transparent;
+  background-color: #B7B9B7;
   font-weight: 700;
   outline: none;
-  color: #00000070;
-  border: 1px solid #00000070;
+  color: #ffffff;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.1s;
@@ -73,28 +74,46 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 100%;
+  width: 100vw;
   max-width: 100%;
   font-family: var(--fonte-primaria);
   margin-top: 32px;
 }
 .entrega_calculo {
-  display: flex;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
   gap: 8px;
-  max-width: 100%;
+  width: 100%;
   height: max-content;
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 8px;
   align-items: center;
 }
 
+.texto_indicativo_input {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 8px;
+}
 
 @media (min-width: 64rem) {
+
+  .texto_indicativo_input label {
+    font-size: 16px;
+  }
+  .input_entrega {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  .textos
   .entrega {
-    background-color: #d9d9d950;
     width: 100%;
     max-width: 350px;
-    height: 184px;
+    height: max-content;
     justify-content: center;
     padding-left: 24px;
     box-sizing: content-box;
@@ -104,15 +123,14 @@
     gap: 0px;
     border-radius: 12px;
     margin-top: 0;
-    padding: 16px;
-    padding-bottom: 16px;
+    padding:0px;
   }
   .entrega input {
-    margin-bottom: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #F5F5F5;
   }
-  .textos {
-    max-width: 100%;
-  }
+
   .entrega p {
     display: flex;
     gap: 16px;

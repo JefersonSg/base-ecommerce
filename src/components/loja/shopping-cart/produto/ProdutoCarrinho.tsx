@@ -9,13 +9,12 @@ import {
   type RefetchOptions,
   useQuery
 } from '@tanstack/react-query';
-import { getProductById } from '@/src/shared/api/GETS';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { updateItemCart } from '@/src/shared/api/UPDATES';
 import { deleteCartItem } from '@/src/shared/api/DELETE';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import Link from 'next/link';
+import productByIdGet from '@/src/actions/product-by-id-get';
 
 const ProdutoCarrinho = ({
   productId,
@@ -24,7 +23,9 @@ const ProdutoCarrinho = ({
   amount,
   ItemCartId,
   total,
-  refetchData
+  refetchData,
+  setTypePopUp,
+  setMessagePopUp
 }: {
   productId: string;
   color: string;
@@ -32,14 +33,16 @@ const ProdutoCarrinho = ({
   amount: number;
   total: number;
   ItemCartId: string;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   refetchData?: (
     options?: RefetchOptions | undefined
   ) => Promise<QueryObserverResult<any, Error>>;
 }) => {
-  const { data, refetch } = useQuery<{ product: ProductApi }>({
+  const { data, refetch } = useQuery({
     queryKey: ['product', productId],
     queryFn: async () => {
-      return await getProductById(productId);
+      return await productByIdGet({ id: productId });
     }
   });
   const [modalDeleteActive, setModalDeleteActive] = React.useState(false);
@@ -100,6 +103,7 @@ const ProdutoCarrinho = ({
       setStock(false);
     }
   }, [color, data]);
+
   return (
     <div
       className={`${styles.produto_Carrinho} ${stock ? '' : styles.no_stock}`}
@@ -109,7 +113,11 @@ const ProdutoCarrinho = ({
           <Link href={`/produtos/produto/${productId}`}>
             <Image
               alt="Imagem do produto"
-              src={data?.product?.images?.[0]}
+              src={
+                data?.product?.coverPhoto1?.[0]
+                  ? data?.product?.coverPhoto1
+                  : data?.product?.images?.[0]
+              }
               placeholder="blur"
               blurDataURL={data?.product?.images?.[0]}
               width={104}
@@ -166,10 +174,15 @@ const ProdutoCarrinho = ({
       {modalDeleteActive && <BackgoundClick setState1={setModalDeleteActive} />}
       {modalDeleteActive && (
         <ModalDelete
-          funcDelete={deleteItem}
           id1={ItemCartId}
-          setState={setModalDeleteActive}
           text="Deseja mesmo remover o produto?"
+          messageToErrorPopUp="Erro ao remover produto"
+          messageToPopUp="Produto removido"
+          setIsLoading={setIsloading}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setState={setModalDeleteActive}
+          funcDelete={deleteItem}
         />
       )}
     </div>

@@ -10,10 +10,12 @@ import {
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { addNewItemCart } from '@/src/shared/api/POST';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import Entrega from '../sections-page-product/Entrega';
+import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
+import MessageFloating from '@/src/components/compartilhado/messages/message-floating-cart';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
@@ -23,34 +25,32 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [colorSelected, setColorSelected] = React.useState(
     data?.colors?.[0] ?? ''
   );
+  const [sizeSelected, setSizeSelected] = React.useState(data.size[0]);
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const [textPopUp, setTextPopUp] = React.useState('');
+  const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
   const [haveColor, setHaveColor] = React.useState<boolean>();
+  const [modalLogin, setModalLogin] = React.useState(false);
+  const [nameProduct, setNameProduct] = React.useState('');
+  const [priceProduct, setPriceProduct] = React.useState<number>(0);
+  const [imageProduct, setImageProduct] = React.useState('');
 
   async function addCartItem() {
-    setTextPopUp('');
+    setMessagePopUp('');
     setTypePopUp('');
 
     if (!userData?.data?.user?._id) {
-      setTextPopUp('Faça login para adicionar ao carrinho');
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setTextPopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp('Faça login para adicionar ao carrinho');
+      setModalLogin(true);
+      return;
     }
 
     const infosCartItem = {
       productId: data._id,
       userId: userData.data.user._id,
-      size: data.size,
+      size: sizeSelected,
       color: colorSelected,
       amount: 1
     };
@@ -64,57 +64,74 @@ function Detalhes({ data }: { data: ProductApi }) {
       }, 700);
 
       if (response) {
-        setTextPopUp('Produdo adicionado ao carrinho');
+        setMessagePopUp('Produdo adicionado ao carrinho');
         setTypePopUp('');
+        setNameProduct(data.name);
+        setPriceProduct(data.price);
+        setImageProduct(
+          data?.coverPhoto1?.length ? data.coverPhoto1 : data.images[0]
+        );
       } else {
-        setTextPopUp('Erro ao adicionar ao carrinho');
         setTypePopUp('error');
+        setMessagePopUp('Erro ao adicionar ao carrinho');
       }
 
-      const timeout = setTimeout(() => {
-        setTextPopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      clearTimeout(timeout);
       return response;
     } catch (error) {
       console.log(error);
-      setTypePopUp('Erro ao adicionar ao carrinho');
       setTypePopUp('error');
+      setTypePopUp('Erro ao adicionar ao carrinho');
       setIsLoading(false);
     }
   }
 
   // No Stock
   React.useEffect(() => {
-    if (data.colors?.[0].length === 0 && data.stock.amount[0]) {
-      setHaveColor(true);
-      return;
-    }
     if (data?.colors?.[0]) {
-      const stockIndex = data?.colors.findIndex(
-        (color) => color === colorSelected
-      );
+      const colorIndex = data?.colors.indexOf(colorSelected);
+      const sizeIndex = data?.size.indexOf(sizeSelected);
 
-      if (!data.stock.amount[stockIndex]) {
+      if (!data.stock.amount[colorIndex][sizeIndex]) {
         setHaveColor(false);
+
+        data.size.forEach((size, i) => {
+          if (data.stock.amount[colorIndex][i]) {
+            setSizeSelected(size);
+          }
+        });
         return;
       }
       setHaveColor(true);
+    } else {
+      setHaveColor(true);
     }
-  }, [colorSelected, data]);
+  }, [colorSelected, data, sizeSelected]);
 
   return (
     <div className={styles.detalhes}>
       <div className={styles.informacoes}>
         <Cores
+          sizes={data.size}
+          sizeSelected={sizeSelected}
+          setSizeSelected={setSizeSelected}
           colors={data?.colors}
           codeColors={data?.codeColors}
           colorSelected={colorSelected}
           setColorSelected={setColorSelected}
+          amount={data.stock.amount}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
-        <Tamanhos size={data?.size} />
+        <Tamanhos
+          colorSelected={colorSelected}
+          colors={data.colors}
+          amount={data.stock.amount}
+          sizes={data?.size}
+          sizeSelected={sizeSelected}
+          setSizeSelected={setSizeSelected}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+        />
       </div>
       <Preco
         promotion={data.promotion}
@@ -122,7 +139,9 @@ function Detalhes({ data }: { data: ProductApi }) {
         price={data?.price}
       />
       <div className={styles.entrega}>
-        <Entrega />
+        <Suspense>
+          <Entrega />
+        </Suspense>
       </div>
       <div
         className={styles.botao_carrinho}
@@ -145,7 +164,26 @@ function Detalhes({ data }: { data: ProductApi }) {
           disabled={!haveColor || !data.active}
         />
       </div>
-      {textPopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
+      {messagePopUp && typePopUp === 'error' && (
+        <PopUpMessage
+          text={messagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+          setMessagePopUp={setMessagePopUp}
+        />
+      )}
+      {messagePopUp && typePopUp !== 'error' && (
+        <MessageFloating
+          amount={1}
+          img={imageProduct}
+          nameProduct={nameProduct}
+          priceProduct={priceProduct}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
+      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </div>
   );
 }

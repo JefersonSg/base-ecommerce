@@ -2,11 +2,11 @@
   max-width: 160px;
   min-width: 100px;
   height: 40px;
-  background-color: #ffe0db;
+  background-color: transparent;
   border: #696cff;
   border-radius: 8px;
-  box-shadow: 0 0.125rem 0.25rem 0 #ffe0db;
-  color: #ff3e1d !important;
+  color: #474747 !important;
+  
   cursor: pointer;
   font-family: var(--fonte-secundaria);
   font-weight: 600;
@@ -14,7 +14,7 @@
   transition: all 0.2s;
 }
 .btn_rmv:hover {
-  border: 1px solid #ff3e1d;
+  border: none;
   font-weight: 700;
   transform: translateY(-3px);
   background-color: #ffcbc3;
@@ -23,8 +23,7 @@
 .btn_rmv.loading {
   opacity: 0.6;
   transform: translateY(-3px);
-  border: 1px solid #ff3e1d;
-  background-color: #ffcbc3;
+
   font-weight: 700;
   cursor: progress;
 }

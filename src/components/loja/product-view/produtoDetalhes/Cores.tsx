@@ -8,18 +8,31 @@ function Cores({
   colors,
   codeColors,
   colorSelected,
-  setColorSelected
+  setColorSelected,
+  sizeSelected,
+  setSizeSelected,
+  sizes,
+  amount,
+  setMessagePopUp,
+  setTypePopUp
 }: {
   colorSelected?: string;
   colors?: string[] | undefined;
   codeColors?: string[] | undefined;
   setColorSelected: React.Dispatch<React.SetStateAction<string>>;
+  sizeSelected: string;
+  setSizeSelected: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  sizes: string[];
+  amount: number[][];
 }) {
   const [ativo, setAtivo] = React.useState(false);
 
   const [codeColorSelected, setCodeColorSelected] = React.useState(
     codeColors ? codeColors[0] ?? '' : ''
   );
+
   return (
     <>
       {colors?.[0] && colors?.[0]?.length > 0 ? (
@@ -60,6 +73,12 @@ function Cores({
                     setColorSelected(colors[index]);
                     setCodeColorSelected(codeColors?.[index] ?? '');
                     setAtivo(false);
+
+                    if (amount[index][sizes.indexOf(sizeSelected)] === 0) {
+                      setSizeSelected('');
+                      setTypePopUp('error');
+                      setMessagePopUp('Sem estoque disponível neste tamanho');
+                    }
                   }}
                 >
                   {color}

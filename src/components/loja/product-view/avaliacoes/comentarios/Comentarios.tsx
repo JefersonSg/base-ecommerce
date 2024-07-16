@@ -12,6 +12,7 @@ import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import { type CommentInterface } from '@/src/shared/helpers/interfaces';
 import { useParams } from 'next/navigation';
 import { getAllComments } from '@/src/shared/api/GETS';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 
 interface User {
   user: {
@@ -29,14 +30,15 @@ function Comentarios() {
     queryKey: ['user']
   });
   const dataComments = useQuery<{ comments: CommentInterface[] }>({
-    queryKey: ['comments-id-' + pathname.id],
+    queryKey: ['comments-id-' + pathname?.id],
     queryFn: async () => {
-      return await getAllComments(pathname.id);
+      return await getAllComments(pathname?.id);
     }
   });
 
   const [Commented, setCommented] = React.useState(true);
-  const [textPopUp, setTextPopUp] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
 
   React.useEffect(() => {
@@ -65,7 +67,7 @@ function Comentarios() {
                 dataUser={data}
                 refetch={dataComments.refetch}
                 setModalForm={setModalForm}
-                setTextPopUp={setTextPopUp}
+                setMessagePopUp={setMessagePopUp}
                 setTypePopUp={setTypePopUp}
               />
             )}
@@ -77,15 +79,24 @@ function Comentarios() {
         {dataComments?.data?.comments?.map((comment, index) => {
           return (
             <Comentario
+              setIsLoading={setIsLoading}
               key={index}
               commentData={comment}
-              setTextPopUp={setTextPopUp}
+              setMessagePopUp={setMessagePopUp}
               setTypePopUp={setTypePopUp}
             />
           );
         })}
       </div>
-      {textPopUp && <PopUpMessage text={textPopUp} type={typePopUp} />}
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          typePopUp={typePopUp}
+          setTypePopUp={setTypePopUp}
+          setMessagePopUp={setMessagePopUp}
+        />
+      )}
+      {isLoading && <LoadingAnimation />}
     </>
   );
 }

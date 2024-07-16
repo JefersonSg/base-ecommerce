@@ -18,12 +18,28 @@
   grid-column: 1/-1;
   grid-row: 1;
 }
-
+.tamanhos {
+  margin-bottom: 8px;
+}
 .botoes {
   display: flex;
   gap: 16px;
 }
-
+.div_name {
+  position: relative;
+  width: 100%;
+  padding-bottom: 8px;
+}
+.contador_nome {
+  display: block;
+  position: absolute;
+  width: 91%;
+  text-align: end;
+  left: 0;
+  bottom: 8px;
+  font-size: 12px;
+  padding: 4px 8px 0 8px;
+}
 .container_form_create h3 {
   font-family: var(--fonte-secundaria);
   font-weight: 500;
@@ -89,6 +105,18 @@
   border-radius: 6px;
   border: 1px solid var(--color-border);
   color: #566a7f;
+}
+
+.images_produto_container {
+  position: relative;
+
+}
+
+.dicas_image {
+  color: var(--blue-db-500) !important;
+  font-size: 12px;
+  text-transform: capitalize !important;
+  cursor: pointer;
 }
 
 @media (max-width: 1024px) {

@@ -1,39 +1,18 @@
-import {
-  getAllComments,
-  getCategoryById,
-  getSubcategoryById
-} from '@/src/shared/api/GETS';
-import {
-  type CommentInterface,
-  type ProductApi
-} from '@/src/shared/helpers/interfaces';
+import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import ContainerProduct from './Container_product';
 import { Titulo } from '../../compartilhado/textos/Titulo';
 import styles from './Produto.module.css';
+import productByIdGet from '@/src/actions/product-by-id-get';
 
-export default async function ContainerFetchs({
-  productData
-}: {
-  productData: ProductApi;
-}) {
-  const commentData: { comments: CommentInterface[] } = await getAllComments(
-    productData._id
+export default async function ContainerFetchs({ id }: { id: string }) {
+  const productData: { product: ProductApi } | undefined = await productByIdGet(
+    { id }
   );
-  const categoryName =
-    productData.category && (await getCategoryById(productData?.category));
-  const subcategoryName =
-    productData.subcategory &&
-    (await getSubcategoryById(productData?.subcategory));
 
   return (
     <main className={styles.section_produtos}>
-      {productData ? (
-        <ContainerProduct
-          commentData={commentData}
-          productData={productData}
-          categoryName={categoryName?.category?.name}
-          subcategoryName={subcategoryName?.subcategory?.name}
-        />
+      {productData?.product ? (
+        <ContainerProduct productData={productData?.product} />
       ) : (
         <div className={styles.not_found}>
           <Titulo titulo="Nenhum produto encontrado" />

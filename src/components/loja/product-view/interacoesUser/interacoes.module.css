@@ -14,7 +14,11 @@
   gap: 16px;
   align-items: center;
 }
-
+.start_loading {
+  width: 95px;
+  height: 16px;
+  background-color: rgb(198, 200, 200);
+}
 .interacao div div svg g path {
   stroke: var(--cor-secundaria);
 }
@@ -31,7 +35,7 @@
     width: 100%;
     max-width: 740px;
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 2;
     margin: 0;
   }
 }

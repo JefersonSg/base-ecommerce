@@ -8,14 +8,12 @@ import BodyTable from './BodyTable';
 import RodapeTable from './RodapeTable';
 import { deleteProduct } from '@/src/shared/api/DELETE';
 import { useQuery } from '@tanstack/react-query';
-import {
-  getAllProducts,
-  getNoActiveProducts,
-  getProductByName,
-  getProductByPromotion
-} from '@/src/shared/api/GETS';
+
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
@@ -27,25 +25,31 @@ const DataTable = () => {
   const [promotionProducts, setPromotionProducts] = React.useState(false);
   const [noActivesProducts, setNoActivesProducts] = React.useState(false);
 
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
+
   const { data, refetch } = useQuery({
     queryKey: ['products'],
-    queryFn: getAllProducts
+    queryFn: async () => await productsFilterGet({ total: 1000 })
   });
   const dataPesquisa = useQuery({
     queryKey: ['products', pesquisa],
     queryFn: async () => {
       if (pesquisa) {
-        return await getProductByName(pesquisa);
+        return await productsFilterGet({ name: pesquisa, total: 1000 });
       }
     }
   });
   const noActives = useQuery({
     queryKey: ['products-no-actives'],
-    queryFn: getNoActiveProducts
+    queryFn: async () => await productsFilterGet({ active: false, total: 1000 })
   });
   const promotions = useQuery({
     queryKey: ['get-products-by-promotion'],
-    queryFn: getProductByPromotion
+    queryFn: async () => {
+      return await productsFilterGet({ promotion: true, total: 1000 });
+    }
   });
 
   React.useEffect(() => {
@@ -54,6 +58,10 @@ const DataTable = () => {
       setNoActivesProducts(false);
     }
   }, [pesquisa]);
+
+  async function removeProduct() {
+    await deleteProduct(idDelete);
+  }
 
   return (
     <>
@@ -70,12 +78,12 @@ const DataTable = () => {
           noActivesProducts={noActivesProducts}
           data={
             noActivesProducts
-              ? noActives?.data
+              ? noActives?.data?.products
               : promotionProducts
-                ? promotions.data
+                ? promotions.data?.products
                 : pesquisa
-                  ? dataPesquisa?.data
-                  : data
+                  ? dataPesquisa?.data?.products
+                  : data?.products
           }
           setIdDelete={setIdDelete}
           setAtivoDelete={setAtivoDelete}
@@ -84,12 +92,12 @@ const DataTable = () => {
         <RodapeTable
           data={
             noActivesProducts
-              ? noActives?.data
+              ? noActives?.data?.products
               : promotionProducts
-                ? promotions.data
+                ? promotions.data?.products
                 : pesquisa
-                  ? dataPesquisa?.data
-                  : data
+                  ? dataPesquisa?.data?.products
+                  : data?.products
           }
           setCurrentPage={setCurrentPage}
           nextPage={nextPage}
@@ -104,13 +112,27 @@ const DataTable = () => {
       )}
       {ativoDelete && (
         <ModalDelete
-          text="Deseja mesmo deletar esse produto?"
           id1={idDelete}
+          text="Deseja mesmo deletar esse produto?"
+          messageToErrorPopUp="Erro ao remover o produto"
+          messageToPopUp="Produto removido"
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setIsLoading={setIsLoading}
           setState={setAtivoDelete}
-          funcDelete={deleteProduct}
+          funcDelete={removeProduct}
           refetch={refetch}
         />
       )}
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
+      {isLoading && <LoadingAnimation />}
     </>
   );
 };

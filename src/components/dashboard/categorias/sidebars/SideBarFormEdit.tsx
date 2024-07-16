@@ -12,8 +12,8 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { updateCategory } from '@/src/shared/api/UPDATES';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories } from '@/src/shared/api/GETS';
 import { validationCategoryEdit } from './validationCategoryEdit';
+import categoriesGetAll from '@/src/actions/category-get-all';
 
 interface Inputs {
   name: string;
@@ -48,7 +48,7 @@ const SideBarFormEdit = ({
 
   const { refetch } = useQuery({
     queryKey: ['categories'],
-    queryFn: getAllCategories
+    queryFn: categoriesGetAll
   });
 
   const [isLoading, setIsLoading] = React.useState(false);
@@ -83,7 +83,7 @@ const SideBarFormEdit = ({
         />
         <InputFormulario
           name="image"
-          label="Imagem"
+          label="Imagem: 1080 x 1080"
           placeholder=""
           register={register}
           type="file"

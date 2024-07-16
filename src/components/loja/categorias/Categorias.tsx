@@ -2,7 +2,7 @@ import { type CategoryInterface } from '@/src/shared/helpers/interfaces';
 import styles from './Categorias.module.css';
 import SlideCategoria from './SlideCategoria';
 
-async function Categorias({
+function Categorias({
   categorias
 }: {
   categorias: { categories: CategoryInterface[] };

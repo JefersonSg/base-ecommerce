@@ -11,12 +11,15 @@
   padding: 16px 8px;
   border: 1px solid rgba(67, 89, 113, 0.12);
   box-shadow: 0 2px 6px 0 rgba(67, 89, 113, 0.12);
-
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 1004;
+  font-family: var(--fonte-primaria);
+}
+.delete_categoria h2 {
+  font-family: var(--fonte-primaria);
 }
 .delete_categoria .botoes {
   display: flex;
@@ -24,7 +27,7 @@
 }
 
 .delete_categoria h2 {
-  font-family: 'Public Sans';
+  font-family: 'Public Sans', sans-serif;
   color: #697a8d;
   font-size: 16px;
   text-align: center;

@@ -1,21 +1,24 @@
 .container_nav {
   position: relative;
-  background-color: white;
+  background-color: black;
+  font-family: var(--fonte-primaria);
 }
 
 .categorias_lista {
   display: flex;
-  background-color: white;
+  background-color: black;
   width: max-content;
   max-width: 1220px;
   justify-content: space-between;
   margin: 0 auto;
+  color: white;
 }
 
 .link {
   height: 50px;
-  background-color: white;
+  background-color: black;
   display: none;
+  color: white !important;
 }
 .background {
   position: absolute;
@@ -30,40 +33,55 @@
 
 @media (min-width: 64rem) {
   .container_nav {
-    border-top: 1px solid #996557;
     border-bottom: 1px solid #996557;
+    height: 45px;
   }
   .link {
     display: flex;
     align-items: center;
     width: max-content;
+    height: 40px;
     padding: 0 8px;
     gap: 4px;
     font-weight: 500;
     text-align: center;
     justify-content: center;
     cursor: pointer;
-    border-top: 2px solid transparent;
+    color: white !important;
   }
   .category_name {
-    color: var(--cor-quinta);
+    color: white;
     transition: all 0.2s;
     font-size: 13px;
     font-weight: 400;
     line-height: 20px;
     text-transform: uppercase;
     font-family: var(--fonte-primaria);
+    position: relative;
+  }
+
+  .linha {
+    position: absolute;
+    display: block;
+    width: calc(0% + 20px);
+    height: 2px;
+    background-color: transparent;
+    top: -10px;
+    left: -3px;
+    transition: all .3s ease;
   }
 
   .link svg path {
-    stroke: var(--cor-quinta);
+    stroke: white;
     transition: all 0.2s;
   }
 
   /* hovers */
-  .link:hover {
-    border-top: 2px solid var(--cor-contraste);
+  .link:hover .linha {
+    background-color: var(--cor-contraste);
+    width: calc(100% + 20px);
   }
+
   .link:hover .category_name {
     color: var(--cor-contraste);
   }

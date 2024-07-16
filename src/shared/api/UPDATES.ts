@@ -24,10 +24,12 @@ const configFormdata = {
 export async function updateProduct(
   productId: string,
   data: any,
+  sizes: string[],
   codeColors: string[],
   colors: string[],
-  amount: number[],
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>,
+  amount: number[][],
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>,
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>,
   corAtiva: boolean
 ) {
   const formData = new FormData();
@@ -35,22 +37,36 @@ export async function updateProduct(
   let ok = false;
 
   if (colors && corAtiva) {
-    colors.forEach((color, index) => {
-      if (color.length < 1) {
-        setAtivoPopUp('Preencha todos os campos de cores');
-        ok = true;
-      }
-      if (amount[index] >= 0) {
-        ok = false;
-      } else {
-        setAtivoPopUp('Preencha todos os campos de quantidade');
-        ok = true;
-      }
+    colors.forEach((color, indexColor) => {
+      sizes.forEach((size, i) => {
+        if (color.length < 1) {
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de cores');
+          ok = true;
+        }
+        if (size.length < 1) {
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de tamanho');
+
+          ok = true;
+        }
+        if (amount[indexColor][i] >= 0) {
+          console.log(amount[indexColor][i]);
+          console.log(ok);
+        } else {
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de quantidade');
+          ok = true;
+        }
+      });
     });
   }
-  amount.forEach((amount) => {
-    if (!amount) {
-      setAtivoPopUp('Preencha todos os campos de quantidade');
+
+  amount[0].forEach((amountChild) => {
+    if (amountChild.toString().length < 1) {
+      setTypePopUp('error');
+      setMessagePopUp('Preencha todos os campos de quantidade');
+      ok = true;
     }
   });
 
@@ -60,9 +76,20 @@ export async function updateProduct(
     formData.append(key, data[key]);
   });
 
-  formData.append('amount', amount.toString());
-  formData.append('colors', colors.join(','));
-  formData.append('codeColors', codeColors.join(','));
+  formData.append('size', sizes.join(','));
+  formData.append('colors', corAtiva ? colors.join(',') : '');
+  formData.append('codeColors', corAtiva ? codeColors.join(',') : '');
+  formData.append(
+    'amount',
+    corAtiva ? JSON.stringify(amount) : JSON.stringify([amount[0]])
+  );
+  if (data.coverPhoto1) {
+    formData.append('coverPhoto1', data.coverPhoto1[0]);
+  }
+
+  if (data.coverPhoto2) {
+    formData.append('coverPhoto2', data.coverPhoto2[0]);
+  }
 
   if (data.images[0]) {
     const imageArray = Array.from(data.images);
@@ -82,15 +109,19 @@ export async function updateProduct(
     await revalidateTagAction('all-products');
     await revalidateTagAction(`product-by-id-${productId}`);
     await revalidateTagAction('all-products-by-sales');
+    await revalidateTagAction('products-actives');
+    await revalidateTagAction('products-by-promotions');
 
     return response.data;
   } catch (error: any) {
     if (error?.response?.data?.message) {
-      setAtivoPopUp(error?.response?.data?.message);
+      setTypePopUp('error');
+      setMessagePopUp(error?.response?.data?.message);
     }
     if (error.response.data.errorsResult.body) {
       Object.keys(error.response.data.errorsResult.body).forEach((key) => {
-        setAtivoPopUp(error.response.data.errorsResult.body[key]);
+        setTypePopUp('error');
+        setMessagePopUp(error.response.data.errorsResult.body[key]);
       });
     }
   }
@@ -165,7 +196,7 @@ export async function toggleStock(data: any, pathnameUrl: string) {
   });
 
   if (data?.stock?.amount) {
-    formData.append('amount', data?.stock?.amount);
+    formData.append('amount', JSON.stringify(data.stock.amount));
   }
 
   try {

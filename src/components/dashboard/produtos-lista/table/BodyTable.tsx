@@ -4,10 +4,6 @@ import TextInfos from './TextInfos';
 import ProdutoItem from '../items/ProdutoItem';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 
-interface GetAllProductsResponse {
-  products: ProductApi[];
-}
-
 const BodyTable = ({
   data,
   setAtivoDelete,
@@ -18,7 +14,7 @@ const BodyTable = ({
   setPromotionProducts,
   promotionProducts
 }: {
-  data: GetAllProductsResponse;
+  data?: ProductApi[];
   nextPage: number[];
   setAtivoDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setIdDelete: React.Dispatch<React.SetStateAction<string>>;
@@ -39,7 +35,7 @@ const BodyTable = ({
       </thead>
 
       <tbody>
-        {data?.products?.map(
+        {data?.map(
           (product, index) =>
             index >= nextPage[0] - 1 &&
             index <= nextPage[1] - 1 && (

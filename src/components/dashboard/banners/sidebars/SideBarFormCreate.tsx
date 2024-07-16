@@ -11,21 +11,24 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createBanner } from '@/src/shared/api/POST';
-import { getAllActiveBanners, getAllBanners } from '@/src/shared/api/GETS';
+import { getAllBanners } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationBanner } from './validationBanner';
 import ToggleButtonCreate from '@/src/components/compartilhado/formulario/ToggleButtonCreate';
 import { type BannerTypeCreate } from '@/src/shared/helpers/interfaces';
 import Image from 'next/image';
+import bannersActiveGet from '@/src/actions/banners-active-get';
 
 const schema = validationBanner;
 
 const SideBarFormCreate = ({
   setAtivo,
-  setAtivoPopUp
+  setMessagePopUp,
+  setTypePopUp
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const [imageUrl1, setImageUrl1] = React.useState<any>();
   const [imageUrl2, setImageUrl2] = React.useState<any>();
@@ -36,7 +39,7 @@ const SideBarFormCreate = ({
   });
   const bannerHome = useQuery({
     queryKey: ['banners-home'],
-    queryFn: getAllActiveBanners
+    queryFn: bannersActiveGet
   });
 
   const {
@@ -80,12 +83,13 @@ const SideBarFormCreate = ({
 
       if (response) {
         setAtivo(false);
-        setAtivoPopUp('Banner criado com sucesso');
+        setMessagePopUp('Banner criado com sucesso');
         await refetch();
         await bannerHome.refetch();
       }
     } catch (error: any) {
-      setAtivoPopUp(error?.data?.message);
+      setTypePopUp('error');
+      setMessagePopUp(error?.data?.message);
       console.log(error);
     }
   };
@@ -120,7 +124,7 @@ const SideBarFormCreate = ({
         </div>
         <InputFormulario
           name="imageMobile"
-          label="Imagem Mobile"
+          label="Imagem Mobile: 420 x 490"
           placeholder=""
           register={register}
           type="file"
@@ -128,7 +132,7 @@ const SideBarFormCreate = ({
         />
         <InputFormulario
           name="imageDesktop"
-          label="Imagem Desktop"
+          label="Imagem Desktop: 1920 x 600"
           placeholder=""
           register={register}
           type="file"

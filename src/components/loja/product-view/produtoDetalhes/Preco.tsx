@@ -28,11 +28,11 @@ function Preco({
         ''
       )}
       <p className={styles.dividido}>
-        ou em até{' '}
+        ou em até <span>10x </span>
+        de {''}
         <span>
-          4x de{' '}
           {price && !promotion
-            ? 'R$ ' + convertNumberInReal(Number(price * 1.2) / 4 ?? 0)
+            ? 'R$ ' + convertNumberInReal(Number(price * 1.25) / 10 ?? 0)
             : promotion &&
               promotionalPrice &&
               'R$ ' +

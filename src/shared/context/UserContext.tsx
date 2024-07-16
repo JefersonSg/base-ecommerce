@@ -17,12 +17,12 @@ interface UserContextType {
   logout: () => Promise<void>;
   login: (
     dataUser: dataUserLogin,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ) => Promise<void>;
   registerUser: (
     dataUser: dataUserRegister,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string | boolean>>,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ) => Promise<void>;
 }

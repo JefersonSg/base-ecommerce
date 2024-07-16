@@ -11,9 +11,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createCategory } from '@/src/shared/api/POST';
-import { getAllCategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationCategory } from './validationCategory';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
 
 interface Inputs {
   name: string;
@@ -24,16 +24,22 @@ interface Inputs {
 const schema = validationCategory;
 
 const SideBarFormCreate = ({
+  isLoading,
   setAtivo,
-  setAtivoPopUp
+  setMessagePopUp,
+  setTypePopUp,
+  setIsLoading
 }: {
+  isLoading: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   //
   const { refetch } = useQuery({
     queryKey: ['categories'],
-    queryFn: getAllCategories
+    queryFn: subcategoriesGetAll
   });
 
   const {
@@ -44,8 +50,6 @@ const SideBarFormCreate = ({
     resolver: yupResolver(schema)
   });
 
-  const [isLoading, setIsLoading] = React.useState(false);
-
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setIsLoading(true);
     const response = await createCategory(data);
@@ -53,9 +57,14 @@ const SideBarFormCreate = ({
 
     if (response) {
       setAtivo(false);
-      setAtivoPopUp('Categoria criada com sucesso');
+      setMessagePopUp('Categoria criada com sucesso');
+      setTypePopUp('');
       await refetch();
+      return;
     }
+
+    setMessagePopUp('Erro ao criar categoria');
+    setTypePopUp('error');
   };
 
   return (
@@ -80,7 +89,7 @@ const SideBarFormCreate = ({
         />
         <InputFormulario
           name="image"
-          label="Imagem"
+          label="Imagem: 1080 x 1080"
           placeholder=""
           register={register}
           type="file"

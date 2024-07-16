@@ -30,6 +30,8 @@ export interface ProductInputs {
   description: string;
   composition?: string;
   characteristic?: string;
+  coverPhoto1?: object;
+  coverPhoto2?: object;
   active: boolean;
   images: object;
 }
@@ -57,6 +59,7 @@ export interface CommentInterface {
 export interface subcategoryInterface {
   _id: string;
   name: string;
+  image: string;
   category: string;
   description: string;
 }
@@ -64,7 +67,7 @@ export interface ProductApi {
   _id: string;
   name: string;
   brand: string;
-  size: string;
+  size: string[];
   price: number;
   promotion: boolean;
   promotionalPrice?: number;
@@ -76,10 +79,12 @@ export interface ProductApi {
   howToUse?: string;
   active: boolean;
   images: string[];
+  coverPhoto1?: string;
+  coverPhoto2?: string;
   colors?: string[];
   codeColors?: string[];
   stock: {
-    amount: number[];
+    amount: number[][];
   };
 }
 
@@ -198,6 +203,7 @@ export interface OrderInterface {
   productIds: string[];
   valueProducts: number[];
   productAmounts: number[];
+  productSizes: string[];
   productColors: string[];
   totalPayment: number;
   methodPayment: string;

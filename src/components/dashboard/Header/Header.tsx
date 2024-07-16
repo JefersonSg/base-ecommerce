@@ -35,8 +35,8 @@ export function Header() {
             <Image
               alt="Logo"
               src={'/header/dashboard/logo.svg'}
-              width={60}
-              height={42}
+              width={100}
+              height={65}
             />
           </Link>
         </>

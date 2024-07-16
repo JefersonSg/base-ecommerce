@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SelectColor.module.css';
+import styles from './SelectSize.module.css';
 import ButtonDelete from '../../../Botoes/ButtonDelete';
 
 const SelectSizes = ({
@@ -12,22 +12,21 @@ const SelectSizes = ({
   return (
     <div className={`div_container ${styles.variaveis_sizes}`}>
       <p className={styles.subtitulo}>Digite os tamanhos do produto</p>
-      {sizes?.map((color, index) => {
+      {sizes?.map((size, index) => {
         return (
           <div key={index} className={styles.sizes_amount_div}>
             <div>
-              <label htmlFor={`color${index + 1}`}>{`Tamanho ${
-                sizes[index] ?? index + 1
+              <label htmlFor={`size${index + 1}`}>{`Tamanho ${
+                index + 1
               }`}</label>
               <input
                 type="text"
                 id={`size${index + 1}`}
                 placeholder={'ex: 300ml | 25g | M | G'}
-                value={color}
+                value={size}
                 onChange={(e) => {
                   const valueAll = [...sizes];
                   valueAll[index] = e.target.value;
-
                   setSizes(valueAll);
                 }}
               />

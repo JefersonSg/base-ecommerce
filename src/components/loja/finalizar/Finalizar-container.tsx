@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 'use client';
-import React from 'react';
+import React, { Suspense } from 'react';
 import EntregaFinalizar from './entrega/EntregaFinalizar';
 import Finalizarfetchs from './Finalizar_fetchs';
 import Envio from './envio/Envio';
@@ -34,7 +34,9 @@ import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 const FinalizarContainer = () => {
   const [methodPayment, setMethodPayment] = React.useState('card');
   const [serviceShippingId, setServiceShippingId] = React.useState(0);
-  const [popUpMessage, setPopUpMessage] = React.useState('');
+
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   const token = Cookies.get('auth_token');
   const { data } = useQuery<UserInterface>({
@@ -79,7 +81,7 @@ const FinalizarContainer = () => {
           data?.user._id,
           methodPayment,
           serviceShippingId,
-          setPopUpMessage,
+          setMessagePopUp,
           cupom
         )) as { createOrder: OrderInterface };
 
@@ -118,25 +120,17 @@ const FinalizarContainer = () => {
   }, [ativoConfirm, paymentLink, router]);
 
   React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setPopUpMessage('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [popUpMessage]);
-
-  React.useEffect(() => {
     void itemsCart.refetch();
   }, [itemsCart, address?.data]);
+
   return (
     <>
       <div>
-        <EntregaFinalizar />
         {data && itemsCart?.data && (
           <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
         )}
+        <EntregaFinalizar />
+
         <Envio
           shippingOption={itemsCart.data?.shippingOptions}
           selectDelivery={selectDelivery}
@@ -159,8 +153,15 @@ const FinalizarContainer = () => {
         {ativoConfirm && <BackgoundClick />}
         {ativoConfirm && <Confirm />}
       </div>
-      {isLoading && <LoadingAnimation />}
-      {popUpMessage && <PopUpMessage text={popUpMessage} />}
+      <Suspense>{isLoading && <LoadingAnimation />}</Suspense>
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
     </>
   );
 };

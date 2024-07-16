@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 327px;
+  width: 100%;
   margin: 0 auto;
-  background: #f7f7f7;
-  padding: 32px 16px;
+  background: #F8F8F8;
+  padding: 24px ;
   box-sizing: border-box;
+  border-radius: 0 0 12px 12px;
 }
 .finalizar_pedido p {
   display: flex;
@@ -22,15 +23,17 @@
   font-variant: small-caps;
 }
 
-.finalizar_pedido .valor_final,
-.finalizar_pedido p span {
-  color: #471703;
+.finalizar_pedido .valor_final {
+  color: var(--cor-primaria);
   font-family: var(--fonte-primaria);
   font-size: 16px;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 24px;
   font-variant: small-caps;
+  padding-top: 16px;
+  border-top: 1px solid black;
+  margin-top: 16px;
 }
 
 .botao {
@@ -46,8 +49,12 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 327px;
-  margin-bottom: 16px;
+  width: 100%;
+  margin-bottom: 8px;
+  background-color: #F8F8F8;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 12px 12px 0 0;
 }
 .div_cupom label {
   display: flex;
@@ -59,17 +66,23 @@
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
-    font-feature-settings: "smcp";
     font-variant: small-caps;
+    font-weight: 700;
+}
+.div_input_desconto {
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  margin-top: 16px;
 }
 .desconto {
-  width: 152px;
+  width: 215px;
   height: 48px;
   flex-shrink: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid var(--Light-Blue, #dbe5f1);
   color: #999;
-  margin-top: 8px;
   padding-left: 16px;
   box-sizing: border-box;
   font-size: 16px;

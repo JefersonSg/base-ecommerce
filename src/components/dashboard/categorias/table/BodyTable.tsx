@@ -24,7 +24,7 @@ const BodyTable = ({
   setDefaultTitle,
   setDefaultDescription
 }: {
-  data: GetAllCategoriesResponse;
+  data?: GetAllCategoriesResponse;
   nextPage: number[];
   idCategory: string;
   ativoDelete: boolean;

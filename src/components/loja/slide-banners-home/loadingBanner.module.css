@@ -7,7 +7,7 @@
 }
 @media (min-width: 48rem) {
   .loading_banner {
-    height: 40vh;
+    height: 55vh;
   }
 }
 @keyframes skeleton-loading {

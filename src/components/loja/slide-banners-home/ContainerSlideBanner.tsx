@@ -1,11 +1,12 @@
-import { getAllActiveBanners } from '@/src/shared/api/GETS';
+import LoadingBanners from './LoadingBanners';
 import Slide from './Slides';
+import bannersActiveGet from '@/src/actions/banners-active-get';
 
 const ContainerSlideBanner = async () => {
-  const bannersData = await getAllActiveBanners();
+  const bannersData = await bannersActiveGet();
 
-  if (!bannersData) {
-    return <></>;
+  if (!bannersData?.banners) {
+    return <LoadingBanners />;
   }
 
   return <Slide data={bannersData} />;

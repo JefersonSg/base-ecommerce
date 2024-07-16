@@ -26,13 +26,13 @@ interface params {
 const FormComment = ({
   setModalForm,
   dataUser,
-  setTextPopUp,
+  setMessagePopUp,
   setTypePopUp,
   refetch
 }: {
   dataUser: User;
   setModalForm: React.Dispatch<React.SetStateAction<boolean>>;
-  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
   refetch: any;
 }) => {
@@ -70,8 +70,8 @@ const FormComment = ({
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
     if (!idProduct.id) {
-      setTextPopUp('Não foi possivel encontrar o id do produto');
       setTypePopUp('error');
+      setMessagePopUp('Não foi possivel encontrar o id do produto');
       return;
     }
 
@@ -88,7 +88,7 @@ const FormComment = ({
 
         if (response) {
           setModalForm(false);
-          setTextPopUp('Comentario postado');
+          setMessagePopUp('Comentario postado');
           setTypePopUp('');
           router.refresh();
           await refetch();
@@ -103,32 +103,14 @@ const FormComment = ({
 
   React.useEffect(() => {
     if (errors.comment?.message) {
-      setTextPopUp(errors.comment?.message);
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setTextPopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp(errors.comment?.message);
     }
     if (errors.images?.message) {
-      setTextPopUp(errors.images?.message);
       setTypePopUp('error');
-
-      const timeout = setTimeout(() => {
-        setTextPopUp('');
-        setTypePopUp('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
+      setMessagePopUp(errors.images?.message);
     }
-  }, [errors, setTextPopUp, setTypePopUp]);
+  }, [errors, setMessagePopUp, setTypePopUp]);
 
   return (
     <div className={styles.form_comment_container}>

@@ -24,6 +24,7 @@ const TabelaProdutos = ({ data }: { data: OrderInterface }) => {
               <ProdutoInfos
                 key={productId}
                 productId={productId}
+                tamanhoEscolhido={data?.productSizes[index]}
                 corEscolhida={data?.productColors[index]}
                 valorPago={data?.valueProducts?.[index]}
                 quantidade={data?.productAmounts?.[index]}

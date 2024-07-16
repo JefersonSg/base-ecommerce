@@ -13,14 +13,18 @@ import { getAllBanners } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
 import ModalDelete from '@/src/components/compartilhado/modals/ModalDelete';
+import LoadingAnimation from '@/src/components/compartilhado/loading/loadingAnimation';
 
 const DataTable = () => {
   const [ativoCreate, setAtivoCreate] = React.useState(false);
   const [ativoEdit, setAtivoEdit] = React.useState(false);
   const [ativoDelete, setAtivoDelete] = React.useState(false);
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
 
   const [bannerData, setBannerData] = React.useState<any>();
+
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const [nextPage, setNextPage] = React.useState([1, 7]);
@@ -30,22 +34,13 @@ const DataTable = () => {
     queryFn: getAllBanners
   });
 
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setAtivoPopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [ativoPopUp]);
-
   return (
     <>
       {ativoCreate && (
         <SideBarFormCreate
           setAtivo={setAtivoCreate}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
       {ativoEdit && (
@@ -73,6 +68,11 @@ const DataTable = () => {
           id1={bannerData?._id}
           setState={setAtivoDelete}
           text="Deseja mesmo deletar esse banner?"
+          messageToErrorPopUp="Erro ao remover o banner"
+          messageToPopUp="Banner removido com sucesso"
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          setIsLoading={setIsLoading}
           funcDelete={deleteBanner}
           refetch={refetch}
         />
@@ -87,7 +87,15 @@ const DataTable = () => {
         <></>
       )}
 
-      {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          typePopUp={typePopUp}
+          setTypePopUp={setTypePopUp}
+        />
+      )}
+      {isLoading && <LoadingAnimation />}
     </>
   );
 };

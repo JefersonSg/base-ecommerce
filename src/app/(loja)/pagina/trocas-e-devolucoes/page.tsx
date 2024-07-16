@@ -12,9 +12,9 @@ const page = () => {
         foi pedido na compra, o cliente tem o prazo de 7 dias corridos após a
         data do recebimento para entrar em contato conosco para realizar a
         Devolução/troca ou ressarcimento do valor. Os canais para apresentar a
-        sua reclamação são: <br /> <span>(email: abayomi.make@gmail.com)</span>{' '}
+        sua reclamação são: <br /> <span>(email: lojamayse@gmail.com)</span>{' '}
         <br />
-        <span>(Whatsapp (21) 969871826)</span>.
+        <span>(Whatsapp (22) 998092154)</span>.
       </p>
 
       <ul>
@@ -34,7 +34,7 @@ const page = () => {
       <p className="texto">
         No caso da TROCA POR VÍCIO (falha ou defeito), o comprador deve entrar
         em contato com a loja informando o número do pedido e motivo da troca,
-        no caso de troca por desistencia os fretes e custos de envios serão por
+        no caso de troca por desistência os fretes e custos de envios serão por
         conta do comprador. Após o envio a loja fará a verificação do produto e
         dará continuidade com a troca, no prazo de até 48h úteis.
       </p>
@@ -62,9 +62,9 @@ const page = () => {
         (Os descontos não são acumulativos).
       </p> */}
       <p className={'texto'}>
-        - As compras na Abayomi make Beauty são 100% garantidas de entrega, ou
-        em caso de roubo ao carro dos Correios o valor da compra é extornado
-        integralmente ao cliente, sem burocracias;
+        - As compras na Loja Mayse são 100% garantidas de entrega, ou em caso de
+        roubo ao carro dos Correios o valor da compra é extornado integralmente
+        ao cliente, sem burocracias;
       </p>
       <p className={'texto'}>
         - Os produtos devem ser postados na mesma embalagem de origem, e não
@@ -76,7 +76,7 @@ const page = () => {
         Correios;
       </p>
       <p className={styles.agradecimento}>
-        A Abayomi make Beauty agradece a visita e Boas Compras !
+        A Loja Mayse agradece a visita e Boas Compras !
       </p>
     </div>
   );

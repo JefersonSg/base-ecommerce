@@ -58,37 +58,16 @@ export async function createAddress(data: any) {
   }
 }
 
-export async function addViews(
-  ip: string,
-  sessionId: string,
-  productId?: string | undefined,
-  pageView?: string | undefined,
-  userToken?: string | undefined
-) {
-  try {
-    void axios.post(
-      `${API}views/add/${productId}`,
-      {
-        userToken,
-        userIp: ip,
-        sessionId,
-        pageView
-      },
-      configJson
-    );
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 // Revalidation
 
 export async function createProduct(
   data: any,
+  sizes: string[],
   codeColors: string[],
   colors: string[],
-  amount: number[],
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>,
+  amount: number[][],
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>,
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>,
   corAtiva: boolean
 ) {
   const formData = new FormData();
@@ -96,23 +75,36 @@ export async function createProduct(
   let ok = false;
 
   if (colors && corAtiva) {
-    colors.forEach((color, index) => {
-      if (color.length < 1) {
-        setAtivoPopUp('Preencha todos os campos de cores');
-        ok = true;
-      }
-      if (amount[index] >= 0) {
-        console.log(ok);
-      } else {
-        setAtivoPopUp('Preencha todos os campos de quantidade');
-        ok = true;
-      }
+    colors.forEach((color, indexColor) => {
+      sizes.forEach((size, i) => {
+        if (color.length < 1) {
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de cores');
+          ok = true;
+        }
+        if (size.length < 1) {
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de tamanho');
+          ok = true;
+        }
+        if (amount[indexColor][i] >= 0) {
+          console.log(ok);
+        } else {
+          setTypePopUp('error');
+          setMessagePopUp('Preencha todos os campos de quantidade');
+          ok = true;
+        }
+      });
     });
   }
-  if (!amount[0]) {
-    setAtivoPopUp('Preencha todos os campos de quantidade');
-    return;
-  }
+
+  amount[0].forEach((amountChild) => {
+    if (amountChild.toString().length < 1) {
+      setTypePopUp('error');
+      setMessagePopUp('Preencha todos os campos de quantidade');
+      ok = true;
+    }
+  });
 
   if (ok) return;
 
@@ -120,9 +112,13 @@ export async function createProduct(
     formData.append(key, data[key]);
   });
 
-  formData.append('amount', amount.toString());
-  formData.append('colors', colors.join(','));
-  formData.append('codeColors', codeColors.join(','));
+  formData.append('size', sizes.toString());
+  formData.append('colors', corAtiva ? colors.join(',') : '');
+  formData.append('codeColors', corAtiva ? codeColors.join(',') : '');
+  formData.append(
+    'amount',
+    corAtiva ? JSON.stringify(amount) : JSON.stringify([amount[0]])
+  );
 
   if (data.images) {
     const imageArray = Array.from(data.images);
@@ -131,6 +127,15 @@ export async function createProduct(
       formData.append('images', image);
     });
   }
+
+  if (data.coverPhoto1) {
+    formData.append('coverPhoto1', data.coverPhoto1[0]);
+  }
+
+  if (data.coverPhoto2) {
+    formData.append('coverPhoto2', data.coverPhoto2[0]);
+  }
+
   try {
     const response = await axios.post(
       `${API}products/create`,
@@ -145,10 +150,15 @@ export async function createProduct(
     return response.data;
   } catch (error: any) {
     console.log(error);
-
+    if (error?.response?.data?.error) {
+      setTypePopUp('error');
+      setMessagePopUp(error?.response?.data?.error);
+      return;
+    }
     if (error.response.data.errorsResult.body) {
       Object.keys(error.response.data.errorsResult.body).forEach((key) => {
-        setAtivoPopUp(error.response.data.errorsResult.body[key]);
+        setTypePopUp('error');
+        setMessagePopUp(error.response.data.errorsResult.body[key]);
       });
     }
   }
@@ -156,7 +166,7 @@ export async function createProduct(
 export async function duplicateProduct(
   data: ProductApi,
 
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>
 ) {
   const formData = new FormData();
 
@@ -209,7 +219,7 @@ export async function duplicateProduct(
 
     if (error.response.data.errorsResult.body) {
       Object.keys(error.response.data.errorsResult.body).forEach((key) => {
-        setAtivoPopUp(error.response.data.errorsResult.body[key]);
+        setMessagePopUp(error.response.data.errorsResult.body[key]);
       });
     }
   }

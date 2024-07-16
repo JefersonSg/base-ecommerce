@@ -24,8 +24,8 @@ export default async function middleware(req: NextRequest) {
   }
   if (!authenticated) {
     if (
-      req.nextUrl.pathname === '/minha-conta' ||
       req.nextUrl.pathname === '/favoritos' ||
+      req.nextUrl.pathname.includes('minha-conta') ||
       req.nextUrl.pathname.includes('dashboard') ||
       req.nextUrl.pathname.includes('carrinho') ||
       req.nextUrl.pathname.includes('finalizar')

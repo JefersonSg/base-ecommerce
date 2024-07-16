@@ -28,19 +28,30 @@ function ModalDeleteSearsh({
   productId,
   commentId,
   setModalDelete,
-  refetch
+  refetch,
+  setIsLoading,
+  setMessagePopUp,
+  setTypePopUp
 }: {
   productId: string;
   commentId: string;
   setModalDelete: any;
   refetch: any;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>
 }) {
   return (
     <ModalDelete
       id1={commentId}
       id2={productId}
-      setState={setModalDelete}
       text="Deseja mesmo deletar esse comentário?"
+      messageToErrorPopUp='Erro ao remover comentario'
+      messageToPopUp='Comentario removido'
+      setIsLoading={setIsLoading}
+      setMessagePopUp={setMessagePopUp}
+      setTypePopUp={setTypePopUp}
+      setState={setModalDelete}
       funcDelete={deleteComment}
       refetch={refetch}
     />
@@ -49,12 +60,15 @@ function ModalDeleteSearsh({
 
 function Comentario({
   commentData,
-  setTextPopUp,
-  setTypePopUp
+  setMessagePopUp,
+  setTypePopUp,
+  setIsLoading
 }: {
   commentData: CommentInterface;
-  setTextPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+
 }) {
   const pathname = useParams() as unknown as PageParams;
 
@@ -123,6 +137,9 @@ function Comentario({
         )}
         {modalDelte && data && (
           <ModalDeleteSearsh
+          setIsLoading={setIsLoading}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
             productId={pathname.id}
             commentId={commentData._id}
             refetch={refetch}
@@ -133,7 +150,7 @@ function Comentario({
           <ModalEdit
             setState={setModalEdit}
             commentData={commentData}
-            setTextPopUp={setTextPopUp}
+            setMessagePopUp={setMessagePopUp}
             setTypePopUp={setTypePopUp}
             refetch={refetch}
           />

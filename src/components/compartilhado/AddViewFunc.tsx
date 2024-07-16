@@ -1,37 +1,53 @@
 'use client';
 
 import React from 'react';
-import Cookies from 'js-cookie';
-import { addViews } from '@/src/shared/api/POST';
 import { usePathname } from 'next/navigation';
-import { v4 as uuidv4 } from 'uuid';
+import setNewCookieSession from '@/src/actions/setCookieSession';
+import { AddNewView } from '@/src/actions/add-new-view';
+import getCookie from '@/src/actions/getCookie';
 
-const AddViewFunc = ({ productId }: { productId?: string }) => {
+interface Response {
+  isBot: boolean;
+  localization: object;
+  ip: string;
+  userAgent: string;
+}
+
+const AddViewFunc = () => {
   const pathname = usePathname();
   const SetNewView = React.useCallback(async () => {
     const response = await fetch('/api/ip');
-    const userToken = Cookies.get('auth_token');
-    const isAdmin = Cookies.get('isAdmin');
-    let sessionId = Cookies.get('sessionId');
-    const userIp = await response.json();
 
-    if (!sessionId) {
-      Cookies.set('sessioId', uuidv4());
-      sessionId = Cookies.get('sessioId');
+    const data = (await response.json()) as unknown as Response;
+    let sessionId = await getCookie({ nameCookie: 'sessionId' });
+    const userIp = data.ip;
+
+    const productId =
+      pathname.split('/')[2] === 'produto' &&
+      pathname.split('/')[3].length > 20 &&
+      pathname.split('/')[3];
+
+    if (!sessionId?.value) {
+      setNewCookieSession();
+      sessionId = await getCookie({ nameCookie: 'sessionId' });
     }
 
-    const pageView = !productId ? pathname : '';
+    const pageView = pathname;
 
-    if (!isAdmin && sessionId) {
-      void addViews(userIp, sessionId, productId ?? '', pageView, userToken);
+    if (sessionId?.value && !data.isBot) {
+      void AddNewView({
+        ipUser: userIp,
+        pageView,
+        productId: productId || ''
+      });
     }
-  }, [pathname, productId]);
+  }, [pathname]);
 
   React.useEffect(() => {
     void SetNewView();
   }, [SetNewView]);
 
-  return <div></div>;
+  return <></>;
 };
 
 export default AddViewFunc;

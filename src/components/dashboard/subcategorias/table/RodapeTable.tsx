@@ -10,20 +10,21 @@ const RodapeTable = ({
   setNextPage,
   setCurrentPage
 }: {
-  data: { subcategories: subcategoryInterface[] };
+  data?: subcategoryInterface[];
   nextPage: number[];
   currentPage: number;
   setNextPage: React.Dispatch<React.SetStateAction<number[]>>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }) => {
+  if (!data) {
+    return <></>;
+  }
   return (
     <div className={styles.container_rodape}>
       <p>
         Mostrando {nextPage[0] > 0 ? nextPage[0] : 1} a{' '}
-        {data?.subcategories?.length < 7
-          ? data?.subcategories?.length
-          : nextPage[1]}{' '}
-        de um total de {data?.subcategories?.length} categorias
+        {data?.length < 7 ? data?.length : nextPage[1]} de um total de{' '}
+        {data?.length} categorias
       </p>
       <div className={styles.botoes}>
         <div
@@ -46,13 +47,10 @@ const RodapeTable = ({
             const prev = nextPage[1] + 1;
             const next = prev + 7 - 1;
 
-            const totalPages = data?.subcategories?.length / 7;
+            const totalPages = data?.length / 7;
 
-            if (next > data?.subcategories?.length) {
-              setNextPage([
-                data?.subcategories?.length - 7 + 1,
-                data?.subcategories?.length
-              ]);
+            if (next > data?.length) {
+              setNextPage([data?.length - 7 + 1, data?.length]);
               return;
             }
             if (currentPage < Math.ceil(totalPages)) {

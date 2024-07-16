@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import {
   type subcategoryInterface,
@@ -35,6 +37,8 @@ const Categoria = ({
           query: { _id: category._id }
         }}
       >
+        <span className={styles.linha}></span>
+
         {category.name}
       </Link>
       {subcategoriesList?.subcategories?.[0] && <SvgSetaBaixo />}

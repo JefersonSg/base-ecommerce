@@ -10,18 +10,21 @@ const RodapeTable = ({
   setNextPage,
   setCurrentPage
 }: {
-  data: { products: ProductApi[] };
+  data?: ProductApi[];
   nextPage: number[];
   currentPage: number;
   setNextPage: React.Dispatch<React.SetStateAction<number[]>>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }) => {
+  if (!data) {
+    return <></>;
+  }
   return (
     <div className={styles.container_rodape}>
       <p>
         Mostrando de {nextPage[0] > 0 ? nextPage[0] : 1} a{' '}
-        {nextPage[1] <= 7 ? data?.products?.length : nextPage[1]} | total de{' '}
-        {data?.products?.length} produtos
+        {nextPage[1] <= 7 ? data?.length : nextPage[1]} | total de{' '}
+        {data?.length} produtos
       </p>
       <div className={styles.botoes}>
         <div
@@ -44,13 +47,10 @@ const RodapeTable = ({
             const prev = nextPage[1] + 1;
             const next = prev + 7 - 1;
 
-            const totalPages = data?.products?.length / 7;
+            const totalPages = data?.length / 7;
 
-            if (next > data?.products?.length) {
-              setNextPage([
-                data?.products?.length - 7 + 1,
-                data?.products?.length
-              ]);
+            if (next > data?.length) {
+              setNextPage([data?.length - 7 + 1, data?.length]);
               return;
             }
             if (currentPage < Math.ceil(totalPages)) {

@@ -4,17 +4,7 @@ import React from 'react';
 import styles from './BodyTable.module.css';
 import TextInfos from './TextInfos';
 import SubcategoriaItem from '../items/SubcategoriaItem';
-
-interface Subcategory {
-  _id: string;
-  name: string;
-  category: string;
-  description: string;
-  image: string;
-}
-interface GetAllSubcategoriesResponse {
-  subcategories: Subcategory[];
-}
+import { type subcategoryInterface } from '@/src/shared/helpers/interfaces';
 
 const BodyTable = ({
   data,
@@ -26,7 +16,7 @@ const BodyTable = ({
   setDefaultTitle,
   setDefaultDescription
 }: {
-  data: GetAllSubcategoriesResponse;
+  data?: subcategoryInterface[];
   idSubcategory: string;
   ativoDelete: boolean;
   nextPage: number[];
@@ -44,7 +34,7 @@ const BodyTable = ({
       </thead>
 
       <tbody>
-        {data?.subcategories?.map(
+        {data?.map(
           (subcategory, index) =>
             index >= nextPage[0] - 1 &&
             index <= nextPage[1] - 1 && (

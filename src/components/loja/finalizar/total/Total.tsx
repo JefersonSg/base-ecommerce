@@ -79,9 +79,10 @@ const TotalFinal = ({
     async function setValorCategory() {
       if (data?.totalValue) {
         setIsLoading(false);
-        const totalValor = priceDelivery
-          ? +data.totalValue + priceDelivery
-          : +data.totalValue;
+        const totalValor =
+          priceDelivery && +data.totalValue < 249.9
+            ? +data.totalValue + priceDelivery
+            : +data.totalValue;
 
         const formatoNumero = new Intl.NumberFormat('pt-BR');
         const numeroFormatado = formatoNumero.format(totalValor);
@@ -123,18 +124,29 @@ const TotalFinal = ({
               : ''}
           </p>
         </div>
-
         <div>
-          <p>Entrega</p>
-          <p className={styles.frete}>
-            {priceDelivery
-              ? 'R$ ' + convertNumberInReal(priceDelivery)
-              : 'R$ 0,00'}
+          <p>Frete</p>
+          <p
+            className={`${styles.frete} ${
+              valorTotal && +valorTotal.replace(',', '.') > 249.9
+                ? styles.frete_gratis
+                : ''
+            }`}
+          >
+            {valorTotal && +valorTotal.replace(',', '.') > 249.9 ? (
+              'Frete grátis'
+            ) : (
+              <>
+                {priceDelivery
+                  ? 'R$ ' + convertNumberInReal(priceDelivery)
+                  : 'R$ 0,00'}
+              </>
+            )}
           </p>
         </div>
 
         {valorTotal && (
-          <div>
+          <div className={styles.valor_total}>
             <p>Valor total do pedido</p>
             <p>
               {descontoPorcentagem && data?.totalValue

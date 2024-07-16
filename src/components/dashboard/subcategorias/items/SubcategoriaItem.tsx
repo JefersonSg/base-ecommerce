@@ -4,16 +4,13 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './subcategoriaItem.module.css';
 import {
-  getCategoryById,
-  getProductsBySubcategory
-} from '@/src/shared/api/GETS';
-import {
   type ProductApi,
   type CategoryInterface
 } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
-// import { getCategoryById } from '@/src/shared/api/GETS';
+import categoryByIdGet from '@/src/actions/category-by-id-get';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const SubcategoriaItem = ({
   subcategoryId,
@@ -46,7 +43,7 @@ const SubcategoriaItem = ({
 
   React.useEffect(() => {
     const getCategoryName = async () => {
-      const response = await getCategoryById(category);
+      const response = await categoryByIdGet({ id: category });
       setCategoryApi(response);
     };
 
@@ -56,7 +53,10 @@ const SubcategoriaItem = ({
   const { data } = useQuery({
     queryKey: ['productBySubcategory', subcategoryId],
     queryFn: async () => {
-      return (await getProductsBySubcategory(subcategoryId)) as {
+      return (await productsFilterGet({
+        subcategory: subcategoryId,
+        total: 1000
+      })) as {
         products: ProductApi[];
       };
     }
@@ -67,7 +67,9 @@ const SubcategoriaItem = ({
     async function setValorCategory() {
       const valorTotalArray = data?.products?.reduce((i, product) => {
         const totalProducts = product.stock.amount.reduce((count, amount) => {
-          return count + +amount;
+          const newAmount = amount.reduce((count, amount) => count + amount, 0);
+
+          return count + +newAmount;
         }, 0);
 
         const totalValor = +product.price * +totalProducts;

@@ -12,8 +12,9 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { updateSubcategory } from '@/src/shared/api/UPDATES';
 import { useQuery } from '@tanstack/react-query';
-import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
 import { validationSubcategoryEdit } from './validationSubcategoryEdit';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
 
 interface Inputs {
   name: string;
@@ -29,14 +30,12 @@ const SideBarFormEdit = ({
   name,
   category,
   description,
-  image,
   setAtivo
 }: {
   idSubcategory: string;
   name: string;
   description: string;
   category: string;
-  image: string[];
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const {
@@ -53,22 +52,18 @@ const SideBarFormEdit = ({
   });
 
   const { data } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
-
   const { refetch } = useQuery({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
+    queryKey: ['subcategories-get-all'],
+    queryFn: async () => await subcategoriesGetAll()
   });
 
   const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setIsLoading(true);
-    // if (data.category === 'Outros') {
-    //   data.category = category;
-    // }
 
     const response = await updateSubcategory(data, idSubcategory);
     if (response) {
@@ -117,7 +112,7 @@ const SideBarFormEdit = ({
         </div>
         <InputFormulario
           name="image"
-          label="Imagem"
+          label="Imagem: 1080 x 1080"
           placeholder=""
           register={register}
           type="file"

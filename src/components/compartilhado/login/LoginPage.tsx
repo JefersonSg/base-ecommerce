@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -13,6 +13,7 @@ import Link from 'next/link';
 import InputFormulario from '../formulario/InputForm';
 import { useUserContext } from '@/src/shared/context';
 import LoadingAnimation from '../loading/loadingAnimation';
+import PopUpMessage from '../messages/PopUpMessage';
 
 interface Inputs {
   email: string;
@@ -32,9 +33,8 @@ const schema = yup.object({
 
 const LoginPage = () => {
   const { login } = useUserContext();
-  const [errorMessage, setErrorMessage] = React.useState<string | boolean>(
-    false
-  );
+  const [messagePopUp, setMessagePopUp] = React.useState<string>('');
+  const [typePopUp, setTypePopUp] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
 
   const {
@@ -47,22 +47,15 @@ const LoginPage = () => {
 
   // Função de resetar e setar o span de erros
   React.useEffect(() => {
-    setErrorMessage(false);
-    setTimeout(() => {
-      if (errors?.password?.message) {
-        setErrorMessage(errors?.password?.message);
-      }
-      if (errors?.email?.message) {
-        setErrorMessage(errors?.email?.message);
-      }
-    }, 100);
-    const temporizador = setTimeout(function closeError() {
-      setErrorMessage(false);
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
+    setMessagePopUp('');
+    if (errors?.password?.message) {
+      setMessagePopUp(errors?.password?.message);
+      setTypePopUp('error');
+    }
+    if (errors?.email?.message) {
+      setMessagePopUp(errors?.email?.message);
+      setTypePopUp('error');
+    }
   }, [errors]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -72,8 +65,10 @@ const LoginPage = () => {
     };
 
     setLoading(true);
-    await login(dataUser, setErrorMessage, setLoading);
+    await login(dataUser, setMessagePopUp, setLoading);
     setLoading(false);
+    setMessagePopUp('Login realizado');
+    setTypePopUp('');
   };
 
   return (
@@ -108,13 +103,16 @@ const LoginPage = () => {
           </p>
           <BotaoRedondo texto="Entrar" disabled={loading} />
         </form>
-        <span
-          className={`${styles.error_span} ${errorMessage ? styles.ativo : ''}`}
-        >
-          {errorMessage}
-        </span>
+        {messagePopUp && (
+          <PopUpMessage
+            setMessagePopUp={setMessagePopUp}
+            setTypePopUp={setTypePopUp}
+            text={messagePopUp}
+            typePopUp={typePopUp}
+          />
+        )}
       </div>
-      {loading && <LoadingAnimation />}
+      <Suspense>{loading && <LoadingAnimation />}</Suspense>
     </>
   );
 };

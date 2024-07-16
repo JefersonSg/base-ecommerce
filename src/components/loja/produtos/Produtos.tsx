@@ -4,57 +4,81 @@ import React from 'react';
 import { Titulo } from '@/src/components/compartilhado/textos/Titulo';
 import styles from './Produtos.module.css';
 import SectionProdutos from './section/SectionProdutos';
-import SlideSubcategorias from './slide/SlideSubcategorias';
 
 // import BotaoFiltro from '@/src/components/compartilhado/botoes/BotaoFiltro';
 import {
+  type ProductApi,
   type CategoryInterface,
   type subcategoryInterface
 } from '@/src/shared/helpers/interfaces';
+import { type ProductGetParams } from '@/src/actions/products-filters-get';
 
 function Produtos({
+  titulo,
   pesquisa,
   data,
-  categoryId,
   subcategorieDataSlide,
-  categorieDataSlide
+  categorieDataSlide,
+  functionGetProduct,
+  active,
+  promotion,
+  categoryId,
+  subcategoryId,
+  orderBy,
+  orderDirection
 }: {
+  titulo?: string;
   pesquisa?: string;
-  data?: any;
+  data?: ProductApi[];
   categoryId?: string;
+  subcategoryId?: string;
   subcategorieDataSlide?: { subcategories: subcategoryInterface[] };
   categorieDataSlide?: { categories: CategoryInterface[] };
+  functionGetProduct: ({
+    id,
+    category,
+    page,
+    total
+  }: ProductGetParams) => Promise<
+    | {
+        products: ProductApi[];
+      }
+    | undefined
+  >;
+  active?: boolean;
+  promotion?: boolean;
+  orderBy?: string;
+  orderDirection?: string;
 }) {
   return (
     <div className={styles.produtos_container}>
       <Titulo
         titulo={`${pesquisa ?? ''} 
         ${
-          categorieDataSlide?.categories[0]
+          titulo ??
+          (categorieDataSlide?.categories?.[0]
             ? 'Categorias'
-            : subcategorieDataSlide?.subcategories[0]
+            : subcategorieDataSlide?.subcategories?.[0]
               ? 'Subcategorias'
               : pesquisa
                 ? ''
-                : 'Produtos'
+                : 'Produtos')
         }`}
       />
-      <div className={styles.div_titulo}>
-        {/* <div className={styles.div_filtro}>
-          <BotaoFiltro ativo={ativo} setAtivo={setAtivo} />
-        </div> */}
-      </div>
-      {!pesquisa && subcategorieDataSlide && (
-        <div className={styles.subcategorias}>
-          <SlideSubcategorias subcategorieDataSlide={subcategorieDataSlide} />
-        </div>
+
+      {data && (
+        <SectionProdutos
+          data={data}
+          functionGetProduct={functionGetProduct}
+          pesquisa={pesquisa}
+          active={active}
+          categoryId={categoryId}
+          subcategoryId={subcategoryId}
+          promotion={promotion}
+          orderBy={orderBy}
+          orderDirection={orderDirection}
+        />
       )}
-      {!pesquisa && categorieDataSlide && (
-        <div className={styles.subcategorias}>
-          <SlideSubcategorias categorieDataSlide={categorieDataSlide} />
-        </div>
-      )}
-      <SectionProdutos pesquisa={pesquisa} data={data} />
     </div>
   );
 }

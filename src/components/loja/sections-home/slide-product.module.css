@@ -1,9 +1,21 @@
 .mySwiper {
   display: none !important;
 }
-
+.loading {
+  display: none;
+}
+.loading.ativo {
+  display: block;
+}
 @media (min-width: 48rem) {
   .mySwiper {
     display: flex !important;
+  }
+}
+
+@media (min-width:64rem) {
+  .mySwiper {
+    max-width: 1140px;
+    padding-bottom:  10px !important;
   }
 }

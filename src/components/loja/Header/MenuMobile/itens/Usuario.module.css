@@ -28,3 +28,15 @@
   font-weight: 500;
   line-height: normal;
 }
+
+.acoes_usuario {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 4px;
+  align-items: flex-end;
+}
+.sair {
+  font-size: 10px !important;
+  cursor: pointer;
+}

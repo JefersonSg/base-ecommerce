@@ -2,9 +2,9 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './CategoriaItem.module.css';
 import { useQuery } from '@tanstack/react-query';
-import { getProductsByCategory } from '@/src/shared/api/GETS';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const CategoriaItem = ({
   idCategory,
@@ -30,7 +30,10 @@ const CategoriaItem = ({
   const { data } = useQuery({
     queryKey: ['productByCategory', idCategory],
     queryFn: async () => {
-      return (await getProductsByCategory(idCategory)) as {
+      return (await productsFilterGet({
+        category: idCategory,
+        total: 1000
+      })) as {
         products: ProductApi[];
       };
     }
@@ -41,7 +44,9 @@ const CategoriaItem = ({
     async function setValorCategory() {
       const valorTotalArray = data?.products?.reduce((i, product) => {
         const totalProducts = product.stock.amount.reduce((count, amount) => {
-          return count + +amount;
+          const newAmount = amount.reduce((count, amount) => count + amount, 0);
+
+          return count + +newAmount;
         }, 0);
 
         const totalValor = +product.price * +totalProducts;

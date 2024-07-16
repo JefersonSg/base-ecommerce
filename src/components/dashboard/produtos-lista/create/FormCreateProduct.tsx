@@ -21,15 +21,9 @@ import ButtonAdd from '../../Botoes/ButtonAdd';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import SelectColor from './color/SelectColor-amount';
 import { useQuery } from '@tanstack/react-query';
-import {
-  getAllCategories,
-  getAllProducts,
-  getAllSubcategories
-} from '@/src/shared/api/GETS';
 
 import {
   type ProductInputs,
-  type CategoryInterface,
   type subcategoryInterface
 } from '@/src/shared/helpers/interfaces';
 import SideBarFormCreate from '../../categorias/sidebars/SideBarFormCreate';
@@ -40,15 +34,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import SideBarFormCreateSubcategory from '../../subcategorias/sidebars/FormCreateSubcategory';
+import SelectSizes from './sizes/SelectSizes';
+import DicaImagem from '../dicas/DicaImagem';
+import BackgoundClick from '@/src/components/compartilhado/backgrounds/BackgoundClick';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const schema = validationProduct;
-
-interface CategoriesResponse {
-  categories: CategoryInterface[];
-}
-interface subcategoriesResponse {
-  subcategories: subcategoryInterface[];
-}
 
 const FormCreateProduct = () => {
   const {
@@ -61,11 +54,12 @@ const FormCreateProduct = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: '',
+      name: 'bvbxvgd',
       promotion: false,
-      description: '',
-      brand: '',
+      description: 'vxcgbsdfv',
+      brand: 'dcfgbv',
       category: '',
+      price: 15,
       promotionalPrice: 0,
       subcategory: '',
       characteristic: '',
@@ -74,38 +68,51 @@ const FormCreateProduct = () => {
     }
   });
 
+  const nameWatch = watch('name');
   const promotionWatch = watch('promotion');
   const activeWatch = watch('active');
   const imagesWatch: any = watch('images');
+  const coverPhoto1Watch: any = watch('coverPhoto1');
+  const coverPhoto2Watch: any = watch('coverPhoto2');
   const categoryWatch: any = watch('category');
 
-  const [ativoPopUp, setAtivoPopUp] = React.useState('');
+  const [messagePopUp, setMessagePopUp] = React.useState('');
+  const [typePopUp, setTypePopUp] = React.useState('');
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [schemeColor, setSchemeColor] = React.useState<string[]>(['']);
   const [schemeCodeColor, setSchemeCodeColor] = React.useState<string[]>([
     '#000000'
   ]);
-  const [amount, setAmount] = React.useState<number[]>([]);
+  const [amount, setAmount] = React.useState<number[][]>([[]]);
   const [ativoNewCategory, setAtivoNewCategory] = React.useState(false);
   const [ativoNewSubcategory, setAtivoNewSubcategory] = React.useState(false);
   const [imageUrl1, setImageUrl1] = React.useState<any[]>([]);
+  const [coverPhoto1WatchUrl, setCoverPhoto1WatchUrl] = React.useState<any[]>(
+    []
+  );
+  const [openDica, setOpenDica] = React.useState(false);
+  const [coverPhoto2WatchUrl, setCoverPhoto2WatchUrl] = React.useState<any[]>(
+    []
+  );
   const [subcategoriesList, setSubcategoriesList] = React.useState<
     subcategoryInterface[] | undefined
   >([]);
   const [corAtiva, setCorAtiva] = React.useState(true);
+  const [sizes, setSizes] = React.useState<string[]>(['']);
   const router = useRouter();
 
-  const dataCategory = useQuery<CategoriesResponse>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+  const dataCategory = useQuery({
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
-  const dataSubCategories = useQuery<subcategoriesResponse>({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
+  const dataSubCategories = useQuery({
+    queryKey: ['subcategories-get-all'],
+    queryFn: async () => await subcategoriesGetAll()
   });
-  const { refetch } = useQuery<CategoriesResponse>({
+  const { refetch } = useQuery({
     queryKey: ['products'],
-    queryFn: getAllProducts
+    queryFn: async () => await productsFilterGet({ total: 1000 })
   });
 
   const handleChange = React.useCallback(() => {
@@ -120,9 +127,41 @@ const FormCreateProduct = () => {
     setImageUrl1(imageUrlArray);
   }, [imagesWatch]);
 
+  const handleChangeCover1 = React.useCallback(() => {
+    const imageUrlArray: any[] = [];
+    if (coverPhoto1Watch?.[0]) {
+      const arrayImages = [...coverPhoto1Watch];
+      arrayImages?.forEach((image: any) => {
+        const imageURL = URL?.createObjectURL(image);
+        imageUrlArray.push(imageURL);
+      });
+    }
+    setCoverPhoto1WatchUrl(imageUrlArray);
+  }, [coverPhoto1Watch]);
+
+  const handleChangeCover2 = React.useCallback(() => {
+    const imageUrlArray: any[] = [];
+    if (coverPhoto2Watch?.[0]) {
+      const arrayImages = [...coverPhoto2Watch];
+      arrayImages?.forEach((image: any) => {
+        const imageURL = URL?.createObjectURL(image);
+        imageUrlArray.push(imageURL);
+      });
+    }
+    setCoverPhoto2WatchUrl(imageUrlArray);
+  }, [coverPhoto2Watch]);
+
   React.useEffect(() => {
     handleChange();
   }, [handleChange]);
+
+  React.useEffect(() => {
+    handleChangeCover1();
+  }, [handleChangeCover1]);
+
+  React.useEffect(() => {
+    handleChangeCover2();
+  }, [handleChangeCover2]);
 
   React.useEffect(() => {
     const subcategories = dataSubCategories.data?.subcategories.filter(
@@ -140,33 +179,26 @@ const FormCreateProduct = () => {
       setIsLoading(true);
       const response = await createProduct(
         data,
+        sizes,
         corAtiva ? schemeCodeColor : [''],
         corAtiva ? schemeColor : [''],
-        corAtiva ? amount : [amount[0]],
-        setAtivoPopUp,
+        amount,
+        setMessagePopUp,
+        setTypePopUp,
         corAtiva
       );
       setIsLoading(false);
       if (response) {
         router.push('/dashboard/produtos');
         await refetch();
-        setAtivoPopUp('Produto criado com sucesso');
+        setMessagePopUp('Produto criado com sucesso');
       }
-    } catch (error) {
-      console.log(error);
-      setAtivoPopUp(`Erro ao criar o produto`);
+    } catch (error: any) {
+      setIsLoading(false);
+      setMessagePopUp('error');
+      setMessagePopUp(`Erro ao criar o produto`);
     }
   };
-
-  React.useEffect(() => {
-    const temporizador = setTimeout(function closeError() {
-      setAtivoPopUp('');
-    }, 5000);
-
-    return () => {
-      clearTimeout(temporizador);
-    };
-  }, [ativoPopUp]);
 
   return (
     <>
@@ -178,15 +210,19 @@ const FormCreateProduct = () => {
           <div className={styles.div_colum1}>
             <div className={`div_container ${styles.core_items}`}>
               <p className={styles.subtitulo}>Informação do produto</p>
-
-              <InputFormulario
-                label="Nome"
-                name="name"
-                placeholder="Nome do produto"
-                type="text"
-                error={errors.name}
-                register={register}
-              />
+              <div className={styles.div_name}>
+                <span className={styles.contador_nome}>
+                  {nameWatch.length} / 50
+                </span>
+                <InputFormulario
+                  label="Nome"
+                  name="name"
+                  placeholder="Nome do produto"
+                  type="text"
+                  error={errors.name}
+                  register={register}
+                />
+              </div>
 
               <InputFormulario
                 type=""
@@ -196,14 +232,9 @@ const FormCreateProduct = () => {
                 error={errors.description}
                 register={register}
               />
-              <InputFormulario
-                label="Tamanho"
-                name="size"
-                placeholder="ex: 300ml | 25g | 1kg"
-                type="text"
-                error={errors.size}
-                register={register}
-              />
+              <div>
+                <SelectSizes setSizes={setSizes} sizes={sizes} />
+              </div>
             </div>
             <div className={`div_container ${styles.opicional_items}`}>
               <p className={styles.subtitulo}>Informações opcionais</p>
@@ -233,7 +264,15 @@ const FormCreateProduct = () => {
                 register={register}
               />
             </div>
-            <div className="div_container">
+            <div className={`div_container ${styles.images_produto_container}`}>
+              <p
+                className={styles.dicas_image}
+                onClick={() => {
+                  setOpenDica(true);
+                }}
+              >
+                Ver dicas
+              </p>
               <InputFormulario
                 label="Carregue as imagens do produto"
                 name="images"
@@ -264,6 +303,65 @@ const FormCreateProduct = () => {
                   );
                 })}
               </Swiper>
+
+              <InputFormulario
+                label="Carregue a foto de capa 1 (opicional)"
+                name="coverPhoto1"
+                placeholder=""
+                register={register}
+                type="file"
+                error={errors.coverPhoto1}
+              />
+              <Swiper
+                className={`${styles.mySwiper} slide-images`}
+                slidesPerView={5}
+                navigation={true}
+                spaceBetween={32}
+                pagination={false}
+                modules={[Navigation]}
+              >
+                {coverPhoto1WatchUrl?.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <Image
+                        alt="imagens do produto"
+                        src={image}
+                        width={50}
+                        height={50}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+              <InputFormulario
+                label="Carregue a foto de capa 2 (opicional)"
+                name="coverPhoto2"
+                placeholder=""
+                register={register}
+                type="file"
+                error={errors.coverPhoto2}
+              />
+              <Swiper
+                className={`${styles.mySwiper} slide-images`}
+                slidesPerView={5}
+                navigation={true}
+                spaceBetween={32}
+                pagination={false}
+                modules={[Navigation]}
+              >
+                {coverPhoto2WatchUrl?.map((image, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <Image
+                        alt="imagens do produto"
+                        src={image}
+                        width={50}
+                        height={50}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
             </div>
 
             <SelectColor
@@ -275,6 +373,7 @@ const FormCreateProduct = () => {
               setSchemeCodeColor={setSchemeCodeColor}
               setSchemeColor={setSchemeColor}
               setAmount={setAmount}
+              sizes={sizes}
             />
           </div>
           <div className={styles.div_colum2}>
@@ -417,17 +516,38 @@ const FormCreateProduct = () => {
       </div>
       {ativoNewCategory && (
         <SideBarFormCreate
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          setTypePopUp={setTypePopUp}
           setAtivo={setAtivoNewCategory}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
       {ativoNewSubcategory && (
         <SideBarFormCreateSubcategory
+          setTypePopUp={setTypePopUp}
           setAtivo={setAtivoNewSubcategory}
-          setAtivoPopUp={setAtivoPopUp}
+          setMessagePopUp={setMessagePopUp}
         />
       )}
-      {ativoPopUp && <PopUpMessage text={ativoPopUp} />}
+      {messagePopUp && (
+        <PopUpMessage
+          text={messagePopUp}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
+      {openDica || ativoNewSubcategory || ativoNewCategory ? (
+        <BackgoundClick
+          setState1={setOpenDica}
+          setState2={setAtivoNewCategory}
+          setState3={setAtivoNewSubcategory}
+        />
+      ) : (
+        <></>
+      )}
+      {openDica && <DicaImagem />}
     </>
   );
 };

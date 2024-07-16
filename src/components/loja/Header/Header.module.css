@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   height: 64px;
-  background: white;
+  background: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,16 +11,19 @@
   z-index: 999;
   max-width: 1600px;
   margin: 0 auto;
+  font-family: var(--fonte-primaria);
 }
-
+.dropdownMenu {
+  position: absolute;
+}
 .container_header {
-  background-color: white;
+  background-color: black;
   box-shadow: 0 7px 26px rgba(154, 154, 204, 0.2);
 }
 .container1,
 .container2 {
   display: flex;
-  gap: 24px;
+  gap: 16px;
 }
 .container2 {
   position: relative;
@@ -30,11 +33,44 @@
   left: -40px;
   top: -1px;
 }
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+}
 .foto_logo {
-  height: 42px !important;
-  width: 60 !important;
+  height: auto;
+  width: 100px;
+}
+.fallback_container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.link_carrinho {
+  position: relative;
+}
+
+.total_itens_carrinho {
+  position: absolute;
+  z-index: 1000;
+  background-color: var(--cor-contraste);
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  top: -10px;
+  right: -10px;
 }
 @media (min-width: 64rem) {
+  .pesquisa_mobile {
+    display: none !important;
+  }
   .button_dashboard {
     position: relative;
     left: 0px;
@@ -44,8 +80,8 @@
     border-radius: 999px;
   }
   .header {
-    padding: 0px 120px;
-    height: 84px;
+    padding: 0px 74px;
+    height: 64px;
     display: grid;
     grid-template-columns: max-content max-content max-content;
   }
@@ -53,26 +89,32 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    height: 64px;
+  }
+  .login img {
+    border: 1px solid white;
   }
   .login p {
     font-family: var(--fonte-primaria);
-    font-weight: 300;
+    font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    color: var(--cor-quinta);
+    color: white;
   }
 
   .logo {
-    grid-column: 1;
+    position: relative;
+    left: 0;
+    transform: none;
+    grid-column: 2;
     grid-row: 1;
   }
   .foto_logo {
-    height: 60px !important;
-    width: 90px !important;
+    width: 95px ;
   }
 
   .container1 {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
     height: auto;
   }
@@ -80,9 +122,20 @@
     grid-column: 3;
     grid-row: 1;
     margin-right: 24px;
+    align-items: center;
   }
 }
 @media (max-width: 1023px) {
+
+  /* .container_header {
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+  } */
+  .container1 {
+    opacity: 0;
+    pointer-events: none;
+  }
   .login {
     display: none;
   }

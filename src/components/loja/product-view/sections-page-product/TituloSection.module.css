@@ -7,10 +7,20 @@
   cursor: pointer;
   box-sizing: border-box;
 }
-
+.titulo_h2 {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--fonte-primaria);
+}
 .seta {
   transition: 0.1s ease-in;
 }
 .seta.ativo {
   rotate: 180deg;
+}
+
+@media (max-width: 64rem) {
+  .titulo_h2 {
+    font-weight: 600;
+  }
 }

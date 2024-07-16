@@ -7,6 +7,7 @@ interface infosProduto {
   comentario: string;
   imgs: string[];
 }
+
 function InformacoesProduto({ cor, tamanho, comentario, imgs }: infosProduto) {
   return (
     <div className={styles.review}>

@@ -22,9 +22,8 @@ const page = () => {
         <li>
           <h3 className="titulo_area">Cartão de Crédito</h3>
           <p>
-            • Cartão de Crédito parcelado em até 10 vezes sem juros via Mercado
-            Pago, respeitando o valor mínimo da parcela de <span>R$ 50,00</span>
-            .
+            • Cartão de Crédito parcelado em até 10 vezes via Mercado Pago,
+            respeitando o valor mínimo da parcela de <span>R$ 50,00</span>.
           </p>
           <p>• Cartões aceitos:</p>
 
@@ -83,7 +82,7 @@ const page = () => {
         (Os descontos não são acumulativos).
       </p> */}
       <p className={styles.agradecimento}>
-        A Abayomi make Beauty agradece a visita e Boas Compras !
+        A Loja Mayse agradece a visita e Boas Compras !
       </p>
     </div>
   );

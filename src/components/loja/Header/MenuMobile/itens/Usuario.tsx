@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './Usuario.module.css';
 import Link from 'next/link';
 import { type UserInterface } from '@/src/shared/helpers/interfaces';
+import { useUserContext } from '@/src/shared/context';
 
 function Usuario({
   userData,
@@ -13,6 +14,7 @@ function Usuario({
   ativo: boolean;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const { logout } = useUserContext();
   return (
     <div className={styles.usuario}>
       <div className={styles.fotoUsuario}>
@@ -56,16 +58,26 @@ function Usuario({
             </Link>
           </p>
         ) : (
-          <p>
-            <Link
+          <div className={styles.acoes_usuario}>
+            <p>
+              <Link
+                onClick={() => {
+                  setAtivo(!ativo);
+                }}
+                href={'/minha-conta'}
+              >
+                Ver meu perfil
+              </Link>{' '}
+            </p>
+            <p
+              className={styles.sair}
               onClick={() => {
-                setAtivo(!ativo);
+                void logout();
               }}
-              href={'/minha-conta'}
             >
-              Ver meu perfil
-            </Link>{' '}
-          </p>
+              Sair
+            </p>
+          </div>
         )}
       </div>
     </div>

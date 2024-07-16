@@ -11,9 +11,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ButtonAdd from '../../Botoes/ButtonAdd';
 import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createSubcategory } from '@/src/shared/api/POST';
-import { getAllCategories, getAllSubcategories } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import { validationSubcategory } from './validationSubcategory';
+import categoriesGetAll from '@/src/actions/category-get-all';
+import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
 
 interface Inputs {
   name: string;
@@ -21,30 +22,26 @@ interface Inputs {
   category: string;
   image: any;
 }
-interface Category {
-  _id: string;
-  name: string;
-  description: string;
-  image: string;
-}
 
 const schema = validationSubcategory;
 
 const SideBarFormCreateSubcategory = ({
   setAtivo,
-  setAtivoPopUp
+  setMessagePopUp,
+  setTypePopUp
 }: {
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
-  setAtivoPopUp: React.Dispatch<React.SetStateAction<string>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   //
-  const { data } = useQuery<{ categories: Category[] }>({
-    queryKey: ['categories'],
-    queryFn: getAllCategories
+  const { data } = useQuery({
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
   const { refetch } = useQuery({
-    queryKey: ['subcategories'],
-    queryFn: getAllSubcategories
+    queryKey: ['subcategories-get-all'],
+    queryFn: async () => await subcategoriesGetAll()
   });
 
   const {
@@ -64,9 +61,12 @@ const SideBarFormCreateSubcategory = ({
 
     if (response) {
       setAtivo(false);
-      setAtivoPopUp('Subcategoria criada com sucesso');
+      setMessagePopUp('Subcategoria criada com sucesso');
       await refetch();
+      return;
     }
+    setTypePopUp('error');
+    setMessagePopUp('erro ao criar Subcategoria');
   };
 
   return (
@@ -111,7 +111,7 @@ const SideBarFormCreateSubcategory = ({
         </div>
         <InputFormulario
           name="image"
-          label="Imagem"
+          label="Imagem: 1080 x 1080"
           placeholder=""
           register={register}
           type="file"

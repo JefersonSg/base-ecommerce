@@ -1,13 +1,12 @@
 'use client';
 
-import { getProductByName } from '@/src/shared/api/GETS';
 import { useQuery } from '@tanstack/react-query';
 import styles from './ResultadoPesquisa.module.css';
 import React from 'react';
-import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import productsFilterGet from '@/src/actions/products-filters-get';
 
 const ResultadoPesquisa = ({
   pesquisa,
@@ -18,13 +17,12 @@ const ResultadoPesquisa = ({
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
   setPesquisa: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { data } = useQuery<{ products: ProductApi[] }>({
+  const { data } = useQuery({
     queryKey: ['product-name', pesquisa],
     queryFn: async () => {
       if (pesquisa) {
-        return await getProductByName(pesquisa);
+        return await productsFilterGet({ name: pesquisa, total: 8 });
       }
-      return [];
     }
   });
 
@@ -43,7 +41,7 @@ const ResultadoPesquisa = ({
                     setPesquisa('');
                   }}
                   href={`/produtos/produto/${product._id}`}
-                  className={styles.produco_pesquisa}
+                  className={styles.produto_pesquisa}
                   key={product?._id}
                 >
                   <Image
@@ -52,7 +50,23 @@ const ResultadoPesquisa = ({
                     width={40}
                     height={40}
                   />
-                  <p>{product?.name}</p>
+                  <div>
+                    <p>{product?.name}</p>
+                    <div className={styles.preços}>
+                      {product.promotion &&
+                      product?.promotionalPrice &&
+                      product?.promotionalPrice < product.price ? (
+                        <>
+                          <span className={styles.riscado}>
+                            R${product.price}{' '}
+                          </span>
+                          R${product.promotionalPrice}
+                        </>
+                      ) : (
+                        'R$' + product.price
+                      )}
+                    </div>
+                  </div>
                 </Link>
               )}
             </>
