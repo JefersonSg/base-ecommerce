@@ -47,10 +47,10 @@
     text-align: center;
     justify-content: center;
     cursor: pointer;
-    color: white !important;
+    color: var(--cor-secundaria) !important;
   }
   .category_name {
-    color: white;
+    color: var(--cor-quarta) !important;
     transition: all 0.2s;
     font-size: 13px;
     font-weight: 400;

@@ -25,9 +25,7 @@
   display: flex;
   gap: 16px;
 }
-.container2 {
-  position: relative;
-}
+
 .button_dashboard {
   position: absolute;
   left: -40px;
@@ -80,8 +78,8 @@
     border-radius: 999px;
   }
   .header {
-    padding: 0px 74px;
-    height: 64px;
+    padding: 8px 74px;
+    height: 84px;
     display: grid;
     grid-template-columns: max-content max-content max-content;
   }
@@ -99,7 +97,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    color: white;
+    color: var(--cor-quarta);
   }
 
   .logo {
@@ -123,6 +121,7 @@
     grid-row: 1;
     margin-right: 24px;
     align-items: center;
+    min-width: 64px;
   }
 }
 @media (max-width: 1023px) {
@@ -136,5 +135,8 @@
   }
   .login {
     display: none;
+  }
+  .container2 {
+    min-width: 64px;
   }
 }
