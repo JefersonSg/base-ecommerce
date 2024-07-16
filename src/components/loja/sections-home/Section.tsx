@@ -31,7 +31,7 @@ function Section({
   const [priceProduct, setPriceProduct] = React.useState<number>(0);
   const [imageProduct, setImageProduct] = React.useState('');
 
-  if (!data) {
+  if (!data?.products.length) {
     return;
   }
 
