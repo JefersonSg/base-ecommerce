@@ -28,7 +28,7 @@
 .titulo,
 .marca,
 .informacoes_compra_2,
-.informacoes_compra  {
+.informacoes_compra {
   color: var(--Black, #212429);
   font-family: var(--fonte-primaria);
   font-size: 12px;
@@ -42,7 +42,7 @@
   display: none;
 }
 .marca {
-  color: #A2A2A2;
+  color: #a2a2a2;
 }
 .informacoes a,
 .informacoes_produto span {

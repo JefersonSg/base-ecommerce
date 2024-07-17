@@ -27,7 +27,7 @@
 .timer_div {
   width: 100%;
   height: 4px;
-  background-color: #A9A9A9;
+  background-color: #a9a9a9;
   position: absolute;
   bottom: 0;
   rotate: 180deg;
@@ -36,11 +36,11 @@
   display: block;
   width: 100%;
   height: 4px;
-  background-color: #1FAF38;
+  background-color: #1faf38;
   animation: decrescente ease forwards 5s;
 }
-.timer_span.error_span  {
-  background-color: #EF3C3C !important;
+.timer_span.error_span {
+  background-color: #ef3c3c !important;
 }
 @keyframes decrescente {
   from {

@@ -4,8 +4,8 @@
   gap: 8px;
   width: 100%;
   margin: 0 auto;
-  background: #F8F8F8;
-  padding: 24px ;
+  background: #f8f8f8;
+  padding: 24px;
   box-sizing: border-box;
   border-radius: 0 0 12px 12px;
 }
@@ -40,10 +40,10 @@
   margin-top: 32px;
 }
 .botao.disabled {
-  pointer-events:  none;
+  pointer-events: none;
 }
-.botao.disabled button{
-  background-color: #999 ;
+.botao.disabled button {
+  background-color: #999;
 }
 .div_cupom {
   display: flex;
@@ -51,23 +51,23 @@
   margin: 0 auto;
   width: 100%;
   margin-bottom: 8px;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   padding: 24px;
   box-sizing: border-box;
   border-radius: 12px 12px 0 0;
 }
 .div_cupom label {
   display: flex;
-    width: 100%;
-    justify-content: space-between;
-    color: #000;
-    font-family: var(--fonte-primaria);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    font-variant: small-caps;
-    font-weight: 700;
+  width: 100%;
+  justify-content: space-between;
+  color: #000;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  font-variant: small-caps;
+  font-weight: 700;
 }
 .div_input_desconto {
   display: flex;
@@ -101,7 +101,7 @@
   margin-left: 16px;
   height: 48px;
   width: 55px;
-  padding: 0 ;
+  padding: 0;
   background-color: transparent;
   font-weight: 700;
   outline: none;

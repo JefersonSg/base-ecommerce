@@ -10,7 +10,7 @@
   background-color: white;
   text-align: center;
   font-family: var(--fonte-primaria);
-  border: 1px solid rgba(52,73,94,.1);
+  border: 1px solid rgba(52, 73, 94, 0.1);
   margin: 0 5px;
   border-radius: 20px;
   padding-bottom: 16px;
@@ -40,7 +40,6 @@
   overflow: hidden;
   min-height: 200px;
 }
-
 
 .infos {
   display: flex;
@@ -108,9 +107,9 @@
 .preco_parcelado {
   font-size: 12px !important;
   font-weight: 400 !important;
-  color: #7C7C7C !important;
+  color: #7c7c7c !important;
 }
-.preco_parcelado span{
+.preco_parcelado span {
   font-size: 12px;
   text-decoration: none !important;
   font-weight: 600;
@@ -122,7 +121,6 @@
   color: var(--cor-contraste);
 }
 
-
 /* Botoes */
 .botoes_card {
   display: flex;
@@ -133,20 +131,20 @@
 .botao_adicionar {
   width: 100%;
   border: none;
-  background-color: #EF3C3C;
+  background-color: #ef3c3c;
   color: white;
   font-weight: 700;
   font-size: 10px;
   border-radius: 999px;
   cursor: pointer;
-  transition: all .4s;
+  transition: all 0.4s;
   height: 33px;
   flex: 0 0 66.666667%;
   max-width: 66.666667%;
 }
 
 .botao_adicionar:hover {
-  opacity: 0.70;
+  opacity: 0.7;
 }
 .texto_buton {
   display: none;
@@ -159,14 +157,14 @@
   flex-basis: 30%;
   cursor: pointer;
   gap: 4px;
-  border: 1px solid #EF3C3C;
+  border: 1px solid #ef3c3c;
   border-radius: 999px;
   height: 32px;
 }
 .texto_buton {
   font-size: 10px;
   font-weight: 700;
-  color: #EF3C3C;
+  color: #ef3c3c;
 }
 @media (min-width: 48rem) {
   .texto_buton {
@@ -179,7 +177,7 @@
     max-height: 440px;
     overflow: visible;
     margin-bottom: 40px;
-    transition: all .4s ease;
+    transition: all 0.4s ease;
   }
   .botoes_card {
     opacity: 0;
@@ -188,17 +186,17 @@
     bottom: 56px;
     left: 50%;
     width: calc(100% - 20px);
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
   }
 
   .produto:hover {
-    box-shadow: 0 4px 8px 2px rgba(52, 73, 94, .2);
+    box-shadow: 0 4px 8px 2px rgba(52, 73, 94, 0.2);
     margin-bottom: 0px;
     padding-bottom: 56px;
   }
 
-  .produto:hover > .botoes_card{
-    transition: all .4s;
+  .produto:hover > .botoes_card {
+    transition: all 0.4s;
     opacity: 1;
     height: 40px;
     bottom: 16px;

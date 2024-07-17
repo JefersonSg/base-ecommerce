@@ -10,8 +10,8 @@
   color: var(--cor-primaria);
   font-size: 16px;
   gap: 8px;
-  background-color: #F7F7F7;
-  border-top: 1px solid #97A3B1;
+  background-color: #f7f7f7;
+  border-top: 1px solid #97a3b1;
 }
 .total_container div {
   display: flex;
@@ -23,9 +23,9 @@
 }
 .frete_gratis {
   font-weight: 600 !important;
-  color: #3CBA54;
+  color: #3cba54;
 }
-.valor_desconto  {
+.valor_desconto {
   text-decoration: line-through;
   font-weight: 300;
   font-size: 12px;
@@ -42,23 +42,22 @@
   padding-top: 16px;
   padding-bottom: 16px;
   margin-top: 16px;
-  border-top: 1px solid #97A3B1;
-  border-bottom: 1px solid #97A3B1;
+  border-top: 1px solid #97a3b1;
+  border-bottom: 1px solid #97a3b1;
 }
 .valor_total p {
-  
   font-weight: 700 !important;
 }
 .cupom_aplicado {
   text-align: end;
   font-weight: 700;
   font-size: 12px;
-  color:  white;
-  background-color: #41B700;
+  color: white;
+  background-color: #41b700;
   width: max-content;
   align-self: flex-end;
   padding: 5px 10px;
-  border: 1px solid #97A3B1;
+  border: 1px solid #97a3b1;
   border-radius: 4px;
   margin-bottom: 8px;
 }

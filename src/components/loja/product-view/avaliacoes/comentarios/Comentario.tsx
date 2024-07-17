@@ -37,17 +37,17 @@ function ModalDeleteSearsh({
   commentId: string;
   setModalDelete: any;
   refetch: any;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>
-  setTypePopUp: React.Dispatch<React.SetStateAction<string>>
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
 }) {
   return (
     <ModalDelete
       id1={commentId}
       id2={productId}
       text="Deseja mesmo deletar esse comentário?"
-      messageToErrorPopUp='Erro ao remover comentario'
-      messageToPopUp='Comentario removido'
+      messageToErrorPopUp="Erro ao remover comentario"
+      messageToPopUp="Comentario removido"
       setIsLoading={setIsLoading}
       setMessagePopUp={setMessagePopUp}
       setTypePopUp={setTypePopUp}
@@ -67,8 +67,7 @@ function Comentario({
   commentData: CommentInterface;
   setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const pathname = useParams() as unknown as PageParams;
 
@@ -137,9 +136,9 @@ function Comentario({
         )}
         {modalDelte && data && (
           <ModalDeleteSearsh
-          setIsLoading={setIsLoading}
-          setMessagePopUp={setMessagePopUp}
-          setTypePopUp={setTypePopUp}
+            setIsLoading={setIsLoading}
+            setMessagePopUp={setMessagePopUp}
+            setTypePopUp={setTypePopUp}
             productId={pathname.id}
             commentId={commentData._id}
             refetch={refetch}

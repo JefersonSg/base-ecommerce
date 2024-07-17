@@ -1,49 +1,49 @@
 .visitante_container {
-    padding: 8px;
-    cursor: pointer;
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: 16px;
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 16px;
 }
 
 .visitante_container.ativo {
-    background-color: #F9F9F9;
-    box-shadow: 0 4px 4px 0 #00000030;
-    border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 4px 0 #00000030;
+  border-radius: 8px;
 }
 
 .container1 {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .foto_perfil {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 .nome {
-    color: #697A8D;
+  color: #697a8d;
 }
 .informacao_user {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .views p {
-    font-size: 14px;
-    font-weight: 300;
-    color: #697A8D;
+  font-size: 14px;
+  font-weight: 300;
+  color: #697a8d;
 }
 
 .produtos_view_container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-    flex-basis: 100%;
-    margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  flex-basis: 100%;
+  margin-top: 16px;
 }
 
 .seta {
-    cursor: pointer;
-    position: relative;
-    top: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 10px;
 }

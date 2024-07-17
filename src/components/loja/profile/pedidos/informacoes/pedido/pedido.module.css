@@ -19,11 +19,11 @@
 .empresa_entrega {
   background-color: #727273;
   width: max-content;
-  padding: 4px .5rem;
+  padding: 4px 0.5rem;
   border-radius: 4px;
   font-weight: 500;
   color: white;
-  font-size: .75rem;
+  font-size: 0.75rem;
   margin-bottom: 4px;
 }
 .produto::after {

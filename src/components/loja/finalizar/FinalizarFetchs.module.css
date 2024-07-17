@@ -4,7 +4,7 @@
   border-radius: 4px;
   font-family: var(--fonte-primaria);
   border-bottom: 1px solid #f2f2f2;
-  border: 1px solid #ECECEC;
+  border: 1px solid #ececec;
   padding: 16px 8px;
   box-sizing: border-box;
 }
@@ -21,13 +21,13 @@
 }
 .botao_comprar {
   padding-top: 32px;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   padding-bottom: 16px;
 }
 .table_body {
   position: relative;
 }
-.table_body thead tr th p{
+.table_body thead tr th p {
   padding-bottom: 8px;
 }
 .table_body thead::after {
@@ -51,7 +51,6 @@
   left: 0;
 }
 
-
 .product {
   text-align: start;
   padding-left: 8px;
@@ -73,5 +72,4 @@
   .corpo_tabela tr::after {
     width: calc(100% - 32px);
   }
-  
 }

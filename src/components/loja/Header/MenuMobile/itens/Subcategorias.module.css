@@ -28,7 +28,7 @@
   font-weight: 400;
   line-height: normal;
   cursor: pointer;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
 }
 
 .subcategorias_lista ul li a:hover {

@@ -1,111 +1,110 @@
 .cards_container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: 0 auto;
-    width: 100%;
-    padding:  0 54px 0 16px;
-    box-sizing: border-box;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 54px 0 16px;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .infos_card {
-    width: 100%;
-    position: relative;
+  width: 100%;
+  position: relative;
 }
 
 .infos_card::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--color-border);
+  content: '';
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
 }
 .container_card {
-    /* margin: 0 auto; */
-    background-color: white;
-    border: 1px solid #D1D1D1;
-    padding:12px 16px 12px 16px ;
-    border-radius: 12px;
-    position: relative;
+  /* margin: 0 auto; */
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  padding: 12px 16px 12px 16px;
+  border-radius: 12px;
+  position: relative;
 }
 .container_card::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 38px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--color-border);
+  content: '';
+  display: block;
+  position: absolute;
+  top: 38px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
 }
 .container1 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 300px;
-    text-align: center;
-    margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 300px;
+  text-align: center;
+  margin-top: 8px;
 }
 .container_card h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: #696CFF;
-    display: flex;
-    gap: 8px;
-    align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #696cff;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .container_card h3 span {
-    font-size: 12px;
-    font-weight: 500;
-    color: #696CFF;
+  font-size: 12px;
+  font-weight: 500;
+  color: #696cff;
 }
 
-.valor_principal ,
-.cards_container p{
-    font-weight: 600;
-    color: #697A8D;
-    font-size: 14px;
+.valor_principal,
+.cards_container p {
+  font-weight: 600;
+  color: #697a8d;
+  font-size: 14px;
 }
 .p1 {
-    border-right: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
 }
 .comparacao {
-    display: flex;
-    gap: 12px;
-    margin-top: 4px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: wrap;
 }
 .comparacao p {
-    font-size: 14px;
-    color: #7C7C7C;
+  font-size: 14px;
+  color: #7c7c7c;
 }
 .texto_produtos {
-    margin-top: 16px;
-    font-size:20px ;
-    margin-bottom: 16px;
-    color: #697A8D;
-    font-weight: 700;
-    font-size: 14px;
+  margin-top: 16px;
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #697a8d;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 .botao_mostrar_mais {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    color: blue;
-    width: 100%;
-    height: 28px;
-    cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: blue;
+  width: 100%;
+  height: 28px;
+  cursor: pointer;
 }
 
 @media (max-width: 64rem) {
-    
-    .cards_container {
-        padding: 0 16px !important;
-    }
+  .cards_container {
+    padding: 0 16px !important;
+  }
 }

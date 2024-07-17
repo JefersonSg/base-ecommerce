@@ -10,11 +10,10 @@
 .titulo_pagina {
   font-family: var(--fonte-primaria);
   text-decoration: underline;
-  color: #EF3C3C;
+  color: #ef3c3c;
   padding-bottom: 98px;
   font-size: 25px;
 }
-
 
 @media (max-width: 48rem) {
   .titulo_pagina {

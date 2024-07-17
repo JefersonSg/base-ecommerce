@@ -29,7 +29,7 @@
   padding: 8px 16px;
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid #ECECEC;
+  border: 1px solid #ececec;
 }
 
 .entrega_calculo {
@@ -68,7 +68,7 @@
   box-shadow: inset 0 0 0 2px white;
 }
 
-@media (max-width:48rem) {
+@media (max-width: 48rem) {
   .envio_container {
     padding: 16px;
   }

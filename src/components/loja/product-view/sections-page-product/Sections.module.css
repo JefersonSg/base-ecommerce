@@ -30,14 +30,14 @@
 }
 .select_avaliacoes.ativo,
 .select_description.ativo {
-  color: #EF3C3C;
-  border-bottom: 3px solid #EF3C3C;
+  color: #ef3c3c;
+  border-bottom: 3px solid #ef3c3c;
 }
 
 .div_descricoes,
 .div_avaliacao {
   display: none;
-  }
+}
 .div_descricoes.ativo,
 .div_avaliacao.ativo {
   display: flex;
@@ -65,10 +65,10 @@
 @media (min-width: 1024px) {
   .div_descricoes.ativo,
   .div_avaliacao.ativo {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
   .entrega {
     display: none;
   }

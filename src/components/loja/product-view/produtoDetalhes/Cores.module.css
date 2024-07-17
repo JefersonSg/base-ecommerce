@@ -115,10 +115,10 @@
   .cor_selecionada.ativo {
     width: 37px;
     height: 37px;
-    box-shadow: 
-    0 0 0 1px #c5d2e1,
-    0 0 0 2px #fff,
-    0 0 0 3px black;
+    box-shadow:
+      0 0 0 1px #c5d2e1,
+      0 0 0 2px #fff,
+      0 0 0 3px black;
   }
   .cor_selecionada_span {
     display: flex;

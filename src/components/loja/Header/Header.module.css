@@ -34,7 +34,7 @@
 .logo {
   position: absolute;
   left: 50%;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
 }
 .foto_logo {
   height: auto;
@@ -108,7 +108,7 @@
     grid-row: 1;
   }
   .foto_logo {
-    width: 95px ;
+    width: 95px;
   }
 
   .container1 {
@@ -125,7 +125,6 @@
   }
 }
 @media (max-width: 1023px) {
-
   .container_header {
     padding-bottom: 8px;
   }

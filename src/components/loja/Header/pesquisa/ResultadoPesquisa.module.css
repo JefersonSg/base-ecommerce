@@ -16,7 +16,7 @@
   border-radius: 8px 8px 0 0;
 }
 .resultado_container .produto_pesquisa:last-child {
-  border-radius:0 0 8px 8px;
+  border-radius: 0 0 8px 8px;
 }
 .produto_pesquisa {
   display: flex;
@@ -40,7 +40,7 @@
   margin-right: 8px;
 }
 .preços {
-  font-size: 12px ;
+  font-size: 12px;
   display: flex;
   gap: 8px;
   color: black;
@@ -59,11 +59,11 @@
     margin-top: 4px;
     transform: translate(-50%, 0px);
   }
-  
+
   .produto_pesquisa {
     width: 340px;
   }
-  
+
   .resultado_container {
     left: 50%;
   }

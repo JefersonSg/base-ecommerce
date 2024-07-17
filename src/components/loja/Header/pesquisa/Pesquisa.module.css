@@ -112,11 +112,10 @@
   .input_pesquisa {
     width: 90%;
     border-radius: 10px 0 0 10px;
-  }   
+  }
   .button_pesquisa {
     border-radius: 0 10px 10px 0;
   }
-
 }
 @media (min-width: 64rem) {
   .lupa {
@@ -166,5 +165,4 @@
     height: 24px;
     display: flex;
   }
-
 }

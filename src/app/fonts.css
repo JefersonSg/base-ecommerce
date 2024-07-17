@@ -1,82 +1,80 @@
 .titulo_sessao {
-    color: var(--cor-primaria);
-    font-family: var(--fonte-primaria);
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-  }
-  
+  color: var(--cor-primaria);
+  font-family: var(--fonte-primaria);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
 .titulo_area {
-    color: black;
-    font-family: var(--fonte-primaria);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 115%;
-  }
-  
-  .titulo_sideBar {
-    color: #7b8191;
-    font-size: 11px;
-    font-family: var(--fonte-primaria);
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    height: 15px;
-    opacity: 0.6;
-    white-space: nowrap;
-  }
-  
-  .subtitulo {
-    color: #000;
-    font-family: var(--fonte-primaria);
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    font-variant: small-caps;
-  }
-  
-  .title_bold_24px {
-    font-family: var(--fonte-primaria);
-    font-size: 24px;
-    font-weight: 700;
-  }
+  color: black;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%;
+}
 
-  .text_medium_18px {
-    font-family: var(--fonte-primaria);
-    font-size: 18px;
-    font-weight: 400;
-  }
+.titulo_sideBar {
+  color: #7b8191;
+  font-size: 11px;
+  font-family: var(--fonte-primaria);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  height: 15px;
+  opacity: 0.6;
+  white-space: nowrap;
+}
 
+.subtitulo {
+  color: #000;
+  font-family: var(--fonte-primaria);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  font-variant: small-caps;
+}
 
-  /* textos normais */
+.title_bold_24px {
+  font-family: var(--fonte-primaria);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.text_medium_18px {
+  font-family: var(--fonte-primaria);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* textos normais */
 .texto {
-    color: #000;
-    font-family: var(--fonte-primaria);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-  }
-  
-.texto_indicativo {
-    color: #808080;
-    font-family: var(--fonte-primaria);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 170%;
-  }
-  
-.error {
-    color: red;
-    font-family: var(--fonte-primaria);
-  }
-  
+  color: #000;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
 
-  @media (max-width: 64rem) {
-    .titulo_sessao {
-      font-weight: 600;
-    }
+.texto_indicativo {
+  color: #808080;
+  font-family: var(--fonte-primaria);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+}
+
+.error {
+  color: red;
+  font-family: var(--fonte-primaria);
+}
+
+@media (max-width: 64rem) {
+  .titulo_sessao {
+    font-weight: 600;
   }
+}

@@ -14,7 +14,7 @@
   overflow-x: hidden;
   object-fit: cover;
 
-  transition: all .3s;
+  transition: all 0.3s;
 }
 .menuMobile.ativo {
   left: 0px;

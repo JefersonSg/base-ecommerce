@@ -9,8 +9,8 @@ const page = () => {
       <Titulo titulo="FORMAS DE PAGAMENTO" />
 
       <p className={'texto'}>
-        Para sua maior comodidade rança a loja oferece alguns meios para
-        que seja realizado o pagamento de sua compra.
+        Para sua maior comodidade rança a loja oferece alguns meios para que
+        seja realizado o pagamento de sua compra.
       </p>
 
       <p className="texto">

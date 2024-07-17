@@ -1,29 +1,29 @@
 .lista_cores {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 1.75rem);
-    place-items: center;
-    gap: 0.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 1.75rem);
+  place-items: center;
+  gap: 0.25rem;
 }
 
 .li_color input {
-        border: 1px solid #9fa3a6;
-        appearance: none;
-        height: 1.25rem;
-        width: 1.25rem;
-        transition: all .2s ease-in-out;
-        cursor: pointer;
+  border: 1px solid #9fa3a6;
+  appearance: none;
+  height: 1.25rem;
+  width: 1.25rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .accordion_container nav {
-    height: 0px;
-    overflow: hidden;
-    transition: all .2s ease;
+  height: 0px;
+  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
 .accordion_container nav ul {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .accordion_container .ativo {
-    height: max-content;
+  height: max-content;
 }

@@ -36,11 +36,9 @@
 }
 
 @media (min-width: 64rem) {
-
-
   .container_items_cart {
     display: grid;
-    grid-template-columns: minmax(400px,800px) 384px;
+    grid-template-columns: minmax(400px, 800px) 384px;
     gap: 32px;
     max-width: 1200px;
     margin: 0 auto;
@@ -55,7 +53,7 @@
   .area_textos div:nth-child(2) a {
     display: none;
   }
-  
+
   .finalizar_container {
     grid-column: 2;
     grid-row: 2;
@@ -69,5 +67,4 @@
     grid-column: 1 / -1;
     grid-row: 3;
   }
-
 }

@@ -13,9 +13,9 @@
   }
 }
 
-@media (min-width:64rem) {
+@media (min-width: 64rem) {
   .mySwiper {
     max-width: 1140px;
-    padding-bottom:  10px !important;
+    padding-bottom: 10px !important;
   }
 }

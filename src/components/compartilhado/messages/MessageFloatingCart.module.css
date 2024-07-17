@@ -15,7 +15,7 @@
   border-radius: 6px;
   z-index: 1100;
   transition: 0.2s all;
-  animation: entrada ease-out .8s;
+  animation: entrada ease-out 0.8s;
   box-shadow: 0px 0px 15px 0px rgba(77, 77, 77, 0.5);
   font-family: var(--fonte-primaria);
   padding-bottom: 16px;
@@ -24,7 +24,7 @@
 .informacao_produto {
   display: flex;
   gap: 8px;
-  border-bottom: 1px solid rgba(52, 73, 94, .1);
+  border-bottom: 1px solid rgba(52, 73, 94, 0.1);
   padding-bottom: 16px;
 }
 
@@ -51,17 +51,17 @@
   gap: 4px;
   max-width: 275px;
 }
-.nome_produto, 
+.nome_produto,
 .quantidade_valor {
-  font-weight: 500 ;
+  font-weight: 500;
   font-size: 14px;
 }
 .quantidade_valor {
-  color:#7C7C7C;
+  color: #7c7c7c;
 }
 .confirmacao,
 .nome_produto {
-  color: #34495E;
+  color: #34495e;
 }
 .confirmacao {
   font-weight: 700;
@@ -96,7 +96,7 @@
   font-size: 14px;
   height: 36px;
   border-radius: 9999px;
-  transition: all .2s;
+  transition: all 0.2s;
   cursor: pointer;
   letter-spacing: 0.75px;
 }
@@ -118,7 +118,7 @@
 @media (max-width: 48rem) {
   .popUp {
     top: 40px;
-    left: 50% ;
+    left: 50%;
     transform: translate(-50%, 0);
   }
   .imagem_produto_div {
@@ -141,7 +141,7 @@
   .popUp {
     max-width: 380px;
     top: 30px;
-    right: 20px ;
+    right: 20px;
     /* transform: translate(130%, 0); */
   }
   .fechar {
@@ -153,7 +153,7 @@
       top: -150px;
       opacity: 0;
     }
-  
+
     100% {
       top: 30px;
       opacity: 1;
