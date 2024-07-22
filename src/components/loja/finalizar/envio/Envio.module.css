@@ -8,6 +8,10 @@
   box-sizing: border-box;
   font-family: var(--fonte-primaria);
   border-bottom: 1px solid #f2f2f2;
+  background-color: white;
+  box-shadow: 0 0 8px rgba(100, 100, 100, 0.25);
+  margin-top: 32px;
+  border-radius: 12px;
 }
 
 .envio_texto {

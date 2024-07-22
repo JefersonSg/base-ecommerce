@@ -10,9 +10,10 @@
   color: var(--cor-primaria);
   font-size: 16px;
   gap: 8px;
-  background-color: #f7f7f7;
-  border-top: 1px solid #97a3b1;
-}
+  background-color: white;
+  margin-top: 32px;
+  box-shadow: 0 0 8px rgba(100, 100, 100, 0.24);
+  border-radius: 12px;}
 .total_container div {
   display: flex;
   justify-content: space-between;
@@ -42,8 +43,7 @@
   padding-top: 16px;
   padding-bottom: 16px;
   margin-top: 16px;
-  border-top: 1px solid #97a3b1;
-  border-bottom: 1px solid #97a3b1;
+  border-top: 1px solid #97A3B1;
 }
 .valor_total p {
   font-weight: 700 !important;

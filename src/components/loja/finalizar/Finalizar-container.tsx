@@ -142,12 +142,14 @@ const FinalizarContainer = () => {
           priceDelivery={priceDelivery}
           cepRefetch={address?.data?.address?.cep ?? ''}
         />
-        <Pagamento
-          methodPayment={methodPayment}
-          setMethodPayment={setMethodPayment}
-        />
-        <div className={styles.botao_comprar} onClick={onSubmit}>
-          <BotaoColorido texto="Comprar" isLoading={isLoading} />
+        <div className={styles.finalizar_pagamento}>
+          <Pagamento
+            methodPayment={methodPayment}
+            setMethodPayment={setMethodPayment}
+          />
+          <div className={styles.botao_comprar} onClick={onSubmit}>
+            <BotaoColorido texto="PAGAR" isLoading={isLoading} />
+          </div>
         </div>
 
         {ativoConfirm && <BackgoundClick />}

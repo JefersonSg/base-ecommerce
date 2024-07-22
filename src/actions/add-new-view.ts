@@ -28,7 +28,7 @@ export async function AddNewView({
   void axios.post(
     url,
     {
-      token,
+      userToken: token,
       userIp: ipUser,
       sessionId,
       pageView

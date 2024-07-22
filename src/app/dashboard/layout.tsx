@@ -11,8 +11,10 @@ export default function DashboardLayout({
 }) {
   return (
     <>
-      <HeaderContainer />
-      {children}
+      <div className={'container_dashboard_color'}>
+        <HeaderContainer />
+        {children}
+      </div>
     </>
   );
 }
