@@ -144,19 +144,24 @@ const TotalFinal = ({
             )}
           </p>
         </div>
-
         {valorTotal && (
           <div className={styles.valor_total}>
-            <p>Valor total do pedido</p>
+            <p>VALOR TOTAL</p>
             <p>
               {descontoPorcentagem && data?.totalValue
                 ? 'R$ ' +
                   convertNumberInReal(
                     (descontoPorcentagem
                       ? -data.totalValue * descontoPorcentagem
-                      : 0) + +valorTotal?.replace(',', '.')
+                      : 0) +
+                      +valorTotal?.replace('.', '').replace(',', '.') +
+                      priceDelivery
                   )
-                : 'R$ ' + convertNumberInReal(+valorTotal.replace(',', '.'))}
+                : 'R$ ' +
+                  convertNumberInReal(
+                    +valorTotal.replace('.', '').replace(',', '.') +
+                      priceDelivery
+                  )}
             </p>
           </div>
         )}

@@ -7,6 +7,10 @@
   padding: 0 16px;
   box-sizing: border-box;
   padding-bottom: 32px;
+  background-color: white;
+  margin-top: 32px;
+  border-radius: 12px;
+  box-shadow:  0 0 8px rgba(100, 100, 100, 0.25);
 }
 
 .texto1 {
