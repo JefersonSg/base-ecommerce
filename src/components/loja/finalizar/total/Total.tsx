@@ -160,7 +160,8 @@ const TotalFinal = ({
                 : 'R$ ' +
                   convertNumberInReal(
                     +valorTotal.replace('.', '').replace(',', '.') +
-                      priceDelivery
+                      priceDelivery +
+                      0
                   )}
             </p>
           </div>
