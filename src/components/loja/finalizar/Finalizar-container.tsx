@@ -8,7 +8,7 @@ import Envio from './envio/Envio';
 import TotalFinal from './total/Total';
 import Pagamento from './pagamento/Pagamento';
 import BotaoColorido from '../../compartilhado/botoes/BotaoColorido';
-import styles from './FinalizarFetchs.module.css';
+import styles from './FinalizarContainer.module.css';
 import { useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 import {
@@ -125,7 +125,7 @@ const FinalizarContainer = () => {
 
   return (
     <>
-      <div>
+      <div className={styles.infos}>
         {data && itemsCart?.data && (
           <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
         )}

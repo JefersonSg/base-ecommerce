@@ -24,7 +24,7 @@ const BotaoQuantidadeFinalizar = ({
           void functionUpdate(-1);
         }}
         alt="Simbolo de subtração"
-        src={'/carrinho/subtracao.svg'}
+        src={'/carrinho/finalizar/subtracao.svg'}
         width={11}
         height={11}
       />
@@ -34,7 +34,7 @@ const BotaoQuantidadeFinalizar = ({
           void functionUpdate(+1);
         }}
         alt="Simbolo de adição"
-        src={'/carrinho/adicao.svg'}
+        src={'/carrinho/finalizar/adicao.svg'}
         width={11}
         height={11}
       />

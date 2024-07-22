@@ -128,12 +128,14 @@ const TotalFinal = ({
           <p>Frete</p>
           <p
             className={`${styles.frete} ${
-              valorTotal && +valorTotal.replace(',', '.') > 249.9
+              valorTotal &&
+              +valorTotal.replace('.', '').replace(',', '.') > 249.9
                 ? styles.frete_gratis
                 : ''
             }`}
           >
-            {valorTotal && +valorTotal.replace(',', '.') > 249.9 ? (
+            {valorTotal &&
+            +valorTotal.replace('.', '').replace(',', '.') > 249.9 ? (
               'Frete grátis'
             ) : (
               <>
@@ -159,9 +161,7 @@ const TotalFinal = ({
                   )
                 : 'R$ ' +
                   convertNumberInReal(
-                    +valorTotal.replace('.', '').replace(',', '.') +
-                      priceDelivery +
-                      0
+                    +valorTotal.replace('.', '').replace(',', '.')
                   )}
             </p>
           </div>

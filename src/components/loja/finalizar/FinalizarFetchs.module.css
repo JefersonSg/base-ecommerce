@@ -1,5 +1,5 @@
 .produtos_checkout {
-  width: max-content;
+  width: 100%;
   margin: 0 auto;
   border-radius: 4px;
   font-family: var(--fonte-primaria);
@@ -96,7 +96,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 23px;
+  width: max-content;
+  padding: 0 8px;
   height: 23px;
   background-color:#262626 ;
   border-radius: 999px;
@@ -119,13 +120,6 @@
 }
 
 
-.finalizar_pagamento {
-  background-color: white;
-  box-shadow:  0 0 8px rgba(100, 100, 100, 0.25);
-  margin-top: 32px;
-  border-radius: 12px;
-  padding: 16px 0;
-}
 
 
 @media (max-width: 48rem) {
