@@ -5,7 +5,6 @@ import React, { Suspense } from 'react';
 import EntregaFinalizar from './entrega/EntregaFinalizar';
 import Finalizarfetchs from './Finalizar_fetchs';
 import Envio from './envio/Envio';
-import TotalFinal from './total/Total';
 import Pagamento from './pagamento/Pagamento';
 import BotaoColorido from '../../compartilhado/botoes/BotaoColorido';
 import styles from './FinalizarContainer.module.css';
@@ -138,14 +137,12 @@ const FinalizarContainer = () => {
           setSelectDelivery={setSelectDelivery}
           setServiceShippingId={setServiceShippingId}
         />
-        <TotalFinal
-          priceDelivery={priceDelivery}
-          cepRefetch={address?.data?.address?.cep ?? ''}
-        />
         <div className={styles.finalizar_pagamento}>
           <Pagamento
             methodPayment={methodPayment}
             setMethodPayment={setMethodPayment}
+            priceDelivery={priceDelivery}
+            cepRefetch={address?.data?.address?.cep ?? ''}
           />
           <div className={styles.botao_comprar} onClick={onSubmit}>
             <BotaoColorido texto="PAGAR" isLoading={isLoading} />

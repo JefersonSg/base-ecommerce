@@ -5,3 +5,11 @@ body {
 .container_payment {
   background-color: #F3F3F3 !important;
 }
+
+
+.card {
+  border-radius: 12px;
+  background-color: white;
+  padding: 16px;
+  box-shadow:  0 0 8px rgba(100, 100, 100, 0.25);
+}

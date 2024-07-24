@@ -4,8 +4,7 @@ import Enderecos from './Enderecos';
 
 const EntregaFinalizar = () => {
   return (
-    <div className={styles.entrega_container}>
-      <div className={styles.tituloArea}></div>
+    <div className={`card ${styles.entrega_container}`}>
       <Enderecos />
     </div>
   );

@@ -10,10 +10,11 @@
   color: var(--cor-primaria);
   font-size: 16px;
   gap: 8px;
-  background-color: white;
-  margin-top: 32px;
-  box-shadow: 0 0 8px rgba(100, 100, 100, 0.24);
-  border-radius: 12px;}
+  margin: 0 auto;
+  margin-top: 16px;
+  border-radius: 12px;
+  max-width: 300px;
+}
 .total_container div {
   display: flex;
   justify-content: space-between;

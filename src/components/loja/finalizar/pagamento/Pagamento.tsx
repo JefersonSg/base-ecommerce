@@ -2,17 +2,23 @@
 import React from 'react';
 import styles from './Pagamento.module.css';
 import Image from 'next/image';
+import TotalFinal from '../total/Total';
 
 const Pagamento = ({
   methodPayment,
-  setMethodPayment
+  setMethodPayment,
+  priceDelivery,
+  cepRefetch
 }: {
   methodPayment: string;
   setMethodPayment: React.Dispatch<React.SetStateAction<string>>;
+  priceDelivery: number;
+  cepRefetch: string;
 }) => {
   return (
     <div className={styles.pagamento_container}>
-      <h3>Pagamento</h3>
+      <p className={'subtitle_finalizar'}>Pagamento</p>
+
       <div className={styles.formas_pagamento}>
         <div
           className={styles.metodo_pagamento}
@@ -57,6 +63,7 @@ const Pagamento = ({
           </div>
         </div>
       </div>
+      <TotalFinal cepRefetch="" priceDelivery={priceDelivery} />
     </div>
   );
 };
