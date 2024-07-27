@@ -11,7 +11,7 @@ const Finalizarfetchs = ({
   data,
   refetch
 }: {
-  data: CartInterface;
+  data?: CartInterface;
   refetch: any;
 }) => {
   const [ativo, setAtivo] = React.useState(true);
@@ -74,7 +74,10 @@ const Finalizarfetchs = ({
         </table>
       </div>
       <p className={styles.subtotal}>
-        Subtotal <span>R$ {convertNumberInReal(+data?.totalValue)}</span>
+        Subtotal{' '}
+        <span>
+          R$ {convertNumberInReal(data?.totalValue ? data?.totalValue : 0)}
+        </span>
       </p>
     </div>
   );

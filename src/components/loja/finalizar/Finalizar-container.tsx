@@ -125,9 +125,7 @@ const FinalizarContainer = () => {
   return (
     <>
       <div className={styles.infos}>
-        {data && itemsCart?.data && (
-          <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
-        )}
+        <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
         <EntregaFinalizar />
 
         <Envio

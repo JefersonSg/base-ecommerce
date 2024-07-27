@@ -39,6 +39,7 @@
   }
 
   .subtitle_finalizar {
+    font-family: var(--type-first-payment) !important;
     font-size: 14px;
     font-weight: 600;
     color: #313747;

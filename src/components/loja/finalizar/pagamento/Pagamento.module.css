@@ -9,11 +9,8 @@
   gap: 16px;
   justify-content: center;
 }
-.pagamento_container h3 {
-  font-family: var(--fonte-primaria);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--cor-primaria);
+.pagamento_container P {
+  font-family: var(--fonte-pagamento);
 }
 
 .info {
