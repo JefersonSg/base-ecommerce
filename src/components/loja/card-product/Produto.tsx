@@ -125,7 +125,7 @@ function Produto({
       }`}
     >
       {promotionPorcent() ? (
-        <span className={styles.promotion}>{`-${promotionPorcent()}%`}</span>
+        <span className={styles.promotion}>{`${promotionPorcent()}% OFF`}</span>
       ) : (
         ''
       )}

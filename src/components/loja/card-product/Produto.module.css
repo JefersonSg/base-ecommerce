@@ -88,24 +88,31 @@
   font-weight: 700;
   line-height: 150%;
 }
+
+
+
 .promotion {
   z-index: 998;
   position: absolute;
-  left: 16px;
-  top: 16px;
-  width: max-content;
-  min-width: 58px;
-  height: 24px;
-  background-color: var(--cor-contraste);
-  font-size: 16px;
-  font-weight: 700;
+  left: 0px;
+  top: calc(200px - 40px);
+  width: 100%;
+  height: 40px;
+  background: var(--cor-principal);
+  font-size: 18px;
+  font-weight: 500;
   color: white;
-  font-family: var(--fonte-primaria);
+  font-family: 'poppins', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  opacity: 1 !important;
+  opacity: 0.9;
+  transition: all .4s;
+}
+.produto:hover .promotion {
+  width: 0px;
+  min-width: none;
+  opacity: 0;
 }
 .promocao_preco {
   display: flex;
