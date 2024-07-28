@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import styles from './Header.module.css';
-import { InfosDestaques } from './InfosDestaques';
 import Image from 'next/image';
 import Link from 'next/link';
 import Pesquisa from './pesquisa/Pesquisa';
@@ -11,7 +10,6 @@ import LoadingUserInfos from './LoadingUserInfos';
 export const Header = async () => {
   return (
     <>
-      <InfosDestaques />
       <div className={styles.container_header}>
         <header className={styles.header}>
           <div className={styles.container1}>

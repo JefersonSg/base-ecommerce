@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import styles from './MenuMobile.module.css';
 import Usuario from './itens/Usuario';
 import UlLinksUteis from './itens/UlLinksUteis';
@@ -47,9 +47,7 @@ const MenuMobile = ({ userData }: { userData: UserInterface }) => {
           <UlLinksUteis />
           <div className={styles.categorias}>
             <h2 className={styles.subtitulo}>Navegue por categorias</h2>
-            <Suspense>
-              <LinksCategorias setAtivo={setAtivo} />
-            </Suspense>
+            <LinksCategorias setAtivo={setAtivo} />
           </div>
         </nav>
       </div>

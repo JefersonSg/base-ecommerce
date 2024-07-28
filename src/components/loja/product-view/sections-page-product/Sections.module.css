@@ -30,8 +30,8 @@
 }
 .select_avaliacoes.ativo,
 .select_description.ativo {
-  color: #EF3C3C;
-  border-bottom: 3px solid #EF3C3C;
+  color: var(--cor-contraste);
+  border-bottom: 3px solid var(--cor-contraste);
 }
 
 .div_descricoes,

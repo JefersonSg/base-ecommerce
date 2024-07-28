@@ -13,7 +13,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   object-fit: cover;
-
   transition: all .3s;
 }
 .menuMobile.ativo {

@@ -23,9 +23,9 @@ const AddViewFunc = () => {
     const userIp = data.ip;
 
     const productId =
-      pathname.split('/')[2] === 'produto' &&
-      pathname.split('/')[3].length > 20 &&
-      pathname.split('/')[3];
+      pathname.split('/')?.[2] === 'produto' &&
+      pathname.split('/')?.[3]?.length > 20 &&
+      pathname.split('/')?.[3];
 
     if (!sessionId?.value) {
       setNewCookieSession();

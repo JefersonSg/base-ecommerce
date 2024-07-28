@@ -7,14 +7,16 @@ const BotaoSair = () => {
   const { logout } = useUserContext();
 
   return (
-    <button
-      style={{ minWidth: '60px', height: '40px' }}
-      onClick={() => {
-        void logout();
-      }}
-    >
-      Sair
-    </button>
+    <li>
+      <button
+        style={{ minWidth: '60px', height: '40px' }}
+        onClick={() => {
+          void logout();
+        }}
+      >
+        Sair
+      </button>
+    </li>
   );
 };
 
