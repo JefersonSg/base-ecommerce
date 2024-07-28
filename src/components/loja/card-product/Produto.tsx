@@ -142,13 +142,20 @@ function Produto({
         />
       </div>
       <div className={styles.infos}>
-        <div className={styles.cores}>
-          {productData.codeColors?.map((color) => {
-            return (
-              <span key={color} style={{ backgroundColor: `${color}` }}></span>
-            );
-          })}
-        </div>
+        {productData?.codeColors?.[0] ? (
+          <div className={styles.cores}>
+            {productData?.codeColors?.map((color) => {
+              return (
+                <span
+                  key={color}
+                  style={{ backgroundColor: `${color}` }}
+                ></span>
+              );
+            })}
+          </div>
+        ) : (
+          <></>
+        )}
         <p className={styles.nome_produto}>{name}</p>
 
         <div
