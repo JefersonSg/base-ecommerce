@@ -27,6 +27,10 @@
   padding-right: 32px;
   width: 150px;
   box-sizing: border-box;
+  border-bottom: 3px solid transparent;
+}
+.select_avaliacoes {
+  margin-left: -1px;
 }
 .select_avaliacoes.ativo,
 .select_description.ativo {

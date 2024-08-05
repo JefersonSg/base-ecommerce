@@ -27,6 +27,10 @@
 .slide-produto .swiper-slide-thumb-active {
   border: 3px solid #000000;
 }
+.slide-produto .swiper-slide {
+    width: 74px !important;
+    height: 74px !important;
+  }
 
 @media (min-width: 64rem) {
   .slide-produto .swiper-slide-thumb-active {

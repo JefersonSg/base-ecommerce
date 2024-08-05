@@ -2,11 +2,13 @@
   width: 100%;
   padding: 0 16px;
   margin: 0 auto;
-  margin-top: 64px;
+  margin-top: 0px;
   box-sizing: border-box;
   padding-top: 32px;
 }
-
+.titulo img{
+  display: none;
+}
 @media (min-width: 64rem) {
   .avaliacoes_container {
     margin: 0;
