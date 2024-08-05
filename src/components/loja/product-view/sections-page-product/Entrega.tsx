@@ -72,7 +72,7 @@ function Entrega() {
         </div>
       </div>
       {ativo && (
-        <>
+        <div className={styles.container}>
           <div>
             <div className={styles.texto_indicativo_input}>
               <Image
@@ -149,7 +149,7 @@ function Entrega() {
           ) : (
             ''
           )}
-        </>
+        </div>
       )}
     </div>
   );

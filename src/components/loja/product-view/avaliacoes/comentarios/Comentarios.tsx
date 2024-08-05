@@ -73,9 +73,11 @@ function Comentarios() {
             )}
           </div>
         )}
-        <h3 className={`titulo_sessao ${styles.titulo_comentario}`}>
-          Commentários
-        </h3>
+        {dataComments.data?.comments[0] && (
+          <h3 className={`titulo_sessao ${styles.titulo_comentario}`}>
+            Commentários
+          </h3>
+        )}
         {dataComments?.data?.comments?.map((comment, index) => {
           return (
             <Comentario

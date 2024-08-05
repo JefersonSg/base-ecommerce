@@ -52,6 +52,7 @@
   padding-top: 8px;
   padding-bottom: 8px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .selectColors.ativo {
   display: flex;
