@@ -26,7 +26,10 @@ const HeaderPagamento = () => {
             width={20}
             height={20}
           />
-          <p>COMPRA SEGURA</p>
+          <div className={styles.pagamento_seguro}>
+            <p>PAGAMENTO</p>
+            <span>100% SEGURO</span>
+          </div>
         </div>
       </div>
     </div>

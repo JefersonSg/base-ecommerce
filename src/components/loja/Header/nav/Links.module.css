@@ -6,7 +6,7 @@
 
 .categorias_lista {
   display: flex;
-  background-color: black;
+  background-color: var(--cor-principal);
   width: max-content;
   max-width: 1220px;
   justify-content: space-between;
@@ -33,7 +33,6 @@
 
 @media (min-width: 64rem) {
   .container_nav {
-    border-bottom: 1px solid #996557;
     height: 45px;
   }
   .link {
@@ -78,12 +77,12 @@
 
   /* hovers */
   .link:hover .linha {
-    background-color: var(--cor-contraste);
+    background-color: white;
     width: calc(100% + 20px);
   }
 
   .link:hover .category_name {
-    color: var(--cor-contraste);
+    opacity: 0.7;
   }
   .link:hover svg path {
     stroke: var(--cor-contraste);

@@ -10,6 +10,9 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1000;
 }
 
 .resultado_container .produto_pesquisa:first-child {
@@ -29,6 +32,7 @@
   width: 100%;
   background-color: white;
   box-sizing: border-box;
+  z-index: 1000;
 }
 
 .produto_pesquisa:hover {
@@ -38,6 +42,9 @@
 .produto_pesquisa img {
   border-radius: 6px;
   margin-right: 8px;
+}
+.nome_produto {
+  font-size: 12px;
 }
 .preços {
   font-size: 12px;
@@ -50,6 +57,24 @@
   font-size: 12px;
   text-decoration: line-through;
   font-weight: 300;
+}
+.btn_ver_mais {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--cor-principal);
+  box-sizing: border-box;
+}
+.btn_ver_mais p {
+  font-size: 11px;
+  padding: 10px 16px;
+  background-color: white;
+  border-radius: 12px;
+  font-weight: 400;
 }
 @media (min-width: 64rem) {
   .resultado_container {

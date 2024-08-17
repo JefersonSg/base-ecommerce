@@ -18,7 +18,7 @@ const BreadcrumbFinalizar = () => {
               height={18}
             />
           </span>
-          <p>1. Sacola</p>
+          <p>Sacola</p>
         </div>
         <div className={styles.item}>
           <span className={styles.imagem}>
@@ -29,18 +29,18 @@ const BreadcrumbFinalizar = () => {
               height={18}
             />
           </span>
-          <p>2. Pagamento</p>
+          <p>Pagamento</p>
         </div>
         <div className={styles.item}>
           <span className={styles.imagem}>
             <Image
-              alt="Carrinho de cartão"
+              alt="Check icon"
               src={'/pagamento/check.svg'}
-              width={18}
+              width={20}
               height={18}
             />
           </span>
-          <p>2. Confirmação</p>
+          <p>Confirmação</p>
         </div>
       </div>
     </div>

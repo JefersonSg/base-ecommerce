@@ -3,9 +3,9 @@
 import { cookies } from 'next/headers';
 
 async function getCookie({ nameCookie }: { nameCookie: string }) {
-  const cokie = cookies().get(nameCookie);
+  const cookie = cookies().get(nameCookie)?.value;
 
-  return cokie;
+  return cookie;
 }
 
 export default getCookie;

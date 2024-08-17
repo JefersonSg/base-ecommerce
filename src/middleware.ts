@@ -8,7 +8,7 @@ export default async function middleware(req: NextRequest) {
   const authenticated = token ? await verifyToken(token) : false;
 
   const signInURL = new URL('/', req.url);
-  const urlLogin = new URL('/login', req.url);
+  const urlLogin = new URL('/registrar', req.url);
 
   if (authenticated) {
     if (

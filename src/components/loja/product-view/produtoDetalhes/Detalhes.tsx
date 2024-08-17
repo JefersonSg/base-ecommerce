@@ -14,8 +14,9 @@ import React, { Suspense } from 'react';
 import { addNewItemCart } from '@/src/shared/api/POST';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import Entrega from '../sections-page-product/Entrega';
-import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
 import MessageFloating from '@/src/components/compartilhado/messages/message-floating-cart';
+import getCookie from '@/src/actions/getCookie';
+import setNewCookie from '@/src/actions/setCookie';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
@@ -31,7 +32,6 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
   const [haveColor, setHaveColor] = React.useState<boolean>();
-  const [modalLogin, setModalLogin] = React.useState(false);
   const [nameProduct, setNameProduct] = React.useState('');
   const [priceProduct, setPriceProduct] = React.useState<number>(0);
   const [imageProduct, setImageProduct] = React.useState('');
@@ -40,16 +40,12 @@ function Detalhes({ data }: { data: ProductApi }) {
     setMessagePopUp('');
     setTypePopUp('');
 
-    if (!userData?.data?.user?._id) {
-      setTypePopUp('error');
-      setMessagePopUp('Faça login para adicionar ao carrinho');
-      setModalLogin(true);
-      return;
-    }
+    const cookie = await getCookie({ nameCookie: 'cart_id' });
 
     const infosCartItem = {
       productId: data._id,
-      userId: userData.data.user._id,
+      userId: userData?.data?.user?._id,
+      cartId: cookie ?? '',
       size: sizeSelected,
       color: colorSelected,
       amount: 1
@@ -71,6 +67,11 @@ function Detalhes({ data }: { data: ProductApi }) {
         setImageProduct(
           data?.coverPhoto1?.length ? data.coverPhoto1 : data.images[0]
         );
+        setNewCookie({
+          nameCookie: 'cart_id',
+          valueCookie: response.itemCart.shoppingCartId,
+          duracaoDias: 7
+        });
       } else {
         setTypePopUp('error');
         setMessagePopUp('Erro ao adicionar ao carrinho');
@@ -183,7 +184,6 @@ function Detalhes({ data }: { data: ProductApi }) {
           typePopUp={typePopUp}
         />
       )}
-      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </div>
   );
 }

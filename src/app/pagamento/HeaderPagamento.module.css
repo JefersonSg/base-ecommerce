@@ -22,19 +22,34 @@
 }
 
 .texto_segurança {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
+    display: flex;
+    align-items: center;
+    justify-self: flex-end;
+    gap: 6px;
 }
 .texto_segurança p {
-  font-family: var(--fonte-primaria);
-  font-weight: 700;
-  font-size: 14px;
+    font-family: var(--fonte-primaria);
+    font-weight: 700;
+    font-size: 10px;
+    height: max-content;
+    padding: 0px;
+    margin: 0px;
+    color: #848489;
 }
 
+.pagamento_seguro {
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1px;
+}
+.pagamento_seguro span {
+    font-size: 10px;
+    color: #848489;
+}
 @media (max-width: 48rem) {
     .container_header_pagamento {
-        height: 190px;
+        height: 80px;
+        margin-bottom: 116px;
     }
     .wrapper_header {
         display: grid;
@@ -42,13 +57,8 @@
         flex-direction: column;
         gap: 32px;
     }
-.logo {
+    .logo {
     height: auto;
     width: 100px;
- }
- .texto_segurança p{
-    font-size: 11px;
-    text-wrap: nowrap;
- }
-
+    }
 }

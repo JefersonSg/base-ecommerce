@@ -5,10 +5,9 @@ import React, { Suspense } from 'react';
 import EntregaFinalizar from './entrega/EntregaFinalizar';
 import Finalizarfetchs from './Finalizar_fetchs';
 import Envio from './envio/Envio';
-import TotalFinal from './total/Total';
 import Pagamento from './pagamento/Pagamento';
 import BotaoColorido from '../../compartilhado/botoes/BotaoColorido';
-import styles from './FinalizarFetchs.module.css';
+import styles from './FinalizarContainer.module.css';
 import { useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 import {
@@ -125,10 +124,8 @@ const FinalizarContainer = () => {
 
   return (
     <>
-      <div>
-        {data && itemsCart?.data && (
-          <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
-        )}
+      <div className={styles.infos}>
+        <Finalizarfetchs data={itemsCart?.data} refetch={itemsCart.refetch} />
         <EntregaFinalizar />
 
         <Envio
@@ -138,14 +135,12 @@ const FinalizarContainer = () => {
           setSelectDelivery={setSelectDelivery}
           setServiceShippingId={setServiceShippingId}
         />
-        <TotalFinal
-          priceDelivery={priceDelivery}
-          cepRefetch={address?.data?.address?.cep ?? ''}
-        />
         <div className={styles.finalizar_pagamento}>
           <Pagamento
             methodPayment={methodPayment}
             setMethodPayment={setMethodPayment}
+            priceDelivery={priceDelivery}
+            cepRefetch={address?.data?.address?.cep ?? ''}
           />
           <div className={styles.botao_comprar} onClick={onSubmit}>
             <BotaoColorido texto="PAGAR" isLoading={isLoading} />

@@ -4,7 +4,7 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
-  padding: 0px;
+  padding: 16px;
   box-sizing: border-box;
   font-family: var(--fonte-primaria);
   border-bottom: 1px solid #f2f2f2;

@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
-import { typeFirst, typeFirstDashboard } from '../shared/functions/fonts';
+import {
+  typeFirst,
+  typeFirstDashboard,
+  paymentFont
+} from '../shared/functions/fonts';
 import './globals.css';
 import './fonts.css';
 import './colors.css';
@@ -54,7 +58,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleTagManager gtmId="G-NYKP51D935" />
-      <body className={`${typeFirst.variable} ${typeFirstDashboard.variable}`}>
+      <body
+        className={`${typeFirst.variable} ${typeFirstDashboard.variable} ${paymentFont.variable}`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

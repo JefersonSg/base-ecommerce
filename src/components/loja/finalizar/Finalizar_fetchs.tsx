@@ -5,12 +5,13 @@ import React from 'react';
 import { type CartInterface } from '@/src/shared/helpers/interfaces';
 import ProdutosFinalizar from './produto/ProdutosFinalizar';
 import Image from 'next/image';
+import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
 
 const Finalizarfetchs = ({
   data,
   refetch
 }: {
-  data: CartInterface;
+  data?: CartInterface;
   refetch: any;
 }) => {
   const [ativo, setAtivo] = React.useState(true);
@@ -24,7 +25,7 @@ const Finalizarfetchs = ({
           }}
         >
           <span className={styles.total_produtos}>
-            {data?.itemsCart?.length}
+            {data?.itemsCart?.length} ITENS
           </span>
           <Image
             alt="Imagem de seta"
@@ -73,7 +74,10 @@ const Finalizarfetchs = ({
         </table>
       </div>
       <p className={styles.subtotal}>
-        Subtotal <span>{data?.totalValue}</span>
+        Subtotal{' '}
+        <span>
+          R$ {convertNumberInReal(data?.totalValue ? data?.totalValue : 0)}
+        </span>
       </p>
     </div>
   );

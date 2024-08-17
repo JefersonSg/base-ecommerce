@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './LinksCategorias.module.css';
 import { type subcategoryInterface } from '@/src/shared/helpers/interfaces';
 import BotaoCategoria from './BotaoCategoria';
@@ -27,9 +29,12 @@ function LinksCategorias({
   return (
     <ul className={styles.links}>
       {data?.categories?.map((category, index) => {
+        if (!category) {
+          return <></>;
+        }
         return (
           <BotaoCategoria
-            key={category._id}
+            key={category._id + index}
             category={category}
             setAtivoLista={setAtivoLista}
             subcategories={subcategoriesList.data}

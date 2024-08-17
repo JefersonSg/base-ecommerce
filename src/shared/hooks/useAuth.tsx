@@ -3,6 +3,8 @@ import Cookie from 'js-cookie';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import getCookie from '@/src/actions/getCookie';
+import removeCookie from '@/src/actions/removeCookie';
 
 interface dataUserLogin {
   email: string;
@@ -11,6 +13,7 @@ interface dataUserLogin {
 interface dataUserRegister {
   name: string;
   surname: string;
+  cartId?: string;
   email: string;
   password: string;
   confirmpassword: string;
@@ -45,6 +48,7 @@ const useAuth = () => {
     setAuthenticated(false);
     Cookie.remove('auth_token');
     Cookie.remove('isAdmin');
+    removeCookie({ nameCookie: 'cart_id' });
 
     window.location.reload();
   }
@@ -73,8 +77,16 @@ const useAuth = () => {
     dataUser: dataUserRegister,
     setErrorMessage: React.Dispatch<React.SetStateAction<string>>
   ) {
+    const cookie = await getCookie({ nameCookie: 'cart_id' });
     try {
-      const data = await axios.post(`${API_URL}user/register`, dataUser);
+      const data = await axios.post(`${API_URL}user/register`, {
+        name: dataUser.name,
+        surname: dataUser.surname,
+        cartId: cookie ?? '',
+        email: dataUser.email,
+        password: dataUser.password,
+        confirmpassword: dataUser.confirmpassword
+      });
 
       await authUser(data.data);
       router.push('/');

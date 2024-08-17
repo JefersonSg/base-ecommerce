@@ -21,7 +21,7 @@ const Envio = ({
 }) => {
   return (
     <div className={styles.envio_container}>
-      <h3 className={styles.envio_texto}>Frete</h3>
+      <p className={'subtitle_finalizar'}>Frete</p>
       <div className={styles.escolha_entrega}>
         {!shippingOption?.[0] && <Loading />}
         {shippingOption?.[0] &&

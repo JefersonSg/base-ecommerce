@@ -2,16 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70px;
+  width: 78px;
   height: 30px;
   border-radius: 48px;
-  border: 1px solid black;
+  border: 1px solid #E4E4E4;
   background: white;
-  color: var(--Black, #212429);
+  color: var( #383844);
   font-family: var(--fonte-primaria);
   font-size: 12px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 24px;
 }
 

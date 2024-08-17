@@ -38,16 +38,6 @@ const Pesquisa = () => {
             />
           )}
 
-          <Image
-            alt="seta de voltar"
-            className={styles.seta_voltar}
-            src={'/setaVoltar.svg'}
-            width={20}
-            height={20}
-            onClick={() => {
-              setAtivo(false);
-            }}
-          />
           <input
             className={styles.input_pesquisa}
             type="text"
@@ -75,7 +65,7 @@ const Pesquisa = () => {
             />
           </Link>
         </div>
-        {(pesquisa && ativo) || ativo ? (
+        {ativo && pesquisa ? (
           <div
             className={styles.fundo}
             onClick={() => {
