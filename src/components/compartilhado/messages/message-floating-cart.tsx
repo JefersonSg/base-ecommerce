@@ -102,7 +102,7 @@ const MessageFloating = ({
       </div>
       <div className={styles.informacao_carrinho}>
         <p>
-          Total <span>({data?.itemsCart.length} produto)</span>
+          Total <span>({data?.itemsCart?.length} produto)</span>
         </p>
         <p>R${convertNumberInReal(data?.totalValue ?? 0)}</p>
       </div>

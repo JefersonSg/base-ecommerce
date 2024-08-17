@@ -17,6 +17,8 @@ import { getAllItemsCartByUserId, getUserByToken } from '@/src/shared/api/GETS';
 import Cookies from 'js-cookie';
 import React, { Suspense } from 'react';
 import ImagemProduto from './ImagemProduto';
+import setNewCookie from '@/src/actions/setCookie';
+import getCookie from '@/src/actions/getCookie';
 
 function Produto({
   productData,
@@ -60,25 +62,31 @@ function Produto({
     setMessagePopUp('');
     setTypePopUp('');
 
-    if (!userData?.data?.user?._id) {
-      setTypePopUp('error');
-      setIsLoading(false);
-      setModalLogin(true);
-      return;
-    }
+    const cookie = await getCookie({ nameCookie: 'cart_id' });
 
     const infosCartItem = {
       productId: _id,
       userId: userData?.data?.user?._id,
-      size: productData?.size[0],
+      cartId: cookie ? cookie.value : '',
+      size: productData?.size?.[0],
       color: productData?.colors?.[0] ?? '',
       amount: 1
     };
 
     try {
       setIsLoading(true);
-      const response = await addNewItemCart(infosCartItem);
+      const response = (await addNewItemCart(infosCartItem)) as {
+        message: string;
+        itemCart: {
+          shoppingCartId: string;
+          productId: string;
+          color: string;
+          size: string;
+        };
+      };
       void refetch();
+
+      console.log(response);
 
       setTimeout(() => {
         setIsLoading(false);
@@ -90,10 +98,15 @@ function Produto({
         setPriceProduct(productData.price);
         setImageProduct(
           productData?.coverPhoto1?.length
-            ? productData.coverPhoto1
-            : productData.images[0]
+            ? productData?.coverPhoto1
+            : productData?.images?.[0]
         );
         setTypePopUp('');
+        setNewCookie({
+          nameCookie: 'cart_id',
+          valueCookie: response.itemCart.shoppingCartId,
+          duracaoDias: 7
+        });
       } else {
         setTypePopUp('error');
         setMessagePopUp('Erro ao adicionar ao carrinho');
@@ -187,10 +200,6 @@ function Produto({
         <button
           className={styles.botao_adicionar}
           onClick={(e) => {
-            if (!userData?.data?.user?._id) {
-              e.preventDefault();
-              setModalLogin(true);
-            }
             if (
               (productData?.colors && productData?.colors?.length <= 1) ??
               productData?.size?.length === 1

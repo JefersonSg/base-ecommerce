@@ -26,7 +26,8 @@ const configFormData = {
 
 export async function addNewItemCart(data: {
   productId: string;
-  userId: string;
+  userId?: string;
+  cartId?: string;
   size: string;
   amount: string | number;
   color: string;
