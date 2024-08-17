@@ -4,6 +4,7 @@ import {
   type UserInterface,
   type FavoriteInterface
 } from '../helpers/interfaces';
+import getCookie from '@/src/actions/getCookie';
 
 const token = Cookies.get('auth_token') ?? false;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -194,10 +195,12 @@ export const getFavoriteByUserId = async (id: string) => {
 };
 
 export const getAllItemsCartByUserId = async (userId: string, cep?: string) => {
+  const cookie = await getCookie({ nameCookie: 'cart_id' });
+
   try {
     const response = await axios.post(
-      `${API_URL}shopping/get-all/${userId}`,
-      { cep },
+      `${API_URL}shopping/get-all`,
+      { cep, cartId: cookie?.value, userId },
       config
     );
 

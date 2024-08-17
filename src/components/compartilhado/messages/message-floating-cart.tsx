@@ -39,15 +39,12 @@ const MessageFloating = ({
     }
   });
 
-  const { data } = useQuery<CartInterface>({
+  const { data, refetch } = useQuery<CartInterface>({
     queryKey: ['shopping-cart', userData?.data?.user?._id],
     queryFn: async () => {
-      if (userData?.data?.user?._id) {
-        return await getAllItemsCartByUserId(
-          userData?.data?.user?._id.toString()
-        );
-      }
-      return [];
+      return await getAllItemsCartByUserId(
+        userData?.data?.user?._id.toString() ?? ''
+      );
     }
   });
 
@@ -61,11 +58,11 @@ const MessageFloating = ({
       setMessagePopUp('');
       setTypePopUp('');
     }, 6000);
-
+    void refetch();
     return () => {
       clearTimeout(temporizador);
     };
-  }, [setMessagePopUp, setTypePopUp, nameProduct]);
+  }, [setMessagePopUp, setTypePopUp, nameProduct, refetch]);
 
   return (
     <div
