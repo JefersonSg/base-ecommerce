@@ -45,7 +45,7 @@ function Detalhes({ data }: { data: ProductApi }) {
     const infosCartItem = {
       productId: data._id,
       userId: userData?.data?.user?._id,
-      cartId: cookie ? cookie.value : '',
+      cartId: cookie ?? '',
       size: sizeSelected,
       color: colorSelected,
       amount: 1

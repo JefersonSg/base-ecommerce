@@ -67,7 +67,7 @@ function Produto({
     const infosCartItem = {
       productId: _id,
       userId: userData?.data?.user?._id,
-      cartId: cookie ? cookie.value : '',
+      cartId: cookie ?? '',
       size: productData?.size?.[0],
       color: productData?.colors?.[0] ?? '',
       amount: 1
