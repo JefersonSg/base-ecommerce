@@ -39,15 +39,12 @@ const MessageFloating = ({
     }
   });
 
-  const { data } = useQuery<CartInterface>({
+  const { data, refetch } = useQuery<CartInterface>({
     queryKey: ['shopping-cart', userData?.data?.user?._id],
     queryFn: async () => {
-      if (userData?.data?.user?._id) {
-        return await getAllItemsCartByUserId(
-          userData?.data?.user?._id.toString()
-        );
-      }
-      return [];
+      return await getAllItemsCartByUserId(
+        userData?.data?.user?._id.toString() ?? ''
+      );
     }
   });
 
@@ -61,11 +58,11 @@ const MessageFloating = ({
       setMessagePopUp('');
       setTypePopUp('');
     }, 6000);
-
+    void refetch();
     return () => {
       clearTimeout(temporizador);
     };
-  }, [setMessagePopUp, setTypePopUp, nameProduct]);
+  }, [setMessagePopUp, setTypePopUp, nameProduct, refetch]);
 
   return (
     <div
@@ -102,7 +99,7 @@ const MessageFloating = ({
       </div>
       <div className={styles.informacao_carrinho}>
         <p>
-          Total <span>({data?.itemsCart.length} produto)</span>
+          Total <span>({data?.itemsCart?.length} produto)</span>
         </p>
         <p>R${convertNumberInReal(data?.totalValue ?? 0)}</p>
       </div>
