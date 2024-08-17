@@ -3,7 +3,7 @@
 import { cookies } from 'next/headers';
 
 async function getCookie({ nameCookie }: { nameCookie: string }) {
-  const cookie = cookies().get(nameCookie);
+  const cookie = cookies().get(nameCookie)?.value;
 
   return cookie;
 }

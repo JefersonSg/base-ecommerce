@@ -27,14 +27,14 @@ const AddViewFunc = () => {
       pathname.split('/')?.[3]?.length > 20 &&
       pathname.split('/')?.[3];
 
-    if (!sessionId?.value) {
+    if (!sessionId) {
       setNewCookieSession();
       sessionId = await getCookie({ nameCookie: 'sessionId' });
     }
 
     const pageView = pathname;
 
-    if (sessionId?.value && !data.isBot) {
+    if (sessionId && !data.isBot) {
       void AddNewView({
         ipUser: userIp,
         pageView,

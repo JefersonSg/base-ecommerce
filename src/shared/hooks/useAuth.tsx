@@ -82,7 +82,7 @@ const useAuth = () => {
       const data = await axios.post(`${API_URL}user/register`, {
         name: dataUser.name,
         surname: dataUser.surname,
-        cartId: cookie ? cookie.value : '',
+        cartId: cookie ?? '',
         email: dataUser.email,
         password: dataUser.password,
         confirmpassword: dataUser.confirmpassword

@@ -200,7 +200,7 @@ export const getAllItemsCartByUserId = async (userId: string, cep?: string) => {
   try {
     const response = await axios.post(
       `${API_URL}shopping/get-all`,
-      { cep, cartId: cookie?.value, userId },
+      { cep, cartId: cookie, userId },
       config
     );
 
@@ -227,7 +227,11 @@ export const getOrderByUserId = async (userId: string) => {
 
 // Get CEP
 export const getAddress = async () => {
+  const token = await getCookie({ nameCookie: 'auth_token' });
   try {
+    if (!token) {
+      return;
+    }
     const response = await axios.get(`${API_URL}user/address/`, config);
 
     return response.data;
