@@ -48,6 +48,7 @@ const SectionProdutosViews = ({
   const fetching = React.useRef(false);
 
   // Scrolls
+
   function infiniteScroll() {
     if (fetching.current) return;
     fetching.current = true;
