@@ -19,7 +19,12 @@ const SectionProdutosViews = ({
 }: {
   data: ProductApi[];
   texto?: string;
-  functionGetProduct: ({ id, page, total }: ProductGetParams) => Promise<
+  functionGetProduct: ({
+    id,
+    page,
+    total,
+    active
+  }: ProductGetParams) => Promise<
     | {
         products: ProductApi[];
       }
@@ -61,9 +66,10 @@ const SectionProdutosViews = ({
     async function getProducts(page: number) {
       const actionData = await functionGetProduct({
         id: '',
-        category: categoryId,
+        category: '',
         page,
-        total: 9
+        total: 9,
+        active: true
       });
 
       if (actionData?.products) {

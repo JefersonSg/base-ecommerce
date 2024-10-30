@@ -1,8 +1,8 @@
 import Categorias from '@/src/components/loja/categorias/Categorias';
-import MaisVendidos from './sections/MaisVendidos';
+// import MaisVendidos from './sections/MaisVendidos';
 import MaisVistos from './sections/MaisVistos';
-import Novidades from './sections/Novidades';
-import Promocoes from './sections/Promocoes';
+// import Novidades from './sections/Novidades';
+// import Promocoes from './sections/Promocoes';
 import { Suspense } from 'react';
 import categoriesGetAll from '@/src/actions/category-get-all';
 
@@ -12,11 +12,11 @@ export default async function HomeFetchs() {
   return (
     <>
       <Categorias categorias={categorias} />
-      <Novidades />
+      {/* <Novidades /> */}
+      <MaisVistos />
       <Suspense>
-        <Promocoes />
-        <MaisVendidos />
-        <MaisVistos />
+        {/* <Promocoes /> */}
+        {/* <MaisVendidos /> */}
       </Suspense>
     </>
   );
