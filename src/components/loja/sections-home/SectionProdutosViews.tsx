@@ -23,6 +23,7 @@ const SectionProdutosViews = ({
     id,
     page,
     total,
+    promotion,
     active
   }: ProductGetParams) => Promise<
     | {
@@ -48,7 +49,6 @@ const SectionProdutosViews = ({
   const fetching = React.useRef(false);
 
   // Scrolls
-
   function infiniteScroll() {
     if (fetching.current) return;
     fetching.current = true;
@@ -67,10 +67,11 @@ const SectionProdutosViews = ({
     async function getProducts(page: number) {
       const actionData = await functionGetProduct({
         id: '',
-        category: '',
+        category: categoryId,
+        promotion: true,
+        active: true,
         page,
-        total: 9,
-        active: true
+        total: 9
       });
 
       if (actionData?.products) {
