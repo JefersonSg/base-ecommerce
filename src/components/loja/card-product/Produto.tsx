@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from './Produto.module.css';
 
 import Link from 'next/link';
-import LikeClient from '../../lottie/Like';
+import Like from '../../lottie/Like';
 import {
   type UserInterface,
   type ProductApi,
@@ -143,7 +143,7 @@ function Produto({
         ''
       )}
       <div className={styles.like}>
-        <LikeClient productId={_id} />
+        <Like productId={_id} />
       </div>
       <div className={styles.imagem_div}>
         <ImagemProduto

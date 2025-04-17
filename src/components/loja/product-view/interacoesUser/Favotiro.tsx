@@ -1,16 +1,12 @@
-import { Suspense } from 'react';
+import Like from '@/src/components/lottie/Like';
 import styles from './Favorito.module.css';
-import LikeClient from '@/src/components/lottie/Like';
+import { Suspense } from 'react';
 
 function Favotiro({ productId }: { productId: string }) {
   return (
     <div className={styles.favorito}>
       <Suspense>
-        {typeof window !== 'undefined' ? (
-          <LikeClient productId={productId} />
-        ) : (
-          ''
-        )}
+        <Like productId={productId} />
       </Suspense>
     </div>
   );

@@ -53,7 +53,7 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
           <Image
             className={styles.imagem_user}
             alt="account image"
-            src={userData.user?.image ?? '/header/account.svg'}
+            src={userData?.user?.image ?? '/header/account.svg'}
             width={24}
             height={24}
           />

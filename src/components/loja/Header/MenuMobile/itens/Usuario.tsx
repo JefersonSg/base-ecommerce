@@ -37,7 +37,7 @@ function Usuario({
               }`
             : 'Visitante'}
         </h3>
-        {!userData.user ? (
+        {!userData?.user ? (
           <p>
             <Link
               onClick={() => {

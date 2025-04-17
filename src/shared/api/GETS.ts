@@ -55,7 +55,7 @@ export const getConfirmedOrders = async () => {
 // No revalidate
 export const getUserByToken = async (token2?: string) => {
   if (!token && !token2) {
-    return [];
+    return undefined;
   }
   const configHeader = {
     headers: {
@@ -80,7 +80,7 @@ export const getUserByToken = async (token2?: string) => {
     Cookies.remove('isAdmin');
 
     console.log(error);
-    return [];
+    return undefined;
   }
 };
 
