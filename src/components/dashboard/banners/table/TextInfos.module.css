@@ -1,0 +1,28 @@
+.textInfos_container {
+  padding: 8px 32px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(140px, 1fr) minmax(40px, 80px) minmax(
+      40px,
+      100px
+    );
+  border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box;
+}
+.banner_active {
+  display: block;
+}
+.textInfos_container h3 {
+  font-family: var(--fonte-secundaria);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #566a7f;
+  cursor: pointer;
+}
+
+.actions {
+  text-align: center;
+}
+@media (min-width: 768px) {
+}

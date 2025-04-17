@@ -1,0 +1,16 @@
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.informacoes_produto {
+  display: flex;
+  gap: 32px;
+}
+.image_review {
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 8px;
+}

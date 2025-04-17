@@ -1,0 +1,13 @@
+.mySwiper {
+  border-bottom: 1px solid #e6e6e6;
+  --swiper-navigation-size: 22px;
+  --swiper-navigation-top-offset: 50%;
+  --swiper-navigation-sides-offset: 10px;
+  --swiper-navigation-color: black;
+}
+
+@media (min-width: 64rem) {
+  .mySwiper {
+    max-width: 1200px;
+  }
+}

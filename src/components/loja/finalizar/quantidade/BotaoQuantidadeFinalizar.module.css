@@ -1,0 +1,29 @@
+.botao_quantidade {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 78px;
+  height: 30px;
+  border-radius: 48px;
+  border: 1px solid #e4e4e4;
+  background: white;
+  color: var(#383844);
+  font-family: var(--fonte-primaria);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.botao_quantidade img {
+  cursor: pointer;
+  padding: 6px;
+}
+.botao_quantidade.loading img,
+.botao_quantidade.loading {
+  opacity: 0.5;
+  cursor: progress !important;
+}
+.botao_quantidade.loading {
+  border-color: rgba(0, 0, 0, 0.5);
+}

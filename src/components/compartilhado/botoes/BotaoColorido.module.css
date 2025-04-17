@@ -1,0 +1,46 @@
+.botaoColorido {
+  width: 311px;
+  height: 51px;
+  min-width: 310px;
+  min-height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  margin: 0 auto;
+
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 48px;
+  background: var(--cor-primaria);
+  border: none;
+  cursor: pointer;
+
+  color: #fff;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+.botaoColorido.loading {
+  cursor: progress;
+  background-color: #9f877e;
+  animation: afundarSubir 0.5s forwards ease-in-out;
+  transform-style: preserve-3d;
+}
+.botaoColorido.disabled {
+  cursor: not-allowed;
+  background-color: #7f7f7f;
+}
+
+@keyframes afundarSubir {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(5px) scale(0.98);
+  }
+}

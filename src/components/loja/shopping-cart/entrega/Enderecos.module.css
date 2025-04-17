@@ -1,0 +1,9 @@
+.enderecos_cadastrados {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-weight: 500;
+}

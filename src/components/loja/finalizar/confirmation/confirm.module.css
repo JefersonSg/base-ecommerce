@@ -1,0 +1,32 @@
+.confirm_container {
+  width: 90%;
+  height: 280px;
+  background-color: white;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  border: 1px solid black;
+  color: black;
+  transform: translate(-50%, -50%);
+  border-radius: 32px;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1004;
+  font-variant: small-caps;
+  font-family: var(--fonte-primaria);
+}
+.confirm_container h1 {
+  color: #471703;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.confirm_container p {
+  font-weight: 700;
+  color: #996557;
+  font-size: 12px;
+}

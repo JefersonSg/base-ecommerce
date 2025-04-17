@@ -1,0 +1,32 @@
+.dica_modal_container {
+  width: 95%;
+  max-width: 650px;
+  position: fixed;
+  z-index: 1004;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.dica_modal_container h1 {
+  padding: 2rem 2rem 1.5rem;
+  font-size: 24px;
+  font-weight: 600;
+}
+.lista {
+  padding: 0 2rem 2rem 2rem;
+}
+.lista ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lista ul li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  font-weight: 400;
+}

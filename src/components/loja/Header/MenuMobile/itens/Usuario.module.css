@@ -1,0 +1,42 @@
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding-left: 24px;
+  padding-top: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e6e6e6;
+  box-sizing: border-box;
+}
+.fotoUsuario img {
+  border-radius: 999px;
+}
+.boasVindas p {
+  color: #000;
+  font-family: var(--fonte-primaria);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.boasVindas p a {
+  color: #000;
+  font-family: var(--fonte-primaria);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.acoes_usuario {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 4px;
+  align-items: flex-end;
+}
+.sair {
+  font-size: 10px !important;
+  cursor: pointer;
+}

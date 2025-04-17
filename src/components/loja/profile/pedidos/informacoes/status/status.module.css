@@ -1,0 +1,131 @@
+.status_pedido h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #3f3f40;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  line-height: 1;
+  letter-spacing: 0.25em;
+}
+.progresso {
+  display: flex;
+  position: relative;
+  padding-top: 1rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.progresso .barra_progresso {
+  width: calc(100% - 64px);
+  left: 64px;
+  height: 2px;
+  background-color: #8cc356;
+  position: absolute;
+  top: 16px;
+}
+.progresso p {
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #3f3f40;
+  text-align: center;
+  max-width: 12ch;
+  position: relative;
+}
+.progresso p::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  background-color: #cacbcc;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -10px);
+  border: 3px solid white;
+}
+.noConfirm p::before {
+  background-color: #cacbcc;
+}
+.noConfirm .pendente::before {
+  background-color: #fe992a;
+  box-shadow: 0 0 0 1px #fe992a;
+}
+
+.progress1 .pendente::before,
+.progress1 .confirmado::before,
+.progress1 .separado::before {
+  background-color: #8cc356;
+}
+.progress1 .separado::before {
+  box-shadow: 0 0 0 1px #8cc356;
+}
+.progress2 .pendente::before,
+.progress2 .confirmado::before,
+.progress2 .separado::before,
+.progress2 .enviado::before {
+  background-color: #8cc356;
+}
+
+.progress3 .pendente::before,
+.progress3 .confirmado::before,
+.progress3 .separado::before,
+.progress3 .enviado::before,
+.progress3 .entregue::before {
+  background-color: #8cc356;
+}
+.progress2 .enviado::before {
+  box-shadow: 0 0 0 1px #8cc356;
+}
+.progress3 .entregue::before {
+  box-shadow: 0 0 0 1px #8cc356;
+}
+
+.noConfirm .barra_progresso {
+  width: 0%;
+}
+.progress1 .barra_progresso {
+  width: 44%;
+}
+.progress2 .barra_progresso {
+  width: 68%;
+}
+.progress3 .barra_progresso {
+  width: 90%;
+}
+@media (max-width: 48rem) {
+  .pendente,
+  .confirmado,
+  .separado,
+  .enviado,
+  .entregue {
+    font-size: 10px !important;
+  }
+
+  .progress3 .pendente,
+  .progress3 .confirmado,
+  .progress3 .separado,
+  .progress3 .enviado {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  .progress2 .pendente,
+  .progress2 .confirmado,
+  .progress2 .separado {
+    color: rgba(0, 0, 0, 0);
+  }
+  .progress1 .pendente,
+  .progress1 .confirmado {
+    color: rgba(0, 0, 0, 0);
+  }
+  .progress1 .barra_progresso,
+  .progress2 .barra_progresso,
+  .progress3 .barra_progresso {
+    left: 24px;
+  }
+
+  .progress3 .barra_progresso {
+    width: 85%;
+  }
+}

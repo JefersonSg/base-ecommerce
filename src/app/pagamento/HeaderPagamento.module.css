@@ -1,0 +1,64 @@
+.container_header_pagamento {
+  width: 100%;
+  height: 130px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: var(--fonte-primaria);
+  padding: 0 32px;
+  box-sizing: border-box;
+  gap: 32px;
+  position: relative;
+  background-color: white;
+}
+.wrapper_header {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.texto_segurança {
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  gap: 6px;
+}
+.texto_segurança p {
+  font-family: var(--fonte-primaria);
+  font-weight: 700;
+  font-size: 10px;
+  height: max-content;
+  padding: 0px;
+  margin: 0px;
+  color: #848489;
+}
+
+.pagamento_seguro {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 1px;
+}
+.pagamento_seguro span {
+  font-size: 10px;
+  color: #848489;
+}
+@media (max-width: 48rem) {
+  .container_header_pagamento {
+    height: 80px;
+    margin-bottom: 116px;
+  }
+  .wrapper_header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .logo {
+    height: auto;
+    width: 100px;
+  }
+}

@@ -1,0 +1,12 @@
+.like {
+  position: absolute;
+  z-index: 10;
+  border-radius: 9999px;
+  cursor: auto;
+}
+.like div {
+  pointer-events: none;
+}
+.like div svg g g path {
+  fill: var(--cor-contraste) !important;
+}

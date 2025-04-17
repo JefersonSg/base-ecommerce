@@ -1,0 +1,118 @@
+.finalizar_pedido {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin: 0 auto;
+  background: #f8f8f8;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 0 0 12px 12px;
+}
+.finalizar_pedido p {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  color: #000;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  font-variant: small-caps;
+}
+
+.finalizar_pedido .valor_final {
+  color: var(--cor-primaria);
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  font-variant: small-caps;
+  padding-top: 16px;
+  border-top: 1px solid black;
+  margin-top: 16px;
+}
+
+.botao {
+  margin-top: 32px;
+}
+.botao.disabled {
+  pointer-events: none;
+}
+.botao.disabled button {
+  background-color: #999;
+}
+.div_cupom {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 8px;
+  background-color: #f8f8f8;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 12px 12px 0 0;
+}
+.div_cupom label {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: #000;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  font-variant: small-caps;
+  font-weight: 700;
+}
+.div_input_desconto {
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  margin-top: 16px;
+}
+.desconto {
+  width: 215px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--Light-Blue, #dbe5f1);
+  color: #999;
+  padding-left: 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: black;
+}
+.desconto::placeholder {
+  color: #999;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.buttonOk {
+  margin-left: 16px;
+  height: 48px;
+  width: 55px;
+  padding: 0;
+  background-color: transparent;
+  font-weight: 700;
+  outline: none;
+  color: #00000070;
+  border: 1px solid #00000070;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.buttonOk:hover {
+  color: #000000;
+  border: 2px solid #000000;
+  transform: translate3d(0px, -3px, 0);
+}

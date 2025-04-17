@@ -1,0 +1,43 @@
+.textInfos_container {
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box;
+}
+
+.textInfos_container {
+  font-family: var(--fonte-secundaria);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #566a7f;
+  cursor: pointer;
+}
+.textInfos_container th {
+  text-align: center;
+  position: relative;
+}
+.total_products_value,
+.total_products_amount,
+.categoria {
+  display: none;
+}
+
+.actions {
+  text-align: start;
+}
+.textInfos_container th.ativo {
+  color: #696cff;
+  font-size: 13px;
+}
+@media (min-width: 768px) {
+  .total_products_amount,
+  .total_products_register {
+    display: table-cell;
+  }
+}
+
+@media (min-width: 1100px) {
+  .total_products_value {
+    display: table-cell;
+  }
+}

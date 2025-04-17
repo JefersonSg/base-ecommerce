@@ -1,0 +1,70 @@
+.detalhes {
+  width: 100%;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 16px;
+  align-items: center;
+  padding-bottom: 32px;
+}
+.informacoes {
+  width: 327px;
+  display: flex;
+  justify-content: space-between;
+}
+.botao_carrinho {
+  margin-top: 32px;
+}
+.entrega {
+  display: none;
+}
+@media (min-width: 64rem) {
+  .detalhes {
+    display: grid;
+    grid-column: 2;
+    grid-row: 4/5;
+    background-color: white;
+    max-width: max-content;
+    gap: 24px;
+    grid-template-rows: minmax(30px, max-content) max-content max-content auto;
+    margin: 0px;
+    margin-left: 32px;
+    padding: 0;
+    margin-top: 24px;
+  }
+  .entrega {
+    width: 100%;
+    max-width: 350px;
+    height: 184px;
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  .botao_carrinho {
+    margin: 0;
+    width: max-content;
+    max-width: none;
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .informacoes {
+    flex-direction: column;
+    min-height: none;
+    grid-column: 1;
+    grid-row: 2;
+    gap: 24px;
+  }
+}
+@media (min-width: 1400px) {
+  .detalhes {
+    width: max-content;
+    grid-column: 2/4;
+    max-width: 800px;
+  }
+  .entrega {
+    grid-row: 4;
+    grid-column: 1;
+  }
+}

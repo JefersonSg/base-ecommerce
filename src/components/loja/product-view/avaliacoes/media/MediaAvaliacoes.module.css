@@ -1,0 +1,5 @@
+.media_avaliacoes {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}

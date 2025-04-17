@@ -1,0 +1,41 @@
+.interatividades {
+  height: 30px;
+  width: 100%;
+  max-width: 326px;
+  margin: 0 auto;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.interacao {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.start_loading {
+  width: 95px;
+  height: 16px;
+  background-color: rgb(198, 200, 200);
+}
+.interacao div div svg g path {
+  stroke: var(--cor-secundaria);
+}
+
+@media (min-width: 64rem) {
+  .estrelas {
+    position: relative;
+  }
+  .interatividades {
+    position: initial;
+    padding-left: 32px;
+    box-sizing: border-box;
+    max-width: none;
+    width: 100%;
+    max-width: 740px;
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+  }
+}

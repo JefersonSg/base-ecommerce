@@ -1,0 +1,125 @@
+.produto_item {
+  height: 66px;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: max-content;
+  position: relative;
+}
+.produto_item::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+}
+.produto_info div {
+  display: flex;
+  width: 150px;
+}
+.name,
+.description {
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+  max-height: 50px;
+}
+.div_img {
+  width: max-content;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  height: max-content;
+  border-radius: 8px;
+  background-color: #ebeef0;
+  width: 40px;
+  height: 40px;
+}
+.div_img img {
+  border-radius: 8px;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  padding-left: 8px;
+}
+
+.produto_item h3 {
+  font-size: 15px;
+  font-weight: 400;
+  color: #697a8d;
+  line-height: 23px;
+}
+
+.total_products_value h3,
+.total_products_register h3 {
+  text-align: center;
+}
+.description,
+.total_products_register,
+.total_products_value {
+  display: none;
+}
+.estoque {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+}
+.actions img {
+  padding: 4px;
+  cursor: pointer;
+}
+
+@media (min-width: 576px) {
+  .description {
+    display: table-cell;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 768px) {
+  .total_products_register {
+    display: table-cell;
+  }
+  .actions {
+    gap: 16px;
+  }
+  .name,
+  .description {
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .produto_info div {
+    width: 350px;
+  }
+  .name,
+  .description {
+    max-width: 250px;
+  }
+  .total_products_value h3,
+  .total_products_register h3 {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1100px) {
+  .total_products_value {
+    display: table-cell;
+  }
+}

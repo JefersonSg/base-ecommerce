@@ -1,0 +1,56 @@
+.breadcrumb {
+  display: flex;
+  color: rgba(33, 36, 41, 0.6);
+  font-family: var(--fonte-primaria);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  margin: 0 auto;
+  max-width: 1220px;
+  padding: 0 16px;
+  margin-bottom: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 6px;
+  overflow-x: auto;
+}
+.breadcrumb::-webkit-scrollbar {
+  height: 5px;
+}
+.breadcrumb::-webkit-scrollbar-thumb {
+  background-color: #c9c9c9; /* Cor do botão de rolagem */
+}
+.breadcrumb a {
+  color: rgba(33, 36, 41, 0.6);
+  font-family: var(--fonte-primaria);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  white-space: nowrap;
+  width: max-content;
+}
+.breadcrumb p {
+  white-space: nowrap;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 64rem) {
+  .breadcrumb {
+    grid-column: 1/-1;
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+  .breadcrumb a {
+    font-size: 16px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1320px) {
+  .breadcrumb {
+    max-width: 1600px;
+  }
+}

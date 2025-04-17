@@ -1,0 +1,17 @@
+.div_titulo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 0 16px;
+  max-width: 1220px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+@media (min-width: 64rem) {
+  .div_titulo {
+    grid-column: 2;
+    grid-row: 3;
+    height: max-content;
+  }
+}

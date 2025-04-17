@@ -1,0 +1,21 @@
+.usuario_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.usuario_div img {
+  border-radius: 999px;
+}
+.nome_usuario {
+  font-family: var(--fonte-primaria);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: black;
+  text-transform: capitalize;
+}
+.usuario_div button {
+  margin: 0;
+}

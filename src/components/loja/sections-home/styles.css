@@ -1,0 +1,49 @@
+.slide-produtos {
+  padding: 0 30px;
+}
+.slide-produtos .swiper-button-next,
+.slide-produtos .swiper-button-prev {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: var(--cor-primaria);
+  opacity: 0.8;
+  margin-top: calc(-10px - (var(--swiper-navigation-size) / 2));
+  color: white;
+
+  --swiper-navigation-size: 22px;
+  --swiper-navigation-top-offset: 47%;
+  --swiper-navigation-sides-offset: 10px;
+  --swiper-navigation-color: black;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Padrão */
+}
+
+.slide-produtos .swiper-button-next {
+  right: 0px;
+}
+.slide-produtos .swiper-button-prev {
+  left: 0px;
+}
+
+.slide-produtos .swiper-button-next:hover,
+.slide-produtos .swiper-button-prev:hover {
+  opacity: 1;
+}
+
+.slide-produtos .swiper-button-next.swiper-button-disabled,
+.slide-produtos .swiper-button-prev.swiper-button-disabled {
+  pointer-events: visible !important;
+  opacity: 0.35;
+}
+
+.slide-produtos .swiper-pagination-bullet {
+  border-radius: 2px !important;
+}
+
+.slide-produtos .swiper-pagination-bullet-active {
+  background-color: white !important;
+}

@@ -1,0 +1,25 @@
+.savedAddress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--cor-secundaria);
+  border-radius: 4px;
+  font-family: var(--fonte-primaria);
+  height: max-content;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.savedAddress p {
+  font-size: 14px;
+  color: #414649;
+  font-weight: 500;
+}
+.savedAddress span {
+  font-size: 12px;
+  color: #7a7e81;
+}

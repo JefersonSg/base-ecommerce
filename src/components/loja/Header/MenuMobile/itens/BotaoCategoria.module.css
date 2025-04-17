@@ -1,0 +1,30 @@
+.lista p {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #242424;
+  font-family: var(--fonte-primaria);
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.div_name {
+  cursor: pointer;
+}
+.lista p:hover {
+  color: var(--cor-contraste);
+}
+
+.seta {
+  display: flex;
+  width: 30px;
+  cursor: pointer;
+  padding-left: 8px;
+}
+.seta img {
+  transition: all 0.2s;
+}
+.seta.ativo img {
+  transform: rotate(180deg);
+}

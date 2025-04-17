@@ -1,0 +1,43 @@
+.textInfos_container {
+  width: 100%;
+}
+
+.textInfos_container h3 {
+  font-family: var(--fonte-secundaria);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #566a7f;
+  cursor: pointer;
+  text-align: center;
+}
+.total_products_register {
+  display: none;
+}
+
+.total_products_value {
+  display: none;
+}
+.actions {
+  text-align: start;
+}
+@media (min-width: 768px) {
+  .total_products_register {
+    display: table-cell;
+  }
+  .textInfos_container {
+    grid-template-columns: minmax(100px, 440px) 128px 72px;
+  }
+  .actions {
+    text-align: end;
+  }
+}
+
+@media (min-width: 900px) {
+  .total_products_value {
+    display: table-cell;
+  }
+  .textInfos_container {
+    grid-template-columns: minmax(100px, 440px) 128px 160px 72px;
+  }
+}

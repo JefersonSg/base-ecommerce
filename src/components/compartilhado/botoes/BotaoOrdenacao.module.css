@@ -1,0 +1,22 @@
+.botao_ordenacao {
+  display: flex;
+  flex-direction: column;
+  height: 16px;
+  width: 20px;
+  gap: 3px;
+  justify-content: center;
+}
+.botao_ordenacao span {
+  display: block;
+  background-color: black;
+  height: 1px;
+}
+.linha1 {
+  width: 100%;
+}
+.linha2 {
+  width: 70%;
+}
+.linha3 {
+  width: 50%;
+}

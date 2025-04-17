@@ -1,0 +1,94 @@
+.pedido_card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e3e4e6;
+  width: 90vw;
+  margin: 0 auto;
+  padding-bottom: 16px;
+  font-family: var(--fonte-primaria);
+}
+.orderHeader {
+  height: 100px;
+  background-color: #f2f4f5;
+  position: relative;
+  padding: 16px;
+}
+.orderHeader div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.total_pedido p,
+.id_pedido,
+.data_titulo {
+  font-weight: 400;
+  font-size: 12px;
+  color: #727273;
+}
+
+.data {
+  font-weight: 500;
+  font-size: 14px;
+  color: #3f3f40;
+}
+
+.total_pedido {
+  position: absolute;
+  right: 20px;
+  top: 16px;
+}
+.total_pedido span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  text-align: end;
+}
+
+.bodyOrder {
+  padding: 16px;
+  box-sizing: border-box;
+}
+.status_pedido {
+  display: flex;
+  width: 92px;
+  height: 34px;
+  background-color: #8bc34a;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+  font-family: var(--fonte-primaria);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  position: absolute;
+  right: 40px;
+  bottom: 10px;
+}
+.status_pedido.cancelado {
+  background-color: #d32f2f;
+}
+.status_pedido.pendente {
+  background-color: #ff9800;
+}
+
+.botao_ver_mais {
+  display: block;
+  height: 40px;
+  background-color: #eef3f7;
+  color: #134cd8;
+  font-weight: 400;
+  font-family: var(--fonte-primaria);
+  border: none;
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+@media (min-width: 64rem) {
+  .status_pedido {
+    width: max-content;
+    padding: 0 8px;
+  }
+}

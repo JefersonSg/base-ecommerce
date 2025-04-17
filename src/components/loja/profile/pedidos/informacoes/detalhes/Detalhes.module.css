@@ -1,0 +1,55 @@
+.detalhes_pedido {
+  display: flex;
+  gap: 16px;
+  margin: 1rem 0;
+  flex-direction: column;
+}
+.detalhes_pedido article {
+  width: 100%;
+  border: 0.125rem solid #f2f4f5;
+  float: left;
+}
+.detalhes_pedido article section {
+  padding: 1rem;
+  height: 13rem;
+  overflow-y: scroll;
+  color: #666;
+}
+.detalhes_pedido article section div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detalhes_pedido article section h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #3f3f40;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  line-height: 1;
+  letter-spacing: 0.25em;
+}
+.detalhes_pedido article section div p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.detalhes_pedido article section div span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #3f3f40;
+}
+@media (min-width: 48rem) {
+  .detalhes_pedido article {
+    width: 33.33333%;
+    border: 0.125rem solid #f2f4f5;
+    float: left;
+  }
+  .detalhes_pedido {
+    flex-direction: row;
+  }
+}

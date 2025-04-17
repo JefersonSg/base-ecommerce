@@ -1,0 +1,27 @@
+.container_rodape {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8px;
+  gap: 8px;
+}
+.container_rodape p {
+  font-family: var(--fonte-secundaria), sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #a1acb8;
+  text-align: center;
+}
+
+.botoes {
+  display: flex;
+  gap: 8px;
+}
+
+@media (min-width: 576px) {
+  .container_rodape {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 32px 0 32px;
+  }
+}

@@ -1,0 +1,49 @@
+.imagem_slide,
+.imagem {
+  object-fit: cover;
+  min-width: 100%;
+  width: auto;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  min-height: 100%;
+}
+.imagem {
+  display: none;
+}
+.mySwiper {
+  border-radius: 20px 20px 0 0 !important;
+}
+
+@media (min-width: 48rem) {
+  .imagem_wrap {
+    overflow: hidden;
+    min-height: 100%;
+    width: 100%;
+  }
+  .imagem {
+    display: block;
+    min-height: 100%;
+    min-width: 100%;
+    transition: all 1.4s;
+  }
+
+  .imagem:hover {
+    transform: scale(1.1);
+    overflow: hidden;
+  }
+  .imagem_hover {
+    animation: aparecer 0.2s ease-in forwards;
+    transition: all 1.4s;
+    width: 100%;
+  }
+
+  @keyframes aparecer {
+    from {
+      opacity: 0.9;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

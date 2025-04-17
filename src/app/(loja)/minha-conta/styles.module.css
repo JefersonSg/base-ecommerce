@@ -1,0 +1,9 @@
+.minha_conta_container {
+  height: 80vh;
+}
+.sair {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}

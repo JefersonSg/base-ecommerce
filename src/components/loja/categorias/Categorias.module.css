@@ -1,0 +1,22 @@
+.categorias {
+  padding: 32px 16px;
+  text-align: center;
+}
+.categorias h2 {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 48rem) {
+  .categorias {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    padding: 0 20px;
+    padding-top: 32px;
+    margin: 0 auto;
+  }
+  .categorias h2 {
+    text-align: center;
+  }
+}

@@ -1,0 +1,47 @@
+.preco {
+  width: 327px;
+  margin-top: 74px;
+  text-align: end;
+}
+
+.preco span {
+  font-size: 16px;
+  text-decoration: line-through;
+  font-family: var(--fonte-primaria);
+  color: #7f7f7f;
+  font-style: italic;
+}
+.preco .promotion {
+  color: var(--cor-contraste);
+}
+.dividido {
+  color: var(--cor-primaria);
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-weight: 400;
+}
+.dividido span {
+  font-weight: 600;
+  font-style: italic;
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--cor-primaria);
+}
+@media (min-width: 64rem) {
+  .preco {
+    grid-row: 1;
+    grid-column: 1;
+    margin: 0px;
+    text-align: start;
+    margin-top: 0px;
+  }
+  .preco h2 {
+    font-size: 24px;
+  }
+
+  .dividido,
+  .dividido span {
+    font-size: 14px;
+    color: #878787;
+  }
+}

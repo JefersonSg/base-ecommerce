@@ -1,0 +1,59 @@
+.container_clientes {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 32px;
+  margin-top: 16px;
+  padding: 0 16px;
+}
+
+.clientes_container {
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  padding: 20px 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.clientes_container h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #696cff;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.profile_container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.foto_perfil {
+  border-radius: 50%;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nome {
+  color: #697a8d;
+  font-size: 14px;
+}
+.data p:nth-child(2) {
+  font-size: 14px;
+  color: #7987a1 !important;
+}
+@media (min-width: 64rem) {
+  .container_clientes {
+    padding: 0 54px 0 16px;
+  }
+}

@@ -1,0 +1,92 @@
+.divInput {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--fonte-primaria);
+}
+
+.input {
+  border: 1px solid #e7e7e7;
+  display: block;
+  width: 90%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: #eee;
+  transition: 0.2s;
+  font-family: var(--fonte-primaria);
+}
+
+.input::placeholder {
+  color: #ccd;
+  transition: all 0.2s;
+}
+
+.input[type='file'] {
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+  width: 342px;
+}
+.input[type='file']::-webkit-file-upload-button {
+  height: 42px;
+  border: none;
+  border-right: 1px solid var(--color-border);
+  cursor: pointer;
+}
+
+.textArea {
+  height: 100px;
+  min-width: 236px;
+  width: calc(100% - 16px);
+  border-radius: 8px;
+  resize: none;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border: 1px solid var(--color-border);
+}
+
+.input[type='text']:focus,
+.input[type='text']:hover,
+.input[type='number']:focus,
+.input[type='number']:hover {
+  outline: none;
+  border-color: var(--cor-primaria);
+  background-color: white;
+}
+
+.input[type='text']:focus,
+.input[type='number']:focus {
+  box-shadow: 0 0 0 3px #996557;
+}
+
+.input:focus::placeholder {
+  padding-left: 6px;
+}
+.input[type='file'] {
+  outline: none !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 0 3px transparent !important;
+  background-color: #e3e3e3 !important;
+}
+.input[type='file']::-webkit-file-upload-button:hover,
+.typeFile:hover > .input[type='file']::-webkit-file-upload-button {
+  background-color: #e3e3e3 !important;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  line-height: 1;
+  font-family: var(--fonte-primaria);
+}
+
+.error {
+  min-height: max-content;
+  display: block;
+  color: #f31;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

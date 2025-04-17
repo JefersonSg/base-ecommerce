@@ -1,0 +1,106 @@
+.produto {
+  position: relative;
+}
+.pedido_container h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #3f3f40;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  line-height: 1;
+  letter-spacing: 0.25em;
+}
+.produto td {
+  padding: 8px;
+  text-align: center;
+  position: relative;
+}
+
+.empresa_entrega {
+  background-color: #727273;
+  width: max-content;
+  padding: 4px 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  color: white;
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+}
+.produto::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-border);
+}
+
+.td_informacoes {
+  max-width: 150px;
+}
+.informacoes_produto {
+  width: max-content;
+}
+.container_valores {
+  font-size: 14px;
+  font-weight: 400;
+  color: #3f3f40;
+  gap: 4px 0px;
+  margin: 8px 0;
+}
+.imagem_produto img {
+  border-radius: 4px;
+}
+.escolhas_pedido {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nome {
+  font-size: 15px;
+  font-weight: 500;
+  color: #697a8d;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 120px;
+}
+.tamanho,
+.cor {
+  font-size: 13px;
+  font-weight: 400;
+  color: #828b96;
+}
+.informacoes_produto {
+  display: flex;
+  text-align: start;
+  gap: 8px;
+}
+
+.total p,
+.quantidade,
+.preco {
+  font-size: 15px;
+  font-weight: 400;
+  color: #697a8d;
+}
+.total p {
+  font-weight: 500;
+}
+
+.total,
+.preco {
+  display: none;
+}
+@media (min-width: 48rem) {
+  .nome {
+    width: 200px;
+  }
+  .total,
+  .preco {
+    display: table-cell;
+  }
+}

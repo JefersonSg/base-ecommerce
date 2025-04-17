@@ -1,0 +1,16 @@
+.slide-vantagens .swiper-button-next,
+.slide-vantagens .swiper-button-prev {
+  width: 20px;
+  height: 42px;
+  border-radius: 6px;
+  background-color: #f7f7f7;
+  margin-top: calc(-10px - (var(--swiper-navigation-size) / 2));
+  color: #a9a9a9;
+}
+
+@media (min-width: 64rem) {
+  .slide-vantagens {
+    padding: 0 20px;
+    padding-bottom: 16px;
+  }
+}

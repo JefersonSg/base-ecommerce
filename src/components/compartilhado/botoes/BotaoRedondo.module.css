@@ -1,0 +1,31 @@
+.botao_redondo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 152px;
+  height: 48px;
+  border-radius: 48px;
+  border: 1px solid var(--Black, #212429);
+  background: #f8f8f8;
+  color: var(--Black, #212429);
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  cursor: pointer;
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+.style2 {
+  border: 1px solid #e4e4e4 !important;
+  font-size: 16px !important;
+}
+.botao_redondo.disabled {
+  cursor: progress;
+  border-color: #e2e2e2;
+}
+.botao_redondo.disabled p {
+  color: #e2e2e2;
+}

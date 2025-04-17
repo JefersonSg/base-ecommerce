@@ -1,0 +1,11 @@
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 24px;
+}
+.links div {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 190px 30px;
+}

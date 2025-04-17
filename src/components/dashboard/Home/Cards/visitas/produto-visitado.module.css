@@ -1,0 +1,32 @@
+.produto_view {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 68px;
+  border-bottom: 1px solid #d1d1d1;
+}
+.foto_produto {
+  border-radius: 4px;
+  object-fit: cover;
+}
+.info_produto {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #d9d9d9;
+  padding-right: 16px;
+  justify-content: center;
+  width: 150px;
+
+  box-sizing: border-box;
+}
+.info_produto a {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+}
+.info_produto p {
+  font-size: 14px;
+  font-weight: 400;
+}

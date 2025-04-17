@@ -1,0 +1,29 @@
+.infos {
+  height: 23px;
+  min-height: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.infos a {
+  display: flex;
+  gap: 4px;
+}
+.texto {
+  color: black;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--fonte-primaria);
+}
+.texto span {
+  font-weight: 500;
+  color: black;
+}
+
+@media (min-width: 64rem) {
+  .infos {
+    height: 30px;
+  }
+}

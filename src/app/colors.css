@@ -1,0 +1,22 @@
+:root {
+  --cor-de-indicacao: #242424;
+  --cor-primaria: #000;
+  --cor-secundaria: #000;
+  --cor-terciaria: #000;
+  --cor-quarta: #000;
+  --cor-quinta: #000;
+
+  --cor-principal: #ff509b;
+
+  --cor-contraste: #ef3c3c;
+  --cor-contraste2: #cc1f0f;
+
+  --color-border: #d9dee3;
+  --color-border-2: #f2f2f2;
+
+  --blue-bg-500: #696cff;
+  --blue-bg-100: #dde3f1;
+  --green-sucess-500: #71dd37;
+  --yellow-alert-500: #ffab00;
+  --red-danger-500: #ff3e1d;
+}

@@ -1,0 +1,24 @@
+.favorito {
+  cursor: pointer;
+  min-width: 30px;
+  position: relative;
+  height: 30px;
+}
+
+@media (min-width: 64rem) {
+  .favorito {
+    position: absolute;
+    top: 124px;
+    right: 46px;
+  }
+  .favorito div div svg {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+@media (min-width: 1400px) {
+  .favorito {
+    top: 124px;
+    right: 86px;
+  }
+}

@@ -1,0 +1,21 @@
+.avaliacoes_container {
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+  margin-top: 64px;
+  box-sizing: border-box;
+  padding-top: 32px;
+}
+
+@media (min-width: 64rem) {
+  .avaliacoes_container {
+    margin: 0;
+    width: 100%;
+    justify-items: start;
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 450px 400px;
+    grid-template-rows: 94px auto;
+    gap: 0 32px;
+  }
+}

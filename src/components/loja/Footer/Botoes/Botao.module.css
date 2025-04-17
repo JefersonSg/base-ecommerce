@@ -1,0 +1,28 @@
+.corpo a {
+  display: flex;
+  align-items: center;
+  gap: 0 16px;
+  cursor: pointer;
+  max-width: max-content;
+}
+
+.button_img {
+  border-radius: 999px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.corpo p {
+  color: #fff;
+  font-family: var(--fonte-primaria);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}

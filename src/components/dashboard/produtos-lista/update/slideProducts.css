@@ -1,0 +1,12 @@
+.slide-images {
+  width: 100%;
+  max-width: calc(100vw - 100px);
+  display: flex;
+  margin-bottom: 32px;
+}
+.slide-images .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

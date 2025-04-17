@@ -1,0 +1,286 @@
+.PopupInfos {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: white;
+  z-index: 1004;
+  border-radius: 8px;
+  width: 90%;
+  height: max-content;
+  padding: 16px;
+  box-sizing: border-box;
+  max-width: 500px;
+}
+.PopupInfos h1 {
+  font-size: 21px;
+  font-weight: 500;
+  color: #566a7f;
+}
+.PopupInfos div p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #697a8d;
+}
+.PopupInfos > div {
+  border-bottom: 1px solid var(--color-border);
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.id_pedido a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #787bff;
+  cursor: pointer;
+}
+.cliente_pedido {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.imagemPerfil {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+.imagemPerfil img {
+  border-radius: 50%;
+}
+
+.status_pagamento {
+  display: grid;
+  grid-template-columns: 10px max-content;
+  text-align: start;
+  align-items: center;
+  gap: 8px;
+}
+
+.bolinha {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.valor_pedido span,
+.metodo_pagamento_pedido {
+  font-size: 15px;
+  font-weight: 400;
+  color: #697a8d;
+}
+
+.bolinha {
+  background-color: #71dd37;
+}
+
+.bolinha.pendente {
+  background-color: #ffab00 !important;
+}
+.bolinha.cancelado {
+  background-color: #ff3e1d !important;
+}
+.bolinha.devolvido {
+  background-color: #add8e6 !important;
+}
+
+.status_pagamento {
+  color: #71dd37;
+}
+
+.status_pagamento .pendente {
+  color: #ffab00 !important;
+}
+.status_pagamento .cancelado {
+  color: #ff3e1d !important;
+}
+.status_pagamento .devolvido {
+  color: #add8e6 !important;
+}
+
+.status_pedido {
+  display: flex;
+  width: 92px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+  font-family: var(--fonte-primaria);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status_pedido.pendente {
+  background-color: #fff2d6 !important;
+  color: #d89000 !important;
+}
+
+.status_pedido.confirmado {
+  background-color: #39c5f8 !important;
+  color: #ffffff !important;
+}
+
+.status_pedido.cancelado {
+  background-color: #ffd6d6;
+  color: #d80e0e !important;
+}
+.status_pedido.enviado {
+  background-color: #e7e7ff !important;
+  color: #696cff !important;
+}
+.status_pedido.concluido {
+  background-color: #e8fadf !important;
+  color: #54b71f !important;
+}
+.texto_estilo_1 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #697a8d !important;
+  --bs-text-opacity: 1;
+}
+
+.texto_estilo_2 {
+  font-size: 13px;
+  font-weight: 400;
+  color: #a1acb8 !important;
+  --bs-text-opacity: 1;
+}
+
+.botoes_atividade {
+  display: flex;
+  gap: 8px;
+}
+.buttons_confirm {
+  display: flex;
+  gap: 16px;
+}
+
+.input_rastreio {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input_rastreio input {
+  height: 28px;
+}
+
+/* Botões */
+.botao_confirm {
+  background-color: #39c5f8;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  cursor: pointer;
+  font-weight: 600;
+}
+.botao_confirm:hover {
+  transform: translateY(-2px);
+}
+
+.botao_enviado {
+  background-color: #e7e7ff;
+  color: #696cff;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  cursor: pointer;
+}
+
+.botao_enviado:hover {
+  background-color: #9292dd;
+  transform: translateY(-2px);
+}
+
+.botao_concluido {
+  background-color: #def9d1;
+  color: #54b71f !important;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  cursor: pointer;
+}
+
+.botao_concluido:hover {
+  background-color: #b0d89c;
+  transform: translateY(-2px);
+}
+.botao_devolucao {
+  color: #3e4af3;
+  background-color: #add8e6;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  cursor: pointer;
+}
+
+.botao_devolucao:hover {
+  background-color: #799fac;
+  transform: translateY(-2px);
+}
+
+.botao_cancel {
+  background-color: #ff6347;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  cursor: pointer;
+  font-weight: 600;
+}
+.botao_cancel:hover {
+  background-color: #b22222;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 460px) {
+  .email {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90px;
+  }
+}
+
+@media (max-height: 700px) {
+  .PopupInfos {
+    top: 50px;
+  }
+}
