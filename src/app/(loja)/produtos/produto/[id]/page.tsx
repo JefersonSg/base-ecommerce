@@ -28,10 +28,12 @@ export const generateMetadata = async ({
   const response = await productByIdGet({ id: params.id });
   const product = response?.product;
 
-  const title = `Loja Mayse | ${product?.name ?? ''}`;
-  const description = product?.description
-    ? product.description.slice(0, 45) + '...'
-    : 'Confira este produto incrível da Loja Mayse!';
+  const title = `Loja Bless | ${product?.name ?? 'Produto'}`;
+  const priceInfo = product?.price ? ` por apenas R$${product.price}` : '';
+  const shortDescription = product?.description
+    ? product.description.slice(0, 160)
+    : 'Confira este produto exclusivo da Loja Bless!';
+  const fullDescription = `${shortDescription}${priceInfo}`;
   const image =
     product?.coverPhoto1?.[0] ??
     product?.images?.[0] ??
@@ -39,13 +41,42 @@ export const generateMetadata = async ({
 
   return {
     title,
-    description,
-    keywords: [product?.name ?? 'Loja Mayse'],
+    description: shortDescription,
+    icons: {
+      icon: '/icone.svg'
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1
+      }
+    },
     openGraph: {
-      url: `https://lojamayse.com/produtos/produto/${product?._id}`,
-      siteName: 'Loja Mayse | Moda íntima - Compre e Receba em Casa',
+      type: 'website',
+      url: `https://lojabless.com/produtos/produto/${product?._id}`,
       title,
-      description: `Valor: ${product?.price} - ${description}`,
+      siteName: 'Loja Bless',
+      description: fullDescription,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: product?.name ?? 'Produto da Loja Bless'
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: fullDescription,
       images: [image]
     }
   };

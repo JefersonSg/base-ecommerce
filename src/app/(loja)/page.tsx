@@ -10,46 +10,54 @@ import LoadingCategories from './loading-categories';
 import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
+  title:
+    'Loja Bless: SE VISTA DE SI. SE VISTA DE BLESS - Compre e Receba em Casa',
   description:
-    'Bem-vindas à Loja Mayse, seu destino para moda íntima que realça sua feminilidade e desperta seus desejos. Oferecemos uma variedade de lingeries cuidadosamente selecionadas, além de produtos sensuais imperdíveis. Explore sua sensualidade na Loja Mayse.',
-  keywords: [
-    'Loja',
-    'Mayse',
-    'Loja Mayse',
-    'sexy shop',
-    'moda intima',
-    'sexy shop',
-    'lingerie',
-    'calcinha',
-    'sutiã',
-    'conjuntos sexy',
-    'loja de sexy shop barata'
-  ],
+    'Desde 2017 vestindo mulheres clássicas e modernas, que gostam de se vestir bem, sem abrir mão do conforto!',
   icons: '/icone.svg',
+
   verification: {
     google: 'oZIkI3bhEnXdKiOZst7zIkgD4BW4RLVtYB8jS518PiE'
   },
+
   robots: {
-    index: false,
+    index: true,
     follow: true,
     nocache: true,
     googleBot: {
       index: true,
-      follow: false,
+      follow: true,
       noimageindex: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1
     }
   },
+
   openGraph: {
-    url: 'https://lojamayse.com/',
-    siteName: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
-    title: 'Loja Mayse: Moda intima & Sexy shop - Compre e Receba em Casa',
+    type: 'website',
+    url: 'https://lojabless.vercel.app/',
+    siteName: 'Loja Bless',
+    title: 'Loja Bless: SE VISTA DE SI. SE VISTA DE BLESS',
     description:
-      'Bem-vindas à Loja Mayse, seu destino para moda íntima que realça sua feminilidade e desperta seus desejos. Oferecemos uma variedade de lingeries cuidadosamente selecionadas, além de produtos sensuais imperdíveis. Explore sua sensualidade na Loja Mayse.',
-    images: 'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/capaSite.jpg'
+      'Desde 2017 vestindo mulheres clássicas e modernas com estilo e conforto!',
+    images: [
+      {
+        url: 'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/capaSite.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Capa do site da Loja Bless'
+      }
+    ]
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Loja Bless: SE VISTA DE SI. SE VISTA DE BLESS',
+    description: 'Desde 2017 vestindo mulheres com estilo e conforto!',
+    images: [
+      'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/capaSite.jpg'
+    ]
   }
 };
 
