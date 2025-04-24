@@ -15,15 +15,15 @@ const page = () => {
 
       <p className="texto">
         - Assim que o pagamento for confirmado, o site é automaticamente
-        atualizado e você receberá por email a confirmação.{' '}
+        atualizado e você receberá por email a confirmação.
       </p>
 
       <ul>
         <li>
           <h3 className="titulo_area">Cartão de Crédito</h3>
           <p>
-            • Cartão de Crédito parcelado em até 10 vezes via Mercado Pago,
-            respeitando o valor mínimo da parcela de <span>R$ 50,00</span>.
+            • Cartão de Crédito parcelado em até 12 vezes via
+            <span>Mercado Pago</span>.
           </p>
           <p>• Cartões aceitos:</p>
 
@@ -77,12 +77,12 @@ const page = () => {
         </li>
       </ul>
 
-      {/* <p className={styles.aviso}>
+      <p className={styles.aviso}>
         ***** O Site é limitado ao uso de apenas 1 cupom de desconto por compra
         (Os descontos não são acumulativos).
-      </p> */}
+      </p>
       <p className={styles.agradecimento}>
-        A Loja Mayse agradece a visita e Boas Compras !
+        A Loja Bless agradece a visita e Boas Compras !
       </p>
     </div>
   );

@@ -19,8 +19,8 @@ const page = () => {
         Jadlog (Transportadora).
       </p>
       <p className="texto">
-        - Para a região de Santo Antônio de Pádua - RJ e algumas regiões
-        proximas, o envio pode ser realizado via motoboy.
+        - Para a região de Palma-MG e regiões proximas, o envio pode ser
+        realizado via motoboy.
       </p>
       <p className="texto">
         - Caso o cliente opte pelo frete mais rápido, o valor do envio será
@@ -29,8 +29,8 @@ const page = () => {
 
       <ul>
         <li>
-          <span>• Estado de Rio de Janeiro:</span> Frete Grátis a partir de
-          <span> R$160,00</span> em compras;
+          <span>• Estado de Rio de Minas:</span> Frete Grátis a partir de
+          <span> R$250,00</span> em compras;
         </li>
         <li>
           <span>• CENTRO-OESTE / SUDESTE / SUL:</span> Frete Grátis a partir de
@@ -46,7 +46,7 @@ const page = () => {
         </li>
       </ul>
       <p className={styles.agradecimento}>
-        A Loja Mayse agradece a visita e Boas Compras !
+        A Loja Bless agradece a visita e Boas Compras !
       </p>
     </div>
   );
