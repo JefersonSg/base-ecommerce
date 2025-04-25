@@ -32,7 +32,8 @@ export function Informacao({
       {ativo != null && seta && (
         <div>
           <p>
-            Horário de atendimento seg a sex das 9h às 19h sab das 9:30h às 16h
+            Horário de atendimento segunda a sexta das 9h às 18h sab das 9:30h
+            às 16h
           </p>
         </div>
       )}
