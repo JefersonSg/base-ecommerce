@@ -5,7 +5,7 @@
   width: 100%;
   box-sizing: border-box;
   padding-right: 24px;
-  border-top: 1px solid #ffffff;
+  border-top: 1px solid var(--cor-neutra);
 }
 .sessao p {
   margin-bottom: 8px;
