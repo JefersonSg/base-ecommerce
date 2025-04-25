@@ -37,7 +37,7 @@ export const generateMetadata = async ({
   const image =
     product?.coverPhoto1?.[0] ??
     product?.images?.[0] ??
-    'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/capaSite.jpg';
+    'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/Banner+Loja+OpenGraphs.png';
 
   return {
     title,

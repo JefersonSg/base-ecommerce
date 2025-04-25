@@ -43,7 +43,7 @@ export const metadata: Metadata = {
       'Desde 2017 vestindo mulheres clássicas e modernas com estilo e conforto!',
     images: [
       {
-        url: 'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/capaSite.jpg',
+        url: 'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/Banner+Loja+OpenGraphs.png',
         width: 1200,
         height: 630,
         alt: 'Capa do site da Loja Bless'
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: 'Loja Bless: SE VISTA DE SI. SE VISTA DE BLESS',
     description: 'Desde 2017 vestindo mulheres com estilo e conforto!',
     images: [
-      'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/capaSite.jpg'
+      'https://mayse-bucket-site.s3.sa-east-1.amazonaws.com/Banner+Loja+OpenGraphs.png'
     ]
   }
 };
