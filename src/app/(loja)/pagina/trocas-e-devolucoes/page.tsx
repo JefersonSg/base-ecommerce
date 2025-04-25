@@ -61,14 +61,14 @@ const page = () => {
         </li>
       </ul>
 
-      {/* <p className={styles.aviso}>
+      <p className={styles.aviso}>
         ***** O Site é limitado ao uso de apenas 1 cupom de desconto por compra
         (Os descontos não são acumulativos).
-      </p> */}
+      </p>
       <p className={'texto'}>
-        - As compras na Loja Mayse são 100% garantidas de entrega, ou em caso de
-        roubo ao carro dos Correios o valor da compra é extornado integralmente
-        ao cliente, sem burocracias;
+        - As compras na {process.env.NOME_LOJA} são 100% garantidas de entrega,
+        ou em caso de roubo ao carro dos Correios o valor da compra é extornado
+        integralmente ao cliente, sem burocracias;
       </p>
       <p className={'texto'}>
         - Os produtos devem ser postados na mesma embalagem de origem, e não
@@ -80,7 +80,7 @@ const page = () => {
         Correios;
       </p>
       <p className={styles.agradecimento}>
-        A Loja Mayse agradece a visita e Boas Compras !
+        A {process.env.NOME_LOJA} agradece a visita e Boas Compras !
       </p>
     </div>
   );

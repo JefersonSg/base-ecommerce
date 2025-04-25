@@ -29,7 +29,7 @@ const page = () => {
 
       <ul>
         <li>
-          <span>• Estado de Rio de Minas:</span> Frete Grátis a partir de
+          <span>• Estado de Minas:</span> Frete Grátis a partir de
           <span> R$250,00</span> em compras;
         </li>
         <li>
