@@ -12,9 +12,13 @@ const page = () => {
         foi pedido na compra, o cliente tem o prazo de 7 dias corridos após a
         data do recebimento para entrar em contato conosco para realizar a
         Devolução/troca ou ressarcimento do valor. Os canais para apresentar a
-        sua reclamação são: <br /> <span>(email: lojamayse@gmail.com)</span>{' '}
-        <br />
-        <span>(Whatsapp (22) 998092154)</span>.
+        sua reclamação são: <br />{' '}
+        <span>email: {process.env.EMAIL_CONTATO}</span> <br />
+        <span>
+          Whatsapp ({process.env.TEL_CONTATO?.slice(0, 2)}){' '}
+          {process.env.TEL_CONTATO?.slice(2, 12)}{' '}
+        </span>
+        .
       </p>
 
       <ul>

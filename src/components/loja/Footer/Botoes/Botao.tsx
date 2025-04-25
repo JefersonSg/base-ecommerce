@@ -19,8 +19,8 @@ export function Botao({
         href={`${
           type !== undefined
             ? type === 'email'
-              ? 'mailto:abayomi.make@gmail.com?subject=Suporte'
-              : 'tel:+5521969871826'
+              ? `mailto:${process.env.EMAIL_CONTATO}?subject=Suporte`
+              : `tel:+55${process.env.TEL_CONTATO}`
             : link
         }`}
       >
