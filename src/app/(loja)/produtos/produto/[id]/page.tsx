@@ -60,18 +60,11 @@ export const generateMetadata = async ({
     },
     openGraph: {
       type: 'website',
-      url: `https://lojabless.com/produtos/produto/${product?._id}`,
+      url: `https://lojabless.vercel.app/produtos/produto/${product?._id}`,
       title,
       siteName: 'Loja Bless',
       description: fullDescription,
-      images: [
-        {
-          url: image,
-          width: 1200,
-          height: 630,
-          alt: product?.name ?? 'Produto da Loja Bless'
-        }
-      ]
+      images: [image]
     },
     twitter: {
       card: 'summary_large_image',
