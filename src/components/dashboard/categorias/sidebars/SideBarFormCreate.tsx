@@ -13,7 +13,7 @@ import ButtonDelete from '../../Botoes/ButtonDelete';
 import { createCategory } from '@/src/shared/api/POST';
 import { useQuery } from '@tanstack/react-query';
 import { validationCategory } from './validationCategory';
-import subcategoriesGetAll from '@/src/actions/subcategory-get-all';
+import categoriesGetAll from '@/src/actions/category-get-all';
 
 interface Inputs {
   name: string;
@@ -38,8 +38,8 @@ const SideBarFormCreate = ({
 }) => {
   //
   const { refetch } = useQuery({
-    queryKey: ['categories'],
-    queryFn: subcategoriesGetAll
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
 
   const {

@@ -8,6 +8,7 @@ import { redeemCoupon } from '@/src/shared/api/POST';
 import Loading from '@/src/components/compartilhado/loading/LoadingSpinner';
 import { type cuponsInterface } from '@/src/shared/helpers/interfaces';
 import { convertNumberInReal } from '@/src/shared/functions/convertNumberInReal';
+import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 
 const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
   const [cupom, setCupom] = React.useState('');
@@ -16,6 +17,8 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
   }>();
   const [error, setError] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
+  const [messagePopUp, setMessagePopUp] = React.useState<string>('');
+  const [typePopUp, setTypePopUp] = React.useState<string>('');
 
   async function redeem() {
     if (!isLoading && cupom.length > 1) {
@@ -27,6 +30,8 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
           return;
         }
         setError(response?.response.data.erro);
+        setMessagePopUp(response?.response.data.erro);
+        setTypePopUp('error');
         window.localStorage.removeItem('cupom');
         setIsLoading(false);
         setValorDesconto(undefined);
@@ -37,6 +42,8 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
         setValorDesconto(response);
         setIsLoading(false);
         window.localStorage.setItem('cupom', cupom);
+        setMessagePopUp('Cupom aplicado com sucesso');
+        setTypePopUp('sucess');
         setError('');
       }
     }
@@ -45,6 +52,14 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
 
   return (
     <>
+      {messagePopUp && (
+        <PopUpMessage
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
+          text={messagePopUp}
+          typePopUp={typePopUp}
+        />
+      )}
       <div className={styles.div_cupom}>
         <label htmlFor="desconto">Cupom de desconto</label>
         <div className={styles.div_input_desconto}>
