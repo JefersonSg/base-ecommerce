@@ -74,7 +74,9 @@ const Finalizar = ({ valorProdutos }: { valorProdutos: number }) => {
             {error}
           </p>
         )}
-        {valorDesconto?.cupom._id && <p>Cupom aplicado</p>}
+        {valorDesconto?.cupom._id && (
+          <p className={styles.cupom_aplicado}>Cupom aplicado</p>
+        )}
       </div>
       <div className={styles.finalizar_pedido}>
         <p>

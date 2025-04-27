@@ -14,7 +14,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'testes-front-end.s3.sa-east-1.amazonaws.com',
+        hostname: 'loja-bless.s3.sa-east-1.amazonaws.com',
         port: ''
       },
       {

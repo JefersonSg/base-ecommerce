@@ -35,16 +35,25 @@ const TabelaProdutos = ({ data }: { data: OrderInterface }) => {
       </table>
       <div className={styles.valores_pedido}>
         <p>
-          Subtotal: <span>R$ {convertNumberInReal(data?.totalPayment)}</span>
+          Valor do pedido:{' '}
+          <span>R$ {convertNumberInReal(data?.totalPayment) ?? '0,00'}</span>
         </p>
         <p>
-          Desconto: <span>R$ {convertNumberInReal(data?.discount)}</span>
+          Desconto:{' '}
+          <span>R$ {convertNumberInReal(data?.discount) ?? '0,00'}</span>
         </p>
         <p>
-          Taxa de entrega: <span>?</span>
+          Taxa de entrega:{' '}
+          <span>R$ {convertNumberInReal(data?.shippingValue) ?? '0,00'}</span>
         </p>
-        <p>
-          Total: <span>{convertNumberInReal(data?.totalPayment)}</span>
+        <p className={styles.valor_final}>
+          Total:{' '}
+          <span>
+            R${' '}
+            {convertNumberInReal(
+              (data?.totalPayment ?? 0) - (data?.discount ?? 0)
+            )}
+          </span>
         </p>
       </div>
     </div>

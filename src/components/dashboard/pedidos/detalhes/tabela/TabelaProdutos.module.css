@@ -31,6 +31,12 @@
   font-weight: 500;
   color: #566a7f;
 }
+.valor_final,
+.valor_final span{
+  font-weight: 700 !important;
+  color: var(--green-sucess-500) !important;
+  font-size: 18px !important;
+}
 .texto {
   font-size: 18px;
   font-weight: 500;
