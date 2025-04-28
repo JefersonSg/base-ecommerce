@@ -10,8 +10,6 @@ export default async function middleware(req: NextRequest) {
   const HomeUrl = new URL('/', req.url);
   const urlLogin = new URL('/login', req.url);
 
-  console.log(admin);
-
   if (authenticated) {
     if (
       req.nextUrl.pathname.includes('login') ||
