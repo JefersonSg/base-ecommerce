@@ -27,11 +27,15 @@ const SideBarFormEdit = ({
   idCategory,
   name,
   description,
-  setAtivo
+  setAtivo,
+  setMessagePopUp,
+  setTypePopUp
 }: {
   idCategory: string;
   name: string;
   description: string;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const {
@@ -47,18 +51,26 @@ const SideBarFormEdit = ({
   });
 
   const { refetch } = useQuery({
-    queryKey: ['categories'],
-    queryFn: categoriesGetAll
+    queryKey: ['categories-get-all'],
+    queryFn: async () => await categoriesGetAll()
   });
 
   const [isLoading, setIsLoading] = React.useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setIsLoading(true);
-    await updateCategory(data, idCategory);
-    await refetch();
-    setIsLoading(false);
-    setAtivo(false);
+    const response = await updateCategory(data, idCategory);
+    if (response) {
+      setIsLoading(false);
+      setAtivo(false);
+      await refetch();
+      setMessagePopUp('Categoria atualizada');
+      setTypePopUp('');
+      return;
+    }
+
+    setMessagePopUp('Erro ao atualizar categoria');
+    setTypePopUp('error');
   };
 
   return (

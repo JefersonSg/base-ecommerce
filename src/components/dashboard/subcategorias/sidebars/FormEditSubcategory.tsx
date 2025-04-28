@@ -30,12 +30,16 @@ const SideBarFormEdit = ({
   name,
   category,
   description,
-  setAtivo
+  setAtivo,
+  setMessagePopUp,
+  setTypePopUp
 }: {
   idSubcategory: string;
   name: string;
   description: string;
   category: string;
+  setMessagePopUp: React.Dispatch<React.SetStateAction<string>>;
+  setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
   setAtivo: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const {
@@ -67,10 +71,18 @@ const SideBarFormEdit = ({
 
     const response = await updateSubcategory(data, idSubcategory);
     if (response) {
-      await refetch();
-      setAtivo(false);
+      if (response) {
+        setIsLoading(false);
+        setAtivo(false);
+        await refetch();
+        setMessagePopUp('Subcategoria atualizada');
+        setTypePopUp('');
+        return;
+      }
+
+      setMessagePopUp('Erro ao atualizar subcategoria');
+      setTypePopUp('error');
     }
-    setIsLoading(false);
   };
 
   return (

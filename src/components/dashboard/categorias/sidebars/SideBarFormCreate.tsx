@@ -36,7 +36,6 @@ const SideBarFormCreate = ({
   setTypePopUp: React.Dispatch<React.SetStateAction<string>>;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  //
   const { refetch } = useQuery({
     queryKey: ['categories-get-all'],
     queryFn: async () => await categoriesGetAll()

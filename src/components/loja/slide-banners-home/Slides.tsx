@@ -41,7 +41,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     alt="imagem banner mobile"
                     src={banner.imageMobile}
                     placeholder="empty"
-                    quality={80}
+                    quality={85}
                     width={750}
                     height={878}
                     sizes="(max-width: 769px) 100vw, 0vw"
@@ -52,7 +52,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     alt="imagem banner desktop"
                     src={banner.imageDesktop}
                     placeholder="empty"
-                    quality={80}
+                    quality={85}
                     width={1920}
                     height={600}
                     sizes="(max-width: 769px) 0vw, 100vw"

@@ -152,6 +152,7 @@ export async function updateCategory(data: any, id: string) {
     return response.data;
   } catch (error) {
     console.log(error);
+    return error;
   }
 }
 

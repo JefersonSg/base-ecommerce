@@ -108,3 +108,8 @@
     padding: 0 16px !important;
   }
 }
+@media (max-width: 500px) {
+  .container_card {
+    padding: 8px 12px 8px 12px;
+  }
+}

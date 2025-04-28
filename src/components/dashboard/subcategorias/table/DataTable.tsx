@@ -65,6 +65,8 @@ const DataTable = () => {
           setAtivo={setAtivoEdit}
           name={defaultTitle}
           description={defaultDescription}
+          setMessagePopUp={setMessagePopUp}
+          setTypePopUp={setTypePopUp}
         />
       )}
       <div className={styles.data_table}>
