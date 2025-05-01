@@ -18,22 +18,27 @@ function SlideVantagens() {
         className={`${styles.mySwiper} slide-vantagens`}
         navigation={true}
         pagination={false}
+        speed={4000}
         autoplay={{
-          delay: 2500
+          delay: 0,
+          disableOnInteraction: false
         }}
+        grabCursor={false}
         modules={[Autoplay, Navigation]}
         breakpoints={{
           0: {
-            slidesPerView: 1,
-            centeredSlides: true,
+            slidesPerView: 'auto',
             spaceBetween: 0,
-            loop: true
+            loop: true,
+            centeredSlides: false,
+            freeMode: true
           },
           768: {
             slidesPerView: 3,
             centeredSlides: false,
             spaceBetween: 32,
-            loop: true
+            loop: true,
+            freeMode: false
           },
           1024: {
             slidesPerView: 4,
