@@ -18,6 +18,11 @@
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Padrão */
 }
+
+.swiper-slide {
+  transition: opacity 0.3s ease-in-out !important;
+}
+
 .banner-wraper {
   max-height: 600px;
 }
