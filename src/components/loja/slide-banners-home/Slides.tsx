@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
 
 import 'swiper/css';
 
@@ -25,10 +25,11 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
         }}
         speed={1000}
         navigation={true}
+        effect="fade"
         pagination={{
           clickable: true
         }}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Pagination, Navigation, EffectFade]}
       >
         {data?.banners?.map((banner, index) => {
           return (

@@ -19,7 +19,7 @@
   user-select: none; /* Padrão */
 }
 .banner-wraper {
-  max-height: max-content;
+  max-height: 600px;
 }
 .slide-banner .swiper-button-next {
   right: 12px;
