@@ -14,7 +14,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'loja-bless.s3.sa-east-1.amazonaws.com',
+        hostname: 'lojabless-bucket.s3.sa-east-1.amazonaws.com',
         port: ''
       },
       {
