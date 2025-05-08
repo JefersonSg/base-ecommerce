@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import styles from './InputForm.module.css';
 
@@ -20,13 +22,14 @@ const InputFormulario = ({
   error?: string | any;
   multiple?: boolean;
 }) => {
+  const [typeInput, setTypeInput] = React.useState(type);
   return (
     <div className={`${styles.divInput}`}>
       <label htmlFor={name}>{label}</label>
       {type ? (
         <input
           className={styles.input}
-          type={type}
+          type={typeInput}
           multiple={multiple !== undefined}
           min={0}
           id={name}
@@ -34,7 +37,7 @@ const InputFormulario = ({
           placeholder={placeholder}
           defaultValue={defaultValue ?? ''}
           {...register(name)}
-        />
+        ></input>
       ) : (
         <textarea
           id={name}
@@ -42,6 +45,20 @@ const InputFormulario = ({
           defaultValue={defaultValue}
           {...register(name)}
         ></textarea>
+      )}
+      {type === 'password' && (
+        <p
+          className={styles.mostrar_senha}
+          onClick={() => {
+            if (typeInput === 'password') {
+              setTypeInput('text');
+              return;
+            }
+            setTypeInput('password');
+          }}
+        >
+          mostrar a senha
+        </p>
       )}
       <span className={styles.error}>
         {(error && typeof error === 'string' && error) ||
