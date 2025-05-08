@@ -13,7 +13,12 @@ function MenuSideBar({
   return (
     <div className={styles.sidebar}>
       <Link href={'/dashboard'} className={styles.logo}>
-        <Image alt="Logo" src={'/header/Logo2.svg'} width={60} height={42} />
+        <Image
+          alt="Logo"
+          src={'/header/dashboard/Logo.svg'}
+          width={60}
+          height={42}
+        />
       </Link>
       <nav className={styles.container}>
         <UlLinksUteis setAtivo={setAtivo} />
