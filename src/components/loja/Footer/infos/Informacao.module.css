@@ -8,10 +8,26 @@
   border-top: 1px solid var(--cor-neutra);
 }
 .sessao p {
-  margin-bottom: 8px;
+  font-family: var(--fonte-primaria);
+  padding: 8px 0 0 0;
   color: white;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  opacity: 0;
+  animation: aparecer ease-in forwards .2s;
 }
 
 .sessao h3 {
   cursor: pointer;
+}
+@keyframes aparecer {
+  from {
+  opacity: 0;
+  height: 0px;
+  }
+  to {
+    opacity: 1;
+    height: 16px;
+  }
 }

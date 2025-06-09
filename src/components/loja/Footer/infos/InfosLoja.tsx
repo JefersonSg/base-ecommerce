@@ -6,18 +6,9 @@ function InfosLoja() {
       <ul>
         <li>
           <p className="texto">
-            {`"Empresa de responsabilidade limitada ${process.env.NOME_LOJA}, Loja
-            virtual de maquiagem"`}
+            © 2025 - {process.env.NOME_LOJA} LTDA | CNPJ: 28.773.908/0001-57
+            <br />© Todos os direitos reservados.
           </p>
-        </li>
-        <li>
-          <p className="texto">© 2025 {process.env.NOME_LOJA}.</p>
-        </li>
-        <li>
-          <p className="texto">CNPJ: 28.773.908/0001-57</p>
-        </li>
-        <li>
-          <p className="texto">© Todos os direitos reservados.</p>
         </li>
       </ul>
     </nav>

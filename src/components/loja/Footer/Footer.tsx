@@ -6,24 +6,22 @@ import { MetodoPagamentos } from './metodoPagamentos/MetodoPagamentos';
 import InfosLoja from './infos/InfosLoja';
 
 export function Footer() {
-  // const images = [
-  //   'Facebook.svg',
-  //   'Instagram.svg',
-  //   'Tiktok.svg',
-  //   'Whatsapp.svg'
-  // ];
   const images = ['Facebook.svg', 'Instagram.svg', 'Whatsapp.svg'];
-  const metodos = ['Visa', 'Cartao', 'Mir'];
+  const metodos = ['Visa', 'Cartao', 'MercadoPago', 'Pix'];
 
   return (
     <>
       <footer className={styles.footer}>
-        <Botoes />
-        <Informacao titulo="Informações úteis" seta={true} />
-        <Informacao titulo="Sobre a loja" seta={true} />
-        <Informacao titulo="Nossas redes sociais" img={images} seta={false} />
+        <div className={styles.footer_middle}>
+          <Botoes />
+          <Informacao titulo="Dúvidas" seta={true} />
+          {/* <Informacao titulo="Sobre a loja" seta={true} /> */}
+          <Informacao titulo="redes sociais" img={images} seta={false} />
+        </div>
+        <div className={styles.footer_bottom}>
+          {metodos !== null && <MetodoPagamentos img={metodos} />}
+        </div>
         <InfosLoja />
-        {metodos !== null && <MetodoPagamentos img={metodos} />}
       </footer>
     </>
   );

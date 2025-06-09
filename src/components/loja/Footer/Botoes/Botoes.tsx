@@ -1,11 +1,17 @@
 import styles from './Botoes.module.css';
 import { Botao } from './Botao';
+import { TituloFooter } from '../infos/TituloFooter';
 
 export function Botoes() {
   return (
-    <>
+    <nav className={styles.nav_botoes}>
       <ul className={styles.botoes}>
-        <Botao img="entrega" text="Envios" link="/minha-conta/pedidos" />
+        <TituloFooter
+          titulo={'Perguntas frequentes'}
+          ativo={false}
+          seta={false}
+        />
+        <Botao img="entrega" text="Envio" link="/minha-conta/pedidos" />
         <Botao
           img="devolucao"
           text="Trocas e Devoluções"
@@ -13,6 +19,6 @@ export function Botoes() {
         />
         <Botao img="email" text="Email" type="email" />
       </ul>
-    </>
+    </nav>
   );
 }
