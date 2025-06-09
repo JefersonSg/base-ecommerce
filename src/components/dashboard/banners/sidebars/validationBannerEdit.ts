@@ -17,10 +17,7 @@ export const validationBannerEdit = yup.object({
           (value[0] ? value[0]?.type === 'image/jpeg' : true)
         );
       }
-    )
-    .test('fileSize', 'o arquivo é muito grande', (value: any) => {
-      return value[0] ? value[0]?.size <= 1024 * 1024 : true;
-    }),
+    ),
   imageDesktop: yup
     .mixed()
     .test(
@@ -35,7 +32,4 @@ export const validationBannerEdit = yup.object({
         );
       }
     )
-    .test('fileSize', 'o arquivo é muito grande', (value: any) => {
-      return value[0] ? value[0]?.size <= 1024 * 1024 : true;
-    })
 });
