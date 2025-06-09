@@ -138,6 +138,7 @@
   }
   .tamanhos {
     width: 94px;
+    min-width: max-content;
     border-color: #212429;
     cursor: pointer;
   }
