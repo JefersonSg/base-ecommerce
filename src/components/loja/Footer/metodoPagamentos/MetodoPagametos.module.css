@@ -1,7 +1,7 @@
 .div_metodos_pagamentos {
   display: flex;
   flex-direction: column;
-  gap:8px;
+  gap: 8px;
   margin: 0 auto;
   display: flex;
   border-top: 1px solid var(--cor-neutra);
@@ -13,11 +13,11 @@
   box-sizing: border-box;
 }
 .div_metodos_pagamentos h3 {
-  text-align: center !important; 
+  text-align: center !important;
   width: 100%;
 }
 .formar_de_pagamento {
- display: -webkit-box;
+  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -31,7 +31,7 @@
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
-  padding: 0;;
+  padding: 0;
 }
 .imagens_metodo_pagamento {
   height: 21px;
@@ -39,9 +39,9 @@
 }
 @media (max-width: 48rem) {
   footer.footer-root .footer__payment-methods__list {
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
 }

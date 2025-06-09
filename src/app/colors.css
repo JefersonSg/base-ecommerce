@@ -1,16 +1,16 @@
 :root {
   --cor-de-indicacao: #242424;
-  --cor-primaria: #4D0120;
-  --cor-secundaria: #EFC2B0;
+  --cor-primaria: #4d0120;
+  --cor-secundaria: #efc2b0;
   --cor-terciaria: #000;
   --cor-quarta: #000;
   --cor-quinta: #000;
 
-  --cor-neutra: #D9D9D9;
+  --cor-neutra: #d9d9d9;
 
-  --cor-principal: #4D0120;
+  --cor-principal: #4d0120;
 
-  --cor-contraste: #FF6B6B;
+  --cor-contraste: #ff6b6b;
   --cor-contraste2: #cc1f0f;
 
   /* Dashboard */
@@ -20,7 +20,7 @@
 
   --blue-bg-500: #696cff;
   --blue-bg-100: #dde3f1;
-  --green-sucess-500: #4CAF50;
+  --green-sucess-500: #4caf50;
   --yellow-alert-500: #ffab00;
-  --red-danger-500: #D32F2F;
+  --red-danger-500: #d32f2f;
 }

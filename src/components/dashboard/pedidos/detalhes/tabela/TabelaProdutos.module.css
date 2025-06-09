@@ -32,7 +32,7 @@
   color: #566a7f;
 }
 .valor_final,
-.valor_final span{
+.valor_final span {
   font-weight: 700 !important;
   color: var(--green-sucess-500) !important;
   font-size: 18px !important;

@@ -23,5 +23,4 @@ export const validationSubcategoryEdit = yup.object({
         );
       }
     )
- 
 });

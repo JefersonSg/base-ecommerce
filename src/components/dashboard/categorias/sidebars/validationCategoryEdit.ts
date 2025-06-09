@@ -20,5 +20,4 @@ export const validationCategoryEdit = yup.object({
         );
       }
     )
- 
 });

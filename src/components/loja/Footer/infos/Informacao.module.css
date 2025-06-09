@@ -15,7 +15,7 @@
   font-weight: 300;
   line-height: 16px;
   opacity: 0;
-  animation: aparecer ease-in forwards .2s;
+  animation: aparecer ease-in forwards 0.2s;
 }
 
 .sessao h3 {
@@ -23,8 +23,8 @@
 }
 @keyframes aparecer {
   from {
-  opacity: 0;
-  height: 0px;
+    opacity: 0;
+    height: 0px;
   }
   to {
     opacity: 1;
