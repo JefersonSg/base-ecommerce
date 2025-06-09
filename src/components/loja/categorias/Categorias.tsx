@@ -9,7 +9,7 @@ function Categorias({
 }) {
   return (
     <div className={styles.categorias}>
-      <h2 className={'titulo_sessao'}> Categorias</h2>
+      {/* <h2 className={'titulo_sessao'}> Categorias</h2> */}
       <SlideCategoria data={categorias} />
     </div>
   );
