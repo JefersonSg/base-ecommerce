@@ -56,7 +56,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     quality={90}
                     width={1920}
                     height={600}
-                    sizes="(max-width: 769px) 0vw, 100vw"
+                    sizes="(max-width: 770px) 0vw, 100vw"
                     priority={index < 2}
                   />
                 </Link>

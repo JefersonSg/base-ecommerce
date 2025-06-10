@@ -24,6 +24,7 @@ export async function AddNewView({
 }) {
   const { url } = ADD_NEW_VIEW({ productId });
   const sessionId = cookies().get('sessionId')?.value;
+  console.log(sessionId);
 
   void axios.post(
     url,

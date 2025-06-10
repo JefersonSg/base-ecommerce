@@ -8,7 +8,7 @@ import '../colors.css';
 import '../fonts.css';
 
 import HeaderFetchs from '@/src/components/loja/Header/HeaderFetchs';
-// import AddViewFunc from '@/src/components/compartilhado/AddViewFunc';
+import AddViewFunc from '@/src/components/compartilhado/AddViewFunc';
 
 export default async function LojaLayout({
   children
@@ -17,7 +17,9 @@ export default async function LojaLayout({
 }) {
   return (
     <>
-      <Suspense>{/* <AddViewFunc /> */}</Suspense>
+      <Suspense>
+        <AddViewFunc />
+      </Suspense>
       <HeaderFetchs />
       {children}
       <BtnZap />

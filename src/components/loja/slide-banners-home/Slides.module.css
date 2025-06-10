@@ -15,8 +15,7 @@
 }
 
 .container_banner {
-  height: max-content;
-  max-height: 600px;
+  height: max-content;  
 }
 
 @media (min-width: 48rem) {
