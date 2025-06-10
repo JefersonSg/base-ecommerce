@@ -34,7 +34,7 @@ export function Header() {
           <Link href={'/'} className={`${styles.logo} ${styles.mobile}`}>
             <Image
               alt="Logo"
-              src={'/header/dashboard/logo.svg'}
+              src={'/header/dashboard/Logo.svg'}
               width={100}
               height={65}
             />
