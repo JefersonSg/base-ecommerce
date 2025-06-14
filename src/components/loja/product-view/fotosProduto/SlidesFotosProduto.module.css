@@ -1,9 +1,3 @@
-.foto_slide {
-  border-radius: 8px;
-  cursor: pointer;
-  object-fit: cover;
-}
-
 .produto_thumbs {
   height: max-content;
   width: 100%;
@@ -19,6 +13,12 @@
   --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 10px;
   --swiper-navigation-color: black;
+}
+
+.foto_slide {
+  border-radius: 8px;
+  cursor: pointer;
+  object-fit: cover;
 }
 
 @media (min-width: 64rem) {
@@ -40,14 +40,3 @@
     margin: 0;
   }
 }
-@media (max-width: 1024px) {
-  .slide-produto {
-    display: none !;
-  }
-
-  .produto_thumbs {
-    display: none;
-  }
-}
-
-

@@ -9,7 +9,7 @@ import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import BtnFechar from '@/src/components/compartilhado/botoes/BtnFechar';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Controller, FreeMode, Thumbs, Navigation } from 'swiper/modules';
+import { Controller, FreeMode, Thumbs } from 'swiper/modules';
 
 function FotosProduto({ img }: { img: string[] }) {
   const [imagemPrincipal, setImagemPrincipal] = React.useState<string>(
@@ -47,39 +47,39 @@ function FotosProduto({ img }: { img: string[] }) {
   return (
     <>
       <div className={styles.fotosProduto}>
-        <div className={styles.container_image}>
+        <div
+          className={styles.container_image}
+          onClick={() => {
+            setFotoInteira(true);
+          }}
+        >
           <Suspense>
             <Swiper
               slidesPerView={1}
               thumbs={{ swiper: thumbsSwiper }}
-              modules={[Controller, Thumbs, FreeMode, Navigation]}
-              navigation={true}
-              className="slide-foto-produtos"
+              modules={[Controller, Thumbs, FreeMode]}
             >
               {img?.map((image, index) => {
                 return (
                   <SwiperSlide
                     className={styles.imagem_slide_principal}
                     key={image}
+                    onClick={() => {
+                      setImagemPrincipal(image);
+                    }}
                   >
                     <Image
                       className={styles.fotoPrincipal}
                       alt="Foto do produto"
                       id={imagemId}
                       src={image}
-                      quality={85}
+                      quality={70}
                       loading={index > 2 ? 'lazy' : undefined}
-                      width={1035}
-                      height={1350}
+                      fill
                       placeholder="blur"
                       blurDataURL={image}
                       sizes="(max-width: 1024px) 550px, 100vw"
                       priority={index < 2}
-                      onClick={(e) => {
-                        setFotoInteira(true);
-                        setImagemPrincipal(image);
-                        e.stopPropagation();
-                      }}
                     />
                   </SwiperSlide>
                 );
