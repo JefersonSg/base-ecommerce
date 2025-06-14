@@ -24,13 +24,13 @@ const ContainerProduct = async ({
           productName={productData?.name}
         />
       </Suspense>
+      <FotosProduto img={productData?.images} />
 
       <div className={`title_bold_24px ${styles.titulo}`}>
         <Titulo titulo={productData?.name} />
       </div>
       <div className={styles.navegação}></div>
       <Interacoes id={productData._id} />
-      <FotosProduto img={productData?.images} />
       <Suspense>
         <Detalhes data={productData} />
         <Sections data={productData} />

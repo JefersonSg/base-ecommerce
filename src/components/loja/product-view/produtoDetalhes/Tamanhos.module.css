@@ -39,7 +39,6 @@
   align-items: center;
   gap: 16px;
   border: 1px solid rgba(220, 220, 220, 0.6);
-  border-radius: 48px;
   box-sizing: border-box;
   padding: 0 16px;
   justify-content: space-between;
@@ -129,7 +128,6 @@
     display: flex;
     align-items: center;
     border: 1px solid rgba(220, 220, 220, 0.6);
-    border-radius: 48px;
     box-sizing: border-box;
     background-color: white;
     justify-content: center;

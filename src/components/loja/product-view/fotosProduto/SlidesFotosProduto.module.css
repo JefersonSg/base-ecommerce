@@ -16,7 +16,6 @@
 }
 
 .foto_slide {
-  border-radius: 8px;
   cursor: pointer;
   object-fit: cover;
 }
@@ -38,5 +37,10 @@
     padding: 0;
     box-sizing: border-box;
     margin: 0;
+  }
+}
+@media (max-width:64rem) {
+  .produto_thumbs {
+    display: none;
   }
 }

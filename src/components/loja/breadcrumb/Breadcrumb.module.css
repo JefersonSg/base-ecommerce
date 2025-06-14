@@ -1,5 +1,5 @@
 .breadcrumb {
-  display: flex;
+  display: none;
   color: rgba(33, 36, 41, 0.6);
   font-family: var(--fonte-primaria);
   font-size: 12px;
@@ -39,6 +39,7 @@
 
 @media (min-width: 64rem) {
   .breadcrumb {
+    display: flex;
     grid-column: 1/-1;
     font-size: 12px;
     margin-bottom: 24px;
