@@ -1,8 +1,7 @@
 .section_produtos {
   min-height: 100vh;
-  padding: 32px 0px 0 0px;
+  padding: 0px 0px 64px 0px;
   margin-bottom: 128px;
-  padding-bottom: 64px;
 }
 .navegação {
   display: none;
