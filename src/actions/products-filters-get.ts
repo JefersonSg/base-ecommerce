@@ -37,6 +37,7 @@ export default async function productsFilterGet({
   size = '',
   subcategory = ''
 }: ProductGetParams = {}) {
+  console.log(orderDirection);
   try {
     const { url } = PRODUCT_FILTER({
       page,

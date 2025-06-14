@@ -6,7 +6,10 @@ import productsFilterGet from '@/src/actions/products-filters-get';
 import categoriesGetAll from '@/src/actions/category-get-all';
 
 async function page() {
-  const data = await productsFilterGet({ active: true });
+  const data = await productsFilterGet({
+    active: true,
+    orderDirection: 'desc'
+  });
   const categories = await categoriesGetAll();
 
   return (

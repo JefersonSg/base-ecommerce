@@ -1,5 +1,8 @@
 'use client';
 
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import Image from 'next/image';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -78,10 +81,12 @@ const ImagemProduto = ({
       <Swiper
         className={`${styles.mySwiper} slide_photos`}
         navigation={true}
-        pagination={true}
+        pagination={false}
+        direction="horizontal"
         loop={false}
         modules={[Navigation, Pagination]}
         speed={300}
+        slidesPerView={'auto'}
       >
         {coverPhoto1 && (
           <SwiperSlide>
