@@ -60,7 +60,8 @@ const useAuth = () => {
 
   async function login(
     dataUser: dataUserLogin,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string>>
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
+    setTypePopUp: React.Dispatch<React.SetStateAction<string>>
   ) {
     try {
       const data = await axios.post(`${API_URL}user/login`, dataUser);
@@ -68,8 +69,8 @@ const useAuth = () => {
       await authUser(data.data);
     } catch (error: any) {
       setErrorMessage('');
-      console.log(error);
       setTimeout(() => {
+        setTypePopUp('error');
         setErrorMessage(
           error?.response?.data?.errorsResult?.body[0] ||
             error?.response?.data?.message
@@ -80,7 +81,8 @@ const useAuth = () => {
 
   async function registerUser(
     dataUser: dataUserRegister,
-    setErrorMessage: React.Dispatch<React.SetStateAction<string>>
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
+    setTypePopUp: React.Dispatch<React.SetStateAction<string>>
   ) {
     const cookie = await getCookie({ nameCookie: 'cart_id' });
     try {
@@ -98,6 +100,7 @@ const useAuth = () => {
     } catch (err: any) {
       setErrorMessage('');
       setTimeout(() => {
+        setTypePopUp('error');
         setErrorMessage(
           err?.response?.data?.errorsResult?.body[0] ||
             err?.response?.data?.message

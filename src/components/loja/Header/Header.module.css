@@ -19,6 +19,7 @@
 .container_header {
   background-color: #FFF;
   box-shadow: 0 7px 26px rgba(154, 154, 204, 0.2);
+  border-bottom: 1px solid #eaeaea;
 }
 .container1,
 .container2 {
@@ -99,7 +100,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    color: white;
+    color: #2a2a2a;
   }
 
   .logo {

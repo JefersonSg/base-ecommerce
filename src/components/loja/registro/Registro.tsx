@@ -98,7 +98,7 @@ const Registro = () => {
 
     setLoading(true);
     await sendRegisterEmail(data.name, data.email);
-    await registerUser(dataUser, setMessagePopUp, setLoading);
+    await registerUser(dataUser, setMessagePopUp, setTypePopUp, setLoading);
     setLoading(false);
     setMessagePopUp('Registro concluido');
     setTypePopUp('');

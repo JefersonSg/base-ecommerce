@@ -65,7 +65,7 @@ const LoginPage = () => {
     };
 
     setLoading(true);
-    await login(dataUser, setMessagePopUp, setLoading);
+    await login(dataUser, setMessagePopUp, setTypePopUp, setLoading);
     setLoading(false);
     setMessagePopUp('Login realizado');
     setTypePopUp('');

@@ -14,7 +14,7 @@ const LoadingUserInfos = () => {
           width={24}
           height={24}
         />
-        <p>Olá, faça seu login ou cadastre-se.</p>
+        <p className={styles.texto}>Olá, faça seu login ou cadastre-se.</p>
       </Link>
       <Link href={'/favoritos'}>
         <Image
