@@ -15,14 +15,11 @@
   object-fit: cover;
   cursor: pointer;
   background: rgba(200, 180, 190, 0.1);
-  aspect-ratio: 320 / 371;
 }
 .container_image {
-  aspect-ratio: 320 / 371;
   height: auto;
   width: 100%;
   margin-bottom: 16px;
-  object-fit: cover;
 }
 
 .imagem_slide_principal {
@@ -63,7 +60,10 @@
     min-height: 550px;
   }
 
-
+  .imagem_slide_principal   .slide-produto .swiper-button-next,
+    .imagem_slide_principal  .slide-produto .swiper-button-prev {
+    display: none;
+  }
   .container_image {
     height: 100%;
     max-width: 100%;
