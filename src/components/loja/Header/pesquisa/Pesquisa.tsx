@@ -41,7 +41,7 @@ const Pesquisa = () => {
           <input
             className={styles.input_pesquisa}
             type="text"
-            placeholder="O que você está buscando?"
+            placeholder="Buscar produto"
             value={pesquisa}
             onChange={handleChange}
           />

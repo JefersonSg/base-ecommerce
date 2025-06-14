@@ -3,7 +3,7 @@
   top: 0px;
   left: 16px;
   height: 64px;
-  width: 250px;
+  width: calc(100% - 20px);
   background: white;
   animation: entrada 0.1s ease-in forwards;
   display: none;
@@ -11,7 +11,10 @@
   justify-content: center;
   z-index: 100;
   font-family: var(--fonte-primaria);
-  padding: 0 10px;
+  border:  1px solid #e0e0e0;
+  border-radius: 5px;
+  margin: 0 auto;
+
 }
 
 .lupaInput,
@@ -22,20 +25,19 @@
   margin-left: 40px;
 }
 .input_pesquisa {
-  border: none;
   height: 30px;
   padding: 0;
   border-radius: 4px 0 0 4px;
   width: 250px;
   padding-left: 16px;
   box-sizing: border-box;
-  border-right: 1px solid rgba(200, 200, 200, 0.3);
-  border: 1px solid var(--cor-quarta);
   border-right: none;
+  border:  1px solid #e0e0e0;
+  font-size: 12px;
 }
 
 .input_pesquisa::placeholder {
-  color: var(--cor-principal);
+  color: #000000;
   opacity: 0.5;
   font-weight: 600;
 }
@@ -88,18 +90,17 @@
   .pesquisa {
     position: relative;
     display: flex;
-    width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     left: 0;
     justify-content: flex-start;
     justify-content: center;
-    background-color: var(--cor-principal);
-    padding-bottom: 8px;
+    height: 42px;
+    margin-bottom: 8px;
   }
   .button_pesquisa,
   .input_pesquisa {
-    height: 42px !important;
+    height: 39px !important;
     border: none;
   }
   .input_pesquisa {

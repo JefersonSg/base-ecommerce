@@ -6,10 +6,12 @@ import Pesquisa from './pesquisa/Pesquisa';
 import CategoriasLinks from './nav/CategoriasLinks';
 import UserInfo from './UserInfo';
 import LoadingUserInfos from './LoadingUserInfos';
+import { InfosDestaques } from './InfosDestaques';
 
 export const Header = async () => {
   return (
     <>
+      <InfosDestaques />
       <div className={styles.container_header}>
         <header className={styles.header}>
           <div className={styles.container1}>

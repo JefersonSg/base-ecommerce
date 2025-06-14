@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   height: 64px;
-  background: var(--cor-principal);
+  background: #FFF;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,7 +17,7 @@
   position: absolute;
 }
 .container_header {
-  background-color: var(--cor-principal);
+  background-color: #FFF;
   box-shadow: 0 7px 26px rgba(154, 154, 204, 0.2);
 }
 .container1,
