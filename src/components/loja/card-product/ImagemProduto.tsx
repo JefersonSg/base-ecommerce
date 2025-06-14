@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import React from 'react';
+import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './ImagemProduto.module.css';
 import { Navigation, Pagination } from 'swiper/modules';
