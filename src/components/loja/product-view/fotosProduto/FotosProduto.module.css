@@ -19,7 +19,7 @@
   background: rgba(200, 180, 190, 0.1);
 }
 .container_image {
-  height: 350px;
+  height: 400px;
   width: 100%;
   max-width: 326px;
 }
@@ -50,9 +50,9 @@
 }
 
 .imagem_slide_principal {
-  height: 350px;
+  height: 400px;
   max-width: 326px;
-  max-height: 326px;
+  max-height: 400px;
   box-sizing: 'border-box';
   border-radius: 12px;
 }
