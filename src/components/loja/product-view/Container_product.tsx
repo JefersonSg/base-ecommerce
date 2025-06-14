@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import { Titulo } from '../../compartilhado/textos/Titulo';
 import Interacoes from './interacoesUser/Interacoes';
 import FotosProduto from './fotosProduto/FotosProduto';
 import Detalhes from './produtoDetalhes/Detalhes';
@@ -26,8 +25,10 @@ const ContainerProduct = async ({
       </Suspense>
       <FotosProduto img={productData?.images} />
 
-      <div className={`title_bold_24px ${styles.titulo}`}>
-        <Titulo titulo={productData?.name} />
+      <div>
+        <div className={` ${styles.titulo}`}>
+          <h1 className={styles.nome_produto}>{productData?.name}</h1>
+        </div>
       </div>
       <div className={styles.navegação}></div>
       <Interacoes id={productData._id} />
