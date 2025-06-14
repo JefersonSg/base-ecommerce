@@ -65,17 +65,19 @@ function Produtos({
         }`}
       />
 
-      <SectionProdutos
-        data={data}
-        functionGetProduct={functionGetProduct}
-        pesquisa={pesquisa}
-        active={active}
-        categoryId={categoryId}
-        subcategoryId={subcategoryId}
-        promotion={promotion}
-        orderBy={orderBy}
-        orderDirection={orderDirection}
-      />
+      {data && (
+        <SectionProdutos
+          data={data}
+          functionGetProduct={functionGetProduct}
+          pesquisa={pesquisa}
+          active={active}
+          categoryId={categoryId}
+          subcategoryId={subcategoryId}
+          promotion={promotion}
+          orderBy={orderBy}
+          orderDirection={orderDirection}
+        />
+      )}
     </div>
   );
 }
