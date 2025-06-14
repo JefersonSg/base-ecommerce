@@ -3,7 +3,10 @@ import Section from '../Section';
 import productsFilterGet from '@/src/actions/products-filters-get';
 
 const Novidades = async () => {
-  const data = await productsFilterGet({ active: true });
+  const data = await productsFilterGet({
+    active: true,
+    orderDirection: 'desc'
+  });
 
   return (
     <Section
