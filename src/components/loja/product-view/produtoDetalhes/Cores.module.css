@@ -20,59 +20,75 @@
   align-items: center;
   gap: 16px;
 }
-.cor_selecionada {
-  width: 24px;
-  height: 24px;
-  border: 1px solid #dbe5f1;
-  border-radius: 24px;
+
+  .contentOption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid #e0e0e0;
+    width: 44px;
+    height: 44px;
+    border-radius: 56px;
+    box-sizing: border-box;
+  }
+  .contentOption.ativo {
+    border: 1px solid #000;
+    
+  }
+
+.contentColor {
+    width: 36px;
+    height: 36px;
+    display: block;
+    position: relative;
+    border-radius: 50px;
+    background-color: #080808;
 }
 
-.seta {
-  width: 9px;
-  height: 9px;
-  transition: 0.2s ease-in;
-}
-.seta.ativo {
-  rotate: 180deg;
-}
+
 
 .selectColors {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 50px;
   left: 0;
   width: 100%;
   background-color: white;
-  min-height: 40px;
-  border-radius: 6px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 2px 6px 0 rgba(67, 89, 113, 0.12);
-  padding-top: 8px;
-  padding-bottom: 8px;
   box-sizing: border-box;
-}
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 44px);
+    min-height: 48px;
+    font-size: 0px;
+    gap: 16px;
+    position: relative;
+    padding-top: 16px;
+  }
 .selectColors.ativo {
   display: flex;
 }
 
-.cores_disponiveis {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4px 8px;
-  cursor: pointer;
-  padding-right: 42px;
-  font-family: var(--fonte-primaria);
-}
+  .cores_disponiveis {
+    width: 44px;
+    padding: 0;
+    height: 44px;
+    justify-self: center;
+  }
 .cores_disponiveis:hover {
   background: rgba(220, 220, 220, 0.6);
 }
 .cor_selecionada_span {
-  font-family: var(--fonte-primaria);
-  display: none;
+  font-family: 'roboto', sans-serif;
+  width: 100%;
+  font-size: 12px;
+  color: #191919;
+  line-height: 1em;
 }
-
+  .cor_selecionada_span span {
+    padding-left: 4px;
+    color: #5c5c5c;
+    display: inline-block;
+    font-weight: 700;
+  }
 @media (min-width: 64rem) {
   .selectColor_container {
     height: max-content;
@@ -105,13 +121,7 @@
     position: relative;
   }
 
-  .cor_selecionada {
-    width: 40px;
-    height: 40px;
-    box-sizing: border-box;
-    border: 1px solid #c5d2e1;
-  }
-  .cor_selecionada.ativo {
+  .contentOption.ativo {
     width: 37px;
     height: 37px;
     box-shadow:

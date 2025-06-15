@@ -8,6 +8,7 @@ import styles from './Produto.module.css';
 import { type ProductApi } from '@/src/shared/helpers/interfaces';
 import ProdutosSugeridos from './sections-page-product/Produtos_sugeridos';
 import BreadcrumbProduct from './breadcrumb-product';
+import Cabecalho from './produtoDetalhes/Cabecalho';
 
 const ContainerProduct = async ({
   productData
@@ -24,12 +25,7 @@ const ContainerProduct = async ({
         />
       </Suspense>
       <FotosProduto img={productData?.images} />
-
-      <div>
-        <div className={` ${styles.titulo}`}>
-          <h1 className={styles.nome_produto}>{productData?.name}</h1>
-        </div>
-      </div>
+      <Cabecalho nomeProduto={productData.name} idProduto={productData._id} />
       <div className={styles.navegação}></div>
       <Interacoes id={productData._id} />
       <Suspense>

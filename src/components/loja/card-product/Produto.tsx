@@ -86,8 +86,6 @@ function Produto({
       };
       void refetch();
 
-      console.log(response);
-
       setTimeout(() => {
         setIsLoading(false);
       }, 700);

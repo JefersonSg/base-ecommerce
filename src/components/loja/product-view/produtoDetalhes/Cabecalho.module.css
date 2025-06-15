@@ -1,0 +1,40 @@
+.cabecalho {
+  display: grid;
+  grid-template-columns: 1fr 72px;
+  align-items: center;
+  padding: 0 16px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box
+}
+.nome_produto {
+    width: calc(100% - 22px);
+    color: #080808;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: .04em;
+    line-height: 1.3em;
+    font-family: 'roboto', sans-serif;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+.avaliacao {
+  font-family: 'roboto', sans-serif;
+  min-width: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #c4c4c4;
+  height: 100%;
+}
+.avaliacao p {
+    color: #191919;
+    text-decoration: underline;
+    margin-right: 8px;
+    margin-left: 16px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.estrela {
+  height: 20px;
+}

@@ -13,7 +13,7 @@ export default async function EstrelasProduto({ id }: { id: string }) {
 
   const stars =
     totalStars?.reduce((acumulador, numero) => acumulador + numero, 0) /
-      totalStars?.length ?? 1;
+      totalStars?.length || 1;
   return (
     <>
       <Link className={styles.estrelas} href={'#avaliacoes'} scroll={true}>

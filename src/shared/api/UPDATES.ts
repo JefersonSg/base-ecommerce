@@ -51,7 +51,6 @@ export async function updateProduct(
           ok = true;
         }
         if (amount[indexColor][i] >= 0) {
-          console.log(amount[indexColor][i]);
           console.log(ok);
         } else {
           setTypePopUp('error');

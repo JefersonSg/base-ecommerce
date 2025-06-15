@@ -45,8 +45,6 @@ const SelectSizes = ({
             const schema = [...sizes];
             schema.push(`${''}`);
             setSizes(schema);
-
-            console.log(amount);
           }}
         >
           <button className={styles.btn_add}>adicionar tamanho</button>

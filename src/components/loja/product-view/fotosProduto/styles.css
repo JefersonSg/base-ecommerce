@@ -17,27 +17,27 @@
 }
 
 .slide-foto-produtos .swiper-button-next,
-  .slide-foto-produtos .swiper-button-prev {
-    background-color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    color: black;
-    align-items: center;
-    justify-content: center;
+.slide-foto-produtos .swiper-button-prev {
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  color: black;
+  align-items: center;
+  justify-content: center;
 
-    visibility: visible;
-    opacity: .8;
-    filter: drop-shadow(0 0 .5rem rgba(0, 0, 0, .2));
-    z-index: 1000;
-  }
-    .slide-foto-produtos .swiper-button-next::after,
-  .slide-foto-produtos .swiper-button-prev::after {
+  visibility: visible;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.2));
+  z-index: 1000;
+}
+.slide-foto-produtos .swiper-button-next::after,
+.slide-foto-produtos .swiper-button-prev::after {
   font-size: 18px;
-  }
+}
 
-  .slide-produto .swiper-button-next,
+.slide-produto .swiper-button-next,
 .slide-produto .swiper-button-prev {
   padding: 11px 3px;
   border-radius: 5px;

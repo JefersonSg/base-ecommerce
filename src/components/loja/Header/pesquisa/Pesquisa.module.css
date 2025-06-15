@@ -11,10 +11,9 @@
   justify-content: center;
   z-index: 100;
   font-family: var(--fonte-primaria);
-  border:  1px solid #e0e0e0;
+  border: 1px solid #e0e0e0;
   border-radius: 5px;
   margin: 0 auto;
-
 }
 
 .lupaInput,
@@ -32,7 +31,7 @@
   padding-left: 16px;
   box-sizing: border-box;
   border-right: none;
-  border:  1px solid #e0e0e0;
+  border: 1px solid #e0e0e0;
   font-size: 12px;
 }
 

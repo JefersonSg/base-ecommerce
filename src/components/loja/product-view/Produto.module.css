@@ -13,16 +13,6 @@
   background-color: rgb(198, 200, 200);
 }
 
-.nome_produto {
-  padding-left: 16px;
-    width: calc(100% - 22px);
-    color: #080808;
-    margin: 0;
-    font-weight: 400;
-    letter-spacing: .04em;
-    line-height: 1.3em;
-    font-family: 'roboto', sans-serif;
-}
 @media (min-width: 64rem) {
   .titulo {
     grid-column: 2;
