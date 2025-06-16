@@ -12,7 +12,7 @@ const HeaderPagamento = () => {
           <Image
             className={styles.logo}
             alt="Logo da loja"
-            src={'/header/Logo2.svg'}
+            src={'/header/Logo.svg'}
             width={130}
             height={94}
           />
