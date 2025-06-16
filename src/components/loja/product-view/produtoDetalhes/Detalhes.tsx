@@ -22,6 +22,7 @@ function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
     queryKey: ['user']
   });
+  const [hasStock, setHasStock] = React.useState(true);
 
   const [colorSelected, setColorSelected] = React.useState(
     data?.colors?.[0] ?? ''
@@ -85,6 +86,13 @@ function Detalhes({ data }: { data: ProductApi }) {
       setIsLoading(false);
     }
   }
+
+  React.useEffect(() => {
+    const allAmounts = data.stock.amount.flat();
+    const hasStock = allAmounts.some((amount) => amount > 0);
+
+    setHasStock(hasStock);
+  }, [data.stock.amount]);
 
   // No Stock
   React.useEffect(() => {
@@ -153,7 +161,7 @@ function Detalhes({ data }: { data: ProductApi }) {
       >
         <BotaoColorido
           texto={`${
-            !data.active
+            !data.active || !hasStock
               ? 'Sem estoque'
               : !haveColor
                 ? 'Produto sem estoque nesta cor'
@@ -162,7 +170,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           img="carrinho.svg"
           alt="Imagem do carrinho"
           isLoading={isLoading}
-          disabled={!haveColor || !data.active}
+          disabled={!haveColor || !data.active || !hasStock}
         />
       </div>
       {messagePopUp && typePopUp === 'error' && (
