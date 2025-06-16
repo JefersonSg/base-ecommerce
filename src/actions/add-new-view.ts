@@ -14,11 +14,9 @@ const configJson = {
 };
 
 export async function AddNewView({
-  ipUser,
   productId,
   pageView
 }: {
-  ipUser: string;
   productId: string;
   pageView: string;
 }) {
@@ -29,7 +27,6 @@ export async function AddNewView({
     url,
     {
       userToken: token,
-      userIp: ipUser,
       sessionId,
       pageView
     },

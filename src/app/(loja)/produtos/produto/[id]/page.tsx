@@ -76,7 +76,6 @@ export const generateMetadata = async ({
 };
 
 const Page = async ({ params }: PageParams) => {
-  console.log(params);
   return (
     <div className={styles.produtos_container}>
       <Suspense fallback={<LoadingProduct />}>

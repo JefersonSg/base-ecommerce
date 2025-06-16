@@ -70,12 +70,7 @@ function Cores({
                     <div
                       className={styles.contentColor}
                       style={{
-                        background: codeColors?.[index],
-                        border: `${
-                          codeColorSelected === codeColors?.[index]
-                            ? '1.5px solid' + codeColors[index]
-                            : ''
-                        }`
+                        background: codeColors?.[index]
                       }}
                     ></div>
                   </div>

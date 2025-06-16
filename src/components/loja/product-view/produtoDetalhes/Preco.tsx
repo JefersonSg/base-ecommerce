@@ -32,11 +32,11 @@ function Preco({
         de {''}
         <span>
           {price && !promotion
-            ? 'R$ ' + convertNumberInReal(Number(price * 1.25) / 10 ?? 0)
+            ? 'R$ ' + convertNumberInReal(Number(price * 1.25) / 10 || 0)
             : promotion &&
               promotionalPrice &&
               'R$ ' +
-                convertNumberInReal(Number(promotionalPrice * 1.2) / 4 ?? 0)}
+                convertNumberInReal(Number(promotionalPrice * 1.2) / 4 || 0)}
         </span>
       </p>
     </div>

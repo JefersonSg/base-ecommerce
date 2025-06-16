@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styles from './Tamanhos.module.css';
-import Image from 'next/image';
 
 function Tamanhos({
   colorSelected,
@@ -33,21 +32,7 @@ function Tamanhos({
   return (
     <div className={styles.tamanhos_container}>
       <span className={styles.span_tamanho}>Tamanhos:</span>
-      <p
-        className={styles.size_selected}
-        onClick={() => {
-          setAtivo(!ativo);
-        }}
-      >
-        {sizeSelected.length ? sizeSelected : sizes[0]}{' '}
-        <Image
-          className={`${ativo ? styles.ativo : ''} ${styles.seta}`}
-          alt="Seta"
-          src={'/setaBaixo.svg'}
-          width={9}
-          height={9}
-        />
-      </p>
+
       <div
         className={`${styles.tamanhos_valor}  ${styles.selectSizes} ${
           ativo ? styles.ativo : ''

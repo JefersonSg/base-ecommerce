@@ -6,21 +6,10 @@ import setNewCookieSession from '@/src/actions/setCookieSession';
 import { AddNewView } from '@/src/actions/add-new-view';
 import getCookie from '@/src/actions/getCookie';
 
-interface Response {
-  isBot: boolean;
-  localization: object;
-  ip: string;
-  userAgent: string;
-}
-
 const AddViewFunc = () => {
   const pathname = usePathname();
   const SetNewView = React.useCallback(async () => {
-    const response = await fetch('/api/ip');
-
-    const data = (await response.json()) as unknown as Response;
     let sessionId = await getCookie({ nameCookie: 'sessionId' });
-    const userIp = data.ip;
 
     const productId =
       pathname.split('/')?.[2] === 'produto' &&
@@ -34,9 +23,8 @@ const AddViewFunc = () => {
 
     const pageView = pathname;
 
-    if (sessionId?.value && !data.isBot) {
+    if (sessionId?.value) {
       void AddNewView({
-        ipUser: userIp,
         pageView,
         productId: productId || ''
       });

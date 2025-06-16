@@ -42,10 +42,12 @@
 .contentColor {
     width: 36px;
     height: 36px;
+    border: 1px solid #e0e0e0;
     display: block;
     position: relative;
     border-radius: 50px;
     background-color: #080808;
+    box-sizing: border-box;
 }
 
 
@@ -122,12 +124,9 @@
   }
 
   .contentOption.ativo {
-    width: 37px;
-    height: 37px;
-    box-shadow:
-      0 0 0 1px #c5d2e1,
-      0 0 0 2px #fff,
-      0 0 0 3px black;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #e0e0e0;
   }
   .cor_selecionada_span {
     display: flex;
