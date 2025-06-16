@@ -18,9 +18,12 @@ const ColorFilter = ({
       <TituloAccordeon title={'Cores'} setAtivo={setAtivo} ativo={ativo} />
       <nav className={`${ativo ? styles.ativo : ''}`}>
         <ul className={styles.lista_cores}>
-          {filterColors.map((color) => {
+          {filterColors.map((color, index) => {
             return (
-              <li key={color.codeColor} className={styles.li_color}>
+              <li
+                key={(color.codeColor, index, color.color)}
+                className={styles.li_color}
+              >
                 <input
                   onClick={() => {
                     setColor(color.color);
