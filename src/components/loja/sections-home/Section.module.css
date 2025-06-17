@@ -13,6 +13,7 @@
 .loading.ativo {
   display: block;
 }
+
 @media (min-width: 48rem) {
   .produtos_wraper {
     grid-template-columns: repeat(auto-fit, minmax(240px, 290px));

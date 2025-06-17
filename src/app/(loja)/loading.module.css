@@ -31,9 +31,9 @@
   position: absolute;
   width: 160px;
   height: 10px;
-  animation: skeleton-loading 1.5s infinite ease-in-out;
   top: 170px;
   border-radius: 99px;
+  animation: skeleton-loading 1.5s infinite ease-in-out;
 }
 
 @keyframes skeleton-loading {

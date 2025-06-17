@@ -1,12 +1,12 @@
-'use server';
-
-import { cookies } from 'next/headers';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { setCookie, hasCookie } from 'cookies-next/client';
 import { v4 as uuidv4 } from 'uuid';
 
 function setNewCookieSession() {
-  if (!cookies().get('sessionId')?.value) {
+  const exist = hasCookie('sessionId');
+  if (!exist) {
     const id = uuidv4();
-    cookies().set('sessionId', id, {
+    setCookie('sessionId', id, {
       httpOnly: true,
       maxAge: 60 * 60 * 24 * 7, // 1 week in seconds
       expires: new Date(Date.now() + 60 * 60 * 24 * 7 * 1000)

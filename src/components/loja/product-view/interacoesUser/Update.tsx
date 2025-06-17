@@ -2,9 +2,10 @@ import Image from 'next/image';
 import styles from './Update.module.css';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { getCookie } from 'cookies-next/server';
 
-function Update({ id }: { id: string }) {
-  const isAdmin = cookies().get('isAdmin')?.value;
+async function Update({ id }: { id: string }) {
+  const isAdmin = await getCookie('isAdmin', { cookies });
 
   return (
     <>

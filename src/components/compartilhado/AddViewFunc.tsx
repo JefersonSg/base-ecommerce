@@ -4,32 +4,33 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 import setNewCookieSession from '@/src/actions/setCookieSession';
 import { AddNewView } from '@/src/actions/add-new-view';
-import getCookie from '@/src/actions/getCookie';
+import { useGetCookie } from 'cookies-next';
 
 const AddViewFunc = () => {
   const pathname = usePathname();
+  const getCookie = useGetCookie();
   const SetNewView = React.useCallback(async () => {
-    let sessionId = await getCookie({ nameCookie: 'sessionId' });
+    let sessionId = getCookie('sessionId');
 
     const productId =
       pathname.split('/')?.[2] === 'produto' &&
       pathname.split('/')?.[3]?.length > 20 &&
       pathname.split('/')?.[3];
 
-    if (!sessionId?.value) {
+    if (!sessionId) {
       setNewCookieSession();
-      sessionId = await getCookie({ nameCookie: 'sessionId' });
+      sessionId = getCookie('sessionId');
     }
 
     const pageView = pathname;
 
-    if (sessionId?.value) {
+    if (sessionId) {
       void AddNewView({
         pageView,
         productId: productId || ''
       });
     }
-  }, [pathname]);
+  }, [getCookie, pathname]);
 
   React.useEffect(() => {
     void SetNewView();

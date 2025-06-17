@@ -6,7 +6,9 @@ import Container2 from './Container2';
 import MenuMobile from './MenuMobile/MenuMobile';
 
 const UserInfo = async () => {
-  const token = cookies().get('auth_token')?.value;
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const cookieStore = await cookies();
+  const token = cookieStore.get('auth_token')?.value;
   const userData = (await getUserByToken(token)) as UserInterface;
 
   return (

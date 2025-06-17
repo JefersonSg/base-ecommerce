@@ -9,7 +9,7 @@ export function BtnZap() {
   return (
     <>
       <Link
-        href={`https://wa.me/5532984920918?text=Olá, gostaria de tirar uma duvida`}
+        href={`https://wa.me/5532984920918?text=Olá, vim pelo site e gostaria de tirar uma duvida`}
         target="_blank"
         className={styles.btnZap}
       >

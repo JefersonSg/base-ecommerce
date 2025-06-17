@@ -1,11 +1,10 @@
-'use server';
-
-import { cookies } from 'next/headers';
+import { setCookie } from 'cookies-next';
 
 export async function isAdmin(id: string) {
   if (!id) {
     return;
   }
-  cookies().set('isAdmin', id);
+
+  await setCookie('isAdmin', id);
   return true;
 }
