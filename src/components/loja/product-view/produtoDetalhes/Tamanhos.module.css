@@ -1,11 +1,11 @@
 .tamanhos_container {
   position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    font-size: 16px;
-    font-family: var(--fonte-primaria);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 16px;
+  font-family: var(--fonte-primaria);
+}
 
 .tamanhos {
   font-weight: 400;
@@ -23,18 +23,18 @@
   justify-content: center;
   position: relative;
   cursor: pointer;
-  }
+}
 
 .tamanhos:hover {
   background-color: #dbdcdb;
 }
 .tamanhos p {
-    font-weight: 500;
-    height: 100%;
-    display: flex;
-    font-size: 12px;
-    align-items: center;
-    justify-content: center;
+  font-weight: 500;
+  height: 100%;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
 }
 .span_tamanho {
   display: none;
@@ -55,18 +55,18 @@
   pointer-events: none !important;
 }
 
-  .selectSizes {
-    flex-direction: row;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: auto;
-    background-color: none;
-    min-height: none;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    box-sizing: border-box;
+.selectSizes {
+  flex-direction: row;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: auto;
+  background-color: none;
+  min-height: none;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
 }
 .selectSizes.ativo {
   display: flex;
@@ -79,21 +79,19 @@
   position: relative;
   top: -8px;
   color: #878787;
-  }
+}
 
+.tamanhos_valor {
+  display: flex;
+  gap: 8px;
+}
 
-  .tamanhos_valor {
-    display: flex;
-    gap: 8px;
-  }
-
-  .span_tamanho {
-    display: block;
-    width: max-content;
-    height: max-content;
-    font-weight: 600;
-    color: #471703;
-    font-size: 16px;
-    font-weight: 300;
-  }
-
+.span_tamanho {
+  display: block;
+  width: max-content;
+  height: max-content;
+  font-weight: 600;
+  color: #471703;
+  font-size: 16px;
+  font-weight: 300;
+}

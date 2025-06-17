@@ -21,60 +21,57 @@
   gap: 16px;
 }
 
-  .contentOption {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3px;
-    min-width: 44px;
-    min-height: 44px;
-    border: 1px solid #e0e0e0;
-    width: 44px;
-    height: 44px;
-    border-radius: 56px;
-    box-sizing: border-box;
-  }
-  .contentOption.ativo {
-    border: 1px solid #000;
-    
-  }
-
-.contentColor {
-    width: 36px;
-    height: 36px;
-    border: 1px solid #e0e0e0;
-    display: block;
-    position: relative;
-    border-radius: 50px;
-    background-color: #080808;
-    box-sizing: border-box;
+.contentOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #e0e0e0;
+  width: 44px;
+  height: 44px;
+  border-radius: 56px;
+  box-sizing: border-box;
+}
+.contentOption.ativo {
+  border: 1px solid #000;
 }
 
-
+.contentColor {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e0e0e0;
+  display: block;
+  position: relative;
+  border-radius: 50px;
+  background-color: #080808;
+  box-sizing: border-box;
+}
 
 .selectColors {
   left: 0;
   width: 100%;
   background-color: white;
   box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 44px);
-    min-height: 48px;
-    font-size: 0px;
-    gap: 16px;
-    position: relative;
-    padding-top: 16px;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 44px);
+  min-height: 48px;
+  font-size: 0px;
+  gap: 16px;
+  position: relative;
+  padding-top: 16px;
+}
 .selectColors.ativo {
   display: flex;
 }
 
-  .cores_disponiveis {
-    width: 44px;
-    padding: 0;
-    height: 44px;
-    justify-self: center;
-  }
+.cores_disponiveis {
+  width: 44px;
+  padding: 0;
+  height: 44px;
+  justify-self: center;
+}
 .cores_disponiveis:hover {
   background: rgba(220, 220, 220, 0.6);
 }
@@ -85,12 +82,12 @@
   color: #191919;
   line-height: 1em;
 }
-  .cor_selecionada_span span {
-    padding-left: 4px;
-    color: #5c5c5c;
-    display: inline-block;
-    font-weight: 700;
-  }
+.cor_selecionada_span span {
+  padding-left: 4px;
+  color: #5c5c5c;
+  display: inline-block;
+  font-weight: 700;
+}
 @media (min-width: 64rem) {
   .selectColor_container {
     height: max-content;

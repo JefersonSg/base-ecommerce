@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Footer } from '@/src/components/loja/Footer/Footer';
 import { BtnZap } from '@/src/components/compartilhado/botoes/btnZap/BtnZap';
 
@@ -17,7 +17,9 @@ export default async function LojaLayout({
 }) {
   return (
     <>
-      <AddViewFunc />
+      <Suspense>
+        <AddViewFunc />
+      </Suspense>
       <HeaderFetchs />
       {children}
       <BtnZap />
