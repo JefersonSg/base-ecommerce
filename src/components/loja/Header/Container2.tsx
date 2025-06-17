@@ -22,7 +22,7 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
     if (admin) {
       void isAdmin(userData?.user?._id);
     }
-    setNewCookieSession();
+    void setNewCookieSession();
   }, [admin, userData?.user?._id]);
 
   const { data } = useQuery<CartInterface>({
