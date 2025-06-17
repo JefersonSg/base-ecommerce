@@ -48,7 +48,7 @@ const SectionProdutos = ({
 
   const [page, setPage] = React.useState(1);
   const [dataProducts, setDataProducts] = React.useState<ProductApi[]>(data);
-  const [infinite, setInfinite] = React.useState(!(data.length < 9));
+  const [infinite, setInfinite] = React.useState(!(data.length < 6));
   const [loading, setLoading] = React.useState(false);
   const [color, setColor] = React.useState('');
   const [brand, setBrand] = React.useState('');
@@ -72,6 +72,7 @@ const SectionProdutos = ({
       setLoading(false);
     }, 1000);
   }
+
   React.useEffect(() => {
     if (page === 1) return;
 
@@ -96,9 +97,8 @@ const SectionProdutos = ({
 
         setDataProducts((currentProducts) => [...currentProducts, ...products]);
       }
-      if (actionData?.products && actionData?.products?.length < 9) {
+      if (actionData?.products && actionData?.products?.length < 9)
         setInfinite(false);
-      }
     }
     if (!size && !color && !brand) {
       void getProducts();

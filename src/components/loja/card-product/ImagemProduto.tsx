@@ -102,7 +102,7 @@ const ImagemProduto = ({
         )}
         {images?.map((image, index) => {
           return (
-            <SwiperSlide key={image + index}>
+            <SwiperSlide key={image}>
               <Image
                 onClick={(e) => {
                   e.preventDefault();

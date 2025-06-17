@@ -153,10 +153,10 @@ function Produto({
       <div className={styles.infos}>
         {productData?.codeColors?.[0] ? (
           <div className={styles.cores}>
-            {productData?.codeColors?.map((color, index) => {
+            {productData?.codeColors?.map((color) => {
               return (
                 <span
-                  key={color + index + productData._id}
+                  key={color}
                   style={{ backgroundColor: `${color}` }}
                 ></span>
               );
