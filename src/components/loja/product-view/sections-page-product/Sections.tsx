@@ -11,6 +11,9 @@ function Sections({ data }: { data: ProductApi }) {
   const [ativoDescription, setAtivoDescription] = React.useState(true);
   return (
     <div className={styles.sections}>
+      <div className={styles.entrega}>
+        <Entrega />
+      </div>
       <div className={styles.select_view}>
         <p
           className={`${styles.select_description} ${
@@ -20,7 +23,7 @@ function Sections({ data }: { data: ProductApi }) {
             setAtivoDescription(true);
           }}
         >
-          Descrições
+          Descrição
         </p>
         <p
           className={`${styles.select_avaliacoes} ${
@@ -39,11 +42,6 @@ function Sections({ data }: { data: ProductApi }) {
           ativoDescription ? styles.ativo : ''
         }`}
       >
-        <div className={styles.entrega}>
-          <Suspense>
-            <Entrega />
-          </Suspense>
-        </div>
         {data?.description && (
           <Descricao description={data.description} title="Descrição" />
         )}

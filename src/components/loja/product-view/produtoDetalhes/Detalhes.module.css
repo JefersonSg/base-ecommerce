@@ -5,7 +5,6 @@
   justify-content: center;
   padding-top: 16px;
   align-items: center;
-  padding-bottom: 32px;
 }
 .informacoes {
   width: 100%;
@@ -18,10 +17,55 @@
 }
 .botao_carrinho {
   margin-top: 32px;
+  margin-bottom: 24px;
 }
 .entrega {
   display: none;
 }
+
+.botao_carrinho {
+  width: calc(100% - 32px);
+}
+.btn_addcart {
+  width: 100%;
+}
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  min-width: 100%;
+  justify-content: space-between;
+}
+
+.favorito {
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  min-width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.share {
+  display: flex;
+  gap: 16px;
+}
+.share p {
+  width: 100%;
+  font-family: 'roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  color: #333;
+}
+
 @media (min-width: 64rem) {
   .detalhes {
     display: grid;

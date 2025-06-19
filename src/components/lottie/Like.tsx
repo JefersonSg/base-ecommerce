@@ -15,10 +15,12 @@ import { getFavoriteByUserId, getUserByToken } from '@/src/shared/api/GETS';
 import { deleteFavorite } from '@/src/shared/api/DELETE';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
+import CreateAccount from '../compartilhado/modals/CreateAccount';
 
 const Like = ({ productId }: { productId: string }) => {
   const queryClient = useQueryClient();
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const [modalLogin, setModalLogin] = React.useState(false);
 
   const token = Cookies.get('auth_token');
 
@@ -79,24 +81,30 @@ const Like = ({ productId }: { productId: string }) => {
   };
 
   return (
-    <div
-      className={styles.like}
-      onClick={async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (token) {
-          await toggleFavorite();
-        }
-      }}
-    >
-      <Lottie
-        options={defaultOptions}
-        width={30}
-        height={30}
-        isPaused={!isPlaying}
-        isStopped={!isPlaying}
-      />
-    </div>
+    <>
+      <div
+        className={styles.like}
+        onClick={async (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (token) {
+            await toggleFavorite();
+          }
+          if (!token) {
+            setModalLogin(true);
+          }
+        }}
+      >
+        <Lottie
+          options={defaultOptions}
+          width={30}
+          height={30}
+          isPaused={!isPlaying}
+          isStopped={!isPlaying}
+        />
+      </div>
+      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
+    </>
   );
 };
 

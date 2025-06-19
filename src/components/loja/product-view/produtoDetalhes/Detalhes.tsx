@@ -1,6 +1,5 @@
 'use client';
 
-import BotaoColorido from '@/src/components/compartilhado/botoes/BotaoColorido';
 import Cores from './Cores';
 import styles from './Detalhes.module.css';
 import Preco from './Preco';
@@ -10,13 +9,18 @@ import {
   type ProductApi
 } from '@/src/shared/helpers/interfaces';
 import { useQuery } from '@tanstack/react-query';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { addNewItemCart } from '@/src/shared/api/POST';
 import PopUpMessage from '@/src/components/compartilhado/messages/PopUpMessage';
 import Entrega from '../sections-page-product/Entrega';
 import MessageFloating from '@/src/components/compartilhado/messages/message-floating-cart';
 import getCookie from '@/src/actions/getCookie';
 import setNewCookie from '@/src/actions/setCookie';
+import AdicionarCarrinho from './AdicionarCarrinho';
+import Favotiro from '../interacoesUser/Favotiro';
+import CreateAccount from '@/src/components/compartilhado/modals/CreateAccount';
+import Compartilhar from '../interacoesUser/Compartilhar';
+import Separador from '@/src/components/compartilhado/Separador';
 
 function Detalhes({ data }: { data: ProductApi }) {
   const userData = useQuery<UserInterface>({
@@ -36,6 +40,7 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [nameProduct, setNameProduct] = React.useState('');
   const [priceProduct, setPriceProduct] = React.useState<number>(0);
   const [imageProduct, setImageProduct] = React.useState('');
+  const [modalLogin, setModalLogin] = React.useState(false);
 
   async function addCartItem() {
     setMessagePopUp('');
@@ -118,6 +123,11 @@ function Detalhes({ data }: { data: ProductApi }) {
 
   return (
     <div className={styles.detalhes}>
+      <Preco
+        promotion={data.promotion}
+        promotionalPrice={Number(data?.promotionalPrice ?? 0)}
+        price={data?.price}
+      />
       <div className={styles.informacoes}>
         <Cores
           sizes={data.size}
@@ -142,36 +152,49 @@ function Detalhes({ data }: { data: ProductApi }) {
           setTypePopUp={setTypePopUp}
         />
       </div>
-      <Preco
-        promotion={data.promotion}
-        promotionalPrice={Number(data?.promotionalPrice ?? 0)}
-        price={data?.price}
-      />
-      <div className={styles.entrega}>
-        <Suspense>
-          <Entrega />
-        </Suspense>
+
+      <div className={styles.botao_carrinho}>
+        <div className={styles.actions}>
+          <div
+            className={styles.favorito}
+            onClick={() => {
+              if (!userData.data?.user?._id) {
+                setModalLogin(true);
+              }
+            }}
+          >
+            <Favotiro productId={data._id} />
+          </div>
+          <div
+            onClick={() => {
+              if (isLoading) return;
+              void addCartItem();
+            }}
+            className={styles.btn_addcart}
+          >
+            <AdicionarCarrinho
+              texto={`${
+                !data.active || !hasStock
+                  ? 'Sem estoque'
+                  : !haveColor
+                    ? 'Produto sem estoque nesta cor'
+                    : 'Adicionar ao carrinho'
+              } `}
+              img="carrinho.svg"
+              alt="Imagem do carrinho"
+              isLoading={isLoading}
+              disabled={!haveColor || !data.active || !hasStock}
+            />
+          </div>
+        </div>
       </div>
-      <div
-        className={styles.botao_carrinho}
-        onClick={() => {
-          if (isLoading) return;
-          void addCartItem();
-        }}
-      >
-        <BotaoColorido
-          texto={`${
-            !data.active || !hasStock
-              ? 'Sem estoque'
-              : !haveColor
-                ? 'Produto sem estoque nesta cor'
-                : 'Adicionar ao carrinho'
-          } `}
-          img="carrinho.svg"
-          alt="Imagem do carrinho"
-          isLoading={isLoading}
-          disabled={!haveColor || !data.active || !hasStock}
-        />
+      <div className={styles.share}>
+        <p>Curtiu? Compartilhe esta peça!</p>
+        <Compartilhar />
+      </div>
+      <Separador />
+      <div className={styles.entrega}>
+        <Entrega />
       </div>
       {messagePopUp && typePopUp === 'error' && (
         <PopUpMessage
@@ -192,6 +215,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           typePopUp={typePopUp}
         />
       )}
+      {modalLogin && <CreateAccount setModalLogin={setModalLogin} />}
     </div>
   );
 }

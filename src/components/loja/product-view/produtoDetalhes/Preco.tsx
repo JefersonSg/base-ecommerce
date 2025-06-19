@@ -13,7 +13,7 @@ function Preco({
   return (
     <div className={styles.preco}>
       {!promotion ? (
-        <h2 className={`titulo_sessao`}>R$ {convertNumberInReal(price)}</h2>
+        <h2 className={styles.titulo_preco}>R$ {convertNumberInReal(price)}</h2>
       ) : (
         ''
       )}
@@ -32,7 +32,7 @@ function Preco({
         de {''}
         <span>
           {price && !promotion
-            ? 'R$ ' + convertNumberInReal(Number(price * 1.25) / 10 || 0)
+            ? 'R$ ' + convertNumberInReal(Number(price * 1.1) / 10 || 0)
             : promotion &&
               promotionalPrice &&
               'R$ ' +

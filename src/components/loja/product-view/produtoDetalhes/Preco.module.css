@@ -1,31 +1,39 @@
 .preco {
-  width: 327px;
-  margin-top: 74px;
-  text-align: end;
+  width: 100%;
+  margin: 16px 0px 32px 0;
+  padding: 0 16px;
+  box-sizing: border-box;
+  text-align: start;
 }
-
+.titulo_preco {
+  font-weight: 700;
+  color: #191919;
+  font-size: 18px;
+  align-self: center;
+  font-family: 'roboto', sans-serif;
+}
 .preco span {
   font-size: 16px;
   text-decoration: line-through;
-  font-family: var(--fonte-primaria);
+  font-family: 'roboto', sans-serif;
   color: #7f7f7f;
   font-style: italic;
 }
 .preco .promotion {
-  color: var(--cor-contraste);
+  color: #191919;
 }
 .dividido {
-  color: var(--cor-primaria);
-  font-family: var(--fonte-primaria);
-  font-size: 16px;
-  font-weight: 400;
+  color: #191919;
+  font-family: 'roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
 }
 .dividido span {
   font-weight: 600;
   font-style: italic;
   font-size: 16px;
   text-decoration: none;
-  color: var(--cor-primaria);
+  color: #191919;
 }
 @media (min-width: 64rem) {
   .preco {

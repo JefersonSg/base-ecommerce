@@ -1,0 +1,6 @@
+.separador {
+  width: calc(100% - 32px);
+  height: 1px;
+  margin: 16px 0;
+  background-color: #e0e0e0;
+}
