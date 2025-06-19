@@ -41,7 +41,7 @@ function Tamanhos({
         {sizes.map((size, index) => {
           return (
             <div
-              key={index}
+              key={index + size}
               className={`${styles.tamanhos} ${
                 size === sizeSelected ? styles.selected : ''
               } ${

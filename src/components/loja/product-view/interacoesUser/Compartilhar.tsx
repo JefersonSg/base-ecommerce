@@ -18,9 +18,6 @@ function Compartilhar() {
     }
   });
 
-  if (!data?.product) {
-    return <></>;
-  }
   return (
     <div
       className={styles.compartilhar}

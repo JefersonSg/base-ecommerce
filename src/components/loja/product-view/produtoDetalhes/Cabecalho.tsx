@@ -3,6 +3,7 @@ import styles from './Cabecalho.module.css';
 import { getAllComments } from '@/src/shared/api/GETS';
 import Image from 'next/image';
 import { type CommentInterface } from '@/src/shared/helpers/interfaces';
+import Update from '../interacoesUser/Update';
 
 const Cabecalho = async ({
   nomeProduto,
@@ -22,6 +23,7 @@ const Cabecalho = async ({
 
   return (
     <div className={styles.cabecalho}>
+      <Update id={idProduto} />
       <div className={` ${styles.titulo}`}>
         <h1 className={styles.nome_produto}>{nomeProduto}</h1>
       </div>

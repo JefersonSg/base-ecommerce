@@ -45,7 +45,7 @@ function Cores({
             {colors?.map((color, index) => {
               return (
                 <div
-                  key={index}
+                  key={index + color + index}
                   className={styles.cores_disponiveis}
                   onClick={() => {
                     setColorSelected(colors[index]);

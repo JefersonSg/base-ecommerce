@@ -18,7 +18,7 @@ export function SocialMedia({ img }: { img: string[] }) {
                     (image === 'Tiktok.svg' &&
                       'https://www.tiktok.com/@loja.mayse') ||
                     (image === 'Whatsapp.svg' &&
-                      `https://api.whatsapp.com/send/?phone=55${process.env.TEL_CONTATO}&text=Ol%C3%A1%2C+gostaria+de+tirar+uma+duvida&type=phone_number&app_absent=0`)
+                      `https://api.whatsapp.com/send/?phone=5532984920918&text=Ol%C3%A1%2C+gostaria+de+tirar+uma+duvida&type=phone_number&app_absent=0`)
                   }`}
                 >
                   <Image
