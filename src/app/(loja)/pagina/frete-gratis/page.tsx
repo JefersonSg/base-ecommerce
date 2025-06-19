@@ -30,15 +30,15 @@ const page = () => {
       <ul>
         <li>
           <span>• Estado de Minas:</span> Frete Grátis a partir de
-          <span> R$250,00</span> em compras;
+          <span> R$499,00</span> em compras;
         </li>
         <li>
           <span>• CENTRO-OESTE / SUDESTE / SUL:</span> Frete Grátis a partir de
-          <span> R$299,00</span> em compras ;
+          <span> R$599,00</span> em compras ;
         </li>
         <li>
           <span>• NORDESTE:</span> Frete Grátis a partir de
-          <span> R$599,00</span> em compras ;
+          <span> R$699,00</span> em compras ;
         </li>
         <li>
           <span>• NORTE:</span> Frete Grátis a partir de<span> R$799,00</span>{' '}

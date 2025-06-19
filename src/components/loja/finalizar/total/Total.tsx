@@ -34,7 +34,7 @@ const TotalFinal = ({
   }>();
   const [descontoPorcentagem, setDescontoPorcentagem] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
-
+  const freteGratis = 9999;
   const { data } = useQuery<CartInterface>({
     queryKey: ['shopping-cart', userData?.data?.user?._id, cepRefetch],
     queryFn: async () => {
@@ -85,7 +85,7 @@ const TotalFinal = ({
       if (data?.totalValue) {
         setIsLoading(false);
         const totalValor =
-          priceDelivery && +data.totalValue < 249.9
+          priceDelivery && +data.totalValue < freteGratis
             ? +data.totalValue + priceDelivery
             : +data.totalValue;
 
@@ -134,13 +134,13 @@ const TotalFinal = ({
           <p
             className={`${styles.frete} ${
               valorTotal &&
-              +valorTotal.replace('.', '').replace(',', '.') > 249.9
+              +valorTotal.replace('.', '').replace(',', '.') > freteGratis
                 ? styles.frete_gratis
                 : ''
             }`}
           >
             {valorTotal &&
-            +valorTotal.replace('.', '').replace(',', '.') > 249.9 ? (
+            +valorTotal.replace('.', '').replace(',', '.') > freteGratis ? (
               'Frete grátis'
             ) : (
               <>

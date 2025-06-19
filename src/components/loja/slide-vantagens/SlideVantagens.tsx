@@ -50,14 +50,6 @@ function SlideVantagens() {
       >
         <SwiperSlide>
           <Vantagem
-            titulo="Frete Grátis"
-            texto="Confira as Regras!"
-            image="Caminhao"
-            link="frete-gratis"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Vantagem
             titulo="Envio"
             texto="Rápido e 100% seguro!"
             image="escudo"
