@@ -100,7 +100,7 @@
 }
 .entrega_calculo {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 60% 40%;
   gap: 8px;
   width: 100%;
   height: max-content;
@@ -108,7 +108,35 @@
   padding-bottom: 8px;
   align-items: center;
 }
+.method_name {
+    font-style: normal;
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 14px;
+    font-size: 12px;
+    margin-bottom: 4px;
+    font-family: 'roboto', sans-serif;
+    color: #191919;;
+}
+.tempo_entrega {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: .75rem;
+    line-height: 14px;
+    font-family: 'roboto', sans-serif;
+    color: #191919;;
+}
 
+.valor_entrega {
+  font-style: normal;
+    font-weight: 400;
+    font-size: .75rem;
+    line-height: 14px;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 12px;
+}
 .texto_indicativo_input {
   display: flex;
   align-items: center;

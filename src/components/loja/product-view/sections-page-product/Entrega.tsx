@@ -101,17 +101,22 @@ function Entrega() {
                 }
                 return (
                   <div key={info.id} className={styles.entrega_calculo}>
-                    <p>{info.name}</p>
-                    <p>
-                      {info.error?.length
-                        ? 'Não disponivel'
-                        : info.name === 'Motoboy'
-                          ? 'Até 2 horas'
-                          : info.name === 'Retirada na loja'
-                            ? 'Combinar'
-                            : ' até ' + info?.delivery_range?.max + ' dias'}
-                    </p>
-                    <p>
+                    <div className={styles.informações_envio}>
+                      <p className={styles.method_name}>{info.name}</p>
+                      <span className={styles.tempo_entrega}>
+                        {info.error?.length
+                          ? 'Não disponivel'
+                          : info.name === 'Motoboy'
+                            ? 'Até 2 horas'
+                            : info.name === 'Retirada na loja'
+                              ? 'Combinar'
+                              : ' A partir de ' +
+                                info?.delivery_range?.min +
+                                ' dias úteis'}
+                      </span>
+                    </div>
+
+                    <p className={styles.valor_entrega}>
                       {info.currency}{' '}
                       {convertNumberInReal(Number(info.custom_price))}
                     </p>

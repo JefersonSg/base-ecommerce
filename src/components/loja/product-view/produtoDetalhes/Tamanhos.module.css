@@ -36,9 +36,6 @@
   align-items: center;
   justify-content: center;
 }
-.span_tamanho {
-  display: none;
-}
 
 .selected {
   background-color: black !important;
@@ -88,10 +85,12 @@
 
 .span_tamanho {
   display: block;
-  width: max-content;
   height: max-content;
   font-weight: 600;
-  color: #471703;
-  font-size: 16px;
   font-weight: 300;
+  font-family: 'roboto', sans-serif;
+  width: 100%;
+  font-size: 12px;
+  color: #191919;
+  line-height: 1em;
 }

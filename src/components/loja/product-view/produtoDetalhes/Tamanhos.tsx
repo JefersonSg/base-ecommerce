@@ -31,7 +31,7 @@ function Tamanhos({
 
   return (
     <div className={styles.tamanhos_container}>
-      <span className={styles.span_tamanho}>Tamanhos:</span>
+      <span className={styles.span_tamanho}>Tamanho</span>
 
       <div
         className={`${styles.tamanhos_valor}  ${styles.selectSizes} ${

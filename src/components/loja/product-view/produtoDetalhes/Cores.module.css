@@ -134,11 +134,10 @@
     left: 0;
     font-size: 16px;
     font-weight: 300;
-    color: #471703;
     height: max-content;
   }
   .cor_selecionada_span span {
-    font-weight: 400;
+    font-weight: 700;
     font-size: 16px;
   }
   .cores {

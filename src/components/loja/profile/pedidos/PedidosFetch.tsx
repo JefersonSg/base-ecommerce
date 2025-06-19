@@ -9,7 +9,7 @@ import Breadcrumb from '../../breadcrumb/Breadcrumb';
 export default async function PedidosFetch() {
   const token = cookies().get('auth_token')?.value;
   const user = (await getUserByToken(token)) as UserInterface;
-  const data = user.user && (await getOrderByUserId(user?.user?._id));
+  const data = user?.user && (await getOrderByUserId(user?.user?._id));
 
   return (
     <main className={styles.pedidos_container}>
