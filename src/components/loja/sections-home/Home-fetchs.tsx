@@ -12,9 +12,9 @@ export default async function HomeFetchs() {
   return (
     <>
       <Categorias categorias={categorias} />
-      <Novidades />
+      <Promocoes />
       <Suspense>
-        <Promocoes />
+        <Novidades />
         <MaisVendidos />
         <MaisVistos />
       </Suspense>
