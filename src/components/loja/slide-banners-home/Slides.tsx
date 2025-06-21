@@ -45,7 +45,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     quality={90}
                     width={750}
                     height={878}
-                    sizes="(max-width: 769px) 100vw, 0vw"
+                    sizes="(max-width: 769px) 750px, 0vw"
                     priority={index < 2}
                   />
                   <Image
@@ -56,7 +56,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     quality={90}
                     width={1920}
                     height={600}
-                    sizes="(max-width: 770px) 0vw, 100vw"
+                    sizes="(max-width: 770px) 0vw, 1920px"
                     priority={index < 2}
                   />
                 </Link>

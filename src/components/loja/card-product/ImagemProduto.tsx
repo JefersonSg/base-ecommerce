@@ -71,7 +71,7 @@ const ImagemProduto = ({
           height={243}
           quality={75}
           placeholder="empty"
-          sizes="(max-width: 769px) 0vw, 25vw"
+          sizes="(max-width: 769px) 0vw, 300px"
           property="true"
           priority={false}
         />
@@ -94,7 +94,7 @@ const ImagemProduto = ({
               height={243}
               quality={75}
               placeholder="empty"
-              sizes="(max-width: 769px) 50vw, 0vw"
+              sizes="(max-width: 769px) 500px, 0vw"
               property="true"
               priority={true}
             />
