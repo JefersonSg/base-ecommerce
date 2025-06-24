@@ -12,7 +12,6 @@ import * as yup from 'yup';
 import BotaoRedondo from '@/src/components/compartilhado/botoes/BotaoRedondo';
 import Link from 'next/link';
 import InputFormulario from '@/src/components/compartilhado/formulario/InputForm';
-import sendRegisterEmail from '@/src/actions/register';
 import LoadingAnimation from '../../compartilhado/loading/loadingAnimation';
 import PopUpMessage from '../../compartilhado/messages/PopUpMessage';
 
@@ -97,7 +96,6 @@ const Registro = () => {
     };
 
     setLoading(true);
-    await sendRegisterEmail(data.name, data.email);
     await registerUser(dataUser, setMessagePopUp, setTypePopUp, setLoading);
     setLoading(false);
     setMessagePopUp('Registro concluido');
