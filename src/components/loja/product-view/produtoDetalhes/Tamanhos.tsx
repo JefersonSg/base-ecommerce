@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './Tamanhos.module.css';
 
 function Tamanhos({
+  haveSize,
   colorSelected,
   colors,
   amount,
@@ -13,6 +14,7 @@ function Tamanhos({
   setMessagePopUp,
   setTypePopUp
 }: {
+  haveSize: boolean;
   colorSelected: string;
   colors: string[] | undefined;
   amount: number[][];
@@ -48,7 +50,7 @@ function Tamanhos({
                 amount?.[indexColorSelected]?.[index] === 0
                   ? styles.noStock
                   : ''
-              } `}
+              } ${!haveSize ? styles.noStock : ''}`}
               onClick={() => {
                 setSizeSelected(size);
                 setAtivo(false);

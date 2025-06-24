@@ -37,7 +37,7 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
   const [haveColor, setHaveColor] = React.useState<boolean>();
-  const [haveSize, setHaveSize] = React.useState<boolean>();
+  const [haveSize, setHaveSize] = React.useState<boolean>(false);
   const [nameProduct, setNameProduct] = React.useState('');
   const [priceProduct, setPriceProduct] = React.useState<number>(0);
   const [imageProduct, setImageProduct] = React.useState('');
@@ -102,51 +102,54 @@ function Detalhes({ data }: { data: ProductApi }) {
 
   // No Stock color
   React.useEffect(() => {
-    // caso haja cor no produto
-    if (data?.colors?.[0]) {
-      const colorIndex = data?.colors.indexOf(colorSelected);
-      const sizeIndex = data?.size.indexOf(sizeSelected);
+    if (!data?.size?.length || !data.stock?.amount) return;
 
-      if (!data.stock.amount[colorIndex][sizeIndex]) {
+    const colorIndex = data.colors?.indexOf(colorSelected) ?? 0;
+    const sizeIndex = data.size.indexOf(sizeSelected);
+
+    // Verificar se há cor no produto
+    if (data?.colors?.[0]) {
+      const stockForColor = data.stock.amount[colorIndex];
+
+      // Se a combinação cor+tamanho não tem estoque
+      if (!stockForColor[sizeIndex]) {
         setHaveColor(false);
 
-        data.size.forEach((size, i) => {
-          if (data.stock.amount[colorIndex][i]) {
-            setSizeSelected(size);
-          }
-        });
-        return;
-      }
-      setHaveColor(true);
-    } else {
-      setHaveColor(true);
-    }
-  }, [colorSelected, data, sizeSelected]);
-
-  // No Stock Size
-  React.useEffect(() => {
-    // caso haja cor no produto
-    const sizeIndex = data?.size.indexOf(sizeSelected);
-
-    if (!haveColor && !haveSize) {
-      // Se não tiver estoque na combinação atual
-      if (!data.stock.amount[0][sizeIndex]) {
-        setHaveSize(false);
-
-        // Buscar a primeira combinação com estoque e já parar
-        for (let i = 0; i < data.size.length; i++) {
-          if (data.stock.amount[0][i]) {
+        // Procurar o primeiro tamanho com estoque
+        for (let i = 0; i < stockForColor.length; i++) {
+          if (stockForColor[i]) {
             setSizeSelected(data.size[i]);
+            setHaveColor(true);
             setHaveSize(true);
-            break; // PARA AQUI
+            return;
           }
         }
-        return;
-      }
 
-      setHaveSize(true);
+        setHaveSize(false);
+      } else {
+        setHaveColor(true);
+        setHaveSize(true);
+      }
+    } else {
+      setHaveColor(true);
+      // Produto sem variação de cor
+      const stockForDefault = data.stock.amount[0];
+
+      if (!stockForDefault[sizeIndex]) {
+        setHaveSize(false);
+
+        for (let i = 0; i < stockForDefault.length; i++) {
+          if (stockForDefault[i]) {
+            setSizeSelected(data.size[i]);
+            setHaveSize(true);
+            return;
+          }
+        }
+      } else {
+        setHaveSize(true);
+      }
     }
-  }, [data, haveColor, haveSize, sizeSelected]);
+  }, [data, colorSelected, sizeSelected]);
 
   return (
     <div className={styles.detalhes}>
@@ -169,6 +172,7 @@ function Detalhes({ data }: { data: ProductApi }) {
           setTypePopUp={setTypePopUp}
         />
         <Tamanhos
+          haveSize={haveSize}
           colorSelected={colorSelected}
           colors={data.colors}
           amount={data.stock.amount}
