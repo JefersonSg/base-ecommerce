@@ -20,9 +20,10 @@ const TabelaProdutos = ({ data }: { data: OrderInterface }) => {
 
         <tbody>
           {data?.productIds?.map((productId, index) => {
+            console.log(data.productSizes);
             return (
               <ProdutoInfos
-                key={productId}
+                key={productId + index}
                 productId={productId}
                 tamanhoEscolhido={data?.productSizes[index]}
                 corEscolhida={data?.productColors[index]}

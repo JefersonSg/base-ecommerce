@@ -50,6 +50,18 @@
   border: 1px solid #b7b9b7;
   opacity: 0.4 !important;
   pointer-events: none !important;
+  position: relative;
+}
+.noStock::after {
+  content: '';
+  width: 70%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 0);
+  background: black;
 }
 
 .selectSizes {

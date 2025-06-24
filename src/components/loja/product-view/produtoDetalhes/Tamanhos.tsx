@@ -54,7 +54,9 @@ function Tamanhos({
                 setAtivo(false);
                 if (amount?.[indexColorSelected]?.[index] === 0) {
                   setTypePopUp('error');
-                  setMessagePopUp('Sem estoque disponível neste tamanho');
+                  setMessagePopUp(
+                    `Sem estoque disponível no tamanho ${amount?.[indexColorSelected]?.[index]}`
+                  );
                 }
               }}
             >

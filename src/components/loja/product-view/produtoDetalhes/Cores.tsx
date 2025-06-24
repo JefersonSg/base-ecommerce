@@ -55,7 +55,9 @@ function Cores({
                     if (amount[index][sizes.indexOf(sizeSelected)] === 0) {
                       setSizeSelected('');
                       setTypePopUp('error');
-                      setMessagePopUp('Sem estoque disponível neste tamanho');
+                      setMessagePopUp(
+                        `Sem estoque disponível no tamanho ${sizeSelected}`
+                      );
                     }
                   }}
                 >

@@ -37,6 +37,7 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [messagePopUp, setMessagePopUp] = React.useState('');
   const [typePopUp, setTypePopUp] = React.useState('');
   const [haveColor, setHaveColor] = React.useState<boolean>();
+  const [haveSize, setHaveSize] = React.useState<boolean>();
   const [nameProduct, setNameProduct] = React.useState('');
   const [priceProduct, setPriceProduct] = React.useState<number>(0);
   const [imageProduct, setImageProduct] = React.useState('');
@@ -99,8 +100,9 @@ function Detalhes({ data }: { data: ProductApi }) {
     setHasStock(hasStock);
   }, [data.stock.amount]);
 
-  // No Stock
+  // No Stock color
   React.useEffect(() => {
+    // caso haja cor no produto
     if (data?.colors?.[0]) {
       const colorIndex = data?.colors.indexOf(colorSelected);
       const sizeIndex = data?.size.indexOf(sizeSelected);
@@ -120,6 +122,31 @@ function Detalhes({ data }: { data: ProductApi }) {
       setHaveColor(true);
     }
   }, [colorSelected, data, sizeSelected]);
+
+  // No Stock Size
+  React.useEffect(() => {
+    // caso haja cor no produto
+    const sizeIndex = data?.size.indexOf(sizeSelected);
+
+    if (!haveColor && !haveSize) {
+      // Se não tiver estoque na combinação atual
+      if (!data.stock.amount[0][sizeIndex]) {
+        setHaveSize(false);
+
+        // Buscar a primeira combinação com estoque e já parar
+        for (let i = 0; i < data.size.length; i++) {
+          if (data.stock.amount[0][i]) {
+            setSizeSelected(data.size[i]);
+            setHaveSize(true);
+            break; // PARA AQUI
+          }
+        }
+        return;
+      }
+
+      setHaveSize(true);
+    }
+  }, [data, haveColor, haveSize, sizeSelected]);
 
   return (
     <div className={styles.detalhes}>

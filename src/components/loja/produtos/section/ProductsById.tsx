@@ -27,7 +27,7 @@ const ProductsById = ({
     <div className={'gallery_layout_container'}>
       {data?.map((product, index) => (
         <Produto
-          key={product._id}
+          key={product._id + index}
           productData={product}
           setMessagePopUp={setMessagePopUp}
           setTypePopUp={setTypePopUp}
