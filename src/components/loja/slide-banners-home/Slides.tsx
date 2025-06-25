@@ -45,7 +45,7 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     quality={90}
                     width={750}
                     height={878}
-                    sizes="(max-width: 769px) 750px, 0vw"
+                    sizes="1080px"
                     priority={index < 2}
                   />
                   <Image
@@ -53,10 +53,9 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     alt="imagem banner desktop"
                     src={banner.imageDesktop}
                     placeholder="empty"
-                    quality={90}
                     width={1920}
                     height={600}
-                    sizes="(max-width: 770px) 0vw, 1920px"
+                    sizes="1920px"
                     priority={index < 2}
                   />
                 </Link>

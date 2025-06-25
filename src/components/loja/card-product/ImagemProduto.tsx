@@ -38,7 +38,7 @@ const ImagemProduto = ({
           height={243}
           quality={75}
           placeholder="empty"
-          sizes="(max-width: 769px) 0vw, 25vw"
+          sizes="400px"
           property="true"
           priority={true}
         />
@@ -94,7 +94,7 @@ const ImagemProduto = ({
               height={243}
               quality={75}
               placeholder="empty"
-              sizes="(max-width: 769px) 500px, 0vw"
+              sizes="500px"
               property="true"
               priority={true}
             />
@@ -114,7 +114,7 @@ const ImagemProduto = ({
                 height={243}
                 quality={75}
                 placeholder="empty"
-                sizes="(max-width: 769px) 50vw, 0vw"
+                sizes="400px"
                 property="true"
                 priority={index === 0}
               />
