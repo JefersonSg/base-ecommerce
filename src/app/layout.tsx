@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId="G-NYKP51D935" />
+      <GoogleTagManager gtmId="G-90F8YNWYQD" />
       <body
         className={`${typeFirst.variable} ${typeFirstDashboard.variable} ${paymentFont.variable}`}
       >
