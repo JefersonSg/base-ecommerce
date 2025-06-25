@@ -41,7 +41,7 @@ function SlideVantagens() {
             freeMode: false
           },
           1024: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 32,
             autoplay: false,
             loop: false
