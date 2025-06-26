@@ -122,7 +122,7 @@ const ProdutoCarrinho = ({
               blurDataURL={data?.product?.images?.[0]}
               width={104}
               height={135}
-              quality={40}
+              quality={41}
               unoptimized
             />
           </Link>
