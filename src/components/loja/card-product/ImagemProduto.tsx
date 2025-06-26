@@ -41,6 +41,7 @@ const ImagemProduto = ({
           sizes="400px"
           property="true"
           priority={true}
+          unoptimized
         />
       )}
       <div

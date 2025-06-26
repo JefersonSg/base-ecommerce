@@ -123,6 +123,7 @@ const ProdutoCarrinho = ({
               width={104}
               height={135}
               quality={40}
+              unoptimized
             />
           </Link>
         )}

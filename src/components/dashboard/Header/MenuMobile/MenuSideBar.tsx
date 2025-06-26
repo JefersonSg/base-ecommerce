@@ -15,7 +15,7 @@ function MenuSideBar({
       <Link href={'/dashboard'} className={styles.logo}>
         <Image
           alt="Logo"
-          src={'/header/dashboard/Logo.svg'}
+          src={'/header/dashboard/logo.svg'}
           width={60}
           height={42}
         />

@@ -73,8 +73,9 @@ function FotosProduto({ img }: { img: string[] }) {
                       height={1350}
                       placeholder="blur"
                       blurDataURL={image}
-                      sizes="(max-width: 1024px) 550px, 100vw"
+                      sizes="1920px"
                       priority={index < 2}
+                      unoptimized
                       onClick={() => {
                         setFotoInteira(true);
                         setImagemPrincipal(image);
@@ -96,7 +97,8 @@ function FotosProduto({ img }: { img: string[] }) {
                 width={350}
                 height={350}
                 quality={85}
-                sizes="100vw"
+                sizes="500px"
+                unoptimized
               />
               <BtnFechar setAtivo={setFotoInteira} />
             </>

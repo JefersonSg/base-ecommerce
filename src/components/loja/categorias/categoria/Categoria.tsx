@@ -29,6 +29,7 @@ function Categoria({
           placeholder="blur"
           blurDataURL={img}
           sizes="500px"
+          unoptimized
         />
       </div>
       <span>{nome}</span>
