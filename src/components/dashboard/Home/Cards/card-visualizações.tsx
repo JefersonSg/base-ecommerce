@@ -7,8 +7,7 @@ import Image from 'next/image';
 import MenuDropDown from '@/src/components/compartilhado/modals/MenuDropDown';
 
 export interface TotalViews {
-  totalViews: Array<{ _id: string; viewsCount: number }>;
-  ips: Array<{ _id: string; numberVisit: number }>;
+  totalViews: Array<{ idProduct: string; viewsCount: number }>;
 }
 
 const CardViews = ({
@@ -46,9 +45,9 @@ const CardViews = ({
         (productView, index) =>
           index <= mostrarMais && (
             <ProdutosVisitados
-              key={productView?._id}
+              key={productView?.idProduct}
               views={productView?.viewsCount}
-              productId={productView?._id}
+              productId={productView?.idProduct}
             />
           )
       )}

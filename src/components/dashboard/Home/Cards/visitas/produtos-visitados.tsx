@@ -10,7 +10,7 @@ const ProdutosVisitados = ({
   views
 }: {
   productId: string;
-  views: number;
+  views?: number;
 }) => {
   const { data } = useQuery({
     queryKey: ['get-product-by-id-', productId],

@@ -8,18 +8,17 @@ import ProdutosVisitados from './produtos-visitados';
 
 const VisitantesViews = ({
   ip,
-  user,
+  userId,
   views,
   products
 }: {
   ip: string;
-  user: Array<string | null>;
+  userId?: string | null;
   views: number;
-  products: Array<{ productId: string; count: number }>;
+  products: [{ productId: string; count: number }];
 }) => {
   const [ativo, setAtivo] = React.useState(false);
 
-  const [userId, setUserId] = React.useState('');
   const { data } = useQuery<UserInterface>({
     queryKey: ['user-by-id-', userId],
     queryFn: async () => {
@@ -33,23 +32,12 @@ const VisitantesViews = ({
   // const [totalClicksInProducts, setTotalClicksInProducts] = React.useState(0);
 
   React.useEffect(() => {
-    if (user) {
-      user.forEach((item) => {
-        if (item !== null) {
-          setUserId(item);
-        }
-      });
-    }
-  }, [user]);
-
-  React.useEffect(() => {
     if (products) {
       let i = 0;
       products.forEach((product) => {
-        if (product.productId) {
+        if (product) {
           i++;
           setTotalProductViews(i);
-          console.log(product.productId);
         }
       });
     }
@@ -96,10 +84,10 @@ const VisitantesViews = ({
       </div>
       {ativo && (
         <div className={styles.produtos_view_container}>
-          {products?.map((product) => {
+          {products?.map((product, index) => {
             return (
               <ProdutosVisitados
-                key={product.productId}
+                key={product.productId + index + product.count}
                 productId={product.productId}
                 views={product.count}
               />

@@ -7,12 +7,13 @@ import VisitantesViews from './visitas/visitantes-views';
 import MenuDropDown from '@/src/components/compartilhado/modals/MenuDropDown';
 
 export interface TotalViews {
-  totalViews: Array<{ _id: string; viewsCount: number }>;
+  totalViews: Array<{ idProduct: string; viewsCount: number }>;
   sessions: Array<{
     _id: string;
-    user: Array<string | null>;
+    userId: string;
     numberVisit: number;
-    products: Array<{ productId: string; count: number }>;
+    products: [{ productId: string; count: number }];
+    pages: string[];
   }>;
 }
 
@@ -79,7 +80,7 @@ const CardVisitas = ({
             <VisitantesViews
               key={userView?._id}
               ip={userView?._id}
-              user={userView?.user}
+              userId={userView?.userId}
               views={userView?.numberVisit}
               products={userView?.products}
             />
