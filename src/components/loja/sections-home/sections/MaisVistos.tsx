@@ -1,6 +1,5 @@
 import React from 'react';
 import SectionProdutosViews from '../SectionProdutosViews';
-import productsByViewsGet from '@/src/actions/products-by-views-get';
 import productsFilterGet from '@/src/actions/products-filters-get';
 
 const MaisVistos = async () => {
