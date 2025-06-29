@@ -148,7 +148,6 @@ function Produto({
           images={images}
           coverPhoto1={coverPhoto1}
           coverPhoto2={productData?.coverPhoto2}
-          unoptimized
         />
       </div>
       <div className={styles.infos}>
