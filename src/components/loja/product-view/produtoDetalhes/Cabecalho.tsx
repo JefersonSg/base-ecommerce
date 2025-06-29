@@ -35,6 +35,7 @@ const Cabecalho = async ({
           src={'/estrelas/claras/estrela_cheia.svg'}
           width={21}
           height={20}
+          unoptimized
         />
       </div>
     </div>
