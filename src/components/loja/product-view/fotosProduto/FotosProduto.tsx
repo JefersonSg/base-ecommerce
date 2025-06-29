@@ -67,7 +67,6 @@ function FotosProduto({ img }: { img: string[] }) {
                       alt="Foto do produto"
                       id={imagemId}
                       src={image}
-                      quality={85}
                       loading={index > 2 ? 'lazy' : undefined}
                       width={1080}
                       height={1350}
@@ -96,7 +95,6 @@ function FotosProduto({ img }: { img: string[] }) {
                 src={imagemPrincipal}
                 width={350}
                 height={350}
-                quality={85}
                 sizes="500px"
                 unoptimized
               />
