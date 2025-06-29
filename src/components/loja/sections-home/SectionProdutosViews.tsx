@@ -63,7 +63,8 @@ const SectionProdutosViews = ({
         id: '',
         category: categoryId,
         page,
-        total: 9
+        total: 9,
+        orderDirection: 'desc'
       });
 
       if (actionData?.products) {
@@ -103,7 +104,7 @@ const SectionProdutosViews = ({
     <>
       <div className={styles.section_produtos}>
         <div className={styles.informacoes}>
-          <Titulo titulo={texto ?? 'Populares'} />
+          <Titulo titulo={texto ?? 'Novidades'} />
         </div>
         {dataProducts && (
           <ProductsById
