@@ -27,6 +27,7 @@ const BotaoQuantidadeFinalizar = ({
         src={'/carrinho/finalizar/subtracao.svg'}
         width={11}
         height={11}
+        unoptimized
       />
       {contador}
       <Image
@@ -37,6 +38,7 @@ const BotaoQuantidadeFinalizar = ({
         src={'/carrinho/finalizar/adicao.svg'}
         width={11}
         height={11}
+        unoptimized
       />
     </button>
   );

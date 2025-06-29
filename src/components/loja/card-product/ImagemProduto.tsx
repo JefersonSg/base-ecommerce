@@ -36,7 +36,6 @@ const ImagemProduto = ({
           src={coverPhoto1?.length ? coverPhoto1 : images[0]}
           width={185}
           height={243}
-          placeholder="empty"
           sizes="400px"
           property="true"
           priority={true}
@@ -69,10 +68,10 @@ const ImagemProduto = ({
           }
           width={185}
           height={243}
-          placeholder="empty"
           sizes="(max-width: 769px) 0vw, 300px"
           property="true"
           priority={false}
+          unoptimized
         />
       </div>
       <Swiper
@@ -91,10 +90,10 @@ const ImagemProduto = ({
               src={coverPhoto1}
               width={185}
               height={243}
-              placeholder="empty"
               sizes="500px"
               property="true"
               priority={true}
+              unoptimized
             />
           </SwiperSlide>
         )}
@@ -110,10 +109,10 @@ const ImagemProduto = ({
                 src={image}
                 width={185}
                 height={243}
-                placeholder="empty"
                 sizes="400px"
                 property="true"
                 priority={index === 0}
+                unoptimized
               />
             </SwiperSlide>
           );

@@ -26,8 +26,6 @@ function Categoria({
           width={104}
           height={104}
           quality={80}
-          placeholder="blur"
-          blurDataURL={img}
           sizes="500px"
           unoptimized
         />

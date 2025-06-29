@@ -61,6 +61,7 @@ const CardVisitas = ({
           src={'/dashboard/home/titulos/views.svg'}
           width={20}
           height={14}
+          unoptimized
         />
       </h3>
       <div className={styles.infos_card}>

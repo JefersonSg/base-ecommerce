@@ -21,6 +21,7 @@ function Vantagem({
         src={`/banner/vantagens/${image}.svg`}
         width={35}
         height={35}
+        unoptimized
       />
       <div>
         <h2>{titulo}</h2>

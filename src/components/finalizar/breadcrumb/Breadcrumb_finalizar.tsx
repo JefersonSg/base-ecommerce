@@ -16,6 +16,7 @@ const BreadcrumbFinalizar = () => {
               src={'/header/icons/carrinho.svg'}
               width={19}
               height={18}
+              unoptimized
             />
           </span>
           <p>Sacola</p>
@@ -27,6 +28,7 @@ const BreadcrumbFinalizar = () => {
               src={'/pagamento/cartao.svg'}
               width={19}
               height={18}
+              unoptimized
             />
           </span>
           <p>Pagamento</p>
@@ -38,6 +40,7 @@ const BreadcrumbFinalizar = () => {
               src={'/pagamento/check.svg'}
               width={20}
               height={18}
+              unoptimized
             />
           </span>
           <p>Confirmação</p>

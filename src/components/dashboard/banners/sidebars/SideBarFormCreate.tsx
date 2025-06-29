@@ -147,6 +147,7 @@ const SideBarFormCreate = ({
                 src={imageUrl1}
                 width={50}
                 height={50}
+                unoptimized
               />
             )}
           </div>
@@ -159,6 +160,7 @@ const SideBarFormCreate = ({
                 src={imageUrl2}
                 width={100}
                 height={50}
+                unoptimized
               />
             )}
           </div>

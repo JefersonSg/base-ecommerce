@@ -23,6 +23,7 @@ function BotaoLi({
               src={`/header/Menu/${image}.svg`}
               width={24}
               height={24}
+              unoptimized
             />
           )}
           {texto}
@@ -36,6 +37,7 @@ function BotaoLi({
               src={`/header/Menu/${image}.svg`}
               width={24}
               height={24}
+              unoptimized
             />
           )}
           {texto}

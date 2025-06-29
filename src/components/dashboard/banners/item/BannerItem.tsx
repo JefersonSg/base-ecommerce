@@ -37,6 +37,7 @@ const BannerItem = ({
           height={40}
           quality={40}
           placeholder="empty"
+          unoptimized
         />
 
         <div className={styles.infos}>
@@ -63,12 +64,14 @@ const BannerItem = ({
               setAtivoDelete(true);
               setBannerData(bannerData);
             }}
+            unoptimized
           />
           <Image
             alt="Imagem de um laps para editar a categoria"
             src={'/dashboard/edit.svg'}
             width={16}
             height={18}
+            unoptimized
             onClick={() => {
               setAtivoEdit(true);
               setBannerData(bannerData);

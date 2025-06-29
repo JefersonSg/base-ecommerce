@@ -32,6 +32,7 @@ const Finalizarfetchs = ({
             src={'/pagamento/seta.svg'}
             width={22}
             height={12}
+            unoptimized
           />
         </div>
       </div>

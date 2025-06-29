@@ -28,6 +28,7 @@ const BotaoRedondo = ({
           src={img}
           width={24}
           height={24}
+          unoptimized
         />
       )}
       <p>{`${

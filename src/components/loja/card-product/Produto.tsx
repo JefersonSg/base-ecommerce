@@ -148,6 +148,7 @@ function Produto({
           images={images}
           coverPhoto1={coverPhoto1}
           coverPhoto2={productData?.coverPhoto2}
+          unoptimized
         />
       </div>
       <div className={styles.infos}>
@@ -213,6 +214,7 @@ function Produto({
             src={'/card_produto/olho_icone.svg'}
             width={12}
             height={9}
+            unoptimized
           />
           <span className={styles.texto_buton}>ESPIAR</span>
         </div>

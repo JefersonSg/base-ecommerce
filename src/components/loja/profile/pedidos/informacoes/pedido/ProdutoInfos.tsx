@@ -36,6 +36,7 @@ const ProdutoInfos = ({
                 src={data.product.images[0]}
                 width={50}
                 height={50}
+                unoptimized
               />
             )}
           </div>

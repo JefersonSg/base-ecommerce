@@ -21,7 +21,13 @@ function BotaoColorido({ texto, img, caps, alt, isLoading, disabled }: Botao) {
       disabled={disabled}
     >
       {img && (
-        <Image alt={`${alt}`} src={`/produto/${img}`} width={23} height={24} />
+        <Image
+          alt={`${alt}`}
+          src={`/produto/${img}`}
+          width={23}
+          height={24}
+          unoptimized
+        />
       )}
       {caps ? texto.toUpperCase() : texto}
     </button>

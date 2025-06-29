@@ -28,6 +28,7 @@ function Usuario({
           src={'/header/Menu/usuario.svg'}
           width={40}
           height={40}
+          unoptimized
         />
       </div>
       <div className={styles.boasVindas}>

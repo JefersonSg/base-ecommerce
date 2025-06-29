@@ -56,6 +56,7 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
             src={userData?.user?.image ?? '/header/account.svg'}
             width={24}
             height={24}
+            unoptimized
           />
           <p>
             {userData?.user
@@ -87,6 +88,7 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
             src={'/header/icons/dashboard.svg'}
             width={24}
             height={24}
+            unoptimized
           />
         </Link>
       )}
@@ -96,6 +98,7 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
           src={'/header/icons/coracao.svg'}
           width={24}
           height={24}
+          unoptimized
         />
       </Link>
       <Link href={'/carrinho'} className={styles.link_carrinho}>
@@ -109,6 +112,7 @@ const Container2 = ({ userData }: { userData: UserInterface }) => {
           src={'/header/icons/carrinho.svg'}
           width={24}
           height={24}
+          unoptimized
         />
       </Link>
     </div>

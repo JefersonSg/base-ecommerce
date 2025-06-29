@@ -60,6 +60,7 @@ const CupomItem = ({
             src={'/dashboard/lixeira.svg'}
             width={16}
             height={18}
+            unoptimized
             onClick={() => {
               setAtivoDelete(true);
               setCupomData(cupomData);

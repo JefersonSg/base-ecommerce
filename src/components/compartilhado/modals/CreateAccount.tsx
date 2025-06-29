@@ -24,6 +24,7 @@ const CreateAccount = ({
           width={1200}
           height={722}
           src={'/modal/addCartNoAccount.jpg'}
+          unoptimized
         />
       </Link>
       <Link className={styles.mobile} href={'/registrar'}>
@@ -31,6 +32,7 @@ const CreateAccount = ({
           alt="Imagem ilustrativa"
           width={667}
           height={722}
+          unoptimized
           src={'/modal/addCartNoAccount-mobile.jpg'}
         />
       </Link>

@@ -15,6 +15,7 @@ const DicaImagem = () => {
               src={'/dashboard/home/seta_check_blue.svg'}
               width={13}
               height={13}
+              unoptimized
             />
             Use um editor de fotos para criar um fundo totalmente branco para a
             capa
@@ -26,6 +27,7 @@ const DicaImagem = () => {
               src={'/dashboard/home/seta_check_blue.svg'}
               width={13}
               height={13}
+              unoptimized
             />
             Se precisar mostrar o produto em contexto, faça isso a partir da 2ª
             foto.
@@ -37,6 +39,7 @@ const DicaImagem = () => {
               src={'/dashboard/home/seta_check_blue.svg'}
               width={13}
               height={13}
+              unoptimized
             />
             Evite usar fotos que mostrem uma parede ou outros elementos ao
             fundo.
@@ -48,6 +51,7 @@ const DicaImagem = () => {
               src={'/dashboard/home/seta_check_blue.svg'}
               width={13}
               height={13}
+              unoptimized
             />
             {`Não inclua bordas, logos, marcas d'água, banners nem textos promocionais
         ou links.`}
@@ -59,6 +63,7 @@ const DicaImagem = () => {
               src={'/dashboard/home/seta_check_blue.svg'}
               width={13}
               height={13}
+              unoptimized
             />
             Tire fotos grandes e de diferentes ângulos.
           </li>
@@ -69,6 +74,7 @@ const DicaImagem = () => {
               src={'/dashboard/home/seta_check_blue.svg'}
               width={13}
               height={13}
+              unoptimized
             />
             Caso você use imagens que encontrou na internet, certifique-se de
             ter autorização expressa do titular de direitos.

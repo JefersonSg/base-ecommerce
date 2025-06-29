@@ -24,6 +24,7 @@ export function Titulo({ titulo }: { titulo: string }) {
           src={'/setaVoltar.svg'}
           width={16}
           height={12}
+          unoptimized
         />
       </Link>
       <h1 className={'titulo_sessao'}>{titulo}</h1>

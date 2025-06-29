@@ -41,22 +41,22 @@ function Slide({ data }: { data: { banners: BannerType[] } }) {
                     className={styles.imagem_mobile}
                     alt="imagem banner mobile"
                     src={banner.imageMobile}
-                    placeholder="empty"
                     quality={90}
                     width={750}
                     height={878}
+                    unoptimized
                     sizes="1080px"
-                    priority={index < 2}
+                    priority={index === 0}
                   />
                   <Image
                     className={styles.imagem_desktop}
                     alt="imagem banner desktop"
                     src={banner.imageDesktop}
-                    placeholder="empty"
                     width={1920}
                     height={600}
                     sizes="1920px"
-                    priority={index < 2}
+                    priority={index === 0}
+                    unoptimized
                   />
                 </Link>
               </div>

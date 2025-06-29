@@ -370,6 +370,7 @@ const FormUpdateProduct = ({
                             src={image}
                             width={50}
                             height={50}
+                            unoptimized
                           />
                         </SwiperSlide>
                       );
@@ -387,6 +388,7 @@ const FormUpdateProduct = ({
                         src={image}
                         width={50}
                         height={50}
+                        unoptimized
                       />
                     </SwiperSlide>
                   );
@@ -419,6 +421,7 @@ const FormUpdateProduct = ({
                           src={coverPhoto1}
                           width={50}
                           height={50}
+                          unoptimized
                         />
                       </SwiperSlide>
                     }
@@ -435,6 +438,7 @@ const FormUpdateProduct = ({
                         src={image}
                         width={50}
                         height={50}
+                        unoptimized
                       />
                     </SwiperSlide>
                   );
@@ -466,6 +470,7 @@ const FormUpdateProduct = ({
                           src={coverPhoto2}
                           width={50}
                           height={50}
+                          unoptimized
                         />
                       </SwiperSlide>
                     }
@@ -482,6 +487,7 @@ const FormUpdateProduct = ({
                         src={image}
                         width={50}
                         height={50}
+                        unoptimized
                       />
                     </SwiperSlide>
                   );

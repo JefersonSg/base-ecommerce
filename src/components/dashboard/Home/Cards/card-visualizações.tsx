@@ -36,6 +36,7 @@ const CardViews = ({
           src={'/dashboard/home/titulos/views.svg'}
           width={20}
           height={14}
+          unoptimized
         />
       </h3>
       <p className={styles.texto_produtos}>

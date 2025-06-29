@@ -50,6 +50,7 @@ const HeaderPedidos = ({
               alt="Imagem de calendário"
               src={'/dashboard/pedidos/calendario.svg'}
               fill={true}
+              unoptimized
             />
           </div>
         </div>
@@ -62,6 +63,7 @@ const HeaderPedidos = ({
               alt="Imagem double check"
               src={'/dashboard/pedidos/double-check.svg'}
               fill={true}
+              unoptimized
             />
           </div>
         </div>
@@ -74,6 +76,7 @@ const HeaderPedidos = ({
               alt="Imagem de alerta"
               src={'/dashboard/pedidos/alert.svg'}
               fill={true}
+              unoptimized
             />
           </div>
         </div>
@@ -85,6 +88,7 @@ const HeaderPedidos = ({
               alt="Imagem de uma carteira"
               src={'/dashboard/pedidos/carteira.svg'}
               fill={true}
+              unoptimized
             />
           </div>
         </div>

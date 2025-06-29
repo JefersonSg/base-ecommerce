@@ -15,6 +15,7 @@ function Colecao({ nome, img }: colecao) {
         src={`/colecoes/${img}.png`}
         width={300}
         height={160}
+        unoptimized
       />
       <div className={styles.degrade}></div>
       <p className={styles.nome}>{nome}</p>

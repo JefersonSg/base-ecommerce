@@ -37,6 +37,7 @@ const Pagamento = ({
                 src={'/carrinho/finalizar/cartao.svg'}
                 width={30}
                 height={21}
+                unoptimized
               />
             </div>
           </div>
@@ -58,6 +59,7 @@ const Pagamento = ({
                 src={'/carrinho/finalizar/pix_2.svg'}
                 width={63}
                 height={22}
+                unoptimized
               />
             </div>
           </div>

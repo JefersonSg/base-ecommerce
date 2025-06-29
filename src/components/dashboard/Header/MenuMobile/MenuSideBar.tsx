@@ -18,6 +18,7 @@ function MenuSideBar({
           src={'/header/dashboard/logo.svg'}
           width={60}
           height={42}
+          unoptimized
         />
       </Link>
       <nav className={styles.container}>

@@ -30,7 +30,8 @@ function InformacoesProduto({ cor, tamanho, comentario, imgs }: infosProduto) {
           width={104}
           height={132}
           quality={50}
-          sizes="50vw"
+          sizes="500px"
+          unoptimized
         />
       )}
     </div>

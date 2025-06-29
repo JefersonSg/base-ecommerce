@@ -38,6 +38,7 @@ const PopUpMessage = ({
         alt="imagem simbolizando confirmação da ação"
         width={44}
         height={44}
+        unoptimized
         src={
           typePopUp === 'error'
             ? '/error_popup.svg'

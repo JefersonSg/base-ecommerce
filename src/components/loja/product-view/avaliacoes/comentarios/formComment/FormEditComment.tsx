@@ -180,6 +180,7 @@ const FormEditComment = ({
                 src={imageUrl ?? ''}
                 width={50}
                 height={50}
+                unoptimized
               />
             )}
           </div>

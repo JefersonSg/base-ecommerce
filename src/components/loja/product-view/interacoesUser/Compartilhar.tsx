@@ -39,6 +39,7 @@ function Compartilhar() {
         src={'/produto/pagina/compartilhar.svg'}
         width={18}
         height={16}
+        unoptimized
       />
     </div>
   );

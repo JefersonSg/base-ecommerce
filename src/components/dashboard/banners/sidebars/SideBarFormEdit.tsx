@@ -136,6 +136,7 @@ const SideBarFormEdit = ({
               src={imageUrl1 ?? bannerData.imageMobile ?? ''}
               width={50}
               height={50}
+              unoptimized
             />
           </div>
 
@@ -146,6 +147,7 @@ const SideBarFormEdit = ({
               src={imageUrl2 ?? bannerData.imageDesktop ?? ''}
               width={100}
               height={50}
+              unoptimized
             />
           </div>
         </div>

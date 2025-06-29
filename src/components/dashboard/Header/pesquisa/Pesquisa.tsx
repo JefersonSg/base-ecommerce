@@ -22,6 +22,7 @@ const Pesquisa = () => {
         src={'/header/icons/lupa.svg'}
         width={24}
         height={24}
+        unoptimized
       />
       {ativo && (
         <>

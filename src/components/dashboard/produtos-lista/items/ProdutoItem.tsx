@@ -52,7 +52,7 @@ const ProdutoItem = ({
                 width={40}
                 height={40}
                 quality={30}
-                placeholder="empty"
+                unoptimized
               />
             </Link>
 
@@ -103,6 +103,7 @@ const ProdutoItem = ({
               src={'/dashboard/lixeira.svg'}
               width={16}
               height={18}
+              unoptimized
               onClick={() => {
                 setAtivoDelete(true);
                 setIdDelete(data._id);
@@ -114,6 +115,7 @@ const ProdutoItem = ({
                 src={'/dashboard/edit.svg'}
                 width={16}
                 height={18}
+                unoptimized
               />
             </Link>
           </div>

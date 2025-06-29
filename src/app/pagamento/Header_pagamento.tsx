@@ -15,6 +15,7 @@ const HeaderPagamento = () => {
             src={'/header/Logo.svg'}
             width={130}
             height={94}
+            unoptimized
           />
         </Link>
 
@@ -25,6 +26,7 @@ const HeaderPagamento = () => {
             src={'/pagamento/cadeado.svg'}
             width={20}
             height={20}
+            unoptimized
           />
           <div className={styles.pagamento_seguro}>
             <p>PAGAMENTO</p>

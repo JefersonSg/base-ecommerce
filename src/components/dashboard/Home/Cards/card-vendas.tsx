@@ -34,6 +34,7 @@ const CardVendas = () => {
           src={'/dashboard/home/titulos/bag.svg'}
           width={13}
           height={14}
+          unoptimized
         />
       </h3>
       <div className={`${stylesVendas.card_vendas}`}>

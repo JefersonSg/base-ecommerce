@@ -20,6 +20,7 @@ export function TituloFooter({
           src={'/setaBaixoWhite.svg'}
           width={8}
           height={4}
+          unoptimized
         />
       ) : (
         <></>

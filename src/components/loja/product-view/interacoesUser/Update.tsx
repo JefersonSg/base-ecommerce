@@ -16,6 +16,7 @@ function Update({ id }: { id: string }) {
               src={'/dashboard/edit.svg'}
               width={18}
               height={16}
+              unoptimized
             />
           </Link>
         </div>

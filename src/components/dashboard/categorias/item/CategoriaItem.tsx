@@ -71,7 +71,7 @@ const CategoriaItem = ({
               quality={40}
               width={40}
               height={40}
-              placeholder="empty"
+              unoptimized
             />
           </div>
 
@@ -110,6 +110,7 @@ const CategoriaItem = ({
               src={'/dashboard/edit.svg'}
               width={16}
               height={18}
+              unoptimized
               onClick={() => {
                 setDefaultTitle(name);
                 setDefaultDescription(description);

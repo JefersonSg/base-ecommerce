@@ -8,6 +8,7 @@ const UmaEstrela = ({ type }: { type?: string }) => {
       src={`/estrelas/${type ?? 'escuras'}/estrela_cheia.svg`}
       width={16}
       height={16}
+      unoptimized
     />
   );
 };

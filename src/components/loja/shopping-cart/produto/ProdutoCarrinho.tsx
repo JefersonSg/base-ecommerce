@@ -149,6 +149,7 @@ const ProdutoCarrinho = ({
           alt="lixeira"
           src={'/carrinho/lixeira.svg'}
           width={19}
+          unoptimized
           height={21}
           onClick={() => {
             setModalDeleteActive(true);

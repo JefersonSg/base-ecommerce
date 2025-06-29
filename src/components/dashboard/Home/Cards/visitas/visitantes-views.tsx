@@ -62,6 +62,7 @@ const VisitantesViews = ({
             width={data?.user ? 40 : 30}
             height={data?.user ? 40 : 30}
             alt="imagem do usuário"
+            unoptimized
           />
 
           <div>
@@ -80,6 +81,7 @@ const VisitantesViews = ({
           src={'/setaBaixo.svg'}
           width={10}
           height={14}
+          unoptimized
         />
       </div>
       {ativo && (

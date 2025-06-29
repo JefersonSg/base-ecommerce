@@ -18,6 +18,7 @@ export function BtnZap() {
           src={'/whatsapp.svg'}
           width={44}
           height={44}
+          unoptimized
         />
       </Link>
     </>

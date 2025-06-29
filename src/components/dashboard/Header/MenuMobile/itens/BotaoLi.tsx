@@ -44,6 +44,7 @@ function BotaoLi({
             src={`/header/Menu/${image}.svg`}
             width={20}
             height={20}
+            unoptimized
           />
         )}
 

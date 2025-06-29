@@ -78,6 +78,7 @@ const MessageFloating = ({
             height={80}
             src={img?.length ? img : '/confirm_popup.svg'}
             className={styles.foto_produto}
+            unoptimized
           />
           <Image
             alt="Imagem de confirmação da adição"
@@ -85,6 +86,7 @@ const MessageFloating = ({
             width={14}
             height={14}
             className={styles.confirmacao_image}
+            unoptimized
           />
         </div>
         <div className={styles.informacoes_carrinho}>
@@ -112,6 +114,7 @@ const MessageFloating = ({
           alt="X para fechar o pop up"
           src={'/mensagem_flutuante/fechar.svg'}
           width={19}
+          unoptimized
           height={19}
         />
       </span>

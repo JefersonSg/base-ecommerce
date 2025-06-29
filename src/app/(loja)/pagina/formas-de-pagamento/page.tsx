@@ -32,6 +32,7 @@ const page = () => {
             src={'/pagina_vantagens/MeiosPagamentos.webp'}
             width={320}
             height={40}
+            unoptimized
           />
         </li>
         <li>

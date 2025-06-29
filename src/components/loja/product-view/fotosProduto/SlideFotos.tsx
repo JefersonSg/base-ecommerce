@@ -59,7 +59,7 @@ function SlideFotos({
                 quality={50}
                 sizes="80px"
                 id={`${index}`}
-                fill
+                unoptimized
               />
             </SwiperSlide>
           );

@@ -26,6 +26,7 @@ export function SocialMedia({ img }: { img: string[] }) {
                     src={`/footer/RedesSociais/${image}`}
                     width={24}
                     height={24}
+                    unoptimized
                   />
                 </Link>
               </li>

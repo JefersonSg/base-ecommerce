@@ -40,6 +40,7 @@ const UsuarioInfos = ({
             alt="Foto de perfil do clente"
             src={`${data?.user?.image ?? '/profile/profile.svg'}`}
             fill={true}
+            unoptimized
           />
         </div>
         <div>
@@ -58,6 +59,7 @@ const UsuarioInfos = ({
             src={'/header/icons/carrinho.svg'}
             width={20}
             height={20}
+            unoptimized
           />
         </div>
         <p className={styles.texto_estilo_1}>

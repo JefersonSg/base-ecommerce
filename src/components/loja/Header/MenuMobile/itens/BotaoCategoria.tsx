@@ -40,7 +40,13 @@ function BotaoCategoria({
             ativoLista === category._id ? styles.ativo : ''
           }`}
         >
-          <Image alt="seta" src={'/setaBaixoW1.svg'} width={10} height={10} />
+          <Image
+            alt="seta"
+            src={'/setaBaixoW1.svg'}
+            width={10}
+            height={10}
+            unoptimized
+          />
         </div>
       </div>
       {ativoLista === category._id && subcategories?.subcategories && (

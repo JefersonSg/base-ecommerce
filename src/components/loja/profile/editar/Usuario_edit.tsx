@@ -75,6 +75,7 @@ export default function ProfileUSuario({
         alt="Foto de perfil do usuario"
         width={84}
         height={84}
+        unoptimized
       />
       <InputFormulario
         label="Editar"

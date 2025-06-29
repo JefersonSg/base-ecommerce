@@ -109,11 +109,10 @@ const ProdutosFinalizar = ({
               <Image
                 alt="Imagem do produto"
                 src={data?.product?.images?.[0]}
-                placeholder="blur"
-                blurDataURL={data?.product?.images?.[0]}
                 width={104}
                 height={135}
                 quality={40}
+                unoptimized
               />
             </Link>
           )}

@@ -76,6 +76,7 @@ const PedidoCard = ({
               alt="Foto de perfil do clente"
               src={`${data?.user?.image ?? '/profile/profile.svg'}`}
               fill={true}
+              unoptimized
             />
           </div>
           <div>

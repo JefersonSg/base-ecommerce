@@ -18,6 +18,7 @@ export default async function ProfileUSuario({
         alt="Foto de perfil do usuario"
         width={84}
         height={84}
+        unoptimized
       />
       <h2 className={styles.nome_usuario}>
         {userData?.user?.name

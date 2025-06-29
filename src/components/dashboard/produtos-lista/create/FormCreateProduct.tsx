@@ -298,6 +298,7 @@ const FormCreateProduct = () => {
                         src={image}
                         width={50}
                         height={50}
+                        unoptimized
                       />
                     </SwiperSlide>
                   );
@@ -328,6 +329,7 @@ const FormCreateProduct = () => {
                         src={image}
                         width={50}
                         height={50}
+                        unoptimized
                       />
                     </SwiperSlide>
                   );
@@ -357,6 +359,7 @@ const FormCreateProduct = () => {
                         src={image}
                         width={50}
                         height={50}
+                        unoptimized
                       />
                     </SwiperSlide>
                   );

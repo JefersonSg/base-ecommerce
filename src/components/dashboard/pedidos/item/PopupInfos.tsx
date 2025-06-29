@@ -145,6 +145,7 @@ const PopupInfos = ({
               alt="Foto de perfil do clente"
               src={`${imageUser ?? '/profile/profile.svg'}`}
               fill={true}
+              unoptimized
             />
           </div>
           <div>

@@ -18,6 +18,7 @@ export function MetodoPagamentos({ img }: { img: string[] }) {
               src={`/footer/MetodosPagamentos/${image}.svg`}
               width={66}
               height={21}
+              unoptimized
             />
           );
         })}

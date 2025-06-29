@@ -13,6 +13,7 @@ const LoadingUserInfos = () => {
           src={'/header/account.svg'}
           width={24}
           height={24}
+          unoptimized
         />
         <p className={styles.texto}>Olá, faça seu login ou cadastre-se.</p>
       </Link>
@@ -22,6 +23,7 @@ const LoadingUserInfos = () => {
           src={'/header/icons/coracao.svg'}
           width={24}
           height={24}
+          unoptimized
         />
       </Link>
       <Link href={'/carrinho'} className={styles.link_carrinho}>
@@ -30,6 +32,7 @@ const LoadingUserInfos = () => {
           src={'/header/icons/carrinho.svg'}
           width={24}
           height={24}
+          unoptimized
         />
       </Link>{' '}
       <button className={styles.mobile_button} aria-label="abrir menu mobile">

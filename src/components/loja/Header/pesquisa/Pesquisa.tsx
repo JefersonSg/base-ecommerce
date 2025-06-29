@@ -26,6 +26,7 @@ const Pesquisa = () => {
         src={'/header/icons/lupa.svg'}
         width={24}
         height={24}
+        unoptimized
       />
 
       <>
@@ -58,6 +59,7 @@ const Pesquisa = () => {
               className={styles.lupaInput}
               src={'/header/icons/lupa-color-2.svg'}
               width={24}
+              unoptimized
               height={24}
               onClick={() => {
                 setAtivo(false);

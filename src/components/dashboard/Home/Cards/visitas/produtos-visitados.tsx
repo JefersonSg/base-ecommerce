@@ -29,6 +29,7 @@ const ProdutosVisitados = ({
             src={data?.product.images?.[0] ?? ''}
             width={40}
             height={40}
+            unoptimized
           />
           <div className={styles.info_produto}>
             <Link href={`/produtos/produto/${data.product._id}`}>

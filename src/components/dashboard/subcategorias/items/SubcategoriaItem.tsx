@@ -93,6 +93,7 @@ const SubcategoriaItem = ({
               src={image || '/categorias/batom.png'}
               width={40}
               height={40}
+              unoptimized
             />
           </div>
 
@@ -118,7 +119,7 @@ const SubcategoriaItem = ({
             width={16}
             height={18}
             quality={40}
-            placeholder="empty"
+            unoptimized
             onClick={() => {
               setIdSubcategory(subcategoryId);
               setAtivoDelete(true);
@@ -140,6 +141,7 @@ const SubcategoriaItem = ({
                 setDefaultDescription(description);
                 setAtivoEdit(true);
               }}
+              unoptimized
             />
           </div>
         </div>

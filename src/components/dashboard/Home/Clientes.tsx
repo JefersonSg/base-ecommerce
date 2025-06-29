@@ -27,6 +27,7 @@ const Clientes = () => {
                   width={40}
                   height={40}
                   alt="imagem do usuário"
+                  unoptimized
                 />
               </div>
               <div className={styles.data}>
