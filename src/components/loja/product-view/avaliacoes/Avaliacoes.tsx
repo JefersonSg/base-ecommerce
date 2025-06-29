@@ -1,4 +1,5 @@
 'use client';
+import Separador from '@/src/components/compartilhado/Separador';
 import styles from './Avaliacoes.module.css';
 import Comentarios from './comentarios/Comentarios';
 import Media from './media/Media';
@@ -6,7 +7,8 @@ import Media from './media/Media';
 function Avaliacoes() {
   return (
     <div className={styles.avaliacoes_container}>
-      <h1 className={`titulo_sessao`}>Avaliações</h1>
+      <Separador />
+      <h1 className={styles.titulo_avaliação}>Avaliações</h1>
       <Media />
       <Comentarios />
     </div>

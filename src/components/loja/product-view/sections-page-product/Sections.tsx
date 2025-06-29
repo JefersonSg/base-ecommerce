@@ -6,41 +6,22 @@ import Entrega from './Entrega';
 import styles from './Sections.module.css';
 import Avaliacoes from '../avaliacoes/Avaliacoes';
 import React, { Suspense } from 'react';
+import Separador from '@/src/components/compartilhado/Separador';
 
 function Sections({ data }: { data: ProductApi }) {
-  const [ativoDescription, setAtivoDescription] = React.useState(true);
   return (
     <div className={styles.sections}>
       <div className={styles.entrega}>
         <Entrega />
       </div>
+      <Separador />
       <div className={styles.select_view}>
-        <p
-          className={`${styles.select_description} ${
-            ativoDescription ? styles.ativo : ''
-          }`}
-          onClick={() => {
-            setAtivoDescription(true);
-          }}
-        >
-          Descrição
-        </p>
-        <p
-          className={`${styles.select_avaliacoes} ${
-            !ativoDescription ? styles.ativo : ''
-          }`}
-          onClick={() => {
-            setAtivoDescription(false);
-          }}
-        >
-          Avaliações
-        </p>
+        <p className={`${styles.select_description} `}>Descrição</p>
       </div>
 
       <div
-        className={`${styles.div_descricoes} ${
-          ativoDescription ? styles.ativo : ''
-        }`}
+        className={`${styles.div_descricoes} 
+        `}
       >
         {data?.description && (
           <Descricao description={data.description} title="Descrição" />
@@ -59,11 +40,7 @@ function Sections({ data }: { data: ProductApi }) {
         )}
       </div>
 
-      <div
-        className={`${styles.div_avaliacao} ${
-          !ativoDescription ? styles.ativo : ''
-        }`}
-      >
+      <div className={`${styles.div_avaliacao}`}>
         <Suspense
           fallback={
             <>

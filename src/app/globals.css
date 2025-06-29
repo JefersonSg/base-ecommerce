@@ -8,7 +8,7 @@
 }
 
 body {
-  --fonte-primaria: var(--type-first-montserrat), 'sans-serif';
+  --fonte-primaria: 'Roboto', 'sans-serif';
   --fonte-secundaria: var(--type-first-dashboard), 'sans-serif';
   --fonte-pagamento: var(--type-first-payment), 'sans-serif';
 }

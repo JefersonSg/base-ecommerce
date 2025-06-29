@@ -37,6 +37,7 @@ export function Header() {
               src={'/header/dashboard/logo.svg'}
               width={100}
               height={65}
+              unoptimized
             />
           </Link>
         </>

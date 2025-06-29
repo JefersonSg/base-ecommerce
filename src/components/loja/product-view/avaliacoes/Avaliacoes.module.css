@@ -1,10 +1,27 @@
 .avaliacoes_container {
   width: 100%;
-  padding: 0 16px;
   margin: 0 auto;
   margin-top: 64px;
   box-sizing: border-box;
   padding-top: 32px;
+}
+.titulo_avaliação {
+  position: relative;
+  font-family: 'roboto', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #191919;
+  text-transform: uppercase;
+  line-height: 28px;
+  letter-spacing: 0.08rem;
+  background-color: #FFFFFF;
+  width: max-content;
+  margin: 0 auto;
+  padding: 0 16px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  top: -30px;
 }
 
 @media (min-width: 64rem) {

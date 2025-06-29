@@ -24,6 +24,7 @@ export const Header = async () => {
               src={'/header/Logo.svg'}
               width={100}
               height={83}
+              unoptimized
             />
           </Link>
 

@@ -4,22 +4,13 @@ import styles from './Produto.module.css';
 import { Suspense } from 'react';
 import LoadingProduct from './loading-product';
 import productByIdGet from '@/src/actions/product-by-id-get';
-import productsFilterGet from '@/src/actions/products-filters-get';
+
+// Habilita renderização dinâmica com cache ISR
+export const dynamicParams = true;
+export const revalidate = 60;
 
 interface PageParams {
   params: { id: string };
-}
-export async function generateStaticParams() {
-  const products = await productsFilterGet({
-    active: true,
-    total: 1000
-  });
-
-  if (!products?.products) return [];
-
-  return products.products.map((product) => ({
-    id: product._id
-  }));
 }
 
 export const generateMetadata = async ({

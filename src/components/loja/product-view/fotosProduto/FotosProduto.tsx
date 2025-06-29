@@ -70,10 +70,8 @@ function FotosProduto({ img }: { img: string[] }) {
                       loading={index > 2 ? 'lazy' : undefined}
                       width={1080}
                       height={1350}
-                      placeholder="blur"
-                      blurDataURL={image}
-                      sizes="1920px"
-                      priority={index < 2}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1080px"
+                      priority={index === 0}
                       unoptimized
                       onClick={() => {
                         setFotoInteira(true);

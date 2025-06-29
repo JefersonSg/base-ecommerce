@@ -73,18 +73,22 @@ function Comentarios() {
             )}
           </div>
         )}
-        <h3 className={`titulo_sessao ${styles.titulo_comentario}`}>
-          Commentários
-        </h3>
+
         {dataComments?.data?.comments?.map((comment, index) => {
           return (
-            <Comentario
-              setIsLoading={setIsLoading}
-              key={index}
-              commentData={comment}
-              setMessagePopUp={setMessagePopUp}
-              setTypePopUp={setTypePopUp}
-            />
+            <>
+              <h3 className={`titulo_sessao ${styles.titulo_comentario}`}>
+                Comentários
+              </h3>
+
+              <Comentario
+                setIsLoading={setIsLoading}
+                key={index}
+                commentData={comment}
+                setMessagePopUp={setMessagePopUp}
+                setTypePopUp={setTypePopUp}
+              />
+            </>
           );
         })}
       </div>

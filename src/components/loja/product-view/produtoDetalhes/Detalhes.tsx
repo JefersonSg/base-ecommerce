@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import Cores from './Cores';
@@ -42,6 +43,8 @@ function Detalhes({ data }: { data: ProductApi }) {
   const [priceProduct, setPriceProduct] = React.useState<number>(0);
   const [imageProduct, setImageProduct] = React.useState('');
   const [modalLogin, setModalLogin] = React.useState(false);
+  const botaoRef = React.useRef(null);
+  const [fixoVisivel, setFixoVisivel] = React.useState(false);
 
   async function addCartItem() {
     setMessagePopUp('');
@@ -151,8 +154,27 @@ function Detalhes({ data }: { data: ProductApi }) {
     }
   }, [data, colorSelected, sizeSelected]);
 
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setFixoVisivel(!entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (botaoRef.current) {
+      observer.observe(botaoRef.current);
+    }
+
+    return () => {
+      if (botaoRef.current) {
+        observer.unobserve(botaoRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className={styles.detalhes}>
+    <div ref={botaoRef} className={styles.detalhes}>
       <Preco
         promotion={data.promotion}
         promotionalPrice={Number(data?.promotionalPrice ?? 0)}
@@ -219,6 +241,46 @@ function Detalhes({ data }: { data: ProductApi }) {
           </div>
         </div>
       </div>
+
+      {fixoVisivel && (
+        <div className={styles.botao_fixo}>
+          <div className={styles.botao_carrinho}>
+            <div className={styles.actions}>
+              <div
+                className={styles.favorito}
+                onClick={() => {
+                  if (!userData.data?.user?._id) {
+                    setModalLogin(true);
+                  }
+                }}
+              >
+                <Favotiro productId={data._id} />
+              </div>
+              <div
+                onClick={() => {
+                  if (isLoading) return;
+                  void addCartItem();
+                }}
+                className={styles.btn_addcart}
+              >
+                <AdicionarCarrinho
+                  texto={`${
+                    !data.active || !hasStock
+                      ? 'Sem estoque'
+                      : !haveColor
+                        ? 'Produto sem estoque nesta cor'
+                        : 'Adicionar ao carrinho'
+                  } `}
+                  img="carrinho.svg"
+                  alt="Imagem do carrinho"
+                  isLoading={isLoading}
+                  disabled={!haveColor || !data.active || !hasStock}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className={styles.share}>
         <p>Curtiu? Compartilhe esta peça!</p>
         <Compartilhar />

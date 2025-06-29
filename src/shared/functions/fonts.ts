@@ -1,10 +1,10 @@
-import { Montserrat, Public_Sans, Inter } from 'next/font/google';
+import { Public_Sans, Inter, Roboto } from 'next/font/google';
 
-export const typeFirst = Montserrat({
-  weight: ['200', '300', '400', '500', '600', '700'],
+export const typeFirst = Roboto({
+  weight: ['100', '300', '400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'auto',
-  variable: '--type-first-montserrat'
+  variable: '--type-first-roboto'
 });
 
 export const paymentFont = Inter({

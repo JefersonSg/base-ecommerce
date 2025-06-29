@@ -2,11 +2,12 @@
   width: 100%;
   max-width: 400px;
   height: 180px;
-  background-color: #f7f7f7;
-  border-radius: 8px;
   margin-top: 32px;
   padding: 16px;
   box-sizing: border-box;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  color: #191919 !important;
 }
 
 @media (min-width: 64rem) {
